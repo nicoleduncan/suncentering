@@ -1,0 +1,281 @@
+% I hope this turns out well. 
+\documentclass[iop]{emulateapj}
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage[english]{isodate}
+\usepackage[parfill]{parskip}
+\usepackage{microtype}
+\usepackage[colorlinks=true,urlcolor=blue]{hyperref}
+\usepackage{amsmath,amsfonts,amssymb}
+\usepackage{footnote}
+\usepackage{epsfig}
+\usepackage{graphicx,subfigure}
+\usepackage{fullpage}
+
+
+
+% Enable the thing that allows line broken href's
+
+
+
+% \title{Finding the Center of Sun Using Different Methods}
+% \author{Jeren Suzuki}
+% \date{Last Edited: \today} 
+
+\begin{document}
+% \maketitle
+% \pagenumbering{Roman}
+% \newpage
+% \pagenumbering{arabic}
+
+
+% 1st order table:
+\begin{deluxetable*}{rrrllll}
+% \scriptsize
+\tablecaption{Sun Centers with limb length=9 and scan width=10}
+\tablewidth{0pt}
+\tablehead{
+    \colhead{Order of Polynomial}
+&  \colhead{Amount of Blur}
+& \colhead{Threshold}
+& \colhead{X Center}
+& \colhead{Y Center}
+& \colhead{X Deviation}
+& \colhead{Y Deviation}  
+}
+\startdata
+\hline
+1
+& None
+& 1-$\sigma$
+& 105.686
+& 110.500
+& 1.81226
+& -.00353241\\
+%
+& None
+& 2-$\sigma$
+& 105.754
+& 111.681
+& 1.74416
+& -1.18478\\
+%
+& 1 Pixel
+& 1-$\sigma$
+& 105.190
+& 110.995
+& 2.30773
+& -.498283\\
+%
+& 1 Pixel
+& 2-$\sigma$
+& 110.500
+& 111.008
+& -3.00179
+& -.511391\\
+%
+& 2 Pixel
+& 1-$\sigma$
+& 105.657
+& 110.500
+& 1.84131
+& -.00353241\\
+%
+& 2 Pixel
+& 2-$\sigma$
+& N/A
+& N/A
+& N/A
+& N/A\\
+%
+& 4 Pixel
+& 1-$\sigma$
+& 105.191
+& 110.500
+& 2.30679
+& -.00353241\\
+%
+& 4 Pixel
+& 2-$\sigma$
+& N/A
+& N/A
+& N/A
+& N/A\\
+%\\
+\hline\\
+2
+& None
+& 1-$\sigma$
+& 106.016
+& 110.923
+& 1.48178
+& -.426773\\
+%
+& None
+& 2-$\sigma$
+& 105.287
+& 111.083
+& 2.21106
+& -.587029\\
+%
+& 1 Pixel
+& 1-$\sigma$
+& 105.190
+& 111.019
+& 2.30796
+& -.522530\\
+%
+& 1 Pixel
+& 2-$\sigma$
+& 110.970
+& 110.806
+& -3.47131
+& -.309723\\
+%
+& 2 Pixel
+& 1-$\sigma$
+& 105.190
+& 111.008
+& 2.30773
+& -.511787\\
+%
+& 2 Pixel
+& 2-$\sigma$
+& N/A
+& N/A
+& N/A
+& N/A\\
+%
+& 4 Pixel
+& 1-$\sigma$
+& 105.681
+& 110.754
+& 1.81726
+& -.257034\\
+%
+& 4 Pixel
+& 2-$\sigma$
+& N/A
+& N/A
+& N/A
+& N/A\\
+\hline\\
+3
+& None
+& 1-$\sigma$
+& 106.523
+& 111.306
+& .974884
+& -.809280\\
+%
+& None
+& 2-$\sigma$
+& 105.439
+& 110.723
+& 2.05891
+& -.226288\\
+%
+& 1 Pixel
+& 1-$\sigma$
+& 106.591
+& 112.017
+& .906784
+& -1.52003\\
+%
+& 1 Pixel
+& 2-$\sigma$
+& 111.003
+& 111.237
+& -3.50490
+& -.740189\\
+%
+& 2 Pixel
+& 1-$\sigma$
+& 105.886
+& 111.890
+& 1.61249
+& -1.39378\\
+%
+& 2 Pixel
+& 2-$\sigma$
+& N/A
+& N/A
+& N/A
+& N/A\\
+%
+& 4 Pixel
+& 1-$\sigma$
+& 105.577
+& 111.133
+& 1.92130
+& -.636787\\
+%
+& 4 Pixel
+& 2-$\sigma$
+& N/A
+& N/A
+& N/A
+& N/A\\
+\hline\\
+4
+& None
+& 1-$\sigma$
+& 106.846
+& 112.022
+& .652000
+& -1.52528\\
+%
+& None
+& 2-$\sigma$
+& 105.652
+& 110.500
+& 1.84631
+& -.00353241\\
+%
+& 1 Pixel
+& 1-$\sigma$
+& 106.417
+& 111.932
+& 1.08130
+& -1.43504\\
+%
+& 1 Pixel
+& 2-$\sigma$
+& 110.668
+& 110.500
+& -3.16989
+& -.00353241\\
+%
+& 2 Pixel
+& 1-$\sigma$
+& 106.034
+& 111.903
+& 1.46391
+& -1.40653\\
+%
+& 2 Pixel
+& 2-$\sigma$
+& N/A
+& N/A
+& N/A
+& N/A\\
+%
+& 4 Pixel
+& 1-$\sigma$
+& 105.610
+& 110.694
+& 1.88797
+& -.197037\\
+%
+& 4 Pixel
+& 2-$\sigma$
+& N/A
+& N/A
+& N/A
+& N/A\\
+\enddata
+% \normalsize
+\end{deluxetable*}
+
+
+\end{document}
