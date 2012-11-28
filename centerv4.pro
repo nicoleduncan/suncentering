@@ -496,8 +496,12 @@ start = systime(1,/seconds)
 a = cropped_image
 ; Sort them by increasing values
 places = a[sort(a)]
+; Combine reindexed array with index values
+; combined = [[places],[indices]]
+; xloc = indices mod width_of_cropped_image
+; yloc = indices/width_of_cropped_image
 
-
+; This is just a really ineffcient method. Will do the other thing now. 
 finish = systime(1,/s)
 print,finish-start
 
