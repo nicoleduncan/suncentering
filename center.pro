@@ -107,38 +107,7 @@ print,'Difference in Y Position from comp2',ycs-ypos
 print,'Difference in X Position from comp3',xcsn-xpos
 print,'Difference in Y Position from comp3',ycsn-ypos
 
-; writefits,'test.fits',[xpos,ypos]
-; a=readfits('test.fits',header)
-restore,'bigstruct.sav'
-; stop
-; writefits,'bigstruct.fits',[bigstruct]
-; hdr = ['Some values','poo']
-; mwrfits,(bigstruct.longxstrips)[0].ARRAY,'bigstruct.fits',/create
-; writefits,'bigstruct.fits',(bigstruct.longxstrips)[0].ARRAY; b=readfits('bigstruct.fits')
-; writefits,'bigstruct.fits',(bigstruct.longxstrips)[0].ARRAY
-; writefits,'bigstruct.fits',(bigstruct.longxstrips)[0].ROWINDEX,/append
-; writefits,'bigstruct.fits',(bigstruct.longxstrips)[0].SCAN_WIDTH,/append
-; c=mrdfits('bigstruct.fits')
-; f=readfits('bigstruct.fits')
-; help,c
-; help,f
-; d=mrdfits('test.fits')
-
-; This works, but only because I use readfits instead of mrdfits? Does it have something to 
-; do with the syntax of using mwrfits? 
-; mwrfits,[xpos,ypos],'e.fits',/create
-; e=readfits('e.fits')
-
-
-; ; so not even this works
-; str = {garlic,x:0}
-; ; str = findgen(100) ;if str is an array and not a structure, writefits doesn't complain
-
-; writefits,'myfile.fits',str
-; mwrfits,str,'myfile.fits',/create
-; a=readfits('myfile.fits')
-; help,a
-
+; restore,'bigstruct.sav'
 
 ; So I think I've figured our the source of the problem, it's maybe something to do with FXADDPAR
 ; not being up to date enough, but I haven't figured out a place to download a more recent 
