@@ -87,7 +87,7 @@ print,''
 xcs = xpos
 ycs = ypos
 
-comp3v2,xpos,ypos,thresh,time=time,sigmavalue=sigmavalue,file=file
+comp3,xpos,ypos,thresh,time=time,sigmavalue=sigmavalue,file=file
 print,'Looking at just the mask:'
 print,'X Center is ',xpos
 print,'Y Center is ',ypos
@@ -503,9 +503,9 @@ places = a[sort(a)]
 
 ; This is just a really ineffcient method. Will do the other thing now. 
 finish = systime(1,/s)
-print,finish-start
+; print,finish-start
 
-stop
+; stop
 
 xpos = TOTAL( TOTAL(suncheck, 2) * Indgen(n_col) ) / total(suncheck)
 ypos = TOTAL( TOTAL(suncheck, 1) * Indgen(n_row) ) / total(suncheck)
@@ -622,12 +622,107 @@ END
 
 ;~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-PRO comp5v2, xstrips,ystrips,thresh,file=file,time=time,ministrip_length=ministrip_length,$
+PRO comp4v2, xstrips,ystrips,thresh,file=file,time=time,scan_width=scan_width,sigmavalue=sigmavalue,$
+    savstep=savstep,saveonly=saveonly,nstrips=nstrips
+;+
+; :Description:
+;           Only used to save the strips into structures. Different from comp4 in that comp4v2
+;           only saves 5 strips centered around the solar diameter to reduce the amount of limb-
+;           darkened pixels and to make the polynomial-fitted limbs more-or-less look similar.
+; :Keywords:
+;   file: in, optional, type=string, default='104533_20120911_153147_254618_0.bin'
+;       File to be read in
+;   time: in, optional
+;       Prints the elapsed time
+;   scan_width: in, optional, type=integer, default=10
+;       Indicates how far apart to scan
+;   sigmavalue: in, optional, type=integer, default=1
+;       Sets the threshold to be::
+;
+;        max(image) - sigmavalue*stddev(image)
+;
+;   savstep: in, required, type=integer, default=4
+;       The number of steps to include in the fits file. 
+;       savstep = 1: cropped image
+;       savstep = 2: long strips
+;       savstep = 3: limb strips
+;       savstep = 4: center of mask
+;   saveonly: in, optional
+;       Determines whether or not savstep saves steps leading up to savstep or just savstep
+;   nstrips: in, optional, type=byte, default=5
+;       How many strips to select, centered around the row/col diameter
+;
+;
+; :Params:
+;   xstrips: out, required, type=structure 
+;       Structure containing row strips
+;   ystrips: out, required, type=structure 
+;       Structure containing column strips
+;   thresh: out, required, type=float
+;       Threshold used to select pixels
+;
+; :Examples:
+;           comp4v2,xstrips,ystrips,thresh,/time,scan_width=10
+;
+;-
+
+IF ~keyword_set(file)       THEN file       = '104533_20120911_153147_254618_0.bin'
+IF ~keyword_set(scan_width) THEN scan_width = 10
+IF ~keyword_set(nstrips)    THEN nstrips = 5
+
+cropped_image = scanboxv2(file=file,time=time,savstep=savstep,saveonly=saveonly)
+comp3,xpos,ypos,time=time,sigmavalue=sigmavalue,file=file
+
+IF ~keyword_set(sigmavalue)  THEN sigmavalue = 1
+thresh = max(cropped_image) - stddev(cropped_image)*sigmavalue 
+
+start = systime(1,/seconds)
+
+s = size(cropped_image,/dimensions)
+length = s[0]
+height = s[1]
+
+rowchord_endpoints = fltarr(2,nstrips)
+colchord_endpoints = fltarr(2,nstrips)
+
+xstrips = REPLICATE({ROWINDEX:0,SCAN_WIDTH:scan_width,ARRAY:bytarr(length)},nstrips)
+ystrips = REPLICATE({COLINDEX:0,SCAN_WIDTH:scan_width,ARRAY:bytarr(height)},nstrips)
+
+FOR i = 0,nstrips - 1 DO BEGIN
+    xstrips[i].ROWINDEX = i
+    xstrips[i].ARRAY = cropped_image[*, round(xpos)+(i-nstrips/2)*scan_width]
+ENDFOR
+
+FOR k = 0,nstrips - 1 DO BEGIN
+    ystrips[k].COLINDEX = k
+    ystrips[k].ARRAY = cropped_image[round(ypos)+(k-nstrips/2)*scan_width,*]
+ENDFOR
+
+finish = systime(1,/seconds)
+IF keyword_set(time) THEN  print,'Elapsed Time for comp4: ',strcompress(finish-start,/rem),' seconds'
+; save,xstrips,ystrips,thresh,filename='comp4strips.sav',/compress
+IF savstep GE 2 AND n_elements(saveonly) EQ 0 THEN BEGIN
+    restore,'bigstruct.sav'
+    longstrips = {longxstrips:xstrips,longystrips:ystrips,thresh:thresh}
+    bigstruct = create_struct(bigstruct,longstrips)
+    save,bigstruct,filename='bigstruct.sav',/compress
+ENDIF
+IF savstep GE 2 AND n_elements(saveonly) NE 0 THEN BEGIN
+    bigstruct = {longxstrips:xstrips,longystrips:ystrips,thresh:thresh}
+    save,bigstruct,filename='bigstruct.sav',/compress
+ENDIF
+
+RETURN
+END
+
+;~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+PRO comp5v3, xstrips,ystrips,thresh,file=file,time=time,ministrip_length=ministrip_length,$
         scan_width=scan_width,sigmavalue=sigmavalue,savstep=savstep,saveonly=saveonly
 ;+
 ; :Description:
-;           Only used to save the cut-down strips into structures. Imports strips from 
-;           comp4 like a good code should.
+;           Only used to save the cut-down strips into structures. Differs from comp5v2
+;           in that this one uses comp4v2. That's it. 
 ;
 ; :Keywords:
 ;   file: in, optional, type=string, default='104533_20120911_153147_254618_0.bin'
@@ -662,7 +757,7 @@ PRO comp5v2, xstrips,ystrips,thresh,file=file,time=time,ministrip_length=ministr
 ;       Threshold value used 
 ;
 ; :Examples:
-;           comp5v2,xstrips,ystrips,thresh
+;           comp5v3,xstrips,ystrips,thresh
 ;
 ; :TODO:
 ;
@@ -677,7 +772,7 @@ ministrip_side_buffer = ministrip_length/2
 
 start = systime(1,/seconds)
 
-comp4,c4xstrips,c4ystrips,thresh,file=file,time=time,sigmavalue=sigmavalue,scan_width=scan_width,$
+comp4v2,c4xstrips,c4ystrips,thresh,file=file,time=time,sigmavalue=sigmavalue,scan_width=scan_width,$
     savstep=savstep,saveonly=saveonly
 
 rowchord_endpoints = fltarr(2,n_elements(c4xstrips))
@@ -755,9 +850,9 @@ FOR k = 0,n_elements(c4ystrips) - 1 DO BEGIN
     ENDELSE
 ENDFOR
 finish = systime(1,/seconds)
-IF keyword_set(time) THEN  print,'Elapsed Time for comp5v2: ',strcompress(finish-start,/rem),' seconds'
+IF keyword_set(time) THEN  print,'Elapsed Time for comp5v3: ',strcompress(finish-start,/rem),' seconds'
 ; save,xstrips,ystrips,thresh,scan_width,sigmavalue,ministrip_length,$
-;   filename='comp5v2strips.sav',/compress
+;   filename='comp5v3strips.sav',/compress
 ; mwrfits,xstrips,'test.fits',/create
 ; Just did a quick sanity check and with a ministrip_length = 23, the compressed savfile is 
 ; 975 bytes. That's about 46*10 points per strip with 120 strips -> The pdf says about 2 bytes per strip 
@@ -791,10 +886,10 @@ PRO comp6v2,xpos,ypos,file=file,order=order,time=time,scan_width=scan_width,$
     ministrip_length=ministrip_length,plot=plot,sigmavalue=sigmavalue,savstep=savstep,saveonly=saveonly
 ;+
 ; :Description:
-;       Uses the data from comp5v2 and draws a linear/quadratic/cubic/etc. function to find midpoint.
+;       Uses the data from comp5v3 and draws a linear/quadratic/cubic/etc. function to find midpoint.
 ;       Order is the power of the function. Different from comp6 in that this method uses fz_roots()
 ;       and comp6 uses spline to interpolate where the limb crosses a threshold. Imports the strips
-;       from comp5v2.
+;       from comp5v3.
 ;
 ; :Keywords:
 ;   file: in, optional, type=string, default='104533_20120911_153147_254618_0.bin'
@@ -851,7 +946,7 @@ ynum    = 0
 start = systime(1,/seconds)
 
 ; Run the program to get our structures
-comp5v2,xstrips,ystrips,thresh,file=file,time=time,ministrip_length=ministrip_length,$
+comp5v3,xstrips,ystrips,thresh,file=file,time=time,ministrip_length=ministrip_length,$
     sigmavalue=sigmavalue,scan_width=scan_width,savstep=savstep,saveonly=saveonly
 
 xarr    = findgen(n_elements(xstrips[4].STARTPOINTS))
