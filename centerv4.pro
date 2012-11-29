@@ -16,7 +16,7 @@
 ;-
 
 PRO centerv4,file=file,ministrip_length=ministrip_length,scan_width=scan_width,time=time,order=order, $
-    plot=plot,sigmavalue=sigmavalue,savstep=savstep,saveonly=saveonly
+    plot=plot,sigmavalue=sigmavalue,savstep=savstep,saveonly=saveonly,storestruct=storestruct
 ;+
 ; :Description:
 ;       Finds the centroid using a variety of compression levels
@@ -52,6 +52,8 @@ PRO centerv4,file=file,ministrip_length=ministrip_length,scan_width=scan_width,t
 ;       savstep = 4: center of mask
 ;   saveonly: in, optional
 ;       Determines whether or not savstep saves steps leading up to savstep or just savstep
+;   storestruct: in, optional
+;       Toggles whether or not we want to save data at all
 ;
 ;
 ; :TODO: 
@@ -97,7 +99,7 @@ xcsn = xpos
 ycsn = ypos
 
 comp6v2,xpos,ypos,time=time,order=order,scan_width=scan_width,file=file,plot=plot,sigmavalue=sigmavalue,$
-    ministrip_length=ministrip_length,savstep=savstep,saveonly=saveonly
+    ministrip_length=ministrip_length,savstep=savstep,saveonly=saveonly,storestruct=storestruct
 print,'Limb-fitting:'
 print,'X Center is ',xpos
 print,'Y Center is ',ypos
@@ -156,7 +158,7 @@ END
 ;~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 FUNCTION scanboxv2,file=file,time=time,meanthresh=meanthresh,scan_width=scan_width,$
-    savstep=savstep,saveonly=saveonly,sigmavalue=sigmavalue
+    savstep=savstep,saveonly=saveonly,sigmavalue=sigmavalue,storestruct=storestruct
 ;+
 ; :Description: 
 ;       Boxit was too computation-intensive, this is more a rough boxing program. 
@@ -183,17 +185,18 @@ FUNCTION scanboxv2,file=file,time=time,meanthresh=meanthresh,scan_width=scan_wid
 ;       savstep = 4: center of mask
 ;   saveonly: in, optional
 ;       Determines whether or not savstep saves steps leading up to savstep or just savstep
-;
+;   storestruct: in, optional
+;       Toggles whether or not we want to save data at all
 ;
 ; :Examples:
 ;       cropped = scanboxv2(file='$PWD/sep11_postit/104533_20120912_124300_353097_0.bin',/time)
 ;
 ;-
-; for novelty
-start = systime(1,/seconds)
 IF ~keyword_set(file)       THEN file       = '104533_20120911_153147_254618_0.bin'
 IF ~keyword_set(scanwidth)  THEN scan_width = 5
 IF ~keyword_set(sigmavalue)  THEN sigmavalue = 1
+
+start = systime(1,/seconds)
 
 ; Setting some parameters
 rowscan = 0
@@ -271,7 +274,7 @@ finish = systime(1,/seconds)
 IF keyword_set(time) THEN  print, 'Elapsed Time for scanboxv2(): ' + $
     strcompress(finish-start,/remove)+ ' seconds'
 ; save,cropped_image,filename='cropped_image.sav',/compress
-IF n_elements(saveonly) EQ 0 THEN BEGIN
+IF n_elements(saveonly) EQ 0 AND keyword_set(storestruct) THEN BEGIN
     bigstruct = {crop:cropped_image}
     save,bigstruct,filename='bigstruct.sav',/compress
 ENDIF
@@ -280,8 +283,7 @@ END
 
 ;~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-PRO comp2v2,xpos,ypos,thresh,file=file,time=time,plot=plot,sigmavalue=sigmavalue,$
-        savstep=savstep,saveonly=saveonly
+PRO comp2v2,xpos,ypos,thresh,file=file,time=time,plot=plot,sigmavalue=sigmavalue
 ;+
 ; :Description:
 ;           Finds the centroid by summing all values over a certain threshold and averaging them.
@@ -300,14 +302,6 @@ PRO comp2v2,xpos,ypos,thresh,file=file,time=time,plot=plot,sigmavalue=sigmavalue
 ;       max(image) - sigmavalue*stddev(image)
 ;
 ;       Having a sigmavalue=2 makes the pixels chosen from the sun more circular than sigmavalue=1
-;   savstep: in, required, type=integer, default=4
-;       The number of steps to include in the fits file. 
-;       savstep = 1: cropped image
-;       savstep = 2: long strips
-;       savstep = 3: limb strips
-;       savstep = 4: center of mask
-;   saveonly: in, optional
-;       Determines whether or not savstep saves steps leading up to savstep or just savstep
 ;
 ;           
 ; :Params:
@@ -323,8 +317,9 @@ PRO comp2v2,xpos,ypos,thresh,file=file,time=time,plot=plot,sigmavalue=sigmavalue
 ;
 ;-
 IF ~keyword_set(file)   THEN file   = '104533_20120911_153147_254618_0.bin'
-cropped_image = scanboxv2(file=file,time=time)
 IF ~keyword_set(sigmavalue)  THEN sigmavalue = 2
+
+cropped_image = scanboxv2(file=file,time=time)
 start = systime(1,/seconds)
 
 ; BEWARE:
@@ -367,8 +362,7 @@ END
 
 ;~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-PRO comp3,xpos,ypos,thresh,file=file,time=time,plot=plot,sigmavalue=sigmavalue,$
-        savstep=savstep,saveonly=saveonly
+PRO comp3,xpos,ypos,thresh,file=file,time=time,plot=plot,sigmavalue=sigmavalue
 ;+
 ; :Description:
 ;           Looks only at the positions of pixels above a threshold and doen't care
@@ -388,14 +382,6 @@ PRO comp3,xpos,ypos,thresh,file=file,time=time,plot=plot,sigmavalue=sigmavalue,$
 ;       max(image) - sigmavalue*stddev(image)
 ;
 ;       Having a sigmavalue=2 makes the pixels chosen from the sun more circular than sigmavalue=1
-;   savstep: in, required, type=integer, default=4
-;       The number of steps to include in the fits file. 
-;       savstep = 1: cropped image
-;       savstep = 2: long strips
-;       savstep = 3: limb strips
-;       savstep = 4: center of mask
-;   saveonly: in, optional
-;       Determines whether or not savstep saves steps leading up to savstep or just savstep
 ;
 ;           
 ; :Params:
@@ -412,10 +398,13 @@ PRO comp3,xpos,ypos,thresh,file=file,time=time,plot=plot,sigmavalue=sigmavalue,$
 ;-
 
 IF ~keyword_set(file)   THEN file   = '104533_20120911_153147_254618_0.bin'
-cropped_image = scanboxv2(file=file,time=time)
 IF ~keyword_set(sigmavalue)  THEN sigmavalue = 2
-thresh = max(cropped_image)-sigmavalue*stddev(cropped_image)
+
+cropped_image = scanboxv2(file=file,time=time)
+
 start = systime(1,/seconds)
+
+thresh = max(cropped_image)-sigmavalue*stddev(cropped_image)
 
 s = size(cropped_image,/dimensions)
 n_col = s[0]
@@ -434,8 +423,7 @@ END
 ;~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
-PRO comp3v2,xpos,ypos,thresh,file=file,time=time,plot=plot,sigmavalue=sigmavalue,$
-        savstep=savstep,saveonly=saveonly
+PRO comp3v2,xpos,ypos,thresh,file=file,time=time,plot=plot,sigmavalue=sigmavalue
 ;+
 ; :Description:
 ;           Looks only at the positions of pixels above a threshold and doen't care
@@ -455,14 +443,6 @@ PRO comp3v2,xpos,ypos,thresh,file=file,time=time,plot=plot,sigmavalue=sigmavalue
 ;       max(image) - sigmavalue*stddev(image)
 ;
 ;       Having a sigmavalue=2 makes the pixels chosen from the sun more circular than sigmavalue=1
-;   savstep: in, required, type=integer, default=4
-;       The number of steps to include in the fits file. 
-;       savstep = 1: cropped image
-;       savstep = 2: long strips
-;       savstep = 3: limb strips
-;       savstep = 4: center of mask
-;   saveonly: in, optional
-;       Determines whether or not savstep saves steps leading up to savstep or just savstep
 ;
 ;           
 ; :Params:
@@ -478,11 +458,13 @@ PRO comp3v2,xpos,ypos,thresh,file=file,time=time,plot=plot,sigmavalue=sigmavalue
 ;
 ;-
 
-IF ~keyword_set(file)   THEN file   = '104533_20120911_153147_254618_0.bin'
+IF ~keyword_set(file)       THEN file       = '104533_20120911_153147_254618_0.bin'
+IF ~keyword_set(sigmavalue) THEN sigmavalue = 2
 cropped_image = scanboxv2(file=file,time=time)
-IF ~keyword_set(sigmavalue)  THEN sigmavalue = 2
-thresh = max(cropped_image)-sigmavalue*stddev(cropped_image)
+
 start = systime(1,/seconds)
+
+thresh = max(cropped_image)-sigmavalue*stddev(cropped_image)
 
 s = size(cropped_image,/dimensions)
 n_col = s[0]
@@ -518,7 +500,7 @@ END
 ;~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 PRO comp4, xstrips,ystrips,thresh,file=file,time=time,scan_width=scan_width,sigmavalue=sigmavalue,$
-    savstep=savstep,saveonly=saveonly
+    savstep=savstep,saveonly=saveonly,storestruct=storestruct
 ;+
 ; :Description:
 ;           Only used to save the strips into structures. 
@@ -542,7 +524,8 @@ PRO comp4, xstrips,ystrips,thresh,file=file,time=time,scan_width=scan_width,sigm
 ;       savstep = 4: center of mask
 ;   saveonly: in, optional
 ;       Determines whether or not savstep saves steps leading up to savstep or just savstep
-;
+;   storestruct: in, optional
+;       Toggles whether or not we want to save data at all
 ;
 ; :Params:
 ;   xstrips: out, required, type=structure 
@@ -558,15 +541,14 @@ PRO comp4, xstrips,ystrips,thresh,file=file,time=time,scan_width=scan_width,sigm
 ;-
 
 IF ~keyword_set(file)       THEN file       = '104533_20120911_153147_254618_0.bin'
-IF ~keyword_set(scan_width) THEN scan_width = 10 ELSE scan_width = scan_width
+IF ~keyword_set(scan_width) THEN scan_width = 10
+IF ~keyword_set(sigmavalue) THEN sigmavalue = 1
 
 cropped_image = scanboxv2(file=file,time=time,savstep=savstep,saveonly=saveonly)
-IF ~keyword_set(sigmavalue)  THEN sigmavalue = 1
-thresh = max(cropped_image) - stddev(cropped_image)*sigmavalue 
 
 start = systime(1,/seconds)
 
-; cgimage,cropped_image,/keep_asp
+thresh = max(cropped_image) - stddev(cropped_image)*sigmavalue 
 s = size(cropped_image,/dimensions)
 length = s[0]
 height = s[1]
@@ -607,13 +589,13 @@ ENDFOR
 finish = systime(1,/seconds)
 IF keyword_set(time) THEN  print,'Elapsed Time for comp4: ',strcompress(finish-start,/rem),' seconds'
 ; save,xstrips,ystrips,thresh,filename='comp4strips.sav',/compress
-IF savstep GE 2 AND n_elements(saveonly) EQ 0 THEN BEGIN
+IF savstep GE 2 AND n_elements(saveonly) EQ 0 AND keyword_set(storestruct) THEN BEGIN
     restore,'bigstruct.sav'
     longstrips = {longxstrips:xstrips,longystrips:ystrips,thresh:thresh}
     bigstruct = create_struct(bigstruct,longstrips)
     save,bigstruct,filename='bigstruct.sav',/compress
 ENDIF
-IF savstep GE 2 AND n_elements(saveonly) NE 0 THEN BEGIN
+IF savstep GE 2 AND n_elements(saveonly) NE 0 AND keyword_set(storestruct) THEN BEGIN
     bigstruct = {longxstrips:xstrips,longystrips:ystrips,thresh:thresh}
     save,bigstruct,filename='bigstruct.sav',/compress
 ENDIF
@@ -623,7 +605,7 @@ END
 ;~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 PRO comp4v2, xstrips,ystrips,thresh,file=file,time=time,scan_width=scan_width,sigmavalue=sigmavalue,$
-    savstep=savstep,saveonly=saveonly,nstrips=nstrips
+    savstep=savstep,saveonly=saveonly,nstrips=nstrips,storestruct=storestruct
 ;+
 ; :Description:
 ;           Only used to save the strips into structures. Different from comp4 in that comp4v2
@@ -651,7 +633,8 @@ PRO comp4v2, xstrips,ystrips,thresh,file=file,time=time,scan_width=scan_width,si
 ;       Determines whether or not savstep saves steps leading up to savstep or just savstep
 ;   nstrips: in, optional, type=byte, default=5
 ;       How many strips to select, centered around the row/col diameter
-;
+;   storestruct: in, optional
+;       Toggles whether or not we want to save data at all
 ;
 ; :Params:
 ;   xstrips: out, required, type=structure 
@@ -673,10 +656,10 @@ IF ~keyword_set(nstrips)    THEN nstrips = 5
 cropped_image = scanboxv2(file=file,time=time,savstep=savstep,saveonly=saveonly)
 comp3,xpos,ypos,time=time,sigmavalue=sigmavalue,file=file
 
+start = systime(1,/seconds)
+
 IF ~keyword_set(sigmavalue)  THEN sigmavalue = 1
 thresh = max(cropped_image) - stddev(cropped_image)*sigmavalue 
-
-start = systime(1,/seconds)
 
 s = size(cropped_image,/dimensions)
 length = s[0]
@@ -699,15 +682,15 @@ FOR k = 0,nstrips - 1 DO BEGIN
 ENDFOR
 
 finish = systime(1,/seconds)
-IF keyword_set(time) THEN  print,'Elapsed Time for comp4: ',strcompress(finish-start,/rem),' seconds'
-; save,xstrips,ystrips,thresh,filename='comp4strips.sav',/compress
-IF savstep GE 2 AND n_elements(saveonly) EQ 0 THEN BEGIN
+IF keyword_set(time) THEN  print,'Elapsed Time for comp4v2: ',strcompress(finish-start,/rem),' seconds'
+; save,xstrips,ystrips,thresh,filename='comp4v2strips.sav',/compress
+IF savstep GE 2 AND n_elements(saveonly) EQ 0 AND keyword_set(storestruct) THEN BEGIN
     restore,'bigstruct.sav'
     longstrips = {longxstrips:xstrips,longystrips:ystrips,thresh:thresh}
     bigstruct = create_struct(bigstruct,longstrips)
     save,bigstruct,filename='bigstruct.sav',/compress
 ENDIF
-IF savstep GE 2 AND n_elements(saveonly) NE 0 THEN BEGIN
+IF savstep GE 2 AND n_elements(saveonly) NE 0 AND keyword_set(storestruct) THEN BEGIN
     bigstruct = {longxstrips:xstrips,longystrips:ystrips,thresh:thresh}
     save,bigstruct,filename='bigstruct.sav',/compress
 ENDIF
@@ -718,7 +701,8 @@ END
 ;~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 PRO comp5v3, xstrips,ystrips,thresh,file=file,time=time,ministrip_length=ministrip_length,$
-        scan_width=scan_width,sigmavalue=sigmavalue,savstep=savstep,saveonly=saveonly
+        scan_width=scan_width,sigmavalue=sigmavalue,savstep=savstep,saveonly=saveonly,$
+        storestruct=storestruct
 ;+
 ; :Description:
 ;           Only used to save the cut-down strips into structures. Differs from comp5v2
@@ -746,7 +730,8 @@ PRO comp5v3, xstrips,ystrips,thresh,file=file,time=time,ministrip_length=ministr
 ;       savstep = 4: center of mask
 ;   saveonly: in, optional
 ;       Determines whether or not savstep saves steps leading up to savstep or just savstep
-;
+;   storestruct: in, optional
+;       Toggles whether or not we want to save data at all
 ;
 ; :Params:
 ;   xstrips: out, required, type=structure
@@ -768,13 +753,13 @@ PRO comp5v3, xstrips,ystrips,thresh,file=file,time=time,ministrip_length=ministr
 IF ~keyword_set(file)               THEN file               = '104533_20120911_153147_254618_0.bin'
 IF ~keyword_set(scan_width)         THEN scan_width         = 10 
 IF ~keyword_set(ministrip_length)   THEN ministrip_length   = 9 
-ministrip_side_buffer = ministrip_length/2 
-
-start = systime(1,/seconds)
 
 comp4v2,c4xstrips,c4ystrips,thresh,file=file,time=time,sigmavalue=sigmavalue,scan_width=scan_width,$
     savstep=savstep,saveonly=saveonly
 
+start = systime(1,/seconds)
+
+ministrip_side_buffer = ministrip_length/2 
 rowchord_endpoints = fltarr(2,n_elements(c4xstrips))
 colchord_endpoints = fltarr(2,n_elements(c4ystrips))
 
@@ -850,29 +835,16 @@ FOR k = 0,n_elements(c4ystrips) - 1 DO BEGIN
     ENDELSE
 ENDFOR
 finish = systime(1,/seconds)
+
 IF keyword_set(time) THEN  print,'Elapsed Time for comp5v3: ',strcompress(finish-start,/rem),' seconds'
-; save,xstrips,ystrips,thresh,scan_width,sigmavalue,ministrip_length,$
-;   filename='comp5v3strips.sav',/compress
-; mwrfits,xstrips,'test.fits',/create
-; Just did a quick sanity check and with a ministrip_length = 23, the compressed savfile is 
-; 975 bytes. That's about 46*10 points per strip with 120 strips -> The pdf says about 2 bytes per strip 
-; but I'm getting about 8 bytes per strip. 
-;
-; Using 5 points per strip instead of 23 cuts us down to 656 bytes, which is 5.4 bytes per strip.
-; How am I supposed to cut it down to 2?
-; Using bytarr instead of fltarr saves me 40 bytes. 
-; Using a scan_width of 20 instead of 10 gets me to 536 bytes (4.4 bytes per strip, 2.2 bytes per 
-; cut-down strip. Is this the value we want?
-;
-; Not anymore since I added BEGINDEX and ENDINDEX. Oh well.
-IF savstep GE 3 AND n_elements(saveonly) EQ 0 THEN BEGIN
+IF savstep GE 3 AND n_elements(saveonly) EQ 0 AND keyword_set(storestruct) THEN BEGIN
     shortstrips = {shortxstrips:xstrips,shortystrips:ystrips,scan_width:scan_width,sigmavalue:sigmavalue,$
         ministrip_length:ministrip_length}
     restore,'bigstruct.sav'
     bigstruct = create_struct(bigstruct,shortstrips)
     save,bigstruct,filename='bigstruct.sav',/compress
 ENDIF
-IF savstep GE 3 AND n_elements(saveonly) NE 0 THEN BEGIN
+IF savstep GE 3 AND n_elements(saveonly) NE 0 AND keyword_set(storestruct) THEN BEGIN
     bigstruct = {shortxstrips:xstrips,shortystrips:ystrips,scan_width:scan_width,sigmavalue:sigmavalue,$
         ministrip_length:ministrip_length}
     save,bigstruct,filename='bigstruct.sav',/compress
@@ -883,7 +855,8 @@ END
 ;~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 PRO comp6v2,xpos,ypos,file=file,order=order,time=time,scan_width=scan_width,$
-    ministrip_length=ministrip_length,plot=plot,sigmavalue=sigmavalue,savstep=savstep,saveonly=saveonly
+    ministrip_length=ministrip_length,plot=plot,sigmavalue=sigmavalue,savstep=savstep,$
+    saveonly=saveonly,storestruct=storestruct
 ;+
 ; :Description:
 ;       Uses the data from comp5v3 and draws a linear/quadratic/cubic/etc. function to find midpoint.
@@ -917,6 +890,8 @@ PRO comp6v2,xpos,ypos,file=file,order=order,time=time,scan_width=scan_width,$
 ;       savstep = 4: center of mask
 ;   saveonly: in, optional
 ;       Determines whether or not savstep saves steps leading up to savstep or just savstep
+;   storestruct: in, optional
+;       Toggles whether or not we want to save data at all
 ;
 ; :Params:
 ;   xpos: out, required, type=float
@@ -933,22 +908,20 @@ PRO comp6v2,xpos,ypos,file=file,order=order,time=time,scan_width=scan_width,$
 IF ~keyword_set(file)               THEN file = '104533_20120911_153147_254618_0.bin'
 IF ~keyword_set(order)              THEN order = 3
 IF ~keyword_set(ministrip_length)   THEN ministrip_length = 9
-ministrip_side_length = ministrip_length/2
-
-xlen    = 0
-xsum    = 0
-xnum    = 0
-
-ylen    = 0
-ysum    = 0
-ynum    = 0
-; For novelty purposes
-start = systime(1,/seconds)
 
 ; Run the program to get our structures
 comp5v3,xstrips,ystrips,thresh,file=file,time=time,ministrip_length=ministrip_length,$
     sigmavalue=sigmavalue,scan_width=scan_width,savstep=savstep,saveonly=saveonly
 
+start = systime(1,/seconds)
+
+ministrip_side_length = ministrip_length/2
+xlen    = 0
+xsum    = 0
+xnum    = 0   
+ylen    = 0
+ysum    = 0
+ynum    = 0
 xarr    = findgen(n_elements(xstrips[4].STARTPOINTS))
 yarr    = findgen(n_elements(ystrips[4].STARTPOINTS))
 tx      = findgen(n_elements(xstrips[4].STARTPOINTS) * 1000)/100
@@ -1182,26 +1155,26 @@ IF keyword_set(time) THEN  print,'Elapsed Time for comp6v2: ',strcompress(finish
 ; save,xpos,ypos,thresh,sigmavalue,order,file, ministrip_length,scan_width,$
 ;     filename='comp6results.sav',/compress
 
-strformatcode = 'a'+strcompress(strlen(file),/rem)
+; strformatcode = 'a'+strcompress(strlen(file),/rem)
 
-OPENW,1,'comp6results.dat' 
-PRINTF,1,xpos,ypos,thresh,sigmavalue,order,ministrip_length,scan_width,file, $
-    format='(F7.2,1X,F7.2,1X,F7.2,I,1X,I,1X,I,1X,I,1X,'+strformatcode+')'
-CLOSE,1
+; OPENW,1,'comp6results.dat' 
+; PRINTF,1,xpos,ypos,thresh,sigmavalue,order,ministrip_length,scan_width,file, $
+;     format='(F7.2,1X,F7.2,1X,F7.2,I,1X,I,1X,I,1X,I,1X,'+strformatcode+')'
+; CLOSE,1
 
-strformatcode = 'a'+strcompress(strlen(file),/rem)
-OPENW,2,'comp6results.txt' 
-PRINTF,2,xpos,ypos,thresh,sigmavalue,order,ministrip_length,scan_width,file, $
-    format='(F7.2,1X,F7.2,1X,F7.2,I,1X,I,1X,I,1X,I,1X,'+strformatcode+')'
-CLOSE,2
+; strformatcode = 'a'+strcompress(strlen(file),/rem)
+; OPENW,2,'comp6results.txt' 
+; PRINTF,2,xpos,ypos,thresh,sigmavalue,order,ministrip_length,scan_width,file, $
+;     format='(F7.2,1X,F7.2,1X,F7.2,I,1X,I,1X,I,1X,I,1X,'+strformatcode+')'
+; CLOSE,2
 
-IF savstep EQ 4 AND n_elements(saveonly) EQ 0 THEN BEGIN
+IF savstep EQ 4 AND n_elements(saveonly) EQ 0 AND keyword_set(storestruct) THEN BEGIN
     restore,'bigstruct.sav'
     stuff = {xpos:xpos,ypos:ypos,order:order}
     bigstruct = create_struct(stuff,bigstruct)
     save,bigstruct,filename='bigstruct.sav',/compress
 ENDIF
-IF savstep EQ 4 AND n_elements(saveonly) NE 0 THEN BEGIN
+IF savstep EQ 4 AND n_elements(saveonly) NE 0 AND keyword_set(storestruct) THEN BEGIN
     bigstruct = {xpos:xpos,ypos:ypos,order:order}
     save,bigstruct,filename='bigstruct.sav',/compress
 ENDIF
