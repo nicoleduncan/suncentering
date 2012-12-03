@@ -69,6 +69,10 @@ PRO center,file=file,ministrip_length=ministrip_length,scan_width=scan_width,tim
 ;
 ;   Threshold value doesn't have a safety in terms of cosmic rays or single pixels with absurdly high
 ;   values. Got to have some sort of catch here just in case. 
+;
+;   For some reason, after I added code to look at 5 center chords, the y-limbs are all wonky. Why?
+;   They cross through fiducials, that's why. The fiducials are so wide that a median filter won't get
+;   rid of them.
 ;-
 
 IF ~keyword_set(ministrip_length)   THEN    ministrip_length = 9
@@ -236,6 +240,10 @@ colendscan = colscan + sundiam/scan_width
 
 rowscan     -= 2
 colscan     -= 2
+
+;Since the column scanning is rough, have to give the ends a little room.
+rowendscan  += 2
+colendscan  += 2
 
 cropped_image=image[colscan*scan_width:colendscan*scan_width,rowscan*scan_width:rowendscan*scan_width]
 
