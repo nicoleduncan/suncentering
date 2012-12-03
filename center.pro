@@ -224,10 +224,13 @@ thresh = max(image)/2.
 WHILE n_elements(where(image[*,rowscan*scan_width] GT thresh)) EQ 1 DO BEGIN
     rowscan++
 ENDWHILE
-WHILE n_elements(where(image[colscan*scan_width,*] GT thresh)) EQ 1 DO BEGIN
-    colscan++
-ENDWHILE
-    
+
+; Doing it this way so that if in the case of 3 suns, if 1 sun is more left than the sun which is the 
+; most bottom, the cropping will correctly choose the right sun.
+colscan = ((where(image[*,rowscan*scan_width] GT thresh))[0] - sundiam/2 + $
+        n_elements(where(image[*,rowscan*scan_width] GT thresh))/2 )/scan_width
+
+
 rowendscan = rowscan + sundiam/scan_width ; Jumping to other side of sun
 colendscan = colscan + sundiam/scan_width
 
@@ -540,7 +543,7 @@ IF ~keyword_set(ministrip_length)   THEN ministrip_length   = 9
 
 comp4,c4xstrips,c4ystrips,thresh,file=file,time=time,sigmavalue=sigmavalue,scan_width=scan_width,$
     savstep=savstep,saveonly=saveonly
-
+stop
 start = systime(1,/seconds)
 
 ministrip_side_buffer = ministrip_length/2 
