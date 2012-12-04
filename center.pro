@@ -26,7 +26,7 @@ PRO center,file=file,ministrip_length=ministrip_length,scan_width=scan_width,tim
 ;       IDL uses the origin to be the top left corner for 2d arrays and a column is indexed from 0
 ;       starting from the top. You have been WARNED.
 ; :Keywords:
-;   file: in, optional, type=string, default='gauss1pix.tiff'
+;   file: in, optional, type=string, default='Sun_Images_000000.bmp'
 ;       File to be read in      
 ;   ministrip_length: in, optional, type=byte, default=9
 ;       How long the cut-down strip is
@@ -551,7 +551,6 @@ IF ~keyword_set(ministrip_length)   THEN ministrip_length   = 9
 
 comp4,c4xstrips,c4ystrips,thresh,file=file,time=time,sigmavalue=sigmavalue,scan_width=scan_width,$
     savstep=savstep,saveonly=saveonly
-stop
 start = systime(1,/seconds)
 
 ministrip_side_buffer = ministrip_length/2 
