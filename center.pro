@@ -340,7 +340,7 @@ END
 
 ;~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-PRO comp3,xpos,ypos,thresh,file=file,time=time,plot=plot,sigmavalue=sigmavalue
+PRO comp3,xpos,ypos,thresh,file=file,time=time,sigmavalue=sigmavalue
 ;+
 ; :Description:
 ;           Looks only at the positions of pixels above a threshold and doen't care
@@ -352,8 +352,6 @@ PRO comp3,xpos,ypos,thresh,file=file,time=time,plot=plot,sigmavalue=sigmavalue
 ;       File to be read in
 ;   time: in, optional
 ;       Prints the elapsed time
-;   plot: in, optional
-;       Makes a nice plot
 ;   sigmavalue: in, optional, type=integer, default=2
 ;       Sets the threshold to be::
 ;

@@ -48,8 +48,6 @@ END
 FUNCTION cropit, location, region=region, inputarr=inputarr, scan_width=scan_width, $
     sundiam=sundiam, thresh=thresh
 
-rowscan = 0
-
 CASE region OF
 
 1: BEGIN
@@ -85,8 +83,15 @@ CASE region OF
     END
 
 3: BEGIN
-    ; Step 1 of blacking out the sun is apparently already done although I don't know why.
+    temparr = inputarr * (inputarr gt thresh)
 
+    minicrop,temparr,rowscan,colscan,rowendscan,colendscan,thresh=thresh,scan_width=scan_width,$
+        sundiam=sundiam
+
+    inputarr[colscan*scan_width:colendscan*scan_width,rowscan*scan_width:rowendscan*scan_width] = 0
+
+    ;~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    
     ; Step 2: Black out the first dimsum
     temparr = inputarr * (inputarr lt thresh)
 
@@ -218,6 +223,40 @@ END
 
 ;~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+PRO trimask, xpos,ypos,thresh,file=file,time=time,sigmavalue=sigmavalue,region=region
+;+
+;   :Description:
+;       Had to make a new version of comp3 because the old one called scanbox() by default
+;-
+
+IF ~keyword_set(file)           THEN file   = 'trisun.bmp'
+IF ~keyword_set(sigmavalue)     THEN sigmavalue = 2
+
+struct = tribox(file=file,time=time,region=region)
+cropped = struct.image
+
+start = systime(1,/seconds)
+
+thresh = max(cropped)-sigmavalue*stddev(cropped)
+
+s = size(cropped,/dimensions)
+n_col = s[0]
+n_row = s[1]
+
+suncheck = cropped gt thresh
+
+xpos = TOTAL( TOTAL(suncheck, 2) * Indgen(n_col) ) / total(suncheck) + struct.xoffset
+ypos = TOTAL( TOTAL(suncheck, 1) * Indgen(n_row) ) / total(suncheck) + struct.yoffset
+
+finish = systime(1,/s)
+IF keyword_set(time) THEN  print, 'Elapsed Time for comp3: ',strcompress(finish-start,/remove),' seconds'
+RETURN
+
+END
+
+;~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
 ; PRO tricenter,file=file,ministrip_length=ministrip_length,scan_width=scan_width,time=time,order=order, $
 ;     plot=plot,sigmavalue=sigmavalue,savstep=savstep,saveonly=saveonly,storestruct=storestruct
 
@@ -269,7 +308,19 @@ IF ~keyword_set(sigmavalue)         THEN    sigmavalue = 1
 IF ~keyword_set(savstep)            THEN    savstep = 4
 IF ~keyword_set(order)              THEN    order = 3
 
-a=tribox(file=file,time=time)
-help,a
+region=2
+trimask,xpos,ypos,thresh,time=time,sigmavalue=sigmavalue,file=file,region=region
+print,xpos
+print,ypos
+
+tmpimage = read_bmp(file)
+s = size(tmpimage,/dimensions)
+n_col = s[1]
+n_row = s[2]
+image = reform(tmpimage[0,*,*])
+
+image[xpos,*]=20
+image[*,ypos]=20
+cgimage,image,/k
 END
 
