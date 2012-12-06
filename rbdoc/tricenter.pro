@@ -15,7 +15,7 @@
 ;~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 PRO minicrop, temparr, rowscan, colscan, rowendscan, colendscan, scan_width=scan_width,$
-        sundiam=sundiam, thresh=thresh,time=time
+        sundiam=sundiam, thresh=thresh
 ;+
 ;   :Description: 
 ;       Small function to keep code small in cropit. Finds the row where the threshold is crossed
@@ -28,8 +28,6 @@ PRO minicrop, temparr, rowscan, colscan, rowendscan, colendscan, scan_width=scan
 ;           Distance between scan lines when looking for first instance of threshold crossing
 ;       sundiam: in, optional, default=70
 ;           Approximate diameter of sun in pixels. (Based on bmp image)
-;       time : in, optional
-;           Print the elapsed time
 ;-
 
 start = systime(1,/s)
@@ -91,7 +89,7 @@ CASE region OF
     temparr = inputarr * (inputarr gt thresh)
 
     minicrop,temparr,rowscan,colscan,rowendscan,colendscan,thresh=thresh,scan_width=scan_width,$
-        sundiam=sundiam,time=time
+        sundiam=sundiam
 
     ; Since we care about x and y offsets, sticking this into a structure
     cropped=inputarr[colscan*scan_width:colendscan*scan_width,rowscan*scan_width:rowendscan*scan_width]
@@ -106,7 +104,7 @@ CASE region OF
     temparr = inputarr * (inputarr gt thresh)
 
     minicrop,temparr,rowscan,colscan,rowendscan,colendscan,thresh=thresh,scan_width=scan_width,$
-        sundiam=sundiam,time=time
+        sundiam=sundiam
 
     inputarr[colscan*scan_width:colendscan*scan_width,rowscan*scan_width:rowendscan*scan_width] = 0
     
@@ -115,7 +113,7 @@ CASE region OF
     temparr = inputarr * (inputarr lt thresh)
 
     minicrop,temparr,rowscan,colscan,rowendscan,colendscan,thresh=thresh,scan_width=scan_width,$
-        sundiam=sundiam,time=time
+        sundiam=sundiam
 
     cropped=inputarr[colscan*scan_width:colendscan*scan_width,rowscan*scan_width:rowendscan*scan_width]
     location = {REGION2,image:cropped,xoffset:colscan*scan_width,yoffset:rowscan*scan_width}
@@ -129,7 +127,7 @@ CASE region OF
     temparr = inputarr * (inputarr gt thresh)
 
     minicrop,temparr,rowscan,colscan,rowendscan,colendscan,thresh=thresh,scan_width=scan_width,$
-        sundiam=sundiam,time=time
+        sundiam=sundiam
 
     inputarr[colscan*scan_width:colendscan*scan_width,rowscan*scan_width:rowendscan*scan_width] = 0
 
@@ -139,7 +137,7 @@ CASE region OF
     temparr = inputarr * (inputarr lt thresh)
 
     minicrop,temparr,rowscan,colscan,rowendscan,colendscan,thresh=thresh,scan_width=scan_width,$
-        sundiam=sundiam,time=time
+        sundiam=sundiam
 
     inputarr[colscan*scan_width:colendscan*scan_width,rowscan*scan_width:rowendscan*scan_width] = 0
 
@@ -149,7 +147,7 @@ CASE region OF
     temparr = inputarr * (inputarr lt thresh)
 
     minicrop,temparr,rowscan,colscan,rowendscan,colendscan,thresh=thresh,scan_width=scan_width,$
-        sundiam=sundiam,time=time
+        sundiam=sundiam
 
     cropped=inputarr[colscan*scan_width:colendscan*scan_width,rowscan*scan_width:rowendscan*scan_width]
     location = {REGION3,image:cropped,xoffset:colscan*scan_width,yoffset:rowscan*scan_width}
@@ -236,9 +234,9 @@ IF STRPOS(file, 'bin') NE -1  THEN BEGIN
 ENDIF
 
 case region of
-    1: cropped = cropit(region=1,inputarr=image,sundiam=sundiam,scan_width=scan_width,sigmavalue=sigmavalue,time=time)
-    2: cropped = cropit(region=2,inputarr=image,sundiam=sundiam,scan_width=scan_width,sigmavalue=sigmavalue,time=time)
-    3: cropped = cropit(region=3,inputarr=image,sundiam=sundiam,scan_width=scan_width,sigmavalue=sigmavalue,time=time)
+    1: cropped = cropit(region=1,inputarr=image,sundiam=sundiam,scan_width=scan_width,sigmavalue=sigmavalue)
+    2: cropped = cropit(region=2,inputarr=image,sundiam=sundiam,scan_width=scan_width,sigmavalue=sigmavalue)
+    3: cropped = cropit(region=3,inputarr=image,sundiam=sundiam,scan_width=scan_width,sigmavalue=sigmavalue)
 endcase
 
 finish = systime(1,/seconds)
@@ -348,7 +346,7 @@ END
 
 ;~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-; PRO tricenter,file=file,scan_width=scan_width,time=time,sigmavalue=sigmavalue
+PRO tricenter,file=file,scan_width=scan_width,time=time,sigmavalue=sigmavalue
 
 ;+
 ; :Description:
@@ -389,22 +387,11 @@ s = size(tmpimage,/dimensions)
 n_col = s[1]
 n_row = s[2]
 image = reform(tmpimage[0,*,*])
-image2 = image
-image3 = image
 
 image[struct.center1.xpos,*]=20
 image[*,struct.center1.ypos]=20
-image2[struct.center2.xpos,*]=20
-image2[*,struct.center2.ypos]=20
-image3[struct.center3.xpos,*]=20
-image3[*,struct.center3.ypos]=20
-
-window,0
 cgimage,image,/k
-window,2
-cgimage,image2,/k
-window,3
-cgimage,image3,/k
+
 
 finish = systime(1,/s)
 IF keyword_set(time) THEN print, 'tricenter took: '+strcompress(finish-start)+$
