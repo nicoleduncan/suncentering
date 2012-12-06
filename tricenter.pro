@@ -1,7 +1,11 @@
 ; docformat = 'rst'
-
+;
 ;+
-; Finds the center of 3 suns in a single image. Currently limited to a .bmp test image. 
+; NAME: 
+;   TRICENTER
+;
+; PURPOSE:
+;   Finds the center of 3 suns in a single image. Currently limited to a .bmp test image. 
 ;
 ; :Author:
 ;   JEREN SUZUKI::
@@ -12,7 +16,7 @@
 ;       E-mail: jsuzuki@ssl.berkeley.edu
 ;-
 
-;~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+;****************************************************************************************
 
 PRO minicrop, temparr, rowscan, colscan, rowendscan, colendscan, scan_width=scan_width,$
         sundiam=sundiam, thresh=thresh,time=time
@@ -38,8 +42,8 @@ rowscan=0
 WHILE total(where(temparr[*,rowscan*scan_width] GT thresh/2)) EQ -1 DO BEGIN
     rowscan++
 ENDWHILE
-; Doing it this way so that if in the case of 3 suns, if 1 sun is more left than the sun which is the 
-; most bottom, the cropping will correctly choose the right sun.
+; Doing it this way so that if in the case of 3 suns, if 1 sun is more left than the sun which 
+; is the most bottom, the cropping will correctly choose the right sun.
 colscan = fix(((where(temparr[*,rowscan*scan_width] GT thresh/2))[0] - sundiam/2 + $
         n_elements(where(temparr[*,rowscan*scan_width] GT thresh/2))/2 )/scan_width)
 
@@ -59,7 +63,7 @@ IF keyword_set(time) THEN print,' minicrop took '+strcompress(finish-start,/remo
 RETURN
 END
 
-;~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+;****************************************************************************************
 
 FUNCTION cropit, location, region=region, inputarr=inputarr, scan_width=scan_width, $
     sundiam=sundiam, sigmavalue=sigmavalue, time=time
@@ -78,7 +82,8 @@ FUNCTION cropit, location, region=region, inputarr=inputarr, scan_width=scan_wid
 ;           max(image) - sigmavalue*stddev(image)
 ;
 ; :Examples:
-;       cropped = cropit(region=1,inputarr=image,sundiam=sundiam,scan_width=scan_width,thresh=thresh)
+;       cropped = cropit(region=1,inputarr=image,sundiam=sundiam,scan_width=scan_width,$
+;           thresh=thresh)
 ;
 ;-
 
@@ -93,7 +98,8 @@ minicrop,temparr,rowscan,colscan,rowendscan,colendscan,thresh=thresh,scan_width=
 CASE region OF
 
 1: BEGIN
-    cropped=inputarr[colscan*scan_width:colendscan*scan_width,rowscan*scan_width:rowendscan*scan_width]
+    cropped=inputarr[colscan*scan_width:colendscan*scan_width,rowscan*scan_width:$
+        rowendscan*scan_width]
 
     location = {REGION1,image:cropped,xoffset:colscan*scan_width,yoffset:rowscan*scan_width}
     END
@@ -101,21 +107,22 @@ CASE region OF
 2: BEGIN
     inputarr[colscan*scan_width:colendscan*scan_width,rowscan*scan_width:rowendscan*scan_width] = 0
     
-    ;~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    ;****************************************************************************************
 
     temparr = inputarr * (inputarr lt thresh)
 
     minicrop,temparr,rowscan,colscan,rowendscan,colendscan,thresh=thresh,scan_width=scan_width,$
         sundiam=sundiam,time=time
 
-    cropped=inputarr[colscan*scan_width:colendscan*scan_width,rowscan*scan_width:rowendscan*scan_width]
+    cropped=inputarr[colscan*scan_width:colendscan*scan_width,rowscan*scan_width:$
+        rowendscan*scan_width]
     location = {REGION2,image:cropped,xoffset:colscan*scan_width,yoffset:rowscan*scan_width}
     END
 
 3: BEGIN
     inputarr[colscan*scan_width:colendscan*scan_width,rowscan*scan_width:rowendscan*scan_width] = 0
 
-    ;~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    ;****************************************************************************************
 
     ; Step 2: Black out the first dimsum
     temparr = inputarr * (inputarr lt thresh)
@@ -125,7 +132,7 @@ CASE region OF
 
     inputarr[colscan*scan_width:colendscan*scan_width,rowscan*scan_width:rowendscan*scan_width] = 0
 
-    ;~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    ;****************************************************************************************
 
     ; Step 3: Crop what's left
     temparr = inputarr * (inputarr lt thresh)
@@ -133,7 +140,8 @@ CASE region OF
     minicrop,temparr,rowscan,colscan,rowendscan,colendscan,thresh=thresh,scan_width=scan_width,$
         sundiam=sundiam,time=time
 
-    cropped=inputarr[colscan*scan_width:colendscan*scan_width,rowscan*scan_width:rowendscan*scan_width]
+    cropped=inputarr[colscan*scan_width:colendscan*scan_width,rowscan*scan_width:$
+        rowendscan*scan_width]
     location = {REGION3,image:cropped,xoffset:colscan*scan_width,yoffset:rowscan*scan_width}
 
     END
@@ -144,7 +152,7 @@ IF keyword_set(time) THEN print,' cropit() took '+strcompress(finish-start,/remo
 RETURN,location
 END
 
-;~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+;****************************************************************************************
 
 FUNCTION tribox,region=region, file=file,time=time,scan_width=scan_width,sigmavalue=sigmavalue
 ;+
@@ -169,6 +177,7 @@ FUNCTION tribox,region=region, file=file,time=time,scan_width=scan_width,sigmava
 ;       cropped = scanbox(file='triplesun.bmp',/time)
 ;
 ;-
+
 IF ~keyword_set(file)       THEN file       = 'triplesun.bmp'
 IF ~keyword_set(scanwidth)  THEN scan_width = 5
 IF ~keyword_set(sigmavalue) THEN sigmavalue = 1
@@ -200,8 +209,8 @@ ENDIF
 IF STRPOS(file, 'bin') NE -1  THEN BEGIN
     n_row       = 960
     n_col       = 1280
-    ; These values are fixed for the model Prosilica GC 1290, we don't have to worry about making this 
-    ; variable
+    ; These values are fixed for the model Prosilica GC 1290, we don't have 
+    ; to worry about making this variable
     tmpimage    = bytarr(n_col,n_row)
     image       = bytarr(n_col,n_row)
 
@@ -217,9 +226,12 @@ IF STRPOS(file, 'bin') NE -1  THEN BEGIN
 ENDIF
 
 case region of
-    1: cropped = cropit(region=1,inputarr=image,sundiam=sundiam,scan_width=scan_width,sigmavalue=sigmavalue,time=time)
-    2: cropped = cropit(region=2,inputarr=image,sundiam=sundiam,scan_width=scan_width,sigmavalue=sigmavalue,time=time)
-    3: cropped = cropit(region=3,inputarr=image,sundiam=sundiam,scan_width=scan_width,sigmavalue=sigmavalue,time=time)
+    1: cropped = cropit(region=1,inputarr=image,sundiam=sundiam,scan_width=scan_width,$
+            sigmavalue=sigmavalue,time=time)
+    2: cropped = cropit(region=2,inputarr=image,sundiam=sundiam,scan_width=scan_width,$
+            sigmavalue=sigmavalue,time=time)
+    3: cropped = cropit(region=3,inputarr=image,sundiam=sundiam,scan_width=scan_width,$
+            sigmavalue=sigmavalue,time=time)
 endcase
 
 finish = systime(1,/seconds)
@@ -228,7 +240,7 @@ IF keyword_set(time) THEN  print, 'Elapsed Time for tribox(): ' + $
 RETURN, cropped
 END
 
-;~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+;****************************************************************************************
 
 PRO trimask, xpos,ypos,thresh,file=file,time=time,sigmavalue=sigmavalue,region=region
 ;+
@@ -270,12 +282,13 @@ xpos = TOTAL( TOTAL(suncheck, 2) * Indgen(n_col) ) / total(suncheck) + struct.xo
 ypos = TOTAL( TOTAL(suncheck, 1) * Indgen(n_row) ) / total(suncheck) + struct.yoffset
 
 finish = systime(1,/s)
-IF keyword_set(time) THEN  print, 'Elapsed Time for trimask: ',strcompress(finish-start,/remove),' seconds'
+IF keyword_set(time) THEN  print, 'Elapsed Time for trimask: ',strcompress(finish-start,/remove),$
+    ' seconds'
 RETURN
 
 END
 
-;~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+;****************************************************************************************
 
 PRO getstruct, struct, scan_width=scan_width, file=file,sigmavalue=sigmavalue, time=time
 ;+
@@ -330,7 +343,7 @@ IF keyword_set(time) THEN print, 'getstruct took: '+strcompress(finish-start)+$
 RETURN
 END
 
-;~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+;****************************************************************************************
 
 ; PRO tricenter,file=file,scan_width=scan_width,time=time,sigmavalue=sigmavalue
 
@@ -361,13 +374,15 @@ END
 ;
 ;-
 
+COMPILE_OPT idl2
+
 IF ~keyword_set(scan_width)         THEN    scan_width = 5
 IF ~keyword_set(file)               THEN    file = 'triplesun.bmp'
 IF ~keyword_set(sigmavalue)         THEN    sigmavalue = 2
 
 start=systime(1,/s)
 
-getstruct, struct, scan_width=scan_width, file=file, sigmavalue=sigmavalue, /time
+getstruct, struct, scan_width=scan_width, file=file, sigmavalue=sigmavalue
 
 tmpimage = read_bmp(file) 
 s = size(tmpimage,/dimensions)
@@ -384,12 +399,12 @@ image2[*,struct.center2.ypos]=20
 image3[struct.center3.xpos,*]=20
 image3[*,struct.center3.ypos]=20
 
-window,0
-cgimage,image,/k
-window,2
-cgimage,image2,/k
-window,3
-cgimage,image3,/k
+; window,0
+; cgimage,image,/k
+; window,2
+; cgimage,image2,/k
+; window,3
+; cgimage,image3,/k
 
 finish = systime(1,/s)
 IF keyword_set(time) THEN print, 'tricenter took: '+strcompress(finish-start)+$
