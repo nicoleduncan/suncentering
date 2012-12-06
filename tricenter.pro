@@ -84,30 +84,21 @@ FUNCTION cropit, location, region=region, inputarr=inputarr, scan_width=scan_wid
 
 start = systime(1,/s)
 
+thresh = max(inputarr) - sigmavalue*stddev(inputarr)
+temparr = inputarr * (inputarr gt thresh)
+
+minicrop,temparr,rowscan,colscan,rowendscan,colendscan,thresh=thresh,scan_width=scan_width,$
+    sundiam=sundiam,time=time
+
 CASE region OF
 
 1: BEGIN
-    thresh = max(inputarr) - sigmavalue*stddev(inputarr)
-    temparr = inputarr * (inputarr gt thresh)
-
-    minicrop,temparr,rowscan,colscan,rowendscan,colendscan,thresh=thresh,scan_width=scan_width,$
-        sundiam=sundiam,time=time
-
-    ; Since we care about x and y offsets, sticking this into a structure
     cropped=inputarr[colscan*scan_width:colendscan*scan_width,rowscan*scan_width:rowendscan*scan_width]
+
     location = {REGION1,image:cropped,xoffset:colscan*scan_width,yoffset:rowscan*scan_width}
-    finish = systime(1,/s)
-    IF keyword_set(time) THEN print,' cropit() took '+strcompress(finish-start,/remove)+' seconds'
-    RETURN,location
     END
 
 2: BEGIN
-    thresh = max(inputarr) - sigmavalue*stddev(inputarr)
-    temparr = inputarr * (inputarr gt thresh)
-
-    minicrop,temparr,rowscan,colscan,rowendscan,colendscan,thresh=thresh,scan_width=scan_width,$
-        sundiam=sundiam,time=time
-
     inputarr[colscan*scan_width:colendscan*scan_width,rowscan*scan_width:rowendscan*scan_width] = 0
     
     ;~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -119,18 +110,9 @@ CASE region OF
 
     cropped=inputarr[colscan*scan_width:colendscan*scan_width,rowscan*scan_width:rowendscan*scan_width]
     location = {REGION2,image:cropped,xoffset:colscan*scan_width,yoffset:rowscan*scan_width}
-    finish = systime(1,/s)
-    IF keyword_set(time) THEN print,' cropit() took '+strcompress(finish-start,/remove)+' seconds'
-    RETURN,location
     END
 
 3: BEGIN
-    thresh = max(inputarr) - sigmavalue*stddev(inputarr)
-    temparr = inputarr * (inputarr gt thresh)
-
-    minicrop,temparr,rowscan,colscan,rowendscan,colendscan,thresh=thresh,scan_width=scan_width,$
-        sundiam=sundiam,time=time
-
     inputarr[colscan*scan_width:colendscan*scan_width,rowscan*scan_width:rowendscan*scan_width] = 0
 
     ;~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -153,14 +135,13 @@ CASE region OF
 
     cropped=inputarr[colscan*scan_width:colendscan*scan_width,rowscan*scan_width:rowendscan*scan_width]
     location = {REGION3,image:cropped,xoffset:colscan*scan_width,yoffset:rowscan*scan_width}
-    
-    finish = systime(1,/s)
-    IF keyword_set(time) THEN print,' cropit() took '+strcompress(finish-start,/remove)+' seconds'
-    RETURN,location
+
     END
 
 ENDCASE
-
+finish = systime(1,/s)
+IF keyword_set(time) THEN print,' cropit() took '+strcompress(finish-start,/remove)+' seconds'
+RETURN,location
 END
 
 ;~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -257,6 +238,8 @@ PRO trimask, xpos,ypos,thresh,file=file,time=time,sigmavalue=sigmavalue,region=r
 ;   :Keywords:
 ;       file: in, optional, type='string', default='triplesun.bmp'
 ;           What file to load in
+;       time : in, optional
+;           Print the elapsed time
 ;       sigmavalue: in, optional, type=integer, default=2
 ;           Sets the threshold to be::
 ;   
@@ -316,6 +299,7 @@ PRO getstruct, struct, scan_width=scan_width, file=file,sigmavalue=sigmavalue, t
 ;-
 
 start=systime(1,/s)
+
 center1 = {center1,xpos:0d,ypos:0d,thresh:0d}
 center2 = {center2,xpos:0d,ypos:0d,thresh:0d}
 center3 = {center3,xpos:0d,ypos:0d,thresh:0d}
@@ -382,9 +366,10 @@ IF ~keyword_set(file)               THEN    file = 'triplesun.bmp'
 IF ~keyword_set(sigmavalue)         THEN    sigmavalue = 2
 
 start=systime(1,/s)
-getstruct,struct,scan_width=scan_width, file=file,sigmavalue=sigmavalue, /time
 
-tmpimage = read_bmp('triplesun.bmp') 
+getstruct, struct, scan_width=scan_width, file=file, sigmavalue=sigmavalue, /time
+
+tmpimage = read_bmp(file) 
 s = size(tmpimage,/dimensions)
 n_col = s[1]
 n_row = s[2]
