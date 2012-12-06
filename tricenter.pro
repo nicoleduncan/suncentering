@@ -91,7 +91,7 @@ CASE region OF
     inputarr[colscan*scan_width:colendscan*scan_width,rowscan*scan_width:rowendscan*scan_width] = 0
 
     ;~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    
+
     ; Step 2: Black out the first dimsum
     temparr = inputarr * (inputarr lt thresh)
 
@@ -256,6 +256,48 @@ END
 
 ;~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+PRO getstruct, struct, ministrip_length=ministrip_length, scan_width=scan_width, $
+    file=file,sigmavalue=sigmavalue, savstep=savstep, order=order
+
+IF ~keyword_set(ministrip_length)   THEN    ministrip_length = 9
+IF ~keyword_set(scan_width)         THEN    scan_width = 10
+IF ~keyword_set(file)               THEN    file = 'triplesun.bmp'
+IF ~keyword_set(sigmavalue)         THEN    sigmavalue = 1
+IF ~keyword_set(savstep)            THEN    savstep = 4
+IF ~keyword_set(order)              THEN    order = 3
+
+; struct = {tristruct,CENTER1:{xpos:0d,ypos:0d,thresh:0d},CENTER2:{xpos:0d,ypos:0d,thresh:0d},$
+;     CENTER3:{xpos:0d,ypos:0d,thresh:0d}}
+
+center1 = {center1,xpos:0d,ypos:0d,thresh:0d}
+center2 = {center2,xpos:0d,ypos:0d,thresh:0d}
+center3 = {center3,xpos:0d,ypos:0d,thresh:0d}
+
+trimask,xpos,ypos,thresh,time=time,sigmavalue=sigmavalue,file=file,region=1
+center1.xpos = xpos
+center1.ypos = ypos
+center1.thresh = thresh
+trimask,xpos,ypos,thresh,time=time,sigmavalue=sigmavalue,file=file,region=2
+center2.xpos = xpos
+center2.ypos = ypos
+center2.thresh = thresh
+trimask,xpos,ypos,thresh,time=time,sigmavalue=sigmavalue,file=file,region=3
+center3.xpos = xpos
+center3.ypos = ypos
+center3.thresh = thresh
+
+theta = !radeg*atan((center3.ypos - center2.ypos)/(center3.xpos - center2.xpos))
+hypot = sqrt((center3.ypos - center2.ypos)^2 + (center3.xpos - center2.xpos)^2)
+offset = ((center1.xpos - center2.xpos)*(center3.ypos - center2.ypos) - $
+    (center1.ypos - center2.ypos)*(center3.xpos - center2.xpos))/hypot
+
+struct = {KAHUNA, center1:center1, center2:center2, center3:center3, $
+    theta:theta, offset:offset}
+
+RETURN
+END
+
+;~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 ; PRO tricenter,file=file,ministrip_length=ministrip_length,scan_width=scan_width,time=time,order=order, $
 ;     plot=plot,sigmavalue=sigmavalue,savstep=savstep,saveonly=saveonly,storestruct=storestruct
@@ -301,26 +343,19 @@ END
 ;
 ;-
 
-IF ~keyword_set(ministrip_length)   THEN    ministrip_length = 9
-IF ~keyword_set(scan_width)         THEN    scan_width = 10
-IF ~keyword_set(file)               THEN    file = 'triplesun.bmp'
-IF ~keyword_set(sigmavalue)         THEN    sigmavalue = 1
-IF ~keyword_set(savstep)            THEN    savstep = 4
-IF ~keyword_set(order)              THEN    order = 3
+getstruct,struct
 
-region=2
-trimask,xpos,ypos,thresh,time=time,sigmavalue=sigmavalue,file=file,region=region
-print,xpos
-print,ypos
-
-tmpimage = read_bmp(file)
+tmpimage = read_bmp('triplesun.bmp') 
 s = size(tmpimage,/dimensions)
 n_col = s[1]
 n_row = s[2]
 image = reform(tmpimage[0,*,*])
 
-image[xpos,*]=20
-image[*,ypos]=20
+image[struct.center1.xpos,*]=20
+image[*,struct.center1.ypos]=20
 cgimage,image,/k
+
+
+
 END
 
