@@ -1,49 +1,41 @@
-function data::init
-
+FUNCTION data::init
+COMPILE_OPT idl2 
+on_error,2
 ;-- allocate memory to pointer when initializing object
-
  self.ptr=ptr_new(/allocate)  
- return,1
+ RETURN,1
+end 
 
-end
+;****************************************************************************************
 
-;----------------------------------------------------------------
-
-pro data::set,value
-
+PRO data::set,value
 ;-- if data value exists, then insert into pointer location
-
  if n_elements(value) ne 0 then *(self.ptr)=value
- return 
-
+ RETURN 
 end
 
-;----------------------------------------------------------------
+;****************************************************************************************
 
-function data::get,value
-
+FUNCTION data::get,value
 ;-- if data value is stored in object pointer, then copy it out
-
  if n_elements(*(self.ptr)) ne 0 then value=*(self.ptr)
-
- return,value
-
+ RETURN,value
 end
 
-;------------------------------------------------------------------
+;****************************************************************************************
 
-pro data__define
- 
+PRO data__define
  void={data,ptr:ptr_new()}
- return 
-
+ RETURN 
 end
+
+;****************************************************************************************
 
 FUNCTION minicrop::init, scan_width=scan_width, sundiam=sundiam, thresh=thresh, temparr=temparr, time=time
 COMPILE_OPT idl2 
 on_error,2
 
-if self->data::init() eq 0 then return, 0
+if self->data::init() eq 0 then RETURN, 0
 
 rowscan=0
 
@@ -66,6 +58,12 @@ finish = systime(1,/s)
 IF keyword_set(time) THEN print,' minicrop took '+strcompress(finish-start,/remove)+' seconds'
 RETURN,1
 
+END
+
+;****************************************************************************************
+
+PRO boundaries::cleanup
+    IF ptr_valid(self.ptr)    THEN ptr_free, self.ptr
 END
 
 ;****************************************************************************************
@@ -104,7 +102,7 @@ FUNCTION boundaries::init, region=region, inputarr=inputarr, scan_width=scan_wid
 COMPILE_OPT idl2 
 on_error,2
 
-if self->data::init() eq 0 then return, 0
+if self->data::init() eq 0 then RETURN, 0
 
 start = systime(1,/s)
 
@@ -194,9 +192,11 @@ END
 ;********************************************************************************
 
 PRO boundaries__define
-    compile_opt idl2
+    COMPILE_OPT idl2
     def={boundaries,INHERITS data}
 END
+
+;****************************************************************************************
 
 FUNCTION cropit::init, region=region, scan_width=scan_width, $
     sundiam=sundiam, sigmavalue=sigmavalue, time=time
@@ -223,7 +223,7 @@ FUNCTION cropit::init, region=region, scan_width=scan_width, $
 COMPILE_OPT idl2 
 on_error,2
 
-if self->data::init() eq 0 then return, 0
+if self->data::init() eq 0 then RETURN, 0
 
 IF ~keyword_set(file)       THEN file       = 'triplesun.bmp'
 IF ~keyword_set(scanwidth)  THEN scan_width = 5
@@ -300,12 +300,82 @@ END
 ;********************************************************************************
 
 PRO cropit__define
-    compile_opt idl2
-
-
-
+    COMPILE_OPT idl2
     def={cropit,INHERITS data}
 END
+
+;****************************************************************************************
+FUNCTION centerit::init,file=file,time=time,sigmavalue=sigmavalue,region=region
+;+
+;   :Description:
+;       Had to make a new version of comp3 because the old one called scanbox() by default
+;
+;   :Keywords:
+;       file: in, optional, type='string', default='triplesun.bmp'
+;           What file to load in
+;       time : in, optional
+;           Print the elapsed time
+;       sigmavalue: in, optional, type=integer, default=2
+;           Sets the threshold to be::
+;   
+;               max(image) - sigmavalue*stddev(image)
+;   
+;       region: in, required, type=integer, default=1
+;           Which sun out of the three to find the center of. Defaults to the brightest sun
+;-
+
+COMPILE_OPT idl2 
+on_error,2
+
+if self->data::init() eq 0 then RETURN, 0
+
+IF ~keyword_set(file)           THEN file   = 'triplesun.bmp'
+IF ~keyword_set(sigmavalue)     THEN sigmavalue = 2
+IF ~keyword_set(region)         THEN region = 1
+
+start = systime(1,/seconds)
+
+block = obj_new('cropit',region=region, scan_width=scan_width, $
+    sundiam=sundiam, sigmavalue=sigmavalue, time=time)
+struct = block->get()
+
+cropped = struct.image
+
+thresh = max(cropped)-sigmavalue*stddev(cropped)
+
+s = size(cropped,/dimensions)
+n_col = s[0]
+n_row = s[1]
+
+suncheck = cropped gt thresh
+
+xpos = TOTAL( TOTAL(suncheck, 2) * Indgen(n_col) ) / total(suncheck) + struct.xoffset
+ypos = TOTAL( TOTAL(suncheck, 1) * Indgen(n_row) ) / total(suncheck) + struct.yoffset
+
+finish = systime(1,/s)
+IF keyword_set(time) THEN  print, 'Elapsed Time for trimask: ',strcompress(finish-start,/remove),$
+    ' seconds'
+
+*self.ptr = {CENTER, xpos:xpos, ypos:ypos, thresh:thresh}
+RETURN,1
+END
+
+;********************************************************************************
+
+PRO centerit::cleanup
+
+    IF ptr_valid(self.ptr)    THEN ptr_free, self.ptr
+
+END
+
+;********************************************************************************
+
+PRO centerit__define
+    COMPILE_OPT idl2
+    def={centerit,INHERITS data}
+END
+
+;********************************************************************************
 
 FUNCTION getstruct::init,scan_width=scan_width, file=file,sigmavalue=sigmavalue, time=time
 ;+
@@ -331,7 +401,7 @@ FUNCTION getstruct::init,scan_width=scan_width, file=file,sigmavalue=sigmavalue,
 COMPILE_OPT idl2 
 on_error,2
 
-if self->data::init() eq 0 then return, 0
+if self->data::init() eq 0 then RETURN, 0
 
 
 start=systime(1,/s)
@@ -358,18 +428,47 @@ END
 
 ;********************************************************************************
 
+FUNCTION getstruct::minicrop, scan_width=scan_width, sundiam=sundiam, thresh=thresh, temparr=temparr, time=time
+
+IF self->data::init() EQ 0 THEN RETURN, 0
+
+rowscan=0
+
+WHILE total(where(temparr[*,rowscan*scan_width] GT thresh/2)) EQ -1 DO BEGIN
+    rowscan++
+ENDWHILE
+; Doing it this way so that if in the case of 3 suns, if 1 sun is more left than the sun which 
+; is the most bottom, the cropping will correctly choose the right sun.
+colscan = fix(((where(temparr[*,rowscan*scan_width] GT thresh/2))[0] - sundiam/2 + $
+        n_elements(where(temparr[*,rowscan*scan_width] GT thresh/2))/2 )/scan_width)
+
+
+rowendscan = rowscan + sundiam/scan_width ; Jumping to other side of sun
+colendscan = colscan + sundiam/scan_width
+
+;Since the column scanning is rough, have to give the ends a little room.
+limits = {minicropped,rowscan:rowscan-2, colscan:colscan-2, rowendscan:rowendscan+2, colendscan:colendscan+2}
+
+finish = systime(1,/s)
+IF keyword_set(time) THEN print,' minicrop took '+strcompress(finish-start,/remove)+' seconds'
+
+RETURN, limits
+END
+
+;********************************************************************************
+
 PRO getstruct::cleanup
-
     IF ptr_valid(self.ptr)    THEN ptr_free, self.ptr
-
 END
 
 ;********************************************************************************
 
 PRO getstruct__define
-    compile_opt idl2
+    COMPILE_OPT idl2
     def={getstruct,INHERITS data}
 END
+
+;********************************************************************************
 
 PRO nutricenter,scan_width=scan_width, file=file,sigmavalue=sigmavalue, time=time
 ;+
@@ -431,73 +530,4 @@ IF keyword_set(time) THEN print, 'tricenter took: '+strcompress(finish-start)+$
 
 END
 
-FUNCTION centerit::init,file=file,time=time,sigmavalue=sigmavalue,region=region
-;+
-;   :Description:
-;       Had to make a new version of comp3 because the old one called scanbox() by default
-;
-;   :Keywords:
-;       file: in, optional, type='string', default='triplesun.bmp'
-;           What file to load in
-;       time : in, optional
-;           Print the elapsed time
-;       sigmavalue: in, optional, type=integer, default=2
-;           Sets the threshold to be::
-;   
-;               max(image) - sigmavalue*stddev(image)
-;   
-;       region: in, required, type=integer, default=1
-;           Which sun out of the three to find the center of. Defaults to the brightest sun
-;-
-
-COMPILE_OPT idl2 
-on_error,2
-
-if self->data::init() eq 0 then return, 0
-
-IF ~keyword_set(file)           THEN file   = 'triplesun.bmp'
-IF ~keyword_set(sigmavalue)     THEN sigmavalue = 2
-IF ~keyword_set(region)         THEN region = 1
-
-start = systime(1,/seconds)
-
-block = obj_new('cropit',region=region, scan_width=scan_width, $
-    sundiam=sundiam, sigmavalue=sigmavalue, time=time)
-struct = block->get()
-
-cropped = struct.image
-
-thresh = max(cropped)-sigmavalue*stddev(cropped)
-
-s = size(cropped,/dimensions)
-n_col = s[0]
-n_row = s[1]
-
-suncheck = cropped gt thresh
-
-xpos = TOTAL( TOTAL(suncheck, 2) * Indgen(n_col) ) / total(suncheck) + struct.xoffset
-ypos = TOTAL( TOTAL(suncheck, 1) * Indgen(n_row) ) / total(suncheck) + struct.yoffset
-
-finish = systime(1,/s)
-IF keyword_set(time) THEN  print, 'Elapsed Time for trimask: ',strcompress(finish-start,/remove),$
-    ' seconds'
-
-*self.ptr = {CENTER, xpos:xpos, ypos:ypos, thresh:thresh}
-RETURN,1
-END
-
-;********************************************************************************
-
-PRO centerit::cleanup
-
-    IF ptr_valid(self.ptr)    THEN ptr_free, self.ptr
-
-END
-
-;********************************************************************************
-
-PRO centerit__define
-    compile_opt idl2
-    def={centerit,INHERITS data}
-END
 

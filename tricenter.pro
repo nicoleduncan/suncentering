@@ -105,6 +105,7 @@ CASE region OF
     END
 
 2: BEGIN
+stop
     inputarr[colscan*scan_width:colendscan*scan_width,rowscan*scan_width:rowendscan*scan_width] = 0
     
     ;****************************************************************************************
@@ -181,7 +182,7 @@ FUNCTION tribox,region=region, file=file,time=time,scan_width=scan_width,sigmava
 IF ~keyword_set(file)       THEN file       = 'triplesun.bmp'
 IF ~keyword_set(scanwidth)  THEN scan_width = 5
 IF ~keyword_set(sigmavalue) THEN sigmavalue = 1
-IF ~keyword_set(region)     THEN region = 1
+IF ~keyword_set(region)     THEN region = 2
 
 start = systime(1,/seconds)
 
@@ -225,14 +226,8 @@ IF STRPOS(file, 'bin') NE -1  THEN BEGIN
     image = flipimage
 ENDIF
 
-case region of
-    1: cropped = cropit(region=1,inputarr=image,sundiam=sundiam,scan_width=scan_width,$
-            sigmavalue=sigmavalue,time=time)
-    2: cropped = cropit(region=2,inputarr=image,sundiam=sundiam,scan_width=scan_width,$
-            sigmavalue=sigmavalue,time=time)
-    3: cropped = cropit(region=3,inputarr=image,sundiam=sundiam,scan_width=scan_width,$
-            sigmavalue=sigmavalue,time=time)
-endcase
+cropped = cropit(region=region,inputarr=image,sundiam=sundiam,scan_width=scan_width,$
+        sigmavalue=sigmavalue,time=time)
 
 finish = systime(1,/seconds)
 IF keyword_set(time) THEN  print, 'Elapsed Time for tribox(): ' + $
@@ -399,12 +394,12 @@ image2[*,struct.center2.ypos]=20
 image3[struct.center3.xpos,*]=20
 image3[*,struct.center3.ypos]=20
 
-; window,0
-; cgimage,image,/k
-; window,2
-; cgimage,image2,/k
-; window,3
-; cgimage,image3,/k
+window,0
+cgimage,image,/k
+window,2
+cgimage,image2,/k
+window,3
+cgimage,image3,/k
 
 finish = systime(1,/s)
 IF keyword_set(time) THEN print, 'tricenter took: '+strcompress(finish-start)+$
