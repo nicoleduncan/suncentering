@@ -31,37 +31,39 @@ end
 
 ;****************************************************************************************
 
-FUNCTION data::combine, scan_width=scan_width, sigmavalue=sigmavalue, time=time
+FUNCTION data::combine, scan_width, sigmavalue, time=time
 ;+
 ;   :Description:
 ;       Finds the centers of a triple-sun image and loads all relevant information
 ;       including offsets and angles into a new structure.
 ;
-;   :Keywords:
-;       scan_width: in, optional, type = integer, default = 5
-;           How apart the scans are for minicrop(). Overrides defaults in tribox().
-;       file: in, optional, type = string, default = 'triplesun.bmp'
-;           What file to find 4 centers for
-;       time: in, optional
-;           Outputs how much time the program takes
-;       sigmavalue: in, optional, type = integer, default = 2
+;   :Params:
+;       scan_width : in, required, type=integer, default=5
+;           How apart the scans are for minicrop(). 
+;       sigmavalue : in, required, type = integer, default = 2
 ;          Sets the threshold to be::
 ;
 ;           max(image) - sigmavalue*stddev(image)
 ;
+;   :Keywords:
+;       file: in, optional, type = string, default = 'triplesun.bmp'
+;           What file to find 4 centers for
+;       time: in, optional
+;           Outputs how much time the program takes
+;
 ;       
 ;-
 
-IF ~keyword_set(scan_width) THEN scan_width = 5
-IF ~keyword_set(sigmavalue) THEN sigmavalue = 2
+IF n_elements(scan_width) EQ 0 THEN scan_width = 5
+IF n_elements(sigmavalue) EQ 0 THEN sigmavalue = 2
 
 start=systime(1,/s)
 
-c1temp = self->center(sigmavalue=sigmavalue,scan_width=scan_width,region=1)
+c1temp = self->center(scan_width,sigmavalue,region=1,time=time)
 center1 = c1temp->get()
-c2temp = self->center(sigmavalue=sigmavalue,scan_width=scan_width,region=2)
+c2temp = self->center(scan_width,sigmavalue,region=2,time=time)
 center2 = c1temp->get()
-c3temp = self->center(sigmavalue=sigmavalue,scan_width=scan_width,region=3)
+c3temp = self->center(scan_width,sigmavalue,region=3,time=time)
 center3 = c1temp->get()
 
 theta = !radeg*atan((center3.ypos - center2.ypos)/(center3.xpos - center2.xpos))
@@ -73,14 +75,14 @@ self->set,{center1:center1, center2:center2, center3:center3, $
     theta:theta, offset:offset}
 
 finish = systime(1,/s)
-IF keyword_set(time) THEN print, 'combine took: '+strcompress(finish-start)+$
+IF keyword_set(time) THEN print, 'Elapsed time for combine(): '+strcompress(finish-start)+$
     ' seconds'
 RETURN,self
 END
 
 ;********************************************************************************
 
-FUNCTION data::read, file=file
+FUNCTION data::read, file
 
 IF n_elements(file) EQ 0 THEN file='triplesun.bmp'
 ; check=findfile(file,count=count)     ;-- check if file exists
@@ -94,38 +96,46 @@ END
 
 ;********************************************************************************
 
-FUNCTION data::crop,region=region,sundiam=sundiam,scan_width=scan_width,sigmavalue=sigmavalue,time=time
+FUNCTION data::crop, scan_width, sigmavalue, sundiam, time=time, region=region
 ;+
-; :Description: 
-;   Loads a triple-sun image and crops out selected regions one-by-one.
+;   :Description: 
+;       Loads a triple-sun image and crops out selected regions one-by-one.
 ;
-; :Keywords:
-;   time : in, optional
-;       Print the elapsed time
-;   scan_width : in, optional, type=integer, default=5
-;       How far apart the scanning should be.
-;   sigmavalue: in, optional, type=integer, default=1
-;       Sets the threshold to be::
+;   :Params:
+;       scan_width : in, required, type=integer, default=5
+;           How apart the scans are for minicrop(). 
+;       sigmavalue : in, required, type = integer, default = 2
+;          Sets the threshold to be::
 ;
 ;           max(image) - sigmavalue*stddev(image)
-;	
-;   region: in, required, type=integer, default=1
-;       Which sun out of the three to find the center of. Defaults to the brightest sun
-;   sundiam: in, optional, default=70
-;       Approximate diameter of sun in pixels. (Based on bmp image)
+;
+;       sundiam: in, required, default=70
+;           Approximate diameter of sun in pixels. (Based on bmp image)
+;
+;   :Keywords:
+;       file: in, optional, type = string, default = 'triplesun.bmp'
+;           What file to find 4 centers for
+;       time: in, optional
+;           Outputs how much time the program takes
+;       region: in, required, type=integer, default=1
+;           Which sun out of the three to find the center of. Defaults to the brightest sun
+;
+; 
 ;-
 
-IF ~keyword_set(sundiam)    THEN sundiam = 70
-IF ~keyword_set(scan_width) THEN scan_width = 5
-IF ~keyword_set(sigmavalue) THEN sigmavalue = 2
-IF ~keyword_set(region)     THEN region = 1
+IF n_elements(sundiam)    EQ 0 THEN sundiam = 70
+IF n_elements(scan_width) EQ 0 THEN scan_width = 5
+IF n_elements(sigmavalue) EQ 0 THEN sigmavalue = 2
+IF n_elements(region)     EQ 0 THEN region = 1
 
-inputarr=self->read(file=file)
+start  = systime(1,/s)
+
+inputarr=self->read(file)
 
 thresh = max(inputarr) - sigmavalue*stddev(inputarr)
 temparr = inputarr * (inputarr GT thresh)
 
-limits = self->minicrop(temparr=temparr,sundiam=sundiam,thresh=thresh,scan_width=scan_width)
+limits = self->minicrop(scan_width,sundiam,temparr,thresh,time=time)
 
 CASE region OF
 
@@ -138,7 +148,7 @@ CASE region OF
     ;****************************************************************************************
     temparr = inputarr * (inputarr LT thresh)
 
-    limits = self->minicrop(temparr=temparr,sundiam=sundiam,thresh=thresh,scan_width=scan_width)
+    limits = self->minicrop(scan_width,sundiam,temparr,thresh,time=time)
 
     cropped=inputarr[limits.colscan*scan_width:limits.colendscan*scan_width,$
         limits.rowscan*scan_width:limits.rowendscan*scan_width]
@@ -152,7 +162,7 @@ CASE region OF
     ; Step 2: Black out the first dimsum
     temparr = inputarr * (inputarr LT thresh)
 
-    limits = self->minicrop(temparr=temparr,sundiam=sundiam,thresh=thresh,scan_width=scan_width)
+    limits = self->minicrop(scan_width,sundiam,temparr,thresh,time=time)
 
     inputarr[limits.colscan*scan_width:limits.colendscan*scan_width,$
         limits.rowscan*scan_width:limits.rowendscan*scan_width] = 0
@@ -162,7 +172,7 @@ CASE region OF
     ; Step 3: Crop what's left
     temparr = inputarr * (inputarr LT thresh)
 
-    limits = self->minicrop(temparr=temparr,sundiam=sundiam,thresh=thresh,scan_width=scan_width)
+    limits = self->minicrop(scan_width,sundiam,temparr,thresh,time=time)
 
     cropped=inputarr[limits.colscan*scan_width:limits.colendscan*scan_width,$
         limits.rowscan*scan_width:limits.rowendscan*scan_width]
@@ -172,14 +182,30 @@ ENDCASE
 self->set,{image:cropped,xoffset:limits.colscan*scan_width,$
     yoffset:limits.rowscan*scan_width}
 finish = systime(1,/s)
-IF keyword_set(time) THEN print,' boundaries() took '+strcompress(finish-start,/remove)+' seconds'
+IF keyword_set(time) THEN print,'Elapsed time for boundaries(): '+strcompress(finish-start,/remove)+' seconds'
 RETURN,self
 END
 
 ;********************************************************************************
 
-FUNCTION data::minicrop, scan_width=scan_width, sundiam=sundiam, thresh=thresh, temparr=temparr, time=time
+FUNCTION data::minicrop, scan_width, sundiam, temparr, thresh, time=time
+;+
+;   :Description:
+;       Figures out where the boundaries are depending solely on the threshold.
+;
+;   :Params:
+;       scan_width : in, required, type=integer, default=5
+;           How apart the scans are for minicrop(). 
+;       sundiam : in, required, type=byte, default=70
+;           Approximate diameter of sun in pixels. (Based on bmp image)
+;       temparr : in, required, type=byte
+;           2D array to check boundary limits of
+;   :Keywords:
+;       time : in, optional
+;           Print the elapsed time
+;-
 
+start = systime(1,/s)
 rowscan=0
 
 WHILE total(where(temparr[*,rowscan*scan_width] GT thresh/2)) EQ -1 DO BEGIN
@@ -195,40 +221,40 @@ rowendscan = rowscan + sundiam/scan_width ; Jumping to other side of sun
 colendscan = colscan + sundiam/scan_width
 
 finish = systime(1,/s)
-IF keyword_set(time) THEN print,' minicrop took '+strcompress(finish-start,/remove)+' seconds'
+IF keyword_set(time) THEN print,' Elapsed time for minicrop(): '+strcompress(finish-start,/remove)+' seconds'
 RETURN,{minicropped,rowscan:rowscan-2, colscan:colscan-2, rowendscan:rowendscan+2, colendscan:colendscan+2}
 END
 
 ;********************************************************************************
 
-FUNCTION data::center, region=region, time=time, sigmavalue=sigmavalue, scan_width=scan_width
+FUNCTION data::center, scan_width, sigmavalue, region=region, time=time
 ;+
 ;   :Description:
 ;       Had to make a new version of comp3 because the old one called scanbox() by default
 ;
+;   :Params:
+;       scan_width : in, required, type=integer, default=5
+;           How apart the scans are for minicrop(). 
+;       sigmavalue : in, required, type = integer, default = 2
+;          Sets the threshold to be::
+;
+;           max(image) - sigmavalue*stddev(image)
+;
 ;   :Keywords:
-;       file: in, optional, type='string', default='triplesun.bmp'
-;           What file to load in
-;       time : in, optional
-;           Print the elapsed time
-;       sigmavalue: in, optional, type=integer, default=2
-;           Sets the threshold to be::
-;   
-;               max(image) - sigmavalue*stddev(image)
-;   
 ;       region: in, required, type=integer, default=1
 ;           Which sun out of the three to find the center of. Defaults to the brightest sun
-;       scan_width: in, optional, type = integer, default = 5
-;           How apart the scans are	
+;       time : in, optional
+;           Print the elapsed time
 ;-
 
-IF ~keyword_set(sigmavalue)     THEN sigmavalue = 2
-IF ~keyword_set(region)         THEN region = 1
-IF ~keyword_set(scan_width)     THEN scan_width = 5
+IF n_elements(sigmavalue)   EQ 0 THEN sigmavalue = 2
+IF n_elements(region)       EQ 0 THEN region = 1
+IF n_elements(scan_width)   EQ 0 THEN scan_width = 5
+IF n_elements(sundiam)      EQ 0 THEN sundiam = 70
 
 start = systime(1,/seconds)
 
-temp = self->crop(scan_width=scan_width,region=region,sundiam=sundiam,sigmavalue=sigmavalue)
+temp = self->crop(scan_width,sigmavalue,sundiam,region=region,time=time)
 struct = temp->get()
 cropped = struct.image
 thresh = max(cropped)-sigmavalue*stddev(cropped)
@@ -245,7 +271,7 @@ ypos = TOTAL( TOTAL(suncheck, 1) * Indgen(n_row) ) / total(suncheck) + struct.yo
 self->set,{xpos:xpos, ypos:ypos, thresh:thresh}
 
 finish = systime(1,/s)
-IF keyword_set(time) THEN  print, 'Elapsed Time for trimask: ',strcompress(finish-start,/remove),$
+IF keyword_set(time) THEN  print, 'Elapsed Time for center(): ',strcompress(finish-start,/remove),$
     ' seconds'
 
 RETURN,self
@@ -253,40 +279,39 @@ END
 
 ;********************************************************************************
 
-PRO nutri,scan_width=scan_width, file=file, sigmavalue=sigmavalue, time=time
+; PRO nutri,file, scan_width, sigmavalue, time=time
 ;+
 ;   :Description:
 ;       Object-oriented version of tricenter.pro. Easier to use? Not really, but
 ;		that's probably because it was my first time writing a successful OOP 
 ;		program.
 ;
-;   :Keywords:
-;       scan_width: in, optional, type = integer, default = 5
+;   :Params:
+;       scan_width: in, required, type = integer, default = 5
 ;           How apart the scans are for minicrop(). Overrides defaults in crop().
-;       file: in, optional, type = string, default = 'triplesun.bmp'
+;       file: in, required, type = string, default = 'triplesun.bmp'
 ;           What file to find 4 centers for
-;       time: in, optional
-;           Outputs how much time the program takes
-;       sigmavalue: in, optional, type = integer, default = 2
+;       sigmavalue: in, required, type = integer, default = 2
 ;          Sets the threshold to be::
 ;
 ;           max(image) - sigmavalue*stddev(image)
 ;
-;       
+;   :Keywords:
+;       time: in, optional
+;           Outputs how much time the program takes
 ;-
 
 COMPILE_OPT idl2 
 on_error,2
 
-IF ~keyword_set(scan_width)         THEN    scan_width = 5
-IF ~keyword_set(file)               THEN    file = 'triplesun.bmp'
-IF ~keyword_set(sigmavalue)         THEN    sigmavalue = 2
+IF n_elements(scan_width)   EQ 0 THEN    scan_width = 5
+IF n_elements(file)         EQ 0 THEN    file = 'triplesun.bmp'
+IF n_elements(sigmavalue)   EQ 0 THEN    sigmavalue = 2
 
 start=systime(1,/s)
 
 a=obj_new('data')
-; temp = a->combine()
-temp = a->combine(scan_width=scan_width,sigmavalue=sigmavalue,time=time)
+temp = a->combine(scan_width,sigmavalue,time=time)
 struct = temp->get()
 tmpimage = read_bmp(file) 
 s = size(tmpimage,/dimensions)
@@ -311,7 +336,7 @@ image3[*,struct.center3.ypos]=20
 ; cgimage,image3,/k
 
 finish = systime(1,/s)
-IF keyword_set(time) THEN print, 'tricenter took: '+strcompress(finish-start)+$
+IF keyword_set(time) THEN print, 'Elapsed time for nutri : '+strcompress(finish-start)+$
     ' seconds'
 
 END
