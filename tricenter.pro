@@ -105,7 +105,6 @@ CASE region OF
     END
 
 2: BEGIN
-stop
     inputarr[colscan*scan_width:colendscan*scan_width,rowscan*scan_width:rowendscan*scan_width] = 0
     
     ;****************************************************************************************
@@ -394,12 +393,12 @@ image2[*,struct.center2.ypos]=20
 image3[struct.center3.xpos,*]=20
 image3[*,struct.center3.ypos]=20
 
-window,0
-cgimage,image,/k
-window,2
-cgimage,image2,/k
-window,3
-cgimage,image3,/k
+; window,0
+; cgimage,image,/k
+; window,2
+; cgimage,image2,/k
+; window,3
+; cgimage,image3,/k
 
 finish = systime(1,/s)
 IF keyword_set(time) THEN print, 'tricenter took: '+strcompress(finish-start)+$
