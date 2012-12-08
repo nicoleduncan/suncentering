@@ -64,30 +64,32 @@ END
 
 ;********************************************************************************
 
-PRO data::read,file
-
+; PRO data::read,file
+FUNCTION data::read, file
 IF n_elements(file) EQ 0 THEN file='triplesun.bmp'
 check=findfile(file,count=count)     ;-- check if file exists
-; IF count NE 1 THEN RETURN,0            ;-- bail if not there
+IF count NE 1 THEN RETURN,0            ;-- bail if not there
 tmpimage = read_bmp(file)
 s = size(tmpimage,/dimensions)
 image = reform(tmpimage[0,*,*])
-; RETURN, image
-self->set,image
-RETURN
+RETURN, image
+; self->set,image
+; RETURN
 END
 
 ;********************************************************************************
 
-PRO data::crop,region=region,sundiam=sundiam,scan_width=scan_width,sigmavalue=sigmavalue,time=time
+; PRO data::crop,region=region,sundiam=sundiam,scan_width=scan_width,sigmavalue=sigmavalue,time=time
+FUNCTION data::crop,region=region,sundiam=sundiam,scan_width=scan_width,sigmavalue=sigmavalue,time=time
 
 IF ~keyword_set(sundiam)    THEN sundiam = 70
 IF ~keyword_set(scan_width) THEN scan_width = 5
 IF ~keyword_set(sigmavalue) THEN sigmavalue = 2
 IF ~keyword_set(region)     THEN region = 1
 
-; inputarr = self->read(file=file)
-inputarr = self->get()
+a=self->read(file=file)
+stop
+; inputarr = self->get()
 
 thresh = max(inputarr) - sigmavalue*stddev(inputarr)
 temparr = inputarr * (inputarr GT thresh)
@@ -139,9 +141,10 @@ finish = systime(1,/s)
 IF keyword_set(time) THEN print,' boundaries() took '+strcompress(finish-start,/remove)+' seconds'
 ; RETURN,{POSTCROP,image:cropped,xoffset:limits.colscan*scan_width,$
 ;     yoffset:limits.rowscan*scan_width}
-self->set,{POSTCROP,image:cropped,xoffset:limits.colscan*scan_width,$
+; self->set,{POSTCROP,image:cropped,xoffset:limits.colscan*scan_width,$
+;     yoffset:limits.rowscan*scan_width}
+RETURN,{POSTCROP,image:cropped,xoffset:limits.colscan*scan_width,$
     yoffset:limits.rowscan*scan_width}
-RETURN
 END
 
 ;********************************************************************************
@@ -171,7 +174,8 @@ END
 
 ;********************************************************************************
 
-pro data::center, region=region, time=time, sigmavalue=sigmavalue, scan_width=scan_width
+; pro data::center, region=region, time=time, sigmavalue=sigmavalue, scan_width=scan_width
+FUNCTION data::center, region=region, time=time, sigmavalue=sigmavalue, scan_width=scan_width
 ;+
 ;   :Description:
 ;       Had to make a new version of comp3 because the old one called scanbox() by default
@@ -196,8 +200,9 @@ IF ~keyword_set(region)         THEN region = 1
 IF ~keyword_set(scan_width)     THEN scan_width = 5
 
 start = systime(1,/seconds)
+stop
+thresh = self->crop(scan_width=scan_width,region=region,sundiam=sundiam,sigmavalue=sigmavalue)
 
-; struct = self->crop(scan_width=scan_width,region=region)
 struct = self->get()
 cropped = struct.image
 
@@ -216,9 +221,8 @@ finish = systime(1,/s)
 IF keyword_set(time) THEN  print, 'Elapsed Time for trimask: ',strcompress(finish-start,/remove),$
     ' seconds'
 
-; RETURN,{CENTER, xpos:xpos, ypos:ypos, thresh:thresh}
-self->set,{CENTER, xpos:xpos, ypos:ypos, thresh:thresh}
-RETURN
+RETURN,{CENTER, xpos:xpos, ypos:ypos, thresh:thresh}
+; self->set,{CENTER, xpos:xpos, ypos:ypos, thresh:thresh}
 END
 
 ;********************************************************************************
@@ -254,7 +258,14 @@ IF ~keyword_set(sigmavalue)         THEN    sigmavalue = 2
 start=systime(1,/s)
 
 a=obj_new('data')
-struct = a->combine(scan_width=scan_width, sigmavalue=sigmavalue,time=time)
+a->read
+a->crop
+a->center
+b=a->get()
+; This makes b a result
+
+
+;struct = a->combine(scan_width=scan_width, sigmavalue=sigmavalue,time=time)
 ; a->combine
 
 struct = a->get()
