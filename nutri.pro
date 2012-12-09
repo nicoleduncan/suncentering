@@ -1,51 +1,24 @@
-FUNCTION data::init
-COMPILE_OPT idl2 
-on_error,2
-;-- allocate memory to pointer when initializing object
- self.ptr=ptr_new(/allocate)  
- RETURN,1
-end 
 
-;****************************************************************************************
-
-PRO data::set,value
-;-- if data value exists, then insert into pointer location
- if n_elements(value) ne 0 then *(self.ptr)=value
- RETURN 
-end
-
-;****************************************************************************************
-
-FUNCTION data::get,value
-;-- if data value is stored in object pointer, then copy it out
- if n_elements(*(self.ptr)) ne 0 then value=*(self.ptr)
- RETURN,value
-end
-
-;****************************************************************************************
-
-PRO data__define
- void={data,ptr:ptr_new()}
- RETURN 
-end
-
-;****************************************************************************************
-
-FUNCTION data::read, file
-
-IF n_elements(file) EQ 0 THEN file='triplesun.bmp'
-; check=findfile(file,count=count)     ;-- check if file exists
-; IF count NE 1 THEN RETURN,0            ;-- bail if not there
-; Useful, but slow.
-tmpimage = read_bmp(file)
-s = size(tmpimage,/dimensions)
-image = reform(tmpimage[0,*,*])
-RETURN, image
-END
-
-;********************************************************************************
+; docformat = 'rst'
+;
+;+
+; NAME: 
+;   nutri
+;
+; PURPOSE:
+;   Finds the center of 3 suns in a single image. Currently limited to a .bmp test image. 
+;
+; :Author:
+;   JEREN SUZUKI::
+;
+;       Space Sciences Laboratory
+;       7 Gauss Way
+;       Berkeley, CA 94720 USA
+;       E-mail: jsuzuki@ssl.berkeley.edu
+;-
 
 ; PRO nutri,file, scan_width, sigmavalue, time=time
+
 ;+
 ;   :Description:
 ;       Object-oriented version of tricenter.pro. Easier to use? Not really, but
@@ -69,7 +42,6 @@ END
 ;       time: in, optional
 ;           Outputs how much time the program takes
 ;-
-
 COMPILE_OPT idl2 
 on_error,2
 
@@ -109,5 +81,3 @@ IF keyword_set(time) THEN print, 'Elapsed time for nutri : '+strcompress(finish-
     ' seconds'
 
 END
-
-
