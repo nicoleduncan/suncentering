@@ -1,9 +1,8 @@
-
 ; docformat = 'rst'
 ;
 ;+
 ; NAME: 
-;   nutri
+;   NUTRI
 ;
 ; PURPOSE:
 ;   Finds the center of 3 suns in a single image. Currently limited to a .bmp test image. 
@@ -17,8 +16,7 @@
 ;       E-mail: jsuzuki@ssl.berkeley.edu
 ;-
 
-; PRO nutri,file, scan_width, sigmavalue, time=time
-
+; PRO nutri, file, scan_width, sigmavalue, sundiam, time=time
 ;+
 ;   :Description:
 ;       Object-oriented version of tricenter.pro. Easier to use? Not really, but
@@ -26,10 +24,10 @@
 ;		program.
 ;
 ;   :Params:
+;       file: in, required, type = string, default = 'triplesun.bmp'
+;           What file to find 3 centers for
 ;       scan_width: in, required, type = integer, default = 5
 ;           How apart the scans are for minicrop(). Overrides defaults in crop().
-;       file: in, required, type = string, default = 'triplesun.bmp'
-;           What file to find 4 centers for
 ;       sigmavalue: in, required, type = integer, default = 2
 ;          Sets the threshold to be::
 ;

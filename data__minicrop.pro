@@ -10,6 +10,8 @@ FUNCTION data::minicrop, scan_width, sundiam, temparr, thresh, time=time
 ;           Approximate diameter of sun in pixels. (Based on bmp image)
 ;       temparr : in, required, type=byte
 ;           2D array to check boundary limits of
+;		thresh : in, required, type=float
+;			What the minimum threshold will be for scanning
 ;   :Keywords:
 ;       time : in, optional
 ;           Print the elapsed time
