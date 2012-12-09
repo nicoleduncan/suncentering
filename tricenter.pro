@@ -35,6 +35,8 @@ PRO minicrop, temparr, rowscan, colscan, rowendscan, colendscan, scan_width=scan
 ;       time : in, optional
 ;           Print the elapsed time
 ;-
+COMPILE_OPT idl2 
+on_error,2
 
 start = systime(1,/s)
 rowscan=0

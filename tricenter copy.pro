@@ -65,36 +65,6 @@ END
 
 ;****************************************************************************************
 
-PRO hahacrop, temparr, rowscan, colscan, rowendscan, colendscan, keepgoing=keepgoing, scan_width=scan_width,$
-	sundiam=sundiam, time=time, thresh=thresh
-
-IF ~keyword_set(keepgoing)	THEN colscan = 0
-
-WHILE total(where(temparr[colscan*scan_width,*] GT thresh/2)) EQ -1 DO BEGIN
-    colscan++
-ENDWHILE 
-
-rowscan = fix(((where(temparr[colscan*scan_width,*] GT thresh/2))[0] - sundiam/2 + $
-        n_elements(where(temparr[colscan*scan_width,*] GT thresh/2))/2 )/scan_width)
-
-
-rowendscan = rowscan + sundiam/scan_width ; Jumping to other side of sun
-colendscan = colscan + sundiam/scan_width
-
-;Since the column scanning is rough, have to give the ends a little room.
-rowscan     -= 2
-colscan     -= 2
-rowendscan  += 2
-colendscan  += 2
-
-finish = systime(1,/s)
-IF keyword_set(time) THEN print,' minicrop took '+strcompress(finish-start,/remove)+' seconds'
-
-RETURN
-END
-
-;****************************************************************************************
-
 FUNCTION cropit, location, region=region, inputarr=inputarr, scan_width=scan_width, $
     sundiam=sundiam, sigmavalue=sigmavalue, time=time
 ;+
@@ -120,18 +90,10 @@ FUNCTION cropit, location, region=region, inputarr=inputarr, scan_width=scan_wid
 start = systime(1,/s)
 
 thresh = max(inputarr) - sigmavalue*stddev(inputarr)
-
-; Here we do the thing where we do all 3 crops at once:
 temparr = inputarr * (inputarr gt thresh)
-hahacrop,temparr,rowscan,colscan,rowendscan,colendscan,thresh=thresh,scan_width=scan_width,$
+
+minicrop,temparr,rowscan,colscan,rowendscan,colendscan,thresh=thresh,scan_width=scan_width,$
     sundiam=sundiam,time=time
-
-doublesun = inputarr * (inputarr lt thresh)
-
-
-
-
-
 
 CASE region OF
 
@@ -431,12 +393,12 @@ image2[*,struct.center2.ypos]=20
 image3[struct.center3.xpos,*]=20
 image3[*,struct.center3.ypos]=20
 
-window,0
-cgimage,image,/k
-window,2
-cgimage,image2,/k
-window,3
-cgimage,image3,/k
+; window,0
+; cgimage,image,/k
+; window,2
+; cgimage,image2,/k
+; window,3
+; cgimage,image3,/k
 
 finish = systime(1,/s)
 IF keyword_set(time) THEN print, 'tricenter took: '+strcompress(finish-start)+$
