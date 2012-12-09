@@ -16,7 +16,7 @@
 ;       E-mail: jsuzuki@ssl.berkeley.edu
 ;-
 
-; PRO nutri, file, scan_width, sigmavalue, sundiam, time=time
+PRO nutri, file, scan_width, sigmavalue, sundiam, time=time
 ;+
 ;   :Description:
 ;       Object-oriented version of tricenter.pro. Easier to use? Not really, but

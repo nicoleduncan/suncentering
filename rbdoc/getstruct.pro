@@ -6,7 +6,7 @@ PRO getstruct, file, struct, scan_width, sigmavalue, sundiam, time=time
 ;
 ;   :Params:
 ;       file: in, required, type = string, default = 'triplesun.bmp'
-;           What file to find 4 centers for
+;           What file to find 3 centers for
 ;       struct : out, required, type=structure
 ;           Structure containing the centers and cropped images of all 3 suns
 ;       scan_width : in, required, type=integer, default=5

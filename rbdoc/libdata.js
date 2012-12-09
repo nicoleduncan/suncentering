@@ -151,21 +151,21 @@ libdata[libdataItem++] = new Array("./cropit.html", "cropit.pro", '.pro file in 
 libdata[libdataItem++] = new Array("./data__center.html", "data__center.pro", '.pro file in <a href="./dir-overview.html">./ directory</a>', "data__center.pro", "", "", "", "", "          -1", "");
   
   
-  libdata[libdataItem++] = new Array("./data__center.html#data::center", "data::center", 'routine in <a href="./data__center.html">data__center.pro</a>', "data__center.pro", "", "data::center", "       Had to make a new version of comp3 because the old one called scanbox() by default   ", "region           Which sun out of the three to find the center of. Defaults to the brightest sun  time           Print the elapsed time  file           What file to find 4 centers for  scan_width           How apart the scans are for minicrop().  sigmavalue          Sets the threshold to be: <span class= code-output >max(image) - sigmavalue*stddev(image)</span>  sundiam           Approximate diameter of sun in pixels. (Based on bmp image)   ", "          -1", "");
+  libdata[libdataItem++] = new Array("./data__center.html#data::center", "data::center", 'routine in <a href="./data__center.html">data__center.pro</a>', "data__center.pro", "", "data::center", "       Had to make a new version of comp3 because the old one called scanbox() by default   ", "region           Which sun out of the three to find the center of. Defaults to the brightest sun  time           Print the elapsed time  file           What file to find 3 centers for  scan_width           How apart the scans are for minicrop().  sigmavalue          Sets the threshold to be: <span class= code-output >max(image) - sigmavalue*stddev(image)</span>  sundiam           Approximate diameter of sun in pixels. (Based on bmp image)   ", "          -1", "");
   
   
 
 libdata[libdataItem++] = new Array("./data__combine.html", "data__combine.pro", '.pro file in <a href="./dir-overview.html">./ directory</a>', "data__combine.pro", "", "", "", "", "          -1", "");
   
   
-  libdata[libdataItem++] = new Array("./data__combine.html#data::combine", "data::combine", 'routine in <a href="./data__combine.html">data__combine.pro</a>', "data__combine.pro", "", "data::combine", "       Finds the centers of a triple-sun image and loads all relevant information        including offsets and angles into a new structure.   ", "time           Outputs how much time the program takes   file           What file to find 4 centers for  scan_width           How apart the scans are for minicrop().  sigmavalue          Sets the threshold to be: <span class= code-output >max(image) - sigmavalue*stddev(image)</span>  sundiam           Approximate diameter of sun in pixels. (Based on bmp image)   ", "          -1", "");
+  libdata[libdataItem++] = new Array("./data__combine.html#data::combine", "data::combine", 'routine in <a href="./data__combine.html">data__combine.pro</a>', "data__combine.pro", "", "data::combine", "       Finds the centers of a triple-sun image and loads all relevant information        including offsets and angles into a new structure.   ", "time           Outputs how much time the program takes   file           What file to find 3 centers for  scan_width           How apart the scans are for minicrop().  sigmavalue          Sets the threshold to be: <span class= code-output >max(image) - sigmavalue*stddev(image)</span>  sundiam           Approximate diameter of sun in pixels. (Based on bmp image)   ", "          -1", "");
   
   
 
 libdata[libdataItem++] = new Array("./data__crop.html", "data__crop.pro", '.pro file in <a href="./dir-overview.html">./ directory</a>', "data__crop.pro", "", "", "", "", "          -1", "");
   
   
-  libdata[libdataItem++] = new Array("./data__crop.html#data::crop", "data::crop", 'routine in <a href="./data__crop.html">data__crop.pro</a>', "data__crop.pro", "", "data::crop", "       Loads a triple-sun image and crops out selected regions one-by-one.   ", "timeregion           Which sun out of the three to find the center of. Defaults to the brightest sun   file           What file to find 4 centers for  scan_width           How apart the scans are for minicrop().  sigmavalue          Sets the threshold to be: <span class= code-output >max(image) - sigmavalue*stddev(image)</span>  sundiam           Approximate diameter of sun in pixels. (Based on bmp image)   ", "          -1", "");
+  libdata[libdataItem++] = new Array("./data__crop.html#data::crop", "data::crop", 'routine in <a href="./data__crop.html">data__crop.pro</a>', "data__crop.pro", "", "data::crop", "       Loads a triple-sun image and crops out selected regions one-by-one.   ", "timeregion           Which sun out of the three to find the center of. Defaults to the brightest sun   file           What file to find 3 centers for  scan_width           How apart the scans are for minicrop().  sigmavalue          Sets the threshold to be: <span class= code-output >max(image) - sigmavalue*stddev(image)</span>  sundiam           Approximate diameter of sun in pixels. (Based on bmp image)   ", "          -1", "");
   
   
 
@@ -201,7 +201,7 @@ libdata[libdataItem++] = new Array("obsolete_code/doesntfindanything.html", "doe
 libdata[libdataItem++] = new Array("./getstruct.html", "getstruct.pro", '.pro file in <a href="./dir-overview.html">./ directory</a>', "getstruct.pro", "", "", "", "", "          -1", "");
   
   
-  libdata[libdataItem++] = new Array("./getstruct.html#getstruct", "getstruct", 'routine in <a href="./getstruct.html">getstruct.pro</a>', "getstruct.pro", "", "getstruct", "       Finds the centers of a triple-sun image and loads all relevant information        including offsets and angles into a new structure.   ", "time           Outputs how much time the program takes  file           What file to find 4 centers for  struct           Structure containing the centers and cropped images of all 3 suns  scan_width           How apart the scans are for minicrop().  sigmavalue          Sets the threshold to be: <span class= code-output >max(image) - sigmavalue*stddev(image)</span>  sundiam           Approximate diameter of sun in pixels. (Based on bmp image)   ", "          -1", "");
+  libdata[libdataItem++] = new Array("./getstruct.html#getstruct", "getstruct", 'routine in <a href="./getstruct.html">getstruct.pro</a>', "getstruct.pro", "", "getstruct", "       Finds the centers of a triple-sun image and loads all relevant information        including offsets and angles into a new structure.   ", "time           Outputs how much time the program takes  file           What file to find 3 centers for  struct           Structure containing the centers and cropped images of all 3 suns  scan_width           How apart the scans are for minicrop().  sigmavalue          Sets the threshold to be: <span class= code-output >max(image) - sigmavalue*stddev(image)</span>  sundiam           Approximate diameter of sun in pixels. (Based on bmp image)   ", "          -1", "");
   
   
 
@@ -220,6 +220,10 @@ libdata[libdataItem++] = new Array("obsolete_code/newbox.html", "newbox.pro", '.
   
 
 libdata[libdataItem++] = new Array("./nutri.html", "nutri.pro", '.pro file in <a href="./dir-overview.html">./ directory</a>', "nutri.pro", "   JEREN SUZUKI: <span class= code-output >   Space Sciences Laboratory</span> <span class= code-output >   7 Gauss Way</span> <span class= code-output >   Berkeley, CA 94720 USA</span> <span class= code-output >   E-mail: jsuzuki@ssl.berkeley.edu</span>  ", "", " NAME:    NUTRI   PURPOSE:    Finds the center of 3 suns in a single image. Currently limited to a .bmp test image.   ", "", "          -1", "");
+  
+  
+  libdata[libdataItem++] = new Array("./nutri.html#nutri", "nutri", 'routine in <a href="./nutri.html">nutri.pro</a>', "nutri.pro", "", "nutri", "       Object-oriented version of tricenter.pro. Easier to use? Not really, but 		that's probably because it was my first time writing a successful OOP 		program.   ", "time           Outputs how much time the program takes  file           What file to find 3 centers for  scan_width           How apart the scans are for minicrop(). Overrides defaults in crop().  sigmavalue          Sets the threshold to be: <span class= code-output >max(image) - sigmavalue*stddev(image)</span>  sundiam           Approximate diameter of sun in pixels. (Based on bmp image)   ", "          -1", "");
+  
   
 
 libdata[libdataItem++] = new Array("./nutricenter.html", "nutricenter.pro", '.pro file in <a href="./dir-overview.html">./ directory</a>', "nutricenter.pro", "", "", "", "", "          -1", "");
