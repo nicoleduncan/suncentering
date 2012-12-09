@@ -1,5 +1,5 @@
 ; docformat = 'rst'
-
+;
 ;+
 ; At the end of the day this should find the center of the sun using a variety of (working) methods
 ;
@@ -319,7 +319,7 @@ thresh = max(cropped_image)-sigmavalue*stddev(cropped_image)
 ; **************
 
 ;THIS IS BEAUTIFUL
-sunonly = cropped_image*(cropped_image gt thresh)
+sunonly = cropped_image*(cropped_image GT thresh)
 ;God damit this isn't fair how fast this is.
 sum     = TOTAL(sunonly)
 xpos    = TOTAL( TOTAL(sunonly, 2) * Indgen(n_col) ) / sum
