@@ -5,7 +5,7 @@ FUNCTION data::center, file, scan_width, sigmavalue, sundiam, region=region, tim
 ;
 ;   :Params:
 ;       file: in, required, type = string, default = 'triplesun.bmp'
-;           What file to find 4 centers for
+;           What file to find 3 centers for
 ;       scan_width : in, required, type=integer, default=5
 ;           How apart the scans are for minicrop(). 
 ;       sigmavalue : in, required, type = integer, default = 2
