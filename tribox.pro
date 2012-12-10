@@ -30,10 +30,10 @@ FUNCTION tribox, file, scan_width, sigmavalue, sundiam, region=region, time=time
 COMPILE_OPT idl2 
 on_error,2
 
-IF n_elements(file)       EQ 0 THEN file       = 'triplesun.bmp'
-IF n_elements(scanwidth)  EQ 0 THEN scan_width = 5
-IF n_elements(sigmavalue) EQ 0 THEN sigmavalue = 1
-IF n_elements(region)     EQ 0 THEN region = 2
+IF n_elements(file)       EQ 0 THEN file       	= 'triplesun.bmp'
+IF n_elements(scanwidth)  EQ 0 THEN scan_width 	= 5
+IF n_elements(sigmavalue) EQ 0 THEN sigmavalue 	= 1
+IF n_elements(region)     EQ 0 THEN region 	= 2
 
 start = systime(1,/seconds)
 

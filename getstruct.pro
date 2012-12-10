@@ -26,21 +26,27 @@ PRO getstruct, file, struct, scan_width, sigmavalue, sundiam, time=time
 COMPILE_OPT idl2 
 on_error,2
 
-start=systime(1,/s)
-; stop
+start = systime(1,/s)
+
 center1 = {center1,xpos:0d,ypos:0d,thresh:0d}
 center2 = {center2,xpos:0d,ypos:0d,thresh:0d}
 center3 = {center3,xpos:0d,ypos:0d,thresh:0d}
 
-trimask, file, xpos, ypos, scan_width, sigmavalue, sundiam, thresh, region=1, time=time
+; trimask, file, xpos, ypos, scan_width, sigmavalue, sundiam, thresh, region=1, time=time
+limbfit, file, ministrip_length, order, scan_width, sigmavalue, sundiam, thresh, xpos, ypos, nstrips=nstrips, plot=plot, $
+	region=1, time=time
 center1.xpos = xpos
 center1.ypos = ypos
 center1.thresh = thresh
-trimask, file, xpos, ypos, scan_width, sigmavalue, sundiam, thresh, region=2, time=time
+; trimask, file, xpos, ypos, scan_width, sigmavalue, sundiam, thresh, region=2, time=time
+limbfit, file, ministrip_length, order, scan_width, sigmavalue, sundiam, xpos, thresh, ypos, nstrips=nstrips, plot=plot, $
+	region=2, time=time
 center2.xpos = xpos
 center2.ypos = ypos
 center2.thresh = thresh
-trimask, file, xpos, ypos, scan_width, sigmavalue, sundiam, thresh, region=3, time=time
+; trimask, file, xpos, ypos, scan_width, sigmavalue, sundiam, thresh, region=3, time=time
+limbfit, file, ministrip_length, order, scan_width, sigmavalue, sundiam, xpos, thresh, ypos, nstrips=nstrips, plot=plot, $
+	region=3, time=time
 center3.xpos = xpos
 center3.ypos = ypos
 center3.thresh = thresh
