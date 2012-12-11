@@ -93,8 +93,9 @@ CASE region OF
     location = {REGION3,image:cropped,xoffset:colscan*scan_width,yoffset:rowscan*scan_width}
 
     END
-
 ENDCASE
+; window,region
+; cgimage,cropped,/k
 finish = systime(1,/s)
 IF keyword_set(time) THEN print,' cropit() took '+strcompress(finish-start,/remove)+' seconds'
 RETURN,location
