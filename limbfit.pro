@@ -1,4 +1,4 @@
-PRO limbfit, file, ministrip_length, order, scan_width, sigmavalue, sundiam, thresh, xpos, ypos, nstrips=nstrips, $
+PRO limbfit, thresh, xpos, ypos, file, ministrip_length, order, scan_width, sigmavalue, sundiam, nstrips=nstrips, $
         plot=plot, region=region, time=time
 ;+
 ;   :Description:
@@ -50,8 +50,9 @@ IF n_elements(sigmavalue)           EQ 0    THEN sigmavalue        = 2
 IF n_elements(sundiam)              EQ 0    THEN sundiam           = 70
 
 ; Run the program to get our structures
-makelimbstrips, file, ministrip_length, scan_width, sigmavalue, sundiam, thresh, xstrips, ystrips, $
+makelimbstrips, thresh, xstrips, ystrips, file, ministrip_length, scan_width, sigmavalue, sundiam, $
     nstrips=nstrips, region=region, time=time
+
 start = systime(1,/seconds)
 
 ministrip_side_length = ministrip_length/2

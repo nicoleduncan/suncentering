@@ -1,4 +1,4 @@
-PRO makelimbstrips, file, ministrip_length, scan_width, sigmavalue, sundiam, thresh, xstrips, ystrips, $
+PRO makelimbstrips, thresh, xstrips, ystrips, file, ministrip_length, scan_width, sigmavalue, sundiam, $
     nstrips=nstrips, region=region, time=time
 ;+
 ;   :Description:
@@ -43,27 +43,30 @@ IF n_elements(sigmavalue)       EQ 0    THEN sigmavale          = 2
 IF n_elements(sundiam)          EQ 0    THEN sundiam            = 70
 IF n_elements(region)           EQ 0    THEN region             = 1
 
-makestrips, file, scan_width, sigmavalue, sundiam, thresh, c4xstrips, c4ystrips, nstrips=nstrips, $
+makestrips, thresh, c4xstrips, c4ystrips, file, scan_width, sigmavalue, sundiam, nstrips=nstrips, $
     region=region, time=time
+
 start = systime(1,/seconds)
 
 ministrip_side_buffer = ministrip_length/2 
 rowchord_endpoints = fltarr(2,n_elements(c4xstrips))
 colchord_endpoints = fltarr(2,n_elements(c4ystrips))
-
 ;   Seeing where the array starts to be greater than the thresh
 FOR i = 0,n_elements(c4ystrips)-1 DO BEGIN
     col_where = where(c4ystrips[i].ARRAY GT thresh)
     ; beginning of chord
     colchord_endpoints[0,i] = col_where[0]
     ; end of chord
-    colchord_endpoints[1,i] = col_where[-1]
+    ;colchord_endpoints[1,i] = col_where[-1]
+    colchord_endpoints[1,i] = col_where[n_elements(col_where)-1]
 ENDFOR
 
 FOR i = 0,n_elements(c4xstrips) -1 DO BEGIN
     row_where = where(c4xstrips[i].ARRAY GT thresh)
+	if i eq 3 then stop
     rowchord_endpoints[0,i] = row_where[0]
-    rowchord_endpoints[1,i] = row_where[-1]
+    ;rowchord_endpoints[1,i] = row_where[-1]
+    rowchord_endpoints[1,i] = row_where[n_elements(row_where)-1]
 ENDFOR
 
 ; Preallocating the array, replicating it by the number of strips there are
@@ -84,8 +87,9 @@ FOR i = 0,n_elements(c4xstrips) - 1 DO BEGIN
     ENDIF ELSE BEGIN
         ; STARTPOINTS is the cut down strip with length = ministrip_length and contains
         ; the indices from rowchord_endpoints[0,i] +/- ministrip_side_buffer
-        xstrips[i].STARTPOINTS  = $
-            (c4xstrips[i].ARRAY)[rowchord_endpoints[0,i]-ministrip_side_buffer: $
+	if i eq 3 then stop
+	xstrips[i].STARTPOINTS  = $
+            (c4xstrips[i].ARRAY)[rowchord_endpoints[0,i]-ministrip_side_buffer:$
             rowchord_endpoints[0,i]+ministrip_side_buffer]   
         ; BEGINDEX is the index of the strip where it begins. 
         ; e.g., the array is 5 long, starts from index 9 and is centered around index 11
@@ -96,7 +100,7 @@ FOR i = 0,n_elements(c4xstrips) - 1 DO BEGIN
         xstrips[i].ENDINDEX    = 0
     ENDIF ELSE BEGIN
         xstrips[i].ENDPOINTS  = $
-            (c4xstrips[i].ARRAY)[rowchord_endpoints[1,i]-ministrip_side_buffer: $
+            (c4xstrips[i].ARRAY)[rowchord_endpoints[1,i]-ministrip_side_buffer:$
             rowchord_endpoints[1,i]+ministrip_side_buffer]   
         xstrips[i].ENDINDEX     = fix(rowchord_endpoints[1,i] - ministrip_side_buffer)
     ENDELSE

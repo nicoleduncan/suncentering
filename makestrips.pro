@@ -1,4 +1,4 @@
-PRO makestrips, file, scan_width, sigmavalue, sundiam, thresh, xstrips, ystrips, nstrips=nstrips, $
+PRO makestrips, thresh, xstrips, ystrips, file, scan_width, sigmavalue, sundiam, nstrips=nstrips, $
     region=region, time=time
 ;+
 ;   :Description:
@@ -40,28 +40,28 @@ IF n_elements(scan_width)   EQ 0    THEN scan_width = 5
 IF n_elements(sigmavalue)   EQ 0    THEN sigmavalue = 2
 IF n_elements(sundiam)	    EQ 0    THEN sundiam    = 70
 
-; tmpimage = read_bmp(file)
-; image = reform(tmpimage[0,*,*])
-
 struct = tribox(file, scan_width, sigmavalue, sundiam, region=region, time=time)
-; cropped = cropit(image, location, scan_width, sigmavalue, sundiam, region=region, time=time)
-trimask, file, xpos, ypos, scan_width, sigmavalue, sundiam, thresh, region=region, time=time
+;trimask, file, xpos, ypos, scan_width, sigmavalue, sundiam, thresh, region=region, time=time
 
 start = systime(1,/seconds)
 cropped_image = struct.image
-xpos-=struct.xoffset
-ypos-=struct.yoffset
+;xpos-=struct.xoffset
+;ypos-=struct.yoffset
+
 thresh = max(cropped_image) - stddev(cropped_image)*sigmavalue 
 
 s = size(cropped_image,/dimensions)
 length = s[0]
 height = s[1]
 
+xpos = length/2 ;+ struct.xoffset
+ypos = height/2 ;+ struct.yoffset
+
 rowchord_endpoints = fltarr(2,nstrips)
 colchord_endpoints = fltarr(2,nstrips)
 
-xstrips = REPLICATE({ROWINDEX:0,SCAN_WIDTH:scan_width,ARRAY:bytarr(length)},nstrips)
-ystrips = REPLICATE({COLINDEX:0,SCAN_WIDTH:scan_width,ARRAY:bytarr(height)},nstrips)
+xstrips = REPLICATE({ROWINDEX:0,ARRAY:bytarr(length)},nstrips)
+ystrips = REPLICATE({COLINDEX:0,ARRAY:bytarr(height)},nstrips)
 
 FOR i = 0,nstrips - 1 DO BEGIN
     xstrips[i].ROWINDEX = i

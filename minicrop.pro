@@ -34,15 +34,27 @@ COMPILE_OPT idl2
 on_error,2
 
 start = systime(1,/s)
-rowscan=0
 
-WHILE total(where(temparr[*,rowscan*scan_width] GT thresh/2)) EQ -1 DO BEGIN
-    rowscan++
+;rowscan=0
+;WHILE total(where(temparr[*,rowscan*scan_width] GT thresh/2)) EQ -1 DO BEGIN
+;    rowscan++
+;ENDWHILE
+;; Doing it this way so that if in the case of 3 suns, if 1 sun is more left than the sun which 
+;; is the most bottom, the cropping will correctly choose the right sun.
+;colscan = fix(((where(temparr[*,rowscan*scan_width] GT thresh/2))[0] - sundiam/2 + $
+;        n_elements(where(temparr[*,rowscan*scan_width] GT thresh/2))/2 )/scan_width)
+;
+
+; Redoing it so that we scan left to right before bottom to top
+
+colscan = 0
+WHILE total(where(temparr[colscan*scan_width,*] GT thresh/2)) EQ -1 DO BEGIN
+    colscan++
 ENDWHILE
-; Doing it this way so that if in the case of 3 suns, if 1 sun is more left than the sun which 
-; is the most bottom, the cropping will correctly choose the right sun.
-colscan = fix(((where(temparr[*,rowscan*scan_width] GT thresh/2))[0] - sundiam/2 + $
-        n_elements(where(temparr[*,rowscan*scan_width] GT thresh/2))/2 )/scan_width)
+rowscan = fix(((where(temparr[colscan*scan_width,*] GT thresh/2))[0] - sundiam/2 + $
+        n_elements(where(temparr[colscan*scan_width,*] GT thresh/2))/2 )/scan_width)
+
+
 
 
 rowendscan = rowscan + sundiam/scan_width ; Jumping to other side of sun

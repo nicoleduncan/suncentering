@@ -24,7 +24,7 @@ FUNCTION cropit, inputarr, location, scan_width, sigmavalue, sundiam, region=reg
 ;       time : in, optional
 ;         Print the elapsed time
 ;
-; :Examples:
+;   :Examples:
 ;       cropped = cropit(inputarr,scan_width,sigmavalue,sundiam,region=1)
 ;
 ;-
