@@ -57,16 +57,13 @@ FOR i = 0,n_elements(c4ystrips)-1 DO BEGIN
     ; beginning of chord
     colchord_endpoints[0,i] = col_where[0]
     ; end of chord
-    ;colchord_endpoints[1,i] = col_where[-1]
-    colchord_endpoints[1,i] = col_where[n_elements(col_where)-1]
+    colchord_endpoints[1,i] = col_where[-1]
 ENDFOR
 
 FOR i = 0,n_elements(c4xstrips) -1 DO BEGIN
     row_where = where(c4xstrips[i].ARRAY GT thresh)
-	if i eq 3 then stop
     rowchord_endpoints[0,i] = row_where[0]
-    ;rowchord_endpoints[1,i] = row_where[-1]
-    rowchord_endpoints[1,i] = row_where[n_elements(row_where)-1]
+    rowchord_endpoints[1,i] = row_where[-1]
 ENDFOR
 
 ; Preallocating the array, replicating it by the number of strips there are
@@ -87,8 +84,7 @@ FOR i = 0,n_elements(c4xstrips) - 1 DO BEGIN
     ENDIF ELSE BEGIN
         ; STARTPOINTS is the cut down strip with length = ministrip_length and contains
         ; the indices from rowchord_endpoints[0,i] +/- ministrip_side_buffer
-	if i eq 3 then stop
-	xstrips[i].STARTPOINTS  = $
+        xstrips[i].STARTPOINTS  = $
             (c4xstrips[i].ARRAY)[rowchord_endpoints[0,i]-ministrip_side_buffer:$
             rowchord_endpoints[0,i]+ministrip_side_buffer]   
         ; BEGINDEX is the index of the strip where it begins. 
