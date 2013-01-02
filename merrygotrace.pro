@@ -592,6 +592,38 @@ limbfit, thresh, xpos, ypos, file, ministrip_length, order, scan_width, sigmaval
 center2.xpos = xpos
 center2.ypos = ypos
 center2.thresh = thresh
+
+a=(findgen(360) + 90)*!dtor 
+; only adding 90 so that it starts from 12 o'clock assuming there is
+; no dim sun at that location
+radius = sqrt((center1.xpos - center2.xpos)^2  + (center1.ypos - center2.ypos)^2 )
+; how to define the closest point on grid to a point on our theoretical circle
+; (sin(a))^2 + (cos(a))^2 = radius
+x = radius*cos(a) + center1.xpos
+; y = sqrt(radius^2 + x^2)
+y = radius*sin(a) + center1.ypos
+
+tmpimage = read_bmp(file) 
+image = reform(tmpimage[0,*,*])
+
+
+i=0
+WHILE image[x[i],y[i]] LT center2.thresh DO i++
+; Now we know where first dim sun is
+; Just ahead
+image[x[0:i],y[0:i]]=6
+i+=(sundiam/radius)*!radeg
+j=i
+WHILE image[x[i],y[i]] LT center2.thresh DO i++
+image[x[j:i],y[j:i]]=6
+window,0
+cgimage,image,/k
+
+; How do we set smart cropping?
+
+
+stop
+
 ;trimask, file, xpos, ypos, scan_width, sigmavalue, sundiam, thresh, region=3, time=time
 limbfit, thresh, xpos, ypos, file, ministrip_length, order, scan_width, sigmavalue, sundiam, $
     nstrips=nstrips, plot=plot, region=3, time=time
@@ -660,8 +692,6 @@ thresh = max(inputarr) - sigmavalue*stddev(inputarr)
 temparr = inputarr * (inputarr gt thresh)
 
 minicrop, temparr, rowscan, colscan, rowendscan, colendscan, scan_width, sundiam, thresh,time=time
-
-
 ;***************************************************************************************************
 ;                                                                                                  *
 ;                                                                                                  *
@@ -821,10 +851,11 @@ END
 ;
 ;+
 ; NAME: 
-;   TRICENTER
+;   MERRYGOTRACE
 ;
 ; PURPOSE:
-;   Finds the center of 3 suns in a single image. Currently limited to a .bmp test image. 
+;   Finds the center of 3 suns in a single image. Currently limited to a .bmp test image. Instead
+;   of scanning rows to crop, scans in a circle.
 ;
 ; :Author:
 ;   JEREN SUZUKI::
@@ -835,7 +866,7 @@ END
 ;       E-mail: jsuzuki@ssl.berkeley.edu
 ;-
 
-; PRO trilimbcenter, file, scan_width, sigmavalue, sundiam, time=time
+; PRO merrygotrac e, file, scan_width, sigmavalue, sundiam, time=time
 ;+
 ;   :Description:
 ;       This version uses limb fitting opposed to masking (tricenter). 
@@ -874,11 +905,7 @@ start=systime(1,/s)
 
 getstruct, file, struct, scan_width, sigmavalue, sundiam, time=time
 
-tmpimage = read_bmp(file) 
-s = size(tmpimage,/dimensions)
-n_col = s[1]
-n_row = s[2]
-image = reform(tmpimage[0,*,*])
+v
 image2 = image
 image3 = image
 
