@@ -211,20 +211,14 @@ IF n_elements(region)       EQ 0    THEN region     = 1
 IF n_elements(scan_width)   EQ 0    THEN scan_width = 5
 IF n_elements(sundiam)      EQ 0    THEN sundiam    = 70
 
-
-; Using masking to get the center now
 struct = whichcropmethod(file, region, scan_width, sundiam, thresh)
-
-; For 1st sun, mask, find center, crop, limbfit
-; for 2nd sun, scan, find center, crop, limbfit
-; for 3rd sun, scan other way, find center, crop, limbfit
 
 ducks = quickmask(struct.image,thresh)
 
 start = systime(1,/seconds)
 
-image = struct.image
-s = size(image,/dimensions)
+wholeimage = struct.image
+s = size(wholeimage,/dimensions)
 length = s[0]
 height = s[1]
 
@@ -237,12 +231,12 @@ ystrips = REPLICATE({COLINDEX:0,ARRAY:bytarr(height),yoffset:struct.yoffset},nst
 
 FOR i = 0,nstrips - 1 DO BEGIN
     xstrips[i].ROWINDEX = i
-    xstrips[i].ARRAY = image[*, round(ducks.xpos)+(i-nstrips/2)*scan_width]
+    xstrips[i].ARRAY = wholeimage[*, round(ducks.xpos)+(i-nstrips/2)*scan_width]
 ENDFOR
 
 FOR k = 0,nstrips - 1 DO BEGIN
     ystrips[k].COLINDEX = k
-    ystrips[k].ARRAY = image[round(ducks.ypos)+(k-nstrips/2)*scan_width,*]
+    ystrips[k].ARRAY = wholeimage[round(ducks.ypos)+(k-nstrips/2)*scan_width,*]
 ENDFOR
 
 finish = systime(1,/seconds)
@@ -261,8 +255,8 @@ PRO circscancrop, mainxpos, mainypos, file, image, xpos, ypos, xoffset, yoffset,
     sundiam, thresh, region=region, time=time
 ;+
 ;   :Description: 
-;       Quickly finds the center of the main sun, scans in a circle, and locates the two secondary suns'
-;       centers. Crops either of the secondary suns based on what region specified.
+;       Quickly finds the center of the main sun, scans in a circle, and locates the two secondary 
+;       suns' centers. Crops either of the secondary suns based on what region specified.
 ;
 ;   :Params:
 ;       file: in, required, type='string', default='triplesun.bmp'
@@ -288,6 +282,8 @@ PRO circscancrop, mainxpos, mainypos, file, image, xpos, ypos, xoffset, yoffset,
 COMPILE_OPT idl2 
 on_error,2
 
+COMMON vblock,wholeimage
+
 start = systime(1,/s)
 
 i=0
@@ -310,13 +306,12 @@ y = radius*sin(arr) + mainypos
 x2 = r2*cos(arr) + mainxpos
 y2 = r2*sin(arr) + mainypos
 
-tmpimage = read_bmp(file) 
-image = reform(tmpimage[0,*,*])
-thresh = 0.25*max(image)
+
+thresh = 0.25*max(wholeimage)
 
 
-WHILE image[x[i],y[i]] LT thresh DO i++
-WHILE image[x2[k],y2[k]] LT thresh DO k++
+WHILE wholeimage[x[i],y[i]] LT thresh DO i++
+WHILE wholeimage[x2[k],y2[k]] LT thresh DO k++
 
 a = [x[i],y[i]]
 b = [x2[k],y2[k]]
@@ -324,17 +319,11 @@ b = [x2[k],y2[k]]
 i+=1 ;so that the while statement continues to execute
 k+=1
 
-WHILE image[x[i],y[i]] GT thresh DO i++
-WHILE image[x2[k],y2[k]] GT thresh DO k++
+WHILE wholeimage[x[i],y[i]] GT thresh DO i++
+WHILE wholeimage[x2[k],y2[k]] GT thresh DO k++
 
 c = [x[i],y[i]]
 d = [x2[k],y2[k]]
-
-j=i
-m=k
-
-WHILE image[x[i],y[i]] LT thresh DO i++
-WHILE image[x2[k],y2[k]] LT thresh DO k++
 
 ; How do we set smart cropping?
 chord1 = [[a],[b]]
@@ -360,11 +349,7 @@ yoffset = center[1] - 50
 xpos =  center[0]/scan_width
 ypos =  center[1]/scan_width
 
-image = image[xoffset:xoffset+100,yoffset:yoffset+100]
-
-; print,'region 2:'
-; print,'x and y pos',xpos,ypos
-; print,'x and y offset',xoffset,yoffset
+image = wholeimage[xoffset:xoffset+100,yoffset:yoffset+100]
 
 finish = systime(1,/s)
 IF keyword_set(time) THEN print, 'getstruct took: '+strcompress(finish-start)+$
@@ -385,19 +370,18 @@ IF n_elements(region)     EQ 0 THEN region      = 2
 
 COMPILE_OPT idl2 
 on_error,2
+COMMON vblock, wholeimage
 
 IF STRPOS(file, 'bmp') NE -1  THEN BEGIN
-    tmpimage = read_bmp(file)
-    s = size(tmpimage,/dimensions)
-    n_col = s[1]
-    n_row = s[2]
-    image = reform(tmpimage[0,*,*])
+    s = size(wholeimage,/dimensions)
+    n_col = s[0]
+    n_row = s[1]
     sundiam = 70 ;at it's widest, sun is 61 pixels across
 ENDIF
 
 ;Must use special threshold
-thresh = 0.65*max(image)
-temparr = image * (image gt thresh)
+thresh = 0.65*max(wholeimage)
+temparr = wholeimage * (wholeimage gt thresh)
 
 colscan = 0
 WHILE total(where(temparr[colscan*scan_width,*] GT thresh/2)) EQ -1 DO BEGIN
@@ -415,7 +399,7 @@ colscan     -= 2
 rowendscan  += 2
 colendscan  += 2
 
-cropped=image[colscan*scan_width:colendscan*scan_width,rowscan*scan_width:$
+cropped=wholeimage[colscan*scan_width:colendscan*scan_width,rowscan*scan_width:$
     rowendscan*scan_width]
 
 location = {image:cropped,xoffset:colscan*scan_width,yoffset:rowscan*scan_width}
@@ -536,7 +520,7 @@ IF n_elements(order)                EQ 0    THEN order             = 2
 IF n_elements(region)               EQ 0    THEN region            = 1
 IF n_elements(scan_width)           EQ 0    THEN scan_width        = 5
 IF n_elements(sundiam)              EQ 0    THEN sundiam           = 70
-
+; COMMON vblock,image
 ; Run the program to get our structures
 makelimbstrips, thresh, xstrips, ystrips, file, ministrip_length, scan_width, sundiam, $
     nstrips=nstrips, region=region, time=time
@@ -823,7 +807,7 @@ PRO getstruct, file, struct, scan_width, sundiam, time=time
 ;-
 COMPILE_OPT idl2 
 on_error,2
-
+; COMMON vblock,image
 start = systime(1,/s)
 
 center1 = {center1,xpos:0d,ypos:0d,thresh:0d}
@@ -841,9 +825,6 @@ limbfit, thresh, xpos, ypos, file, ministrip_length, order, scan_width, sundiam,
 center1.xpos = xpos
 center1.ypos = ypos
 center1.thresh = thresh
-
-tmpimage = read_bmp(file) 
-image = reform(tmpimage[0,*,*])
 
 ;trimask, file, xpos, ypos, scan_width, sigmavalue, sundiam, thresh, region=2, time=time
 limbfit, thresh, xpos, ypos, file, ministrip_length, order, scan_width, sundiam, $
@@ -936,26 +917,32 @@ IF n_elements(sundiam)      EQ 0 THEN   sundiam = 70
 
 start=systime(1,/s)
 
-getstruct, file, struct, scan_width, sundiam, time=time
+profiler
+profiler,/system
+COMMON vblock, wholeimage
 tmpimage = read_bmp(file) 
-image = reform(tmpimage[0,*,*])
+wholeimage = reform(tmpimage[0,*,*])
 
-image2 = image
-image3 = image
+getstruct, file, struct, scan_width, sundiam, time=time
 
-image[struct.center1.xpos,*]=20
-image[*,struct.center1.ypos]=20
-image2[struct.center2.xpos,*]=20
-image2[*,struct.center2.ypos]=20
-image3[struct.center3.xpos,*]=20
-image3[*,struct.center3.ypos]=20
+profiler,/report
+profiler,/reset
+wholeimage2 = wholeimage
+wholeimage3 = wholeimage
+
+wholeimage[struct.center1.xpos,*]=20
+wholeimage[*,struct.center1.ypos]=20
+wholeimage2[struct.center2.xpos,*]=20
+wholeimage2[*,struct.center2.ypos]=20
+wholeimage3[struct.center3.xpos,*]=20
+wholeimage3[*,struct.center3.ypos]=20
 
 window,0
-cgimage,image,/k
+cgimage,wholeimage,/k
 window,2
-cgimage,image2,/k
+cgimage,wholeimage2,/k
 window,3
-cgimage,image3,/k
+cgimage,wholeimage3,/k
 
 finish = systime(1,/s)
 IF keyword_set(time) THEN print, 'tricenter took: '+strcompress(finish-start)+$
@@ -963,3 +950,4 @@ IF keyword_set(time) THEN print, 'tricenter took: '+strcompress(finish-start)+$
 
 END
 
+; 
