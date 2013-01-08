@@ -1,4 +1,4 @@
-PRO makelimbstrips, thresh, xstrips, ystrips, file, ministrip_length, scan_width, sigmavalue, $
+PRO makelimbstrips, thresh, xstrips, ystrips, file, ministrip_length, scan_width, $
     sundiam, nstrips=nstrips, region=region, time=time
 ;+
 ;   :Description:
@@ -11,11 +11,6 @@ PRO makelimbstrips, thresh, xstrips, ystrips, file, ministrip_length, scan_width
 ;           How long the total array of the cut-down strip will be
 ;       scan_width: in, required, type=integer, default=5
 ;           Indicates how far apart to scan
-;       sigmavalue: in, required, type=integer, default=2
-;           Sets the threshold to be::
-;   
-;           max(image) - sigmavalue*stddev(image)
-;
 ;       sundiam : in, required, type=byte, default=70
 ;           Approximate diameter of sun in pixels. (Based on bmp image)
 ;       thresh : out, required, type=float
@@ -39,11 +34,10 @@ IF n_elements(file)             EQ 0    THEN file               = 'triplesun.bmp
 IF n_elements(ministrip_length) EQ 0    THEN ministrip_length   = 9
 IF n_elements(nstrips)          EQ 0    THEN nstrips            = 5 
 IF n_elements(scan_width)       EQ 0    THEN scan_width         = 5 
-IF n_elements(sigmavalue)       EQ 0    THEN sigmavale          = 2
 IF n_elements(sundiam)          EQ 0    THEN sundiam            = 70
 IF n_elements(region)           EQ 0    THEN region             = 1
 
-makestrips, thresh, c4xstrips, c4ystrips, file, scan_width, sigmavalue, sundiam, nstrips=nstrips, $
+makestrips, thresh, c4xstrips, c4ystrips, file, scan_width, sundiam, nstrips=nstrips, $
     region=region, time=time
 
 start = systime(1,/seconds)
@@ -69,10 +63,12 @@ ENDFOR
 ; Preallocating the array, replicating it by the number of strips there are
 xstrips = REPLICATE({ROWINDEX:0, BEGINDEX:0, ENDINDEX:0, $
         STARTPOINTS:bytarr(ministrip_length), $
-        ENDPOINTS:bytarr(ministrip_length)},n_elements(c4xstrips))
+        ENDPOINTS:bytarr(ministrip_length), $
+        xoffset:c4xstrips.xoffset},n_elements(c4xstrips))
 ystrips = REPLICATE({COLINDEX:0, BEGINDEX:0, ENDINDEX:0, $
         STARTPOINTS:bytarr(ministrip_length), $
-        ENDPOINTS:bytarr(ministrip_length)},n_elements(c4ystrips))
+        ENDPOINTS:bytarr(ministrip_length), $
+        yoffset:c4ystrips.yoffset},n_elements(c4ystrips))
 
 ;Filling out structure with cut-down strip information
 FOR i = 0,n_elements(c4xstrips) - 1 DO BEGIN
@@ -130,8 +126,56 @@ RETURN
 END
 
 
+;**************************************************************************************************
+;*                                                                                                *
+;**************************************************************************************************
 
-PRO makestrips, thresh, xstrips, ystrips, file, scan_width, sigmavalue, sundiam, nstrips=nstrips, $
+ 
+FUNCTION whichcropmethod, file, region, scan_width, sundiam, thresh
+
+merrygotrimask, image, file, xpos, ypos, xoffset, yoffset, scan_width, sundiam, thresh, $
+    region=region, time=time 
+
+mainxpos = xpos + xoffset
+mainypos = ypos + yoffset
+
+IF REGION NE 1 THEN BEGIN
+    circscancrop, mainxpos, mainypos, file, image, xpos, ypos, xoffset, yoffset, scan_width, $
+    sundiam, thresh, region=region, time=time
+ENDIF
+
+; RETURN, {xpos:xpos, ypos:ypos, image:image, xoffset:xoffset, yoffset:yoffset}
+RETURN,{image:image, xoffset:xoffset, yoffset:yoffset}
+END
+
+
+;**************************************************************************************************
+;*                                                                                                *
+;**************************************************************************************************
+
+
+FUNCTION quickmask, image, thresh
+
+thresh = 0.25*max(image)
+
+s = size(image,/dimensions)
+n_col = s[0]
+n_row = s[1]
+
+suncheck = image gt thresh
+
+xpos = TOTAL( TOTAL(suncheck, 2) * Indgen(n_col) ) / total(suncheck)
+ypos = TOTAL( TOTAL(suncheck, 1) * Indgen(n_row) ) / total(suncheck)
+RETURN, {xpos:xpos,ypos:ypos}
+END
+
+
+;**************************************************************************************************
+;*                                                                                                *
+;**************************************************************************************************
+
+
+PRO makestrips, thresh, xstrips, ystrips, file, scan_width, sundiam, nstrips=nstrips, $
     region=region, time=time
 ;+
 ;   :Description:
@@ -143,11 +187,6 @@ PRO makestrips, thresh, xstrips, ystrips, file, scan_width, sigmavalue, sundiam,
 ;       File to be read in
 ;   scan_width: in, required, type=integer, default=5
 ;       Indicates how far apart to scan
-;   sigmavalue: in, required, type=integer, default=2
-;       Sets the threshold to be::
-;   
-;       max(image) - sigmavalue*stddev(image)
-;
 ;   sundiam : in, required, type=byte, default=70
 ;       Approximate diameter of sun in pixels. (Based on bmp image)
 ;   thresh : out, required, type=float
@@ -170,13 +209,21 @@ IF n_elements(file)         EQ 0    THEN file       = 'triplesun.bmp'
 IF n_elements(nstrips)      EQ 0    THEN nstrips    = 5
 IF n_elements(region)       EQ 0    THEN region     = 1
 IF n_elements(scan_width)   EQ 0    THEN scan_width = 5
-IF n_elements(sigmavalue)   EQ 0    THEN sigmavalue = 2
 IF n_elements(sundiam)      EQ 0    THEN sundiam    = 70
 
+
 ; Using masking to get the center now
-merrygotrimask, image, file, xpos, ypos, scan_width, sigmavalue, sundiam, thresh, region=region, time=time
+struct = whichcropmethod(file, region, scan_width, sundiam, thresh)
+
+; For 1st sun, mask, find center, crop, limbfit
+; for 2nd sun, scan, find center, crop, limbfit
+; for 3rd sun, scan other way, find center, crop, limbfit
+
+ducks = quickmask(struct.image,thresh)
+
 start = systime(1,/seconds)
 
+image = struct.image
 s = size(image,/dimensions)
 length = s[0]
 height = s[1]
@@ -184,17 +231,18 @@ height = s[1]
 rowchord_endpoints = fltarr(2,nstrips)
 colchord_endpoints = fltarr(2,nstrips)
 
-xstrips = REPLICATE({ROWINDEX:0,ARRAY:bytarr(length)},nstrips)
-ystrips = REPLICATE({COLINDEX:0,ARRAY:bytarr(height)},nstrips)
+xstrips = REPLICATE({ROWINDEX:0,ARRAY:bytarr(length),xoffset:struct.xoffset},nstrips)
+ystrips = REPLICATE({COLINDEX:0,ARRAY:bytarr(height),yoffset:struct.yoffset},nstrips)
+
 
 FOR i = 0,nstrips - 1 DO BEGIN
     xstrips[i].ROWINDEX = i
-    xstrips[i].ARRAY = image[*, round(xpos)+(i-nstrips/2)*scan_width]
+    xstrips[i].ARRAY = image[*, round(ducks.xpos)+(i-nstrips/2)*scan_width]
 ENDFOR
 
 FOR k = 0,nstrips - 1 DO BEGIN
     ystrips[k].COLINDEX = k
-    ystrips[k].ARRAY = image[round(ypos)+(k-nstrips/2)*scan_width,*]
+    ystrips[k].ARRAY = image[round(ducks.ypos)+(k-nstrips/2)*scan_width,*]
 ENDFOR
 
 finish = systime(1,/seconds)
@@ -203,8 +251,190 @@ IF keyword_set(time) THEN  print,'Elapsed Time for makestrips: ', $
 RETURN
 END
 
-PRO merrygotrimask, image, file, xpos, ypos, scan_width, sigmavalue, sundiam, thresh, region=region, $
-    time=time
+
+;**************************************************************************************************
+;*                                                                                                *
+;**************************************************************************************************
+
+
+PRO circscancrop, mainxpos, mainypos, file, image, xpos, ypos, xoffset, yoffset, scan_width, $
+    sundiam, thresh, region=region, time=time
+;+
+;   :Description: 
+;       Quickly finds the center of the main sun, scans in a circle, and locates the two secondary suns'
+;       centers. Crops either of the secondary suns based on what region specified.
+;
+;   :Params:
+;       file: in, required, type='string', default='triplesun.bmp'
+;           What file to load in
+;       xpos : out, required, type=float
+;           Computed X position of center
+;       ypos : out, required, type=float
+;           Computed Y position of center
+;       scan_width : in, required, type=integer, default=5
+;           How apart the scans are for minicrop(). 
+;       sundiam: in, required, default=70
+;           Approximate diameter of sun in pixels. (Based on bmp image)
+;       thresh : out, required, type=float
+;           Threshold used in finding center
+;
+;   :Keywords:
+;       region: in, required, type=integer, default=1
+;           Which sun out of the three to find the center of. Defaults to the brightest sun
+;       time : in, optional
+;           Print the elapsed time
+;-
+
+COMPILE_OPT idl2 
+on_error,2
+
+start = systime(1,/s)
+
+i=0
+k=0
+
+IF REGION EQ 2 THEN arr=(findgen(360) + 90)*!dtor ELSE arr=reverse((findgen(360) + 90)*!dtor)
+
+; only adding 90 so that it starts from 12 o'clock assuming there is
+; no dim sun at that location
+
+;reversing it to look for other sun first - either way I'm scanning more or less the same amount,
+; might run into problems later but I'll deal with it then
+
+; radius = sqrt((xpos - center2.xpos)^2  + (ypos - center2.ypos)^2 )
+radius = 129
+r2 = radius - 10 ;10 is an arbitrary number, can be anything, really
+
+x = radius*cos(arr) + mainxpos
+y = radius*sin(arr) + mainypos
+x2 = r2*cos(arr) + mainxpos
+y2 = r2*sin(arr) + mainypos
+
+tmpimage = read_bmp(file) 
+image = reform(tmpimage[0,*,*])
+thresh = 0.25*max(image)
+
+
+WHILE image[x[i],y[i]] LT thresh DO i++
+WHILE image[x2[k],y2[k]] LT thresh DO k++
+
+a = [x[i],y[i]]
+b = [x2[k],y2[k]]
+
+i+=1 ;so that the while statement continues to execute
+k+=1
+
+WHILE image[x[i],y[i]] GT thresh DO i++
+WHILE image[x2[k],y2[k]] GT thresh DO k++
+
+c = [x[i],y[i]]
+d = [x2[k],y2[k]]
+
+j=i
+m=k
+
+WHILE image[x[i],y[i]] LT thresh DO i++
+WHILE image[x2[k],y2[k]] LT thresh DO k++
+
+; How do we set smart cropping?
+chord1 = [[a],[b]]
+chord2 = [[c],[d]]
+midpoint1 = [mean(chord1[0,*]),mean(chord1[1,*])]
+midpoint2 = [mean(chord2[0,*]),mean(chord2[1,*])]
+
+theta = atan((chord1[1,0] - chord1[1,1])/(chord1[0,0]-chord1[0,1]))+!pi/2
+theta2 = atan((chord2[1,0] - chord2[1,1])/(chord2[0,0]-chord2[0,1]))+!pi/2
+
+pt1 = [midpoint1[0] + 50*cos(theta),midpoint1[1] + 50*sin(theta)]
+pt2 = [midpoint1[0] - 50*cos(theta),midpoint1[1] - 50*sin(theta)]
+pt3 = [midpoint2[0] + 50*cos(theta2),midpoint2[1] + 50*sin(theta2)]
+pt4 = [midpoint2[0] - 50*cos(theta2),midpoint2[1] - 50*sin(theta2)]
+
+center = pb_lines_intersection([pt1,pt2],[pt3,[pt4]])
+
+; Now, even though xpos and ypos aren't particular'ly close to the sun's center... is it OK?
+; In the end, cropping doesn't cut off any part of the sun
+xoffset = center[0] - 50
+yoffset = center[1] - 50
+
+xpos =  center[0]/scan_width
+ypos =  center[1]/scan_width
+
+image = image[xoffset:xoffset+100,yoffset:yoffset+100]
+
+; print,'region 2:'
+; print,'x and y pos',xpos,ypos
+; print,'x and y offset',xoffset,yoffset
+
+finish = systime(1,/s)
+IF keyword_set(time) THEN print, 'getstruct took: '+strcompress(finish-start)+$
+    ' seconds'
+RETURN
+END
+
+
+;**************************************************************************************************
+;*                                                                                                *
+;**************************************************************************************************
+
+
+FUNCTION mainsuncrop, file, scan_width, sundiam, time=time
+IF n_elements(file)       EQ 0 THEN file        = 'triplesun.bmp'
+IF n_elements(scanwidth)  EQ 0 THEN scan_width  = 5
+IF n_elements(region)     EQ 0 THEN region      = 2
+
+COMPILE_OPT idl2 
+on_error,2
+
+IF STRPOS(file, 'bmp') NE -1  THEN BEGIN
+    tmpimage = read_bmp(file)
+    s = size(tmpimage,/dimensions)
+    n_col = s[1]
+    n_row = s[2]
+    image = reform(tmpimage[0,*,*])
+    sundiam = 70 ;at it's widest, sun is 61 pixels across
+ENDIF
+
+;Must use special threshold
+thresh = 0.65*max(image)
+temparr = image * (image gt thresh)
+
+colscan = 0
+WHILE total(where(temparr[colscan*scan_width,*] GT thresh/2)) EQ -1 DO BEGIN
+    colscan++
+ENDWHILE
+rowscan = fix(((where(temparr[colscan*scan_width,*] GT thresh/2))[0] - sundiam/2 + $
+        n_elements(where(temparr[colscan*scan_width,*] GT thresh/2))/2 )/scan_width)
+
+rowendscan = rowscan + sundiam/scan_width ; Jumping to other side of sun
+colendscan = colscan + sundiam/scan_width
+
+;Since the column scanning is rough, have to give the ends a little room.
+rowscan     -= 2
+colscan     -= 2
+rowendscan  += 2
+colendscan  += 2
+
+cropped=image[colscan*scan_width:colendscan*scan_width,rowscan*scan_width:$
+    rowendscan*scan_width]
+
+location = {image:cropped,xoffset:colscan*scan_width,yoffset:rowscan*scan_width}
+
+finish = systime(1,/seconds)
+IF keyword_set(time) THEN  print, 'Elapsed Time for mainsuncrop(): ' + $
+    strcompress(finish-start,/remove)+ ' seconds'
+RETURN, location
+
+END
+
+
+;**************************************************************************************************
+;*                                                                                                *
+;**************************************************************************************************
+
+
+PRO merrygotrimask, image, file, xpos, ypos, xoffset, yoffset, scan_width, sundiam, thresh, $
+    region=region, time=time
 ;+
 ;   :Description:
 ;       Had to make a new version of comp3 because the old one called scanbox() by default
@@ -220,11 +450,6 @@ PRO merrygotrimask, image, file, xpos, ypos, scan_width, sigmavalue, sundiam, th
 ;           Computed Y position of center
 ;       scan_width : in, required, type=integer, default=5
 ;           How apart the scans are for minicrop(). 
-;       sigmavalue : in, required, type = integer, default = 2
-;          Sets the threshold to be::
-;
-;           max(image) - sigmavalue*stddev(image)
-;
 ;       sundiam: in, required, default=70
 ;           Approximate diameter of sun in pixels. (Based on bmp image)
 ;       thresh : out, required, type=float
@@ -240,33 +465,34 @@ COMPILE_OPT idl2
 on_error,2
 
 IF n_elements(file)         EQ 0 THEN file   = 'triplesun.bmp'
-IF n_elements(sigmavalue)   EQ 0 THEN sigmavalue = 2
 IF n_elements(region)       EQ 0 THEN region = 1
 
-struct = tribox(file, scan_width, sigmavalue, sundiam, region=region, time=time)
+; struct = tribox(file, scan_width, sundiam, region=region, time=time)
+struct = mainsuncrop(file, scan_width, sundiam, time=time)
 image = struct.image
-
 start = systime(1,/seconds)
 
-thresh = max(image)-sigmavalue*stddev(image)
+ducks = quickmask(image,thresh)
 
-s = size(image,/dimensions)
-n_col = s[0]
-n_row = s[1]
+xpos = ducks.xpos
+ypos = ducks.ypos
 
-suncheck = image gt thresh
-
-xpos = TOTAL( TOTAL(suncheck, 2) * Indgen(n_col) ) / total(suncheck)
-ypos = TOTAL( TOTAL(suncheck, 1) * Indgen(n_row) ) / total(suncheck)
+xoffset = struct.xoffset
+yoffset = struct.yoffset
 
 finish = systime(1,/s)
 IF keyword_set(time) THEN  print, 'Elapsed Time for trimask: ',strcompress(finish-start,/remove),$
     ' seconds'
 RETURN
-
 END
 
-PRO limbfit, thresh, xpos, ypos, file, ministrip_length, order, scan_width, sigmavalue, sundiam, $
+
+;**************************************************************************************************
+;*                                                                                                *
+;**************************************************************************************************
+
+
+PRO limbfit, thresh, xpos, ypos, file, ministrip_length, order, scan_width, sundiam, $
     nstrips=nstrips, plot=plot, region=region, time=time
 ;+
 ;   :Description:
@@ -282,11 +508,6 @@ PRO limbfit, thresh, xpos, ypos, file, ministrip_length, order, scan_width, sigm
 ;           What order polynomial to use for POLY_FIT()
 ;       scan_width : in, required, type=integer, default=5
 ;           Indicates how far apart to scan
-;       sigmavalue : in, required, type=integer, default=2
-;           Sets the threshold to be::
-;
-;           max(image) - sigmavalue*stddev(image)
-;
 ;       sundiam : in, required, type=byte, default=70
 ;           Approximate diameter of sun in pixels. (Based on bmp image)
 ;       thresh : out, required, type=float
@@ -314,11 +535,10 @@ IF n_elements(nstrips)              EQ 0    THEN nstrips           = 5
 IF n_elements(order)                EQ 0    THEN order             = 2
 IF n_elements(region)               EQ 0    THEN region            = 1
 IF n_elements(scan_width)           EQ 0    THEN scan_width        = 5
-IF n_elements(sigmavalue)           EQ 0    THEN sigmavalue        = 2
 IF n_elements(sundiam)              EQ 0    THEN sundiam           = 70
 
 ; Run the program to get our structures
-makelimbstrips, thresh, xstrips, ystrips, file, ministrip_length, scan_width, sigmavalue, sundiam, $
+makelimbstrips, thresh, xstrips, ystrips, file, ministrip_length, scan_width, sundiam, $
     nstrips=nstrips, region=region, time=time
 
 start = systime(1,/seconds)
@@ -407,12 +627,8 @@ FOR n=0,n_elements(ystrips)-1 DO BEGIN
 ENDFOR    
 
 ; Get the midpoint of the chords
-xpos = mean(xlenarr[where(xlenarr ne 0)])
-ypos = mean(ylenarr[where(ylenarr ne 0)])
-
-struct = tribox(file, scan_width, sigmavalue, sundiam, region=region, time=time)
-xpos+=struct.xoffset
-ypos+=struct.yoffset
+xpos = mean(xlenarr[where(xlenarr ne 0)]) + (xstrips.xoffset)[0]
+ypos = mean(ylenarr[where(ylenarr ne 0)]) + (ystrips.yoffset)[0]
 
 IF keyword_set(plot) THEN BEGIN
     wn = 3
@@ -580,8 +796,12 @@ RETURN
 END
 
 
+;**************************************************************************************************
+;*                                                                                                *
+;**************************************************************************************************
 
-PRO getstruct, file, struct, scan_width, sigmavalue, sundiam, time=time
+
+PRO getstruct, file, struct, scan_width, sundiam, time=time
 ;+
 ;   :Description:
 ;       Finds the centers of a triple-sun image and loads all relevant information
@@ -594,11 +814,6 @@ PRO getstruct, file, struct, scan_width, sigmavalue, sundiam, time=time
 ;           Structure containing the centers and cropped images of all 3 suns
 ;       scan_width : in, required, type=integer, default=5
 ;           How apart the scans are for minicrop(). 
-;       sigmavalue : in, required, type = integer, default = 2
-;          Sets the threshold to be::
-;
-;           max(image) - sigmavalue*stddev(image)
-;
 ;       sundiam : in, required, type=byte, default=70
 ;           Approximate diameter of sun in pixels. (Based on bmp image)
 ;
@@ -618,7 +833,7 @@ center3 = {center3,xpos:0d,ypos:0d,thresh:0d}
 nstrips=5
 
 ; trimask, file, xpos, ypos, scan_width, sigmavalue, sundiam, thresh, region=1, time=time
-limbfit, thresh, xpos, ypos, file, ministrip_length, order, scan_width, sigmavalue, sundiam, $
+limbfit, thresh, xpos, ypos, file, ministrip_length, order, scan_width, sundiam, $
     nstrips=nstrips, plot=plot, region=1, time=time
 ; struct = tribox(file, scan_width, sigmavalue, sundiam, region=1, time=time)
 ; xpos+=struct.xoffset
@@ -626,8 +841,12 @@ limbfit, thresh, xpos, ypos, file, ministrip_length, order, scan_width, sigmaval
 center1.xpos = xpos
 center1.ypos = ypos
 center1.thresh = thresh
+
+tmpimage = read_bmp(file) 
+image = reform(tmpimage[0,*,*])
+
 ;trimask, file, xpos, ypos, scan_width, sigmavalue, sundiam, thresh, region=2, time=time
-limbfit, thresh, xpos, ypos, file, ministrip_length, order, scan_width, sigmavalue, sundiam, $
+limbfit, thresh, xpos, ypos, file, ministrip_length, order, scan_width, sundiam, $
     nstrips=nstrips, plot=plot, region=2, time=time
 ; struct = tribox(file, scan_width, sigmavalue, sundiam, region=2, time=time)
 ; xpos+=struct.xoffset
@@ -636,85 +855,8 @@ center2.xpos = xpos
 center2.ypos = ypos
 center2.thresh = thresh
 
-a=(findgen(360) + 90)*!dtor 
-; only adding 90 so that it starts from 12 o'clock assuming there is
-; no dim sun at that location
-radius = sqrt((center1.xpos - center2.xpos)^2  + (center1.ypos - center2.ypos)^2 )
-r2 = radius - 10
-; how to define the closest point on grid to a point on our theoretical circle
-; (sin(a))^2 + (cos(a))^2 = radius
-x = radius*cos(a) + center1.xpos
-; y = sqrt(radius^2 + x^2)
-y = radius*sin(a) + center1.ypos
-x2 = r2*cos(a) + center1.xpos
-y2 = r2*sin(a) + center1.ypos
-
-tmpimage = read_bmp(file) 
-image = reform(tmpimage[0,*,*])
-thresh = 0.15*max(image)
-k=0
-i=0
-WHILE image[x[i],y[i]] LT thresh DO i++
-WHILE image[x2[k],y2[k]] LT thresh DO k++
-; Now we know where first dim sun is
-; Just ahead
-image[x[0:i],y[0:i]]=200
-image[x2[0:k],y2[0:k]]=200
-a = [x[i],y[i]]
-b = [x2[k],y2[k]]
-print,a
-print,b
-; stop
-i+=1
-k+=1
-WHILE image[x[i],y[i]] GT thresh DO i++
-WHILE image[x2[k],y2[k]] GT thresh DO k++
-c = [x[i],y[i]]
-d = [x2[k],y2[k]]
-; i+=(sundiam/radius)*!radeg
-; k+=(sundiam/r2)*!radeg
-j=i
-m=k
-WHILE image[x[i],y[i]] LT thresh DO i++
-WHILE image[x2[k],y2[k]] LT thresh DO k++
-image[x[j:i],y[j:i]]=200
-image[x2[m:k],y2[m:k]]=200
-
-window,0
-cgimage,image,/k
-
-; How do we set smart cropping?
-chord1 = [[a],[b]]
-chord2 = [[c],[d]]
-midpoint1 = [mean(chord1[0,*]),mean(chord1[1,*])]
-midpoint2 = [mean(chord2[0,*]),mean(chord2[1,*])]
-
-theta = atan((chord1[1,0] - chord1[1,1])/(chord1[0,0]-chord1[0,1]))+!pi/2
-slope = abs(chord1[0,1] - chord1[0,0])/abs(chord1[1,1]-chord1[1,0])
-
-pt1 = [midpoint1[0] + 50*cos(theta),midpoint1[1] + 50*sin(theta)]
-pt2 = [midpoint1[0] - 50*cos(theta),midpoint1[1] - 50*sin(theta)]
-
-theta = atan((chord2[1,0] - chord2[1,1])/(chord2[0,0]-chord2[0,1]))+!pi/2
-slope = abs(chord2[0,1] - chord2[0,0])/abs(chord2[1,1]-chord2[1,0])
-
-pt3 = [midpoint2[0] + 50*cos(theta),midpoint2[1] + 50*sin(theta)]
-pt4 = [midpoint2[0] - 50*cos(theta),midpoint2[1] - 50*sin(theta)]
-
-loc = pb_lines_intersection([pt1,pt2],[pt3,[pt4]])
-
-image[loc[0],loc[1]]=0
-
-; image[loc[0]-50:loc[0]+50,loc[1]-50:loc[1]+50]=0
-
-;Well, this seems to work. Now to make sure it works all the time
-
-window,0
-cgimage,image,/k
-stop
-
 ;trimask, file, xpos, ypos, scan_width, sigmavalue, sundiam, thresh, region=3, time=time
-limbfit, thresh, xpos, ypos, file, ministrip_length, order, scan_width, sigmavalue, sundiam, $
+limbfit, thresh, xpos, ypos, file, ministrip_length, order, scan_width, sundiam, $
     nstrips=nstrips, plot=plot, region=3, time=time
 ; struct = tribox(file, scan_width, sigmavalue, sundiam, region=3, time=time)
 ; xpos+=struct.xoffset
@@ -722,6 +864,8 @@ limbfit, thresh, xpos, ypos, file, ministrip_length, order, scan_width, sigmaval
 center3.xpos = xpos
 center3.ypos = ypos
 center3.thresh = thresh
+
+
 
 theta = !radeg*atan((center3.ypos - center2.ypos)/(center3.xpos - center2.xpos))
 hypot = sqrt((center3.ypos - center2.ypos)^2 + (center3.xpos - center2.xpos)^2)
@@ -736,80 +880,10 @@ IF keyword_set(time) THEN print, 'getstruct took: '+strcompress(finish-start)+$
 RETURN
 END
 
-PRO minicrop, temparr, rowscan, colscan, rowendscan, colendscan, scan_width,$
-        sundiam, thresh,time=time
-;+
-;   :Description: 
-;       Small function to keep code small in cropit. Finds the row where the threshold is crossed
-;       and then steps back in the x-direction to find the left side of the cropping box. Skips 
-;       over the sun by a predetermined value then crops out the sun. 
-;
-;   :Params:
-;       temparr : in, required, type=byte
-;           2D array to check boundary limits of
-;       rowscan : out, required, type=integer
-;           Where to crop the rows from
-;       colscan : out, required, type=integer
-;           Where to crop the columns from
-;       rowendscan : out, required, type=integer
-;           Where to crop the rows to
-;       colendscan : out, required, type=integer
-;           Where to crop the columns to
-;       scan_width : in, required, type=integer, default=5
-;           How apart the scans are for minicrop(). 
-;       sundiam : in, required, type=byte, default=70
-;           Approximate diameter of sun in pixels. (Based on bmp image)
-;       temparr : in, required, type=byte
-;           2D array to check boundary limits of
-;       thresh : in, required, type=float
-;           What the minimum threshold will be for scanning
-;
-;   :Keywords:
-;       time : in, optional
-;           Print the elapsed time
-;-
-COMPILE_OPT idl2 
-on_error,2
 
-start = systime(1,/s)
-
-;rowscan=0
-;WHILE total(where(temparr[*,rowscan*scan_width] GT thresh/2)) EQ -1 DO BEGIN
-;    rowscan++
-;ENDWHILE
-;; Doing it this way so that if in the case of 3 suns, if 1 sun is more left than the sun which 
-;; is the most bottom, the cropping will correctly choose the right sun.
-;colscan = fix(((where(temparr[*,rowscan*scan_width] GT thresh/2))[0] - sundiam/2 + $
-;        n_elements(where(temparr[*,rowscan*scan_width] GT thresh/2))/2 )/scan_width)
-;
-
-; Redoing it so that we scan left to right before bottom to top
-
-colscan = 0
-WHILE total(where(temparr[colscan*scan_width,*] GT thresh/2)) EQ -1 DO BEGIN
-    colscan++
-ENDWHILE
-rowscan = fix(((where(temparr[colscan*scan_width,*] GT thresh/2))[0] - sundiam/2 + $
-        n_elements(where(temparr[colscan*scan_width,*] GT thresh/2))/2 )/scan_width)
-
-
-
-
-rowendscan = rowscan + sundiam/scan_width ; Jumping to other side of sun
-colendscan = colscan + sundiam/scan_width
-
-;Since the column scanning is rough, have to give the ends a little room.
-rowscan     -= 3
-colscan     -= 3
-rowendscan  += 3
-colendscan  += 3
-
-finish = systime(1,/s)
-IF keyword_set(time) THEN print,' minicrop took '+strcompress(finish-start,/remove)+' seconds'
-
-RETURN
-END
-
+;**************************************************************************************************
+;*                                                                                                *
+;**************************************************************************************************
 
 
 ; docformat = 'rst'
@@ -831,7 +905,7 @@ END
 ;       E-mail: jsuzuki@ssl.berkeley.edu
 ;-
 
-; PRO merrygotrac e, file, scan_width, sigmavalue, sundiam, time=time
+; PRO merrygotrace, file, scan_width, sundiam, time=time
 ;+
 ;   :Description:
 ;       This version uses limb fitting opposed to masking (tricenter). 
@@ -841,11 +915,6 @@ END
 ;           What file to find 3 centers for
 ;       scan_width: in, required, type = integer, default = 5
 ;           How apart the scans are for minicrop(). Overrides defaults in crop().
-;       sigmavalue: in, required, type = integer, default = 2
-;          Sets the threshold to be::
-;
-;           max(image) - sigmavalue*stddev(image)
-;
 ;       sundiam : in, required, type=byte, default=70
 ;           Approximate diameter of sun in pixels. (Based on bmp image)
 ;
@@ -863,13 +932,13 @@ on_error,2
 
 IF n_elements(file)         EQ 0 THEN   file = 'yetanothertriplesun.bmp'
 IF n_elements(scan_width)   EQ 0 THEN   scan_width = 5
-IF n_elements(sigmavalue)   EQ 0 THEN   sigmavalue = 2
 IF n_elements(sundiam)      EQ 0 THEN   sundiam = 70
 
 start=systime(1,/s)
 
-getstruct, file, struct, scan_width, sigmavalue, sundiam, time=time
-
+getstruct, file, struct, scan_width, sundiam, time=time
+tmpimage = read_bmp(file) 
+image = reform(tmpimage[0,*,*])
 
 image2 = image
 image3 = image
@@ -881,16 +950,16 @@ image2[*,struct.center2.ypos]=20
 image3[struct.center3.xpos,*]=20
 image3[*,struct.center3.ypos]=20
 
-; window,0
-; cgimage,image,/k
-; window,2
-; cgimage,image2,/k
-; window,3
-; cgimage,image3,/k
+window,0
+cgimage,image,/k
+window,2
+cgimage,image2,/k
+window,3
+cgimage,image3,/k
 
 finish = systime(1,/s)
 IF keyword_set(time) THEN print, 'tricenter took: '+strcompress(finish-start)+$
     ' seconds'
-stop
+
 END
 
