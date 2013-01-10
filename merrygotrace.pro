@@ -30,12 +30,15 @@ PRO makelimbstrips, thresh, xstrips, ystrips, file, ministrip_length, scan_width
 ;   doesn't make sense to repeat any data in the structures.
 ;-
 
-IF n_elements(file)             EQ 0    THEN file               = 'triplesun.bmp'
-IF n_elements(ministrip_length) EQ 0    THEN ministrip_length   = 9
+IF n_elements(file)             EQ 0    THEN file               = 'dimsun1.fits'
+IF n_elements(ministrip_length) EQ 0    THEN ministrip_length   = 13
 IF n_elements(nstrips)          EQ 0    THEN nstrips            = 5 
 IF n_elements(scan_width)       EQ 0    THEN scan_width         = 5 
 IF n_elements(sundiam)          EQ 0    THEN sundiam            = 70
 IF n_elements(region)           EQ 0    THEN region             = 1
+
+; Going through and doing a little commenting, think I forgot how this works:
+
 
 makestrips, thresh, c4xstrips, c4ystrips, file, scan_width, sundiam, nstrips=nstrips, $
     region=region, time=time
@@ -43,6 +46,7 @@ makestrips, thresh, c4xstrips, c4ystrips, file, scan_width, sundiam, nstrips=nst
 start = systime(1,/seconds)
 
 ministrip_side_buffer = ministrip_length/2 
+; Contains coordinates of chord enpoints
 rowchord_endpoints = fltarr(2,n_elements(c4xstrips))
 colchord_endpoints = fltarr(2,n_elements(c4ystrips))
 ;   Seeing where the array starts to be greater than the thresh
@@ -80,7 +84,18 @@ FOR i = 0,n_elements(c4xstrips) - 1 DO BEGIN
     ENDIF ELSE BEGIN
         ; STARTPOINTS is the cut down strip with length = ministrip_length and contains
         ; the indices from rowchord_endpoints[0,i] +/- ministrip_side_buffer
+        
+
+
+
+        ; if i eq 3 then stop
+
+
+
+
+
         xstrips[i].STARTPOINTS  = $
+        ; IF chord is too long, it tries to crop from outside of image file
             (c4xstrips[i].ARRAY)[rowchord_endpoints[0,i]-ministrip_side_buffer:$
             rowchord_endpoints[0,i]+ministrip_side_buffer]   
         ; BEGINDEX is the index of the strip where it begins. 
@@ -133,16 +148,42 @@ END
  
 FUNCTION whichcropmethod, file, region, scan_width, sundiam, thresh
 
-merrygotrimask, image, file, xpos, ypos, xoffset, yoffset, scan_width, sundiam, thresh, $
-    region=region, time=time 
+; merrygotrimask, image, file, xpos, ypos, xoffset, yoffset, scan_width, sundiam, thresh, $
+;     region=region, time=time 
+; mainxpos = xpos + xoffset
+; mainypos = ypos + yoffset
 
-mainxpos = xpos + xoffset
-mainypos = ypos + yoffset
+
+COMMON vblock, wholeimage
+thresh = 0.65*max(wholeimage)
+
+ducks = quickmask(wholeimage,thresh)
+
+image = wholeimage[ducks.xpos-60:ducks.xpos+60,ducks.ypos-60:ducks.ypos+60]
+
+mainxpos = ducks.xpos
+mainypos = ducks.ypos
+xoffset = ducks.xpos-60
+yoffset = ducks.ypos-60
 
 IF REGION NE 1 THEN BEGIN
     circscancrop, mainxpos, mainypos, file, image, xpos, ypos, xoffset, yoffset, scan_width, $
     sundiam, thresh, region=region, time=time
 ENDIF
+
+; There is a strong fiducial at image[*,53], but it's not on the limb. It's pretty darn close though. 
+; Now, need to replicate those conditions
+
+; plot,image[40,*],/nodata
+
+; i=0
+; while get_kbrd(0) EQ '' do BEGIN
+; oplot, image[*,i]
+; wait,.2
+; i++
+; ENDWHILE
+; plot,image[0:20,53]
+; stop
 
 ; RETURN, {xpos:xpos, ypos:ypos, image:image, xoffset:xoffset, yoffset:yoffset}
 RETURN,{image:image, xoffset:xoffset, yoffset:yoffset}
@@ -156,7 +197,7 @@ END
 
 FUNCTION quickmask, image, thresh
 
-thresh = 0.25*max(image)
+IF N_ELEMENTS(thresh) EQ 0 THEN THRESH = 0.25*max(image)
 
 s = size(image,/dimensions)
 n_col = s[0]
@@ -205,7 +246,7 @@ PRO makestrips, thresh, xstrips, ystrips, file, scan_width, sundiam, nstrips=nst
 ;       Prints elapsed time
 ;-
 
-IF n_elements(file)         EQ 0    THEN file       = 'triplesun.bmp'
+IF n_elements(file)         EQ 0    THEN file       = 'dimsun1.fits'
 IF n_elements(nstrips)      EQ 0    THEN nstrips    = 5
 IF n_elements(region)       EQ 0    THEN region     = 1
 IF n_elements(scan_width)   EQ 0    THEN scan_width = 5
@@ -213,7 +254,7 @@ IF n_elements(sundiam)      EQ 0    THEN sundiam    = 70
 
 struct = whichcropmethod(file, region, scan_width, sundiam, thresh)
 
-ducks = quickmask(struct.image,thresh)
+ducks = quickmask(struct.image)
 
 start = systime(1,/seconds)
 
@@ -312,6 +353,7 @@ thresh = 0.25*max(wholeimage)
 
 WHILE wholeimage[x[i],y[i]] LT thresh DO i++
 WHILE wholeimage[x2[k],y2[k]] LT thresh DO k++
+; stop
 
 a = [x[i],y[i]]
 b = [x2[k],y2[k]]
@@ -325,6 +367,12 @@ WHILE wholeimage[x2[k],y2[k]] GT thresh DO k++
 c = [x[i],y[i]]
 d = [x2[k],y2[k]]
 
+; I can do better here, will come back later
+; a = (where((wholeimage[x,y] GT thresh) EQ 1))[0]
+; b = (where((wholeimage[x2,y2] GT thresh) EQ 1))[0]
+; c = (where((wholeimage[x,y] GT thresh) EQ 1))[-1]
+; d = (where((wholeimage[x2,y2] GT thresh) EQ 1))[-1]
+
 ; How do we set smart cropping?
 chord1 = [[a],[b]]
 chord2 = [[c],[d]]
@@ -333,23 +381,23 @@ midpoint2 = [mean(chord2[0,*]),mean(chord2[1,*])]
 
 theta = atan((chord1[1,0] - chord1[1,1])/(chord1[0,0]-chord1[0,1]))+!pi/2
 theta2 = atan((chord2[1,0] - chord2[1,1])/(chord2[0,0]-chord2[0,1]))+!pi/2
-
-pt1 = [midpoint1[0] + 50*cos(theta),midpoint1[1] + 50*sin(theta)]
-pt2 = [midpoint1[0] - 50*cos(theta),midpoint1[1] - 50*sin(theta)]
-pt3 = [midpoint2[0] + 50*cos(theta2),midpoint2[1] + 50*sin(theta2)]
-pt4 = [midpoint2[0] - 50*cos(theta2),midpoint2[1] - 50*sin(theta2)]
+halfwidth = 60
+pt1 = [midpoint1[0] + halfwidth*cos(theta),midpoint1[1] + halfwidth*sin(theta)]
+pt2 = [midpoint1[0] - halfwidth*cos(theta),midpoint1[1] - halfwidth*sin(theta)]
+pt3 = [midpoint2[0] + halfwidth*cos(theta2),midpoint2[1] + halfwidth*sin(theta2)]
+pt4 = [midpoint2[0] - halfwidth*cos(theta2),midpoint2[1] - halfwidth*sin(theta2)]
 
 center = pb_lines_intersection([pt1,pt2],[pt3,[pt4]])
 
 ; Now, even though xpos and ypos aren't particular'ly close to the sun's center... is it OK?
 ; In the end, cropping doesn't cut off any part of the sun
-xoffset = center[0] - 50
-yoffset = center[1] - 50
+xoffset = center[0] - halfwidth
+yoffset = center[1] - halfwidth
 
 xpos =  center[0]/scan_width
 ypos =  center[1]/scan_width
 
-image = wholeimage[xoffset:xoffset+100,yoffset:yoffset+100]
+image = wholeimage[xoffset:xoffset+halfwidth*2,yoffset:yoffset+halfwidth*2]
 
 finish = systime(1,/s)
 IF keyword_set(time) THEN print, 'getstruct took: '+strcompress(finish-start)+$
@@ -364,46 +412,56 @@ END
 
 
 FUNCTION mainsuncrop, file, scan_width, sundiam, time=time
-IF n_elements(file)       EQ 0 THEN file        = 'triplesun.bmp'
-IF n_elements(scanwidth)  EQ 0 THEN scan_width  = 5
-IF n_elements(region)     EQ 0 THEN region      = 2
+IF n_elements(file)         EQ 0 THEN file        = 'dimsun1.fits'
+IF n_elements(scanwidth)    EQ 0 THEN scan_width  = 5
+IF n_elements(sundiam)      EQ 0 THEN sundiam     = 70 ;at it's widest, sun is 61 pixels across
 
 COMPILE_OPT idl2 
 on_error,2
 COMMON vblock, wholeimage
 
-IF STRPOS(file, 'bmp') NE -1  THEN BEGIN
-    s = size(wholeimage,/dimensions)
-    n_col = s[0]
-    n_row = s[1]
-    sundiam = 70 ;at it's widest, sun is 61 pixels across
-ENDIF
+s = size(wholeimage,/dimensions)
+n_col = s[0]
+n_row = s[1]
 
-;Must use special threshold
+; ;Must use special threshold
+; thresh = 0.65*max(wholeimage)
+; temparr = wholeimage * (wholeimage gt thresh)
+
+; colscan = 0
+; WHILE total(where(temparr[colscan*scan_width,*] GT thresh/2)) EQ -1 DO BEGIN
+;     colscan++
+; ENDWHILE
+; rowscan = fix(((where(temparr[colscan*scan_width,*] GT thresh/2))[0] - sundiam/2 + $
+;         n_elements(where(temparr[colscan*scan_width,*] GT thresh/2))/2 )/scan_width)
+
+; rowendscan = rowscan + sundiam/scan_width ; Jumping to other side of sun
+; colendscan = colscan + sundiam/scan_width
+; ;Since the column scanning is rough, have to give the ends a little room.
+; rowscan     -= 2
+; colscan     -= 2
+; rowendscan  += 2
+; colendscan  += 2
+
+; cropped=wholeimage[colscan*scan_width:colendscan*scan_width,rowscan*scan_width:$
+;     rowendscan*scan_width]
+; location = {image:cropped,xoffset:colscan*scan_width,yoffset:rowscan*scan_width}
+
+
+
+
+
+
 thresh = 0.65*max(wholeimage)
-temparr = wholeimage * (wholeimage gt thresh)
+suncheck = wholeimage gt thresh
 
-colscan = 0
-WHILE total(where(temparr[colscan*scan_width,*] GT thresh/2)) EQ -1 DO BEGIN
-    colscan++
-ENDWHILE
-rowscan = fix(((where(temparr[colscan*scan_width,*] GT thresh/2))[0] - sundiam/2 + $
-        n_elements(where(temparr[colscan*scan_width,*] GT thresh/2))/2 )/scan_width)
+xpos = TOTAL( TOTAL(suncheck, 2) * Indgen(n_col) ) / total(suncheck)
+ypos = TOTAL( TOTAL(suncheck, 1) * Indgen(n_row) ) / total(suncheck)
 
-rowendscan = rowscan + sundiam/scan_width ; Jumping to other side of sun
-colendscan = colscan + sundiam/scan_width
-
-;Since the column scanning is rough, have to give the ends a little room.
-rowscan     -= 2
-colscan     -= 2
-rowendscan  += 2
-colendscan  += 2
-
-cropped=wholeimage[colscan*scan_width:colendscan*scan_width,rowscan*scan_width:$
-    rowendscan*scan_width]
-
-location = {image:cropped,xoffset:colscan*scan_width,yoffset:rowscan*scan_width}
-
+c2 = wholeimage[xpos-60:xpos+60,ypos-60:ypos+60]
+location = {image:c2,xoffset:xpos-60,yoffset:ypos-60}
+print,'xpos',xpos
+print,'ypos',ypos
 finish = systime(1,/seconds)
 IF keyword_set(time) THEN  print, 'Elapsed Time for mainsuncrop(): ' + $
     strcompress(finish-start,/remove)+ ' seconds'
@@ -418,7 +476,7 @@ END
 
 
 PRO merrygotrimask, image, file, xpos, ypos, xoffset, yoffset, scan_width, sundiam, thresh, $
-    region=region, time=time
+    time=time
 ;+
 ;   :Description:
 ;       Had to make a new version of comp3 because the old one called scanbox() by default
@@ -440,30 +498,26 @@ PRO merrygotrimask, image, file, xpos, ypos, xoffset, yoffset, scan_width, sundi
 ;           Threshold used in finding center
 ;
 ;   :Keywords:
-;       region: in, required, type=integer, default=1
-;           Which sun out of the three to find the center of. Defaults to the brightest sun
 ;       time : in, optional
 ;           Print the elapsed time
 ;-
 COMPILE_OPT idl2 
 on_error,2
 
-IF n_elements(file)         EQ 0 THEN file   = 'triplesun.bmp'
-IF n_elements(region)       EQ 0 THEN region = 1
+IF n_elements(file)         EQ 0 THEN file   = 'dimsun1.fits'
 
-; struct = tribox(file, scan_width, sundiam, region=region, time=time)
+; COMMON vblock,wholeimage
 struct = mainsuncrop(file, scan_width, sundiam, time=time)
 image = struct.image
 start = systime(1,/seconds)
 
-ducks = quickmask(image,thresh)
-
+ducks = quickmask(image)
 xpos = ducks.xpos
 ypos = ducks.ypos
 
 xoffset = struct.xoffset
 yoffset = struct.yoffset
-
+stop
 finish = systime(1,/s)
 IF keyword_set(time) THEN  print, 'Elapsed Time for merrygotrimask: ',strcompress(finish-start,/remove),$
     ' seconds'
@@ -513,8 +567,8 @@ PRO limbfit, thresh, xpos, ypos, file, ministrip_length, order, scan_width, sund
 ;-
 
 ; Setting default values
-IF n_elements(file)                 EQ 0    THEN file              = 'triplesun.bmp'
-IF n_elements(ministrip_length)     EQ 0    THEN ministrip_length  = 9
+IF n_elements(file)                 EQ 0    THEN file              = 'dimsun1.fits'
+IF n_elements(ministrip_length)     EQ 0    THEN ministrip_length  = 13
 IF n_elements(nstrips)              EQ 0    THEN nstrips           = 5
 IF n_elements(order)                EQ 0    THEN order             = 2
 IF n_elements(region)               EQ 0    THEN region            = 1
@@ -543,8 +597,59 @@ xlenarr = findgen(n_elements(xstrips))
 ;Deal with rows
 FOR n=0,n_elements(xstrips)-1 DO BEGIN
     ; Using fz_roots instead of spline interpolating. Saving lines and making code more readable
+
+
+; ; Since there are no limb profiles with fiducials, I'll just make one up
+
+    a = float((xstrips[n].STARTPOINTS))
+    b=a
+    (a[3])*=.9
+    (a[4])*=.8
+    (a[5])*=.45
+    (a[6])*=.5
+    (a[7])*=.7
+    (a[8])*=.9
+
+    startresult     = reform(poly_fit(xarr,a,order))
+    corrstartresult = reform(poly_fit(xarr,b,order))
+
+    xtmp = spline(xarr,startresult[0] + startresult[1]*xarr + startresult[2]*xarr^2,tx)
+    corrxtmp = spline(xarr,corrstartresult[0] + corrstartresult[1]*xarr + corrstartresult[2]*xarr^2,tx)
+    ; atmp = spline(xarr,endresult[0] + endresult[1]*xarr + endresult[2]*xarr^2,tx)
+    
+    plot,xarr+xstrips[n].BEGINDEX,a,xs=3,ys=3,title='Limb Profile',$
+        xtitle='Pixel indices of total strip',ytitle='Brightness',psym=-2;,yr=[0,1.1*max(xtmp)]
+    oplot,tx+xstrips[n].BEGINDEX,xtmp,linestyle=1
+    oplot,xarr+xstrips[n].BEGINDEX,b,linestyle=4
+    oplot,tx+xstrips[n].BEGINDEX,corrxtmp,linestyle=5
+    hline,thresh,linestyle=2
+    legend,['Actual Data Values','Splined Data'],linestyle=[0,1],/bottom,/right,charsize=2
+
+;     ; Somewhat hard to make poly_fit fuck up when limbfitting even when I'm forcing fiducials
+;     ; Perhaps I don't know what they actually look like?
+
+
+
     startresult     = reform(poly_fit(xarr,xstrips[n].STARTPOINTS,order))
     endresult       = reform(poly_fit(xarr,xstrips[n].ENDPOINTS,order))
+
+    ; xtmp = spline(xarr,startresult[0] + startresult[1]*xarr + startresult[2]*xarr^2,tx)
+    ; atmp = spline(xarr,endresult[0] + endresult[1]*xarr + endresult[2]*xarr^2,tx)
+    
+    ; window,2
+    ; plot,xarr+xstrips[n].BEGINDEX,xstrips[n].startpoints,xs=3,ys=3,title='Limb Profile',$
+    ;     xtitle='Pixel indices of total strip',ytitle='Brightness',psym=-2;,yr=[0,1.1*max(xtmp)]
+    ; oplot,tx+xstrips[n].BEGINDEX,xtmp,linestyle=1
+    ; hline,thresh,linestyle=2
+    ; legend,['Actual Data Values','Splined Data'],linestyle=[0,1],/bottom,/right,charsize=2
+
+    ; window,0
+    ; plot,xarr+xstrips[n].ENDINDEX,xstrips[n].ENDPOINTS,xs=3,ys=3,title='Limb Profile',$
+    ;     xtitle='Pixel indices of total strip',ytitle='Brightness',psym=-2;,yr=[0,1.1*max(xtmp)]
+    ; oplot,tx+xstrips[n].ENDINDEX,atmp,linestyle=1
+    ; hline,thresh,linestyle=2
+    ; legend,['Actual Data Values','Splined Data'],linestyle=[0,1],/bottom,/left,charsize=2
+
     ; Solving for roots but want to include threshold value
     startresult[0]  -=thresh
     endresult[0]    -=thresh
@@ -582,6 +687,23 @@ FOR n=0,n_elements(ystrips)-1 DO BEGIN
     startresult     = reform(poly_fit(yarr,ystrips[n].STARTPOINTS,order))
     endresult       = reform(poly_fit(yarr,ystrips[n].ENDPOINTS,order))
 
+;     ytmp = spline(yarr,startresult[0] + startresult[1]*yarr + startresult[2]*yarr^2,tx)
+;     btmp = spline(yarr,endresult[0] + endresult[1]*yarr + endresult[2]*yarr^2,tx)
+    
+;     window,3
+;     plot,yarr+ystrips[n].BEGINDEX,ystrips[n].startpoints,xs=3,ys=3,title='Limb Profile',$
+;         xtitle='Pixel indices of total strip',ytitle='Brightness',psym=-2;,yr=[0,1.1*max(ytmp)]
+;     oplot,tx+ystrips[n].BEGINDEX,ytmp,linestyle=1
+;     hline,thresh,linestyle=2
+;     legend,['Actual Data Values','Splined Data'],linestyle=[0,1],/bottom,/right,charsize=2
+
+;     window,1
+;     plot,yarr+ystrips[n].ENDINDEX,ystrips[n].ENDPOINTS,xs=3,ys=3,title='Limb Profile',$
+;         xtitle='Pixel indices of total strip',ytitle='Brightness',psym=-2;,yr=[0,1.1*max(ytmp)]
+;     oplot,tx+ystrips[n].ENDINDEX,btmp,linestyle=1
+;     hline,thresh,linestyle=2
+;     legend,['Actual Data Values','Splined Data'],linestyle=[0,1],/bottom,/left,charsize=2
+; stop
     startresult[0]  -=thresh
     endresult[0]    -=thresh
 
@@ -684,77 +806,6 @@ IF keyword_set(plot) THEN BEGIN
     legend,['Actual Data Values','Splined Data'],linestyle=[0,1],/bottom,/left,charsize=2
     ; device,/close
     ; set_plot,'x'
-
-    wn = 3
-    startresult = poly_fit(xarr,xstrips[wn].STARTPOINTS,order)
-    endresult = poly_fit(xarr,xstrips[wn].ENDPOINTS,order)
-
-    CASE order OF
-    1: BEGIN
-        xtmp = spline(xarr,startresult[0] + startresult[1]*xarr,tx)
-        atmp = spline(xarr,endresult[0] + endresult[1]*xarr,tx)
-        END
-    2: BEGIN
-        xtmp = spline(xarr,startresult[0] + startresult[1]*xarr + startresult[2]*xarr^2,tx)
-        atmp = spline(xarr,endresult[0] + endresult[1]*xarr + endresult[2]*xarr^2,tx)
-        END
-    3: BEGIN
-        xtmp = spline(xarr,startresult[0] + startresult[1]*xarr + startresult[2]*xarr^2 + $
-                startresult[3]*xarr^3,tx)
-        atmp = spline(xarr,endresult[0] + endresult[1]*xarr + endresult[2]*xarr^2 + $
-                endresult[3]*xarr^3,tx)
-        END
-    4: BEGIN
-        xtmp = spline(xarr,startresult[0] + startresult[1]*xarr + startresult[2]*xarr^2 + $
-                startresult[3]*xarr^3 + startresult[4]*xarr^4,tx)
-        atmp = spline(xarr,endresult[0] + endresult[1]*xarr + endresult[2]*xarr^2 + $
-                endresult[3]*xarr^3 + endresult[4]*xarr^4,tx)
-        END
-    5: BEGIN
-        xtmp = spline(xarr,startresult[0] + startresult[1]*xarr + startresult[2]*xarr^2 + $
-                startresult[3]*xarr^3 + startresult[4]*xarr^4 + startresult[5]*xarr^5,tx)
-        atmp = spline(xarr,endresult[0] + endresult[1]*xarr + endresult[2]*xarr^2 + $
-                endresult[3]*xarr^3 + endresult[4]*xarr^4 + endresult[5]*xarr^5,tx)
-        END    
-    6: BEGIN
-        xtmp = spline(xarr,startresult[0] + startresult[1]*xarr + startresult[2]*xarr^2 + $
-                startresult[3]*xarr^3 + startresult[4]*xarr^4 + startresult[5]*xarr^5 + $
-                startresult[6]*xarr^6,tx)
-        atmp = spline(xarr,endresult[0] + endresult[1]*xarr + endresult[2]*xarr^2 + $
-                endresult[3]*xarr^3 + endresult[4]*xarr^4 + endresult[5]*xarr^5 + $
-                endresult[6]*xarr^6,tx)
-        END
-    7: BEGIN
-        xtmp = spline(xarr,startresult[0] + startresult[1]*xarr + startresult[2]*xarr^2 + $
-                startresult[3]*xarr^3 + startresult[4]*xarr^4 + startresult[5]*xarr^5 + $
-                startresult[6]*xarr^6 + startresult[7]*xarr^7,tx)
-        atmp = spline(xarr,endresult[0] + endresult[1]*xarr + endresult[2]*xarr^2 + $
-                endresult[3]*xarr^3 + endresult[4]*xarr^4 + endresult[5]*xarr^5 + $
-                endresult[6]*xarr^6 + endresult[7]*xarr^7,tx)
-        END
-    ENDCASE
-
-    ; A pretty plot for Nicole
-    window,3
-    ; set_plot,'ps'
-    ; device,filename=file+'part1'+'.ps',/encapsulated
-    plot,xarr+xstrips[wn].BEGINDEX,xstrips[wn].startpoints,xs=3,ys=3,title='Limb Profile',$
-        xtitle='Pixel indices of total strip',ytitle='Brightness',psym=-2;,yr=[0,1.1*max(xtmp)]
-    oplot,tx+xstrips[wn].BEGINDEX,xtmp,linestyle=1
-    hline,thresh,linestyle=2
-    legend,['Actual Data Values','Splined Data'],linestyle=[0,1],/bottom,/right,charsize=2
-    ; device,/close
-    ; set_plot,'x'
-    window,1
-    ; set_plot,'ps'
-    ; device,filename=file+'part2'+'.ps',/encapsulated
-    plot,xarr+xstrips[wn].ENDINDEX,xstrips[wn].ENDPOINTS,xs=3,ys=3,title='Limb Profile',$
-        xtitle='Pixel indices of total strip',ytitle='Brightness',psym=-2;,yr=[0,1.1*max(xtmp)]
-    oplot,tx+xstrips[wn].ENDINDEX,atmp,linestyle=1
-    hline,thresh,linestyle=2
-    legend,['Actual Data Values','Splined Data'],linestyle=[0,1],/bottom,/left,charsize=2
-    ; device,/close
-    ; set_plot,'x'    
 ENDIF
 
 finish = systime(1,/seconds)
@@ -910,7 +961,7 @@ END
 COMPILE_OPT idl2 
 on_error,2
 
-IF n_elements(file)         EQ 0 THEN   file = 'dimsun1.fits'
+IF n_elements(file)         EQ 0 THEN   file = 'dimsun3.fits'
 IF n_elements(scan_width)   EQ 0 THEN   scan_width = 5
 IF n_elements(sundiam)      EQ 0 THEN   sundiam = 70
 
@@ -927,22 +978,22 @@ getstruct, file, struct, scan_width, sundiam, time=time
 profiler,/report
 profiler,/reset
 
-; wholeimage2 = wholeimage
-; wholeimage3 = wholeimage
+wholeimage2 = wholeimage
+wholeimage3 = wholeimage
 
-; wholeimage[struct.center1.xpos,*]=20
-; wholeimage[*,struct.center1.ypos]=20
-; wholeimage2[struct.center2.xpos,*]=20
-; wholeimage2[*,struct.center2.ypos]=20
-; wholeimage3[struct.center3.xpos,*]=20
-; wholeimage3[*,struct.center3.ypos]=20
+wholeimage[struct.center1.xpos,*]=20
+wholeimage[*,struct.center1.ypos]=20
+wholeimage2[struct.center2.xpos,*]=20
+wholeimage2[*,struct.center2.ypos]=20
+wholeimage3[struct.center3.xpos,*]=20
+wholeimage3[*,struct.center3.ypos]=20
 
-; window,0
-; cgimage,wholeimage,/k
-; window,2
-; cgimage,wholeimage2,/k
-; window,3
-; cgimage,wholeimage3,/k
+window,0
+cgimage,wholeimage,/k
+window,2
+cgimage,wholeimage2,/k
+window,3
+cgimage,wholeimage3,/k
 
 finish = systime(1,/s)
 IF keyword_set(time) THEN print, 'tricenter took: '+strcompress(finish-start)+$
