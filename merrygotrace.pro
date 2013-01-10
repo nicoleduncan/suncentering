@@ -465,7 +465,7 @@ xoffset = struct.xoffset
 yoffset = struct.yoffset
 
 finish = systime(1,/s)
-IF keyword_set(time) THEN  print, 'Elapsed Time for trimask: ',strcompress(finish-start,/remove),$
+IF keyword_set(time) THEN  print, 'Elapsed Time for merrygotrimask: ',strcompress(finish-start,/remove),$
     ' seconds'
 RETURN
 END
@@ -545,7 +545,6 @@ FOR n=0,n_elements(xstrips)-1 DO BEGIN
     ; Using fz_roots instead of spline interpolating. Saving lines and making code more readable
     startresult     = reform(poly_fit(xarr,xstrips[n].STARTPOINTS,order))
     endresult       = reform(poly_fit(xarr,xstrips[n].ENDPOINTS,order))
-
     ; Solving for roots but want to include threshold value
     startresult[0]  -=thresh
     endresult[0]    -=thresh
@@ -911,43 +910,42 @@ END
 COMPILE_OPT idl2 
 on_error,2
 
-IF n_elements(file)         EQ 0 THEN   file = 'yetanothertriplesun.bmp'
+IF n_elements(file)         EQ 0 THEN   file = 'dimsun1.fits'
 IF n_elements(scan_width)   EQ 0 THEN   scan_width = 5
 IF n_elements(sundiam)      EQ 0 THEN   sundiam = 70
 
 start=systime(1,/s)
 
+
 profiler
 profiler,/system
 COMMON vblock, wholeimage
-tmpimage = read_bmp(file) 
-wholeimage = reform(tmpimage[0,*,*])
+wholeimage = mrdfits(file)
 
 getstruct, file, struct, scan_width, sundiam, time=time
 
 profiler,/report
 profiler,/reset
-wholeimage2 = wholeimage
-wholeimage3 = wholeimage
 
-wholeimage[struct.center1.xpos,*]=20
-wholeimage[*,struct.center1.ypos]=20
-wholeimage2[struct.center2.xpos,*]=20
-wholeimage2[*,struct.center2.ypos]=20
-wholeimage3[struct.center3.xpos,*]=20
-wholeimage3[*,struct.center3.ypos]=20
+; wholeimage2 = wholeimage
+; wholeimage3 = wholeimage
 
-window,0
-cgimage,wholeimage,/k
-window,2
-cgimage,wholeimage2,/k
-window,3
-cgimage,wholeimage3,/k
+; wholeimage[struct.center1.xpos,*]=20
+; wholeimage[*,struct.center1.ypos]=20
+; wholeimage2[struct.center2.xpos,*]=20
+; wholeimage2[*,struct.center2.ypos]=20
+; wholeimage3[struct.center3.xpos,*]=20
+; wholeimage3[*,struct.center3.ypos]=20
+
+; window,0
+; cgimage,wholeimage,/k
+; window,2
+; cgimage,wholeimage2,/k
+; window,3
+; cgimage,wholeimage3,/k
 
 finish = systime(1,/s)
 IF keyword_set(time) THEN print, 'tricenter took: '+strcompress(finish-start)+$
     ' seconds'
 
 END
-
-; 
