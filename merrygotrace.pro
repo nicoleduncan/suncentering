@@ -84,16 +84,6 @@ FOR i = 0,n_elements(c4xstrips) - 1 DO BEGIN
     ENDIF ELSE BEGIN
         ; STARTPOINTS is the cut down strip with length = ministrip_length and contains
         ; the indices from rowchord_endpoints[0,i] +/- ministrip_side_buffer
-        
-
-
-
-        ; if i eq 3 then stop
-
-
-
-
-
         xstrips[i].STARTPOINTS  = $
         ; IF chord is too long, it tries to crop from outside of image file
             (c4xstrips[i].ARRAY)[rowchord_endpoints[0,i]-ministrip_side_buffer:$
@@ -113,6 +103,7 @@ FOR i = 0,n_elements(c4xstrips) - 1 DO BEGIN
     ENDELSE
 ENDFOR
 
+
 FOR k = 0,n_elements(c4ystrips) - 1 DO BEGIN
     ystrips[k].COLINDEX     = c4ystrips[k].COLINDEX
     IF colchord_endpoints[0,k] EQ -1 THEN BEGIN
@@ -127,11 +118,14 @@ FOR k = 0,n_elements(c4ystrips) - 1 DO BEGIN
         ystrips[k].ENDPOINTS    = fltarr(ministrip_length) 
         ystrips[k].ENDINDEX     = 0        
     ENDIF ELSE BEGIN
+
         ystrips[k].ENDPOINTS    = (c4ystrips[k].ARRAY)[colchord_endpoints[1,k]- $
         ministrip_side_buffer:colchord_endpoints[1,k]+ministrip_side_buffer]
         ystrips[k].ENDINDEX     = fix(colchord_endpoints[1,k] - ministrip_side_buffer) 
     ENDELSE
 ENDFOR
+
+
 
 finish = systime(1,/seconds)
 
@@ -146,17 +140,32 @@ END
 ;**************************************************************************************************
 
  
+FUNCTION quickmask, image, thresh
+
+IF N_ELEMENTS(thresh) EQ 0 THEN THRESH = 0.25*max(image)
+
+s = size(image,/dimensions)
+n_col = s[0]
+n_row = s[1]
+
+suncheck = image gt thresh
+
+xpos = TOTAL( TOTAL(suncheck, 2) * Indgen(n_col) ) / total(suncheck)
+ypos = TOTAL( TOTAL(suncheck, 1) * Indgen(n_row) ) / total(suncheck)
+RETURN, {xpos:xpos,ypos:ypos}
+END
+
+
+;**************************************************************************************************
+;*                                                                                                *
+;**************************************************************************************************
+
+
 FUNCTION whichcropmethod, file, region, scan_width, sundiam, thresh
 
-; merrygotrimask, image, file, xpos, ypos, xoffset, yoffset, scan_width, sundiam, thresh, $
-;     region=region, time=time 
-; mainxpos = xpos + xoffset
-; mainypos = ypos + yoffset
-
-
 COMMON vblock, wholeimage
-thresh = 0.65*max(wholeimage)
 
+thresh = 0.65*max(wholeimage)
 ducks = quickmask(wholeimage,thresh)
 
 image = wholeimage[ducks.xpos-60:ducks.xpos+60,ducks.ypos-60:ducks.ypos+60]
@@ -187,27 +196,6 @@ ENDIF
 
 ; RETURN, {xpos:xpos, ypos:ypos, image:image, xoffset:xoffset, yoffset:yoffset}
 RETURN,{image:image, xoffset:xoffset, yoffset:yoffset}
-END
-
-
-;**************************************************************************************************
-;*                                                                                                *
-;**************************************************************************************************
-
-
-FUNCTION quickmask, image, thresh
-
-IF N_ELEMENTS(thresh) EQ 0 THEN THRESH = 0.25*max(image)
-
-s = size(image,/dimensions)
-n_col = s[0]
-n_row = s[1]
-
-suncheck = image gt thresh
-
-xpos = TOTAL( TOTAL(suncheck, 2) * Indgen(n_col) ) / total(suncheck)
-ypos = TOTAL( TOTAL(suncheck, 1) * Indgen(n_row) ) / total(suncheck)
-RETURN, {xpos:xpos,ypos:ypos}
 END
 
 
@@ -340,24 +328,25 @@ IF REGION EQ 2 THEN arr=(findgen(360) + 90)*!dtor ELSE arr=reverse((findgen(360)
 
 ; radius = sqrt((xpos - center2.xpos)^2  + (ypos - center2.ypos)^2 )
 radius = 129
-r2 = radius - 10 ;10 is an arbitrary number, can be anything, really
+r2 = radius + 10 ;10 is an arbitrary number, can be anything, really
 
 x = radius*cos(arr) + mainxpos
 y = radius*sin(arr) + mainypos
 x2 = r2*cos(arr) + mainxpos
 y2 = r2*sin(arr) + mainypos
 
+; Have to use .3 instead of .25 for dimsun2, don't know why
+thresh = 0.3*max(wholeimage)
 
-thresh = 0.25*max(wholeimage)
-
-
+; stop
 WHILE wholeimage[x[i],y[i]] LT thresh DO i++
 WHILE wholeimage[x2[k],y2[k]] LT thresh DO k++
-; stop
 
 a = [x[i],y[i]]
 b = [x2[k],y2[k]]
 
+m=i-10
+n=k-10
 i+=1 ;so that the while statement continues to execute
 k+=1
 
@@ -367,6 +356,39 @@ WHILE wholeimage[x2[k],y2[k]] GT thresh DO k++
 c = [x[i],y[i]]
 d = [x2[k],y2[k]]
 
+IF REGION EQ 3 THEN BEGIN
+
+    thresh = 0.15*max(wholeimage)
+    g=i+10
+    h=k+10
+    i=0
+    j=0
+    
+    wholeimage[x[m:g],y[m:g]] = 0
+    wholeimage[x2[n:k],y2[n:k]] = 0
+
+    WHILE wholeimage[x[i],y[i]] LT thresh DO i++
+    WHILE wholeimage[x2[k],y2[k]] LT thresh DO k++
+
+    a = [x[i],y[i]]
+    b = [x2[k],y2[k]]
+
+    i+=1 ;so that the while statement continues to execute
+    k+=1
+
+    WHILE wholeimage[x[i],y[i]] GT thresh DO i++
+    WHILE wholeimage[x2[k],y2[k]] GT thresh DO k++
+
+    c = [x[i],y[i]]
+    d = [x2[k],y2[k]]
+    ; stop
+
+    ; Run into a problem where if the radius is wrong, totally finds the wrong center.
+
+    ; If circle scanning doesn't pick up either of dimmer suns, use + 10 instead of - 10 for second radius.
+
+ENDIF
+; stop
 ; I can do better here, will come back later
 ; a = (where((wholeimage[x,y] GT thresh) EQ 1))[0]
 ; b = (where((wholeimage[x2,y2] GT thresh) EQ 1))[0]
@@ -388,16 +410,21 @@ pt3 = [midpoint2[0] + halfwidth*cos(theta2),midpoint2[1] + halfwidth*sin(theta2)
 pt4 = [midpoint2[0] - halfwidth*cos(theta2),midpoint2[1] - halfwidth*sin(theta2)]
 
 center = pb_lines_intersection([pt1,pt2],[pt3,[pt4]])
-
 ; Now, even though xpos and ypos aren't particular'ly close to the sun's center... is it OK?
 ; In the end, cropping doesn't cut off any part of the sun
 xoffset = center[0] - halfwidth
-yoffset = center[1] - halfwidth
+yoffset = center[1] - halfwidth ;-30 fixed cropping region, some failed artifact of pb_lines_intersect?
+
 
 xpos =  center[0]/scan_width
 ypos =  center[1]/scan_width
 
 image = wholeimage[xoffset:xoffset+halfwidth*2,yoffset:yoffset+halfwidth*2]
+
+IF REGION EQ 3 then begin
+cgimage,image,/k
+stop
+ENDIF
 
 finish = systime(1,/s)
 IF keyword_set(time) THEN print, 'getstruct took: '+strcompress(finish-start)+$
@@ -601,29 +628,29 @@ FOR n=0,n_elements(xstrips)-1 DO BEGIN
 
 ; ; Since there are no limb profiles with fiducials, I'll just make one up
 
-    a = float((xstrips[n].STARTPOINTS))
-    b=a
-    (a[3])*=.9
-    (a[4])*=.8
-    (a[5])*=.45
-    (a[6])*=.5
-    (a[7])*=.7
-    (a[8])*=.9
+    ; a = float((xstrips[n].STARTPOINTS))
+    ; b=a
+    ; (a[3])*=.9
+    ; (a[4])*=.8
+    ; (a[5])*=.45
+    ; (a[6])*=.5
+    ; (a[7])*=.7
+    ; (a[8])*=.9
 
-    startresult     = reform(poly_fit(xarr,a,order))
-    corrstartresult = reform(poly_fit(xarr,b,order))
+    ; startresult     = reform(poly_fit(xarr,a,order))
+    ; corrstartresult = reform(poly_fit(xarr,b,order))
 
-    xtmp = spline(xarr,startresult[0] + startresult[1]*xarr + startresult[2]*xarr^2,tx)
-    corrxtmp = spline(xarr,corrstartresult[0] + corrstartresult[1]*xarr + corrstartresult[2]*xarr^2,tx)
-    ; atmp = spline(xarr,endresult[0] + endresult[1]*xarr + endresult[2]*xarr^2,tx)
+    ; xtmp = spline(xarr,startresult[0] + startresult[1]*xarr + startresult[2]*xarr^2,tx)
+    ; corrxtmp = spline(xarr,corrstartresult[0] + corrstartresult[1]*xarr + corrstartresult[2]*xarr^2,tx)
+    ; ; atmp = spline(xarr,endresult[0] + endresult[1]*xarr + endresult[2]*xarr^2,tx)
     
-    plot,xarr+xstrips[n].BEGINDEX,a,xs=3,ys=3,title='Limb Profile',$
-        xtitle='Pixel indices of total strip',ytitle='Brightness',psym=-2;,yr=[0,1.1*max(xtmp)]
-    oplot,tx+xstrips[n].BEGINDEX,xtmp,linestyle=1
-    oplot,xarr+xstrips[n].BEGINDEX,b,linestyle=4
-    oplot,tx+xstrips[n].BEGINDEX,corrxtmp,linestyle=5
-    hline,thresh,linestyle=2
-    legend,['Actual Data Values','Splined Data'],linestyle=[0,1],/bottom,/right,charsize=2
+    ; plot,xarr+xstrips[n].BEGINDEX,a,xs=3,ys=3,title='Limb Profile',$
+    ;     xtitle='Pixel indices of total strip',ytitle='Brightness',psym=-2;,yr=[0,1.1*max(xtmp)]
+    ; oplot,tx+xstrips[n].BEGINDEX,xtmp,linestyle=1
+    ; oplot,xarr+xstrips[n].BEGINDEX,b,linestyle=4
+    ; oplot,tx+xstrips[n].BEGINDEX,corrxtmp,linestyle=5
+    ; hline,thresh,linestyle=2
+    ; legend,['Actual Data Values','Splined Data'],linestyle=[0,1],/bottom,/right,charsize=2
 
 ;     ; Somewhat hard to make poly_fit fuck up when limbfitting even when I'm forcing fiducials
 ;     ; Perhaps I don't know what they actually look like?
@@ -968,15 +995,15 @@ IF n_elements(sundiam)      EQ 0 THEN   sundiam = 70
 start=systime(1,/s)
 
 
-profiler
-profiler,/system
+; profiler
+; profiler,/system
 COMMON vblock, wholeimage
 wholeimage = mrdfits(file)
 
 getstruct, file, struct, scan_width, sundiam, time=time
 
-profiler,/report
-profiler,/reset
+; profiler,/report
+; profiler,/reset
 
 wholeimage2 = wholeimage
 wholeimage3 = wholeimage
@@ -996,7 +1023,7 @@ window,3
 cgimage,wholeimage3,/k
 
 finish = systime(1,/s)
-IF keyword_set(time) THEN print, 'tricenter took: '+strcompress(finish-start)+$
+IF keyword_set(time) THEN print, 'merrygotrace took: '+strcompress(finish-start)+$
     ' seconds'
 
 END
