@@ -318,17 +318,14 @@ start = systime(1,/s)
 i=0
 k=0
 
-IF REGION EQ 2 THEN arr=(findgen(360) + 90)*!dtor ELSE arr=reverse((findgen(360) + 90)*!dtor)
-
+arr=(findgen(360) + 90)*!dtor
 ; only adding 90 so that it starts from 12 o'clock assuming there is
 ; no dim sun at that location
 
-;reversing it to look for other sun first - either way I'm scanning more or less the same amount,
-; might run into problems later but I'll deal with it then
-
-; radius = sqrt((xpos - center2.xpos)^2  + (ypos - center2.ypos)^2 )
 radius = 129
-r2 = radius + 10 ;10 is an arbitrary number, can be anything, really
+r2bit = 1
+IF file EQ 'dimsun1.fits' THEN radius = 149
+r2 = radius + 10*r2bit ;10 is an arbitrary number, can be anything, really
 
 x = radius*cos(arr) + mainxpos
 y = radius*sin(arr) + mainypos
@@ -338,55 +335,57 @@ y2 = r2*sin(arr) + mainypos
 ; Have to use .3 instead of .25 for dimsun2, don't know why
 thresh = 0.3*max(wholeimage)
 
-; stop
 WHILE wholeimage[x[i],y[i]] LT thresh DO i++
 WHILE wholeimage[x2[k],y2[k]] LT thresh DO k++
 
-a = [x[i],y[i]]
-b = [x2[k],y2[k]]
+ ; Have to make some sort of catch system, i.e. if i is 449 then do r2bit *=-1
 
-m=i-10
-n=k-10
+in_inner = i - 10
+in_outer = k - 10
+
 i+=1 ;so that the while statement continues to execute
 k+=1
 
 WHILE wholeimage[x[i],y[i]] GT thresh DO i++
 WHILE wholeimage[x2[k],y2[k]] GT thresh DO k++
 
-c = [x[i],y[i]]
-d = [x2[k],y2[k]]
+out_inner = i + 10
+out_outer = k + 10
 
 IF REGION EQ 3 THEN BEGIN
 
     thresh = 0.2*max(wholeimage) ;dimsun2 works if i set the thresh to .2 instead of .15
-    g=i+10
-    h=k+10
+    ; The other sun is so dim that weird parts are being picked up. How to fix? Is being dim a problem?
+
+    wholeimage[x[in_inner:out_inner],y[in_inner:out_inner]] = 0
+    wholeimage[x2[in_outer:out_outer],y2[in_outer:out_outer]] = 0
+
     i=0
     k=0
 
-    wholeimage[x[m:g],y[m:g]] = 0
-    wholeimage[x2[n:h],y2[n:h]] = 0
-
     WHILE wholeimage[x[i],y[i]] LT thresh DO i++
     WHILE wholeimage[x2[k],y2[k]] LT thresh DO k++
-
-    a = [x[i],y[i]]
-    b = [x2[k],y2[k]]
+    in_inner = i - 10
+    in_outer = k - 10
 
     i+=1 ;so that the while statement continues to execute
     k+=1
 
     WHILE wholeimage[x[i],y[i]] GT thresh DO i++
     WHILE wholeimage[x2[k],y2[k]] GT thresh DO k++
-
-    c = [x[i],y[i]]
-    d = [x2[k],y2[k]]
-
+    out_inner = i + 10
+    out_outer = k + 10
     ; Run into a problem where if the radius is wrong, totally finds the wrong center.
 
     ; If circle scanning doesn't pick up either of dimmer suns, use + 10 instead of - 10 for second radius.
-
+    
+    wholeimage[x[in_inner:out_inner],y[in_inner:out_inner]] = 0
+    wholeimage[x2[in_outer:out_outer],y2[in_outer:out_outer]] = 0
 ENDIF
+
+centerangle = !dtor*(90 + mean([in_inner,out_inner]))
+centerx = mainxpos + radius*cos(centerangle)
+centery = mainypos + radius*sin(centerangle)
 
 ; I can do better here, will come back later ???
 ; a = (where((wholeimage[x,y] GT thresh) EQ 1))[0]
@@ -394,50 +393,13 @@ ENDIF
 ; c = (where((wholeimage[x,y] GT thresh) EQ 1))[-1]
 ; d = (where((wholeimage[x2,y2] GT thresh) EQ 1))[-1]
 
-; How do we set smart cropping?
-chord1 = [[a],[b]]
-chord2 = [[c],[d]] 
-midpoint1 = [mean(chord1[0,*]),mean(chord1[1,*])]
-midpoint2 = [mean(chord2[0,*]),mean(chord2[1,*])]
+image = wholeimage[centerx-60:centerx+60,centery-60:centery+60]
+xoffset = centerx-60
+yoffset = centery-60
 
-theta = atan((chord1[1,0] - chord1[1,1])/(chord1[0,0]-chord1[0,1]))+!pi/2
-theta2 = atan((chord2[1,0] - chord2[1,1])/(chord2[0,0]-chord2[0,1]))+!pi/2
-halfwidth = 60
-pt1 = [midpoint1[0] + halfwidth*cos(theta),midpoint1[1] + halfwidth*sin(theta)]
-pt2 = [midpoint1[0] - halfwidth*cos(theta),midpoint1[1] - halfwidth*sin(theta)]
-pt3 = [midpoint2[0] + halfwidth*cos(theta2),midpoint2[1] + halfwidth*sin(theta2)]
-pt4 = [midpoint2[0] - halfwidth*cos(theta2),midpoint2[1] - halfwidth*sin(theta2)]
-
-center = pb_lines_intersection([pt1,pt2],[pt3,[pt4]])
-; Now, even though xpos and ypos aren't particular'ly close to the sun's center... is it OK?
-; In the end, cropping doesn't cut off any part of the sun
-xoffset = center[0] - halfwidth
-yoffset = center[1] - halfwidth ;-30 fixed cropping region, some failed artifact of pb_lines_intersect?
-
-
-xpos =  center[0]/scan_width
-ypos =  center[1]/scan_width
-
-image = wholeimage[xoffset:xoffset+halfwidth*2,yoffset:yoffset+halfwidth*2]
-
-; IF REGION EQ 3 then begin
-; ; cgimage,image,/k
-; wholeimage[midpoint1[0],midpoint1[1]]=100
-; wholeimage[midpoint2[0],midpoint2[1]]=100
-
-; wholeimage[a[0],a[1]]=100
-; wholeimage[b[0],b[1]]=100
-; ; wholeimage[c[0],c[1]]=100
-; ; wholeimage[d[0],d[1]]=100
-; ;Deduced that a and b are wrong
-; wholeimage[pt1[0],pt1[1]]=200
-; wholeimage[pt2[0],pt2[1]]=200
-; wholeimage[pt3[0],pt3[1]]=200
-; wholeimage[pt4[0],pt4[1]]=200
-; cgimage,wholeimage,/k
+; window,region
+; cgimage,image,/k
 ; stop
-; ENDIF
-
 finish = systime(1,/s)
 IF keyword_set(time) THEN print, 'getstruct took: '+strcompress(finish-start)+$
     ' seconds'
@@ -996,7 +958,7 @@ END
 COMPILE_OPT idl2 
 on_error,2
 
-IF n_elements(file)         EQ 0 THEN   file = 'dimsun3.fits'
+IF n_elements(file)         EQ 0 THEN   file = 'dimsun1.fits'
 IF n_elements(scan_width)   EQ 0 THEN   scan_width = 5
 IF n_elements(sundiam)      EQ 0 THEN   sundiam = 70
 
