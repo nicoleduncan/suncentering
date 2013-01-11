@@ -396,7 +396,7 @@ ENDIF
 
 ; How do we set smart cropping?
 chord1 = [[a],[b]]
-chord2 = [[c],[d]]
+chord2 = [[c],[d]] 
 midpoint1 = [mean(chord1[0,*]),mean(chord1[1,*])]
 midpoint2 = [mean(chord2[0,*]),mean(chord2[1,*])]
 
@@ -485,10 +485,6 @@ n_row = s[1]
 ; cropped=wholeimage[colscan*scan_width:colendscan*scan_width,rowscan*scan_width:$
 ;     rowendscan*scan_width]
 ; location = {image:cropped,xoffset:colscan*scan_width,yoffset:rowscan*scan_width}
-
-
-
-
 
 
 thresh = 0.65*max(wholeimage)
