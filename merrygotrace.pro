@@ -358,14 +358,14 @@ d = [x2[k],y2[k]]
 
 IF REGION EQ 3 THEN BEGIN
 
-    thresh = 0.15*max(wholeimage)
+    thresh = 0.2*max(wholeimage) ;dimsun2 works if i set the thresh to .2 instead of .15
     g=i+10
     h=k+10
     i=0
-    j=0
-    
+    k=0
+
     wholeimage[x[m:g],y[m:g]] = 0
-    wholeimage[x2[n:k],y2[n:k]] = 0
+    wholeimage[x2[n:h],y2[n:h]] = 0
 
     WHILE wholeimage[x[i],y[i]] LT thresh DO i++
     WHILE wholeimage[x2[k],y2[k]] LT thresh DO k++
@@ -381,15 +381,14 @@ IF REGION EQ 3 THEN BEGIN
 
     c = [x[i],y[i]]
     d = [x2[k],y2[k]]
-    ; stop
 
     ; Run into a problem where if the radius is wrong, totally finds the wrong center.
 
     ; If circle scanning doesn't pick up either of dimmer suns, use + 10 instead of - 10 for second radius.
 
 ENDIF
-; stop
-; I can do better here, will come back later
+
+; I can do better here, will come back later ???
 ; a = (where((wholeimage[x,y] GT thresh) EQ 1))[0]
 ; b = (where((wholeimage[x2,y2] GT thresh) EQ 1))[0]
 ; c = (where((wholeimage[x,y] GT thresh) EQ 1))[-1]
@@ -421,10 +420,23 @@ ypos =  center[1]/scan_width
 
 image = wholeimage[xoffset:xoffset+halfwidth*2,yoffset:yoffset+halfwidth*2]
 
-IF REGION EQ 3 then begin
-cgimage,image,/k
-stop
-ENDIF
+; IF REGION EQ 3 then begin
+; ; cgimage,image,/k
+; wholeimage[midpoint1[0],midpoint1[1]]=100
+; wholeimage[midpoint2[0],midpoint2[1]]=100
+
+; wholeimage[a[0],a[1]]=100
+; wholeimage[b[0],b[1]]=100
+; ; wholeimage[c[0],c[1]]=100
+; ; wholeimage[d[0],d[1]]=100
+; ;Deduced that a and b are wrong
+; wholeimage[pt1[0],pt1[1]]=200
+; wholeimage[pt2[0],pt2[1]]=200
+; wholeimage[pt3[0],pt3[1]]=200
+; wholeimage[pt4[0],pt4[1]]=200
+; cgimage,wholeimage,/k
+; stop
+; ENDIF
 
 finish = systime(1,/s)
 IF keyword_set(time) THEN print, 'getstruct took: '+strcompress(finish-start)+$
