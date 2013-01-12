@@ -958,22 +958,23 @@ END
 COMPILE_OPT idl2 
 on_error,2
 
-IF n_elements(file)         EQ 0 THEN   file = 'dimsun1.fits'
+IF n_elements(file)         EQ 0 THEN   file = 'dimsun3.fits'
 IF n_elements(scan_width)   EQ 0 THEN   scan_width = 5
 IF n_elements(sundiam)      EQ 0 THEN   sundiam = 70
 
 start=systime(1,/s)
 
-
-; profiler
-; profiler,/system
+profiler,/system
+profiler
 COMMON vblock, wholeimage
 wholeimage = mrdfits(file)
 
 getstruct, file, struct, scan_width, sundiam, time=time
 
-; profiler,/report
-; profiler,/reset
+profiler,/report,data=data
+profiler,/reset
+
+print,data[sort(-data.time)],format='(A-20, I7, F12.5, F10.5, I9)'
 
 wholeimage2 = wholeimage
 wholeimage3 = wholeimage
@@ -992,12 +993,12 @@ print,'50% sun y pos:',struct.center2.ypos
 print,'25% sun x pos:',struct.center3.xpos
 print,'25% sun y pos:',struct.center3.ypos
 
-window,0
-cgimage,wholeimage,/k
-window,2
-cgimage,wholeimage2,/k
-window,3
-cgimage,wholeimage3,/k
+; window,0
+cgimage,wholeimage,/k,output=strmid(file,0,7)+'_'+'region1.png'
+; window,2
+cgimage,wholeimage2,/k,output=strmid(file,0,7)+'_'+'region2.png'
+; window,3
+cgimage,wholeimage3,/k,output=strmid(file,0,7)+'_'+'region3.png'
 
 finish = systime(1,/s)
 IF keyword_set(time) THEN print, 'merrygotrace took: '+strcompress(finish-start)+$
