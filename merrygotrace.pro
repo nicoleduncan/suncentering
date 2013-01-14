@@ -315,8 +315,8 @@ COMMON vblock,wholeimage
 
 start = systime(1,/s)
 
-i=0
-k=0
+; i=0
+; k=0
 
 arr=(findgen(360) + 90)*!dtor
 ; only adding 90 so that it starts from 12 o'clock assuming there is
@@ -335,22 +335,28 @@ y2 = r2*sin(arr) + mainypos
 ; Have to use .3 instead of .25 for dimsun2, don't know why
 thresh = 0.3*max(wholeimage)
 
-WHILE wholeimage[x[i],y[i]] LT thresh DO i++
-WHILE wholeimage[x2[k],y2[k]] LT thresh DO k++
+; WHILE wholeimage[x[i],y[i]] LT thresh DO i++
+; WHILE wholeimage[x2[k],y2[k]] LT thresh DO k++
 
- ; Have to make some sort of catch system, i.e. if i is 449 then do r2bit *=-1
+;  ; Have to make some sort of catch system, i.e. if i is 449 then do r2bit *=-1
 
-in_inner = i - 10
-in_outer = k - 10
+; in_inner = i - 10
+; in_outer = k - 10
 
-i+=1 ;so that the while statement continues to execute
-k+=1
+in_inner = (where((wholeimage[x,y] GT thresh) EQ 1))[0] - 10
+in_outer = (where((wholeimage[x2,y2] GT thresh) EQ 1))[0] - 10
 
-WHILE wholeimage[x[i],y[i]] GT thresh DO i++
-WHILE wholeimage[x2[k],y2[k]] GT thresh DO k++
+; i+=1 ;so that the while statement continues to execute
+; k+=1
 
-out_inner = i + 10
-out_outer = k + 10
+; WHILE wholeimage[x[i],y[i]] GT thresh DO i++
+; WHILE wholeimage[x2[k],y2[k]] GT thresh DO k++
+
+; out_inner = i + 10
+; out_outer = k + 10
+; stop
+out_inner = (where((wholeimage[x,y] GT thresh) EQ 1))[-1] + 10
+out_outer = (where((wholeimage[x2,y2] GT thresh) EQ 1))[-1] + 10
 
 IF REGION EQ 3 THEN BEGIN
 
@@ -360,25 +366,30 @@ IF REGION EQ 3 THEN BEGIN
     wholeimage[x[in_inner:out_inner],y[in_inner:out_inner]] = 0
     wholeimage[x2[in_outer:out_outer],y2[in_outer:out_outer]] = 0
 
-    i=0
-    k=0
+    ; i=0
+    ; k=0
 
-    WHILE wholeimage[x[i],y[i]] LT thresh DO i++
-    WHILE wholeimage[x2[k],y2[k]] LT thresh DO k++
-    in_inner = i - 10
-    in_outer = k - 10
+    ; WHILE wholeimage[x[i],y[i]] LT thresh DO i++
+    ; WHILE wholeimage[x2[k],y2[k]] LT thresh DO k++
+    ; in_inner = i - 10
+    ; in_outer = k - 10
 
-    i+=1 ;so that the while statement continues to execute
-    k+=1
+    ; i+=1 ;so that the while statement continues to execute
+    ; k+=1
 
-    WHILE wholeimage[x[i],y[i]] GT thresh DO i++
-    WHILE wholeimage[x2[k],y2[k]] GT thresh DO k++
-    out_inner = i + 10
-    out_outer = k + 10
+    ; WHILE wholeimage[x[i],y[i]] GT thresh DO i++
+    ; WHILE wholeimage[x2[k],y2[k]] GT thresh DO k++
+    ; out_inner = i + 10
+    ; out_outer = k + 10
     ; Run into a problem where if the radius is wrong, totally finds the wrong center.
 
     ; If circle scanning doesn't pick up either of dimmer suns, use + 10 instead of - 10 for second radius.
-    
+    in_inner = (where((wholeimage[x,y] GT thresh) EQ 1))[0] - 10
+    in_outer = (where((wholeimage[x2,y2] GT thresh) EQ 1))[0] - 10
+    out_inner = (where((wholeimage[x,y] GT thresh) EQ 1))[-1] + 10
+    out_outer = (where((wholeimage[x2,y2] GT thresh) EQ 1))[-1] + 10
+
+
     wholeimage[x[in_inner:out_inner],y[in_inner:out_inner]] = 0
     wholeimage[x2[in_outer:out_outer],y2[in_outer:out_outer]] = 0
 ENDIF
@@ -951,9 +962,9 @@ END
 ;           Outputs how much time the program takes
 ;
 ;   :TODO: 
-;       Make it use limb-fitting instead of simple masking
-;   
-;       Can't use .run tricenter anymore since it's broken up. resolve_all won't solve it
+;       Find and ISOLATE fiducials, not jsut mask them out
+;
+;       
 ;-
 COMPILE_OPT idl2 
 on_error,2
@@ -993,12 +1004,20 @@ print,'50% sun y pos:',struct.center2.ypos
 print,'25% sun x pos:',struct.center3.xpos
 print,'25% sun y pos:',struct.center3.ypos
 
+; ; window,0
+; cgimage,wholeimage,/k,output=strmid(file,0,7)+'_'+'region1.png'
+; ; window,2
+; cgimage,wholeimage2,/k,output=strmid(file,0,7)+'_'+'region2.png'
+; ; window,3
+; cgimage,wholeimage3,/k,output=strmid(file,0,7)+'_'+'region3.png'
+
 ; window,0
-cgimage,wholeimage,/k,output=strmid(file,0,7)+'_'+'region1.png'
+; cgimage,wholeimage,/k
 ; window,2
-cgimage,wholeimage2,/k,output=strmid(file,0,7)+'_'+'region2.png'
+; cgimage,wholeimage2,/k
 ; window,3
-cgimage,wholeimage3,/k,output=strmid(file,0,7)+'_'+'region3.png'
+; cgimage,wholeimage3,/k
+
 
 finish = systime(1,/s)
 IF keyword_set(time) THEN print, 'merrygotrace took: '+strcompress(finish-start)+$
