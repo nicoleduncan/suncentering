@@ -315,109 +315,88 @@ COMMON vblock,wholeimage
 
 start = systime(1,/s)
 
-; i=0
-; k=0
-
 arr=(findgen(360) + 90)*!dtor
 ; only adding 90 so that it starts from 12 o'clock assuming there is
 ; no dim sun at that location
 
-radius = 129
-r2bit = 1
-IF file EQ 'dimsun1.fits' THEN radius = 149
-r2 = radius + 10*r2bit ;10 is an arbitrary number, can be anything, really
+radius = 139
+r2bit = 2
+loop: BEGIN
+    IF file EQ 'dimsun1.fits' THEN radius = 149
+    ; print,r2bit,' Beginning r2bit'
+    ; print,region
+    r2 = radius + 10*r2bit ;10 is an arbitrary number, can be anything, really
 
-x = radius*cos(arr) + mainxpos
-y = radius*sin(arr) + mainypos
+    x = radius*cos(arr) + mainxpos
+    y = radius*sin(arr) + mainypos
+    x2 = r2*cos(arr) + mainxpos
+    y2 = r2*sin(arr) + mainypos
+
+    ; Have to use .3 instead of .25 for dimsun2, don't know why
+    thresh = 0.3*max(wholeimage)
+
+    pri_scan = where((wholeimage[x,y] GT thresh) EQ 1,pri_where)
+    aux_scan = where((wholeimage[x2,y2] GT thresh) EQ 1,aux_where)
+    ; print,aux_where, ' aux_where before if statement'
+    IF aux_where NE 0 THEN BEGIN
+        in_inner  = (where((wholeimage[x,y]     GT thresh) EQ 1))[0] - 10
+        in_outer  = (where((wholeimage[x2,y2]   GT thresh) EQ 1))[0] - 10
+        out_inner = (where((wholeimage[x,y]     GT thresh) EQ 1))[-1] + 10
+        out_outer = (where((wholeimage[x2,y2]   GT thresh) EQ 1))[-1] + 10
+    ENDIF ELSE BEGIN
+        ; print,r2bit,aux_where
+        r2bit*=-1
+        ; print,r2bit
+        GOTO, loop
+    ENDELSE
+END
+r2bit = 2
+r2 = radius + 10*r2bit
 x2 = r2*cos(arr) + mainxpos
 y2 = r2*sin(arr) + mainypos
 
-; Have to use .3 instead of .25 for dimsun2, don't know why
-thresh = 0.3*max(wholeimage)
+otherloop: BEGIN
+    IF REGION EQ 3 THEN BEGIN
+    print,region,' Region'
+        thresh = 0.2*max(wholeimage) ;dimsun2 works if i set the thresh to .2 instead of .15
+        ; The other sun is so dim that weird parts are being picked up. How to fix? Is being dim a problem?
 
-; WHILE wholeimage[x[i],y[i]] LT thresh DO i++
-; WHILE wholeimage[x2[k],y2[k]] LT thresh DO k++
+        wholeimage[x[in_inner:out_inner],y[in_inner:out_inner]] = 0
+        wholeimage[x2[in_outer:out_outer],y2[in_outer:out_outer]] = 0
+        
+        ; check to make sure we're scanning at the right radius
+        n_check = where((wholeimage[x2,y2] GT thresh) EQ 1,n_where)
 
-;  ; Have to make some sort of catch system, i.e. if i is 449 then do r2bit *=-1
+        IF n_where NE 0 THEN BEGIN
+            in_inner  = (where((wholeimage[x,y]     GT thresh) EQ 1))[0] - 10
+            in_outer  = (where((wholeimage[x2,y2]   GT thresh) EQ 1))[0] - 10
+            out_inner = (where((wholeimage[x,y]     GT thresh) EQ 1))[-1] + 10
+            out_outer = (where((wholeimage[x2,y2]   GT thresh) EQ 1))[-1] + 10
+        ENDIF ELSE BEGIN
+            ; print,r2bit,n_where
+            ; stop
+            r2bit*=-1
+            GOTO, otherloop
+        ENDELSE
 
-; in_inner = i - 10
-; in_outer = k - 10
+        wholeimage[x[in_inner:out_inner],y[in_inner:out_inner]] = 0
+        wholeimage[x2[in_outer:out_outer],y2[in_outer:out_outer]] = 0
+    ENDIF
 
-in_inner = (where((wholeimage[x,y] GT thresh) EQ 1))[0] - 10
-in_outer = (where((wholeimage[x2,y2] GT thresh) EQ 1))[0] - 10
-
-; i+=1 ;so that the while statement continues to execute
-; k+=1
-
-; WHILE wholeimage[x[i],y[i]] GT thresh DO i++
-; WHILE wholeimage[x2[k],y2[k]] GT thresh DO k++
-
-; out_inner = i + 10
-; out_outer = k + 10
-; stop
-out_inner = (where((wholeimage[x,y] GT thresh) EQ 1))[-1] + 10
-out_outer = (where((wholeimage[x2,y2] GT thresh) EQ 1))[-1] + 10
-
-IF REGION EQ 3 THEN BEGIN
-
-    thresh = 0.2*max(wholeimage) ;dimsun2 works if i set the thresh to .2 instead of .15
-    ; The other sun is so dim that weird parts are being picked up. How to fix? Is being dim a problem?
-
-    wholeimage[x[in_inner:out_inner],y[in_inner:out_inner]] = 0
-    wholeimage[x2[in_outer:out_outer],y2[in_outer:out_outer]] = 0
-
-    ; i=0
-    ; k=0
-
-    ; WHILE wholeimage[x[i],y[i]] LT thresh DO i++
-    ; WHILE wholeimage[x2[k],y2[k]] LT thresh DO k++
-    ; in_inner = i - 10
-    ; in_outer = k - 10
-
-    ; i+=1 ;so that the while statement continues to execute
-    ; k+=1
-
-    ; WHILE wholeimage[x[i],y[i]] GT thresh DO i++
-    ; WHILE wholeimage[x2[k],y2[k]] GT thresh DO k++
-    ; out_inner = i + 10
-    ; out_outer = k + 10
-    ; Run into a problem where if the radius is wrong, totally finds the wrong center.
-
-    ; If circle scanning doesn't pick up either of dimmer suns, use + 10 instead of - 10 for second radius.
-    in_inner = (where((wholeimage[x,y] GT thresh) EQ 1))[0] - 10
-    in_outer = (where((wholeimage[x2,y2] GT thresh) EQ 1))[0] - 10
-    out_inner = (where((wholeimage[x,y] GT thresh) EQ 1))[-1] + 10
-    out_outer = (where((wholeimage[x2,y2] GT thresh) EQ 1))[-1] + 10
-
-
-    wholeimage[x[in_inner:out_inner],y[in_inner:out_inner]] = 0
-    wholeimage[x2[in_outer:out_outer],y2[in_outer:out_outer]] = 0
-ENDIF
-
+END
 centerangle = !dtor*(90 + mean([in_inner,out_inner]))
 centerx = mainxpos + radius*cos(centerangle)
 centery = mainypos + radius*sin(centerangle)
-
-; I can do better here, will come back later ???
-; a = (where((wholeimage[x,y] GT thresh) EQ 1))[0]
-; b = (where((wholeimage[x2,y2] GT thresh) EQ 1))[0]
-; c = (where((wholeimage[x,y] GT thresh) EQ 1))[-1]
-; d = (where((wholeimage[x2,y2] GT thresh) EQ 1))[-1]
 
 image = wholeimage[centerx-60:centerx+60,centery-60:centery+60]
 xoffset = centerx-60
 yoffset = centery-60
 
-; window,region
-; cgimage,image,/k
-; stop
 finish = systime(1,/s)
 IF keyword_set(time) THEN print, 'getstruct took: '+strcompress(finish-start)+$
     ' seconds'
 RETURN
 END
-
-
 ;**************************************************************************************************
 ;*                                                                                                *
 ;**************************************************************************************************
@@ -435,30 +414,6 @@ COMMON vblock, wholeimage
 s = size(wholeimage,/dimensions)
 n_col = s[0]
 n_row = s[1]
-
-; ;Must use special threshold
-; thresh = 0.65*max(wholeimage)
-; temparr = wholeimage * (wholeimage gt thresh)
-
-; colscan = 0
-; WHILE total(where(temparr[colscan*scan_width,*] GT thresh/2)) EQ -1 DO BEGIN
-;     colscan++
-; ENDWHILE
-; rowscan = fix(((where(temparr[colscan*scan_width,*] GT thresh/2))[0] - sundiam/2 + $
-;         n_elements(where(temparr[colscan*scan_width,*] GT thresh/2))/2 )/scan_width)
-
-; rowendscan = rowscan + sundiam/scan_width ; Jumping to other side of sun
-; colendscan = colscan + sundiam/scan_width
-; ;Since the column scanning is rough, have to give the ends a little room.
-; rowscan     -= 2
-; colscan     -= 2
-; rowendscan  += 2
-; colendscan  += 2
-
-; cropped=wholeimage[colscan*scan_width:colendscan*scan_width,rowscan*scan_width:$
-;     rowendscan*scan_width]
-; location = {image:cropped,xoffset:colscan*scan_width,yoffset:rowscan*scan_width}
-
 
 thresh = 0.65*max(wholeimage)
 suncheck = wholeimage gt thresh
@@ -819,21 +774,6 @@ ENDIF
 finish = systime(1,/seconds)
 
 IF keyword_set(time) THEN  print,'Elapsed Time for limbfit: ',strcompress(finish-start,/rem),' seconds'
-; save,xpos,ypos,thresh,sigmavalue,order,file, ministrip_length,scan_width,$
-;     filename='comp6results.sav',/compress
-
-; strformatcode = 'a'+strcompress(strlen(file),/rem)
-
-; OPENW,1,'comp6results.dat' 
-; PRINTF,1,xpos,ypos,thresh,sigmavalue,order,ministrip_length,scan_width,file, $
-;     format='(F7.2,1X,F7.2,1X,F7.2,I,1X,I,1X,I,1X,I,1X,'+strformatcode+')'
-; CLOSE,1
-
-; strformatcode = 'a'+strcompress(strlen(file),/rem)
-; OPENW,2,'comp6results.txt' 
-; PRINTF,2,xpos,ypos,thresh,sigmavalue,order,ministrip_length,scan_width,file, $
-;     format='(F7.2,1X,F7.2,1X,F7.2,I,1X,I,1X,I,1X,I,1X,'+strformatcode+')'
-; CLOSE,2
 RETURN
 END
 
@@ -874,37 +814,24 @@ center3 = {center3,xpos:0d,ypos:0d,thresh:0d}
 
 nstrips=5
 
-; trimask, file, xpos, ypos, scan_width, sigmavalue, sundiam, thresh, region=1, time=time
+
 limbfit, thresh, xpos, ypos, file, ministrip_length, order, scan_width, sundiam, $
     nstrips=nstrips, plot=plot, region=1, time=time
-; struct = tribox(file, scan_width, sigmavalue, sundiam, region=1, time=time)
-; xpos+=struct.xoffset
-; ypos+=struct.yoffset
 center1.xpos = xpos
 center1.ypos = ypos
 center1.thresh = thresh
 
-;trimask, file, xpos, ypos, scan_width, sigmavalue, sundiam, thresh, region=2, time=time
 limbfit, thresh, xpos, ypos, file, ministrip_length, order, scan_width, sundiam, $
     nstrips=nstrips, plot=plot, region=2, time=time
-; struct = tribox(file, scan_width, sigmavalue, sundiam, region=2, time=time)
-; xpos+=struct.xoffset
-; ypos+=struct.yoffset
 center2.xpos = xpos
 center2.ypos = ypos
 center2.thresh = thresh
 
-;trimask, file, xpos, ypos, scan_width, sigmavalue, sundiam, thresh, region=3, time=time
 limbfit, thresh, xpos, ypos, file, ministrip_length, order, scan_width, sundiam, $
     nstrips=nstrips, plot=plot, region=3, time=time
-; struct = tribox(file, scan_width, sigmavalue, sundiam, region=3, time=time)
-; xpos+=struct.xoffset
-; ypos+=struct.yoffset
 center3.xpos = xpos
 center3.ypos = ypos
 center3.thresh = thresh
-
-
 
 theta = !radeg*atan((center3.ypos - center2.ypos)/(center3.xpos - center2.xpos))
 hypot = sqrt((center3.ypos - center2.ypos)^2 + (center3.xpos - center2.xpos)^2)
@@ -975,17 +902,17 @@ IF n_elements(sundiam)      EQ 0 THEN   sundiam = 70
 
 start=systime(1,/s)
 
-profiler,/system
-profiler
+; profiler,/system
+; profiler
 COMMON vblock, wholeimage
 wholeimage = mrdfits(file)
 
 getstruct, file, struct, scan_width, sundiam, time=time
 
-profiler,/report,data=data
-profiler,/reset
+; profiler,/report,data=data
+; profiler,/reset
 
-print,data[sort(-data.time)],format='(A-20, I7, F12.5, F10.5, I9)'
+; print,data[sort(-data.time)],format='(A-20, I7, F12.5, F10.5, I9)'
 
 wholeimage2 = wholeimage
 wholeimage3 = wholeimage
