@@ -6,17 +6,16 @@ PRO makelimbstrips, thresh, xstrips, ystrips, region=region, time=time
 ;   :Params:
 ;       thresh : out, required, type=float
 ;           Threshold used to select pixels
+;       xstrips : out, required, type=structure
+;           Structure containing row strips
+;       ystrips : out, required, type=structure
+;           Structure containing column strips
 ;
 ;   :Keywords:
 ;       region: in, required, type=integer, default=1
 ;           Which sun out of the three to find the center of. Defaults to the brightest sun
 ;       time : in, optional
 ;           Prints the elapsed time
-;
-;   :TODO:
-;
-;   Exactly how much data should be stored in a structure? Since we're interested in saving space,
-;   doesn't make sense to repeat any data in the structures.
 ;-
 
 IF n_elements(region) EQ 0 THEN region = 1
@@ -177,7 +176,6 @@ ENDIF
 ; plot,image[0:20,53]
 ; stop
 
-; RETURN, {xpos:xpos, ypos:ypos, image:image, xoffset:xoffset, yoffset:yoffset}
 RETURN,{image:image, xoffset:xoffset, yoffset:yoffset, thresh:thresh}
 END
 
@@ -215,6 +213,7 @@ COMMON vblock, wholeimage, scan_width, sundiam, nstrips, order, ministrip_length
 struct = whichcropmethod(region)
 ducks = quickmask(struct.image)
 thresh = struct.thresh
+
 start = systime(1,/seconds)
 
 animage = struct.image
@@ -343,7 +342,7 @@ otherloop: BEGIN
             GOTO, otherloop
         ENDELSE
 
-        ; Setting this to 0 actually messes up fitting. use only to show what piels are being circscanned
+        ; Setting this to 0 actually messes up fitting. use only to show what pixels are being circscanned
         ; wholeimage[x[in_inner:out_inner],y[in_inner:out_inner]] = 0
         ; wholeimage[x2[in_outer:out_outer],y2[in_outer:out_outer]] = 0
 
