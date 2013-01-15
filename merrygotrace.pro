@@ -1,24 +1,13 @@
-PRO makelimbstrips, thresh, xstrips, ystrips, file, ministrip_length, scan_width, $
-    sundiam, nstrips=nstrips, region=region, time=time
+PRO makelimbstrips, thresh, xstrips, ystrips, region=region, time=time
 ;+
 ;   :Description:
 ;       Makes limb strips from full-length strips
 ;
 ;   :Params:
-;       file: in, required, type=string, default='dimsum3.fits'
-;           File to be read in
-;       ministrip_length: in, required, type=byte, default=13
-;           How long the total array of the cut-down strip will be
-;       scan_width: in, required, type=integer, default=5
-;           Indicates how far apart to scan
-;       sundiam : in, required, type=byte, default=70
-;           Approximate diameter of sun in pixels. (Based on bmp image)
 ;       thresh : out, required, type=float
 ;           Threshold used to select pixels
 ;
 ;   :Keywords:
-;       nstrips : in, optional, type=byte, default=5
-;           How many strips to select, centered around the row/col diameter
 ;       region: in, required, type=integer, default=1
 ;           Which sun out of the three to find the center of. Defaults to the brightest sun
 ;       time : in, optional
@@ -30,18 +19,13 @@ PRO makelimbstrips, thresh, xstrips, ystrips, file, ministrip_length, scan_width
 ;   doesn't make sense to repeat any data in the structures.
 ;-
 
-IF n_elements(file)             EQ 0    THEN file               = 'dimsun1.fits'
-IF n_elements(ministrip_length) EQ 0    THEN ministrip_length   = 13
-IF n_elements(nstrips)          EQ 0    THEN nstrips            = 5 
-IF n_elements(scan_width)       EQ 0    THEN scan_width         = 5 
-IF n_elements(sundiam)          EQ 0    THEN sundiam            = 70
-IF n_elements(region)           EQ 0    THEN region             = 1
+IF n_elements(region) EQ 0 THEN region = 1
+
+COMMON vblock, wholeimage, scan_width, sundiam, nstrips, order, ministrip_length, file
 
 ; Going through and doing a little commenting, think I forgot how this works:
 
-
-makestrips, thresh, c4xstrips, c4ystrips, file, scan_width, sundiam, nstrips=nstrips, $
-    region=region, time=time
+makestrips, thresh, c4xstrips, c4ystrips, region=region, time=time
 
 start = systime(1,/seconds)
 
@@ -142,7 +126,7 @@ END
  
 FUNCTION quickmask, image, thresh
 
-IF n_elements(thresh) EQ 0 THEN THRESH = 0.25*max(image)
+IF n_elements(thresh) EQ 0 THEN thresh = 0.25*max(image)
 
 s = size(image,/dimensions)
 n_col = s[0]
@@ -161,7 +145,7 @@ END
 ;**************************************************************************************************
 
 
-FUNCTION whichcropmethod, file, region, scan_width, sundiam, thresh
+FUNCTION whichcropmethod, region
 
 COMMON vblock, wholeimage
 
@@ -176,8 +160,7 @@ xoffset = ducks.xpos-60
 yoffset = ducks.ypos-60
 
 IF REGION NE 1 THEN BEGIN
-    circscancrop, mainxpos, mainypos, file, image, xpos, ypos, xoffset, yoffset, scan_width, $
-    sundiam, thresh, region=region, time=time
+    circscancrop, mainxpos, mainypos, image, thresh, xpos, ypos, xoffset, yoffset, region=region, time=time
 ENDIF
 
 ; There is a strong fiducial at image[*,53], but it's not on the limb. It's pretty darn close though. 
@@ -195,7 +178,7 @@ ENDIF
 ; stop
 
 ; RETURN, {xpos:xpos, ypos:ypos, image:image, xoffset:xoffset, yoffset:yoffset}
-RETURN,{image:image, xoffset:xoffset, yoffset:yoffset}
+RETURN,{image:image, xoffset:xoffset, yoffset:yoffset, thresh:thresh}
 END
 
 
@@ -204,20 +187,13 @@ END
 ;**************************************************************************************************
 
 
-PRO makestrips, thresh, xstrips, ystrips, file, scan_width, sundiam, nstrips=nstrips, $
-    region=region, time=time
+PRO makestrips, thresh, xstrips, ystrips, region=region, time=time
 ;+
 ;   :Description:
 ;       Only saves 5 strips centered around the solar diameter to reduce the amount of limb-
 ;           darkened pixels and to make the polynomial-fitted limbs more-or-less look similar. 
 ;
 ;   :Params:
-;   file: in, required, type=string, default='dimsum3.fits'
-;       File to be read in
-;   scan_width: in, required, type=integer, default=5
-;       Indicates how far apart to scan
-;   sundiam : in, required, type=byte, default=70
-;       Approximate diameter of sun in pixels. (Based on bmp image)
 ;   thresh : out, required, type=float
 ;       Threshold used to select pixels
 ;   xstrips : out, required, type=structure
@@ -226,28 +202,23 @@ PRO makestrips, thresh, xstrips, ystrips, file, scan_width, sundiam, nstrips=nst
 ;       Structure containing column strips
 ;
 ;   :Keywords:
-;   nstrips : in, optional, type=byte, default=5
-;       How many strips to select, centered around the row/col diameter
 ;   region : in, required, type=integer, default=1
 ;       Which sun out of the three to find the center of. Defaults to the brightest sun
 ;   time : in, optional
 ;       Prints elapsed time
 ;-
 
-IF n_elements(file)         EQ 0    THEN file       = 'dimsun1.fits'
-IF n_elements(nstrips)      EQ 0    THEN nstrips    = 5
-IF n_elements(region)       EQ 0    THEN region     = 1
-IF n_elements(scan_width)   EQ 0    THEN scan_width = 5
-IF n_elements(sundiam)      EQ 0    THEN sundiam    = 70
+IF n_elements(region) EQ 0 THEN region = 1
 
-struct = whichcropmethod(file, region, scan_width, sundiam, thresh)
+COMMON vblock, wholeimage, scan_width, sundiam, nstrips, order, ministrip_length, file
 
+struct = whichcropmethod(region)
 ducks = quickmask(struct.image)
-
+thresh = struct.thresh
 start = systime(1,/seconds)
 
-wholeimage = struct.image
-s = size(wholeimage,/dimensions)
+animage = struct.image
+s = size(animage,/dimensions)
 length = s[0]
 height = s[1]
 
@@ -260,12 +231,12 @@ ystrips = REPLICATE({COLINDEX:0,ARRAY:bytarr(height),yoffset:struct.yoffset},nst
 
 FOR i = 0,nstrips - 1 DO BEGIN
     xstrips[i].ROWINDEX = i
-    xstrips[i].ARRAY = wholeimage[*, round(ducks.xpos)+(i-nstrips/2)*scan_width]
+    xstrips[i].ARRAY = animage[*, round(ducks.xpos)+(i-nstrips/2)*scan_width]
 ENDFOR
 
 FOR k = 0,nstrips - 1 DO BEGIN
     ystrips[k].COLINDEX = k
-    ystrips[k].ARRAY = wholeimage[round(ducks.ypos)+(k-nstrips/2)*scan_width,*]
+    ystrips[k].ARRAY = animage[round(ducks.ypos)+(k-nstrips/2)*scan_width,*]
 ENDFOR
 
 finish = systime(1,/seconds)
@@ -280,24 +251,18 @@ END
 ;**************************************************************************************************
 
 
-PRO circscancrop, mainxpos, mainypos, file, image, xpos, ypos, xoffset, yoffset, scan_width, $
-    sundiam, thresh, region=region, time=time
+PRO circscancrop, mainxpos, mainypos, image, thresh, xpos, ypos, xoffset, yoffset, region=region, $
+     time=time
 ;+
 ;   :Description: 
 ;       Quickly finds the center of the main sun, scans in a circle, and locates the two secondary 
 ;       suns' centers. Crops either of the secondary suns based on what region specified.
 ;
 ;   :Params:
-;       file: in, required, type='string', default='dimsum3.fits'
-;           What file to load in
 ;       xpos : out, required, type=float
 ;           Computed X position of center
 ;       ypos : out, required, type=float
 ;           Computed Y position of center
-;       scan_width : in, required, type=integer, default=5
-;           How apart the scans are for minicrop(). 
-;       sundiam: in, required, default=70
-;           Approximate diameter of sun in pixels. (Based on bmp image)
 ;       thresh : out, required, type=float
 ;           Threshold used in finding center
 ;
@@ -311,8 +276,7 @@ PRO circscancrop, mainxpos, mainypos, file, image, xpos, ypos, xoffset, yoffset,
 COMPILE_OPT idl2 
 on_error,2
 
-COMMON vblock,wholeimage
-
+COMMON vblock, wholeimage, scan_width, sundiam, nstrips, order, ministrip_length, file
 start = systime(1,/s)
 
 arr=(findgen(360) + 90)*!dtor
@@ -400,40 +364,6 @@ IF keyword_set(time) THEN print, 'getstruct took: '+strcompress(finish-start)+$
     ' seconds'
 RETURN
 END
-;**************************************************************************************************
-;*                                                                                                *
-;**************************************************************************************************
-
-
-FUNCTION mainsuncrop, file, scan_width, sundiam, time=time
-IF n_elements(file)         EQ 0 THEN file        = 'dimsun1.fits'
-IF n_elements(scan_width)   EQ 0 THEN scan_width  = 5
-IF n_elements(sundiam)      EQ 0 THEN sundiam     = 70 ;at it's widest, sun is 61 pixels across
-
-COMPILE_OPT idl2 
-on_error,2
-COMMON vblock, wholeimage
-
-s = size(wholeimage,/dimensions)
-n_col = s[0]
-n_row = s[1]
-
-thresh = 0.65*max(wholeimage)
-suncheck = wholeimage GT thresh
-
-xpos = TOTAL( TOTAL(suncheck, 2) * Indgen(n_col) ) / total(suncheck)
-ypos = TOTAL( TOTAL(suncheck, 1) * Indgen(n_row) ) / total(suncheck)
-
-c2 = wholeimage[xpos-60:xpos+60,ypos-60:ypos+60]
-location = {image:c2,xoffset:xpos-60,yoffset:ypos-60}
-print,'xpos',xpos
-print,'ypos',ypos
-finish = systime(1,/seconds)
-IF keyword_set(time) THEN  print, 'Elapsed Time for mainsuncrop(): ' + $
-    strcompress(finish-start,/remove)+ ' seconds'
-RETURN, location
-
-END
 
 
 ;**************************************************************************************************
@@ -441,79 +371,13 @@ END
 ;**************************************************************************************************
 
 
-PRO merrygotrimask, image, file, xpos, ypos, xoffset, yoffset, scan_width, sundiam, thresh, $
-    time=time
-;+
-;   :Description:
-;       Had to make a new version of comp3 because the old one called scanbox() by default
-;
-;   :Params:
-;       image: out, required, type=array
-;           Cropped image
-;       file: in, required, type='string', default='dimsum3.fits'
-;           What file to load in
-;       xpos : out, required, type=float
-;           Computed X position of center
-;       ypos : out, required, type=float
-;           Computed Y position of center
-;       scan_width : in, required, type=integer, default=5
-;           How apart the scans are for minicrop(). 
-;       sundiam: in, required, default=70
-;           Approximate diameter of sun in pixels. (Based on bmp image)
-;       thresh : out, required, type=float
-;           Threshold used in finding center
-;
-;   :Keywords:
-;       time : in, optional
-;           Print the elapsed time
-;-
-COMPILE_OPT idl2 
-on_error,2
-
-IF n_elements(file) EQ 0 THEN file   = 'dimsun1.fits'
-
-; COMMON vblock,wholeimage
-struct = mainsuncrop(file, scan_width, sundiam, time=time)
-image = struct.image
-start = systime(1,/seconds)
-
-ducks = quickmask(image)
-xpos = ducks.xpos
-ypos = ducks.ypos
-
-xoffset = struct.xoffset
-yoffset = struct.yoffset
-stop
-finish = systime(1,/s)
-IF keyword_set(time) THEN  print, 'Elapsed Time for merrygotrimask: ',strcompress(finish-start,/remove),$
-    ' seconds'
-RETURN
-END
-
-
-;**************************************************************************************************
-;*                                                                                                *
-;**************************************************************************************************
-
-
-PRO limbfit, thresh, xpos, ypos, file, ministrip_length, order, scan_width, sundiam, $
-    nstrips=nstrips, plot=plot, region=region, time=time
+PRO limbfit, thresh, xpos, ypos, plot=plot, region=region, time=time
 ;+
 ;   :Description:
 ;   Uses the data from makelimbstrips and fits an n-th order polynomial to the limb to find where
 ;       it crosses the threshold.
 ;
 ;   :Params:
-;       file : in, required, type=string, default='dimsum3.fits'
-;           File to be read in
-;       ministrip_length : in, required, default=9
-;           How long the trimmed down strip will be
-;       order : in, required, type=integer, default=3
-;           What order polynomial to use for POLY_FIT()
-;       scan_width : in, required, type=integer, default=5
-;           Indicates how far apart to scan
-;       sundiam : in, required, type=byte, default=70
-;           Approximate diameter of sun in pixels. (Based on bmp image)
 ;       thresh : out, required, type=float
 ;           Threshold used to select pixels
 ;       xpos : out, required, type=float
@@ -522,8 +386,6 @@ PRO limbfit, thresh, xpos, ypos, file, ministrip_length, order, scan_width, sund
 ;           Y center
 ;
 ;   :Keywords:
-;       nstrips : in, optional, type=byte, default=5
-;           How many strips to select, centered around the row/col diameter
 ;       region : in, required, type=integer, default=1
 ;           Which sun out of the three to find the center of. Defaults to the brightest sun
 ;       plot : in, optional
@@ -532,18 +394,12 @@ PRO limbfit, thresh, xpos, ypos, file, ministrip_length, order, scan_width, sund
 ;           Prints the elapsed time
 ;-
 
-; Setting default values
-IF n_elements(file)                 EQ 0    THEN file              = 'dimsun1.fits'
-IF n_elements(ministrip_length)     EQ 0    THEN ministrip_length  = 13
-IF n_elements(nstrips)              EQ 0    THEN nstrips           = 5
-IF n_elements(order)                EQ 0    THEN order             = 2
-IF n_elements(region)               EQ 0    THEN region            = 1
-IF n_elements(scan_width)           EQ 0    THEN scan_width        = 5
-IF n_elements(sundiam)              EQ 0    THEN sundiam           = 70
-; COMMON vblock,image
+IF n_elements(region) EQ 0 THEN region = 1
+
+COMMON vblock, wholeimage, scan_width, sundiam, nstrips, order, ministrip_length, file
+
 ; Run the program to get our structures
-makelimbstrips, thresh, xstrips, ystrips, file, ministrip_length, scan_width, sundiam, $
-    nstrips=nstrips, region=region, time=time
+makelimbstrips, thresh, xstrips, ystrips, region=region, time=time
 
 start = systime(1,/seconds)
 
@@ -786,21 +642,15 @@ END
 ;**************************************************************************************************
 
 
-PRO getstruct, file, struct, scan_width, sundiam, time=time
+PRO getstruct, struct, time=time
 ;+
 ;   :Description:
 ;       Finds the centers of a triple-sun image and loads all relevant information
 ;       including offsets and angles into a new structure.
 ;
 ;   :Params:
-;       file: in, required, type = string, default = 'dimsum3.fits'
-;           What file to find 3 centers for
 ;       struct : out, required, type=structure
 ;           Structure containing the centers and cropped images of all 3 suns
-;       scan_width : in, required, type=integer, default=5
-;           How apart the scans are for minicrop(). 
-;       sundiam : in, required, type=byte, default=70
-;           Approximate diameter of sun in pixels. (Based on bmp image)
 ;
 ;   :Keywords:
 ;       time: in, optional
@@ -808,30 +658,26 @@ PRO getstruct, file, struct, scan_width, sundiam, time=time
 ;-
 COMPILE_OPT idl2 
 on_error,2
-; COMMON vblock,image
+
+COMMON vblock, wholeimage, scan_width, sundiam, nstrips, order, ministrip_length, file
+
 start = systime(1,/s)
 
 center1 = {center1,xpos:0d,ypos:0d,thresh:0d}
 center2 = {center2,xpos:0d,ypos:0d,thresh:0d}
 center3 = {center3,xpos:0d,ypos:0d,thresh:0d}
 
-nstrips=5
-
-
-limbfit, thresh, xpos, ypos, file, ministrip_length, order, scan_width, sundiam, $
-    nstrips=nstrips, plot=plot, region=1, time=time
+limbfit, thresh, xpos, ypos, plot=plot, region=1, time=time
 center1.xpos = xpos
 center1.ypos = ypos
 center1.thresh = thresh
 
-limbfit, thresh, xpos, ypos, file, ministrip_length, order, scan_width, sundiam, $
-    nstrips=nstrips, plot=plot, region=2, time=time
+limbfit, thresh, xpos, ypos, plot=plot, region=2, time=time
 center2.xpos = xpos
 center2.ypos = ypos
 center2.thresh = thresh
 
-limbfit, thresh, xpos, ypos, file, ministrip_length, order, scan_width, sundiam, $
-    nstrips=nstrips, plot=plot, region=3, time=time
+limbfit, thresh, xpos, ypos, plot=plot, region=3, time=time
 center3.xpos = xpos
 center3.ypos = ypos
 center3.thresh = thresh
@@ -880,12 +726,6 @@ END
 ;       This version uses limb fitting opposed to masking (tricenter). 
 ;
 ;   :Params:
-;       file: in, required, type = string, default = 'dimsuns.fits'
-;           What file to find 3 centers for
-;       scan_width: in, required, type = integer, default = 5
-;           How apart the scans are for minicrop(). Overrides defaults in crop().
-;       sundiam : in, required, type=byte, default=70
-;           Approximate diameter of sun in pixels. (Based on bmp image)
 ;
 ;   :Keywords:
 ;       time: in, optional
@@ -904,25 +744,22 @@ END
 COMPILE_OPT idl2 
 on_error,2
 
-IF n_elements(file)         EQ 0 THEN   file = 'dimsun1.fits'
-IF n_elements(scan_width)   EQ 0 THEN   scan_width = 5
-IF n_elements(sundiam)      EQ 0 THEN   sundiam = 70
-
 start=systime(1,/s)
 
 ; profiler,/system
 ; profiler
+
 COMMON vblock, wholeimage, scan_width, sundiam, nstrips, order, ministrip_length, file
+file = 'dimsun1.fits'
 wholeimage = mrdfits(file)
 scan_width = 5
 sundiam = 70
 nstrips = 5
 order = 2
-ministrip_length  = 13
-file = 'dimsun1.fits'
+ministrip_length = 13
 
 
-getstruct, file, struct, scan_width, sundiam, time=time
+getstruct, struct, time=time
 
 ; profiler,/report,data=data
 ; profiler,/reset,/clear
