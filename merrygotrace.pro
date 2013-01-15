@@ -5,7 +5,7 @@ PRO makelimbstrips, thresh, xstrips, ystrips, file, ministrip_length, scan_width
 ;       Makes limb strips from full-length strips
 ;
 ;   :Params:
-;       file: in, required, type=string, default='triplesun.bmp'
+;       file: in, required, type=string, default='dimsum3.fits'
 ;           File to be read in
 ;       ministrip_length: in, required, type=byte, default=13
 ;           How long the total array of the cut-down strip will be
@@ -142,7 +142,7 @@ END
  
 FUNCTION quickmask, image, thresh
 
-IF N_ELEMENTS(thresh) EQ 0 THEN THRESH = 0.25*max(image)
+IF n_elements(thresh) EQ 0 THEN THRESH = 0.25*max(image)
 
 s = size(image,/dimensions)
 n_col = s[0]
@@ -212,7 +212,7 @@ PRO makestrips, thresh, xstrips, ystrips, file, scan_width, sundiam, nstrips=nst
 ;           darkened pixels and to make the polynomial-fitted limbs more-or-less look similar. 
 ;
 ;   :Params:
-;   file: in, required, type=string, default='triplesun.bmp'
+;   file: in, required, type=string, default='dimsum3.fits'
 ;       File to be read in
 ;   scan_width: in, required, type=integer, default=5
 ;       Indicates how far apart to scan
@@ -288,7 +288,7 @@ PRO circscancrop, mainxpos, mainypos, file, image, xpos, ypos, xoffset, yoffset,
 ;       suns' centers. Crops either of the secondary suns based on what region specified.
 ;
 ;   :Params:
-;       file: in, required, type='string', default='triplesun.bmp'
+;       file: in, required, type='string', default='dimsum3.fits'
 ;           What file to load in
 ;       xpos : out, required, type=float
 ;           Computed X position of center
@@ -319,7 +319,7 @@ arr=(findgen(360) + 90)*!dtor
 ; only adding 90 so that it starts from 12 o'clock assuming there is
 ; no dim sun at that location
 
-radius = 139
+radius = 129
 r2bit = 2
 loop: BEGIN
     IF file EQ 'dimsun1.fits' THEN radius = 149
@@ -357,7 +357,7 @@ y2 = r2*sin(arr) + mainypos
 
 otherloop: BEGIN
     IF REGION EQ 3 THEN BEGIN
-    print,region,' Region'
+    ; print,region,' Region'
         thresh = 0.2*max(wholeimage) ;dimsun2 works if i set the thresh to .2 instead of .15
         ; The other sun is so dim that weird parts are being picked up. How to fix? Is being dim a problem?
 
@@ -379,11 +379,14 @@ otherloop: BEGIN
             GOTO, otherloop
         ENDELSE
 
-        wholeimage[x[in_inner:out_inner],y[in_inner:out_inner]] = 0
-        wholeimage[x2[in_outer:out_outer],y2[in_outer:out_outer]] = 0
+        ; Setting this to 0 actually messes up fitting. use only to show what piels are being circscanned
+        ; wholeimage[x[in_inner:out_inner],y[in_inner:out_inner]] = 0
+        ; wholeimage[x2[in_outer:out_outer],y2[in_outer:out_outer]] = 0
+
     ENDIF
 
 END
+
 centerangle = !dtor*(90 + mean([in_inner,out_inner]))
 centerx = mainxpos + radius*cos(centerangle)
 centery = mainypos + radius*sin(centerangle)
@@ -404,7 +407,7 @@ END
 
 FUNCTION mainsuncrop, file, scan_width, sundiam, time=time
 IF n_elements(file)         EQ 0 THEN file        = 'dimsun1.fits'
-IF n_elements(scanwidth)    EQ 0 THEN scan_width  = 5
+IF n_elements(scan_width)   EQ 0 THEN scan_width  = 5
 IF n_elements(sundiam)      EQ 0 THEN sundiam     = 70 ;at it's widest, sun is 61 pixels across
 
 COMPILE_OPT idl2 
@@ -416,7 +419,7 @@ n_col = s[0]
 n_row = s[1]
 
 thresh = 0.65*max(wholeimage)
-suncheck = wholeimage gt thresh
+suncheck = wholeimage GT thresh
 
 xpos = TOTAL( TOTAL(suncheck, 2) * Indgen(n_col) ) / total(suncheck)
 ypos = TOTAL( TOTAL(suncheck, 1) * Indgen(n_row) ) / total(suncheck)
@@ -447,7 +450,7 @@ PRO merrygotrimask, image, file, xpos, ypos, xoffset, yoffset, scan_width, sundi
 ;   :Params:
 ;       image: out, required, type=array
 ;           Cropped image
-;       file: in, required, type='string', default='triplesun.bmp'
+;       file: in, required, type='string', default='dimsum3.fits'
 ;           What file to load in
 ;       xpos : out, required, type=float
 ;           Computed X position of center
@@ -467,7 +470,7 @@ PRO merrygotrimask, image, file, xpos, ypos, xoffset, yoffset, scan_width, sundi
 COMPILE_OPT idl2 
 on_error,2
 
-IF n_elements(file)         EQ 0 THEN file   = 'dimsun1.fits'
+IF n_elements(file) EQ 0 THEN file   = 'dimsun1.fits'
 
 ; COMMON vblock,wholeimage
 struct = mainsuncrop(file, scan_width, sundiam, time=time)
@@ -501,7 +504,7 @@ PRO limbfit, thresh, xpos, ypos, file, ministrip_length, order, scan_width, sund
 ;       it crosses the threshold.
 ;
 ;   :Params:
-;       file : in, required, type=string, default='triplesun.bmp'
+;       file : in, required, type=string, default='dimsum3.fits'
 ;           File to be read in
 ;       ministrip_length : in, required, default=9
 ;           How long the trimmed down strip will be
@@ -790,7 +793,7 @@ PRO getstruct, file, struct, scan_width, sundiam, time=time
 ;       including offsets and angles into a new structure.
 ;
 ;   :Params:
-;       file: in, required, type = string, default = 'triplesun.bmp'
+;       file: in, required, type = string, default = 'dimsum3.fits'
 ;           What file to find 3 centers for
 ;       struct : out, required, type=structure
 ;           Structure containing the centers and cropped images of all 3 suns
@@ -877,7 +880,7 @@ END
 ;       This version uses limb fitting opposed to masking (tricenter). 
 ;
 ;   :Params:
-;       file: in, required, type = string, default = 'triplesun.bmp'
+;       file: in, required, type = string, default = 'dimsuns.fits'
 ;           What file to find 3 centers for
 ;       scan_width: in, required, type = integer, default = 5
 ;           How apart the scans are for minicrop(). Overrides defaults in crop().
@@ -889,14 +892,19 @@ END
 ;           Outputs how much time the program takes
 ;
 ;   :TODO: 
-;       Find and ISOLATE fiducials, not jsut mask them out
+;       Find and ISOLATE fiducials, not just mask them out
 ;
+;       Load a parameter table and I assume load them into the common block
+;
+;       Use 25% of median(image)
+;
+;       Make sure program doesn't freak out when sun isn't in POV
 ;       
 ;-
 COMPILE_OPT idl2 
 on_error,2
 
-IF n_elements(file)         EQ 0 THEN   file = 'dimsun3.fits'
+IF n_elements(file)         EQ 0 THEN   file = 'dimsun1.fits'
 IF n_elements(scan_width)   EQ 0 THEN   scan_width = 5
 IF n_elements(sundiam)      EQ 0 THEN   sundiam = 70
 
@@ -904,25 +912,22 @@ start=systime(1,/s)
 
 ; profiler,/system
 ; profiler
-COMMON vblock, wholeimage
+COMMON vblock, wholeimage, scan_width, sundiam, nstrips, order, ministrip_length, file
 wholeimage = mrdfits(file)
+scan_width = 5
+sundiam = 70
+nstrips = 5
+order = 2
+ministrip_length  = 13
+file = 'dimsun1.fits'
+
 
 getstruct, file, struct, scan_width, sundiam, time=time
 
 ; profiler,/report,data=data
-; profiler,/reset
+; profiler,/reset,/clear
 
 ; print,data[sort(-data.time)],format='(A-20, I7, F12.5, F10.5, I9)'
-
-wholeimage2 = wholeimage
-wholeimage3 = wholeimage
-
-wholeimage[struct.center1.xpos,*]=20
-wholeimage[*,struct.center1.ypos]=20
-wholeimage2[struct.center2.xpos,*]=20
-wholeimage2[*,struct.center2.ypos]=20
-wholeimage3[struct.center3.xpos,*]=20
-wholeimage3[*,struct.center3.ypos]=20
 
 print,'Main sun x pos:',struct.center1.xpos
 print,'Main sun y pos:',struct.center1.ypos
@@ -930,6 +935,16 @@ print,'50% sun x pos:',struct.center2.xpos
 print,'50% sun y pos:',struct.center2.ypos
 print,'25% sun x pos:',struct.center3.xpos
 print,'25% sun y pos:',struct.center3.ypos
+
+; wholeimage2 = wholeimage
+; wholeimage3 = wholeimage
+
+; wholeimage[struct.center1.xpos,*]=20
+; wholeimage[*,struct.center1.ypos]=20
+; wholeimage2[struct.center2.xpos,*]=20
+; wholeimage2[*,struct.center2.ypos]=20
+; wholeimage3[struct.center3.xpos,*]=20
+; wholeimage3[*,struct.center3.ypos]=20
 
 ; ; window,0
 ; cgimage,wholeimage,/k,output=strmid(file,0,7)+'_'+'region1.png'
@@ -944,6 +959,83 @@ print,'25% sun y pos:',struct.center3.ypos
 ; cgimage,wholeimage2,/k
 ; window,3
 ; cgimage,wholeimage3,/k
+
+; loadct,9
+; window,0
+; Getting general profile of sun
+; a=median(wholeimage,7)
+; squaring to make differences more apparent
+; cgimage,median((a-wholeimage)^2,3)
+
+; Can get more or less the general area of fiducial, but how to accurately get it?
+
+; Given that we know the exact shape of a fiducial, how do we reverse convolve it?
+; kernel = GAUSSIAN_FUNCTION([1,1], WIDTH=6, MAXIMUM=255)
+; kernel = [[0,0,1,1,0,0],[0,0,1,1,0,0],[0,0,1,1,0,0],[1,1,1,1,1,1],[1,1,1,1,1,1],[0,0,1,1,0,0],[0,0,1,1,0,0],[0,0,1,1,0,0]]
+; b=convol_fft(wholeimage,kernel);,/normalize,/edge_zero)
+
+; cgimage,b-wholeimage,/k
+; window,0
+; cgimage,laplacian(wholeimage[159:290,100:200],/add),/k
+
+stop
+
+
+orig_image = wholeimage
+ 
+; Crop the image to focus in on the bridges:
+croppedSize = [96, 96]
+croppedImage = orig_image[150:(croppedSize[0] - 1) + 200, $
+   100:(croppedSize[1] - 1) + 100]
+   stop
+ 
+; Display original image.
+img01 = IMAGE(croppedImage, $
+   TITLE = "Original", $
+   LAYOUT = [4, 2, 1], DIMENSIONS = [640, 400])
+ 
+; Apply Roberts filter.
+robimage = ROBERTS(croppedImage)
+img02 = IMAGE(robimage, $
+   TITLE = "Roberts Filter", /CURRENT, $
+   LAYOUT = [4, 2, 2])
+ 
+; Apply Sobel filter.
+sobimage = SOBEL(croppedImage)
+img03 = IMAGE(sobimage, $
+   TITLE = "Sobel Filter", /CURRENT, $
+   LAYOUT = [4, 2, 3])
+ 
+; Apply Prewitt filter.
+prewimage = PREWITT(croppedImage)
+img04 = IMAGE(prewimage, $
+   TITLE = "Prewitt Filter", /CURRENT, $
+   LAYOUT = [4, 2, 4])
+ 
+; Apply SHIFT_DIFF filter.
+shiftimage = SHIFT_DIFF(croppedImage)
+img05 = IMAGE(shiftimage, $
+   TITLE = "SHIFT_DIFF Filter", /CURRENT, $
+   LAYOUT = [4, 2, 5])
+ 
+; Apply EDGE_DOG filter.
+edgedogimage = EDGE_DOG(croppedImage)
+img06 = image(edgedogimage, $
+   TITLE = "EDGE_DOG Filter", /CURRENT, $
+   LAYOUT = [4,2,6])
+ 
+; Apply Laplacian filter.
+lapimage = LAPLACIAN(croppedImage)
+img07 = IMAGE(lapimage, $
+   TITLE = "Laplacian Filter", /CURRENT, $
+   LAYOUT = [4, 2, 7])
+ 
+; Apply EMBOSS filter.
+embossimage = EMBOSS(croppedImage)
+img08 = IMAGE(embossimage, $
+   TITLE = "EMBOSS Filter", /CURRENT, $
+   LAYOUT = [4, 2, 8])
+
 
 
 finish = systime(1,/s)
