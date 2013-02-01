@@ -1,30 +1,47 @@
-PRO makelimbstrips, thresh, xstrips, ystrips, region=region, time=time
+PRO makelimbstrips, thresh, xstrips, ystrips, file, ministrip_length, scan_width, $
+    sundiam, nstrips=nstrips, region=region, time=time
 ;+
 ;   :Description:
 ;       Makes limb strips from full-length strips
 ;
 ;   :Params:
+;       file: in, required, type=string, default='triplesun.bmp'
+;           File to be read in
+;       ministrip_length: in, required, type=byte, default=13
+;           How long the total array of the cut-down strip will be
+;       scan_width: in, required, type=integer, default=5
+;           Indicates how far apart to scan
+;       sundiam : in, required, type=byte, default=70
+;           Approximate diameter of sun in pixels. (Based on bmp image)
 ;       thresh : out, required, type=float
 ;           Threshold used to select pixels
-;       xstrips : out, required, type=structure
-;           Structure containing row strips
-;       ystrips : out, required, type=structure
-;           Structure containing column strips
 ;
 ;   :Keywords:
+;       nstrips : in, optional, type=byte, default=5
+;           How many strips to select, centered around the row/col diameter
 ;       region: in, required, type=integer, default=1
 ;           Which sun out of the three to find the center of. Defaults to the brightest sun
 ;       time : in, optional
 ;           Prints the elapsed time
+;
+;   :TODO:
+;
+;   Exactly how much data should be stored in a structure? Since we're interested in saving space,
+;   doesn't make sense to repeat any data in the structures.
 ;-
 
-IF n_elements(region) EQ 0 THEN region = 1
-
-COMMON vblock, wholeimage, scan_width, sundiam, nstrips, order, ministrip_length, file
+IF n_elements(file)             EQ 0    THEN file               = 'dimsun1.fits'
+IF n_elements(ministrip_length) EQ 0    THEN ministrip_length   = 13
+IF n_elements(nstrips)          EQ 0    THEN nstrips            = 5 
+IF n_elements(scan_width)       EQ 0    THEN scan_width         = 5 
+IF n_elements(sundiam)          EQ 0    THEN sundiam            = 70
+IF n_elements(region)           EQ 0    THEN region             = 1
 
 ; Going through and doing a little commenting, think I forgot how this works:
 
-makestrips, thresh, c4xstrips, c4ystrips, region=region, time=time
+
+makestrips, thresh, c4xstrips, c4ystrips, file, scan_width, sundiam, nstrips=nstrips, $
+    region=region, time=time
 
 start = systime(1,/seconds)
 
@@ -125,7 +142,7 @@ END
  
 FUNCTION quickmask, image, thresh
 
-IF n_elements(thresh) EQ 0 THEN thresh = 0.25*max(image)
+IF N_ELEMENTS(thresh) EQ 0 THEN THRESH = 0.25*max(image)
 
 s = size(image,/dimensions)
 n_col = s[0]
@@ -144,7 +161,7 @@ END
 ;**************************************************************************************************
 
 
-FUNCTION whichcropmethod, region
+FUNCTION whichcropmethod, file, region, scan_width, sundiam, thresh
 
 COMMON vblock, wholeimage
 
@@ -159,7 +176,8 @@ xoffset = ducks.xpos-60
 yoffset = ducks.ypos-60
 
 IF REGION NE 1 THEN BEGIN
-    circscancrop, mainxpos, mainypos, image, thresh, xpos, ypos, xoffset, yoffset, region=region, time=time
+    circscancrop, mainxpos, mainypos, file, image, xpos, ypos, xoffset, yoffset, scan_width, $
+    sundiam, thresh, region=region, time=time
 ENDIF
 
 ; There is a strong fiducial at image[*,53], but it's not on the limb. It's pretty darn close though. 
@@ -177,7 +195,7 @@ ENDIF
 ; stop
 
 ; stop
-RETURN,{image:image, xoffset:xoffset, yoffset:yoffset, thresh:thresh}
+RETURN,{image:image, xoffset:xoffset, yoffset:yoffset}
 END
 
 
@@ -186,25 +204,20 @@ END
 ;**************************************************************************************************
 
 
-PRO findfiducial
-
-    struct = whichcropmethod(file, region, scan_width, sundiam, thresh)
-    
-END
-
-
-;**************************************************************************************************
-;*                                                                                                *
-;**************************************************************************************************
-
-
-PRO makestrips, thresh, xstrips, ystrips, region=region, time=time
+PRO makestrips, thresh, xstrips, ystrips, file, scan_width, sundiam, nstrips=nstrips, $
+    region=region, time=time
 ;+
 ;   :Description:
 ;       Only saves 5 strips centered around the solar diameter to reduce the amount of limb-
 ;           darkened pixels and to make the polynomial-fitted limbs more-or-less look similar. 
 ;
 ;   :Params:
+;   file: in, required, type=string, default='triplesun.bmp'
+;       File to be read in
+;   scan_width: in, required, type=integer, default=5
+;       Indicates how far apart to scan
+;   sundiam : in, required, type=byte, default=70
+;       Approximate diameter of sun in pixels. (Based on bmp image)
 ;   thresh : out, required, type=float
 ;       Threshold used to select pixels
 ;   xstrips : out, required, type=structure
@@ -213,24 +226,29 @@ PRO makestrips, thresh, xstrips, ystrips, region=region, time=time
 ;       Structure containing column strips
 ;
 ;   :Keywords:
+;   nstrips : in, optional, type=byte, default=5
+;       How many strips to select, centered around the row/col diameter
 ;   region : in, required, type=integer, default=1
 ;       Which sun out of the three to find the center of. Defaults to the brightest sun
 ;   time : in, optional
 ;       Prints elapsed time
 ;-
 
-IF n_elements(region) EQ 0 THEN region = 1
+IF n_elements(file)         EQ 0    THEN file       = 'dimsun1.fits'
+IF n_elements(nstrips)      EQ 0    THEN nstrips    = 5
+IF n_elements(region)       EQ 0    THEN region     = 1
+IF n_elements(scan_width)   EQ 0    THEN scan_width = 5
+IF n_elements(sundiam)      EQ 0    THEN sundiam    = 70
 
-COMMON vblock, wholeimage, scan_width, sundiam, nstrips, order, ministrip_length, file
 
-struct = whichcropmethod(region)
+struct = whichcropmethod(file, region, scan_width, sundiam, thresh)
+
 ducks = quickmask(struct.image)
-thresh = struct.thresh
 
 start = systime(1,/seconds)
 
-animage = struct.image
-s = size(animage,/dimensions)
+wholeimage = struct.image
+s = size(wholeimage,/dimensions)
 length = s[0]
 height = s[1]
 
@@ -243,12 +261,12 @@ ystrips = REPLICATE({COLINDEX:0,ARRAY:bytarr(height),yoffset:struct.yoffset},nst
 
 FOR i = 0,nstrips - 1 DO BEGIN
     xstrips[i].ROWINDEX = i
-    xstrips[i].ARRAY = animage[*, round(ducks.xpos)+(i-nstrips/2)*scan_width]
+    xstrips[i].ARRAY = wholeimage[*, round(ducks.xpos)+(i-nstrips/2)*scan_width]
 ENDFOR
 
 FOR k = 0,nstrips - 1 DO BEGIN
     ystrips[k].COLINDEX = k
-    ystrips[k].ARRAY = animage[round(ducks.ypos)+(k-nstrips/2)*scan_width,*]
+    ystrips[k].ARRAY = wholeimage[round(ducks.ypos)+(k-nstrips/2)*scan_width,*]
 ENDFOR
 
 finish = systime(1,/seconds)
@@ -263,18 +281,24 @@ END
 ;**************************************************************************************************
 
 
-PRO circscancrop, mainxpos, mainypos, image, thresh, xpos, ypos, xoffset, yoffset, region=region, $
-     time=time
+PRO circscancrop, mainxpos, mainypos, file, image, xpos, ypos, xoffset, yoffset, scan_width, $
+    sundiam, thresh, region=region, time=time
 ;+
 ;   :Description: 
 ;       Quickly finds the center of the main sun, scans in a circle, and locates the two secondary 
 ;       suns' centers. Crops either of the secondary suns based on what region specified.
 ;
 ;   :Params:
+;       file: in, required, type='string', default='triplesun.bmp'
+;           What file to load in
 ;       xpos : out, required, type=float
 ;           Computed X position of center
 ;       ypos : out, required, type=float
 ;           Computed Y position of center
+;       scan_width : in, required, type=integer, default=5
+;           How apart the scans are for minicrop(). 
+;       sundiam: in, required, default=70
+;           Approximate diameter of sun in pixels. (Based on bmp image)
 ;       thresh : out, required, type=float
 ;           Threshold used in finding center
 ;
@@ -288,14 +312,14 @@ PRO circscancrop, mainxpos, mainypos, image, thresh, xpos, ypos, xoffset, yoffse
 COMPILE_OPT idl2 
 on_error,2
 
-COMMON vblock, wholeimage, scan_width, sundiam, nstrips, order, ministrip_length, file
+COMMON vblock,wholeimage
 start = systime(1,/s)
 
 arr=(findgen(360) + 90)*!dtor
 ; only adding 90 so that it starts from 12 o'clock assuming there is
 ; no dim sun at that location
 
-radius = 129
+radius = 139
 r2bit = 2
 loop: BEGIN
     IF file EQ 'dimsun1.fits' THEN radius = 149
@@ -355,14 +379,11 @@ otherloop: BEGIN
             GOTO, otherloop
         ENDELSE
 
-        ; Setting this to 0 actually messes up fitting. use only to show what pixels are being circscanned
-        ; wholeimage[x[in_inner:out_inner],y[in_inner:out_inner]] = 0
-        ; wholeimage[x2[in_outer:out_outer],y2[in_outer:out_outer]] = 0
-
+        wholeimage[x[in_inner:out_inner],y[in_inner:out_inner]] = 0
+        wholeimage[x2[in_outer:out_outer],y2[in_outer:out_outer]] = 0
     ENDIF
 
 END
-
 centerangle = !dtor*(90 + mean([in_inner,out_inner]))
 centerx = mainxpos + radius*cos(centerangle)
 centery = mainypos + radius*sin(centerangle)
@@ -376,6 +397,40 @@ IF keyword_set(time) THEN print, 'getstruct took: '+strcompress(finish-start)+$
     ' seconds'
 RETURN
 END
+;**************************************************************************************************
+;*                                                                                                *
+;**************************************************************************************************
+
+
+FUNCTION mainsuncrop, file, scan_width, sundiam, time=time
+IF n_elements(file)         EQ 0 THEN file        = 'dimsun1.fits'
+IF n_elements(scanwidth)    EQ 0 THEN scan_width  = 5
+IF n_elements(sundiam)      EQ 0 THEN sundiam     = 70 ;at it's widest, sun is 61 pixels across
+
+COMPILE_OPT idl2 
+on_error,2
+COMMON vblock, wholeimage
+
+s = size(wholeimage,/dimensions)
+n_col = s[0]
+n_row = s[1]
+
+thresh = 0.65*max(wholeimage)
+suncheck = wholeimage gt thresh
+
+xpos = TOTAL( TOTAL(suncheck, 2) * Indgen(n_col) ) / total(suncheck)
+ypos = TOTAL( TOTAL(suncheck, 1) * Indgen(n_row) ) / total(suncheck)
+
+c2 = wholeimage[xpos-60:xpos+60,ypos-60:ypos+60]
+location = {image:c2,xoffset:xpos-60,yoffset:ypos-60}
+print,'xpos',xpos
+print,'ypos',ypos
+finish = systime(1,/seconds)
+IF keyword_set(time) THEN  print, 'Elapsed Time for mainsuncrop(): ' + $
+    strcompress(finish-start,/remove)+ ' seconds'
+RETURN, location
+
+END
 
 
 ;**************************************************************************************************
@@ -383,13 +438,78 @@ END
 ;**************************************************************************************************
 
 
-PRO limbfit, thresh, xpos, ypos, plot=plot, region=region, time=time
+PRO merrygotrimask, image, file, xpos, ypos, xoffset, yoffset, scan_width, sundiam, thresh, $
+    time=time
+;+
+;   :Description:
+;       Had to make a new version of comp3 because the old one called scanbox() by default
+;
+;   :Params:
+;       image: out, required, type=array
+;           Cropped image
+;       file: in, required, type='string', default='triplesun.bmp'
+;           What file to load in
+;       xpos : out, required, type=float
+;           Computed X position of center
+;       ypos : out, required, type=float
+;           Computed Y position of center
+;       scan_width : in, required, type=integer, default=5
+;           How apart the scans are for minicrop(). 
+;       sundiam: in, required, default=70
+;           Approximate diameter of sun in pixels. (Based on bmp image)
+;       thresh : out, required, type=float
+;           Threshold used in finding center
+;
+;   :Keywords:
+;       time : in, optional
+;           Print the elapsed time
+;-
+COMPILE_OPT idl2 
+on_error,2
+
+IF n_elements(file)         EQ 0 THEN file   = 'dimsun1.fits'
+
+struct = mainsuncrop(file, scan_width, sundiam, time=time)
+image = struct.image
+start = systime(1,/seconds)
+
+ducks = quickmask(image)
+xpos = ducks.xpos
+ypos = ducks.ypos
+
+xoffset = struct.xoffset
+yoffset = struct.yoffset
+stop
+finish = systime(1,/s)
+IF keyword_set(time) THEN  print, 'Elapsed Time for merrygotrimask: ',strcompress(finish-start,/remove),$
+    ' seconds'
+RETURN
+END
+
+
+;**************************************************************************************************
+;*                                                                                                *
+;**************************************************************************************************
+
+
+PRO limbfit, thresh, xpos, ypos, file, ministrip_length, order, scan_width, sundiam, $
+    nstrips=nstrips, plot=plot, region=region, time=time
 ;+
 ;   :Description:
 ;   Uses the data from makelimbstrips and fits an n-th order polynomial to the limb to find where
 ;       it crosses the threshold.
 ;
 ;   :Params:
+;       file : in, required, type=string, default='triplesun.bmp'
+;           File to be read in
+;       ministrip_length : in, required, default=9
+;           How long the trimmed down strip will be
+;       order : in, required, type=integer, default=3
+;           What order polynomial to use for POLY_FIT()
+;       scan_width : in, required, type=integer, default=5
+;           Indicates how far apart to scan
+;       sundiam : in, required, type=byte, default=70
+;           Approximate diameter of sun in pixels. (Based on bmp image)
 ;       thresh : out, required, type=float
 ;           Threshold used to select pixels
 ;       xpos : out, required, type=float
@@ -398,6 +518,8 @@ PRO limbfit, thresh, xpos, ypos, plot=plot, region=region, time=time
 ;           Y center
 ;
 ;   :Keywords:
+;       nstrips : in, optional, type=byte, default=5
+;           How many strips to select, centered around the row/col diameter
 ;       region : in, required, type=integer, default=1
 ;           Which sun out of the three to find the center of. Defaults to the brightest sun
 ;       plot : in, optional
@@ -406,12 +528,18 @@ PRO limbfit, thresh, xpos, ypos, plot=plot, region=region, time=time
 ;           Prints the elapsed time
 ;-
 
-IF n_elements(region) EQ 0 THEN region = 1
-
-COMMON vblock, wholeimage, scan_width, sundiam, nstrips, order, ministrip_length, file
+; Setting default values
+IF n_elements(file)                 EQ 0    THEN file              = 'dimsun1.fits'
+IF n_elements(ministrip_length)     EQ 0    THEN ministrip_length  = 13
+IF n_elements(nstrips)              EQ 0    THEN nstrips           = 5
+IF n_elements(order)                EQ 0    THEN order             = 2
+IF n_elements(region)               EQ 0    THEN region            = 1
+IF n_elements(scan_width)           EQ 0    THEN scan_width        = 5
+IF n_elements(sundiam)              EQ 0    THEN sundiam           = 70
 
 ; Run the program to get our structures
-makelimbstrips, thresh, xstrips, ystrips, region=region, time=time
+makelimbstrips, thresh, xstrips, ystrips, file, ministrip_length, scan_width, sundiam, $
+    nstrips=nstrips, region=region, time=time
 
 start = systime(1,/seconds)
 
@@ -654,15 +782,21 @@ END
 ;**************************************************************************************************
 
 
-PRO getstruct, struct, time=time
+PRO getstruct, file, struct, scan_width, sundiam, time=time
 ;+
 ;   :Description:
 ;       Finds the centers of a triple-sun image and loads all relevant information
 ;       including offsets and angles into a new structure.
 ;
 ;   :Params:
+;       file: in, required, type = string, default = 'triplesun.bmp'
+;           What file to find 3 centers for
 ;       struct : out, required, type=structure
 ;           Structure containing the centers and cropped images of all 3 suns
+;       scan_width : in, required, type=integer, default=5
+;           How apart the scans are for minicrop(). 
+;       sundiam : in, required, type=byte, default=70
+;           Approximate diameter of sun in pixels. (Based on bmp image)
 ;
 ;   :Keywords:
 ;       time: in, optional
@@ -670,26 +804,30 @@ PRO getstruct, struct, time=time
 ;-
 COMPILE_OPT idl2 
 on_error,2
-
-COMMON vblock, wholeimage, scan_width, sundiam, nstrips, order, ministrip_length, file
-
+; COMMON vblock,image
 start = systime(1,/s)
 
 center1 = {center1,xpos:0d,ypos:0d,thresh:0d}
 center2 = {center2,xpos:0d,ypos:0d,thresh:0d}
 center3 = {center3,xpos:0d,ypos:0d,thresh:0d}
 
-limbfit, thresh, xpos, ypos, plot=plot, region=1, time=time
+nstrips=5
+
+
+limbfit, thresh, xpos, ypos, file, ministrip_length, order, scan_width, sundiam, $
+    nstrips=nstrips, plot=plot, region=1, time=time
 center1.xpos = xpos
 center1.ypos = ypos
 center1.thresh = thresh
 
-limbfit, thresh, xpos, ypos, plot=plot, region=2, time=time
+limbfit, thresh, xpos, ypos, file, ministrip_length, order, scan_width, sundiam, $
+    nstrips=nstrips, plot=plot, region=2, time=time
 center2.xpos = xpos
 center2.ypos = ypos
 center2.thresh = thresh
 
-limbfit, thresh, xpos, ypos, plot=plot, region=3, time=time
+limbfit, thresh, xpos, ypos, file, ministrip_length, order, scan_width, sundiam, $
+    nstrips=nstrips, plot=plot, region=3, time=time
 center3.xpos = xpos
 center3.ypos = ypos
 center3.thresh = thresh
@@ -738,45 +876,52 @@ END
 ;       This version uses limb fitting opposed to masking (tricenter). 
 ;
 ;   :Params:
+;       file: in, required, type = string, default = 'triplesun.bmp'
+;           What file to find 3 centers for
+;       scan_width: in, required, type = integer, default = 5
+;           How apart the scans are for minicrop(). Overrides defaults in crop().
+;       sundiam : in, required, type=byte, default=70
+;           Approximate diameter of sun in pixels. (Based on bmp image)
 ;
 ;   :Keywords:
 ;       time: in, optional
 ;           Outputs how much time the program takes
 ;
 ;   :TODO: 
-;       Find and ISOLATE fiducials, not just mask them out
+;       Find and ISOLATE fiducials, not jsut mask them out
 ;
-;       Ignore center if sun is too close to edge (or if when cropping, we cro outside wholeimage)
-;
-;       Use 25% of median(image)
-;
-;       Make sure program doesn't freak out when sun isn't in POV
 ;       
 ;-
 COMPILE_OPT idl2 
 on_error,2
 
+IF n_elements(file)         EQ 0 THEN   file = 'dimsun3.fits'
+IF n_elements(scan_width)   EQ 0 THEN   scan_width = 5
+IF n_elements(sundiam)      EQ 0 THEN   sundiam = 70
+
 start=systime(1,/s)
 
 ; profiler,/system
 ; profiler
-
-COMMON vblock, wholeimage, scan_width, sundiam, nstrips, order, ministrip_length, file
-file = 'dimsun1.fits'
+COMMON vblock, wholeimage
 wholeimage = mrdfits(file)
-scan_width = 5
-sundiam = 70
-nstrips = 5
-order = 2
-ministrip_length = 13
 
-
-getstruct, struct, time=time
+getstruct, file, struct, scan_width, sundiam, time=time
 
 ; profiler,/report,data=data
-; profiler,/reset,/clear
+; profiler,/reset
 
 ; print,data[sort(-data.time)],format='(A-20, I7, F12.5, F10.5, I9)'
+
+wholeimage2 = wholeimage
+wholeimage3 = wholeimage
+
+wholeimage[struct.center1.xpos,*]=20
+wholeimage[*,struct.center1.ypos]=20
+wholeimage2[struct.center2.xpos,*]=20
+wholeimage2[*,struct.center2.ypos]=20
+wholeimage3[struct.center3.xpos,*]=20
+wholeimage3[*,struct.center3.ypos]=20
 
 print,'Main sun x pos:',struct.center1.xpos
 print,'Main sun y pos:',struct.center1.ypos
@@ -785,22 +930,12 @@ print,'50% sun y pos:',struct.center2.ypos
 print,'25% sun x pos:',struct.center3.xpos
 print,'25% sun y pos:',struct.center3.ypos
 
-; wholeimage2 = wholeimage
-; wholeimage3 = wholeimage
-
-; wholeimage[struct.center1.xpos,*]=20
-; wholeimage[*,struct.center1.ypos]=20
-; wholeimage2[struct.center2.xpos,*]=20
-; wholeimage2[*,struct.center2.ypos]=20
-; wholeimage3[struct.center3.xpos,*]=20
-; wholeimage3[*,struct.center3.ypos]=20
-
 ; ; window,0
-; ; cgimage,wholeimage,/k,output=strmid(file,0,7)+'_'+'region1.png'
-; ; ; window,2
-; ; cgimage,wholeimage2,/k,output=strmid(file,0,7)+'_'+'region2.png'
-; ; ; window,3
-; ; cgimage,wholeimage3,/k,output=strmid(file,0,7)+'_'+'region3.png'
+; cgimage,wholeimage,/k,output=strmid(file,0,7)+'_'+'region1.png'
+; ; window,2
+; cgimage,wholeimage2,/k,output=strmid(file,0,7)+'_'+'region2.png'
+; ; window,3
+; cgimage,wholeimage3,/k,output=strmid(file,0,7)+'_'+'region3.png'
 
 ; window,0
 ; cgimage,wholeimage,/k
@@ -808,281 +943,6 @@ print,'25% sun y pos:',struct.center3.ypos
 ; cgimage,wholeimage2,/k
 ; window,3
 ; cgimage,wholeimage3,/k
-
-; loadct,9
-; window,0
-; Getting general profile of sun
-; a=median(wholeimage,7)
-; squaring to make differences more apparent
-; cgimage,median((a-wholeimage)^2,3)
-
-; Can get more or less the general area of fiducial, but how to accurately get it?
-
-; Given that we know the exact shape of a fiducial, how do we reverse convolve it?
-; kernel = GAUSSIAN_FUNCTION([1,1], WIDTH=6, MAXIMUM=255)
-; kernel = [[0,0,1,1,0,0],[0,0,1,1,0,0],[0,0,1,1,0,0],[1,1,1,1,1,1],[1,1,1,1,1,1],[0,0,1,1,0,0],[0,0,1,1,0,0],[0,0,1,1,0,0]]
-; b=convol_fft(wholeimage,kernel);,/normalize,/edge_zero)
-
-; cgimage,b-wholeimage,/k
-; window,0
-; cgimage,laplacian(wholeimage[159:290,100:200],/add),/k
-rad = 21
-image = wholeimage[struct.center1.xpos-rad:struct.center1.xpos+rad,struct.center1.ypos-rad:struct.center1.ypos+rad]
-
-; mimage = median(image,3)
-; !p.multi=[0,1,4]
-
-; a = fltarr((size(image,/dimensions))[0])
-; s = fltarr((size(image,/dimensions))[0],(size(image,/dimensions))[1])
-
-; window,0,xsize=900,ysize=1000 
-; plot,ts_diff(reform(image[0,*]),1),/nodata,yr=[-30,30],xs=3
-; FOR i = 0,(size(image,/dimensions))[0]-1 DO BEGIN
-;     oplot,ts_diff(reform(image[i,*]),1)
-;     a[i] = where( ts_diff(reform(image[i,*]),1) EQ MIN(ts_diff(reform(image[i,*]),1)) )
-; ENDFOR
-
-; plot,image[0,*],/nodata,yr=[100,250],xs=3
-; FOR i = 0,(size(image,/dimensions))[0]-1 DO BEGIN
-;     oplot,image[i,*]
-; ENDFOR
-; vline,[5,26]
-
-; plot,ts_diff(reform(image[*,0]),1),/nodata,yr=[-30,30],xs=3
-; FOR i = 0,(size(image,/dimensions))[1]-1 DO BEGIN
-;     oplot,ts_diff(reform(image[*,i]),1)
-; ENDFOR
-
-; plot,image[*,0],/nodata,yr=[100,250],xs=3
-; FOR i = 0,(size(image,/dimensions))[1]-1 DO BEGIN
-;     oplot,image[*,i]
-; ENDFOR
-; vline,[16,36]
-
-; FOR i = 0,(size(image,/dimensions))[1]-1 DO BEGIN
-;     s[*,i] = ts_smooth(image[*,i],3)
-; ENDFOR
-; !p.multi=0
-
-;************************************************
-;************************************************
-
-
-; !p.multi=[0,1,4]
-
-; window,0,xsize=900,ysize=1000 
-; plot,ts_smooth(reform(image[0,*]),3)-reform(image[0,*]),/nodata,xs=3,ys=3,yr=[-15,15],title='Y location'
-; FOR i = 0,(size(image,/dimensions))[0]-1 DO BEGIN
-;     oplot,ts_smooth(reform(image[i,*]),3)-image[i,*]
-; ENDFOR
-; vline,peaks(ts_smooth(reform(image[14,*]),3) - image[14,*],2)
-; vline,peaks(ts_smooth(reform(image[15,*]),3) - image[15,*],2)
-; vline,peaks(ts_smooth(reform(image[16,*]),3) - image[16,*],2)
-; vline,peaks(ts_smooth(reform(image[17,*]),3) - image[17,*],2)
-; vline,peaks(ts_smooth(reform(image[18,*]),3) - image[18,*],2)
-
-
-; plot,image[0,*],/nodata,yr=[100,250],xs=3,ys=3
-; FOR i = 0,(size(image,/dimensions))[0]-1 DO BEGIN
-;     oplot,image[i,*]
-; ENDFOR
-; vline,[5,26]
-
-; plot,ts_smooth(reform(image[*,0]),3)-reform(image[*,0]),/nodata,xs=3,ys=3,yr=[-15,15],title='X location'
-; FOR i = 0,(size(image,/dimensions))[0]-1 DO BEGIN
-;     oplot,ts_smooth(reform(image[*,i]),3)-image[*,i]
-; ENDFOR
-
-; vline,peaks(ts_smooth(reform(image[*,23]),3) - image[*,23],2)
-; vline,peaks(ts_smooth(reform(image[*,24]),3) - image[*,24],2)
-; vline,peaks(ts_smooth(reform(image[*,25]),3) - image[*,25],2)
-; vline,peaks(ts_smooth(reform(image[*,26]),3) - image[*,26],2)
-; vline,peaks(ts_smooth(reform(image[*,27]),3) - image[*,27],2)
-; vline,peaks(ts_smooth(reform(image[*,28]),3) - image[*,28],2)
-
-; plot,image[*,0],/nodata,yr=[100,250],xs=3,ys=3
-; FOR i = 0,(size(image,/dimensions))[1]-1 DO BEGIN
-;     oplot,image[*,i]
-; ENDFOR
-; vline,[16,36]
-; !p.multi=0
-
-
-; ;************************************************
-; ;************************************************
-
-
-; a = fltarr(2,6)
-; a[*,0] = peaks(ts_smooth(reform(image[*,23]),3) - image[*,23],2)
-; a[*,1] = peaks(ts_smooth(reform(image[*,24]),3) - image[*,24],2)
-; a[*,2] = peaks(ts_smooth(reform(image[*,25]),3) - image[*,25],2)
-; a[*,3] = peaks(ts_smooth(reform(image[*,26]),3) - image[*,26],2)
-; a[*,4] = peaks(ts_smooth(reform(image[*,27]),3) - image[*,27],2)
-; a[*,5] = peaks(ts_smooth(reform(image[*,28]),3) - image[*,28],2)
-
-; b = fltarr(2,5)
-; b[*,0] = peaks(ts_smooth(reform(image[14,*]),3) - image[14,*],2)
-; b[*,1] = peaks(ts_smooth(reform(image[15,*]),3) - image[15,*],2)
-; b[*,2] = peaks(ts_smooth(reform(image[16,*]),3) - image[16,*],2)
-; b[*,3] = peaks(ts_smooth(reform(image[17,*]),3) - image[17,*],2)
-; b[*,4] = peaks(ts_smooth(reform(image[18,*]),3) - image[18,*],2)
-
-; x_ind = [mode(a[0,*]),mode(a[1,*])]
-; y_ind = [mode(b[0,*]),mode(b[1,*])]
-
-; image[x_ind[0],y_ind[0]] = 0
-; image[x_ind[0],y_ind[1]] = 0
-; image[x_ind[1],y_ind[0]] = 0
-; image[x_ind[1],y_ind[1]] = 0
-
-; window,1
-; cgimage,image,/k
-
-
-;************************************************
-;************************************************
-;************************************************
-
-edges = shift_diff(image)
-refpix = edges gt 25
-
-
-;FOR SURE center fiducial positions:
-; image[16,5]=0
-; image[17,5]=0
-; image[16,6]=0
-; image[17,6]=0
-
-; image[36,5]=0
-; image[37,5]=0
-; image[36,6]=0
-; image[37,6]=0
-
-; image[16,25]=0
-; image[16,26]=0
-; image[17,25]=0
-; image[17,26]=0
-
-; image[36,25]=0
-; image[37,25]=0
-; image[36,26]=0
-; image[37,26]=0
-
-; edges[16,5]=100
-; edges[17,5]=100
-; edges[16,6]=100
-; edges[17,6]=100
-
-; edges[36,5]=100
-; edges[37,5]=100
-; edges[36,6]=100
-; edges[37,6]=100
-
-; edges[16,25]=100
-; edges[16,26]=100
-; edges[17,25]=100
-; edges[17,26]=100
-
-; edges[36,25]=100
-; edges[37,25]=100
-; edges[36,26]=100
-; edges[37,26]=100
-
-ani = fltarr(43,43)
-
-ani[16,5]=1
-ani[17,5]=1
-ani[16,6]=1
-ani[17,6]=1
-
-ani[36,5]=1
-ani[37,5]=1
-ani[36,6]=1
-ani[37,6]=1
-
-ani[16,25]=1
-ani[16,26]=1
-ani[17,25]=1
-ani[17,26]=1
-
-ani[36,25]=1
-ani[37,25]=1
-ani[36,26]=1
-ani[37,26]=1
-
-; stop
-looksnice = 50>image-median(image,8)<200  
-
-display,image,/square,title='Original'
-plot_edges,ani
-
-display,bytscl(shift_diff(image)),/square,title='SHIFT_DIFF()'
-plot_edges,ani
-
-display,bytscl(laplacian(image)),/square,title='LAPLACIAN()'
-plot_edges,ani
-
-
-;************************************************
-;************************************************
-;************************************************
-
-; stop
-orig_image = wholeimage
- 
-; Crop the image to focus in on the bridges:
-croppedSize = [96, 96]
-croppedImage = orig_image[150:(croppedSize[0] - 1) + 200, $
-   100:(croppedSize[1] - 1) + 100]
-   ; stop
- 
-; Display original image.
-img01 = IMAGE(croppedImage, $
-   TITLE = "Original", $
-   LAYOUT = [4, 2, 1], DIMENSIONS = [640, 400])
- 
-; Apply Roberts filter.
-robimage = ROBERTS(croppedImage)
-img02 = IMAGE(robimage, $
-   TITLE = "Roberts Filter", /CURRENT, $
-   LAYOUT = [4, 2, 2])
- 
-; Apply Sobel filter.
-sobimage = SOBEL(croppedImage)
-img03 = IMAGE(sobimage, $
-   TITLE = "Sobel Filter", /CURRENT, $
-   LAYOUT = [4, 2, 3])
- 
-; Apply Prewitt filter.
-prewimage = PREWITT(croppedImage)
-img04 = IMAGE(prewimage, $
-   TITLE = "Prewitt Filter", /CURRENT, $
-   LAYOUT = [4, 2, 4])
- 
-; Apply SHIFT_DIFF filter.
-shiftimage = SHIFT_DIFF(croppedImage)
-img05 = IMAGE(shiftimage, $
-   TITLE = "SHIFT_DIFF Filter", /CURRENT, $
-   LAYOUT = [4, 2, 5])
- 
-; Apply EDGE_DOG filter.
-edgedogimage = EDGE_DOG(croppedImage)
-img06 = image(edgedogimage, $
-   TITLE = "EDGE_DOG Filter", /CURRENT, $
-   LAYOUT = [4,2,6])
- 
-; Apply Laplacian filter.
-lapimage = LAPLACIAN(croppedImage)
-img07 = IMAGE(lapimage, $
-   TITLE = "Laplacian Filter", /CURRENT, $
-   LAYOUT = [4, 2, 7])
- 
-; Apply EMBOSS filter.
-embossimage = EMBOSS(croppedImage)
-img08 = IMAGE(embossimage, $
-   TITLE = "EMBOSS Filter", /CURRENT, $
-   LAYOUT = [4, 2, 8])
-
 
 
 finish = systime(1,/s)
