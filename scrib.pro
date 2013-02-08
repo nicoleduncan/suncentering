@@ -1,5 +1,6 @@
 ; PRO scrib
 
+; Brightest sun
 xpos = 210.81349
 ypos = 153.94748
 
@@ -38,8 +39,6 @@ ani[37,26]=1
 ;************************************************
 
 
-
-
 ; Alright alright, we can use emboss
 
 ; One pass with emboss() to find x position and one with emboss(az=90) to find y position
@@ -50,16 +49,27 @@ ani[37,26]=1
 ; display, bytscl((shift_Diff(emboss(crop))) lt -75)*((shift_Diff(emboss(crop))) lt -75) 
 ; plot_edges,ani
 
+; Just to get dimensions 
 s = size(crop,/dim)
 nrow = s[0]
 ncol = s[1]
 
+; Lines representing the x and y fiducials. Since the fiducials are 2 pixels wide, 
+; these lines represent the top right corner of the center box. 
+;
+; To see, plot with:
+; display,bytscl(crop)
+; plot_Edges,xpb
+; plot_edges,ypb
+;
 xpb = (shift_Diff(emboss(crop))) lt -75
 ypb = (shift_Diff(emboss(crop, az=90))) lt -75
 
+; Not using this... yet
 xpeaks = xpb*((shift_Diff(emboss(crop))))
 ypeaks = ypb*((shift_Diff(emboss(crop, az=90))))
 
+; indices of the rows/columns 
 ind_col = where(xpb eq 1) mod ncol
 ind_row = where(ypb eq 1)/nrow
 
@@ -79,10 +89,11 @@ ypos = [d,f]
 xpos = xpos[sort(xpos)]
 ypos = ypos[sort(ypos)]
 
+; Because fiducials are 2 pixels wide 
 xmask = [xpos[0]-1,xpos[0],xpos[1]-1,xpos[1]]
 ymask = [ypos[0]-1,ypos[0],ypos[1]-1,ypos[1]]
 
-; Slow way:
+; Super slow way, got to be a better way to do this
 emask = fltarr(s)
 emask[xmask[0],ymask[0]]=1
 emask[xmask[0],ymask[1]]=1
@@ -101,6 +112,226 @@ emask[xmask[3],ymask[1]]=1
 emask[xmask[3],ymask[2]]=1
 emask[xmask[3],ymask[3]]=1
 
+; display,bytscl(crop),/square
+; plot_edges,emask
+
+!p.multi=[0,3,2]
+window,8,xsize=1000,ysize=800
+cgimage,crop,/k,/axes,title='Original',charsize=3
+cgimage,emboss(crop),/k,title='Emboss Filter',/axes,charsize=3
+cgimage,shift_Diff(emboss(crop)),/k,title='Emboss + Shift_Diff Filter',/axes,charsize=3
+cgimage,((shift_Diff(emboss(crop))) lt -60)*(shift_Diff(emboss(crop))),/k,title='Values lt -60',/axes,charsize=3
+cgimage,((shift_Diff(emboss(crop))) lt -70)*(shift_Diff(emboss(crop))),/k,title='Values lt -70',/axes,charsize=3
+cgimage,((shift_Diff(emboss(crop))) lt -80)*(shift_Diff(emboss(crop))),/k,title='Values lt -80',/axes,charsize=3
+!p.multi=0
+
+;***************************************************************************************************************
+;                                                                                                              *
+;                                                                                                              *
+;                                                                                                              *
+;                                                                                                              *
+;                                                                                                              *
+;                                                                                                              *
+;***************************************************************************************************************
+
+; 50% sun
+xpos = 338.28275
+ypos = 77.370949
+
+file = 'dimsun1.fits'
+wholeimage = mrdfits(file)
+
+rad = 21
+; This is the main sun image
+crop = wholeimage[xpos-rad:xpos+rad,ypos-rad:ypos+rad]
+
+; Ani is the outline of the original fiducial positions
+ani = fltarr(43,43)
+
+ani[16,5]=1
+ani[17,5]=1
+ani[16,6]=1
+ani[17,6]=1
+
+ani[36,5]=1
+ani[37,5]=1
+ani[36,6]=1
+ani[37,6]=1
+
+ani[16,25]=1
+ani[16,26]=1
+ani[17,25]=1
+ani[17,26]=1
+
+ani[36,25]=1
+ani[37,25]=1
+ani[36,26]=1
+ani[37,26]=1
+
+;************************************************
+;************************************************
+;************************************************
+
+s = size(crop,/dim)
+nrow = s[0]
+ncol = s[1]
+
+xpb = (shift_Diff(emboss(crop))) lt -75
+ypb = (shift_Diff(emboss(crop, az=90))) lt -75
+
+xpeaks = xpb*((shift_Diff(emboss(crop))))
+ypeaks = ypb*((shift_Diff(emboss(crop, az=90))))
+
+ind_col = where(xpb eq 1) mod ncol
+ind_row = where(ypb eq 1)/nrow
+
+a = mode(ind_col)
+b = ind_col[where(ind_col ne a)]
+c = mode(b)
+
+d = mode(ind_row)
+e = ind_row[where(ind_row ne d)]
+f = mode(e)
+
+xpos = [a,c]
+ypos = [d,f]
+xpos = xpos[sort(xpos)]
+ypos = ypos[sort(ypos)]
+
+xmask = [xpos[0]-1,xpos[0],xpos[1]-1,xpos[1]]
+ymask = [ypos[0]-1,ypos[0],ypos[1]-1,ypos[1]]
+
+emask = fltarr(s)
+emask[xmask[0],ymask[0]]=1
+emask[xmask[0],ymask[1]]=1
+emask[xmask[0],ymask[2]]=1
+emask[xmask[0],ymask[3]]=1
+emask[xmask[1],ymask[0]]=1
+emask[xmask[1],ymask[1]]=1
+emask[xmask[1],ymask[2]]=1
+emask[xmask[1],ymask[3]]=1
+emask[xmask[2],ymask[0]]=1
+emask[xmask[2],ymask[1]]=1
+emask[xmask[2],ymask[2]]=1
+emask[xmask[2],ymask[3]]=1
+emask[xmask[3],ymask[0]]=1
+emask[xmask[3],ymask[1]]=1
+emask[xmask[3],ymask[2]]=1
+emask[xmask[3],ymask[3]]=1
+
+!p.multi=[0,3,2]
+window,9,xsize=1000,ysize=800
+cgimage,crop,/k,/axes,title='Original',charsize=3
+cgimage,emboss(crop),/k,title='Emboss Filter',/axes,charsize=3
+cgimage,shift_Diff(emboss(crop)),/k,title='Emboss + Shift_Diff Filter',/axes,charsize=3
+cgimage,((shift_Diff(emboss(crop))) lt -30)*(shift_Diff(emboss(crop))),/k,title='Values lt -30',/axes,charsize=3
+cgimage,((shift_Diff(emboss(crop))) lt -40)*(shift_Diff(emboss(crop))),/k,title='Values lt -40',/axes,charsize=3
+cgimage,((shift_Diff(emboss(crop))) lt -50)*(shift_Diff(emboss(crop))),/k,title='Values lt -50',/axes,charsize=3
+!p.multi=0
+
+;***************************************************************************************************************
+;                                                                                                              *
+;                                                                                                              *
+;                                                                                                              *
+;                                                                                                              *
+;                                                                                                              *
+;                                                                                                              *
+;***************************************************************************************************************
+
+; 25% sun
+xpos = 78.717346
+ypos = 235.50647
+
+file = 'dimsun1.fits'
+wholeimage = mrdfits(file)
+
+rad = 21
+; This is the main sun image
+crop = wholeimage[xpos-rad:xpos+rad,ypos-rad:ypos+rad]
+
+; Ani is the outline of the original fiducial positions
+ani = fltarr(43,43)
+
+ani[16,5]=1
+ani[17,5]=1
+ani[16,6]=1
+ani[17,6]=1
+
+ani[36,5]=1
+ani[37,5]=1
+ani[36,6]=1
+ani[37,6]=1
+
+ani[16,25]=1
+ani[16,26]=1
+ani[17,25]=1
+ani[17,26]=1
+
+ani[36,25]=1
+ani[37,25]=1
+ani[36,26]=1
+ani[37,26]=1
+
+;************************************************
+;************************************************
+;************************************************
+
+s = size(crop,/dim)
+nrow = s[0]
+ncol = s[1]
+
+xpb = (shift_Diff(emboss(crop))) lt -75
+ypb = (shift_Diff(emboss(crop, az=90))) lt -75
+
+xpeaks = xpb*((shift_Diff(emboss(crop))))
+ypeaks = ypb*((shift_Diff(emboss(crop, az=90))))
+
+ind_col = where(xpb eq 1) mod ncol
+ind_row = where(ypb eq 1)/nrow
+
+a = mode(ind_col)
+b = ind_col[where(ind_col ne a)]
+c = mode(b)
+
+d = mode(ind_row)
+e = ind_row[where(ind_row ne d)]
+f = mode(e)
+
+xpos = [a,c]
+ypos = [d,f]
+xpos = xpos[sort(xpos)]
+ypos = ypos[sort(ypos)]
+
+xmask = [xpos[0]-1,xpos[0],xpos[1]-1,xpos[1]]
+ymask = [ypos[0]-1,ypos[0],ypos[1]-1,ypos[1]]
+
+emask = fltarr(s)
+emask[xmask[0],ymask[0]]=1
+emask[xmask[0],ymask[1]]=1
+emask[xmask[0],ymask[2]]=1
+emask[xmask[0],ymask[3]]=1
+emask[xmask[1],ymask[0]]=1
+emask[xmask[1],ymask[1]]=1
+emask[xmask[1],ymask[2]]=1
+emask[xmask[1],ymask[3]]=1
+emask[xmask[2],ymask[0]]=1
+emask[xmask[2],ymask[1]]=1
+emask[xmask[2],ymask[2]]=1
+emask[xmask[2],ymask[3]]=1
+emask[xmask[3],ymask[0]]=1
+emask[xmask[3],ymask[1]]=1
+emask[xmask[3],ymask[2]]=1
+emask[xmask[3],ymask[3]]=1
+
+!p.multi=[0,3,2]
+window,10,xsize=1000,ysize=800
+cgimage,crop,/k,/axes,title='Original',charsize=3
+cgimage,emboss(crop),/k,title='Emboss Filter',/axes,charsize=3
+cgimage,shift_Diff(emboss(crop)),/k,title='Emboss + Shift_Diff Filter',/axes,charsize=3
+cgimage,((shift_Diff(emboss(crop))) lt -10)*(shift_Diff(emboss(crop))),/k,title='Values lt -10',/axes,charsize=3
+cgimage,((shift_Diff(emboss(crop))) lt -15)*(shift_Diff(emboss(crop))),/k,title='Values lt -15',/axes,charsize=3
+cgimage,((shift_Diff(emboss(crop))) lt -20)*(shift_Diff(emboss(crop))),/k,title='Values lt -20',/axes,charsize=3
+!p.multi=0
 
 stop
 ; Subtracting the original field from a median'ed field
