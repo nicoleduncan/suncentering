@@ -4,6 +4,9 @@
 xpos = 210.81349
 ypos = 153.94748
 
+; xpos = 240
+; ypos = 140
+
 file = 'dimsun1.fits'
 wholeimage = mrdfits(file)
 
@@ -62,13 +65,15 @@ ncol = s[1]
 ; plot_Edges,xpb
 ; plot_edges,ypb
 ;
+; start=systime(1,/s)
 xpb = (shift_Diff(emboss(crop))) lt -75
 ypb = (shift_Diff(emboss(crop, az=90))) lt -75
 
 ; Not using this... yet
 xpeaks = xpb*((shift_Diff(emboss(crop))))
 ypeaks = ypb*((shift_Diff(emboss(crop, az=90))))
-
+; finish=systime(1,/s)
+; print,finish-start
 ; indices of the rows/columns 
 ind_col = where(xpb eq 1) mod ncol
 ind_row = where(ypb eq 1)/nrow
@@ -124,6 +129,8 @@ cgimage,((shift_Diff(emboss(crop))) lt -60)*(shift_Diff(emboss(crop))),/k,title=
 cgimage,((shift_Diff(emboss(crop))) lt -70)*(shift_Diff(emboss(crop))),/k,title='Values lt -70',/axes,charsize=3
 cgimage,((shift_Diff(emboss(crop))) lt -80)*(shift_Diff(emboss(crop))),/k,title='Values lt -80',/axes,charsize=3
 !p.multi=0
+
+stop
 
 ;***************************************************************************************************************
 ;                                                                                                              *

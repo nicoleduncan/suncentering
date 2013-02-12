@@ -67,6 +67,8 @@ FOR i = 0,n_elements(c4xstrips) - 1 DO BEGIN
     ENDIF ELSE BEGIN
         ; STARTPOINTS is the cut down strip with length = ministrip_length and contains
         ; the indices from rowchord_endpoints[0,i] +/- ministrip_side_buffer
+        print,region
+        stop
         xstrips[i].STARTPOINTS  = $
         ; IF chord is too long, it tries to crop from outside of image file
             (c4xstrips[i].ARRAY)[rowchord_endpoints[0,i]-ministrip_side_buffer:$
@@ -763,6 +765,7 @@ start=systime(1,/s)
 
 COMMON vblock, wholeimage, scan_width, sundiam, nstrips, order, ministrip_length, file
 file = 'dimsun1.fits'
+file='fidsun.fits'
 wholeimage = mrdfits(file)
 scan_width = 5
 sundiam = 70
