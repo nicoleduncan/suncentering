@@ -50,12 +50,13 @@ s = size(crop,/dim)
 nrow = s[0]
 ncol = s[1]
 
-xpb = (shift_Diff(emboss(crop))) lt -150
-ypb = (shift_Diff(emboss(crop, az=90))) lt -150
+xpb = (shift_Diff(emboss(crop),dir=3)) lt -150
+ypb = (shift_Diff(emboss(crop, az=90),dir=3)) lt -150
 
 ; Not using this... yet
-xpeaks = xpb*((shift_Diff(emboss(crop))))
-ypeaks = ypb*((shift_Diff(emboss(crop, az=90))))
+xpeaks = xpb*((shift_Diff(emboss(crop),dir=3)))
+ypeaks = ypb*((shift_Diff(emboss(crop, az=90),dir=3)))
+
 ; finish=systime(1,/s)
 ; print,finish-start
 ; indices of the rows/columns 
@@ -108,16 +109,16 @@ emask[xmask[3],ymask[3]]=1
 window,8,xsize=1000,ysize=1000
 cgimage,crop,/k,/axes,title='Original',charsize=3
 cgimage,emboss(crop),/k,title='Emboss Filter',/axes,charsize=3
-cgimage,shift_Diff(emboss(crop)),/k,title='Emboss + Shift_Diff Filter',/axes,charsize=3
-cgimage,((shift_Diff(emboss(crop))) lt -130)*(shift_Diff(emboss(crop))),/k,title='Values lt -130',/axes,charsize=3
-cgimage,((shift_Diff(emboss(crop))) lt -140)*(shift_Diff(emboss(crop))),/k,title='Values lt -140',/axes,charsize=3
-cgimage,((shift_Diff(emboss(crop))) lt -150)*(shift_Diff(emboss(crop))),/k,title='Values lt -150',/axes,charsize=3
-cgimage,((shift_Diff(emboss(crop, az=90))) lt -130)*(shift_Diff(emboss(crop, az=90))),/k,title='Values lt -130',/axes,charsize=3
-cgimage,((shift_Diff(emboss(crop, az=90))) lt -140)*(shift_Diff(emboss(crop, az=90))),/k,title='Values lt -140',/axes,charsize=3
-cgimage,((shift_Diff(emboss(crop, az=90))) lt -150)*(shift_Diff(emboss(crop, az=90))),/k,title='Values lt -150',/axes,charsize=3
+cgimage,shift_Diff(emboss(crop),dir=3),/k,title='Emboss + Shift_Diff Filter',/axes,charsize=3
+cgimage,((shift_Diff(emboss(crop),dir=3)) lt -130)*(shift_Diff(emboss(crop),dir=3)),/k,title='Values lt -130',/axes,charsize=3
+cgimage,((shift_Diff(emboss(crop),dir=3)) lt -140)*(shift_Diff(emboss(crop),dir=3)),/k,title='Values lt -140',/axes,charsize=3
+cgimage,((shift_Diff(emboss(crop),dir=3)) lt -150)*(shift_Diff(emboss(crop),dir=3)),/k,title='Values lt -150',/axes,charsize=3
+cgimage,((shift_Diff(emboss(crop, az=90),dir=1)) lt -130)*(shift_Diff(emboss(crop, az=90),dir=1)),/k,title='Values lt -130',/axes,charsize=3
+cgimage,((shift_Diff(emboss(crop, az=90),dir=1)) lt -140)*(shift_Diff(emboss(crop, az=90),dir=1)),/k,title='Values lt -140',/axes,charsize=3
+cgimage,((shift_Diff(emboss(crop, az=90),dir=1)) lt -150)*(shift_Diff(emboss(crop, az=90),dir=1)),/k,title='Values lt -150',/axes,charsize=3
 
 !p.multi=0
 
 
-
+stop
 END

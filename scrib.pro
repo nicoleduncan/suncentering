@@ -61,10 +61,10 @@ ncol = s[1]
 ; these lines represent the top right corner of the center box. 
 ;
 ; To see, plot with:
-; display,bytscl(crop)
+; display,bytscl(crop),/square
 ; plot_Edges,xpb
 ; plot_edges,ypb
-;
+
 ; start=systime(1,/s)
 xpb = (shift_Diff(emboss(crop))) lt -75
 ypb = (shift_Diff(emboss(crop, az=90))) lt -75
@@ -117,8 +117,41 @@ emask[xmask[3],ymask[1]]=1
 emask[xmask[3],ymask[2]]=1
 emask[xmask[3],ymask[3]]=1
 
-; display,bytscl(crop),/square
-; plot_edges,emask
+
+crop[xmask[0],ymask[0]]=250
+crop[xmask[0],ymask[1]]=250
+crop[xmask[0],ymask[2]]=250
+crop[xmask[0],ymask[3]]=250
+crop[xmask[1],ymask[0]]=250
+crop[xmask[1],ymask[1]]=250
+crop[xmask[1],ymask[2]]=250
+crop[xmask[1],ymask[3]]=250
+crop[xmask[2],ymask[0]]=250
+crop[xmask[2],ymask[1]]=250
+crop[xmask[2],ymask[2]]=250
+crop[xmask[2],ymask[3]]=250
+crop[xmask[3],ymask[0]]=250
+crop[xmask[3],ymask[1]]=250
+crop[xmask[3],ymask[2]]=250
+crop[xmask[3],ymask[3]]=250
+
+display,bytscl(crop),/square
+plot_edges,xpb,thick=2
+plot_edges,ypb,thick=2
+
+; loadct,19
+
+; ps_start,filename='fid.eps',/encapsulated,quiet=1
+;    display,bytscl(crop),/square
+; ps_end,resize=100
+
+; ps_start,filename='fidoutline.eps',/encapsulated,quiet=1
+;    display,bytscl(crop),/square
+;    plot_edges,xpb,thick=4
+;    plot_edges,ypb,thick=4
+; ps_end,resize=100
+
+stop
 
 !p.multi=[0,3,2]
 window,8,xsize=1000,ysize=800
