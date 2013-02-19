@@ -67,8 +67,8 @@ FOR i = 0,n_elements(c4xstrips) - 1 DO BEGIN
     ENDIF ELSE BEGIN
         ; STARTPOINTS is the cut down strip with length = ministrip_length and contains
         ; the indices from rowchord_endpoints[0,i] +/- ministrip_side_buffer
-        print,region
-        stop
+        ; print,region
+        ; stop
         xstrips[i].STARTPOINTS  = $
         ; IF chord is too long, it tries to crop from outside of image file
             (c4xstrips[i].ARRAY)[rowchord_endpoints[0,i]-ministrip_side_buffer:$
@@ -765,7 +765,7 @@ start=systime(1,/s)
 
 COMMON vblock, wholeimage, scan_width, sundiam, nstrips, order, ministrip_length, file
 file = 'dimsun1.fits'
-file='fidsun.fits'
+; file='fidsun.fits'
 wholeimage = mrdfits(file)
 scan_width = 5
 sundiam = 70
@@ -811,140 +811,6 @@ print,'25% sun y pos:',struct.center3.ypos
 ; cgimage,wholeimage2,/k
 ; window,3
 ; cgimage,wholeimage3,/k
-
-; loadct,9
-; window,0
-; Getting general profile of sun
-; a=median(wholeimage,7)
-; squaring to make differences more apparent
-; cgimage,median((a-wholeimage)^2,3)
-
-; Can get more or less the general area of fiducial, but how to accurately get it?
-
-; Given that we know the exact shape of a fiducial, how do we reverse convolve it?
-; kernel = GAUSSIAN_FUNCTION([1,1], WIDTH=6, MAXIMUM=255)
-; kernel = [[0,0,1,1,0,0],[0,0,1,1,0,0],[0,0,1,1,0,0],[1,1,1,1,1,1],[1,1,1,1,1,1],[0,0,1,1,0,0],[0,0,1,1,0,0],[0,0,1,1,0,0]]
-; b=convol_fft(wholeimage,kernel);,/normalize,/edge_zero)
-
-; cgimage,b-wholeimage,/k
-; window,0
-; cgimage,laplacian(wholeimage[159:290,100:200],/add),/k
-rad = 21
-image = wholeimage[struct.center1.xpos-rad:struct.center1.xpos+rad,struct.center1.ypos-rad:struct.center1.ypos+rad]
-
-; mimage = median(image,3)
-; !p.multi=[0,1,4]
-
-; a = fltarr((size(image,/dimensions))[0])
-; s = fltarr((size(image,/dimensions))[0],(size(image,/dimensions))[1])
-
-; window,0,xsize=900,ysize=1000 
-; plot,ts_diff(reform(image[0,*]),1),/nodata,yr=[-30,30],xs=3
-; FOR i = 0,(size(image,/dimensions))[0]-1 DO BEGIN
-;     oplot,ts_diff(reform(image[i,*]),1)
-;     a[i] = where( ts_diff(reform(image[i,*]),1) EQ MIN(ts_diff(reform(image[i,*]),1)) )
-; ENDFOR
-
-; plot,image[0,*],/nodata,yr=[100,250],xs=3
-; FOR i = 0,(size(image,/dimensions))[0]-1 DO BEGIN
-;     oplot,image[i,*]
-; ENDFOR
-; vline,[5,26]
-
-; plot,ts_diff(reform(image[*,0]),1),/nodata,yr=[-30,30],xs=3
-; FOR i = 0,(size(image,/dimensions))[1]-1 DO BEGIN
-;     oplot,ts_diff(reform(image[*,i]),1)
-; ENDFOR
-
-; plot,image[*,0],/nodata,yr=[100,250],xs=3
-; FOR i = 0,(size(image,/dimensions))[1]-1 DO BEGIN
-;     oplot,image[*,i]
-; ENDFOR
-; vline,[16,36]
-
-; FOR i = 0,(size(image,/dimensions))[1]-1 DO BEGIN
-;     s[*,i] = ts_smooth(image[*,i],3)
-; ENDFOR
-; !p.multi=0
-
-;************************************************
-;************************************************
-
-
-; !p.multi=[0,1,4]
-
-; window,0,xsize=900,ysize=1000 
-; plot,ts_smooth(reform(image[0,*]),3)-reform(image[0,*]),/nodata,xs=3,ys=3,yr=[-15,15],title='Y location'
-; FOR i = 0,(size(image,/dimensions))[0]-1 DO BEGIN
-;     oplot,ts_smooth(reform(image[i,*]),3)-image[i,*]
-; ENDFOR
-; vline,peaks(ts_smooth(reform(image[14,*]),3) - image[14,*],2)
-; vline,peaks(ts_smooth(reform(image[15,*]),3) - image[15,*],2)
-; vline,peaks(ts_smooth(reform(image[16,*]),3) - image[16,*],2)
-; vline,peaks(ts_smooth(reform(image[17,*]),3) - image[17,*],2)
-; vline,peaks(ts_smooth(reform(image[18,*]),3) - image[18,*],2)
-
-
-; plot,image[0,*],/nodata,yr=[100,250],xs=3,ys=3
-; FOR i = 0,(size(image,/dimensions))[0]-1 DO BEGIN
-;     oplot,image[i,*]
-; ENDFOR
-; vline,[5,26]
-
-; plot,ts_smooth(reform(image[*,0]),3)-reform(image[*,0]),/nodata,xs=3,ys=3,yr=[-15,15],title='X location'
-; FOR i = 0,(size(image,/dimensions))[0]-1 DO BEGIN
-;     oplot,ts_smooth(reform(image[*,i]),3)-image[*,i]
-; ENDFOR
-
-; vline,peaks(ts_smooth(reform(image[*,23]),3) - image[*,23],2)
-; vline,peaks(ts_smooth(reform(image[*,24]),3) - image[*,24],2)
-; vline,peaks(ts_smooth(reform(image[*,25]),3) - image[*,25],2)
-; vline,peaks(ts_smooth(reform(image[*,26]),3) - image[*,26],2)
-; vline,peaks(ts_smooth(reform(image[*,27]),3) - image[*,27],2)
-; vline,peaks(ts_smooth(reform(image[*,28]),3) - image[*,28],2)
-
-; plot,image[*,0],/nodata,yr=[100,250],xs=3,ys=3
-; FOR i = 0,(size(image,/dimensions))[1]-1 DO BEGIN
-;     oplot,image[*,i]
-; ENDFOR
-; vline,[16,36]
-; !p.multi=0
-
-
-; ;************************************************
-; ;************************************************
-
-
-; a = fltarr(2,6)
-; a[*,0] = peaks(ts_smooth(reform(image[*,23]),3) - image[*,23],2)
-; a[*,1] = peaks(ts_smooth(reform(image[*,24]),3) - image[*,24],2)
-; a[*,2] = peaks(ts_smooth(reform(image[*,25]),3) - image[*,25],2)
-; a[*,3] = peaks(ts_smooth(reform(image[*,26]),3) - image[*,26],2)
-; a[*,4] = peaks(ts_smooth(reform(image[*,27]),3) - image[*,27],2)
-; a[*,5] = peaks(ts_smooth(reform(image[*,28]),3) - image[*,28],2)
-
-; b = fltarr(2,5)
-; b[*,0] = peaks(ts_smooth(reform(image[14,*]),3) - image[14,*],2)
-; b[*,1] = peaks(ts_smooth(reform(image[15,*]),3) - image[15,*],2)
-; b[*,2] = peaks(ts_smooth(reform(image[16,*]),3) - image[16,*],2)
-; b[*,3] = peaks(ts_smooth(reform(image[17,*]),3) - image[17,*],2)
-; b[*,4] = peaks(ts_smooth(reform(image[18,*]),3) - image[18,*],2)
-
-; x_ind = [mode(a[0,*]),mode(a[1,*])]
-; y_ind = [mode(b[0,*]),mode(b[1,*])]
-
-; image[x_ind[0],y_ind[0]] = 0
-; image[x_ind[0],y_ind[1]] = 0
-; image[x_ind[1],y_ind[0]] = 0
-; image[x_ind[1],y_ind[1]] = 0
-
-; window,1
-; cgimage,image,/k
-
-
-;************************************************
-;************************************************
-;************************************************
 
 
 finish = systime(1,/s)
