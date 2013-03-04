@@ -1,10 +1,8 @@
 xpos = 240
 ypos = 140
 
-a=READ_TIFF('plots_tables_images/5deg_blotchy.tiff')
-
-
-a=REFORM(a[0,*,*])
+a=READ_TIFF('plots_tables_images/5deg_blotchy.tiff',channels=1)
+; a=reform(a[0,*,*])
 
 wholeimage = BYTSCL(a)
 rad = 40
