@@ -1,19 +1,20 @@
 ; pro rottest
 
+name = ['Ideal','dimsun1','gauss','displacement']
 for i = 1,4 do begin
 which=i
 case which of
-    1 : begin
-        xcenter = 210
-        ycenter = 153
-        wholeimage = BYTSCL(READ_TIFF('plots_tables_images/dimsun1.tiff',channels=1))
-        thresh = -80
-    end
-    2 : begin 
+    1 : begin 
         xcenter = 210
         ycenter = 153
         wholeimage = BYTSCL(READ_TIFF('plots_tables_images/dimsun_ideal.tiff',channels=1))
         thresh = -150
+    end
+    2 : begin
+        xcenter = 210
+        ycenter = 153
+        wholeimage = BYTSCL(READ_TIFF('plots_tables_images/dimsun1.tiff',channels=1))
+        thresh = -80
     end
     3 : begin
         xcenter = 210
@@ -41,8 +42,14 @@ rot_3 = ROT(crop,3,/interp)
 rot_4 = ROT(crop,4,/interp)
 rot_5 = ROT(crop,5,/interp)
 
-; im= ROT(rot_1,-1,/interp )
-im = rot_1
+for j = 1,5 do begin
+case j of
+    1: im = rot_1
+    2: im = rot_2
+    3: im = rot_3
+    4: im = rot_4
+    5: im = rot_5
+endcase
 ; With dimsun1.tiff, gets really shitty at 2 deg
 ; with fidsun copy, rot_1 goes from 2 dots to lines... and already tilted.
 s = SIZE(im,/dim)
@@ -52,11 +59,11 @@ ncol = s[1]
 xpb = (SHIFT_DIFF(EMBOSS(im),dir=3)) lt thresh
 ypb = (SHIFT_DIFF(EMBOSS(im, az=90),dir=1)) lt thresh
 
-window,i
-!p.multi=[0,2,1]
-cgimage,xpb*im,/k
-cgimage,ypb*im,/k
-!p.multi=0
+; window,i
+; !p.multi=[0,2,1]
+; cgimage,xpb*im,/k
+; cgimage,ypb*im,/k
+; !p.multi=0
 
 ind_col = WHERE(xpb eq 1) mod ncol
 ind_row = where(ypb eq 1)/nrow
@@ -106,9 +113,16 @@ ymask = [ypos[0]-1,ypos[0],ypos[1]-1,xpos[1]]
 rxmask = xpos + xcenter-rad - 0.5
 rymask = ypos + ycenter-rad - 0.5
 
+rxmask[0]-=205.5
+rxmask[1]-=225.5
+rymask[0]-=137.5
+rymask[1]-=157.5
+print,'which image?',name[i-1]
+print,'Degree of rotation',j
 print,rxmask
 print,rymask
 
+endfor
 ; cgimage,im,output=STRCOMPRESS(SCOPE_VARNAME(rot_1),/rem)+'_'+STRCOMPRESS(i,/rem)+'.eps',/k
 
 endfor

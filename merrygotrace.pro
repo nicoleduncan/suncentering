@@ -18,7 +18,8 @@ PRO makelimbstrips, thresh, xstrips, ystrips, region=region, time=time
 ;           Prints the elapsed time
 ;-
 
-IF n_elements(region) EQ 0 THEN region = 1
+; IF n_elements(region) EQ 0 THEN region = 1
+IF region EQ !null THEN region = 1
 
 COMMON vblock, wholeimage, scan_width, sundiam, nstrips, order, ministrip_length, file
 

@@ -1,15 +1,12 @@
 \documentclass[10pt]{article}
-\usepackage{amsmath}
-\usepackage{amsfonts}
-\usepackage{amssymb}
+\usepackage{amsmath,amsfonts,amssymb}
 \usepackage{mathtools}
 \usepackage{color,soul}
 \usepackage{fullpage}
 \usepackage{enumerate}
 \usepackage{graphicx}
-\usepackage{caption}
-\usepackage{subcaption}
-\usepackage[colorlinks=true,urlcolor=blue,breaklinks]{hyperref}
+\usepackage[colorlinks=true,urlcolor=blue]{hyperref}
+\usepackage{subfig}
 
 \definecolor{Light}{gray}{.90}
 \sethlcolor{Light}
@@ -97,7 +94,7 @@ In a nutshell, \hl{\tt{scrib.pro}} takes an image of the sun with fiducials and 
 
     \subsection{Mask Pixels Above Threshold} % (fold)
     \label{sub:mask_pixels_above_threshold}
-    Now we have an image with pixels we know are on the fiducials - we look at pixels above a certain threshold to create vertical and horizontal lines which lie on the fiducials. 
+    Now we have an image with pixels we know are on the fiducials - we look at pixels above a certain threshold to create vertical and horizontal lines which lie on the fiducials. As of \today the threshold is set to an arbitrary value. 
 
     \begin{figure}[h]
         \begin{minipage}{0.4\textwidth}
@@ -117,7 +114,7 @@ In a nutshell, \hl{\tt{scrib.pro}} takes an image of the sun with fiducials and 
 
     \subsection{Calculate Positions of Pixels} % (fold)
     \label{sub:calculate_positions_of_pixels}
-    To find the x positions of the pixels I apply a modulo operator to return the remainder of division. (e.g. \hl{\texttt{8 mod 3 = 2}}). To find the y position, I divide the pixel position by the numer of rows. I find the mode of each array of X and Y pixel positions to find the most common number (which happens to be on a fiducial). If there is more than 1 fiducial in the image, the mode must be found multiple times. 
+    To find the x positions of the pixels I apply a modulo operator to return the remainder of division. (e.g. \hl{\texttt{8 mod 3 = 2}}). To find the y position, I divide the pixel position by the numer of rows. I find the mode of each array of X and Y pixel positions to find the most common number (which happens to be on a fiducial). If there is more than 1 fiducial in the image, the mode must be found for one fiducial then without looking at the same row/column twice, find the second most populated row/column.
 
     % subsection calculate_positions_of_pixels (end)
 
@@ -193,11 +190,28 @@ In a nutshell, \hl{\tt{scrib.pro}} takes an image of the sun with fiducials and 
 
 \section{More Images}    
 
-\begin{figure}[!h]
+\begin{figure}[!ht]
     \centering
     \includegraphics[width=.9\textwidth]{plots_tables_images/fidcomp.eps}    
     \caption{This is a simulated solar image with artificial fiducials. The goal was to see how the filters operated on smudgy fiducials. The results are good. In the second row, the image is filtered with \hl{\texttt{shift\_diff(dir=3)}} and in the third row, the image is filtered with \hl{\texttt{shift\_diff(dir=1)}}. This was done to improve the number of horizontal and vertical pixels for each direction since the default is at a diagonal.}
 \end{figure}
+
+
+\begin{figure}[!ht]
+    \centering
+    \includegraphics[width=.9\textwidth]{plots_tables_images/mask_outline.eps}
+    \caption{The red outline pixels identify those above a threshold after running the two convolution filters. The rows tend to follo a spatial pattern of identifying the upper row of the 2x2 fiducial center. The blue outlined pixels identify the column pixels which are found using a 90 degree offset in the emboss filter. The position where the red and blue outlined pixels overlap mark the upper right pixel of the fiducial's 2x2 center. Since this is consistent for all 4 fiducials, we can confidently apply it to the dimmer suns. \emph{For now}.}
+\end{figure}
+
+\begin{figure}[!ht]
+    \centering
+    \subfloat{
+            \includegraphics[width=0.98\linewidth, height = .35\textheight, keepaspectratio=true]{plots_tables_images/dim25.eps}
+            \includegraphics[width=0.98\linewidth, height = .35\textheight, keepaspectratio=true]{plots_tables_images/dim50.eps}
+        }
+        \caption{By varying the threshold on the dimmer suns, we get the same masking pattern. For the 50\% dimmer sun, we use half the threshold value used for the 100\% sun. For the sun at 25\% the brightness of the main sun, we use a quarter of the threshold.}
+\end{figure}
+
 
 \newpage
 
@@ -209,6 +223,8 @@ In a nutshell, \hl{\tt{scrib.pro}} takes an image of the sun with fiducials and 
         \item With rotated fiducials, cannot use \hl{\texttt{mode()}} to easily find most common pixel positions
         \item With rotated fiducials (and without knowing what angle they are rotated at beforehand), we may have to try multiple rotation angles for the kernels used in each filter.
         \item If the fiducials are not plus-shaped the edge-detection tools cannot handle distortion. Ideally, a circle-shaped fidcial would be fine except that any distortion returns poor results with the edge detection filters. I think this is because the plus-shaped fiducials naturally have up and down edges which, even with distortion, can still be isolated. See Figure \ref{circfidcomp}
+        \item We must crop the sun in such a way that none of the solar limb is in the image. The reason is because the image is pixelated enough that the edge of the sun is detected as an edge, albeit one we do not want. A problem that arises from this is that when we crop out the solar limbs, we may cut off fiducials.
+        \item If the fiducial is too close to the edge of the cropped image, then problems arise. There are two ways to solve this. We can tell the program to only look for complete fiducials or 2) ``zero'' out the incomplete fiducials so the program finds fiducials as normal.
     \end{enumerate}
 
 \begin{figure}
@@ -217,10 +233,6 @@ In a nutshell, \hl{\tt{scrib.pro}} takes an image of the sun with fiducials and 
     \caption{The fiducials are initially circles but with a bit of distortion we see the typical method to find fiducials no longer works. Perhaps with circle-shaped fiducials we could apply some form of gaussian fitting but using plus-signs instead works better since it's hard to calculate the rotation angle from a bunch of distorted circles.}
     \label{circfidcomp}
 \end{figure}
-
-
-
-
 
 
 

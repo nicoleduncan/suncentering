@@ -1,0 +1,5 @@
+thresh -80
+xpos 210
+ypos 153
+idealthresh 50
+rad 22

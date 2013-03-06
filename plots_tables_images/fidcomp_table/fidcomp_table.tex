@@ -1,274 +1,96 @@
 % I hope this turns out well. 
-\documentclass[iop]{emulateapj}
-\usepackage[utf8]{inputenc}
-\usepackage[english]{babel}
-\usepackage[english]{isodate}
-\usepackage[parfill]{parskip}
-\usepackage{microtype}
-\usepackage[colorlinks=true,urlcolor=blue]{hyperref}
+% \documentclass[iop]{emulateapj}
+\documentclass{article}
 \usepackage{amsmath,amsfonts,amssymb}
-\usepackage{footnote}
-\usepackage{graphicx,subfigure}
-\usepackage{fullpage}
+\usepackage{graphicx}
+\usepackage[margin=.5in]{geometry}
+\usepackage{subfig}
 
 \begin{document}
 
-\begin{deluxetable*}{lrcll}
-\tablecaption{Comparison of Fiducial Positions}
-\tablewidth{0pt}
-\tablehead{
-    \colhead{Degree Rotation}
-&   \colhead{File}
-&   \colhead{Description}
-&   \colhead{Fiducial Offset (X)}
-&   \colhead{Fidicual Offset (Y)}
-}
-\startdata
+\begin{figure}[!ht]
+    \includegraphics[]{justfidcomptable.pdf}
+\end{figure}
 
-0
-& fidsun copy
-& Ideal Fiducial Positions
-& 0%221.15
-& 0\\ %139.5
-%
-& dimsun1
-& Real solar image
-& 0
-& 0\\
-%
-& shitsun
-& Artificially blurred fiducials
-& 0
-& 0\\
-%
-& betterfake
-& Gaussian blur applied to ideal fiducials
-& 0
-& 0\\
+\begin{figure}[!ht]
+    \subfloat{
+            \includegraphics[width=0.98\linewidth, height = .2\textheight, keepaspectratio=true]{rot_0_2}
+            \includegraphics[width=0.98\linewidth, height = .2\textheight, keepaspectratio=true]{rot_0_1}
 
-\hline
-
-1
-& fidsun copy
-& 
-& 0%221.15
-& 0\\ %139.5
-%
-& dimsun1
-& 
-& 0
-& 0\\
-%
-& shitsun
-& 
-& 0
-& 0\\
-%
-& betterfake
-& 
-& 0
-& 0\\
-
-\hline
-
-2
-& fidsun copy
-& 
-& 0%221.15
-& 0\\ %139.5
-%
-& dimsun1
-& 
-& 0
-& 0\\
-%
-& shitsun
-& 
-& 0
-& 0\\
-%
-& betterfake
-& 
-& 0
-& 0\\
-
-\hline
-
-3
-& fidsun copy
-& 
-& 0%221.15
-& 0\\ %139.5
-%
-& dimsun1
-& 
-& 0
-& 0\\
-%
-& shitsun
-& 
-& 0
-& 0\\
-%
-& betterfake
-& 
-& 0
-& 0\\
-
-\hline
-
-4
-& fidsun copy
-& 
-& 0%221.15
-& 0\\ %139.5
-%
-& dimsun1
-& 
-& 0
-& 0\\
-%
-& shitsun
-& 
-& 0
-& 0\\
-%
-& betterfake
-& 
-& 0
-& 0\\
-
-\hline
-
-5
-& fidsun copy
-& 
-& 0%221.15
-& 0\\ %139.5
-%
-& dimsun1
-& 
-& 0
-& 0\\
-%
-& shitsun
-& 
-& 0
-& 0\\
-%
-& betterfake
-& 
-& 0
-& 0\\
-
-\end{deluxetable*}
-
-
-
-
-
-\newpage
-
-
-
-
-% \begin{figure}[h]
-%     \begin{minipage}{0.4\textwidth}
-%         \begin{center}
-%         \includegraphics[width=.75\linewidth]{rot_0_1}
-%             \caption{gggggg}
-%         \end{center}
-%     \end{minipage}
-%     \begin{minipage}{0.4\textwidth}
-%         \begin{center}
-%         \includegraphics[width=.75\linewidth]{rot_0_2}
-%             \caption{www}
-%         \end{center}
-%     \end{minipage}
-%         \begin{minipage}{0.4\textwidth}
-%         \begin{center}
-%         \includegraphics[width=.75\linewidth]{rot_0_3}
-%             \caption{wwwwww}
-%         \end{center}
-%     \end{minipage}
-%         \begin{minipage}{0.4\textwidth}
-%         \begin{center}
-%         \includegraphics[width=.75\linewidth]{rot_0_4}
-%             \caption{wwwwww}
-%         \end{center}
-%     \end{minipage}
-% \end{figure}
-
-\begin{figure}
-        \begin{tabular}{cc}
-            \includegraphics[width=0.5\textwidth]{rot_0_1}
-            \includegraphics[width=0.5\textwidth]{rot_0_2}
-        \end{tabular}
-        \begin{tabular}{cc}
-            \includegraphics[width=0.5\textwidth]{rot_0_3}
-            \includegraphics[width=0.5\textwidth]{rot_0_4}
-        \end{tabular}
+        }
+        \\
+    \subfloat{
+            \includegraphics[width=0.98\linewidth, height = .2\textheight, keepaspectratio=true]{rot_0_3}
+            \includegraphics[width=0.98\linewidth, height = .2\textheight, keepaspectratio=true]{rot_0_4}
+        }
         \caption{No rotation}
 \end{figure}
-\begin{figure}
-        \begin{tabular}{cc}
-            \includegraphics[width=0.5\textwidth]{rot_1_1}
-            \includegraphics[width=0.5\textwidth]{rot_1_2}
-        \end{tabular}
-        \begin{tabular}{cc}
-            \includegraphics[width=0.5\textwidth]{rot_1_3}
-            \includegraphics[width=0.5\textwidth]{rot_1_4}
-        \end{tabular}
+
+
+\begin{figure}[!ht]
+    \subfloat{
+            \includegraphics[width=0.98\linewidth, height = .2\textheight, keepaspectratio=true]{rot_1_2}
+            \includegraphics[width=0.98\linewidth, height = .2\textheight, keepaspectratio=true]{rot_1_1}
+        }
+        \\
+    \subfloat{
+            \includegraphics[width=0.98\linewidth, height = .2\textheight, keepaspectratio=true]{rot_1_3}
+            \includegraphics[width=0.98\linewidth, height = .2\textheight, keepaspectratio=true]{rot_1_4}
+        }
         \caption{1 Degree rotation}
 \end{figure}
-\begin{figure}
-        \begin{tabular}{cc}
-            \includegraphics[width=0.5\textwidth]{rot_2_1}
-            \includegraphics[width=0.5\textwidth]{rot_2_2}
-        \end{tabular}
-        \begin{tabular}{cc}
-            \includegraphics[width=0.5\textwidth]{rot_2_3}
-            \includegraphics[width=0.5\textwidth]{rot_2_4}
-        \end{tabular}
+
+\begin{figure}[!ht]
+    \subfloat{
+            \includegraphics[width=0.98\linewidth, height = .2\textheight, keepaspectratio=true]{rot_2_2}
+            \includegraphics[width=0.98\linewidth, height = .2\textheight, keepaspectratio=true]{rot_2_1}
+        }
+        \\
+    \subfloat{
+            \includegraphics[width=0.98\linewidth, height = .2\textheight, keepaspectratio=true]{rot_2_3}
+            \includegraphics[width=0.98\linewidth, height = .2\textheight, keepaspectratio=true]{rot_2_4}
+        }
         \caption{2 Degree rotation}
 \end{figure}
-\begin{figure}
-        \begin{tabular}{cc}
-            \includegraphics[width=0.5\textwidth]{rot_3_1}
-            \includegraphics[width=0.5\textwidth]{rot_3_2}
-        \end{tabular}
-        \begin{tabular}{cc}
-            \includegraphics[width=0.5\textwidth]{rot_3_3}
-            \includegraphics[width=0.5\textwidth]{rot_3_4}
-        \end{tabular}
+
+\begin{figure}[!ht]
+    \subfloat{
+            \includegraphics[width=0.98\linewidth, height = .2\textheight, keepaspectratio=true]{rot_3_2}
+            \includegraphics[width=0.98\linewidth, height = .2\textheight, keepaspectratio=true]{rot_3_1}
+        }
+        \\
+    \subfloat{
+            \includegraphics[width=0.98\linewidth, height = .2\textheight, keepaspectratio=true]{rot_3_3}
+            \includegraphics[width=0.98\linewidth, height = .2\textheight, keepaspectratio=true]{rot_3_4}
+        }
         \caption{3 Degree rotation}
 \end{figure}
-\begin{figure}
-        \begin{tabular}{cc}
-            \includegraphics[width=0.5\textwidth]{rot_4_1}
-            \includegraphics[width=0.5\textwidth]{rot_4_2}
-        \end{tabular}
-        \begin{tabular}{cc}
-            \includegraphics[width=0.5\textwidth]{rot_4_3}
-            \includegraphics[width=0.5\textwidth]{rot_4_4}
-        \end{tabular}
+
+\begin{figure}[!ht]
+    \subfloat{
+            \includegraphics[width=0.98\linewidth, height = .2\textheight, keepaspectratio=true]{rot_4_2}
+            \includegraphics[width=0.98\linewidth, height = .2\textheight, keepaspectratio=true]{rot_4_1}
+        }
+        \\
+    \subfloat{
+            \includegraphics[width=0.98\linewidth, height = .2\textheight, keepaspectratio=true]{rot_4_3}
+            \includegraphics[width=0.98\linewidth, height = .2\textheight, keepaspectratio=true]{rot_4_4}
+        }
         \caption{4 Degree rotation}
 \end{figure}
-\begin{figure}
-        \begin{tabular}{cc}
-            \includegraphics[width=0.5\textwidth]{rot_5_1}
-            \includegraphics[width=0.5\textwidth]{rot_5_2}
-        \end{tabular}
-        \begin{tabular}{cc}
-            \includegraphics[width=0.5\textwidth]{rot_5_3}
-            \includegraphics[width=0.5\textwidth]{rot_5_4}
-        \end{tabular}
+
+\begin{figure}[!ht]
+    \subfloat{
+            \includegraphics[width=0.98\linewidth, height = .2\textheight, keepaspectratio=true]{rot_5_2}
+            \includegraphics[width=0.98\linewidth, height = .2\textheight, keepaspectratio=true]{rot_5_1}
+        }
+        \\
+    \subfloat{
+            \includegraphics[width=0.98\linewidth, height = .2\textheight, keepaspectratio=true]{rot_5_3}
+            \includegraphics[width=0.98\linewidth, height = .2\textheight, keepaspectratio=true]{rot_5_4}
+        }
         \caption{5 Degree rotation}
 \end{figure}
-
-
-
-
 
 
 \end{document}

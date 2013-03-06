@@ -1,4 +1,4 @@
-; findf.pro
+; findd.pro
 
 
 xpos = 240
