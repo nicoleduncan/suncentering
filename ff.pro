@@ -66,16 +66,8 @@ END
 
 
 pro dim3
-
-    ; Parameter values, maybe have IDL load a csv file or something?
-    ; xpos = 210
-    ; ypos = 153
-    ; thresh = -80
-    ; rad = 22
-    ; idealthresh = 50
-
     ;Reads parameters from csv file and converts strings into varilables. BRILLIANT.
-    readcol,'param.txt',var,num,format='A,F'
+    readcol,'param.txt',var,num,format='A,F',delimiter=' '
     for i=0,N_ELEMENTS(var)-1 do (SCOPE_VARFETCH(var[i],/enter,level=0))=num[i]
     
     ; Here we make the assumption that the darker regions are linearly darker so we can just divide by 2 and 4
@@ -86,9 +78,9 @@ pro dim3
     icrop = ideal[xpos-rad:xpos+rad,ypos-rad:ypos+rad]
     imask = icrop lt idealthresh
     ; dim50 = .5*crop
-    dim50 = wholeimage[320:360,55:90]
+    dim50 = wholeimage[xpos50-rad:xpos50+rad,ypos50-rad:ypos50+rad]
     ; dim25 = .25*crop
-    dim25 = wholeimage[60:100,211:250]
+    dim25 = wholeimage[xpos25-rad:xpos25+rad,ypos25-rad:ypos25+rad]
     ; Actually using the wholeimage cropped areas reveal little difference than with the cheating method
 
     s = SIZE(crop,/dim)
@@ -120,10 +112,12 @@ pro dim3
     
     
     ; Working with image of blank sun with real fiducials:
-    whitecrop = bytarr(s) + 100
+    whitecrop = bytarr(s) + 198
     fakesun = imask*crop + whitecrop*(icrop gt idealthresh)
     ; cgsurface,(SHIFT_DIFF(EMBOSS(fakesun),dir=3))
-
+    a = SHIFT_DIFF(EMBOSS(fakesun),dir=3)
+    cgimage,a,/k
+    cgimage,a*(a gt 10),/k
     stop
     ; The sunthetic image has too-nice edges that they end up being edge-detected 
     ; So I actually didn't anticipate this.

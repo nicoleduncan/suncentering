@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.4-1.40.13 (TeX Live 2012) (format=pdflatex 2013.2.22)  5 MAR 2013 16:06
+This is pdfTeX, Version 3.1415926-2.4-1.40.13 (TeX Live 2012) (format=pdflatex 2013.2.22)  5 MAR 2013 16:52
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -426,7 +426,7 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
  [1
 
 {/usr/local/texlive/2012/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
-<plots_tables_images/untouched.png, id=85, 744.7825pt x 456.70625pt>
+<plots_tables_images/untouched.png, id=95, 744.7825pt x 456.70625pt>
 File: plots_tables_images/untouched.png Graphic file (type png)
 
 <use plots_tables_images/untouched.png>
@@ -434,7 +434,7 @@ Package pdftex.def Info: plots_tables_images/untouched.png used on input line 6
 1.
 (pdftex.def)             Requested size: 140.92435pt x 86.4127pt.
 
-<plots_tables_images/emboss.png, id=86, 744.7825pt x 456.70625pt>
+<plots_tables_images/emboss.png, id=96, 744.7825pt x 456.70625pt>
 File: plots_tables_images/emboss.png Graphic file (type png)
 
 <use plots_tables_images/emboss.png>
@@ -445,7 +445,7 @@ File: plots_tables_images/emboss.png Graphic file (type png)
 Package pdftex.def Info: plots_tables_images/emboss.png used on input line 82.
 (pdftex.def)             Requested size: 140.92435pt x 86.4127pt.
 
-<plots_tables_images/shiftdiff.png, id=87, 744.7825pt x 456.70625pt>
+<plots_tables_images/shiftdiff.png, id=97, 744.7825pt x 456.70625pt>
 File: plots_tables_images/shiftdiff.png Graphic file (type png)
 
 <use plots_tables_images/shiftdiff.png>
@@ -453,7 +453,7 @@ Package pdftex.def Info: plots_tables_images/shiftdiff.png used on input line 8
 8.
 (pdftex.def)             Requested size: 140.92435pt x 86.4127pt.
  [1 <./plots_tables_images/untouched.png> <./plots_tables_images/emboss.png>]
-<plots_tables_images/below50.png, id=101, 744.7825pt x 456.70625pt>
+<plots_tables_images/below50.png, id=111, 744.7825pt x 456.70625pt>
 File: plots_tables_images/below50.png Graphic file (type png)
 
 <use plots_tables_images/below50.png>
@@ -461,7 +461,7 @@ Package pdftex.def Info: plots_tables_images/below50.png used on input line 102
 .
 (pdftex.def)             Requested size: 140.92435pt x 86.4127pt.
 
-<plots_tables_images/below80.png, id=102, 744.7825pt x 456.70625pt>
+<plots_tables_images/below80.png, id=112, 744.7825pt x 456.70625pt>
 File: plots_tables_images/below80.png Graphic file (type png)
 
 <use plots_tables_images/below80.png>
@@ -470,7 +470,7 @@ Package pdftex.def Info: plots_tables_images/below80.png used on input line 108
 (pdftex.def)             Requested size: 140.92435pt x 86.4127pt.
  [2 <./plots_tables_images/shiftdiff.png> <./plots_tables_images/below50.png> <
 ./plots_tables_images/below80.png>]
-<plots_tables_images/dir3.png, id=110, 744.7825pt x 456.70625pt>
+<plots_tables_images/dir3.png, id=120, 744.7825pt x 456.70625pt>
 File: plots_tables_images/dir3.png Graphic file (type png)
 
 <use plots_tables_images/dir3.png>
@@ -481,7 +481,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 170--170
 []\OT1/cmr/m/n/10 Figure 7: |Pix-els be-low -80 and with
  []
 
-<plots_tables_images/dir1.png, id=111, 744.7825pt x 456.70625pt>
+<plots_tables_images/dir1.png, id=121, 744.7825pt x 456.70625pt>
 File: plots_tables_images/dir1.png Graphic file (type png)
 
 <use plots_tables_images/dir1.png>
@@ -505,7 +505,7 @@ p-eps-converted-to.pdf plots_tables_images/fidcomp.eps>
 (epstopdf)             \includegraphics on input line 195.
 Package epstopdf Info: Output file is already uptodate.
 
-<plots_tables_images/fidcomp-eps-converted-to.pdf, id=118, 552.0625pt x 662.475
+<plots_tables_images/fidcomp-eps-converted-to.pdf, id=128, 552.0625pt x 662.475
 pt>
 File: plots_tables_images/fidcomp-eps-converted-to.pdf Graphic file (type pdf)
  <use plots_tables_images/fidcomp-eps-converted-to.pdf>
@@ -524,7 +524,7 @@ utline-eps-converted-to.pdf plots_tables_images/mask_outline.eps>
 (epstopdf)             \includegraphics on input line 202.
 Package epstopdf Info: Output file is already uptodate.
 
-<plots_tables_images/mask_outline-eps-converted-to.pdf, id=119, 433.62pt x 433.
+<plots_tables_images/mask_outline-eps-converted-to.pdf, id=129, 433.62pt x 433.
 62pt>
 File: plots_tables_images/mask_outline-eps-converted-to.pdf Graphic file (type 
 pdf)
@@ -544,7 +544,7 @@ eps-converted-to.pdf plots_tables_images/dim25.eps>
 (epstopdf)             \includegraphics on input line 211.
 Package epstopdf Info: Output file is already uptodate.
 
-<plots_tables_images/dim25-eps-converted-to.pdf, id=120, 578.16pt x 578.16pt>
+<plots_tables_images/dim25-eps-converted-to.pdf, id=130, 578.16pt x 578.16pt>
 File: plots_tables_images/dim25-eps-converted-to.pdf Graphic file (type pdf)
 
 <use plots_tables_images/dim25-eps-converted-to.pdf>
@@ -563,15 +563,97 @@ eps-converted-to.pdf plots_tables_images/dim50.eps>
 (epstopdf)             \includegraphics on input line 211.
 Package epstopdf Info: Output file is already uptodate.
 
-<plots_tables_images/dim50-eps-converted-to.pdf, id=121, 578.16pt x 578.16pt>
+<plots_tables_images/dim50-eps-converted-to.pdf, id=131, 578.16pt x 578.16pt>
 File: plots_tables_images/dim50-eps-converted-to.pdf Graphic file (type pdf)
 
 <use plots_tables_images/dim50-eps-converted-to.pdf>
 Package pdftex.def Info: plots_tables_images/dim50-eps-converted-to.pdf used on
  input line 211.
 (pdftex.def)             Requested size: 217.15352pt x 217.15352pt.
- [4 <./plots_tables_images/fidcomp-eps-converted-to.pdf>] [5 <./plots_tables_im
-ages/mask_outline-eps-converted-to.pdf>]
+ [4 <./plots_tables_images/fidcomp-eps-converted-to.pdf>]
+Package epstopdf Info: Source file: <plots_tables_images/fakeideal.eps>
+(epstopdf)                    date: 2013-03-05 16:37:18
+(epstopdf)                    size: 6631 bytes
+(epstopdf)             Output file: <plots_tables_images/fakeideal-eps-converte
+d-to.pdf>
+(epstopdf)                    date: 2013-03-05 16:37:36
+(epstopdf)                    size: 3512 bytes
+(epstopdf)             Command: <repstopdf --outfile=plots_tables_images/fakeid
+eal-eps-converted-to.pdf plots_tables_images/fakeideal.eps>
+(epstopdf)             \includegraphics on input line 226.
+Package epstopdf Info: Output file is already uptodate.
+
+<plots_tables_images/fakeideal-eps-converted-to.pdf, id=153, 552.0625pt x 517.9
+35pt>
+File: plots_tables_images/fakeideal-eps-converted-to.pdf Graphic file (type pdf
+)
+ <use plots_tables_images/fakeideal-eps-converted-to.pdf>
+Package pdftex.def Info: plots_tables_images/fakeideal-eps-converted-to.pdf use
+d on input line 226.
+(pdftex.def)             Requested size: 224.84766pt x 210.94797pt.
+Package epstopdf Info: Source file: <plots_tables_images/whodunit.eps>
+(epstopdf)                    date: 2013-03-05 16:36:23
+(epstopdf)                    size: 6631 bytes
+(epstopdf)             Output file: <plots_tables_images/whodunit-eps-converted
+-to.pdf>
+(epstopdf)                    date: 2013-03-05 16:36:35
+(epstopdf)                    size: 3903 bytes
+(epstopdf)             Command: <repstopdf --outfile=plots_tables_images/whodun
+it-eps-converted-to.pdf plots_tables_images/whodunit.eps>
+(epstopdf)             \includegraphics on input line 226.
+Package epstopdf Info: Output file is already uptodate.
+
+<plots_tables_images/whodunit-eps-converted-to.pdf, id=154, 552.0625pt x 517.93
+5pt>
+File: plots_tables_images/whodunit-eps-converted-to.pdf Graphic file (type pdf)
+
+ <use plots_tables_images/whodunit-eps-converted-to.pdf>
+Package pdftex.def Info: plots_tables_images/whodunit-eps-converted-to.pdf used
+ on input line 226.
+(pdftex.def)             Requested size: 224.84766pt x 210.94797pt.
+Package epstopdf Info: Source file: <plots_tables_images/whodunitwho.eps>
+(epstopdf)                    date: 2013-03-05 16:36:01
+(epstopdf)                    size: 4856 bytes
+(epstopdf)             Output file: <plots_tables_images/whodunitwho-eps-conver
+ted-to.pdf>
+(epstopdf)                    date: 2013-03-05 16:36:36
+(epstopdf)                    size: 3666 bytes
+(epstopdf)             Command: <repstopdf --outfile=plots_tables_images/whodun
+itwho-eps-converted-to.pdf plots_tables_images/whodunitwho.eps>
+(epstopdf)             \includegraphics on input line 236.
+Package epstopdf Info: Output file is already uptodate.
+
+<plots_tables_images/whodunitwho-eps-converted-to.pdf, id=155, 552.0625pt x 517
+.935pt>
+File: plots_tables_images/whodunitwho-eps-converted-to.pdf Graphic file (type p
+df)
+ <use plots_tables_images/whodunitwho-eps-converted-to.pdf>
+Package pdftex.def Info: plots_tables_images/whodunitwho-eps-converted-to.pdf u
+sed on input line 236.
+(pdftex.def)             Requested size: 224.84766pt x 210.94797pt.
+Package epstopdf Info: Source file: <plots_tables_images/tryhard.eps>
+(epstopdf)                    date: 2013-03-05 16:44:50
+(epstopdf)                    size: 6631 bytes
+(epstopdf)             Output file: <plots_tables_images/tryhard-eps-converted-
+to.pdf>
+(epstopdf)                    date: 2013-03-05 16:44:58
+(epstopdf)                    size: 3902 bytes
+(epstopdf)             Command: <repstopdf --outfile=plots_tables_images/tryhar
+d-eps-converted-to.pdf plots_tables_images/tryhard.eps>
+(epstopdf)             \includegraphics on input line 236.
+Package epstopdf Info: Output file is already uptodate.
+
+<plots_tables_images/tryhard-eps-converted-to.pdf, id=156, 552.0625pt x 517.935
+pt>
+File: plots_tables_images/tryhard-eps-converted-to.pdf Graphic file (type pdf)
+ <use plots_tables_images/tryhard-eps-converted-to.pdf>
+Package pdftex.def Info: plots_tables_images/tryhard-eps-converted-to.pdf used 
+on input line 236.
+(pdftex.def)             Requested size: 224.84766pt x 210.94797pt.
+ [5 <./plots_tables_images/mask_outline-eps-converted-to.pdf>] [6 <./plots_tabl
+es_images/dim25-eps-converted-to.pdf> <./plots_tables_images/dim50-eps-converte
+d-to.pdf> <./plots_tables_images/fakeideal-eps-converted-to.pdf> <./plots_table
+s_images/whodunit-eps-converted-to.pdf>]
 Package epstopdf Info: Source file: <plots_tables_images/circfidcomp.eps>
 (epstopdf)                    date: 2013-02-20 16:03:15
 (epstopdf)                    size: 114861 bytes
@@ -581,35 +663,34 @@ ted-to.pdf>
 (epstopdf)                    size: 28142 bytes
 (epstopdf)             Command: <repstopdf --outfile=plots_tables_images/circfi
 dcomp-eps-converted-to.pdf plots_tables_images/circfidcomp.eps>
-(epstopdf)             \includegraphics on input line 232.
+(epstopdf)             \includegraphics on input line 262.
 Package epstopdf Info: Output file is already uptodate.
 
-<plots_tables_images/circfidcomp-eps-converted-to.pdf, id=159, 552.0625pt x 662
+<plots_tables_images/circfidcomp-eps-converted-to.pdf, id=199, 552.0625pt x 662
 .475pt>
 File: plots_tables_images/circfidcomp-eps-converted-to.pdf Graphic file (type p
 df)
  <use plots_tables_images/circfidcomp-eps-converted-to.pdf>
 Package pdftex.def Info: plots_tables_images/circfidcomp-eps-converted-to.pdf u
-sed on input line 232.
+sed on input line 262.
 (pdftex.def)             Requested size: 422.77664pt x 507.3578pt.
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 241.
- [6 <./plots_tables_images/dim25-eps-converted-to.pdf> <./plots_tables_images/d
-im50-eps-converted-to.pdf>] [7 <./plots_tables_images/circfidcomp-eps-converted
--to.pdf>]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 241.
-
-(./fid_outline.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 241.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 241.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 271.
+ [7 <./plots_tables_images/whodunitwho-eps-converted-to.pdf> <./plots_tables_im
+ages/tryhard-eps-converted-to.pdf>] [8 <./plots_tables_images/circfidcomp-eps-c
+onverted-to.pdf>]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 271.
+ (./fid_outline.aux)
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 271.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 271.
 Package rerunfilecheck Info: File `fid_outline.out' has not changed.
-(rerunfilecheck)             Checksum: 6C64D365CE190FCB41496107D884D6B7;826.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 241.
+(rerunfilecheck)             Checksum: B32D30A294A51E494BDE930EE6FE989A;917.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 271.
  ) 
 Here is how much of TeX's memory you used:
- 7998 strings out of 493481
- 122103 string characters out of 3140965
- 210256 words of memory out of 3000000
- 11153 multiletter control sequences out of 15000+200000
+ 8031 strings out of 493481
+ 123165 string characters out of 3140965
+ 210496 words of memory out of 3000000
+ 11172 multiletter control sequences out of 15000+200000
  12330 words of font info for 48 fonts, out of 3000000 for 9000
  957 hyphenation exceptions out of 8191
  44i,9n,42p,724b,556s stack positions out of 5000i,500n,10000p,200000b,50000s
@@ -622,10 +703,10 @@ sr/local/texlive/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr
 ocal/texlive/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/lo
 cal/texlive/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/loc
 al/texlive/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb>
-Output written on fid_outline.pdf (8 pages, 338912 bytes).
+Output written on fid_outline.pdf (9 pages, 348535 bytes).
 PDF statistics:
- 244 PDF objects out of 1000 (max. 8388607)
- 185 compressed objects within 2 object streams
- 45 named destinations out of 1000 (max. 500000)
- 173 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 285 PDF objects out of 1000 (max. 8388607)
+ 216 compressed objects within 3 object streams
+ 55 named destinations out of 1000 (max. 500000)
+ 209 words of extra memory for PDF output out of 10000 (max. 10000000)
 

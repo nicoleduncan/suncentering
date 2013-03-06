@@ -11,4 +11,6 @@
 \contentsline {subsection}{\numberline {4.1}emboss}{2}{subsection.4.1}
 \contentsline {subsection}{\numberline {4.2}shift\_diff}{3}{subsection.4.2}
 \contentsline {section}{\numberline {5}More Images}{4}{section.5}
-\contentsline {section}{\numberline {6}Drawbacks}{5}{section.6}
+\contentsline {section}{\numberline {6}Exercises}{5}{section.6}
+\contentsline {section}{\numberline {7}Parameters}{6}{section.7}
+\contentsline {section}{\numberline {8}Drawbacks}{7}{section.8}

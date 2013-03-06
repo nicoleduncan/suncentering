@@ -215,12 +215,42 @@ In a nutshell, \hl{\tt{scrib.pro}} takes an image of the sun with fiducials and 
 
 \newpage
 
+\section{Exercises}
+    Since our attempt to simulate a realistic fiducial proved lacking quantative reasoning, we looked to extract fiducial values from the real solar image and place them onto a blank (or nearly blacnk, still uniform) 2d array. We found that even if the fiducial pixel values are inconsistent, as long as they form the shape of the fiducial and are substantially different from the the background value, they will appear to be ``perfect''. See Figure \ref{whodunit}
+
+\begin{figure}[!ht]
+    \centering
+    \subfloat{
+            \includegraphics[width=0.98\linewidth, height = .34\textheight, keepaspectratio=true]{plots_tables_images/fakeideal.eps}
+            \includegraphics[width=0.98\linewidth, height = .34\textheight, keepaspectratio=true]{plots_tables_images/whodunit.eps}
+        }    
+        \caption{On the left we see the real fiducial values over a uniform 2D array. On the right is the result of the two convolution filters. Despite the ``blurry'' pixel values, the filters saw the edges of the fiducial.}
+    \label{whodunit}
+\end{figure}
+
+\begin{figure}[!ht]
+    \centering
+    \subfloat{
+            \includegraphics[width=0.98\linewidth, height = .34\textheight, keepaspectratio=true]{plots_tables_images/whodunitwho.eps}
+            \includegraphics[width=0.98\linewidth, height = .34\textheight, keepaspectratio=true]{plots_tables_images/tryhard.eps}
+        }    
+        \caption{On the left is the same image as Figure 12(b), but masked to values above a certain threshold. Here you see that there clearly exists a linear structure. I also tried instead of a gray bacground, a background that was equal to the most common pixel value (198 instead of 100). The goal was to try and blur out the fiducial as much as possible. On the right we see the convolution filter has a harder time finding the edges but we still see some clear vertical black lines that we can mask out.}
+\end{figure}
+
+\section{Parameters}
+    In an effort to keep our work rigorous, attempts have been made to minimize arbitrary variables. These attempts have sometimes failed. Here is a list of parameters to quantize:
+    \begin{enumerate}
+        \item Width/Height of cropped box of which to look for fiducials in. Must be large enough to cover as much area of the sun as possible witout including the solar limb.
+        \item Threshold used to mask twice-convoluted image. As of \today, arbitrary.
+        \item ...and others once we recognize them.
+    \end{enumerate}
+
 \section{Drawbacks}
 
     The main problems facing this program are:
 
     \begin{enumerate}
-        \item With rotated fiducials, cannot use \hl{\texttt{mode()}} to easily find most common pixel positions
+        \item With rotated fiducials above 2 degrees, cannot use \hl{\texttt{mode()}} to easily find most common pixel positions
         \item With rotated fiducials (and without knowing what angle they are rotated at beforehand), we may have to try multiple rotation angles for the kernels used in each filter.
         \item If the fiducials are not plus-shaped the edge-detection tools cannot handle distortion. Ideally, a circle-shaped fidcial would be fine except that any distortion returns poor results with the edge detection filters. I think this is because the plus-shaped fiducials naturally have up and down edges which, even with distortion, can still be isolated. See Figure \ref{circfidcomp}
         \item We must crop the sun in such a way that none of the solar limb is in the image. The reason is because the image is pixelated enough that the edge of the sun is detected as an edge, albeit one we do not want. A problem that arises from this is that when we crop out the solar limbs, we may cut off fiducials.

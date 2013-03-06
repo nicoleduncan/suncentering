@@ -3,3 +3,7 @@ xpos 210
 ypos 153
 idealthresh 50
 rad 22
+xpos50 338
+ypos50 77
+xpos25 78
+ypos25 235
