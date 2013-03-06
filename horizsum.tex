@@ -40,16 +40,12 @@ I assume that the Earth's limb looks very linear and that for any given axis whi
 
 \begin{figure}[!h]
     \centering
-    \includegraphics[width=.9\textwidth]{plots_tables_images/raw.eps}    
+    % \includegraphics[width=.9\textwidth]{plots_tables_images/raw.eps}   notilt 
+    \includegraphics[width=.9\textwidth]{plots_tables_images/100kft/notilt}
     \label{raw}
 \end{figure}
 
-\begin{enumerate}
-    \item The camera takes either an RGB color image and extracts the Red channel
-    \item The camera uses a blue and green to filter to block those channels
-\end{enumerate}
-
-Either way, the image we process is one with red light because it has the produces the sharpest limb.
+We will have a B/W camera using a red filter on the lens so that we will only use the red light.
 % section starting_image (end)
 
 \newpage
@@ -82,7 +78,7 @@ This image is misleading however, since the top and bottom profiles of the Earth
         \begin{minipage}{.45\textwidth}
             % \begin{center}
             \centering
-                \includegraphics[width=\linewidth]{plots_tables_images/maskcenter.eps}
+                \includegraphics[width=\linewidth]{plots_tables_images/spreadc.eps}
                 \caption{Center of mass of the space mask}
             % \end{center}
         \end{minipage}

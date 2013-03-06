@@ -59,9 +59,11 @@ print,'^^ Realistically, this should be 0'
 ; Imagine if the camera was completely level, in that case the slope from linfit=0 but 
 ; then there could be roll, so phi can be non-zero
 ; window,1
-; cgimage,rmask,/k,output='rmask.eps'
+; cgimage,rmask,/k,output='plots_tables_images/rmask.eps'
 ; window,2
-; cgimage,ama,/k,output='ama.eps'
+; cgimage,ama,/k,output='plots_tables_images/ama.eps'
+
+cgimage,spacemask,/k,output='plots_tables_images/spacemask.eps'
 
 window,0
 plot,xarr,reg2limb,xs=3,ys=3,psym=4,ytitle='Y-Position',xtitle='X-Position',title='Earth Limb Pixel Position'
@@ -85,13 +87,15 @@ xpos = TOTAL( TOTAL(spacemask, 2) * Indgen(n_col) ) / total(spacemask)
 ypos = TOTAL( TOTAL(spacemask, 1) * Indgen(n_row) ) / total(spacemask)
 
 spredc = redc
-spredc[xpos,*]=255
-spredc[*,ypos]=255
+spredc[xpos-1:xpos+1,*]=255
+spredc[*,ypos-1:ypos+1]=255
+
+; adding 2 1 pix buffer to make it easier to see
 
 spredc[n_col/2,*] = 100
 
 window,3
-cgimage,spredc,/k;,output='maskcenter.eps'
+cgimage,spredc,/k;';,output='maskcenter.eps'
 
 
 ;************************************************************************************************
