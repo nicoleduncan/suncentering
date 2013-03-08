@@ -677,10 +677,6 @@ ENDIF
 
 finish = SYSTIME(1,/seconds)
 
-
-
-
-
 IF KEYWORD_SET(time) THEN  print,'Elapsed Time for limbfit: ',strcompress(finish-start,/rem),' seconds'
 RETURN
 END
@@ -913,6 +909,44 @@ plot_edges,ypb,thick=6,setcolor=255
 ; cgimage,a*(a gt 10),/k
 
 
+
+
+
+
+
+
+; ******************************************************************************************
+; ******************************************************************************************
+; ******************************************************************************************
+
+; Dickin' around with convol()
+kernel = [[-1,1,-1],[1,1,1],[-1,1,-1]]
+cgimage,convol(crop,kernel),output='kerneltest.png',/k
+
+stop
+wholeimage = BYTSCL( READ_TIFF('plots_tables_images/diag.tiff',channels=1) )
+crop = wholeimage[struct.center1.xpos-rad:struct.center1.xpos+rad,$
+    struct.center1.ypos-rad:struct.center1.ypos+rad]
+cgimage,emboss(crop,az=45),/k
+
+
+
+kernel = [[1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,1],$
+        [-1,1,-1,-1,-1,-1,-1,-1,-1,-1,1,-1],$
+        [-1,-1,1,-1,-1,-1,-1,-1,-1,1,-1,-1],$
+        [-1,-1,-1,1,-1,-1,-1,-1,1,-1,-1,-1],$
+        [-1,-1,-1,-1,1,-1,-1,1,-1,-1,-1,-1],$
+        [-1,-1,-1,-1,-1,1,1,-1,-1,-1,-1,-1],$
+        [-1,-1,-1,-1,-1,1,1,-1,-1,-1,-1,-1],$
+        [-1,-1,-1,-1,1,-1,-1,1,-1,-1,-1,-1],$
+        [-1,-1,-1,1,-1,-1,-1,-1,1,-1,-1,-1],$
+        [-1,-1,1,-1,-1,-1,-1,-1,-1,1,-1,-1],$
+        [-1,1,-1,-1,-1,-1,-1,-1,-1,-1,1,-1],$
+        [1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,1]]
+; ******************************************************************************************
+; ******************************************************************************************
+; ******************************************************************************************
+
 stop
 ; The sunthetic image has too-nice edges that they end up being edge-detected 
 ; So I actually didn't anticipate this.
@@ -927,18 +961,17 @@ ind_col = WHERE(xpb eq 1) mod ncol
 ind_row = WHERE(ypb eq 1)/nrow
 
 
-a = mode(ind_col)
-b = ind_col[WHERE(ind_col ne a)]
-c = mode(b)
+a = MODE(ind_col)
+b = MODE(ind_col[WHERE(ind_col ne a)])
 
-f = mode(ind_row)
-g = ind_row[WHERE(ind_row ne f)]
-h = mode(g)
+c = MODE(ind_row)
+d = MODE(ind_row[WHERE(ind_row ne f)])
+
 
 
 ; Just to make it sorted
-xpos = [a,c]
-ypos = [f,h]
+xpos = [a,b]
+ypos = [c,d]
 xpos = xpos[SORT(xpos)]
 ypos = ypos[SORT(ypos)]
 

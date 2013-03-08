@@ -265,7 +265,22 @@ In a nutshell, \hl{\tt{scrib.pro}} takes an image of the sun with fiducials and 
 \end{figure}
 
 
+\section{How to Break Code} % (fold)
+\label{sec:how_to_break_code}
 
+    \begin{enumerate}
+        \item Sun is too close to the edge of the solar image\\
+            - When cropping, either need to fabricate null data or ignore altogether
+        \item Part of sun is cut off in image\\
+            - Not only will cropping fail, limb fitting will also fail
+        \item Bad pixels\\
+            - Threshold finding has been changed to remedy this
+        \item When scanning in a circle, haven't completely coded fail-safes if it doesn't find auxilliary suns\\
+            - Probably have to do something where if I don't detect the auxilliary suns, I'll scan at different readii at specific intervals
+        \item Image is rotated more than 2 degrees\\
+            - Current fiducial finding method can't handle a rotated image well
+    \end{enumerate}
 
+% section how_to_break_code (end)
 
 \end{document}
