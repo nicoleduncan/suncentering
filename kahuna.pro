@@ -27,7 +27,7 @@ COMMON vblock, wholeimage, scan_width, sundiam, nstrips, order, ministrip_length
 
 makestrips, thresh, c4xstrips, c4ystrips, region=region, time=time
 
-start = systime(1,/seconds)
+start = SYSTIME(1,/seconds)
 
 ministrip_side_buffer = byte(ministrip_length)/2 
 ; have to byte it since we read the ministrip_length as a float
@@ -115,9 +115,9 @@ ENDFOR
 
 
 
-finish = systime(1,/seconds)
+finish = SYSTIME(1,/seconds)
 
-IF keyword_set(time) THEN  print,'Elapsed Time for makelimbstrips: ', $
+IF KEYWORD_SET(time) THEN  print,'Elapsed Time for makelimbstrips: ', $
     strcompress(finish-start,/rem),' seconds'
 RETURN
 END
@@ -143,7 +143,7 @@ FUNCTION quickmask, image, thresh
 
 a = image[SORT(image)]
 niceimage = a[0:0.99*(N_ELEMENTS(a)-1)]
-
+; Eliminating the highest 1% of data
 IF thresh eq !null then thresh = 0.25*max(niceimage)
 ; IF n_elements(thresh) EQ 0 THEN thresh = 0.25*max(image)
 
@@ -249,7 +249,7 @@ struct = whichcropmethod(region)
 ducks = quickmask(struct.image)
 thresh = struct.thresh
 
-start = systime(1,/seconds)
+start = SYSTIME(1,/seconds)
 
 animage = struct.image
 s = size(animage,/dimensions)
@@ -273,8 +273,8 @@ FOR k = 0,nstrips - 1 DO BEGIN
     ystrips[k].ARRAY = animage[round(ducks.ypos)+(k-nstrips/2)*scan_width,*]
 ENDFOR
 
-finish = systime(1,/seconds)
-IF keyword_set(time) THEN  print,'Elapsed Time for makestrips: ', $
+finish = SYSTIME(1,/seconds)
+IF KEYWORD_SET(time) THEN  print,'Elapsed Time for makestrips: ', $
     strcompress(finish-start,/rem),' seconds'
 RETURN
 END
@@ -318,10 +318,10 @@ PRO circscancrop, mainxpos, mainypos, image, thresh, xpos, ypos, xoffset, yoffse
 ;-
 
 COMPILE_OPT idl2 
-on_error,2
+ON_ERROR,2
 
 COMMON vblock, wholeimage, scan_width, sundiam, nstrips, order, ministrip_length, file
-start = systime(1,/s)
+start = SYSTIME(1,/s)
 
 arr=(findgen(360) + 90)*!dtor
 ; only adding 90 so that it starts from 12 o'clock assuming there is
@@ -393,7 +393,6 @@ otherloop: BEGIN
         ; wholeimage[x2[in_outer:out_outer],y2[in_outer:out_outer]] = 0
 
     ENDIF
-
 END
 
 centerangle = !dtor*(90 + mean([in_inner,out_inner]))
@@ -404,8 +403,8 @@ image = wholeimage[centerx-60:centerx+60,centery-60:centery+60]
 xoffset = centerx-60
 yoffset = centery-60
 
-finish = systime(1,/s)
-IF keyword_set(time) THEN print, 'getstruct took: '+strcompress(finish-start)+$
+finish = SYSTIME(1,/s)
+IF KEYWORD_SET(time) THEN print, 'getstruct took: '+strcompress(finish-start)+$
     ' seconds'
 RETURN
 END
@@ -447,7 +446,7 @@ COMMON vblock, wholeimage, scan_width, sundiam, nstrips, order, ministrip_length
 ; Run the program to get our structures
 makelimbstrips, thresh, xstrips, ystrips, region=region, time=time
 
-start = systime(1,/seconds)
+start = SYSTIME(1,/seconds)
 
 ministrip_side_length = ministrip_length/2
 xlen    = 0
@@ -464,7 +463,7 @@ xlenarr = findgen(n_elements(xstrips))
 
 ;Deal with rows
 FOR n=0,n_elements(xstrips)-1 DO BEGIN
-    ; Using fz_roots instead of spline interpolating. Saving lines and making code more readable
+    ; Using fz_roots instead of SPLINE interpolating. Saving lines and making code more readable
 
 
 ; ; Since there are no limb profiles with fiducials, I'll just make one up
@@ -481,9 +480,9 @@ FOR n=0,n_elements(xstrips)-1 DO BEGIN
     ; startresult     = reform(poly_fit(xarr,a,order))
     ; corrstartresult = reform(poly_fit(xarr,b,order))
 
-    ; xtmp = spline(xarr,startresult[0] + startresult[1]*xarr + startresult[2]*xarr^2,tx)
-    ; corrxtmp = spline(xarr,corrstartresult[0] + corrstartresult[1]*xarr + corrstartresult[2]*xarr^2,tx)
-    ; ; atmp = spline(xarr,endresult[0] + endresult[1]*xarr + endresult[2]*xarr^2,tx)
+    ; xtmp = SPLINE(xarr,startresult[0] + startresult[1]*xarr + startresult[2]*xarr^2,tx)
+    ; corrxtmp = SPLINE(xarr,corrstartresult[0] + corrstartresult[1]*xarr + corrstartresult[2]*xarr^2,tx)
+    ; ; atmp = SPLINE(xarr,endresult[0] + endresult[1]*xarr + endresult[2]*xarr^2,tx)
     
     ; plot,xarr+xstrips[n].BEGINDEX,a,xs=3,ys=3,title='Limb Profile',$
     ;     xtitle='Pixel indices of total strip',ytitle='Brightness',psym=-2;,yr=[0,1.1*max(xtmp)]
@@ -491,7 +490,7 @@ FOR n=0,n_elements(xstrips)-1 DO BEGIN
     ; oplot,xarr+xstrips[n].BEGINDEX,b,linestyle=4
     ; oplot,tx+xstrips[n].BEGINDEX,corrxtmp,linestyle=5
     ; hline,thresh,linestyle=2
-    ; legend,['Actual Data Values','Splined Data'],linestyle=[0,1],/bottom,/right,charsize=2
+    ; legend,['Actual Data Values','SPLINEd Data'],linestyle=[0,1],/bottom,/right,charsize=2
 
 ;     ; Somewhat hard to make poly_fit fuck up when limbfitting even when I'm forcing fiducials
 ;     ; Perhaps I don't know what they actually look like?
@@ -501,22 +500,22 @@ FOR n=0,n_elements(xstrips)-1 DO BEGIN
     startresult     = reform(poly_fit(xarr,xstrips[n].STARTPOINTS,order))
     endresult       = reform(poly_fit(xarr,xstrips[n].ENDPOINTS,order))
 
-    ; xtmp = spline(xarr,startresult[0] + startresult[1]*xarr + startresult[2]*xarr^2,tx)
-    ; atmp = spline(xarr,endresult[0] + endresult[1]*xarr + endresult[2]*xarr^2,tx)
+    ; xtmp = SPLINE(xarr,startresult[0] + startresult[1]*xarr + startresult[2]*xarr^2,tx)
+    ; atmp = SPLINE(xarr,endresult[0] + endresult[1]*xarr + endresult[2]*xarr^2,tx)
     
     ; window,2
     ; plot,xarr+xstrips[n].BEGINDEX,xstrips[n].startpoints,xs=3,ys=3,title='Limb Profile',$
     ;     xtitle='Pixel indices of total strip',ytitle='Brightness',psym=-2;,yr=[0,1.1*max(xtmp)]
     ; oplot,tx+xstrips[n].BEGINDEX,xtmp,linestyle=1
     ; hline,thresh,linestyle=2
-    ; legend,['Actual Data Values','Splined Data'],linestyle=[0,1],/bottom,/right,charsize=2
+    ; legend,['Actual Data Values','SPLINEd Data'],linestyle=[0,1],/bottom,/right,charsize=2
 
     ; window,0
     ; plot,xarr+xstrips[n].ENDINDEX,xstrips[n].ENDPOINTS,xs=3,ys=3,title='Limb Profile',$
     ;     xtitle='Pixel indices of total strip',ytitle='Brightness',psym=-2;,yr=[0,1.1*max(xtmp)]
     ; oplot,tx+xstrips[n].ENDINDEX,atmp,linestyle=1
     ; hline,thresh,linestyle=2
-    ; legend,['Actual Data Values','Splined Data'],linestyle=[0,1],/bottom,/left,charsize=2
+    ; legend,['Actual Data Values','SPLINEd Data'],linestyle=[0,1],/bottom,/left,charsize=2
 
     ; Solving for roots but want to include threshold value
     startresult[0]  -=thresh
@@ -555,22 +554,22 @@ FOR n=0,n_elements(ystrips)-1 DO BEGIN
     startresult     = reform(poly_fit(yarr,ystrips[n].STARTPOINTS,order))
     endresult       = reform(poly_fit(yarr,ystrips[n].ENDPOINTS,order))
 
-;     ytmp = spline(yarr,startresult[0] + startresult[1]*yarr + startresult[2]*yarr^2,tx)
-;     btmp = spline(yarr,endresult[0] + endresult[1]*yarr + endresult[2]*yarr^2,tx)
+;     ytmp = SPLINE(yarr,startresult[0] + startresult[1]*yarr + startresult[2]*yarr^2,tx)
+;     btmp = SPLINE(yarr,endresult[0] + endresult[1]*yarr + endresult[2]*yarr^2,tx)
     
 ;     window,3
 ;     plot,yarr+ystrips[n].BEGINDEX,ystrips[n].startpoints,xs=3,ys=3,title='Limb Profile',$
 ;         xtitle='Pixel indices of total strip',ytitle='Brightness',psym=-2;,yr=[0,1.1*max(ytmp)]
 ;     oplot,tx+ystrips[n].BEGINDEX,ytmp,linestyle=1
 ;     hline,thresh,linestyle=2
-;     legend,['Actual Data Values','Splined Data'],linestyle=[0,1],/bottom,/right,charsize=2
+;     legend,['Actual Data Values','SPLINEd Data'],linestyle=[0,1],/bottom,/right,charsize=2
 
 ;     window,1
 ;     plot,yarr+ystrips[n].ENDINDEX,ystrips[n].ENDPOINTS,xs=3,ys=3,title='Limb Profile',$
 ;         xtitle='Pixel indices of total strip',ytitle='Brightness',psym=-2;,yr=[0,1.1*max(ytmp)]
 ;     oplot,tx+ystrips[n].ENDINDEX,btmp,linestyle=1
 ;     hline,thresh,linestyle=2
-;     legend,['Actual Data Values','Splined Data'],linestyle=[0,1],/bottom,/left,charsize=2
+;     legend,['Actual Data Values','SPLINEd Data'],linestyle=[0,1],/bottom,/left,charsize=2
 ; stop
     startresult[0]  -=thresh
     endresult[0]    -=thresh
@@ -603,51 +602,51 @@ ENDFOR
 xpos = mean(xlenarr[where(xlenarr ne 0)]) + (xstrips.xoffset)[0]
 ypos = mean(ylenarr[where(ylenarr ne 0)]) + (ystrips.yoffset)[0]
 
-IF keyword_set(plot) THEN BEGIN
+IF KEYWORD_SET(plot) THEN BEGIN
     wn = 3
     startresult = poly_fit(xarr,xstrips[wn].STARTPOINTS,order)
     endresult = poly_fit(xarr,xstrips[wn].ENDPOINTS,order)
 
     CASE order OF
     1: BEGIN
-        xtmp = spline(xarr,startresult[0] + startresult[1]*xarr,tx)
-        atmp = spline(xarr,endresult[0] + endresult[1]*xarr,tx)
+        xtmp = SPLINE(xarr,startresult[0] + startresult[1]*xarr,tx)
+        atmp = SPLINE(xarr,endresult[0] + endresult[1]*xarr,tx)
         END
     2: BEGIN
-        xtmp = spline(xarr,startresult[0] + startresult[1]*xarr + startresult[2]*xarr^2,tx)
-        atmp = spline(xarr,endresult[0] + endresult[1]*xarr + endresult[2]*xarr^2,tx)
+        xtmp = SPLINE(xarr,startresult[0] + startresult[1]*xarr + startresult[2]*xarr^2,tx)
+        atmp = SPLINE(xarr,endresult[0] + endresult[1]*xarr + endresult[2]*xarr^2,tx)
         END
     3: BEGIN
-        xtmp = spline(xarr,startresult[0] + startresult[1]*xarr + startresult[2]*xarr^2 + $
+        xtmp = SPLINE(xarr,startresult[0] + startresult[1]*xarr + startresult[2]*xarr^2 + $
                 startresult[3]*xarr^3,tx)
-        atmp = spline(xarr,endresult[0] + endresult[1]*xarr + endresult[2]*xarr^2 + $
+        atmp = SPLINE(xarr,endresult[0] + endresult[1]*xarr + endresult[2]*xarr^2 + $
                 endresult[3]*xarr^3,tx)
         END
     4: BEGIN
-        xtmp = spline(xarr,startresult[0] + startresult[1]*xarr + startresult[2]*xarr^2 + $
+        xtmp = SPLINE(xarr,startresult[0] + startresult[1]*xarr + startresult[2]*xarr^2 + $
                 startresult[3]*xarr^3 + startresult[4]*xarr^4,tx)
-        atmp = spline(xarr,endresult[0] + endresult[1]*xarr + endresult[2]*xarr^2 + $
+        atmp = SPLINE(xarr,endresult[0] + endresult[1]*xarr + endresult[2]*xarr^2 + $
                 endresult[3]*xarr^3 + endresult[4]*xarr^4,tx)
         END
     5: BEGIN
-        xtmp = spline(xarr,startresult[0] + startresult[1]*xarr + startresult[2]*xarr^2 + $
+        xtmp = SPLINE(xarr,startresult[0] + startresult[1]*xarr + startresult[2]*xarr^2 + $
                 startresult[3]*xarr^3 + startresult[4]*xarr^4 + startresult[5]*xarr^5,tx)
-        atmp = spline(xarr,endresult[0] + endresult[1]*xarr + endresult[2]*xarr^2 + $
+        atmp = SPLINE(xarr,endresult[0] + endresult[1]*xarr + endresult[2]*xarr^2 + $
                 endresult[3]*xarr^3 + endresult[4]*xarr^4 + endresult[5]*xarr^5,tx)
         END    
     6: BEGIN
-        xtmp = spline(xarr,startresult[0] + startresult[1]*xarr + startresult[2]*xarr^2 + $
+        xtmp = SPLINE(xarr,startresult[0] + startresult[1]*xarr + startresult[2]*xarr^2 + $
                 startresult[3]*xarr^3 + startresult[4]*xarr^4 + startresult[5]*xarr^5 + $
                 startresult[6]*xarr^6,tx)
-        atmp = spline(xarr,endresult[0] + endresult[1]*xarr + endresult[2]*xarr^2 + $
+        atmp = SPLINE(xarr,endresult[0] + endresult[1]*xarr + endresult[2]*xarr^2 + $
                 endresult[3]*xarr^3 + endresult[4]*xarr^4 + endresult[5]*xarr^5 + $
                 endresult[6]*xarr^6,tx)
         END
     7: BEGIN
-        xtmp = spline(xarr,startresult[0] + startresult[1]*xarr + startresult[2]*xarr^2 + $
+        xtmp = SPLINE(xarr,startresult[0] + startresult[1]*xarr + startresult[2]*xarr^2 + $
                 startresult[3]*xarr^3 + startresult[4]*xarr^4 + startresult[5]*xarr^5 + $
                 startresult[6]*xarr^6 + startresult[7]*xarr^7,tx)
-        atmp = spline(xarr,endresult[0] + endresult[1]*xarr + endresult[2]*xarr^2 + $
+        atmp = SPLINE(xarr,endresult[0] + endresult[1]*xarr + endresult[2]*xarr^2 + $
                 endresult[3]*xarr^3 + endresult[4]*xarr^4 + endresult[5]*xarr^5 + $
                 endresult[6]*xarr^6 + endresult[7]*xarr^7,tx)
         END
@@ -661,7 +660,7 @@ IF keyword_set(plot) THEN BEGIN
         xtitle='Pixel indices of total strip',ytitle='Brightness',psym=-2;,yr=[0,1.1*max(xtmp)]
     oplot,tx+xstrips[wn].BEGINDEX,xtmp,linestyle=1
     hline,thresh,linestyle=2
-    legend,['Actual Data Values','Splined Data'],linestyle=[0,1],/bottom,/right,charsize=2
+    legend,['Actual Data Values','SPLINEd Data'],linestyle=[0,1],/bottom,/right,charsize=2
     ; device,/close
     ; set_plot,'x'
     window,0
@@ -671,18 +670,18 @@ IF keyword_set(plot) THEN BEGIN
         xtitle='Pixel indices of total strip',ytitle='Brightness',psym=-2;,yr=[0,1.1*max(xtmp)]
     oplot,tx+xstrips[wn].ENDINDEX,atmp,linestyle=1
     hline,thresh,linestyle=2
-    legend,['Actual Data Values','Splined Data'],linestyle=[0,1],/bottom,/left,charsize=2
+    legend,['Actual Data Values','SPLINEd Data'],linestyle=[0,1],/bottom,/left,charsize=2
     ; device,/close
     ; set_plot,'x'
 ENDIF
 
-finish = systime(1,/seconds)
+finish = SYSTIME(1,/seconds)
 
 
 
 
 
-IF keyword_set(time) THEN  print,'Elapsed Time for limbfit: ',strcompress(finish-start,/rem),' seconds'
+IF KEYWORD_SET(time) THEN  print,'Elapsed Time for limbfit: ',strcompress(finish-start,/rem),' seconds'
 RETURN
 END
 
@@ -707,11 +706,11 @@ PRO getstruct, struct, time=time
 ;           Outputs how much time the program takes
 ;-
 COMPILE_OPT idl2 
-on_error,2
+ON_ERROR,2
 
 COMMON vblock, wholeimage, scan_width, sundiam, nstrips, order, ministrip_length, file
 
-start = systime(1,/s)
+start = SYSTIME(1,/s)
 
 
 center1 = {center1,xpos:0d,ypos:0d,thresh:0d}
@@ -741,8 +740,8 @@ offset = ((center1.xpos - center2.xpos)*(center3.ypos - center2.ypos) - $
 
 struct = {KAHUNA, center1:center1, center2:center2, center3:center3, $
     theta:theta, offset:offset}
-finish = systime(1,/s)
-IF keyword_set(time) THEN print, 'getstruct took: '+strcompress(finish-start)+$
+finish = SYSTIME(1,/s)
+IF KEYWORD_SET(time) THEN print, 'getstruct took: '+strcompress(finish-start)+$
     ' seconds'
 RETURN
 END
@@ -794,9 +793,9 @@ END
 ;       
 ;-
 COMPILE_OPT idl2 
-on_error,2
+ON_ERROR,2
 
-start=systime(1,/s)
+start=SYSTIME(1,/s)
 
 ; profiler,/system
 ; profiler
@@ -817,10 +816,10 @@ getstruct, struct, time=time
 
 print,'Main sun x pos:',struct.center1.xpos
 print,'Main sun y pos:',struct.center1.ypos
-print,'50% sun x pos:',struct.center2.xpos
-print,'50% sun y pos:',struct.center2.ypos
-print,'25% sun x pos:',struct.center3.xpos
-print,'25% sun y pos:',struct.center3.ypos
+print,'50% sun x pos: ',struct.center2.xpos
+print,'50% sun y pos: ',struct.center2.ypos
+print,'25% sun x pos: ',struct.center3.xpos
+print,'25% sun y pos: ',struct.center3.ypos
 
 ; wholeimage2 = wholeimage
 ; wholeimage3 = wholeimage
@@ -856,6 +855,9 @@ crop = wholeimage[struct.center1.xpos-rad:struct.center1.xpos+rad,$
 icrop = ideal[struct.center1.xpos-rad:struct.center1.xpos+rad,$
     struct.center1.ypos-rad:struct.center1.ypos+rad]
 
+p = icrop[sort(icrop)]
+idealthresh = 0.25*max( p[0:.99*(n_elements(p)-1)] )
+
 imask = icrop lt idealthresh
 ; dim50 = .5*crop
 dim50 = wholeimage[struct.center2.xpos-rad:struct.center2.xpos+rad,$
@@ -866,6 +868,10 @@ dim25 = wholeimage[struct.center3.xpos-rad:struct.center3.xpos+rad,$
 
 ; Actually using the wholeimage cropped areas reveal little difference than with the cheating method
 ; Doesn't really matter which one we use, practically same result
+
+
+; thresh was -80, now, how do I do quantify magic?
+thresh = 0.5*min((SHIFT_DIFF(EMBOSS(crop),dir=3)))
 
 s = SIZE(crop,/dim)
 nrow = s[0]
@@ -907,9 +913,6 @@ plot_edges,ypb,thick=6,setcolor=255
 ; cgimage,a*(a gt 10),/k
 
 
-
-
-
 stop
 ; The sunthetic image has too-nice edges that they end up being edge-detected 
 ; So I actually didn't anticipate this.
@@ -943,8 +946,8 @@ ypos = ypos[SORT(ypos)]
 xmask = [xpos[0]-1,xpos[0],xpos[1]-1,xpos[1]]
 ymask = [ypos[0]-1,ypos[0],ypos[1]-1,ypos[1]]
 
-finish = systime(1,/s)
-IF keyword_set(time) THEN print, 'merrygotrace took: '+strcompress(finish-start)+$
+finish = SYSTIME(1,/s)
+IF KEYWORD_SET(time) THEN print, 'merrygotrace took: '+strcompress(finish-start)+$
     ' seconds'
 
 end
