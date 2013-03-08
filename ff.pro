@@ -112,7 +112,7 @@ pro dim3
     
     
     ; Working with image of blank sun with real fiducials:
-    whitecrop = bytarr(s) + 198
+    whitecrop = bytarr(s) + 198  ;198 is the mode of the not-fiducial-maskt
     fakesun = imask*crop + whitecrop*(icrop gt idealthresh)
     ; cgsurface,(SHIFT_DIFF(EMBOSS(fakesun),dir=3))
     a = SHIFT_DIFF(EMBOSS(fakesun),dir=3)

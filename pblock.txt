@@ -4,3 +4,6 @@ nstrips 5
 order 2
 ministrip_length 13
 sundiam 70
+thresh -80
+idealthresh 50
+rad 22
