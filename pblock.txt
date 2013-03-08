@@ -1,0 +1,6 @@
+scan_width 5
+sundiam 70
+nstrips 5
+order 2
+ministrip_length 13
+sundiam 70

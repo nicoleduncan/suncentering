@@ -29,7 +29,9 @@ makestrips, thresh, c4xstrips, c4ystrips, region=region, time=time
 
 start = systime(1,/seconds)
 
-ministrip_side_buffer = ministrip_length/2 
+ministrip_side_buffer = byte(ministrip_length)/2 
+; have to byte it since we read the ministrip_length as a float
+
 ; Contains coordinates of chord enpoints
 rowchord_endpoints = fltarr(2,n_elements(c4xstrips))
 colchord_endpoints = fltarr(2,n_elements(c4ystrips))
@@ -137,9 +139,15 @@ FUNCTION quickmask, image, thresh
 ;       thresh : in, required, type=float
 ;           Threshold used to select pixels
 ;-
-IF n_elements(thresh) EQ 0 THEN thresh = 0.25*max(image)
 
-s = size(image,/dimensions)
+
+a = image[SORT(image)]
+niceimage = a[0:0.99*(N_ELEMENTS(a)-1)]
+
+IF thresh eq !null then thresh = 0.25*max(niceimage)
+; IF n_elements(thresh) EQ 0 THEN thresh = 0.25*max(image)
+
+s = SIZE(image,/dimensions)
 n_col = s[0]
 n_row = s[1]
 
@@ -169,7 +177,11 @@ FUNCTION whichcropmethod, region
 ;-
 COMMON vblock, wholeimage
 
-thresh = 0.65*max(wholeimage)
+a = wholeimage[SORT(wholeimage)]
+niceimage = a[0:0.99*(N_ELEMENTS(a)-1)]
+
+; thresh = 0.65*max(WHOLEimage)
+thresh = 0.65*max(niceimage)
 ducks = quickmask(wholeimage,thresh)
 
 image = wholeimage[ducks.xpos-60:ducks.xpos+60,ducks.ypos-60:ducks.ypos+60]
@@ -228,7 +240,8 @@ PRO makestrips, thresh, xstrips, ystrips, region=region, time=time
 ;       Prints elapsed time
 ;-
 
-IF n_elements(region) EQ 0 THEN region = 1
+; IF n_elements(region) EQ 0 THEN region = 1
+IF region eq !null then region = 1
 
 COMMON vblock, wholeimage, scan_width, sundiam, nstrips, order, ministrip_length, file
 
@@ -425,7 +438,8 @@ PRO limbfit, thresh, xpos, ypos, plot=plot, region=region, time=time
 ;           Prints the elapsed time
 ;-
 
-IF n_elements(region) EQ 0 THEN region = 1
+; IF n_elements(region) EQ 0 THEN region = 1
+if region eq !null then region = 1
 
 COMMON vblock, wholeimage, scan_width, sundiam, nstrips, order, ministrip_length, file
 
@@ -663,6 +677,10 @@ ENDIF
 
 finish = systime(1,/seconds)
 
+
+
+
+
 IF keyword_set(time) THEN  print,'Elapsed Time for limbfit: ',strcompress(finish-start,/rem),' seconds'
 RETURN
 END
@@ -782,15 +800,11 @@ start=systime(1,/s)
 
 COMMON vblock, wholeimage, scan_width, sundiam, nstrips, order, ministrip_length, file
 file = 'dimsun1.fits'
-; file='fidsun.fits'
+readcol,'pblock.txt',var,num,format='A,F',delimiter=' '
+    for i=0,N_ELEMENTS(var)-1 do (SCOPE_VARFETCH(var[i],/enter,level=0))=num[i]
+
 wholeimage = mrdfits(file)
-scan_width = 5
-sundiam = 70
-nstrips = 5
-order = 2
-ministrip_length = 13
-
-
+;stop
 getstruct, struct, time=time
 
 ; profiler,/report,data=data
