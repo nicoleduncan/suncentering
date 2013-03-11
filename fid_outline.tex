@@ -256,6 +256,7 @@ In a nutshell, \hl{\tt{scrib.pro}} takes an image of the sun with fiducials and 
         \item We must crop the sun in such a way that none of the solar limb is in the image. The reason is because the image is pixelated enough that the edge of the sun is detected as an edge, albeit one we do not want. A problem that arises from this is that when we crop out the solar limbs, we may cut off fiducials.
         \item If the fiducial is too close to the edge of the cropped image, then problems arise. There are two ways to solve this. We can tell the program to only look for complete fiducials or 2) ``zero'' out the incomplete fiducials so the program finds fiducials as normal.
         \item In \hl{\texttt{circscancrop}}, the thresholds are arbitrary. To scan for region 2, (i.e., the 50\% brightness sun) we have the threshold set to 0.3 of the sorted \hl{\texttt{max(image)}}. For region 3 (i.e., the 25\% brightness sun) the threshold is set to 0.2 of the sorted \hl{\texttt{max(image)}}. I tried making the threshold 0.3 of the image with the highest 1\% pixels eliminated, but the change in threshold made the circle-scanning break. Either I need to find a new way to parameterize the thresh or change the circle-scanning code. 
+        \item The fiducial positions for the 25\% sun seem to be wrong. This is either because of a wrong center position or the fiducial finding code not working properly (inclined to agree with first result, 100\% and 50\% brightness suns look identical, must be something wrong with the 25\% brightness sun. Right?)
     \end{enumerate}
 
 \begin{figure}
@@ -281,6 +282,9 @@ In a nutshell, \hl{\tt{scrib.pro}} takes an image of the sun with fiducials and 
         \item Image is rotated more than 2 degrees\\
             - Current fiducial finding method can't handle a rotated image well
             - GRIPS proposal says the pendulum will swing up to $\pm$ .1 degree; is this the same rotation parameter in our image?
+        \item Fiducial is too close to edge\\
+            - If a fiducial is too close to edge of cropped image, incomplete fiducial shape confuses program
+            - Not sure how to fix yet (\today)
     \end{enumerate}
 
 % section how_to_break_code (end)
