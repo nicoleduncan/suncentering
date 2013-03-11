@@ -1,0 +1,711 @@
+This is pdfTeX, Version 3.1415926-2.4-1.40.13 (TeX Live 2012) (format=pdflatex 2013.2.22)  11 MAR 2013 14:21
+entering extended mode
+ restricted \write18 enabled.
+ %&-line parsing enabled.
+**fid_outline.tex
+(./fid_outline.tex
+LaTeX2e <2011/06/27>
+Babel <v3.8m> and hyphenation patterns for english, dumylang, nohyphenation, ge
+rman-x-2012-05-30, ngerman-x-2012-05-30, afrikaans, ancientgreek, ibycus, arabi
+c, armenian, basque, bulgarian, catalan, pinyin, coptic, croatian, czech, danis
+h, dutch, ukenglish, usenglishmax, esperanto, estonian, ethiopic, farsi, finnis
+h, french, friulan, galician, german, ngerman, swissgerman, monogreek, greek, h
+ungarian, icelandic, assamese, bengali, gujarati, hindi, kannada, malayalam, ma
+rathi, oriya, panjabi, tamil, telugu, indonesian, interlingua, irish, italian, 
+kurmanji, latin, latvian, lithuanian, mongolian, mongolianlmc, bokmal, nynorsk,
+ piedmontese, polish, portuguese, romanian, romansh, russian, sanskrit, serbian
+, serbianc, slovak, slovenian, spanish, swedish, turkish, turkmen, ukrainian, u
+ppersorbian, welsh, loaded.
+(/usr/local/texlive/2012/texmf-dist/tex/latex/base/article.cls
+Document Class: article 2007/10/19 v1.4h Standard LaTeX document class
+(/usr/local/texlive/2012/texmf-dist/tex/latex/base/size10.clo
+File: size10.clo 2007/10/19 v1.4h Standard LaTeX file (size option)
+)
+\c@part=\count79
+\c@section=\count80
+\c@subsection=\count81
+\c@subsubsection=\count82
+\c@paragraph=\count83
+\c@subparagraph=\count84
+\c@figure=\count85
+\c@table=\count86
+\abovecaptionskip=\skip41
+\belowcaptionskip=\skip42
+\bibindent=\dimen102
+)
+(/usr/local/texlive/2012/texmf-dist/tex/latex/amsmath/amsmath.sty
+Package: amsmath 2013/01/14 v2.14 AMS math features
+\@mathmargin=\skip43
+
+For additional information on amsmath, use the `?' option.
+(/usr/local/texlive/2012/texmf-dist/tex/latex/amsmath/amstext.sty
+Package: amstext 2000/06/29 v2.01
+
+(/usr/local/texlive/2012/texmf-dist/tex/latex/amsmath/amsgen.sty
+File: amsgen.sty 1999/11/30 v2.0
+\@emptytoks=\toks14
+\ex@=\dimen103
+))
+(/usr/local/texlive/2012/texmf-dist/tex/latex/amsmath/amsbsy.sty
+Package: amsbsy 1999/11/29 v1.2d
+\pmbraise@=\dimen104
+)
+(/usr/local/texlive/2012/texmf-dist/tex/latex/amsmath/amsopn.sty
+Package: amsopn 1999/12/14 v2.01 operator names
+)
+\inf@bad=\count87
+LaTeX Info: Redefining \frac on input line 210.
+\uproot@=\count88
+\leftroot@=\count89
+LaTeX Info: Redefining \overline on input line 306.
+\classnum@=\count90
+\DOTSCASE@=\count91
+LaTeX Info: Redefining \ldots on input line 378.
+LaTeX Info: Redefining \dots on input line 381.
+LaTeX Info: Redefining \cdots on input line 466.
+\Mathstrutbox@=\box26
+\strutbox@=\box27
+\big@size=\dimen105
+LaTeX Font Info:    Redeclaring font encoding OML on input line 566.
+LaTeX Font Info:    Redeclaring font encoding OMS on input line 567.
+\macc@depth=\count92
+\c@MaxMatrixCols=\count93
+\dotsspace@=\muskip10
+\c@parentequation=\count94
+\dspbrk@lvl=\count95
+\tag@help=\toks15
+\row@=\count96
+\column@=\count97
+\maxfields@=\count98
+\andhelp@=\toks16
+\eqnshift@=\dimen106
+\alignsep@=\dimen107
+\tagshift@=\dimen108
+\tagwidth@=\dimen109
+\totwidth@=\dimen110
+\lineht@=\dimen111
+\@envbody=\toks17
+\multlinegap=\skip44
+\multlinetaggap=\skip45
+\mathdisplay@stack=\toks18
+LaTeX Info: Redefining \[ on input line 2665.
+LaTeX Info: Redefining \] on input line 2666.
+)
+(/usr/local/texlive/2012/texmf-dist/tex/latex/amsfonts/amsfonts.sty
+Package: amsfonts 2013/01/14 v3.01 Basic AMSFonts support
+\symAMSa=\mathgroup4
+\symAMSb=\mathgroup5
+LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
+(Font)                  U/euf/m/n --> U/euf/b/n on input line 106.
+)
+(/usr/local/texlive/2012/texmf-dist/tex/latex/amsfonts/amssymb.sty
+Package: amssymb 2013/01/14 v3.01 AMS font symbols
+)
+(/usr/local/texlive/2012/texmf-dist/tex/latex/mh/mathtools.sty
+Package: mathtools 2013/02/12 v1.13 mathematical typesetting tools
+
+(/usr/local/texlive/2012/texmf-dist/tex/latex/graphics/keyval.sty
+Package: keyval 1999/03/16 v1.13 key=value parser (DPC)
+\KV@toks@=\toks19
+)
+(/usr/local/texlive/2012/texmf-dist/tex/latex/tools/calc.sty
+Package: calc 2007/08/22 v4.3 Infix arithmetic (KKT,FJ)
+\calc@Acount=\count99
+\calc@Bcount=\count100
+\calc@Adimen=\dimen112
+\calc@Bdimen=\dimen113
+\calc@Askip=\skip46
+\calc@Bskip=\skip47
+LaTeX Info: Redefining \setlength on input line 76.
+LaTeX Info: Redefining \addtolength on input line 77.
+\calc@Ccount=\count101
+\calc@Cskip=\skip48
+)
+(/usr/local/texlive/2012/texmf-dist/tex/latex/mh/mhsetup.sty
+Package: mhsetup 2010/01/21 v1.2a programming setup (MH)
+)
+LaTeX Info: Thecontrolsequence`\['isalreadyrobust on input line 129.
+LaTeX Info: Thecontrolsequence`\]'isalreadyrobust on input line 129.
+\g_MT_multlinerow_int=\count102
+\l_MT_multwidth_dim=\dimen114
+\origjot=\skip49
+\l_MT_shortvdotswithinadjustabove_dim=\dimen115
+\l_MT_shortvdotswithinadjustbelow_dim=\dimen116
+\l_MT_above_intertext_sep=\dimen117
+\l_MT_below_intertext_sep=\dimen118
+\l_MT_above_shortintertext_sep=\dimen119
+\l_MT_below_shortintertext_sep=\dimen120
+)
+(/usr/local/texlive/2012/texmf-dist/tex/latex/graphics/color.sty
+Package: color 2005/11/14 v1.0j Standard LaTeX Color (DPC)
+
+(/usr/local/texlive/2012/texmf-dist/tex/latex/latexconfig/color.cfg
+File: color.cfg 2007/01/18 v1.5 color configuration of teTeX/TeXLive
+)
+Package color Info: Driver file: pdftex.def on input line 130.
+
+(/usr/local/texlive/2012/texmf-dist/tex/latex/pdftex-def/pdftex.def
+File: pdftex.def 2011/05/27 v0.06d Graphics/color for pdfTeX
+
+(/usr/local/texlive/2012/texmf-dist/tex/generic/oberdiek/infwarerr.sty
+Package: infwarerr 2010/04/08 v1.3 Providing info/warning/error messages (HO)
+)
+(/usr/local/texlive/2012/texmf-dist/tex/generic/oberdiek/ltxcmds.sty
+Package: ltxcmds 2011/11/09 v1.22 LaTeX kernel commands for general use (HO)
+)
+\Gread@gobject=\count103
+))
+(/usr/local/texlive/2012/texmf-dist/tex/latex/soul/soul.sty
+Package: soul 2003/11/17 v2.4 letterspacing/underlining (mf)
+\SOUL@word=\toks20
+\SOUL@lasttoken=\toks21
+\SOUL@cmds=\toks22
+\SOUL@buffer=\toks23
+\SOUL@token=\toks24
+\SOUL@spaceskip=\skip50
+\SOUL@ttwidth=\dimen121
+\SOUL@uldp=\dimen122
+\SOUL@ulht=\dimen123
+)
+(/usr/local/texlive/2012/texmf-dist/tex/latex/preprint/fullpage.sty
+Package: fullpage 1999/02/23 1.1 (PWD)
+\FP@margin=\skip51
+)
+(/usr/local/texlive/2012/texmf-dist/tex/latex/tools/enumerate.sty
+Package: enumerate 1999/03/05 v3.00 enumerate extensions (DPC)
+\@enLab=\toks25
+)
+(/usr/local/texlive/2012/texmf-dist/tex/latex/graphics/graphicx.sty
+Package: graphicx 1999/02/16 v1.0f Enhanced LaTeX Graphics (DPC,SPQR)
+
+(/usr/local/texlive/2012/texmf-dist/tex/latex/graphics/graphics.sty
+Package: graphics 2009/02/05 v1.0o Standard LaTeX Graphics (DPC,SPQR)
+
+(/usr/local/texlive/2012/texmf-dist/tex/latex/graphics/trig.sty
+Package: trig 1999/03/16 v1.09 sin cos tan (DPC)
+)
+(/usr/local/texlive/2012/texmf-dist/tex/latex/latexconfig/graphics.cfg
+File: graphics.cfg 2010/04/23 v1.9 graphics configuration of TeX Live
+)
+Package graphics Info: Driver file: pdftex.def on input line 91.
+)
+\Gin@req@height=\dimen124
+\Gin@req@width=\dimen125
+)
+(/usr/local/texlive/2012/texmf-dist/tex/latex/hyperref/hyperref.sty
+Package: hyperref 2012/11/06 v6.83m Hypertext links for LaTeX
+
+(/usr/local/texlive/2012/texmf-dist/tex/generic/oberdiek/hobsub-hyperref.sty
+Package: hobsub-hyperref 2012/05/28 v1.13 Bundle oberdiek, subset hyperref (HO)
+
+
+(/usr/local/texlive/2012/texmf-dist/tex/generic/oberdiek/hobsub-generic.sty
+Package: hobsub-generic 2012/05/28 v1.13 Bundle oberdiek, subset generic (HO)
+Package: hobsub 2012/05/28 v1.13 Construct package bundles (HO)
+Package hobsub Info: Skipping package `infwarerr' (already loaded).
+Package hobsub Info: Skipping package `ltxcmds' (already loaded).
+Package: ifluatex 2010/03/01 v1.3 Provides the ifluatex switch (HO)
+Package ifluatex Info: LuaTeX not detected.
+Package: ifvtex 2010/03/01 v1.5 Detect VTeX and its facilities (HO)
+Package ifvtex Info: VTeX not detected.
+Package: intcalc 2007/09/27 v1.1 Expandable calculations with integers (HO)
+Package: ifpdf 2011/01/30 v2.3 Provides the ifpdf switch (HO)
+Package ifpdf Info: pdfTeX in PDF mode is detected.
+Package: etexcmds 2011/02/16 v1.5 Avoid name clashes with e-TeX commands (HO)
+Package etexcmds Info: Could not find \expanded.
+(etexcmds)             That can mean that you are not using pdfTeX 1.50 or
+(etexcmds)             that some package has redefined \expanded.
+(etexcmds)             In the latter case, load this package earlier.
+Package: kvsetkeys 2012/04/25 v1.16 Key value parser (HO)
+Package: kvdefinekeys 2011/04/07 v1.3 Define keys (HO)
+Package: pdftexcmds 2011/11/29 v0.20 Utility functions of pdfTeX for LuaTeX (HO
+)
+Package pdftexcmds Info: LuaTeX not detected.
+Package pdftexcmds Info: \pdf@primitive is available.
+Package pdftexcmds Info: \pdf@ifprimitive is available.
+Package pdftexcmds Info: \pdfdraftmode found.
+Package: pdfescape 2011/11/25 v1.13 Implements pdfTeX's escape features (HO)
+Package: bigintcalc 2012/04/08 v1.3 Expandable calculations on big integers (HO
+)
+Package: bitset 2011/01/30 v1.1 Handle bit-vector datatype (HO)
+Package: uniquecounter 2011/01/30 v1.2 Provide unlimited unique counter (HO)
+)
+Package hobsub Info: Skipping package `hobsub' (already loaded).
+Package: letltxmacro 2010/09/02 v1.4 Let assignment for LaTeX macros (HO)
+Package: hopatch 2012/05/28 v1.2 Wrapper for package hooks (HO)
+Package: xcolor-patch 2011/01/30 xcolor patch
+Package: atveryend 2011/06/30 v1.8 Hooks at the very end of document (HO)
+Package atveryend Info: \enddocument detected (standard20110627).
+Package: atbegshi 2011/10/05 v1.16 At begin shipout hook (HO)
+Package: refcount 2011/10/16 v3.4 Data extraction from label references (HO)
+Package: hycolor 2011/01/30 v1.7 Color options for hyperref/bookmark (HO)
+)
+(/usr/local/texlive/2012/texmf-dist/tex/generic/ifxetex/ifxetex.sty
+Package: ifxetex 2010/09/12 v0.6 Provides ifxetex conditional
+)
+(/usr/local/texlive/2012/texmf-dist/tex/latex/oberdiek/auxhook.sty
+Package: auxhook 2011/03/04 v1.3 Hooks for auxiliary files (HO)
+)
+(/usr/local/texlive/2012/texmf-dist/tex/latex/oberdiek/kvoptions.sty
+Package: kvoptions 2011/06/30 v3.11 Key value format for package options (HO)
+)
+\@linkdim=\dimen126
+\Hy@linkcounter=\count104
+\Hy@pagecounter=\count105
+
+(/usr/local/texlive/2012/texmf-dist/tex/latex/hyperref/pd1enc.def
+File: pd1enc.def 2012/11/06 v6.83m Hyperref: PDFDocEncoding definition (HO)
+)
+\Hy@SavedSpaceFactor=\count106
+
+(/usr/local/texlive/2012/texmf-dist/tex/latex/latexconfig/hyperref.cfg
+File: hyperref.cfg 2002/06/06 v1.2 hyperref configuration of TeXLive
+)
+Package hyperref Info: Option `colorlinks' set `true' on input line 4319.
+Package hyperref Info: Hyper figures OFF on input line 4443.
+Package hyperref Info: Link nesting OFF on input line 4448.
+Package hyperref Info: Hyper index ON on input line 4451.
+Package hyperref Info: Plain pages OFF on input line 4458.
+Package hyperref Info: Backreferencing OFF on input line 4463.
+Package hyperref Info: Implicit mode ON; LaTeX internals redefined.
+Package hyperref Info: Bookmarks ON on input line 4688.
+\c@Hy@tempcnt=\count107
+
+(/usr/local/texlive/2012/texmf-dist/tex/latex/url/url.sty
+\Urlmuskip=\muskip11
+Package: url 2006/04/12  ver 3.3  Verb mode for urls, etc.
+)
+LaTeX Info: Redefining \url on input line 5041.
+\XeTeXLinkMargin=\dimen127
+\Fld@menulength=\count108
+\Field@Width=\dimen128
+\Fld@charsize=\dimen129
+Package hyperref Info: Hyper figures OFF on input line 6295.
+Package hyperref Info: Link nesting OFF on input line 6300.
+Package hyperref Info: Hyper index ON on input line 6303.
+Package hyperref Info: backreferencing OFF on input line 6310.
+Package hyperref Info: Link coloring ON on input line 6313.
+Package hyperref Info: Link coloring with OCG OFF on input line 6320.
+Package hyperref Info: PDF/A mode OFF on input line 6325.
+LaTeX Info: Redefining \ref on input line 6365.
+LaTeX Info: Redefining \pageref on input line 6369.
+\Hy@abspage=\count109
+\c@Item=\count110
+\c@Hfootnote=\count111
+)
+
+Package hyperref Message: Driver (autodetected): hpdftex.
+
+(/usr/local/texlive/2012/texmf-dist/tex/latex/hyperref/hpdftex.def
+File: hpdftex.def 2012/11/06 v6.83m Hyperref driver for pdfTeX
+\Fld@listcount=\count112
+\c@bookmark@seq@number=\count113
+
+(/usr/local/texlive/2012/texmf-dist/tex/latex/oberdiek/rerunfilecheck.sty
+Package: rerunfilecheck 2011/04/15 v1.7 Rerun checks for auxiliary files (HO)
+Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 2
+82.
+)
+\Hy@SectionHShift=\skip52
+)
+(/usr/local/texlive/2012/texmf-dist/tex/latex/subfig/subfig.sty
+Package: subfig 2005/06/28 ver: 1.3 subfig package
+
+(/usr/local/texlive/2012/texmf-dist/tex/latex/caption/caption.sty
+Package: caption 2013/02/03 v3.3-65 Customizing captions (AR)
+
+(/usr/local/texlive/2012/texmf-dist/tex/latex/caption/caption3.sty
+Package: caption3 2013/02/03 v1.5-62 caption3 kernel (AR)
+\captionmargin=\dimen130
+\captionmargin@=\dimen131
+\captionwidth=\dimen132
+\caption@tempdima=\dimen133
+\caption@indent=\dimen134
+\caption@parindent=\dimen135
+\caption@hangindent=\dimen136
+)
+\c@ContinuedFloat=\count114
+Package caption Info: hyperref package is loaded.
+)
+\c@KVtest=\count115
+\sf@farskip=\skip53
+\sf@captopadj=\dimen137
+\sf@capskip=\skip54
+\sf@nearskip=\skip55
+\c@subfigure=\count116
+\c@subfigure@save=\count117
+\c@lofdepth=\count118
+\c@subtable=\count119
+\c@subtable@save=\count120
+\c@lotdepth=\count121
+\sf@top=\skip56
+\sf@bottom=\skip57
+)
+(./fid_outline.aux)
+\openout1 = `fid_outline.aux'.
+
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 18.
+LaTeX Font Info:    ... okay on input line 18.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 18.
+LaTeX Font Info:    ... okay on input line 18.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 18.
+LaTeX Font Info:    ... okay on input line 18.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 18.
+LaTeX Font Info:    ... okay on input line 18.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 18.
+LaTeX Font Info:    ... okay on input line 18.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 18.
+LaTeX Font Info:    ... okay on input line 18.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 18.
+LaTeX Font Info:    ... okay on input line 18.
+
+(/usr/local/texlive/2012/texmf-dist/tex/context/base/supp-pdf.mkii
+[Loading MPS to PDF converter (version 2006.09.02).]
+\scratchcounter=\count122
+\scratchdimen=\dimen138
+\scratchbox=\box28
+\nofMPsegments=\count123
+\nofMParguments=\count124
+\everyMPshowfont=\toks26
+\MPscratchCnt=\count125
+\MPscratchDim=\dimen139
+\MPnumerator=\count126
+\makeMPintoPDFobject=\count127
+\everyMPtoPDFconversion=\toks27
+) (/usr/local/texlive/2012/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
+Package: epstopdf-base 2010/02/09 v2.5 Base part for package epstopdf
+
+(/usr/local/texlive/2012/texmf-dist/tex/latex/oberdiek/grfext.sty
+Package: grfext 2010/08/19 v1.1 Manage graphics extensions (HO)
+)
+Package grfext Info: Graphics extension search list:
+(grfext)             [.png,.pdf,.jpg,.mps,.jpeg,.jbig2,.jb2,.PNG,.PDF,.JPG,.JPE
+G,.JBIG2,.JB2,.eps]
+(grfext)             \AppendGraphicsExtensions on input line 452.
+
+(/usr/local/texlive/2012/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
+File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
+e
+))
+\AtBeginShipoutBox=\box29
+Package hyperref Info: Link coloring ON on input line 18.
+
+(/usr/local/texlive/2012/texmf-dist/tex/latex/hyperref/nameref.sty
+Package: nameref 2012/10/27 v2.43 Cross-referencing by name of section
+
+(/usr/local/texlive/2012/texmf-dist/tex/generic/oberdiek/gettitlestring.sty
+Package: gettitlestring 2010/12/03 v1.4 Cleanup title references (HO)
+)
+\c@section@level=\count128
+)
+LaTeX Info: Redefining \ref on input line 18.
+LaTeX Info: Redefining \pageref on input line 18.
+LaTeX Info: Redefining \nameref on input line 18.
+
+(./fid_outline.out) (./fid_outline.out)
+\@outlinefile=\write3
+\openout3 = `fid_outline.out'.
+
+Package caption Info: Begin \AtBeginDocument code.
+Package caption Info: subfig package v1.3 is loaded.
+Package caption Info: End \AtBeginDocument code.
+LaTeX Font Info:    Try loading font information for U+msa on input line 21.
+
+(/usr/local/texlive/2012/texmf-dist/tex/latex/amsfonts/umsa.fd
+File: umsa.fd 2013/01/14 v3.01 AMS symbols A
+)
+LaTeX Font Info:    Try loading font information for U+msb on input line 21.
+
+(/usr/local/texlive/2012/texmf-dist/tex/latex/amsfonts/umsb.fd
+File: umsb.fd 2013/01/14 v3.01 AMS symbols B
+)
+(./fid_outline.toc)
+\tf@toc=\write4
+\openout4 = `fid_outline.toc'.
+
+ [1
+
+{/usr/local/texlive/2012/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
+<plots_tables_images/untouched.png, id=100, 744.7825pt x 456.70625pt>
+File: plots_tables_images/untouched.png Graphic file (type png)
+
+<use plots_tables_images/untouched.png>
+Package pdftex.def Info: plots_tables_images/untouched.png used on input line 6
+1.
+(pdftex.def)             Requested size: 140.92435pt x 86.4127pt.
+
+<plots_tables_images/emboss.png, id=101, 744.7825pt x 456.70625pt>
+File: plots_tables_images/emboss.png Graphic file (type png)
+
+<use plots_tables_images/emboss.png>
+Package pdftex.def Info: plots_tables_images/emboss.png used on input line 67.
+(pdftex.def)             Requested size: 140.92435pt x 86.4127pt.
+File: plots_tables_images/emboss.png Graphic file (type png)
+ <use plots_tables_images/emboss.png>
+Package pdftex.def Info: plots_tables_images/emboss.png used on input line 82.
+(pdftex.def)             Requested size: 140.92435pt x 86.4127pt.
+
+<plots_tables_images/shiftdiff.png, id=102, 744.7825pt x 456.70625pt>
+File: plots_tables_images/shiftdiff.png Graphic file (type png)
+
+<use plots_tables_images/shiftdiff.png>
+Package pdftex.def Info: plots_tables_images/shiftdiff.png used on input line 8
+8.
+(pdftex.def)             Requested size: 140.92435pt x 86.4127pt.
+ [1 <./plots_tables_images/untouched.png> <./plots_tables_images/emboss.png>]
+<plots_tables_images/below50.png, id=116, 744.7825pt x 456.70625pt>
+File: plots_tables_images/below50.png Graphic file (type png)
+
+<use plots_tables_images/below50.png>
+Package pdftex.def Info: plots_tables_images/below50.png used on input line 102
+.
+(pdftex.def)             Requested size: 140.92435pt x 86.4127pt.
+
+<plots_tables_images/below80.png, id=117, 744.7825pt x 456.70625pt>
+File: plots_tables_images/below80.png Graphic file (type png)
+
+<use plots_tables_images/below80.png>
+Package pdftex.def Info: plots_tables_images/below80.png used on input line 108
+.
+(pdftex.def)             Requested size: 140.92435pt x 86.4127pt.
+ [2 <./plots_tables_images/shiftdiff.png> <./plots_tables_images/below50.png> <
+./plots_tables_images/below80.png>]
+<plots_tables_images/dir3.png, id=125, 744.7825pt x 456.70625pt>
+File: plots_tables_images/dir3.png Graphic file (type png)
+
+<use plots_tables_images/dir3.png>
+Package pdftex.def Info: plots_tables_images/dir3.png used on input line 169.
+(pdftex.def)             Requested size: 211.38832pt x 129.62604pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 170--170
+[]\OT1/cmr/m/n/10 Figure 7: |Pix-els be-low -80 and with
+ []
+
+<plots_tables_images/dir1.png, id=126, 744.7825pt x 456.70625pt>
+File: plots_tables_images/dir1.png Graphic file (type png)
+
+<use plots_tables_images/dir1.png>
+Package pdftex.def Info: plots_tables_images/dir1.png used on input line 177.
+(pdftex.def)             Requested size: 211.38832pt x 129.62604pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 178--178
+[]\OT1/cmr/m/n/10 Figure 8: |Pix-els be-low -30 and with
+ []
+
+[3 <./plots_tables_images/dir3.png> <./plots_tables_images/dir1.png>]
+Package epstopdf Info: Source file: <plots_tables_images/fidcomp.eps>
+(epstopdf)                    date: 2013-02-20 16:03:27
+(epstopdf)                    size: 114861 bytes
+(epstopdf)             Output file: <plots_tables_images/fidcomp-eps-converted-
+to.pdf>
+(epstopdf)                    date: 2013-02-20 16:03:49
+(epstopdf)                    size: 26491 bytes
+(epstopdf)             Command: <repstopdf --outfile=plots_tables_images/fidcom
+p-eps-converted-to.pdf plots_tables_images/fidcomp.eps>
+(epstopdf)             \includegraphics on input line 195.
+Package epstopdf Info: Output file is already uptodate.
+
+<plots_tables_images/fidcomp-eps-converted-to.pdf, id=133, 552.0625pt x 662.475
+pt>
+File: plots_tables_images/fidcomp-eps-converted-to.pdf Graphic file (type pdf)
+ <use plots_tables_images/fidcomp-eps-converted-to.pdf>
+Package pdftex.def Info: plots_tables_images/fidcomp-eps-converted-to.pdf used 
+on input line 195.
+(pdftex.def)             Requested size: 422.77664pt x 507.3578pt.
+Package epstopdf Info: Source file: <plots_tables_images/mask_outline.eps>
+(epstopdf)                    date: 2013-03-04 17:43:25
+(epstopdf)                    size: 465528 bytes
+(epstopdf)             Output file: <plots_tables_images/mask_outline-eps-conve
+rted-to.pdf>
+(epstopdf)                    date: 2013-03-05 10:54:31
+(epstopdf)                    size: 20460 bytes
+(epstopdf)             Command: <repstopdf --outfile=plots_tables_images/mask_o
+utline-eps-converted-to.pdf plots_tables_images/mask_outline.eps>
+(epstopdf)             \includegraphics on input line 202.
+Package epstopdf Info: Output file is already uptodate.
+
+<plots_tables_images/mask_outline-eps-converted-to.pdf, id=134, 433.62pt x 433.
+62pt>
+File: plots_tables_images/mask_outline-eps-converted-to.pdf Graphic file (type 
+pdf)
+ <use plots_tables_images/mask_outline-eps-converted-to.pdf>
+Package pdftex.def Info: plots_tables_images/mask_outline-eps-converted-to.pdf 
+used on input line 202.
+(pdftex.def)             Requested size: 422.77664pt x 422.80096pt.
+Package epstopdf Info: Source file: <plots_tables_images/dim25.eps>
+(epstopdf)                    date: 2013-03-05 15:45:08
+(epstopdf)                    size: 464758 bytes
+(epstopdf)             Output file: <plots_tables_images/dim25-eps-converted-to
+.pdf>
+(epstopdf)                    date: 2013-03-05 15:45:19
+(epstopdf)                    size: 19149 bytes
+(epstopdf)             Command: <repstopdf --outfile=plots_tables_images/dim25-
+eps-converted-to.pdf plots_tables_images/dim25.eps>
+(epstopdf)             \includegraphics on input line 211.
+Package epstopdf Info: Output file is already uptodate.
+
+<plots_tables_images/dim25-eps-converted-to.pdf, id=135, 578.16pt x 578.16pt>
+File: plots_tables_images/dim25-eps-converted-to.pdf Graphic file (type pdf)
+
+<use plots_tables_images/dim25-eps-converted-to.pdf>
+Package pdftex.def Info: plots_tables_images/dim25-eps-converted-to.pdf used on
+ input line 211.
+(pdftex.def)             Requested size: 217.15352pt x 217.15352pt.
+Package epstopdf Info: Source file: <plots_tables_images/dim50.eps>
+(epstopdf)                    date: 2013-03-05 15:45:08
+(epstopdf)                    size: 464597 bytes
+(epstopdf)             Output file: <plots_tables_images/dim50-eps-converted-to
+.pdf>
+(epstopdf)                    date: 2013-03-05 15:45:20
+(epstopdf)                    size: 19291 bytes
+(epstopdf)             Command: <repstopdf --outfile=plots_tables_images/dim50-
+eps-converted-to.pdf plots_tables_images/dim50.eps>
+(epstopdf)             \includegraphics on input line 211.
+Package epstopdf Info: Output file is already uptodate.
+
+<plots_tables_images/dim50-eps-converted-to.pdf, id=136, 578.16pt x 578.16pt>
+File: plots_tables_images/dim50-eps-converted-to.pdf Graphic file (type pdf)
+
+<use plots_tables_images/dim50-eps-converted-to.pdf>
+Package pdftex.def Info: plots_tables_images/dim50-eps-converted-to.pdf used on
+ input line 211.
+(pdftex.def)             Requested size: 217.15352pt x 217.15352pt.
+ [4 <./plots_tables_images/fidcomp-eps-converted-to.pdf>]
+Package epstopdf Info: Source file: <plots_tables_images/fakeideal.eps>
+(epstopdf)                    date: 2013-03-05 16:37:18
+(epstopdf)                    size: 6631 bytes
+(epstopdf)             Output file: <plots_tables_images/fakeideal-eps-converte
+d-to.pdf>
+(epstopdf)                    date: 2013-03-05 16:37:36
+(epstopdf)                    size: 3512 bytes
+(epstopdf)             Command: <repstopdf --outfile=plots_tables_images/fakeid
+eal-eps-converted-to.pdf plots_tables_images/fakeideal.eps>
+(epstopdf)             \includegraphics on input line 226.
+Package epstopdf Info: Output file is already uptodate.
+
+<plots_tables_images/fakeideal-eps-converted-to.pdf, id=158, 552.0625pt x 517.9
+35pt>
+File: plots_tables_images/fakeideal-eps-converted-to.pdf Graphic file (type pdf
+)
+ <use plots_tables_images/fakeideal-eps-converted-to.pdf>
+Package pdftex.def Info: plots_tables_images/fakeideal-eps-converted-to.pdf use
+d on input line 226.
+(pdftex.def)             Requested size: 224.84766pt x 210.94797pt.
+Package epstopdf Info: Source file: <plots_tables_images/whodunit.eps>
+(epstopdf)                    date: 2013-03-05 16:36:23
+(epstopdf)                    size: 6631 bytes
+(epstopdf)             Output file: <plots_tables_images/whodunit-eps-converted
+-to.pdf>
+(epstopdf)                    date: 2013-03-05 16:36:35
+(epstopdf)                    size: 3903 bytes
+(epstopdf)             Command: <repstopdf --outfile=plots_tables_images/whodun
+it-eps-converted-to.pdf plots_tables_images/whodunit.eps>
+(epstopdf)             \includegraphics on input line 226.
+Package epstopdf Info: Output file is already uptodate.
+
+<plots_tables_images/whodunit-eps-converted-to.pdf, id=159, 552.0625pt x 517.93
+5pt>
+File: plots_tables_images/whodunit-eps-converted-to.pdf Graphic file (type pdf)
+
+ <use plots_tables_images/whodunit-eps-converted-to.pdf>
+Package pdftex.def Info: plots_tables_images/whodunit-eps-converted-to.pdf used
+ on input line 226.
+(pdftex.def)             Requested size: 224.84766pt x 210.94797pt.
+Package epstopdf Info: Source file: <plots_tables_images/whodunitwho.eps>
+(epstopdf)                    date: 2013-03-05 16:36:01
+(epstopdf)                    size: 4856 bytes
+(epstopdf)             Output file: <plots_tables_images/whodunitwho-eps-conver
+ted-to.pdf>
+(epstopdf)                    date: 2013-03-05 16:36:36
+(epstopdf)                    size: 3666 bytes
+(epstopdf)             Command: <repstopdf --outfile=plots_tables_images/whodun
+itwho-eps-converted-to.pdf plots_tables_images/whodunitwho.eps>
+(epstopdf)             \includegraphics on input line 236.
+Package epstopdf Info: Output file is already uptodate.
+
+<plots_tables_images/whodunitwho-eps-converted-to.pdf, id=160, 552.0625pt x 517
+.935pt>
+File: plots_tables_images/whodunitwho-eps-converted-to.pdf Graphic file (type p
+df)
+ <use plots_tables_images/whodunitwho-eps-converted-to.pdf>
+Package pdftex.def Info: plots_tables_images/whodunitwho-eps-converted-to.pdf u
+sed on input line 236.
+(pdftex.def)             Requested size: 224.84766pt x 210.94797pt.
+Package epstopdf Info: Source file: <plots_tables_images/tryhard.eps>
+(epstopdf)                    date: 2013-03-05 16:44:50
+(epstopdf)                    size: 6631 bytes
+(epstopdf)             Output file: <plots_tables_images/tryhard-eps-converted-
+to.pdf>
+(epstopdf)                    date: 2013-03-05 16:44:58
+(epstopdf)                    size: 3902 bytes
+(epstopdf)             Command: <repstopdf --outfile=plots_tables_images/tryhar
+d-eps-converted-to.pdf plots_tables_images/tryhard.eps>
+(epstopdf)             \includegraphics on input line 236.
+Package epstopdf Info: Output file is already uptodate.
+
+<plots_tables_images/tryhard-eps-converted-to.pdf, id=161, 552.0625pt x 517.935
+pt>
+File: plots_tables_images/tryhard-eps-converted-to.pdf Graphic file (type pdf)
+ <use plots_tables_images/tryhard-eps-converted-to.pdf>
+Package pdftex.def Info: plots_tables_images/tryhard-eps-converted-to.pdf used 
+on input line 236.
+(pdftex.def)             Requested size: 224.84766pt x 210.94797pt.
+ [5 <./plots_tables_images/mask_outline-eps-converted-to.pdf>] [6 <./plots_tabl
+es_images/dim25-eps-converted-to.pdf> <./plots_tables_images/dim50-eps-converte
+d-to.pdf> <./plots_tables_images/fakeideal-eps-converted-to.pdf> <./plots_table
+s_images/whodunit-eps-converted-to.pdf>] [7 <./plots_tables_images/whodunitwho-
+eps-converted-to.pdf> <./plots_tables_images/tryhard-eps-converted-to.pdf>]
+Package epstopdf Info: Source file: <plots_tables_images/circfidcomp.eps>
+(epstopdf)                    date: 2013-02-20 16:03:15
+(epstopdf)                    size: 114861 bytes
+(epstopdf)             Output file: <plots_tables_images/circfidcomp-eps-conver
+ted-to.pdf>
+(epstopdf)                    date: 2013-02-20 16:03:50
+(epstopdf)                    size: 28142 bytes
+(epstopdf)             Command: <repstopdf --outfile=plots_tables_images/circfi
+dcomp-eps-converted-to.pdf plots_tables_images/circfidcomp.eps>
+(epstopdf)             \includegraphics on input line 263.
+Package epstopdf Info: Output file is already uptodate.
+
+<plots_tables_images/circfidcomp-eps-converted-to.pdf, id=225, 552.0625pt x 662
+.475pt>
+File: plots_tables_images/circfidcomp-eps-converted-to.pdf Graphic file (type p
+df)
+ <use plots_tables_images/circfidcomp-eps-converted-to.pdf>
+Package pdftex.def Info: plots_tables_images/circfidcomp-eps-converted-to.pdf u
+sed on input line 263.
+(pdftex.def)             Requested size: 422.77664pt x 507.3578pt.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 288.
+ [8] [9 <./plots_tables_images/circfidcomp-eps-converted-to.pdf>]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 288.
+ (./fid_outline.aux)
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 288.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 288.
+Package rerunfilecheck Info: File `fid_outline.out' has not changed.
+(rerunfilecheck)             Checksum: 55DA677C591B00E57A10C06ABF537185;970.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 288.
+ ) 
+Here is how much of TeX's memory you used:
+ 8044 strings out of 493481
+ 123193 string characters out of 3140965
+ 210536 words of memory out of 3000000
+ 11178 multiletter control sequences out of 15000+200000
+ 12330 words of font info for 48 fonts, out of 3000000 for 9000
+ 957 hyphenation exceptions out of 8191
+ 44i,9n,42p,682b,556s stack positions out of 5000i,500n,10000p,200000b,50000s
+</usr/local/texlive/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb
+></usr/local/texlive/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb>
+</usr/local/texlive/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb><
+/usr/local/texlive/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></u
+sr/local/texlive/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr
+/local/texlive/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/l
+ocal/texlive/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/lo
+cal/texlive/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/loc
+al/texlive/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb>
+Output written on fid_outline.pdf (10 pages, 351606 bytes).
+PDF statistics:
+ 301 PDF objects out of 1000 (max. 8388607)
+ 231 compressed objects within 3 object streams
+ 63 named destinations out of 1000 (max. 500000)
+ 217 words of extra memory for PDF output out of 10000 (max. 10000000)
+

@@ -21,7 +21,7 @@ PRO makelimbstrips, thresh, xstrips, ystrips, region=region, time=time
 ; IF n_elements(region) EQ 0 THEN region = 1
 IF region EQ !null THEN region = 1
 
-COMMON vblock, wholeimage, scan_width, sundiam, nstrips, order, ministrip_length, file
+COMMON vblock, wholeimage, scan_width, sundiam, nstrips, order, ministrip_length, file, crop_box, scan_radius
 
 ; Going through and doing a little commenting, think I forgot how this works:
 
@@ -52,20 +52,20 @@ ENDFOR
 
 ; Preallocating the array, replicating it by the number of strips there are
 xstrips = REPLICATE({ROWINDEX:0, BEGINDEX:0, ENDINDEX:0, $
-        STARTPOINTS:bytarr(ministrip_length), $
-        ENDPOINTS:bytarr(ministrip_length), $
-        xoffset:c4xstrips.xoffset},n_elements(c4xstrips))
+        STARTPOINTS:BYTARR(ministrip_length), $
+        ENDPOINTS:BYTARR(ministrip_length), $
+        xoffset:c4xstrips.xoffset},N_ELEMENTS(c4xstrips))
 ystrips = REPLICATE({COLINDEX:0, BEGINDEX:0, ENDINDEX:0, $
-        STARTPOINTS:bytarr(ministrip_length), $
-        ENDPOINTS:bytarr(ministrip_length), $
-        yoffset:c4ystrips.yoffset},n_elements(c4ystrips))
+        STARTPOINTS:BYTARR(ministrip_length), $
+        ENDPOINTS:BYTARR(ministrip_length), $
+        yoffset:c4ystrips.yoffset},N_ELEMENTS(c4ystrips))
 
 ;Filling out structure with cut-down strip information
-FOR i = 0,n_elements(c4xstrips) - 1 DO BEGIN
+FOR i = 0,N_ELEMENTS(c4xstrips) - 1 DO BEGIN
     xstrips[i].ROWINDEX     = c4xstrips[i].ROWINDEX
     ; If there is no strip that cuts through the sun, set things to 0
     IF rowchord_endpoints[0,i] EQ -1 THEN BEGIN
-        xstrips[i].STARTPOINTS  = fltarr(ministrip_length) 
+        xstrips[i].STARTPOINTS  = BYTARR(ministrip_length) 
         xstrips[i].BEGINDEX     = 0
     ENDIF ELSE BEGIN
         ; STARTPOINTS is the cut down strip with length = ministrip_length and contains
@@ -78,47 +78,47 @@ FOR i = 0,n_elements(c4xstrips) - 1 DO BEGIN
             rowchord_endpoints[0,i]+ministrip_side_buffer]   
         ; BEGINDEX is the index of the strip where it begins. 
         ; e.g., the array is 5 long, starts from index 9 and is centered around index 11
-        xstrips[i].BEGINDEX     = fix(rowchord_endpoints[0,i] - ministrip_side_buffer)
+        xstrips[i].BEGINDEX     = FIX(rowchord_endpoints[0,i] - ministrip_side_buffer)
     ENDELSE
+
     IF rowchord_endpoints[1,i] EQ -1 THEN BEGIN
-        xstrips[i].ENDPOINTS    = fltarr(ministrip_length)
+        xstrips[i].ENDPOINTS    = BYTARR(ministrip_length)
         xstrips[i].ENDINDEX    = 0
     ENDIF ELSE BEGIN
         xstrips[i].ENDPOINTS  = $
             (c4xstrips[i].ARRAY)[rowchord_endpoints[1,i]-ministrip_side_buffer:$
             rowchord_endpoints[1,i]+ministrip_side_buffer]   
-        xstrips[i].ENDINDEX     = fix(rowchord_endpoints[1,i] - ministrip_side_buffer)
+        xstrips[i].ENDINDEX     = FIX(rowchord_endpoints[1,i] - ministrip_side_buffer)
     ENDELSE
 ENDFOR
 
 
-FOR k = 0,n_elements(c4ystrips) - 1 DO BEGIN
+FOR k = 0,N_ELEMENTS(c4ystrips) - 1 DO BEGIN
     ystrips[k].COLINDEX     = c4ystrips[k].COLINDEX
     IF colchord_endpoints[0,k] EQ -1 THEN BEGIN
-        ystrips[k].STARTPOINTS  = fltarr(ministrip_length) 
+        ystrips[k].STARTPOINTS  = BYTARR(ministrip_length) 
         ystrips[k].BEGINDEX     = 0
     ENDIF ELSE BEGIN 
         ystrips[k].STARTPOINTS  = (c4ystrips[k].ARRAY)[colchord_endpoints[0,k]- $
             ministrip_side_buffer:colchord_endpoints[0,k]+ministrip_side_buffer]
-        ystrips[k].BEGINDEX     = fix(colchord_endpoints[0,k] - ministrip_side_buffer)
+        ystrips[k].BEGINDEX     = FIX(colchord_endpoints[0,k] - ministrip_side_buffer)
     ENDELSE
+
     IF colchord_endpoints[1,k] EQ -1 THEN BEGIN
-        ystrips[k].ENDPOINTS    = fltarr(ministrip_length) 
+        ystrips[k].ENDPOINTS    = BYTARR(ministrip_length) 
         ystrips[k].ENDINDEX     = 0        
     ENDIF ELSE BEGIN
-
         ystrips[k].ENDPOINTS    = (c4ystrips[k].ARRAY)[colchord_endpoints[1,k]- $
         ministrip_side_buffer:colchord_endpoints[1,k]+ministrip_side_buffer]
-        ystrips[k].ENDINDEX     = fix(colchord_endpoints[1,k] - ministrip_side_buffer) 
+        ystrips[k].ENDINDEX     = FIX(colchord_endpoints[1,k] - ministrip_side_buffer) 
     ENDELSE
 ENDFOR
-
 
 
 finish = SYSTIME(1,/seconds)
 
 IF KEYWORD_SET(time) THEN  print,'Elapsed Time for makelimbstrips: ', $
-    strcompress(finish-start,/rem),' seconds'
+    STRCOMPRESS(finish-start,/rem),' seconds'
 RETURN
 END
 
@@ -128,33 +128,33 @@ END
 ;**************************************************************************************************
 
  
-FUNCTION quickmask, image, thresh
+FUNCTION quickmask, input_image, thresh
 ;+
 ;   :Description:
 ;       Finds center of mask where pixels are above a given threshold
 ;
 ;   :Params:
-;       image : in, required, type=byte
+;       input_image : in, required, type=byte
 ;           2D array of pixels to mask with threshold
 ;       thresh : in, required, type=float
 ;           Threshold used to select pixels
 ;-
 
 
-a = image[SORT(image)]
+a = input_image[SORT(input_image)]
 niceimage = a[0:0.99*(N_ELEMENTS(a)-1)]
 ; Eliminating the highest 1% of data
-IF thresh eq !null then thresh = 0.25*max(niceimage)
-; IF n_elements(thresh) EQ 0 THEN thresh = 0.25*max(image)
+IF thresh eq !null then thresh = 0.25*MAX(niceimage)
+; IF n_elements(thresh) EQ 0 THEN thresh = 0.25*MAX(image)
 
-s = SIZE(image,/dimensions)
+s = SIZE(input_image,/dimensions)
 n_col = s[0]
 n_row = s[1]
 
-suncheck = image gt thresh
+suncheck = input_image gt thresh
 
-xpos = TOTAL( TOTAL(suncheck, 2) * Indgen(n_col) ) / total(suncheck)
-ypos = TOTAL( TOTAL(suncheck, 1) * Indgen(n_row) ) / total(suncheck)
+xpos = TOTAL( TOTAL(suncheck, 2) * INDGEN(n_col) ) / TOTAL(suncheck)
+ypos = TOTAL( TOTAL(suncheck, 1) * INDGEN(n_row) ) / TOTAL(suncheck)
 RETURN, {xpos:xpos,ypos:ypos}
 END
 
@@ -175,8 +175,10 @@ FUNCTION whichcropmethod, region
 ;           2) 50% brightness sun
 ;           3) 25% brightness sun
 ;-
-COMMON vblock, wholeimage
+COMMON vblock, wholeimage, scan_width, sundiam, nstrips, order, ministrip_length, file, crop_box, scan_radius
 
+; stop
+crop_box = BYTE(crop_box)
 a = wholeimage[SORT(wholeimage)]
 niceimage = a[0:0.99*(N_ELEMENTS(a)-1)]
 
@@ -184,12 +186,12 @@ niceimage = a[0:0.99*(N_ELEMENTS(a)-1)]
 thresh = 0.65*max(niceimage)
 ducks = quickmask(wholeimage,thresh)
 
-image = wholeimage[ducks.xpos-60:ducks.xpos+60,ducks.ypos-60:ducks.ypos+60]
+image = wholeimage[ducks.xpos-crop_box:ducks.xpos+crop_box,ducks.ypos-crop_box:ducks.ypos+crop_box]
 
 mainxpos = ducks.xpos
 mainypos = ducks.ypos
-xoffset = ducks.xpos-60
-yoffset = ducks.ypos-60
+xoffset = ducks.xpos-crop_box
+yoffset = ducks.ypos-crop_box
 
 IF REGION NE 1 THEN BEGIN
     circscancrop, mainxpos, mainypos, image, thresh, xpos, ypos, xoffset, yoffset, region=region, time=time
@@ -243,7 +245,7 @@ PRO makestrips, thresh, xstrips, ystrips, region=region, time=time
 ; IF n_elements(region) EQ 0 THEN region = 1
 IF region eq !null then region = 1
 
-COMMON vblock, wholeimage, scan_width, sundiam, nstrips, order, ministrip_length, file
+COMMON vblock, wholeimage, scan_width, sundiam, nstrips, order, ministrip_length, file, crop_box, scan_radius
 
 struct = whichcropmethod(region)
 ducks = quickmask(struct.image)
@@ -263,14 +265,22 @@ xstrips = REPLICATE({ROWINDEX:0,ARRAY:bytarr(length),xoffset:struct.xoffset},nst
 ystrips = REPLICATE({COLINDEX:0,ARRAY:bytarr(height),yoffset:struct.yoffset},nstrips)
 
 
+; FOR i = 0,nstrips - 1 DO BEGIN
+;     xstrips[i].ROWINDEX = i
+;     xstrips[i].ARRAY = animage[*, round(ducks.xpos)+(i-nstrips/2)*scan_width]
+; ENDFOR
+
+; FOR k = 0,nstrips - 1 DO BEGIN
+;     ystrips[k].COLINDEX = k
+;     ystrips[k].ARRAY = animage[round(ducks.ypos)+(k-nstrips/2)*scan_width,*]
+; ENDFOR
+
+;Combining these two for loops
 FOR i = 0,nstrips - 1 DO BEGIN
     xstrips[i].ROWINDEX = i
     xstrips[i].ARRAY = animage[*, round(ducks.xpos)+(i-nstrips/2)*scan_width]
-ENDFOR
-
-FOR k = 0,nstrips - 1 DO BEGIN
-    ystrips[k].COLINDEX = k
-    ystrips[k].ARRAY = animage[round(ducks.ypos)+(k-nstrips/2)*scan_width,*]
+    ystrips[i].COLINDEX = i
+    ystrips[i].ARRAY = animage[round(ducks.ypos)+(i-nstrips/2)*scan_width,*]
 ENDFOR
 
 finish = SYSTIME(1,/seconds)
@@ -320,17 +330,20 @@ PRO circscancrop, mainxpos, mainypos, image, thresh, xpos, ypos, xoffset, yoffse
 COMPILE_OPT idl2 
 ON_ERROR,2
 
-COMMON vblock, wholeimage, scan_width, sundiam, nstrips, order, ministrip_length, file
+COMMON vblock, wholeimage, scan_width, sundiam, nstrips, order, ministrip_length, file, crop_box, scan_radius
 start = SYSTIME(1,/s)
 
 arr=(findgen(360) + 90)*!dtor
 ; only adding 90 so that it starts from 12 o'clock assuming there is
 ; no dim sun at that location
 
-radius = 129
+radius = 129  ; well this is rather arbitrary
 r2bit = 2
+
+; The way we have it scanning now is if it doesn't find the aux sun, it scans at a radius interval of 
+; 10 so that it looks at the r_orig - interval and r_orig + interval radii. Now, what if the sun isn't there? 
 loop: BEGIN
-    IF file EQ 'dimsun1.fits' THEN radius = 149
+    IF file EQ 'dimsun1.fits' THEN radius = BYTE(scan_radius)
     ; print,r2bit,' Beginning r2bit'
     ; print,region
     r2 = radius + 10*r2bit ;10 is an arbitrary number, can be anything, really
@@ -341,16 +354,29 @@ loop: BEGIN
     y2 = r2*sin(arr) + mainypos
 
     ; Have to use .3 instead of .25 for dimsun2, don't know why
-    thresh = 0.3*max(wholeimage)
 
-    pri_scan = where((wholeimage[x,y] GT thresh) EQ 1,pri_where)
-    aux_scan = where((wholeimage[x2,y2] GT thresh) EQ 1,aux_where)
+    sorted =  wholeimage[sort(wholeimage)]
+    thresh = 0.3*max( sorted[0:.99*(n_elements(sorted)-1)] )
+    ; ^^
+    ; Well this doesn't work.
+    
+    thresh = 0.3*max(wholeimage)
+    ; Alright, for some reason, clipping out the top 1% changes the thresh from 53.7 to 64.5
+    ; which makes the centerx,centery go from 337,76 (correct)
+    ; to
+    ; 144,19 (so, so wrong)
+    ; now, how to deal with it?
+
+    pri_scan = where(wholeimage[x,y] GT thresh,pri_where)
+    aux_scan = where(wholeimage[x2,y2] GT thresh,aux_where)
+
     ; print,aux_where, ' aux_where before if statement'
     IF aux_where NE 0 THEN BEGIN
-        in_inner  = (where((wholeimage[x,y]     GT thresh) EQ 1))[0] - 10
-        in_outer  = (where((wholeimage[x2,y2]   GT thresh) EQ 1))[0] - 10
-        out_inner = (where((wholeimage[x,y]     GT thresh) EQ 1))[-1] + 10
-        out_outer = (where((wholeimage[x2,y2]   GT thresh) EQ 1))[-1] + 10
+    ; stop
+        in_inner  = (where(wholeimage[x,y]     GT thresh))[0] - 10
+        in_outer  = (where(wholeimage[x2,y2]   GT thresh))[0] - 10
+        out_inner = (where(wholeimage[x,y]     GT thresh))[-1] + 10
+        out_outer = (where(wholeimage[x2,y2]   GT thresh))[-1] + 10
     ENDIF ELSE BEGIN
         ; print,r2bit,aux_where
         r2bit*=-1
@@ -358,6 +384,7 @@ loop: BEGIN
         GOTO, loop
     ENDELSE
 END
+
 r2bit = 2
 r2 = radius + 10*r2bit
 x2 = r2*cos(arr) + mainxpos
@@ -369,18 +396,44 @@ otherloop: BEGIN
         thresh = 0.2*max(wholeimage) ;dimsun2 works if i set the thresh to .2 instead of .15
         ; The other sun is so dim that weird parts are being picked up. How to fix? Is being dim a problem?
 
+
+        sorted =  wholeimage[sort(wholeimage)]
+        thresh = 0.2*max( sorted[0:.99*(n_elements(sorted)-1)] )
+        ; ^^
+        ; Well this doesn't work.
+    
+        thresh = 0.2*max(wholeimage)
+
+
         ; For showing where the circles are
-        wholeimage[x[in_inner:out_inner],y[in_inner:out_inner]] = 0
-        wholeimage[x2[in_outer:out_outer],y2[in_outer:out_outer]] = 0
+        ; stop
+        ; wholeimage[x[in_inner:out_inner],y[in_inner:out_inner]] = 0
+        ; wholeimage[x2[in_outer:out_outer],y2[in_outer:out_outer]] = 0
         
         ; check to make sure we're scanning at the right radius
         n_check = where((wholeimage[x2,y2] GT thresh) EQ 1,n_where)
 
         IF n_where NE 0 THEN BEGIN
-            in_inner  = (where((wholeimage[x,y]     GT thresh) EQ 1))[0] - 10
-            in_outer  = (where((wholeimage[x2,y2]   GT thresh) EQ 1))[0] - 10
-            out_inner = (where((wholeimage[x,y]     GT thresh) EQ 1))[-1] + 10
-            out_outer = (where((wholeimage[x2,y2]   GT thresh) EQ 1))[-1] + 10
+            ; in_inner  = (where(wholeimage[x,y]     GT thresh))[0] - 10
+            ; in_outer  = (where(wholeimage[x2,y2]   GT thresh))[0] - 10
+            ; out_inner = (where(wholeimage[x,y]     GT thresh))[-1] + 10
+            ; out_outer = (where(wholeimage[x2,y2]   GT thresh))[-1] + 10
+            part1 = wholeimage[x[0:in_inner],y[0:in_inner]]
+            part2 = wholeimage[x[out_inner:N_ELEMENTS(x)-1],y[out_inner:N_ELEMENTS(x)-1]]
+            part1b = wholeimage[x2[0:in_outer],y2[0:in_outer]]
+            part2b = wholeimage[x[out_outer:N_ELEMENTS(x)-1],y[out_outer:N_ELEMENTS(x)-1]]
+            ;This way we don't alter the original image
+
+            in_inner  = (where([part1,part2] gt thresh))[0] - 10
+            out_inner = (where([part1,part2] gt thresh))[-1] - 10
+            in_outer  = (where([part1b,part2b] gt thresh))[0] - 10
+            out_outer = (where([part1b,part2b] gt thresh))[-1] - 10
+
+; stop
+            ; in_inner  = (where(wholeimage[x,y]     GT thresh))[0] - 10
+            ; in_outer  = (where(wholeimage[x2,y2]   GT thresh))[0] - 10
+            ; out_inner = (where(wholeimage[x,y]     GT thresh))[-1] + 10
+            ; out_outer = (where(wholeimage[x2,y2]   GT thresh))[-1] + 10
         ENDIF ELSE BEGIN
             ; print,r2bit,n_where
             ; stop
@@ -399,9 +452,13 @@ centerangle = !dtor*(90 + mean([in_inner,out_inner]))
 centerx = mainxpos + radius*cos(centerangle)
 centery = mainypos + radius*sin(centerangle)
 
-image = wholeimage[centerx-60:centerx+60,centery-60:centery+60]
-xoffset = centerx-60
-yoffset = centery-60
+; What is this arbitrary cropping value
+; stop
+
+crop_box = BYTE(crop_box)
+image = wholeimage[centerx-crop_box:centerx+crop_box,centery-crop_box:centery+crop_box]
+xoffset = centerx-crop_box
+yoffset = centery-crop_box
 
 finish = SYSTIME(1,/s)
 IF KEYWORD_SET(time) THEN print, 'getstruct took: '+strcompress(finish-start)+$
@@ -441,7 +498,7 @@ PRO limbfit, thresh, xpos, ypos, plot=plot, region=region, time=time
 ; IF n_elements(region) EQ 0 THEN region = 1
 if region eq !null then region = 1
 
-COMMON vblock, wholeimage, scan_width, sundiam, nstrips, order, ministrip_length, file
+COMMON vblock, wholeimage, scan_width, sundiam, nstrips, order, ministrip_length, file, crop_box, scan_radius
 
 ; Run the program to get our structures
 makelimbstrips, thresh, xstrips, ystrips, region=region, time=time
@@ -485,7 +542,7 @@ FOR n=0,n_elements(xstrips)-1 DO BEGIN
     ; ; atmp = SPLINE(xarr,endresult[0] + endresult[1]*xarr + endresult[2]*xarr^2,tx)
     
     ; plot,xarr+xstrips[n].BEGINDEX,a,xs=3,ys=3,title='Limb Profile',$
-    ;     xtitle='Pixel indices of total strip',ytitle='Brightness',psym=-2;,yr=[0,1.1*max(xtmp)]
+    ;     xtitle='Pixel indices of TOTAL strip',ytitle='Brightness',psym=-2;,yr=[0,1.1*max(xtmp)]
     ; oplot,tx+xstrips[n].BEGINDEX,xtmp,linestyle=1
     ; oplot,xarr+xstrips[n].BEGINDEX,b,linestyle=4
     ; oplot,tx+xstrips[n].BEGINDEX,corrxtmp,linestyle=5
@@ -524,6 +581,9 @@ FOR n=0,n_elements(xstrips)-1 DO BEGIN
     IF xstrips[n].BEGINDEX GT 0 THEN BEGIN
         ; Get roots (complex)
         begroots    = fz_roots(startresult)
+
+        ; print,begroots
+
         ; Take only roots with no imaginary components
         begusable   = (real_part(begroots))[where(imaginary(begroots) eq 0.)]
         ; Find smallest root (apparently I have to choose the smaller one)
@@ -796,7 +856,7 @@ start=SYSTIME(1,/s)
 ; profiler,/system
 ; profiler
 
-COMMON vblock, wholeimage, scan_width, sundiam, nstrips, order, ministrip_length, file
+COMMON vblock, wholeimage, scan_width, sundiam, nstrips, order, ministrip_length, file, crop_box, scan_radius
 file = 'dimsun1.fits'
 readcol,'pblock.txt',var,num,format='A,F',delimiter=' '
     for i=0,N_ELEMENTS(var)-1 do (SCOPE_VARFETCH(var[i],/enter,level=0))=num[i]
@@ -843,7 +903,7 @@ print,'25% sun y pos: ',struct.center3.ypos
 
 ; Here we make the assumption that the darker regions are linearly darker so we can just divide by 2 and 4
 ; Works pretty well
-wholeimage = mrdfits(file)
+; wholeimage = mrdfits(file)
 ideal = BYTSCL( READ_TIFF('plots_tables_images/dimsun_ideal.tiff',channels=1) )
 crop = wholeimage[struct.center1.xpos-rad:struct.center1.xpos+rad,$
     struct.center1.ypos-rad:struct.center1.ypos+rad]

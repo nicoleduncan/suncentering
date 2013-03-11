@@ -1,0 +1,61 @@
+\relax 
+\providecommand\hyper@newdestlabel[2]{}
+\providecommand\HyperFirstAtBeginDocument{\AtBeginDocument}
+\HyperFirstAtBeginDocument{\ifx\hyper@anchor\@undefined
+\global\let\oldcontentsline\contentsline
+\gdef\contentsline#1#2#3#4{\oldcontentsline{#1}{#2}{#3}}
+\global\let\oldnewlabel\newlabel
+\gdef\newlabel#1#2{\newlabelxx{#1}#2}
+\gdef\newlabelxx#1#2#3#4#5#6{\oldnewlabel{#1}{{#2}{#3}}}
+\AtEndDocument{\ifx\hyper@anchor\@undefined
+\let\contentsline\oldcontentsline
+\let\newlabel\oldnewlabel
+\fi}
+\fi}
+\global\let\hyper@last\relax 
+\gdef\HyperFirstAtBeginDocument#1{#1}
+\providecommand\HyField@AuxAddToFields[1]{}
+\providecommand\HyField@AuxAddToCoFields[2]{}
+\@writefile{toc}{\contentsline {section}{\numberline {1}Basic Code Overview}{1}{section.1}}
+\@writefile{toc}{\contentsline {section}{\numberline {2}Outline of Code}{1}{section.2}}
+\@writefile{toc}{\contentsline {section}{\numberline {3}Detailed Code Overview}{1}{section.3}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.1}Load Image}{1}{subsection.3.1}}
+\newlabel{sub:load_image}{{3.1}{1}{Load Image}{subsection.3.1}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.2}Crop image}{1}{subsection.3.2}}
+\newlabel{sub:crop_image}{{3.2}{1}{Crop image}{subsection.3.2}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.3}emboss Filter}{1}{subsection.3.3}}
+\newlabel{sub:emboss_filter}{{3.3}{1}{emboss Filter}{subsection.3.3}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces Raw image\relax }}{1}{figure.caption.2}}
+\@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces Image with \texthl  {\texttt  {emboss()}} filter\relax }}{1}{figure.caption.2}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.4}shift\_diff Filter}{2}{subsection.3.4}}
+\newlabel{sub:shift_diff_filter}{{3.4}{2}{shift\_diff Filter}{subsection.3.4}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces Image with \texthl  {\texttt  {emboss()}} filter\relax }}{2}{figure.caption.3}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4}{\ignorespaces Image with \texthl  {\texttt  {emboss()}} filter and \texthl  {\texttt  {shift\_diff()}} filter\relax }}{2}{figure.caption.3}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.5}Mask Pixels Above Threshold}{2}{subsection.3.5}}
+\newlabel{sub:mask_pixels_above_threshold}{{3.5}{2}{Mask Pixels Above Threshold}{subsection.3.5}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5}{\ignorespaces Pixels below -50\relax }}{2}{figure.caption.4}}
+\@writefile{lof}{\contentsline {figure}{\numberline {6}{\ignorespaces Pixels below -80\relax }}{2}{figure.caption.4}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.6}Calculate Positions of Pixels}{2}{subsection.3.6}}
+\newlabel{sub:calculate_positions_of_pixels}{{3.6}{2}{Calculate Positions of Pixels}{subsection.3.6}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {4}Outline of Math}{2}{section.4}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.1}emboss}{2}{subsection.4.1}}
+\newlabel{sub:emboss}{{4.1}{2}{emboss}{subsection.4.1}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.2}shift\_diff}{3}{subsection.4.2}}
+\newlabel{sub:shift_diff}{{4.2}{3}{shift\_diff}{subsection.4.2}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {7}{\ignorespaces Pixels below -80 and with \texthl  {\texttt  {shift\_diff(dir=3)}}\relax }}{3}{figure.caption.5}}
+\@writefile{lof}{\contentsline {figure}{\numberline {8}{\ignorespaces Pixels below -30 and with \texthl  {\texttt  {shift\_diff(dir=1)}}\relax }}{3}{figure.caption.5}}
+\@writefile{toc}{\contentsline {section}{\numberline {5}More Images}{4}{section.5}}
+\@writefile{lof}{\contentsline {figure}{\numberline {9}{\ignorespaces This is a simulated solar image with artificial fiducials. The goal was to see how the filters operated on smudgy fiducials. The results are good. In the second row, the image is filtered with \texthl  {\texttt  {shift\_diff(dir=3)}} and in the third row, the image is filtered with \texthl  {\texttt  {shift\_diff(dir=1)}}. This was done to improve the number of horizontal and vertical pixels for each direction since the default is at a diagonal.\relax }}{4}{figure.caption.6}}
+\@writefile{lof}{\contentsline {figure}{\numberline {10}{\ignorespaces The red outline pixels identify those above a threshold after running the two convolution filters. The rows tend to follo a spatial pattern of identifying the upper row of the 2x2 fiducial center. The blue outlined pixels identify the column pixels which are found using a 90 degree offset in the emboss filter. The position where the red and blue outlined pixels overlap mark the upper right pixel of the fiducial's 2x2 center. Since this is consistent for all 4 fiducials, we can confidently apply it to the dimmer suns. \emph  {For now}.\relax }}{5}{figure.caption.7}}
+\@writefile{toc}{\contentsline {section}{\numberline {6}Exercises}{5}{section.6}}
+\@writefile{lof}{\contentsline {figure}{\numberline {11}{\ignorespaces By varying the threshold on the dimmer suns, we get the same masking pattern. For the 50\% dimmer sun, we use half the threshold value used for the 100\% sun. For the sun at 25\% the brightness of the main sun, we use a quarter of the threshold.\relax }}{6}{figure.caption.8}}
+\@writefile{lof}{\contentsline {figure}{\numberline {12}{\ignorespaces On the left we see the real fiducial values over a uniform 2D array. On the right is the result of the two convolution filters. Despite the ``blurry'' pixel values, the filters saw the edges of the fiducial.\relax }}{6}{figure.caption.9}}
+\providecommand*\caption@xref[2]{\@setref\relax\@undefined{#1}}
+\newlabel{whodunit}{{12}{6}{On the left we see the real fiducial values over a uniform 2D array. On the right is the result of the two convolution filters. Despite the ``blurry'' pixel values, the filters saw the edges of the fiducial.\relax }{figure.caption.9}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {7}Parameters}{6}{section.7}}
+\@writefile{lof}{\contentsline {figure}{\numberline {13}{\ignorespaces On the left is the same image as Figure 12(b), but masked to values above a certain threshold. Here you see that there clearly exists a linear structure. I also tried instead of a gray bacground, a background that was equal to the most common pixel value (198 instead of 100). The goal was to try and blur out the fiducial as much as possible. On the right we see the convolution filter has a harder time finding the edges but we still see some clear vertical black lines that we can mask out.\relax }}{7}{figure.caption.10}}
+\@writefile{toc}{\contentsline {section}{\numberline {8}Drawbacks}{7}{section.8}}
+\@writefile{toc}{\contentsline {section}{\numberline {9}How to Break Code}{8}{section.9}}
+\newlabel{sec:how_to_break_code}{{9}{8}{How to Break Code}{section.9}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {14}{\ignorespaces The fiducials are initially circles but with a bit of distortion we see the typical method to find fiducials no longer works. Perhaps with circle-shaped fiducials we could apply some form of gaussian fitting but using plus-signs instead works better since it's hard to calculate the rotation angle from a bunch of distorted circles.\relax }}{9}{figure.caption.11}}
+\newlabel{circfidcomp}{{14}{9}{The fiducials are initially circles but with a bit of distortion we see the typical method to find fiducials no longer works. Perhaps with circle-shaped fiducials we could apply some form of gaussian fitting but using plus-signs instead works better since it's hard to calculate the rotation angle from a bunch of distorted circles.\relax }{figure.caption.11}{}}

@@ -255,6 +255,7 @@ In a nutshell, \hl{\tt{scrib.pro}} takes an image of the sun with fiducials and 
         \item If the fiducials are not plus-shaped the edge-detection tools cannot handle distortion. Ideally, a circle-shaped fidcial would be fine except that any distortion returns poor results with the edge detection filters. I think this is because the plus-shaped fiducials naturally have up and down edges which, even with distortion, can still be isolated. See Figure \ref{circfidcomp}
         \item We must crop the sun in such a way that none of the solar limb is in the image. The reason is because the image is pixelated enough that the edge of the sun is detected as an edge, albeit one we do not want. A problem that arises from this is that when we crop out the solar limbs, we may cut off fiducials.
         \item If the fiducial is too close to the edge of the cropped image, then problems arise. There are two ways to solve this. We can tell the program to only look for complete fiducials or 2) ``zero'' out the incomplete fiducials so the program finds fiducials as normal.
+        \item In \hl{\texttt{circscancrop}}, the thresholds are arbitrary. To scan for region 2, (i.e., the 50\% brightness sun) we have the threshold set to 0.3 of the sorted \hl{\texttt{max(image)}}. For region 3 (i.e., the 25\% brightness sun) the threshold is set to 0.2 of the sorted \hl{\texttt{max(image)}}. I tried making the threshold 0.3 of the image with the highest 1\% pixels eliminated, but the change in threshold made the circle-scanning break. Either I need to find a new way to parameterize the thresh or change the circle-scanning code. 
     \end{enumerate}
 
 \begin{figure}
@@ -279,6 +280,7 @@ In a nutshell, \hl{\tt{scrib.pro}} takes an image of the sun with fiducials and 
             - Probably have to do something where if I don't detect the auxilliary suns, I'll scan at different readii at specific intervals
         \item Image is rotated more than 2 degrees\\
             - Current fiducial finding method can't handle a rotated image well
+            - GRIPS proposal says the pendulum will swing up to $\pm$ .1 degree; is this the same rotation parameter in our image?
     \end{enumerate}
 
 % section how_to_break_code (end)

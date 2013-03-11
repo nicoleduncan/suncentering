@@ -5,3 +5,5 @@ order 2
 ministrip_length 13
 sundiam 70
 rad 22
+scan_radius 149
+crop_box 60
