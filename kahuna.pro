@@ -919,11 +919,29 @@ plot_edges,ypb,thick=6,setcolor=255
 ; ******************************************************************************************
 ; ******************************************************************************************
 
+wn_row = (size(wholeimage,/dim))[0]
+wn_col = (size(wholeimage,/dim))[1]
+datmask = bytarr(wn_row,wn_col) + 1
+datmask[0.1*wn_row:0.9*wn_row,0.1*wn_col:0.9*wn_col] = 0
+
+
+; min_val should be a really low number, the mode of wholeimage is 3
+min_val = mode(wholeimage)
+if total(datmask*wholeimage) gt n_elements(datmask[where(datmask eq 1)])*min_val then begin
+   ; Don't use this image, bro.
+endif
+
+; If in the case where we want the above picture still... then....
+
+stop
+
 ; Dickin' around with convol()
 kernel = [[-1,1,-1],[1,1,1],[-1,1,-1]]
 cgimage,convol(crop,kernel),output='kerneltest.png',/k
 
 stop
+
+; Testing out with diagonals
 wholeimage = BYTSCL( READ_TIFF('plots_tables_images/diag.tiff',channels=1) )
 crop = wholeimage[struct.center1.xpos-rad:struct.center1.xpos+rad,$
     struct.center1.ypos-rad:struct.center1.ypos+rad]
@@ -931,6 +949,7 @@ cgimage,emboss(crop,az=45),/k
 
 
 
+; Big ass kernel is not good
 kernel = [[1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,1],$
         [-1,1,-1,-1,-1,-1,-1,-1,-1,-1,1,-1],$
         [-1,-1,1,-1,-1,-1,-1,-1,-1,1,-1,-1],$
