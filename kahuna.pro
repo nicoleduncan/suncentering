@@ -21,8 +21,7 @@ PRO makelimbstrips, thresh, xstrips, ystrips, region=region, time=time
 ; IF n_elements(region) EQ 0 THEN region = 1
 IF region EQ !null THEN region = 1
 
-COMMON vblock, wholeimage, scan_width, sundiam, nstrips, order, ministrip_length, file, crop_box, scan_radius,$
-    reg1thresh_mult
+COMMON vblock, wholeimage
 
 ; Going through and doing a little commenting, think I forgot how this works:
 
@@ -30,7 +29,7 @@ makestrips, thresh, c4xstrips, c4ystrips, region=region, time=time
 
 start = SYSTIME(1,/seconds)
 
-ministrip_side_buffer = byte(ministrip_length)/2 
+ministrip_side_buffer = byte(!param.ministrip_length)/2 
 ; have to byte it since we read the ministrip_length as a float
 
 ; Contains coordinates of chord enpoints
@@ -53,12 +52,12 @@ ENDFOR
 
 ; Preallocating the array, replicating it by the number of strips there are
 xstrips = REPLICATE({ROWINDEX:0, BEGINDEX:0, ENDINDEX:0, $
-        STARTPOINTS:BYTARR(ministrip_length), $
-        ENDPOINTS:BYTARR(ministrip_length), $
+        STARTPOINTS:BYTARR(!param.ministrip_length), $
+        ENDPOINTS:BYTARR(!param.ministrip_length), $
         xoffset:c4xstrips.xoffset},N_ELEMENTS(c4xstrips))
 ystrips = REPLICATE({COLINDEX:0, BEGINDEX:0, ENDINDEX:0, $
-        STARTPOINTS:BYTARR(ministrip_length), $
-        ENDPOINTS:BYTARR(ministrip_length), $
+        STARTPOINTS:BYTARR(!param.ministrip_length), $
+        ENDPOINTS:BYTARR(!param.ministrip_length), $
         yoffset:c4ystrips.yoffset},N_ELEMENTS(c4ystrips))
 
 ;Filling out structure with cut-down strip information
@@ -66,7 +65,7 @@ FOR i = 0,N_ELEMENTS(c4xstrips) - 1 DO BEGIN
     xstrips[i].ROWINDEX     = c4xstrips[i].ROWINDEX
     ; If there is no strip that cuts through the sun, set things to 0
     IF rowchord_endpoints[0,i] EQ -1 THEN BEGIN
-        xstrips[i].STARTPOINTS  = BYTARR(ministrip_length) 
+        xstrips[i].STARTPOINTS  = BYTARR(!param.ministrip_length) 
         xstrips[i].BEGINDEX     = 0
     ENDIF ELSE BEGIN
         ; STARTPOINTS is the cut down strip with length = ministrip_length and contains
@@ -81,7 +80,7 @@ FOR i = 0,N_ELEMENTS(c4xstrips) - 1 DO BEGIN
     ENDELSE
 
     IF rowchord_endpoints[1,i] EQ -1 THEN BEGIN
-        xstrips[i].ENDPOINTS    = BYTARR(ministrip_length)
+        xstrips[i].ENDPOINTS    = BYTARR(!param.ministrip_length)
         xstrips[i].ENDINDEX    = 0
     ENDIF ELSE BEGIN
         xstrips[i].ENDPOINTS  = $
@@ -95,7 +94,7 @@ ENDFOR
 FOR k = 0,N_ELEMENTS(c4ystrips) - 1 DO BEGIN
     ystrips[k].COLINDEX     = c4ystrips[k].COLINDEX
     IF colchord_endpoints[0,k] EQ -1 THEN BEGIN
-        ystrips[k].STARTPOINTS  = BYTARR(ministrip_length) 
+        ystrips[k].STARTPOINTS  = BYTARR(!param.ministrip_length) 
         ystrips[k].BEGINDEX     = 0
     ENDIF ELSE BEGIN 
         ystrips[k].STARTPOINTS  = (c4ystrips[k].ARRAY)[colchord_endpoints[0,k]- $
@@ -104,7 +103,7 @@ FOR k = 0,N_ELEMENTS(c4ystrips) - 1 DO BEGIN
     ENDELSE
 
     IF colchord_endpoints[1,k] EQ -1 THEN BEGIN
-        ystrips[k].ENDPOINTS    = BYTARR(ministrip_length) 
+        ystrips[k].ENDPOINTS    = BYTARR(!param.ministrip_length) 
         ystrips[k].ENDINDEX     = 0        
     ENDIF ELSE BEGIN
         ystrips[k].ENDPOINTS    = (c4ystrips[k].ARRAY)[colchord_endpoints[1,k]- $
@@ -141,9 +140,9 @@ FUNCTION quickmask, input_image, thresh
 
 
 a = input_image[SORT(input_image)]
-niceimage = a[0:0.99*(N_ELEMENTS(a)-1)]
+niceimage = a[0:(1-!param.elim_perc/100)*(N_ELEMENTS(a)-1)]
 ; Eliminating the highest 1% of data
-IF thresh eq !null then thresh = 0.25*MAX(niceimage)
+IF thresh eq !null then thresh = !param.reg1thresh*MAX(niceimage)
 ; IF n_elements(thresh) EQ 0 THEN thresh = 0.25*MAX(image)
 
 s = SIZE(input_image,/dimensions)
@@ -174,22 +173,22 @@ FUNCTION whichcropmethod, region
 ;           2) 50% brightness sun
 ;           3) 25% brightness sun
 ;-
-COMMON vblock, wholeimage, scan_width, sundiam, nstrips, order, ministrip_length, file, crop_box, scan_radius,$
-    reg1thresh_mult
+COMMON vblock, wholeimage
 
-crop_box = BYTE(crop_box)
+; crop_box = BYTE(!param.crop_box)
 a = wholeimage[SORT(wholeimage)]
-niceimage = a[0:0.99*(N_ELEMENTS(a)-1)]
+niceimage = a[0:(1-!param.elim_perc/100)*(N_ELEMENTS(a)-1)]
 
-thresh = reg1thresh_mult*max(niceimage)
+thresh = !param.reg1thresh_mult*max(niceimage)
 ducks = quickmask(wholeimage,thresh)
 
-image = wholeimage[ducks.xpos-crop_box:ducks.xpos+crop_box,ducks.ypos-crop_box:ducks.ypos+crop_box]
+image = wholeimage[ducks.xpos- !param.crop_box:ducks.xpos+ !param.crop_box, $
+    ducks.ypos- !param.crop_box:ducks.ypos+ !param.crop_box]
 
 mainxpos = ducks.xpos
 mainypos = ducks.ypos
-xoffset = ducks.xpos-crop_box
-yoffset = ducks.ypos-crop_box
+xoffset = ducks.xpos- !param.crop_box
+yoffset = ducks.ypos- !param.crop_box
 
 IF REGION NE 1 THEN BEGIN
     circscancrop, mainxpos, mainypos, image, thresh, xpos, ypos, xoffset, yoffset, region=region, time=time
@@ -243,8 +242,7 @@ PRO makestrips, thresh, xstrips, ystrips, region=region, time=time
 ; IF n_elements(region) EQ 0 THEN region = 1
 IF region eq !null then region = 1
 
-COMMON vblock, wholeimage, scan_width, sundiam, nstrips, order, ministrip_length, file, crop_box, scan_radius,$
-    reg1thresh_mult
+COMMON vblock, wholeimage
 
 struct = whichcropmethod(region)
 ducks = quickmask(struct.image)
@@ -257,17 +255,17 @@ s = size(animage,/dimensions)
 length = s[0]
 height = s[1]
 
-rowchord_endpoints = fltarr(2,nstrips)
-colchord_endpoints = fltarr(2,nstrips)
+rowchord_endpoints = fltarr(2,!param.nstrips)
+colchord_endpoints = fltarr(2,!param.nstrips)
 
-xstrips = REPLICATE({ROWINDEX:0,ARRAY:bytarr(length),xoffset:struct.xoffset},nstrips)
-ystrips = REPLICATE({COLINDEX:0,ARRAY:bytarr(height),yoffset:struct.yoffset},nstrips)
+xstrips = REPLICATE({ROWINDEX:0, ARRAY:bytarr(length), xoffset:struct.xoffset}, !param.nstrips)
+ystrips = REPLICATE({COLINDEX:0, ARRAY:bytarr(height), yoffset:struct.yoffset}, !param.nstrips)
 
-FOR i = 0,nstrips - 1 DO BEGIN
+FOR i = 0,!param.nstrips - 1 DO BEGIN
     xstrips[i].ROWINDEX = i
-    xstrips[i].ARRAY = animage[*, round(ducks.xpos)+(i-nstrips/2)*scan_width]
+    xstrips[i].ARRAY = animage[*, round(ducks.xpos)+(i-!param.nstrips/2)* !param.scan_width]
     ystrips[i].COLINDEX = i
-    ystrips[i].ARRAY = animage[round(ducks.ypos)+(i-nstrips/2)*scan_width,*]
+    ystrips[i].ARRAY = animage[round(ducks.ypos)+(i-!param.nstrips/2)* !param.scan_width,*]
 ENDFOR
 
 finish = SYSTIME(1,/seconds)
@@ -317,11 +315,11 @@ PRO circscancrop, mainxpos, mainypos, image, thresh, xpos, ypos, xoffset, yoffse
 COMPILE_OPT idl2 
 ON_ERROR,2
 
-COMMON vblock, wholeimage, scan_width, sundiam, nstrips, order, ministrip_length, file, crop_box, scan_radius,$
-    reg1thresh_mult
+COMMON vblock, wholeimage
+
 start = SYSTIME(1,/s)
 
-arr=(findgen(360) + 90)*!dtor
+arr=(findgen(!param.deg_num) + 90)*!dtor
 ; only adding 90 so that it starts from 12 o'clock assuming there is
 ; no dim sun at that location
 
@@ -331,7 +329,8 @@ r2bit = 2
 ; The way we have it scanning now is if it doesn't find the aux sun, it scans at a radius interval of 
 ; 10 so that it looks at the r_orig - interval and r_orig + interval radii. Now, what if the sun isn't there? 
 loop: BEGIN
-    IF file EQ 'dimsun1.fits' THEN radius = BYTE(scan_radius)
+    IF !param.file EQ 'dimsun1.fits' THEN radius = BYTE( !param.scan_radius ) 
+
     r2 = radius + 10*r2bit ;10 is an arbitrary number, can be anything, really
 
     x = radius*cos(arr) + mainxpos
@@ -342,11 +341,11 @@ loop: BEGIN
     ; Have to use .3 instead of .25 for dimsun2, don't know why
 
     sorted =  wholeimage[sort(wholeimage)]
-    thresh = 0.3*max( sorted[0:.99*(n_elements(sorted)-1)] )
+    thresh = !param.reg2thresh_mult*max( sorted[0:(1-!param.elim_perc/100)*(n_elements(sorted)-1)] )
     ; ^^
     ; Well this doesn't work.
     
-    thresh = 0.3*max(wholeimage)
+    thresh = !param.reg2thresh_mult*max(wholeimage)
     ; Alright, for some reason, clipping out the top 1% changes the thresh from 53.7 to 64.5
     ; which makes the centerx,centery go from 337,76 (correct)
     ; to
@@ -359,10 +358,10 @@ loop: BEGIN
     ; print,aux_where, ' aux_where before if statement'
     IF aux_where NE 0 THEN BEGIN
     ; stop
-        in_inner  = (where(wholeimage[x,y]     GT thresh))[0] - 10
-        in_outer  = (where(wholeimage[x2,y2]   GT thresh))[0] - 10
-        out_inner = (where(wholeimage[x,y]     GT thresh))[-1] + 10
-        out_outer = (where(wholeimage[x2,y2]   GT thresh))[-1] + 10
+        in_inner  = (where(wholeimage[x,y]     GT thresh))[0] - !param.circscan_buffer
+        in_outer  = (where(wholeimage[x2,y2]   GT thresh))[0] - !param.circscan_buffer
+        out_inner = (where(wholeimage[x,y]     GT thresh))[-1] + !param.circscan_buffer
+        out_outer = (where(wholeimage[x2,y2]   GT thresh))[-1] + !param.circscan_buffer
     ENDIF ELSE BEGIN
         r2bit*=-1
         GOTO, loop
@@ -382,11 +381,11 @@ otherloop: BEGIN
 
 
         sorted =  wholeimage[sort(wholeimage)]
-        thresh = 0.2*max( sorted[0:.99*(n_elements(sorted)-1)] )
+        thresh = !param.reg3thresh_mult*max( sorted[0:(1-!param.elim_perc/100)*(n_elements(sorted)-1)] )
         ; ^^
         ; Well this doesn't work.
     
-        thresh = 0.2*max(wholeimage)
+        thresh = !param.reg3thresh_mult*max(wholeimage)
 
         ; check to make sure we're scanning at the right radius
         n_check = where((wholeimage[x2,y2] GT thresh) EQ 1,n_where)
@@ -398,10 +397,10 @@ otherloop: BEGIN
             part1b = wholeimage[x2[0:in_outer],y2[0:in_outer]]
             part2b = wholeimage[x[out_outer:N_ELEMENTS(x)-1],y[out_outer:N_ELEMENTS(x)-1]]
 
-            in_inner  = (where([part1,part2] gt thresh))[0] - 10
-            out_inner = (where([part1,part2] gt thresh))[-1] - 10
-            in_outer  = (where([part1b,part2b] gt thresh))[0] - 10
-            out_outer = (where([part1b,part2b] gt thresh))[-1] - 10
+            in_inner  = (where([part1,part2] gt thresh))[0] - !param.circscan_buffer
+            out_inner = (where([part1,part2] gt thresh))[-1] - !param.circscan_buffer
+            in_outer  = (where([part1b,part2b] gt thresh))[0] - !param.circscan_buffer
+            out_outer = (where([part1b,part2b] gt thresh))[-1] - !param.circscan_buffer
 
         ENDIF ELSE BEGIN
             r2bit*=-1
@@ -419,10 +418,11 @@ centerangle = !dtor*(90 + mean([in_inner,out_inner]))
 centerx = mainxpos + radius*cos(centerangle)
 centery = mainypos + radius*sin(centerangle)
 
-crop_box = BYTE(crop_box)
-image = wholeimage[centerx-crop_box:centerx+crop_box,centery-crop_box:centery+crop_box]
-xoffset = centerx-crop_box
-yoffset = centery-crop_box
+; crop_box = BYTE(!param.crop_box)
+image = wholeimage[centerx - !param.crop_box:centerx + !param.crop_box,$
+    centery - !param.crop_box:centery + !param.crop_box]
+xoffset = centerx- !param.crop_box
+yoffset = centery- !param.crop_box
 
 finish = SYSTIME(1,/s)
 IF KEYWORD_SET(time) THEN print, 'getstruct took: '+strcompress(finish-start)+$
@@ -461,8 +461,7 @@ PRO limbfit, thresh, xpos, ypos, plot=plot, region=region, time=time
 
 if region eq !null then region = 1
 
-COMMON vblock, wholeimage, scan_width, sundiam, nstrips, order, ministrip_length, file, crop_box, scan_radius,$
-    reg1thresh_mult
+COMMON vblock, wholeimage
 
 ; Run the program to get our structures
 makelimbstrips, thresh, xstrips, ystrips, region=region, time=time
@@ -485,8 +484,8 @@ xlenarr = FINDGEN(N_ELEMENTS(xstrips))
 FOR n=0,N_ELEMENTS(xstrips)-1 DO BEGIN
     ; Using fz_roots instead of SPLINE interpolating. Saving lines and making code more readable
 
-    startresult     = REFORM(POLY_FIT(xarr,xstrips[n].STARTPOINTS,order))
-    endresult       = REFORM(POLY_FIT(xarr,xstrips[n].ENDPOINTS,order))
+    startresult     = REFORM(POLY_FIT(xarr,xstrips[n].STARTPOINTS, !param.order))
+    endresult       = REFORM(POLY_FIT(xarr,xstrips[n].ENDPOINTS, !param.order))
 
     ; Solving for roots but want to include threshold value
     startresult[0]  -=thresh
@@ -522,8 +521,8 @@ FOR n=0,N_ELEMENTS(xstrips)-1 DO BEGIN
 ENDFOR    
 
 FOR n=0,n_elements(ystrips)-1 DO BEGIN
-    startresult     = reform(poly_fit(yarr,ystrips[n].STARTPOINTS,order))
-    endresult       = reform(poly_fit(yarr,ystrips[n].ENDPOINTS,order))
+    startresult     = reform(poly_fit(yarr,ystrips[n].STARTPOINTS, !param.order))
+    endresult       = reform(poly_fit(yarr,ystrips[n].ENDPOINTS, !param.order))
 
     startresult[0]  -=thresh
     endresult[0]    -=thresh
@@ -558,10 +557,10 @@ ypos = mean(ylenarr[where(ylenarr ne 0)]) + (ystrips.yoffset)[0]
 
 IF KEYWORD_SET(plot) THEN BEGIN
     wn = 3
-    startresult = poly_fit(xarr,xstrips[wn].STARTPOINTS,order)
-    endresult = poly_fit(xarr,xstrips[wn].ENDPOINTS,order)
+    startresult = poly_fit(xarr,xstrips[wn].STARTPOINTS, !param.order)
+    endresult = poly_fit(xarr,xstrips[wn].ENDPOINTS, !param.order)
 
-    CASE order OF
+    CASE !param.order OF
     1: BEGIN
         xtmp = SPLINE(xarr,startresult[0] + startresult[1]*xarr,tx)
         atmp = SPLINE(xarr,endresult[0] + endresult[1]*xarr,tx)
@@ -651,7 +650,7 @@ PRO getstruct, struct, time=time
 COMPILE_OPT idl2 
 ON_ERROR,2
 
-COMMON vblock, wholeimage, scan_width, sundiam, nstrips, order, ministrip_length, file
+COMMON vblock, wholeimage
 
 start = SYSTIME(1,/s)
 
@@ -743,14 +742,27 @@ start=SYSTIME(1,/s)
 ; profiler,/system
 ; profiler
 
-COMMON vblock, wholeimage, scan_width, sundiam, nstrips, order, ministrip_length, file, crop_box, scan_radius,$
-    reg1thresh_mult
+; DEATH TO THE COMMON BLOCK (or not)
+COMMON vblock, wholeimage
 file = 'dimsun1.fits'
 readcol,'pblock.txt',var,num,format='A,F',delimiter=' '
     for i=0,N_ELEMENTS(var)-1 do (SCOPE_VARFETCH(var[i],/enter,level=0))=num[i]
 
-print,'Parameters'
-for i=0,N_ELEMENTS(var)-1 do print,var[i],num[i],format='(A,A)'
+
+p = create_struct(var[0],num[0])
+
+;This takes, like, no time.
+for i=0,n_elements(var)-2 do begin
+    p = create_struct(p,var[i+1],num[i+1])
+endfor
+
+p = create_struct(p,'file','dimsun1.fits')
+
+defsysv,'!param',p
+
+
+; print,'Parameters:'
+; for i=0,N_ELEMENTS(var)-1 do print,var[i],num[i],format='(A,A)'
 
 wholeimage = mrdfits(file)
 
@@ -803,7 +815,7 @@ icrop = ideal[struct.center1.xpos-rad:struct.center1.xpos+rad,$
     struct.center1.ypos-rad:struct.center1.ypos+rad]
 
 p = icrop[sort(icrop)]
-idealthresh = 0.25*max( p[0:.99*(n_elements(p)-1)] )
+idealthresh = !param.idealthresh_mult*max( p[0:(1-!param.elim_perc/100)*(n_elements(p)-1)] )
 
 imask = icrop lt idealthresh
 ; dim50 = .5*crop
@@ -827,32 +839,34 @@ ncol = s[1]
 xpb = (SHIFT_DIFF(EMBOSS(crop),dir=3)) lt thresh
 ypb = (SHIFT_DIFF(EMBOSS(crop, az=90),dir=1)) lt thresh
 
-display,byte(crop),/square,title='100%'
-plot_edges,xpb,thick=6,setcolor=80
-plot_edges,ypb,thick=6,setcolor=255
-; -80 is about 3 stddev() above the minimum
-; -80 is also about half the minimum of xpb/ypb
+;Don't need to display these anymore (or at least for now)
 
-xpb = (SHIFT_DIFF(EMBOSS(dim50),dir=3)) lt thresh/2
-ypb = (SHIFT_DIFF(EMBOSS(dim50, az=90),dir=1)) lt thresh/2
+; display,byte(crop),/square,title='100%'
+; plot_edges,xpb,thick=6,setcolor=80
+; plot_edges,ypb,thick=6,setcolor=255
+; ; -80 is about 3 stddev() above the minimum
+; ; -80 is also about half the minimum of xpb/ypb
 
-; ps_start,filename='plots_tables_images/dim50.eps',/color,/encapsulated,xsize=8,ysize=8,/inches
-display,byte(dim50),/square,title='50% Dim'
-plot_edges,xpb,thick=6,setcolor=80
-plot_edges,ypb,thick=6,setcolor=255
-; ps_end,resize=100
+; xpb = (SHIFT_DIFF(EMBOSS(dim50),dir=3)) lt thresh/2
+; ypb = (SHIFT_DIFF(EMBOSS(dim50, az=90),dir=1)) lt thresh/2
+
+; ; ps_start,filename='plots_tables_images/dim50.eps',/color,/encapsulated,xsize=8,ysize=8,/inches
+; display,byte(dim50),/square,title='50% Dim'
+; plot_edges,xpb,thick=6,setcolor=80
+; plot_edges,ypb,thick=6,setcolor=255
+; ; ps_end,resize=100
 
 
 
-; so, fixing circscancrop to not set parts of wholeimage to 0 messes up the fid finding here because 
-; the cropped area now includes a part of a fiducial. fixing.
-xpb = (SHIFT_DIFF(EMBOSS(dim25),dir=3)) lt thresh/4
-ypb = (SHIFT_DIFF(EMBOSS(dim25, az=90),dir=1)) lt thresh/4
-; ps_start,filename='plots_tables_images/dim25.eps',/color,/encapsulated,xsize=8,ysize=8,/inches       
-display,byte(dim25),/square,title='25% Dim'
-plot_edges,xpb,thick=6,setcolor=80
-plot_edges,ypb,thick=6,setcolor=255
-; ps_end,resize=100
+; ; so, fixing circscancrop to not set parts of wholeimage to 0 messes up the fid finding here because 
+; ; the cropped area now includes a part of a fiducial. fixing.
+; xpb = (SHIFT_DIFF(EMBOSS(dim25),dir=3)) lt thresh/4
+; ypb = (SHIFT_DIFF(EMBOSS(dim25, az=90),dir=1)) lt thresh/4
+; ; ps_start,filename='plots_tables_images/dim25.eps',/color,/encapsulated,xsize=8,ysize=8,/inches       
+; display,byte(dim25),/square,title='25% Dim'
+; plot_edges,xpb,thick=6,setcolor=80
+; plot_edges,ypb,thick=6,setcolor=255
+; ; ps_end,resize=100
 
 
 ; ; Working with image of blank sun with real fiducials:
@@ -877,7 +891,8 @@ plot_edges,ypb,thick=6,setcolor=255
 wn_row = (size(wholeimage,/dim))[0]
 wn_col = (size(wholeimage,/dim))[1]
 datmask = bytarr(wn_row,wn_col) + 1
-datmask[0.1*wn_row:0.9*wn_row,0.1*wn_col:0.9*wn_col] = 0
+datmask[(1/!param.mask_border_perc)*wn_row:(1-(1/!param.mask_border_perc))*wn_row,$
+    (1/!param.mask_border_perc)*wn_col:(1-(1/!param.mask_border_perc))*wn_col] = 0
 
 
 ; min_val should be a really low number, the mode of wholeimage is 3
@@ -898,32 +913,49 @@ endif
 
 
 ; Current parameters
-scan_width          5
-sundiam             70
-nstrips             5
-order               2
-ministrip_length    13
-sundiam             70
-rad                 20
-scan_radius         149
-crop_box            60
-reg1thresh_mult     .65
+; scan_width          5
+; sundiam             70
+; nstrips             5
+; order               2
+; ministrip_length    13
+; sundiam             70
+; rad                 20
+; scan_radius         149
+; crop_box            60
+; reg1thresh_mult     .65
 
 
 ; Ghost parameters (in program but not in pblock.txt)
 ; These variable names do not exist in the program so don't bother searching for them
 
-reg1thresh          0.25        ; Thresh used when running quickmask on region 1
-circscan_buffer     10          ; After scanning for aux suns in a circle, how pany pixels to step back/forward
-                                ; from start/stop
-elim_perc           1           ; How many pixels to eliminate from masks to find maximums for thresholds
-mask_border_perc    10          ; What percentage of width/height should we make a NPZ (no pixel zone) when 
-                                ; deciding whether or not to use image for sun centering
-idealthresh_mult    .25         ; Multiplier of ideal image maximum
-reg2thresh_mult     .3          ; Multiplier of image maximum for circscancrop region 2
-reg3thresh_mult     .2          ; Multiplier of image maximum for circscancrop region 3
-scanflip            10          ; If no sun is found when running circscancrop, scan at -2*scanflip radius units
-deg_num             360         ; Number of elements in circle array - can be 720 to scan at a finer resolution
+
+; reg1thresh          0.25        ; Thresh used when running quickmask on region 1
+; circscan_buffer     10          ; After scanning for aux suns in a circle, how pany pixels to step back/forward
+;                                 ; from start/stop
+; elim_perc           1           ; How many pixels to eliminate from masks to find maximums for thresholds
+; mask_border_perc    10          ; What percentage of width/height should we make a NPZ (no pixel zone) when 
+;                                 ; deciding whether or not to use image for sun centering
+; idealthresh_mult    .25         ; Multiplier of ideal image maximum
+; reg2thresh_mult     .3          ; Multiplier of image maximum for circscancrop region 2
+; reg3thresh_mult     .2          ; Multiplier of image maximum for circscancrop region 3
+; scanflip            10          ; If no sun is found when running circscancrop, scan at -2*scanflip radius units
+; deg_num             360         ; Number of elements in circle array - can be 720 to scan at a finer resolution
+
+
+
+; Maybe defining system variables would be better for this... I read in a txt file, make a structure of
+; n_elements(), name them like struct.'name' = 'val' or something, then call it !params.scan_width or something
+
+; Cleaner than a common block!
+
+;pasting copy at beginning of code so we can actually use this:
+; p = create_struct(var[0],num[0])
+; 
+; for i=0,n_elements(var)-2 do begin
+;     p = create_struct(p,var[i+1],num[i+1])
+; endfor
+; 
+; defsysv,'!param',p
 
 ; ******************************************************************************************
 ; ******************************************************************************************

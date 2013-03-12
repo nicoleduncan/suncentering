@@ -3,8 +3,16 @@ sundiam 70
 nstrips 5
 order 2
 ministrip_length 13
-sundiam 70
 rad 20
 scan_radius 149
 crop_box 60
 reg1thresh_mult .65
+reg1thresh 0.25
+circscan_buffer 10
+elim_perc 1
+mask_border_perc 10
+idealthresh_mult .25
+reg2thresh_mult .3
+reg3thresh_mult .2
+scanflip 10
+deg_num 360
