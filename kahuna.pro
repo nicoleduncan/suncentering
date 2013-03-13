@@ -33,19 +33,19 @@ ministrip_side_buffer = byte(!param.ministrip_length)/2
 ; have to byte it since we read the ministrip_length as a float
 
 ; Contains coordinates of chord enpoints
-rowchord_endpoints = fltarr(2,n_elements(c4xstrips))
-colchord_endpoints = fltarr(2,n_elements(c4ystrips))
+rowchord_endpoints = FLTARR(2,N_ELEMENTS(c4xstrips))
+colchord_endpoints = FLTARR(2,N_ELEMENTS(c4ystrips))
 ;   Seeing where the array starts to be greater than the thresh
-FOR i = 0,n_elements(c4ystrips)-1 DO BEGIN
-    col_where = where(c4ystrips[i].ARRAY GT thresh)
+FOR i = 0,N_ELEMENTS(c4ystrips)-1 DO BEGIN
+    col_where = WHERE(c4ystrips[i].ARRAY GT thresh)
     ; beginning of chord
     colchord_endpoints[0,i] = col_where[0]
     ; end of chord
     colchord_endpoints[1,i] = col_where[-1]
 ENDFOR
 
-FOR i = 0,n_elements(c4xstrips) -1 DO BEGIN
-    row_where = where(c4xstrips[i].ARRAY GT thresh)
+FOR i = 0,N_ELEMENTS(c4xstrips) -1 DO BEGIN
+    row_where = WHERE(c4xstrips[i].ARRAY GT thresh)
     rowchord_endpoints[0,i] = row_where[0]
     rowchord_endpoints[1,i] = row_where[-1]
 ENDFOR
@@ -251,26 +251,26 @@ thresh = struct.thresh
 start = SYSTIME(1,/seconds)
 
 animage = struct.image
-s = size(animage,/dimensions)
+s = SIZE(animage,/dimensions)
 length = s[0]
 height = s[1]
 
-rowchord_endpoints = fltarr(2,!param.nstrips)
-colchord_endpoints = fltarr(2,!param.nstrips)
+rowchord_endpoints = FLTARR(2,!param.nstrips)
+colchord_endpoints = FLTARR(2,!param.nstrips)
 
-xstrips = REPLICATE({ROWINDEX:0, ARRAY:bytarr(length), xoffset:struct.xoffset}, !param.nstrips)
-ystrips = REPLICATE({COLINDEX:0, ARRAY:bytarr(height), yoffset:struct.yoffset}, !param.nstrips)
+xstrips = REPLICATE({ROWINDEX:0, ARRAY:BYTARR(length), xoffset:struct.xoffset}, !param.nstrips)
+ystrips = REPLICATE({COLINDEX:0, ARRAY:BYTARR(height), yoffset:struct.yoffset}, !param.nstrips)
 
 FOR i = 0,!param.nstrips - 1 DO BEGIN
     xstrips[i].ROWINDEX = i
-    xstrips[i].ARRAY = animage[*, round(ducks.xpos)+(i-!param.nstrips/2)* !param.scan_width]
+    xstrips[i].ARRAY = animage[*, ROUND(ducks.xpos)+(i-!param.nstrips/2)* !param.scan_width]
     ystrips[i].COLINDEX = i
-    ystrips[i].ARRAY = animage[round(ducks.ypos)+(i-!param.nstrips/2)* !param.scan_width,*]
+    ystrips[i].ARRAY = animage[ROUND(ducks.ypos)+(i-!param.nstrips/2)* !param.scan_width,*]
 ENDFOR
 
 finish = SYSTIME(1,/seconds)
 IF KEYWORD_SET(time) THEN  print,'Elapsed Time for makestrips: ', $
-    strcompress(finish-start,/rem),' seconds'
+    STRCOMPRESS(finish-start,/rem),' seconds'
 RETURN
 END
 
@@ -319,8 +319,7 @@ COMMON vblock, wholeimage
 
 start = SYSTIME(1,/s)
 
-res = 10.
-arr=(findgen(!param.deg_num*res)/res + 90)*!dtor
+arr=(FINDGEN(!param.deg_num*!param.res)/!param.res + 90)*!dtor
 ; only adding 90 so that it starts from 12 o'clock assuming there is
 ; no dim sun at that location
 
@@ -330,85 +329,71 @@ r2bit = 2
 ; The way we have it scanning now is if it doesn't find the aux sun, it scans at a radius interval of 
 ; 10 so that it looks at the r_orig - interval and r_orig + interval radii. Now, what if the sun isn't there? 
 
-r2 = radius + 10*r2bit
-x = radius*cos(arr) + mainxpos
-y = radius*sin(arr) + mainypos
-x2 = r2*cos(arr) + mainxpos
-y2 = r2*sin(arr) + mainypos
+r2 = radius + 20*r2bit              ;20 is an arbitrary number, can be anything, really
+x = radius*COS(arr) + mainxpos
+y = radius*SIN(arr) + mainypos
+x2 = r2*COS(arr)    + mainxpos
+y2 = r2*SIN(arr)    + mainypos
 
 
 loop: BEGIN
     IF !param.file EQ 'dimsun1.fits' THEN radius = BYTE( !param.scan_radius ) 
 
-    ; r2 = radius + 10*r2bit ;10 is an arbitrary number, can be anything, really
-
-    ; x = radius*cos(arr) + mainxpos
-    ; y = radius*sin(arr) + mainypos
-    ; x2 = r2*cos(arr) + mainxpos
-    ; y2 = r2*sin(arr) + mainypos
-
-; stop
     ; Have to use .3 instead of .25 for dimsun2, don't know why
 
     sorted =  wholeimage[sort(wholeimage)]
-    thresh = !param.reg2thresh_mult*max( sorted[0:(1-!param.elim_perc/100)*(n_elements(sorted)-1)] )
+    thresh = !param.reg2thresh_mult*MAX( sorted[0:(1-!param.elim_perc/100)*(N_ELEMENTS(sorted)-1)] )
     ; ^^
     ; Well this doesn't work.
     
-    thresh = !param.reg2thresh_mult*max(wholeimage)
+    thresh = !param.reg2thresh_mult*MAX(wholeimage)
     ; Alright, for some reason, clipping out the top 1% changes the thresh from 53.7 to 64.5
     ; which makes the centerx,centery go from 337,76 (correct)
     ; to
     ; 144,19 (so, so wrong)
     ; now, how to deal with it?
 
-    pri_scan = where(wholeimage[x,y] GT thresh,pri_where)
-    aux_scan = where(wholeimage[x2,y2] GT thresh,aux_where)
+    pri_scan = WHERE(wholeimage[x,y] GT thresh,pri_where)
+    aux_scan = WHERE(wholeimage[x2,y2] GT thresh,aux_where)
 
     ; print,aux_where, ' aux_where before if statement'
     IF aux_where NE 0 THEN BEGIN
     ; stop
-        in_inner  = ((where(wholeimage[x,y]     GT thresh))[0])/res - !param.circscan_buffer
-        out_inner = ((where(wholeimage[x,y]     GT thresh))[-1])/res + !param.circscan_buffer
-        in_outer  = ((where(wholeimage[x2,y2]   GT thresh))[0])/res - !param.circscan_buffer
-        out_outer = ((where(wholeimage[x2,y2]   GT thresh))[-1])/res + !param.circscan_buffer
+        in_inner  = ((WHERE(wholeimage[x,y]     GT thresh))[0])/!param.res - !param.circscan_buffer
+        out_inner = ((WHERE(wholeimage[x,y]     GT thresh))[-1])/!param.res + !param.circscan_buffer
+        in_outer  = ((WHERE(wholeimage[x2,y2]   GT thresh))[0])/!param.res - !param.circscan_buffer
+        out_outer = ((WHERE(wholeimage[x2,y2]   GT thresh))[-1])/!param.res + !param.circscan_buffer
     ENDIF ELSE BEGIN
         r2bit*=-1
         GOTO, loop
     ENDELSE
 END
 
-print,res
-print,in_inner
-print,out_inner
-
 otherloop: BEGIN
     IF REGION EQ 3 THEN BEGIN
-        thresh = 0.2*max(wholeimage) ;dimsun2 works if i set the thresh to .2 instead of .15
+        thresh = 0.2*MAX(wholeimage) ;dimsun2 works if i set the thresh to .2 instead of .15
         ; The other sun is so dim that weird parts are being picked up. How to fix? Is being dim a problem?
 
-
         sorted =  wholeimage[sort(wholeimage)]
-        thresh = !param.reg3thresh_mult*max( sorted[0:(1-!param.elim_perc/100)*(n_elements(sorted)-1)] )
+        thresh = !param.reg3thresh_mult*MAX( sorted[0:(1-!param.elim_perc/100)*(N_ELEMENTS(sorted)-1)] )
         ; ^^
         ; Well this doesn't work.
     
-        thresh = !param.reg3thresh_mult*max(wholeimage)
+        thresh = !param.reg3thresh_mult*MAX(wholeimage)
 
         ; check to make sure we're scanning at the right radius
-        n_check = where((wholeimage[x2,y2] GT thresh) EQ 1,n_where)
+        n_check = WHERE((wholeimage[x2,y2] GT thresh) EQ 1,n_where)
 
         IF n_where NE 0 THEN BEGIN
+            part1 = wholeimage[x[0:in_inner*!param.res],y[0:in_inner*!param.res]]
+            part2 = wholeimage[x[out_inner*!param.res:N_ELEMENTS(x)-1],y[out_inner*!param.res:N_ELEMENTS(x)-1]]
+            part1b = wholeimage[x2[0:in_outer*!param.res],y2[0:in_outer*!param.res]]
+            part2b = wholeimage[x[out_outer*!param.res:N_ELEMENTS(x)-1],y[out_outer*!param.res:N_ELEMENTS(x)-1]]
 
-            part1 = wholeimage[x[0:in_inner*res],y[0:in_inner*res]]
-            part2 = wholeimage[x[out_inner*res:N_ELEMENTS(x)-1],y[out_inner*res:N_ELEMENTS(x)-1]]
-            part1b = wholeimage[x2[0:in_outer*res],y2[0:in_outer*res]]
-            part2b = wholeimage[x[out_outer*res:N_ELEMENTS(x)-1],y[out_outer*res:N_ELEMENTS(x)-1]]
-
-            in_inner  = ((where([part1,part2]   gt thresh))[0])/res - !param.circscan_buffer
-            out_inner = ((where([part1,part2]   gt thresh))[-1])/res + !param.circscan_buffer
-            in_outer  = ((where([part1b,part2b] gt thresh))[0])/res - !param.circscan_buffer
-            out_outer = ((where([part1b,part2b] gt thresh))[-1])/res + !param.circscan_buffer
+            in_inner  = ((WHERE([part1,part2]   gt thresh))[0])/!param.res - !param.circscan_buffer
+            out_inner = ((WHERE([part1,part2]   gt thresh))[-1])/!param.res + !param.circscan_buffer
+            in_outer  = ((WHERE([part1b,part2b] gt thresh))[0])/!param.res - !param.circscan_buffer
+            out_outer = ((WHERE([part1b,part2b] gt thresh))[-1])/!param.res + !param.circscan_buffer
 
         ENDIF ELSE BEGIN
             r2bit*=-1
@@ -421,20 +406,10 @@ otherloop: BEGIN
     ENDIF
 END
 
-; print,in_inner
-; print,in_outer
-; print,out_inner
-; print,out_outer
 
-; stop
-
-
-centerangle = !dtor*(90 + mean([in_inner,out_inner]))
-centerx = mainxpos + radius*cos(centerangle)
-centery = mainypos + radius*sin(centerangle)
-
-stop
-; crop_box = BYTE(!param.crop_box)
+centerangle = !dtor*(90 + MEAN([in_inner,out_inner]))
+centerx = mainxpos + radius*COS(centerangle)
+centery = mainypos + radius*SIN(centerangle)
 
 image = wholeimage[centerx - !param.crop_box:centerx + !param.crop_box,$
     centery - !param.crop_box:centery + !param.crop_box]
@@ -442,7 +417,7 @@ xoffset = centerx- !param.crop_box
 yoffset = centery- !param.crop_box
 
 finish = SYSTIME(1,/s)
-IF KEYWORD_SET(time) THEN print, 'getstruct took: '+strcompress(finish-start)+$
+IF KEYWORD_SET(time) THEN print, 'getstruct took: '+STRCOMPRESS(finish-start)+$
     ' seconds'
 RETURN
 END
@@ -510,13 +485,13 @@ FOR n=0,N_ELEMENTS(xstrips)-1 DO BEGIN
 
     IF xstrips[n].BEGINDEX GT 0 THEN BEGIN
         ; Get roots (complex)
-        begroots    = fz_roots(startresult)
+        begroots    = FZ_ROOTS(startresult)
         ; Take only roots with no imaginary components
-        begusable   = (real_part(begroots))[where(imaginary(begroots) eq 0.)]
+        begusable   = (REAL_PART(begroots))[WHERE(IMAGINARY(begroots) eq 0.)]
         ; Find smallest root (apparently I have to choose the smaller one)
         ; Or i can find the midpoints using the other two roots then take the average of the two,
         ; that way works too, but why would I do that?
-        begusable   = (begusable[where(begusable gt 0)])[0]
+        begusable   = (begusable[WHERE(begusable gt 0)])[0]
         stripbeg    = xstrips[n].BEGINDEX + begusable
     ENDIF ELSE BEGIN
         begusable   = 0
@@ -524,9 +499,9 @@ FOR n=0,N_ELEMENTS(xstrips)-1 DO BEGIN
     ENDELSE
 
     IF xstrips[n].ENDINDEX GT 0 THEN BEGIN
-        endroots    = fz_roots(endresult)
-        endusable   = (real_part(endroots))[where(imaginary(endroots) eq 0.)]
-        endusable   = (endusable[where(endusable gt 0)])[0]
+        endroots    = FZ_ROOTS(endresult)
+        endusable   = (REAL_PART(endroots))[WHERE(IMAGINARY(endroots) eq 0.)]
+        endusable   = (endusable[WHERE(endusable gt 0)])[0]
         stripend    = xstrips[n].ENDINDEX + endusable
     ENDIF ELSE BEGIN
         endusable   = 0
@@ -534,20 +509,20 @@ FOR n=0,N_ELEMENTS(xstrips)-1 DO BEGIN
     ENDELSE
 
     ; Stick the midpoints in an array to take the mean of later
-    xlenarr[n] = mean([[stripend],[stripbeg]])
+    xlenarr[n] = MEAN([[stripend],[stripbeg]])
 ENDFOR    
 
-FOR n=0,n_elements(ystrips)-1 DO BEGIN
-    startresult     = reform(poly_fit(yarr,ystrips[n].STARTPOINTS, !param.order))
-    endresult       = reform(poly_fit(yarr,ystrips[n].ENDPOINTS, !param.order))
+FOR n=0,N_ELEMENTS(ystrips)-1 DO BEGIN
+    startresult     = REFORM(POLY_FIT(yarr,ystrips[n].STARTPOINTS, !param.order))
+    endresult       = REFORM(POLY_FIT(yarr,ystrips[n].ENDPOINTS, !param.order))
 
     startresult[0]  -=thresh
     endresult[0]    -=thresh
 
     IF ystrips[n].BEGINDEX GT 0 THEN BEGIN
-        begroots    = fz_roots(startresult)
-        begusable   = (real_part(begroots))[where(imaginary(begroots) eq 0.)]
-        begusable   = (begusable[where(begusable gt 0)])[0]
+        begroots    = FZ_ROOTS(startresult)
+        begusable   = (REAL_PART(begroots))[WHERE(IMAGINARY(begroots) eq 0.)]
+        begusable   = (begusable[WHERE(begusable gt 0)])[0]
         stripbeg    = ystrips[n].BEGINDEX + begusable
     ENDIF ELSE BEGIN
         begusable   = 0
@@ -555,9 +530,9 @@ FOR n=0,n_elements(ystrips)-1 DO BEGIN
     ENDELSE
 
     IF ystrips[n].ENDINDEX GT 0 THEN BEGIN
-        endroots    = fz_roots(endresult)
-        endusable   = (real_part(endroots))[where(imaginary(endroots) eq 0.)]
-        endusable   = (endusable[where(endusable gt 0)])[0]
+        endroots    = FZ_ROOTS(endresult)
+        endusable   = (REAL_PART(endroots))[WHERE(IMAGINARY(endroots) eq 0.)]
+        endusable   = (endusable[WHERE(endusable gt 0)])[0]
         stripend    = ystrips[n].ENDINDEX + endusable
         
     ENDIF ELSE BEGIN
@@ -565,17 +540,17 @@ FOR n=0,n_elements(ystrips)-1 DO BEGIN
         stripend    = 0
     ENDELSE
 
-    ylenarr[n] = mean([[stripend],[stripbeg]])
+    ylenarr[n] = MEAN([[stripend],[stripbeg]])
 ENDFOR    
 
 ; Get the midpoint of the chords
-xpos = mean(xlenarr[where(xlenarr ne 0)]) + (xstrips.xoffset)[0]
-ypos = mean(ylenarr[where(ylenarr ne 0)]) + (ystrips.yoffset)[0]
+xpos = MEAN(xlenarr[WHERE(xlenarr ne 0)]) + (xstrips.xoffset)[0]
+ypos = MEAN(ylenarr[WHERE(ylenarr ne 0)]) + (ystrips.yoffset)[0]
 
 IF KEYWORD_SET(plot) THEN BEGIN
     wn = 3
-    startresult = poly_fit(xarr,xstrips[wn].STARTPOINTS, !param.order)
-    endresult = poly_fit(xarr,xstrips[wn].ENDPOINTS, !param.order)
+    startresult = POLY_FIT(xarr,xstrips[wn].STARTPOINTS, !param.order)
+    endresult = POLY_FIT(xarr,xstrips[wn].ENDPOINTS, !param.order)
 
     CASE !param.order OF
     1: BEGIN
@@ -640,7 +615,7 @@ ENDIF
 
 finish = SYSTIME(1,/seconds)
 
-IF KEYWORD_SET(time) THEN  print,'Elapsed Time for limbfit: ',strcompress(finish-start,/rem),' seconds'
+IF KEYWORD_SET(time) THEN  print,'Elapsed Time for limbfit: ',STRCOMPRESS(finish-start,/rem),' seconds'
 RETURN
 END
 
@@ -700,7 +675,7 @@ offset = ((center1.xpos - center2.xpos)*(center3.ypos - center2.ypos) - $
 struct = {KAHUNA, center1:center1, center2:center2, center3:center3, $
     theta:theta, offset:offset}
 finish = SYSTIME(1,/s)
-IF KEYWORD_SET(time) THEN print, 'getstruct took: '+strcompress(finish-start)+$
+IF KEYWORD_SET(time) THEN print, 'getstruct took: '+STRCOMPRESS(finish-start)+$
     ' seconds'
 RETURN
 END
@@ -765,18 +740,16 @@ file = 'dimsun1.fits'
 readcol,'pblock.txt',var,num,format='A,F',delimiter=' '
     for i=0,N_ELEMENTS(var)-1 do (SCOPE_VARFETCH(var[i],/enter,level=0))=num[i]
 
-
-p = create_struct(var[0],num[0])
+c = CREATE_STRUCT(var[0],num[0])
 
 ;This takes, like, no time.
-for i=0,n_elements(var)-2 do begin
-    p = create_struct(p,var[i+1],num[i+1])
+for i=1,N_ELEMENTS(var)-1 do begin
+    c = CREATE_STRUCT(c,var[i],num[i])
 endfor
 
-p = create_struct(p,'file','dimsun1.fits')
+c = CREATE_STRUCT(c,'file','dimsun1.fits')
 
-defsysv,'!param',p
-
+defsysv,'!param',c
 
 ; print,'Parameters:'
 ; for i=0,N_ELEMENTS(var)-1 do print,var[i],num[i],format='(A,A)'
@@ -824,7 +797,7 @@ print,'25% sun y pos: ',struct.center3.ypos
 ; Here we make the assumption that the darker regions are linearly darker so we can just divide by 2 and 4
 ; Works pretty well
 
-wholeimage = mrdfits(file)
+wholeimage = MRDFITS(file)
 ideal = BYTSCL( READ_TIFF('plots_tables_images/dimsun_ideal.tiff',channels=1) )
 crop = wholeimage[struct.center1.xpos-rad:struct.center1.xpos+rad,$
     struct.center1.ypos-rad:struct.center1.ypos+rad]
@@ -832,8 +805,8 @@ crop = wholeimage[struct.center1.xpos-rad:struct.center1.xpos+rad,$
 icrop = ideal[struct.center1.xpos-rad:struct.center1.xpos+rad,$
     struct.center1.ypos-rad:struct.center1.ypos+rad]
 
-p = icrop[sort(icrop)]
-idealthresh = !param.idealthresh_mult*max( p[0:(1-!param.elim_perc/100)*(n_elements(p)-1)] )
+p = icrop[SORT(icrop)]
+idealthresh = !param.idealthresh_mult*MAX( p[0:(1-!param.elim_perc/100)*(N_ELEMENTS(p)-1)] )
 
 imask = icrop lt idealthresh
 ; dim50 = .5*crop
@@ -848,7 +821,7 @@ dim25 = wholeimage[struct.center3.xpos-rad:struct.center3.xpos+rad,$
 
 
 ; thresh was -80, now, how do I do quantify this sorcery?
-thresh = 0.5*min((SHIFT_DIFF(EMBOSS(crop),dir=3)))
+thresh = 0.5*MIN((SHIFT_DIFF(EMBOSS(crop),dir=3)))
 
 s = SIZE(crop,/dim)
 nrow = s[0]
@@ -906,16 +879,16 @@ ypb = (SHIFT_DIFF(EMBOSS(crop, az=90),dir=1)) lt thresh
 ; ******************************************************************************************
 ; ******************************************************************************************
 
-wn_row = (size(wholeimage,/dim))[0]
-wn_col = (size(wholeimage,/dim))[1]
-datmask = bytarr(wn_row,wn_col) + 1
+wn_row = (SIZE(wholeimage,/dim))[0]
+wn_col = (SIZE(wholeimage,/dim))[1]
+datmask = BYTARR(wn_row,wn_col) + 1
 datmask[(1/!param.mask_border_perc)*wn_row:(1-(1/!param.mask_border_perc))*wn_row,$
     (1/!param.mask_border_perc)*wn_col:(1-(1/!param.mask_border_perc))*wn_col] = 0
 
 
 ; min_val should be a really low number, the mode of wholeimage is 3
-min_val = mode(wholeimage)
-if total(datmask*wholeimage) gt n_elements(datmask[where(datmask eq 1)])*min_val then begin
+min_val = MODE(wholeimage)
+if TOTAL(datmask*wholeimage) gt N_ELEMENTS(datmask[WHERE(datmask eq 1)])*min_val then begin
    ; Don't use this image, bro.
 endif
 
@@ -1010,7 +983,7 @@ endif
 ; Now, this is direction independent, what if we have good fiducials on one edge but not the other?
 ; We need to look at each edge independently
 
-big = mrdfits(file)
+big = MRDFITS(file)
 p_crop = big[struct.center1.xpos-rad:struct.center1.xpos+rad,$
     struct.center1.ypos-rad:struct.center1.ypos+rad]
 
@@ -1022,9 +995,9 @@ topedge     = p_crop[*,nrow-3:nrow-1]
 rightedge   = p_crop[ncol-3:ncol-1,*]
 botedge     = p_crop[*,0:2]
 
-if (total(leftedge) gt n_elements(leftedge)*mode(p_crop)) then begin
+if (TOTAL(leftedge) gt N_ELEMENTS(leftedge)*MODE(p_crop)) then begin
     ; another 2 pix p_crop check
-    if total(p_crop[0:5,*]) gt n_elements(p_crop[0:5,*])*mode(p_crop) then p_cropleft=1 else p_cropleft=2
+    if TOTAL(p_crop[0:5,*]) gt N_ELEMENTS(p_crop[0:5,*])*MODE(p_crop) then p_cropleft=1 else p_cropleft=2
     ; newleftedge = p_crop[0:2,*]
     ; endif else begin
     ;     newleftedge = p_crop[0:5,*]
@@ -1033,18 +1006,18 @@ endif else p_cropleft=0
 
 ; Now do I do this for all sides?
 
-if (total(topedge) gt n_elements(topedge)*mode(p_crop)) then begin
-    if total(p_crop[*,nrow-5:nrow-1]) gt n_elements(p_crop[*,nrow-5:nrow-1])*mode(p_crop) then $
+if (TOTAL(topedge) gt N_ELEMENTS(topedge)*MODE(p_crop)) then begin
+    if TOTAL(p_crop[*,nrow-5:nrow-1]) gt N_ELEMENTS(p_crop[*,nrow-5:nrow-1])*MODE(p_crop) then $
         p_croptop=1 else p_croptop=2
 endif else p_croptop=0
 
-if (total(rightedge) gt n_elements(rightedge)*mode(p_crop)) then begin
-    if total(p_crop[ncol-5:ncol-1,*]) gt n_elements(p_crop[ncol-5:ncol-1,*])*mode(p_crop) then $
+if (TOTAL(rightedge) gt N_ELEMENTS(rightedge)*MODE(p_crop)) then begin
+    if TOTAL(p_crop[ncol-5:ncol-1,*]) gt N_ELEMENTS(p_crop[ncol-5:ncol-1,*])*MODE(p_crop) then $
         p_cropright=1 else p_cropright=2
 endif else p_cropright=0
 
-if (total(botedge) gt n_elements(botedge)*mode(p_crop)) then begin
-    if total(p_crop[*,0:5]) gt n_elements(p_crop[*,0:5])*mode(p_crop) then p_cropbot=1 else p_cropbot=2
+if (TOTAL(botedge) gt N_ELEMENTS(botedge)*MODE(p_crop)) then begin
+    if TOTAL(p_crop[*,0:5]) gt N_ELEMENTS(p_crop[*,0:5])*MODE(p_crop) then p_cropbot=1 else p_cropbot=2
 endif else p_cropbot=0
 
 
@@ -1059,7 +1032,7 @@ stop
 
 ; Dickin' around with convol()
 kernel = [[-1,1,-1],[1,1,1],[-1,1,-1]]
-cgimage,convol(crop,kernel),output='kerneltest.png',/k
+cgimage,CONVOL(crop,kernel),output='kerneltest.png',/k
 
 stop
 
@@ -1067,7 +1040,7 @@ stop
 wholeimage = BYTSCL( READ_TIFF('plots_tables_images/diag.tiff',channels=1) )
 crop = wholeimage[struct.center1.xpos-rad:struct.center1.xpos+rad,$
     struct.center1.ypos-rad:struct.center1.ypos+rad]
-cgimage,emboss(crop,az=45),/k
+cgimage,EMBOSS(crop,az=45),/k
 
 
 
