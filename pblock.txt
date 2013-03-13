@@ -3,7 +3,7 @@ sundiam 70
 nstrips 5
 order 2
 ministrip_length 13
-rad 20
+rad 21
 scan_radius 149
 crop_box 60
 reg1thresh_mult .65

@@ -74,7 +74,7 @@ In a nutshell, \hl{\tt{scrib.pro}} takes an image of the sun with fiducials and 
     % \subsection{\hl{\texttt{shift\_diff}} Filter} % (fold)
     \subsection{shift\_diff Filter}
     \label{sub:shift_diff_filter}
-    The \hl{\texttt{shift\_diff}} filter takes the \hl{\texttt{emboss}} filtered image and emphasizes the edges created from a large change in a highly negative toa highly positive value (the space between the white and black pixels)
+    The \hl{\texttt{shift\_diff}} filter takes the \hl{\texttt{emboss}} filtered image and emphasizes the edges created from a large change in a highly negative to a highly positive value (the space between the white and black pixels)
 
     \begin{figure}[h]
         \begin{minipage}{0.4\textwidth}
@@ -114,7 +114,7 @@ In a nutshell, \hl{\tt{scrib.pro}} takes an image of the sun with fiducials and 
 
     \subsection{Calculate Positions of Pixels} % (fold)
     \label{sub:calculate_positions_of_pixels}
-    To find the x positions of the pixels I apply a modulo operator to return the remainder of division. (e.g. \hl{\texttt{8 mod 3 = 2}}). To find the y position, I divide the pixel position by the numer of rows. I find the mode of each array of X and Y pixel positions to find the most common number (which happens to be on a fiducial). If there is more than 1 fiducial in the image, the mode must be found for one fiducial then without looking at the same row/column twice, find the second most populated row/column.
+    To find the x positions of the pixels I apply a modulo operator to return the remainder of division. (e.g. \hl{\texttt{8 mod 3 = 2}}). To find the y position, I divide the pixel position by the number of rows. I find the mode of each array of X and Y pixel positions to find the most common number (which happens to be on a fiducial). If there is more than 1 fiducial in the image, the mode must be found for one fiducial then without looking at the same row/column twice, find the second most populated row/column.
 
     % subsection calculate_positions_of_pixels (end)
 
@@ -200,7 +200,7 @@ In a nutshell, \hl{\tt{scrib.pro}} takes an image of the sun with fiducials and 
 \begin{figure}[!ht]
     \centering
     \includegraphics[width=.9\textwidth]{plots_tables_images/mask_outline.eps}
-    \caption{The red outline pixels identify those above a threshold after running the two convolution filters. The rows tend to follo a spatial pattern of identifying the upper row of the 2x2 fiducial center. The blue outlined pixels identify the column pixels which are found using a 90 degree offset in the emboss filter. The position where the red and blue outlined pixels overlap mark the upper right pixel of the fiducial's 2x2 center. Since this is consistent for all 4 fiducials, we can confidently apply it to the dimmer suns. \emph{For now}.}
+    \caption{The red outline pixels identify those above a threshold after running the two convolution filters. The rows tend to follow a spatial pattern of identifying the upper row of the 2x2 fiducial center. The blue outlined pixels identify the column pixels which are found using a 90 degree offset in the emboss filter. The position where the red and blue outlined pixels overlap mark the upper right pixel of the fiducial's 2x2 center. Since this is consistent for all 4 fiducials, we can confidently apply it to the dimmer suns. \emph{For now}.}
 \end{figure}
 
 \begin{figure}[!ht]
@@ -216,7 +216,7 @@ In a nutshell, \hl{\tt{scrib.pro}} takes an image of the sun with fiducials and 
 \newpage
 
 \section{Exercises}
-    Since our attempt to simulate a realistic fiducial proved lacking quantative reasoning, we looked to extract fiducial values from the real solar image and place them onto a blank (or nearly blacnk, still uniform) 2d array. We found that even if the fiducial pixel values are inconsistent, as long as they form the shape of the fiducial and are substantially different from the the background value, they will appear to be ``perfect''. See Figure \ref{whodunit}
+    Since our attempt to simulate a realistic fiducial proved lacking quantitative reasoning, we looked to extract fiducial values from the real solar image and place them onto a blank (or nearly blank, still uniform) 2d array. We found that even if the fiducial pixel values are inconsistent, as long as they form the shape of the fiducial and are substantially different from the the background value, they will appear to be ``perfect''. See Figure \ref{whodunit}
 
 \begin{figure}[!ht]
     \centering
@@ -234,13 +234,13 @@ In a nutshell, \hl{\tt{scrib.pro}} takes an image of the sun with fiducials and 
             \includegraphics[width=0.98\linewidth, height = .34\textheight, keepaspectratio=true]{plots_tables_images/whodunitwho.eps}
             \includegraphics[width=0.98\linewidth, height = .34\textheight, keepaspectratio=true]{plots_tables_images/tryhard.eps}
         }    
-        \caption{On the left is the same image as Figure 12(b), but masked to values above a certain threshold. Here you see that there clearly exists a linear structure. I also tried instead of a gray bacground, a background that was equal to the most common pixel value (198 instead of 100). The goal was to try and blur out the fiducial as much as possible. On the right we see the convolution filter has a harder time finding the edges but we still see some clear vertical black lines that we can mask out.}
+        \caption{On the left is the same image as Figure 12(b), but masked to values above a certain threshold. Here you see that there clearly exists a linear structure. I also tried instead of a gray background, a background that was equal to the most common pixel value (198 instead of 100). The goal was to try and blur out the fiducial as much as possible. On the right we see the convolution filter has a harder time finding the edges but we still see some clear vertical black lines that we can mask out.}
 \end{figure}
 
 \section{Parameters}
     In an effort to keep our work rigorous, attempts have been made to minimize arbitrary variables. These attempts have sometimes failed. Here is a list of parameters to quantize:
     \begin{enumerate}
-        \item Width/Height of cropped box of which to look for fiducials in. Must be large enough to cover as much area of the sun as possible witout including the solar limb.
+        \item Width/Height of cropped box of which to look for fiducials in. Must be large enough to cover as much area of the sun as possible without including the solar limb.
         \item Threshold used to mask twice-convoluted image. As of \today, arbitrary.
         \item ...and others once we recognize them.
     \end{enumerate}
@@ -252,7 +252,7 @@ In a nutshell, \hl{\tt{scrib.pro}} takes an image of the sun with fiducials and 
     \begin{enumerate}
         \item With rotated fiducials above 2 degrees, cannot use \hl{\texttt{mode()}} to easily find most common pixel positions
         \item With rotated fiducials (and without knowing what angle they are rotated at beforehand), we may have to try multiple rotation angles for the kernels used in each filter.
-        \item If the fiducials are not plus-shaped the edge-detection tools cannot handle distortion. Ideally, a circle-shaped fidcial would be fine except that any distortion returns poor results with the edge detection filters. I think this is because the plus-shaped fiducials naturally have up and down edges which, even with distortion, can still be isolated. See Figure \ref{circfidcomp}
+        \item If the fiducials are not plus-shaped the edge-detection tools cannot handle distortion. Ideally, a circle-shaped fiducial would be fine except that any distortion returns poor results with the edge detection filters. I think this is because the plus-shaped fiducials naturally have up and down edges which, even with distortion, can still be isolated. See Figure \ref{circfidcomp}
         \item We must crop the sun in such a way that none of the solar limb is in the image. The reason is because the image is pixelated enough that the edge of the sun is detected as an edge, albeit one we do not want. A problem that arises from this is that when we crop out the solar limbs, we may cut off fiducials.
         \item If the fiducial is too close to the edge of the cropped image, then problems arise. There are two ways to solve this. We can tell the program to only look for complete fiducials or 2) ``zero'' out the incomplete fiducials so the program finds fiducials as normal.
         \item In \hl{\texttt{circscancrop}}, the thresholds are arbitrary. To scan for region 2, (i.e., the 50\% brightness sun) we have the threshold set to 0.3 of the sorted \hl{\texttt{max(image)}}. For region 3 (i.e., the 25\% brightness sun) the threshold is set to 0.2 of the sorted \hl{\texttt{max(image)}}. I tried making the threshold 0.3 of the image with the highest 1\% pixels eliminated, but the change in threshold made the circle-scanning break. Either I need to find a new way to parameterize the thresh or change the circle-scanning code. 
@@ -262,7 +262,7 @@ In a nutshell, \hl{\tt{scrib.pro}} takes an image of the sun with fiducials and 
 \begin{figure}
     \centering
     \includegraphics[width=.9\textwidth]{plots_tables_images/circfidcomp.eps}
-    \caption{The fiducials are initially circles but with a bit of distortion we see the typical method to find fiducials no longer works. Perhaps with circle-shaped fiducials we could apply some form of gaussian fitting but using plus-signs instead works better since it's hard to calculate the rotation angle from a bunch of distorted circles.}
+    \caption{The fiducials are initially circles but with a bit of distortion we see the typical method to find fiducials no longer works. Perhaps with circle-shaped fiducials we could apply some form of Gaussian fitting but using plus-signs instead works better since it's hard to calculate the rotation angle from a bunch of distorted circles.}
     \label{circfidcomp}
 \end{figure}
 
@@ -277,8 +277,8 @@ In a nutshell, \hl{\tt{scrib.pro}} takes an image of the sun with fiducials and 
             - Not only will cropping fail, limb fitting will also fail
         \item Bad pixels\\
             - Threshold finding has been changed to remedy this
-        \item When scanning in a circle, haven't completely coded fail-safes if it doesn't find auxilliary suns\\
-            - Probably have to do something where if I don't detect the auxilliary suns, I'll scan at different readii at specific intervals
+        \item When scanning in a circle, haven't completely coded fail-safes if it doesn't find auxiliary suns\\
+            - Probably have to do something where if I don't detect the auxiliary suns, I'll scan at different radii at specific intervals
         \item Image is rotated more than 2 degrees\\
             - Current fiducial finding method can't handle a rotated image well
             - GRIPS proposal says the pendulum will swing up to $\pm$ .1 degree; is this the same rotation parameter in our image?

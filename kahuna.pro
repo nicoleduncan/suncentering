@@ -807,6 +807,7 @@ print,'25% sun y pos: ',struct.center3.ypos
 ; Here we make the assumption that the darker regions are linearly darker so we can just divide by 2 and 4
 ; Works pretty well
 
+wholeimage = mrdfits(file)
 ideal = BYTSCL( READ_TIFF('plots_tables_images/dimsun_ideal.tiff',channels=1) )
 crop = wholeimage[struct.center1.xpos-rad:struct.center1.xpos+rad,$
     struct.center1.ypos-rad:struct.center1.ypos+rad]
@@ -844,8 +845,8 @@ ypb = (SHIFT_DIFF(EMBOSS(crop, az=90),dir=1)) lt thresh
 ; display,byte(crop),/square,title='100%'
 ; plot_edges,xpb,thick=6,setcolor=80
 ; plot_edges,ypb,thick=6,setcolor=255
-; ; -80 is about 3 stddev() above the minimum
-; ; -80 is also about half the minimum of xpb/ypb
+; -80 is about 3 stddev() above the minimum
+; -80 is also about half the minimum of xpb/ypb
 
 ; xpb = (SHIFT_DIFF(EMBOSS(dim50),dir=3)) lt thresh/2
 ; ypb = (SHIFT_DIFF(EMBOSS(dim50, az=90),dir=1)) lt thresh/2
@@ -907,7 +908,11 @@ endif
 ; ******************************************************************************************
 ; ******************************************************************************************
 ; ******************************************************************************************
-; MARCH 11
+; #       #     #     #####         #   #
+; #       #    # #    #   #         #   #
+; # #   # #   #   #   ####          #   #
+; #  # #  #   #####   #   #         #   #
+; #   #   #  #     #  #    #        #   #
 
 ; Trying to make a complete paraeter table - more intensive than I thought
 
@@ -956,6 +961,78 @@ endif
 ; endfor
 ; 
 ; defsysv,'!param',p
+
+; ******************************************************************************************
+; ******************************************************************************************
+; ******************************************************************************************
+
+; #       #     #     #####         #   ###
+; #       #    # #    #   #         #      #
+; # #   # #   #   #   ####          #   ###
+; #  # #  #   #####   #   #         #      #
+; #   #   #  #     #  #    #        #   ###
+
+; Fiducial cropping, let's get this down
+
+; bordermask = bytarr(nrow,ncol) + 1
+; bordermask[(2:nrow-2,2:ncol-2] = 0
+
+; min_val = mode(crop)
+; if total(bordermask*crop) gt n_elements(bordermask[where(bordermask eq 1)])*min_val then begin
+   
+;    ; Look at another 2 pixels in in
+;     bordermask = bytarr(nrow,ncol) + 1
+;     bordermask[(4:nrow-4,4:ncol-4] = 0
+;     if total(bordermask*crop) gt n_elements(bordermask[where(bordermask eq 1)])*min_val then begin
+;         new_crop = crop[(2:nrow-2,2:ncol-2]
+;     endif else begin
+;         new_crop = crop[(4:nrow-4,4:ncol-4]
+;     endelse
+; endif
+
+; Now, this is direction independent, what if we have good fiducials on one edge but not the other?
+; We need to look at each edge independently
+
+big = mrdfits(file)
+p_crop = big[struct.center1.xpos-rad:struct.center1.xpos+rad,$
+    struct.center1.ypos-rad:struct.center1.ypos+rad]
+
+
+;Not sure why, but the 2d arrays are turning into array[*]
+
+leftedge    = p_crop[0:2,*]
+topedge     = p_crop[*,nrow-3:nrow-1]
+rightedge   = p_crop[ncol-3:ncol-1,*]
+botedge     = p_crop[*,0:2]
+
+if (total(leftedge) gt n_elements(leftedge)*mode(p_crop)) then begin
+    ; another 2 pix p_crop check
+    if total(p_crop[0:5,*]) gt n_elements(p_crop[0:5,*])*mode(p_crop) then p_cropleft=1 else p_cropleft=2
+    ; newleftedge = p_crop[0:2,*]
+    ; endif else begin
+    ;     newleftedge = p_crop[0:5,*]
+    ; endelse
+endif else p_cropleft=0
+
+; Now do I do this for all sides?
+
+if (total(topedge) gt n_elements(topedge)*mode(p_crop)) then begin
+    if total(p_crop[*,nrow-5:nrow-1]) gt n_elements(p_crop[*,nrow-5:nrow-1])*mode(p_crop) then $
+        p_croptop=1 else p_croptop=2
+endif else p_croptop=0
+
+if (total(rightedge) gt n_elements(rightedge)*mode(p_crop)) then begin
+    if total(p_crop[ncol-5:ncol-1,*]) gt n_elements(p_crop[ncol-5:ncol-1,*])*mode(p_crop) then $
+        p_cropright=1 else p_cropright=2
+endif else p_cropright=0
+
+if (total(botedge) gt n_elements(botedge)*mode(p_crop)) then begin
+    if total(p_crop[*,0:5]) gt n_elements(p_crop[*,0:5])*mode(p_crop) then p_cropbot=1 else p_cropbot=2
+endif else p_cropbot=0
+
+
+
+newp_crop = p_crop[p_cropleft*3:ncol-1-p_cropright*3,p_cropbot*3:nrow-1-p_croptop*3]
 
 ; ******************************************************************************************
 ; ******************************************************************************************
