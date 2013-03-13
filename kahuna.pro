@@ -319,7 +319,8 @@ COMMON vblock, wholeimage
 
 start = SYSTIME(1,/s)
 
-arr=(findgen(!param.deg_num) + 90)*!dtor
+res = 10.
+arr=(findgen(!param.deg_num*res)/res + 90)*!dtor
 ; only adding 90 so that it starts from 12 o'clock assuming there is
 ; no dim sun at that location
 
@@ -328,16 +329,25 @@ r2bit = 2
 
 ; The way we have it scanning now is if it doesn't find the aux sun, it scans at a radius interval of 
 ; 10 so that it looks at the r_orig - interval and r_orig + interval radii. Now, what if the sun isn't there? 
+
+r2 = radius + 10*r2bit
+x = radius*cos(arr) + mainxpos
+y = radius*sin(arr) + mainypos
+x2 = r2*cos(arr) + mainxpos
+y2 = r2*sin(arr) + mainypos
+
+
 loop: BEGIN
     IF !param.file EQ 'dimsun1.fits' THEN radius = BYTE( !param.scan_radius ) 
 
-    r2 = radius + 10*r2bit ;10 is an arbitrary number, can be anything, really
+    ; r2 = radius + 10*r2bit ;10 is an arbitrary number, can be anything, really
 
-    x = radius*cos(arr) + mainxpos
-    y = radius*sin(arr) + mainypos
-    x2 = r2*cos(arr) + mainxpos
-    y2 = r2*sin(arr) + mainypos
+    ; x = radius*cos(arr) + mainxpos
+    ; y = radius*sin(arr) + mainypos
+    ; x2 = r2*cos(arr) + mainxpos
+    ; y2 = r2*sin(arr) + mainypos
 
+; stop
     ; Have to use .3 instead of .25 for dimsun2, don't know why
 
     sorted =  wholeimage[sort(wholeimage)]
@@ -358,24 +368,22 @@ loop: BEGIN
     ; print,aux_where, ' aux_where before if statement'
     IF aux_where NE 0 THEN BEGIN
     ; stop
-        in_inner  = (where(wholeimage[x,y]     GT thresh))[0] - !param.circscan_buffer
-        in_outer  = (where(wholeimage[x2,y2]   GT thresh))[0] - !param.circscan_buffer
-        out_inner = (where(wholeimage[x,y]     GT thresh))[-1] + !param.circscan_buffer
-        out_outer = (where(wholeimage[x2,y2]   GT thresh))[-1] + !param.circscan_buffer
+        in_inner  = ((where(wholeimage[x,y]     GT thresh))[0])/res - !param.circscan_buffer
+        out_inner = ((where(wholeimage[x,y]     GT thresh))[-1])/res + !param.circscan_buffer
+        in_outer  = ((where(wholeimage[x2,y2]   GT thresh))[0])/res - !param.circscan_buffer
+        out_outer = ((where(wholeimage[x2,y2]   GT thresh))[-1])/res + !param.circscan_buffer
     ENDIF ELSE BEGIN
         r2bit*=-1
         GOTO, loop
     ENDELSE
 END
 
-r2bit = 2
-r2 = radius + 10*r2bit
-x2 = r2*cos(arr) + mainxpos
-y2 = r2*sin(arr) + mainypos
+print,res
+print,in_inner
+print,out_inner
 
 otherloop: BEGIN
     IF REGION EQ 3 THEN BEGIN
-    ; print,region,' Region'
         thresh = 0.2*max(wholeimage) ;dimsun2 works if i set the thresh to .2 instead of .15
         ; The other sun is so dim that weird parts are being picked up. How to fix? Is being dim a problem?
 
@@ -392,15 +400,15 @@ otherloop: BEGIN
 
         IF n_where NE 0 THEN BEGIN
 
-            part1 = wholeimage[x[0:in_inner],y[0:in_inner]]
-            part2 = wholeimage[x[out_inner:N_ELEMENTS(x)-1],y[out_inner:N_ELEMENTS(x)-1]]
-            part1b = wholeimage[x2[0:in_outer],y2[0:in_outer]]
-            part2b = wholeimage[x[out_outer:N_ELEMENTS(x)-1],y[out_outer:N_ELEMENTS(x)-1]]
+            part1 = wholeimage[x[0:in_inner*res],y[0:in_inner*res]]
+            part2 = wholeimage[x[out_inner*res:N_ELEMENTS(x)-1],y[out_inner*res:N_ELEMENTS(x)-1]]
+            part1b = wholeimage[x2[0:in_outer*res],y2[0:in_outer*res]]
+            part2b = wholeimage[x[out_outer*res:N_ELEMENTS(x)-1],y[out_outer*res:N_ELEMENTS(x)-1]]
 
-            in_inner  = (where([part1,part2] gt thresh))[0] - !param.circscan_buffer
-            out_inner = (where([part1,part2] gt thresh))[-1] - !param.circscan_buffer
-            in_outer  = (where([part1b,part2b] gt thresh))[0] - !param.circscan_buffer
-            out_outer = (where([part1b,part2b] gt thresh))[-1] - !param.circscan_buffer
+            in_inner  = ((where([part1,part2]   gt thresh))[0])/res - !param.circscan_buffer
+            out_inner = ((where([part1,part2]   gt thresh))[-1])/res + !param.circscan_buffer
+            in_outer  = ((where([part1b,part2b] gt thresh))[0])/res - !param.circscan_buffer
+            out_outer = ((where([part1b,part2b] gt thresh))[-1])/res + !param.circscan_buffer
 
         ENDIF ELSE BEGIN
             r2bit*=-1
@@ -410,15 +418,24 @@ otherloop: BEGIN
         ; Setting this to 0 actually messes up fitting. use only to show what pixels are being circscanned
         ; wholeimage[x[in_inner:out_inner],y[in_inner:out_inner]] = 0
         ; wholeimage[x2[in_outer:out_outer],y2[in_outer:out_outer]] = 0
-
     ENDIF
 END
+
+; print,in_inner
+; print,in_outer
+; print,out_inner
+; print,out_outer
+
+; stop
+
 
 centerangle = !dtor*(90 + mean([in_inner,out_inner]))
 centerx = mainxpos + radius*cos(centerangle)
 centery = mainypos + radius*sin(centerangle)
 
+stop
 ; crop_box = BYTE(!param.crop_box)
+
 image = wholeimage[centerx - !param.crop_box:centerx + !param.crop_box,$
     centery - !param.crop_box:centery + !param.crop_box]
 xoffset = centerx- !param.crop_box
