@@ -284,7 +284,8 @@ In a nutshell, \hl{\tt{scrib.pro}} takes an image of the sun with fiducials and 
             - GRIPS proposal says the pendulum will swing up to $\pm$ .1 degree; is this the same rotation parameter in our image?
         \item Fiducial is too close to edge\\
             - If a fiducial is too close to edge of cropped image, incomplete fiducial shape confuses program
-            - Not sure how to fix yet (\today)
+            - Not sure how to fix yet
+            - Trying a border mask
         \item Scanning in a cirle at high resolution (higher than 1 pixel a degree) makes the program   break, although I'm not sure why\\
             - Just fixed it (Mar 13, 2013)
     \end{enumerate}

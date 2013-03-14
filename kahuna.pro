@@ -686,6 +686,21 @@ END
 ;**************************************************************************************************
 
 
+function cropme, input, pix
+
+    s = size(input,/d)
+    nrow = s[0]
+    ncol = s[1]
+    output = input[(nrow-1)/2 - pix:(nrow-1)/2 + pix,(ncol-1)/2 - pix:(ncol-1)/2 + pix]
+
+return, output
+end
+
+;**************************************************************************************************
+;*                                                                                                *
+;**************************************************************************************************
+
+
 ; docformat = 'rst'
 ;
 ;+
@@ -799,22 +814,23 @@ print,'25% sun y pos: ',struct.center3.ypos
 
 wholeimage = MRDFITS(file)
 ideal = BYTSCL( READ_TIFF('plots_tables_images/dimsun_ideal.tiff',channels=1) )
-crop = wholeimage[struct.center1.xpos-rad:struct.center1.xpos+rad,$
-    struct.center1.ypos-rad:struct.center1.ypos+rad]
 
-icrop = ideal[struct.center1.xpos-rad:struct.center1.xpos+rad,$
-    struct.center1.ypos-rad:struct.center1.ypos+rad]
+crop = wholeimage[struct.center1.xpos-!param.safecrop:struct.center1.xpos+!param.safecrop,$
+    struct.center1.ypos-!param.safecrop:struct.center1.ypos+!param.safecrop]
+
+icrop = ideal[struct.center1.xpos-!param.safecrop:struct.center1.xpos+!param.safecrop,$
+    struct.center1.ypos-!param.safecrop:struct.center1.ypos+!param.safecrop]
 
 p = icrop[SORT(icrop)]
 idealthresh = !param.idealthresh_mult*MAX( p[0:(1-!param.elim_perc/100)*(N_ELEMENTS(p)-1)] )
 
 imask = icrop lt idealthresh
 ; dim50 = .5*crop
-dim50 = wholeimage[struct.center2.xpos-rad:struct.center2.xpos+rad,$
-    struct.center2.ypos-rad:struct.center2.ypos+rad]
+dim50 = wholeimage[struct.center2.xpos-!param.safecrop:struct.center2.xpos+!param.safecrop,$
+    struct.center2.ypos-!param.safecrop:struct.center2.ypos+!param.safecrop]
 ; dim25 = .25*crop
-dim25 = wholeimage[struct.center3.xpos-rad:struct.center3.xpos+rad,$
-    struct.center3.ypos-rad:struct.center3.ypos+rad]
+dim25 = wholeimage[struct.center3.xpos-!param.safecrop:struct.center3.xpos+!param.safecrop,$
+    struct.center3.ypos-!param.safecrop:struct.center3.ypos+!param.safecrop]
 
 ; Actually using the wholeimage cropped areas reveal little difference than with the cheating method
 ; Doesn't really matter which one we use, practically same result
@@ -984,8 +1000,8 @@ endif
 ; We need to look at each edge independently
 
 big = MRDFITS(file)
-p_crop = big[struct.center1.xpos-rad:struct.center1.xpos+rad,$
-    struct.center1.ypos-rad:struct.center1.ypos+rad]
+p_crop = big[struct.center1.xpos-!param.safecrop:struct.center1.xpos+!param.safecrop,$
+    struct.center1.ypos-!param.safecrop:struct.center1.ypos+!param.safecrop]
 
 
 ;Not sure why, but the 2d arrays are turning into array[*]
@@ -1006,6 +1022,8 @@ endif else p_cropleft=0
 
 ; Now do I do this for all sides?
 
+; the thing right after the if statement is wrong
+
 if (TOTAL(topedge) gt N_ELEMENTS(topedge)*MODE(p_crop)) then begin
     if TOTAL(p_crop[*,nrow-5:nrow-1]) gt N_ELEMENTS(p_crop[*,nrow-5:nrow-1])*MODE(p_crop) then $
         p_croptop=1 else p_croptop=2
@@ -1022,7 +1040,57 @@ endif else p_cropbot=0
 
 
 
-newp_crop = p_crop[p_cropleft*3:ncol-1-p_cropright*3,p_cropbot*3:nrow-1-p_croptop*3]
+; newp_crop = p_crop[p_cropleft*3:ncol-1-p_cropright*3,p_cropbot*3:nrow-1-p_croptop*3]
+
+
+; ******************************************************************************************
+; ******************************************************************************************
+; ******************************************************************************************
+
+
+; #       #     #     #####         #     #
+; #       #    # #    #   #         #    ## 
+; # #   # #   #   #   ####          #   # #
+; #  # #  #   #####   #   #         #  #####
+; #   #   #  #     #  #    #        #     #
+
+
+; convolving a larger image then cropping down
+
+truecrop50 = cropme(dim50,!param.truecrop)
+
+xpb = shift_diff(emboss(crop),dir=3) lt thresh
+ypb = shift_diff(emboss(crop),dir=1) lt thresh
+
+window,0
+cgimage,crop[10:41,8:42],/k
+xpb = xpb[10:41,8:42]
+ypb = ypb[10:41,8:42]
+
+nrow = (size(tmpcrop,/dim))[0]
+ncol = (size(tmpcrop,/dim))[1]
+ind_col = WHERE(xpb eq 1) mod ncol
+ind_row = WHERE(ypb eq 1)/nrow
+
+
+a = MODE(ind_col)
+b = MODE(ind_col[WHERE(ind_col ne a)])
+
+c = MODE(ind_row)
+d = MODE(ind_row[WHERE(ind_row ne c)])
+
+
+
+; Just to make it sorted
+xpos = [a,b]
+ypos = [c,d]
+xpos = xpos[SORT(xpos)]
+ypos = ypos[SORT(ypos)]
+
+window,1
+cgimage,tmpcrop*xpb,/k
+
+; Results are promising! Convolving then cropping seems to be good.
 
 ; ******************************************************************************************
 ; ******************************************************************************************
@@ -1038,8 +1106,8 @@ stop
 
 ; Testing out with diagonals
 wholeimage = BYTSCL( READ_TIFF('plots_tables_images/diag.tiff',channels=1) )
-crop = wholeimage[struct.center1.xpos-rad:struct.center1.xpos+rad,$
-    struct.center1.ypos-rad:struct.center1.ypos+rad]
+crop = wholeimage[struct.center1.xpos-!param.safecrop:struct.center1.xpos+!param.safecrop,$
+    struct.center1.ypos-!param.safecrop:struct.center1.ypos+!param.safecrop]
 cgimage,EMBOSS(crop,az=45),/k
 
 
