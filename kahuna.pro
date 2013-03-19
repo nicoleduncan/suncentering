@@ -1060,15 +1060,17 @@ endif else p_cropbot=0
 truecrop50 = cropme(dim50,!param.truecrop)
 
 xpb = shift_diff(emboss(crop),dir=3) lt thresh
-ypb = shift_diff(emboss(crop),dir=1) lt thresh
+ypb = shift_diff(emboss(crop,az=90),dir=1) lt thresh
 
-window,0
-cgimage,crop[10:41,8:42],/k
-xpb = xpb[10:41,8:42]
-ypb = ypb[10:41,8:42]
+tmpcrop = crop[10:43,8:42]
 
-nrow = (size(tmpcrop,/dim))[0]
-ncol = (size(tmpcrop,/dim))[1]
+; window,0
+; cgimage,tmpcrop,/k
+xpb = xpb[10:43,8:42]
+ypb = ypb[10:43,8:42]
+
+ncol = (size(tmpcrop,/dim))[0]
+nrow = (size(tmpcrop,/dim))[1]
 ind_col = WHERE(xpb eq 1) mod ncol
 ind_row = WHERE(ypb eq 1)/nrow
 
@@ -1087,10 +1089,124 @@ ypos = [c,d]
 xpos = xpos[SORT(xpos)]
 ypos = ypos[SORT(ypos)]
 
-window,1
-cgimage,tmpcrop*xpb,/k
+; window,1
+; cgimage,tmpcrop*xpb,/k
 
 ; Results are promising! Convolving then cropping seems to be good.
+
+; ******************************************************************************************
+; ******************************************************************************************
+; ******************************************************************************************
+
+; #       #     #     #####         #   ######
+; #       #    # #    #   #         #   # 
+; # #   # #   #   #   ####          #   ####
+; #  # #  #   #####   #   #         #      ##
+; #   #   #  #     #  #    #        #  #####
+
+
+; Convolving then cropping looks good, but how to make the program to look for 2, 3, or 4 fiducials?
+; How will will the program know?
+
+; display,byte(tmpcrop),/square,title='100%'
+; plot_edges,xpb,thick=6,setcolor=80
+; plot_edges,ypb,thick=6,setcolor=255
+
+
+
+
+; ******************************************************************************************
+; ******************************************************************************************
+; ******************************************************************************************
+
+
+; #       #     #     #####         #    ####
+; #       #    # #    #   #         #   #    #
+; # #   # #   #   #   ####          #    ####
+; #  # #  #   #####   #   #         #   #    #
+; #   #   #  #     #  #    #        #    ####
+
+
+; After convol, crop, then check bordres - if detect fiducial, look 6 pixels inside of position
+; if N_pixels < 6, then crop that part out
+
+; Issue is how to threshold it - only a fraction below shape of gaussian
+
+; can't use median unless I median the whole image
+d = size(tmpcrop,/d)
+bordermask = bytarr(d[0],d[1]) + 1
+bordermask[1:d[0]-2,1:d[1]-2] = 0
+
+mcrop = bordermask * tmpcrop
+
+duhcrop = [reform(mcrop[*,d[1]-1]),reverse(reform(mcrop[d[0]-1,*])),reverse(reform(mcrop[*,0])),$
+    reform(mcrop[0,*])]
+
+; I feel like I've dome something like this before... then I ended up resorting to using mode
+; ...
+; ...
+
+; Looking at outermost pixel, what is best way to identify a fiducial?
+
+; ******************************************************************************************
+; ******************************************************************************************
+; ******************************************************************************************
+
+; #       #     #     #####         #    ####
+; #       #    # #    #   #         #   #    #
+; # #   # #   #   #   ####          #    ####
+; #  # #  #   #####   #   #         #       #
+; #   #   #  #     #  #    #        #     #
+
+; So, we have several ways to get peaks from our *duhcrop* array
+
+; duhcrop - duhcrop[1:n_elements(duhcrop)-2]
+; - See where the difference between elements is highest
+
+; duhcrop - ts_smooth(duhcrop,5)
+; - Take time series average of array and see where difference is highest
+
+; duhcrop - median(duhcrop,5) 
+; - same dif
+
+; threshold it with mean(duhcrop) - 2*stddev(duhcrop)
+; - why? Using a threshold is arbitrary
+
+; Can't we just keep the convolution thing and not have to worry about individual pixel detection?
+
+; ...
+
+xmcrop = mcrop * xpb
+ymcrop = mcrop * ypb
+
+
+ind_col = WHERE(xpb eq 1) mod ncol
+ind_row = WHERE(ypb eq 1)/nrow
+
+if ind_row eq !null then row_border = WHERE(HISTOGRAM(ind_row) ne 0)+1
+if ind_col eq !null then col_border = WHERE(HISTOGRAM(ind_col) ne 0)+1
+
+; apparently histogram doesn't like it when there is only 1 value
+if N_ELEMENTS(row_border) eq 1 then row_border = MODE(ind_row)
+if N_ELEMENTS(col_border) eq 1 then col_border = MODE(ind_col)
+
+; now that I've identified pixels, have to look inside positions
+
+; Step 1: Look inside pixels
+; Step 2: Figure out what I'm looking for
+
+row_slice_a = tmpcrop[*,row_border[0]]
+row_slice_b = tmpcrop[*,row_border[1]]
+col_slice = tmpcrop[col_border,*]
+
+; Can't identify with a minimum
+
+if N_ELEMENTS(FLOAT(col_slice[0:6]) - MODE(tmpcrop) lt somevalue) lt 6 then ;It's cut off
+; Instead of modeling a fiducial shape, counting where the difference between fiducial values
+; and mode is above a certain threshold
+
+; Is this it?
+
 
 ; ******************************************************************************************
 ; ******************************************************************************************
@@ -1113,7 +1229,7 @@ cgimage,EMBOSS(crop,az=45),/k
 
 
 ; Big ass kernel is not good
-kernel = [[1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,1],$
+kernel=[[1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,1],$
         [-1,1,-1,-1,-1,-1,-1,-1,-1,-1,1,-1],$
         [-1,-1,1,-1,-1,-1,-1,-1,-1,1,-1,-1],$
         [-1,-1,-1,1,-1,-1,-1,-1,1,-1,-1,-1],$
