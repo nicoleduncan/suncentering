@@ -730,13 +730,7 @@ tmpcrop = input[10:43,8:42]
 xpb = xpb[10:43,8:42]
 ypb = ypb[10:43,8:42]
 
-s = size(tmpcrop,/d)
-bordermask = bytarr(s[0],s[1]) + 1
-; any specific reason we have the border 2 pixels instead of 1?
-bordermask[1:s[0]-2,1:s[1]-2] = 0
-
-mcrop = bordermask * tmpcrop
-
+s = SIZE(tmpcrop,/dim)
 ncol = s[0]
 nrow = s[1]
 ind_col = WHERE(xpb eq 1) mod ncol
@@ -755,76 +749,23 @@ ypos = [c,d]
 xpos = xpos[SORT(xpos)]
 ypos = ypos[SORT(ypos)]
 
-xmcrop = bordermask * xpb
-ymcrop = bordermask * ypb
+xmcrop = mcrop * xpb
+ymcrop = mcrop * ypb
 
-ind_col = WHERE(xmcrop eq 1) mod ncol
-ind_row = WHERE(ymcrop eq 1)/nrow
+ind_col = WHERE(xpb eq 1) mod ncol
+ind_row = WHERE(ypb eq 1)/nrow
 
-; if N_ELEMENTS(row_border) eq 1 then row_border = MODE(ind_row)
-; if N_ELEMENTS(col_border) eq 1 then col_border = MODE(ind_col)
+if ind_row eq !null then row_border = WHERE(HISTOGRAM(ind_row) ne 0)+1
+if ind_col eq !null then col_border = WHERE(HISTOGRAM(ind_col) ne 0)+1
 
-; Look at each index, 6 pixels in
+if N_ELEMENTS(row_border) eq 1 then row_border = MODE(ind_row)
+if N_ELEMENTS(col_border) eq 1 then col_border = MODE(ind_col)
 
-; If we see a fiducial cut off, either
+row_slice_a = tmpcrop[*,row_border[0]]
+row_slice_b = tmpcrop[*,row_border[1]]
+col_slice = tmpcrop[col_border,*]
 
-; ignore fiducial
-; or
-; crop it out
-; need to identify whether to use 0:6 or -7:-1
-if WHERE(xmcrop eq 1) eq [-1] then print,'col_slice boo' else begin
-    col_slice = FLTARR(N_ELEMENTS(ind_col),nrow)
-    for i=0,N_ELEMENTS(ind_col)-1 do begin
-        col_slice[i,*] = REFORM(tmpcrop[ind_col[i],*])
-        if WHERE(xpb[ind_col[i],*] eq 1) eq [0] then begin
-            print,'cropping 0:6'
-
-            ; So this is the part of the program where we need to 
-            ; do the smart thing of checking to make sure that the fiducials are being
-            ; thresholded correctly, but how do we do that? 
-
-            ; What is somevalue? How do we quantify it?
-
-    ; if N_ELEMENTS(FLOAT(col_slice[i,0:6]) - MODE(tmpcrop) lt somevalue) lt 6 then okaybit=0 else okaybit=1
-    ; I think we should use something with derivatives because we know approximately 
-    ; how dim the fiducials will get. Instead of replying on pixel values, we rely
-    ; on the relative pixel changes which may/may not be more robust
-
-    if N_ELEMENTS(DERIV(DERIV(FLOAT(col_slice[i,0:6])))) gt 0 lt 6 then okb = 0 else okb = 1
-
-    ; This isn't going to work because the threshold of 0 is too high. According to this
-    ; current setup, if a fiducial is right on the edge, it'll ALWAYS be bad.
-
-    
-    ; I can actually not use parentheses here, is it ok?
-    ;Honestly, what's the purpose of doing this "X-Y lt thresh" instead of "X lt thresh"?
-
-        endif
-        if WHERE(xpb[ind_col[i],*] eq 1) eq [-1] then print,'cropping -7:-1'
-    endfor
-endelse
-
-if WHERE(ymcrop eq 1) eq [-1] then print,'row_slice boo' else begin
-    row_slice = FLTARR(ncol,N_ELEMENTS(ind_row))
-    for i=0,N_ELEMENTS(ind_row)-1 do begin
-        row_slice[*,i] = REFORM(tmpcrop[*,ind_row[i]])
-        if WHERE(ypb[ind_row[i],*] eq 1) eq [0] then print,'cropping 0:6'
-        if WHERE(ypb[ind_row[i],*] eq 1) eq [-1] then print,'cropping -7:-1'
-    endfor
-endelse
-
-print,''
-print, 'STAHP'
-
-; wait, why is it that if I do something to tmpcrop it wiggs out?
-aa = tmpcrop
-window,0
-plot,float(aa[11,*]) - mode(aa),psym=-4
-window,1
-plot,(DERIV(DERIV(float(tmpcrop[11,*]))))[*],psym=-4
-
-stop
-
+if N_ELEMENTS(FLOAT(col_slice[0:6]) - MODE(tmpcrop) lt somevalue) lt 6 then okaybit=0 else okaybit=1
 
 return,okaybit
 end
@@ -941,14 +882,478 @@ print,'25% sun y pos: ',struct.center3.ypos
 ; window,3
 ; cgimage,wholeimage3,/k
 
+; Here we make the assumption that the darker regions are linearly darker so we can just divide by 2 and 4
+; Works pretty well
+
+wholeimage = MRDFITS(file)
+ideal = BYTSCL( READ_TIFF('plots_tables_images/dimsun_ideal.tiff',channels=1) )
+
 crop = wholeimage[struct.center1.xpos-!param.safecrop:struct.center1.xpos+!param.safecrop,$
     struct.center1.ypos-!param.safecrop:struct.center1.ypos+!param.safecrop]
+
+icrop = ideal[struct.center1.xpos-!param.safecrop:struct.center1.xpos+!param.safecrop,$
+    struct.center1.ypos-!param.safecrop:struct.center1.ypos+!param.safecrop]
+
+p = icrop[SORT(icrop)]
+idealthresh = !param.idealthresh_mult*MAX( p[0:(1-!param.elim_perc/100)*(N_ELEMENTS(p)-1)] )
+
+imask = icrop lt idealthresh
+; dim50 = .5*crop
+dim50 = wholeimage[struct.center2.xpos-!param.safecrop:struct.center2.xpos+!param.safecrop,$
+    struct.center2.ypos-!param.safecrop:struct.center2.ypos+!param.safecrop]
+; dim25 = .25*crop
+dim25 = wholeimage[struct.center3.xpos-!param.safecrop:struct.center3.xpos+!param.safecrop,$
+    struct.center3.ypos-!param.safecrop:struct.center3.ypos+!param.safecrop]
+
+; Actually using the wholeimage cropped areas reveal little difference than with the cheating method
+; Doesn't really matter which one we use, practically same result
+
+
+; thresh was -80, now, how do I do quantify this sorcery?
 thresh = 0.5*MIN((SHIFT_DIFF(EMBOSS(crop),dir=3)))
-borderbit = bordercheck(wholeimage)
-edgefidbit = edgefidcheck(crop,thresh)
+
+s = SIZE(crop,/dim)
+nrow = s[0]
+ncol = s[1]
+
+xpb = (SHIFT_DIFF(EMBOSS(crop),dir=3)) lt thresh
+ypb = (SHIFT_DIFF(EMBOSS(crop, az=90),dir=1)) lt thresh
+
+;Don't need to display these anymore (or at least for now)
+
+; display,byte(crop),/square,title='100%'
+; plot_edges,xpb,thick=6,setcolor=80
+; plot_edges,ypb,thick=6,setcolor=255
+; -80 is about 3 stddev() above the minimum
+; -80 is also about half the minimum of xpb/ypb
+
+; xpb = (SHIFT_DIFF(EMBOSS(dim50),dir=3)) lt thresh/2
+; ypb = (SHIFT_DIFF(EMBOSS(dim50, az=90),dir=1)) lt thresh/2
+
+; ; ps_start,filename='plots_tables_images/dim50.eps',/color,/encapsulated,xsize=8,ysize=8,/inches
+; display,byte(dim50),/square,title='50% Dim'
+; plot_edges,xpb,thick=6,setcolor=80
+; plot_edges,ypb,thick=6,setcolor=255
+; ; ps_end,resize=100
+
+
+
+; ; so, fixing circscancrop to not set parts of wholeimage to 0 messes up the fid finding here because 
+; ; the cropped area now includes a part of a fiducial. fixing.
+; xpb = (SHIFT_DIFF(EMBOSS(dim25),dir=3)) lt thresh/4
+; ypb = (SHIFT_DIFF(EMBOSS(dim25, az=90),dir=1)) lt thresh/4
+; ; ps_start,filename='plots_tables_images/dim25.eps',/color,/encapsulated,xsize=8,ysize=8,/inches       
+; display,byte(dim25),/square,title='25% Dim'
+; plot_edges,xpb,thick=6,setcolor=80
+; plot_edges,ypb,thick=6,setcolor=255
+; ; ps_end,resize=100
+
+
+; ; Working with image of blank sun with real fiducials:
+; whitecrop = bytarr(s) + 198  ;198 is the mode of the not-fiducial-maskt
+; fakesun = imask*crop + whitecrop*(icrop gt idealthresh)
+; ; cgsurface,(SHIFT_DIFF(EMBOSS(fakesun),dir=3))
+; a = SHIFT_DIFF(EMBOSS(fakesun),dir=3)
+; cgimage,a,/k
+; cgimage,a*(a gt 10),/k
+
+
+
+
+
+
+
+
+; ******************************************************************************************
+; ******************************************************************************************
+; ******************************************************************************************
+
+wn_row = (SIZE(wholeimage,/dim))[0]
+wn_col = (SIZE(wholeimage,/dim))[1]
+datmask = BYTARR(wn_row,wn_col) + 1
+datmask[(1/!param.mask_border_perc)*wn_row:(1-(1/!param.mask_border_perc))*wn_row,$
+    (1/!param.mask_border_perc)*wn_col:(1-(1/!param.mask_border_perc))*wn_col] = 0
+
+
+; min_val should be a really low number, the mode of wholeimage is 3
+min_val = MODE(wholeimage)
+if TOTAL(datmask*wholeimage) gt N_ELEMENTS(datmask[WHERE(datmask eq 1)])*min_val then begin
+   ; Don't use this image, bro.
+endif
+
+; If in the case where we want the above picture still... then....
+
+
+; ******************************************************************************************
+; ******************************************************************************************
+; ******************************************************************************************
+; #       #     #     #####         #   #
+; #       #    # #    #   #         #   #
+; # #   # #   #   #   ####          #   #
+; #  # #  #   #####   #   #         #   #
+; #   #   #  #     #  #    #        #   #
+
+; Trying to make a complete paraeter table - more intensive than I thought
+
+
+; Current parameters
+; scan_width          5
+; sundiam             70
+; nstrips             5
+; order               2
+; ministrip_length    13
+; sundiam             70
+; rad                 20
+; scan_radius         149
+; crop_box            60
+; reg1thresh_mult     .65
+
+
+; Ghost parameters (in program but not in pblock.txt)
+; These variable names do not exist in the program so don't bother searching for them
+
+
+; reg1thresh          0.25        ; Thresh used when running quickmask on region 1
+; circscan_buffer     10          ; After scanning for aux suns in a circle, how pany pixels to step back/forward
+;                                 ; from start/stop
+; elim_perc           1           ; How many pixels to eliminate from masks to find maximums for thresholds
+; mask_border_perc    10          ; What percentage of width/height should we make a NPZ (no pixel zone) when 
+;                                 ; deciding whether or not to use image for sun centering
+; idealthresh_mult    .25         ; Multiplier of ideal image maximum
+; reg2thresh_mult     .3          ; Multiplier of image maximum for circscancrop region 2
+; reg3thresh_mult     .2          ; Multiplier of image maximum for circscancrop region 3
+; scanflip            10          ; If no sun is found when running circscancrop, scan at -2*scanflip radius units
+; deg_num             360         ; Number of elements in circle array - can be 720 to scan at a finer resolution
+
+
+
+; Maybe defining system variables would be better for this... I read in a txt file, make a structure of
+; n_elements(), name them like struct.'name' = 'val' or something, then call it !params.scan_width or something
+
+; Cleaner than a common block!
+
+;pasting copy at beginning of code so we can actually use this:
+; p = create_struct(var[0],num[0])
+; 
+; for i=0,n_elements(var)-2 do begin
+;     p = create_struct(p,var[i+1],num[i+1])
+; endfor
+; 
+; defsysv,'!param',p
+
+; ******************************************************************************************
+; ******************************************************************************************
+; ******************************************************************************************
+
+; #       #     #     #####         #   ###
+; #       #    # #    #   #         #      #
+; # #   # #   #   #   ####          #   ###
+; #  # #  #   #####   #   #         #      #
+; #   #   #  #     #  #    #        #   ###
+
+; Fiducial cropping, let's get this down
+
+; bordermask = bytarr(nrow,ncol) + 1
+; bordermask[(2:nrow-2,2:ncol-2] = 0
+
+; min_val = mode(crop)
+; if total(bordermask*crop) gt n_elements(bordermask[where(bordermask eq 1)])*min_val then begin
+   
+;    ; Look at another 2 pixels in in
+;     bordermask = bytarr(nrow,ncol) + 1
+;     bordermask[(4:nrow-4,4:ncol-4] = 0
+;     if total(bordermask*crop) gt n_elements(bordermask[where(bordermask eq 1)])*min_val then begin
+;         new_crop = crop[(2:nrow-2,2:ncol-2]
+;     endif else begin
+;         new_crop = crop[(4:nrow-4,4:ncol-4]
+;     endelse
+; endif
+
+; Now, this is direction independent, what if we have good fiducials on one edge but not the other?
+; We need to look at each edge independently
+
+big = MRDFITS(file)
+p_crop = big[struct.center1.xpos-!param.safecrop:struct.center1.xpos+!param.safecrop,$
+    struct.center1.ypos-!param.safecrop:struct.center1.ypos+!param.safecrop]
+
+
+;Not sure why, but the 2d arrays are turning into array[*]
+
+leftedge    = p_crop[0:2,*]
+topedge     = p_crop[*,nrow-3:nrow-1]
+rightedge   = p_crop[ncol-3:ncol-1,*]
+botedge     = p_crop[*,0:2]
+
+if (TOTAL(leftedge) gt N_ELEMENTS(leftedge)*MODE(p_crop)) then begin
+    ; another 2 pix p_crop check
+    if TOTAL(p_crop[0:5,*]) gt N_ELEMENTS(p_crop[0:5,*])*MODE(p_crop) then p_cropleft=1 else p_cropleft=2
+    ; newleftedge = p_crop[0:2,*]
+    ; endif else begin
+    ;     newleftedge = p_crop[0:5,*]
+    ; endelse
+endif else p_cropleft=0
+
+; Now do I do this for all sides?
+
+; the thing right after the if statement is wrong
+
+if (TOTAL(topedge) gt N_ELEMENTS(topedge)*MODE(p_crop)) then begin
+    if TOTAL(p_crop[*,nrow-5:nrow-1]) gt N_ELEMENTS(p_crop[*,nrow-5:nrow-1])*MODE(p_crop) then $
+        p_croptop=1 else p_croptop=2
+endif else p_croptop=0
+
+if (TOTAL(rightedge) gt N_ELEMENTS(rightedge)*MODE(p_crop)) then begin
+    if TOTAL(p_crop[ncol-5:ncol-1,*]) gt N_ELEMENTS(p_crop[ncol-5:ncol-1,*])*MODE(p_crop) then $
+        p_cropright=1 else p_cropright=2
+endif else p_cropright=0
+
+if (TOTAL(botedge) gt N_ELEMENTS(botedge)*MODE(p_crop)) then begin
+    if TOTAL(p_crop[*,0:5]) gt N_ELEMENTS(p_crop[*,0:5])*MODE(p_crop) then p_cropbot=1 else p_cropbot=2
+endif else p_cropbot=0
+
+
+
+; newp_crop = p_crop[p_cropleft*3:ncol-1-p_cropright*3,p_cropbot*3:nrow-1-p_croptop*3]
+
+
+; ******************************************************************************************
+; ******************************************************************************************
+; ******************************************************************************************
+
+
+; #       #     #     #####         #     #
+; #       #    # #    #   #         #    ## 
+; # #   # #   #   #   ####          #   # #
+; #  # #  #   #####   #   #         #  #####
+; #   #   #  #     #  #    #        #     #
+
+
+; convolving a larger image then cropping down
+print, 'stop stop stop'
+stop
+
+truecrop50 = cropme(dim50,!param.truecrop)
+
+xpb = shift_diff(emboss(crop),dir=3) lt thresh
+ypb = shift_diff(emboss(crop,az=90),dir=1) lt thresh
+
+tmpcrop = crop[10:43,8:42]
+
+; window,0
+; cgimage,tmpcrop,/k
+xpb = xpb[10:43,8:42]
+ypb = ypb[10:43,8:42]
+
+ncol = (size(tmpcrop,/dim))[0]
+nrow = (size(tmpcrop,/dim))[1]
+ind_col = WHERE(xpb eq 1) mod ncol
+ind_row = WHERE(ypb eq 1)/nrow
+
+
+a = MODE(ind_col)
+b = MODE(ind_col[WHERE(ind_col ne a)])
+
+c = MODE(ind_row)
+d = MODE(ind_row[WHERE(ind_row ne c)])
+
+
+
+; Just to make it sorted
+xpos = [a,b]
+ypos = [c,d]
+xpos = xpos[SORT(xpos)]
+ypos = ypos[SORT(ypos)]
+
+; window,1
+; cgimage,tmpcrop*xpb,/k
+
+; Results are promising! Convolving then cropping seems to be good.
+
+; ******************************************************************************************
+; ******************************************************************************************
+; ******************************************************************************************
+
+; #       #     #     #####         #   ######
+; #       #    # #    #   #         #   # 
+; # #   # #   #   #   ####          #   ####
+; #  # #  #   #####   #   #         #      ##
+; #   #   #  #     #  #    #        #  #####
+
+
+; Convolving then cropping looks good, but how to make the program to look for 2, 3, or 4 fiducials?
+; How will will the program know?
+
+; display,byte(tmpcrop),/square,title='100%'
+; plot_edges,xpb,thick=6,setcolor=80
+; plot_edges,ypb,thick=6,setcolor=255
+
+
+
+
+; ******************************************************************************************
+; ******************************************************************************************
+; ******************************************************************************************
+
+
+; #       #     #     #####         #    ####
+; #       #    # #    #   #         #   #    #
+; # #   # #   #   #   ####          #    ####
+; #  # #  #   #####   #   #         #   #    #
+; #   #   #  #     #  #    #        #    ####
+
+
+; After convol, crop, then check bordres - if detect fiducial, look 6 pixels inside of position
+; if N_pixels < 6, then crop that part out
+
+; Issue is how to threshold it - only a fraction below shape of gaussian
+
+; can't use median unless I median the whole image
+d = size(tmpcrop,/d)
+bordermask = bytarr(d[0],d[1]) + 1
+bordermask[1:d[0]-2,1:d[1]-2] = 0
+
+mcrop = bordermask * tmpcrop
+
+duhcrop = [reform(mcrop[*,d[1]-1]),reverse(reform(mcrop[d[0]-1,*])),reverse(reform(mcrop[*,0])),$
+    reform(mcrop[0,*])]
+
+; I feel like I've dome something like this before... then I ended up resorting to using mode
+; ...
+; ...
+
+; Looking at outermost pixel, what is best way to identify a fiducial?
+
+; ******************************************************************************************
+; ******************************************************************************************
+; ******************************************************************************************
+
+; #       #     #     #####         #    ####
+; #       #    # #    #   #         #   #    #
+; # #   # #   #   #   ####          #    ####
+; #  # #  #   #####   #   #         #       #
+; #   #   #  #     #  #    #        #     #
+
+; So, we have several ways to get peaks from our *duhcrop* array
+
+; duhcrop - duhcrop[1:n_elements(duhcrop)-2]
+; - See where the difference between elements is highest
+
+; duhcrop - ts_smooth(duhcrop,5)
+; - Take time series average of array and see where difference is highest
+
+; duhcrop - median(duhcrop,5) 
+; - same dif
+
+; threshold it with mean(duhcrop) - 2*stddev(duhcrop)
+; - why? Using a threshold is arbitrary
+
+; Can't we just keep the convolution thing and not have to worry about individual pixel detection?
+
+; ...
+
+xmcrop = mcrop * xpb
+ymcrop = mcrop * ypb
+
+
+ind_col = WHERE(xpb eq 1) mod ncol
+ind_row = WHERE(ypb eq 1)/nrow
+
+if ind_row eq !null then row_border = WHERE(HISTOGRAM(ind_row) ne 0)+1
+if ind_col eq !null then col_border = WHERE(HISTOGRAM(ind_col) ne 0)+1
+
+; apparently histogram doesn't like it when there is only 1 value
+if N_ELEMENTS(row_border) eq 1 then row_border = MODE(ind_row)
+if N_ELEMENTS(col_border) eq 1 then col_border = MODE(ind_col)
+
+; now that I've identified pixels, have to look inside positions
+
+; Step 1: Look inside pixels
+; Step 2: Figure out what I'm looking for
+
+row_slice_a = tmpcrop[*,row_border[0]]
+row_slice_b = tmpcrop[*,row_border[1]]
+col_slice = tmpcrop[col_border,*]
+
+; Can't identify with a minimum
+
+if N_ELEMENTS(FLOAT(col_slice[0:6]) - MODE(tmpcrop) lt somevalue) lt 6 then print, 'Lol';It's cut off
+; Instead of modeling a fiducial shape, counting where the difference between fiducial values
+; and mode is above a certain threshold
+
+; Is this it?
+
+
+; ******************************************************************************************
+; ******************************************************************************************
+; ******************************************************************************************
 
 stop
+
+; Dickin' around with convol()
+kernel = [[-1,1,-1],[1,1,1],[-1,1,-1]]
+cgimage,CONVOL(crop,kernel),output='kerneltest.png',/k
+
+stop
+
+; Testing out with diagonals
+wholeimage = BYTSCL( READ_TIFF('plots_tables_images/diag.tiff',channels=1) )
+crop = wholeimage[struct.center1.xpos-!param.safecrop:struct.center1.xpos+!param.safecrop,$
+    struct.center1.ypos-!param.safecrop:struct.center1.ypos+!param.safecrop]
+cgimage,EMBOSS(crop,az=45),/k
+
+
+
+; Big ass kernel is not good
+kernel=[[1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,1],$
+        [-1,1,-1,-1,-1,-1,-1,-1,-1,-1,1,-1],$
+        [-1,-1,1,-1,-1,-1,-1,-1,-1,1,-1,-1],$
+        [-1,-1,-1,1,-1,-1,-1,-1,1,-1,-1,-1],$
+        [-1,-1,-1,-1,1,-1,-1,1,-1,-1,-1,-1],$
+        [-1,-1,-1,-1,-1,1,1,-1,-1,-1,-1,-1],$
+        [-1,-1,-1,-1,-1,1,1,-1,-1,-1,-1,-1],$
+        [-1,-1,-1,-1,1,-1,-1,1,-1,-1,-1,-1],$
+        [-1,-1,-1,1,-1,-1,-1,-1,1,-1,-1,-1],$
+        [-1,-1,1,-1,-1,-1,-1,-1,-1,1,-1,-1],$
+        [-1,1,-1,-1,-1,-1,-1,-1,-1,-1,1,-1],$
+        [1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,1]]
+; ******************************************************************************************
+; ******************************************************************************************
+; ******************************************************************************************
+
+stop
+; The sunthetic image has too-nice edges that they end up being edge-detected 
+; So I actually didn't anticipate this.
+
+; window,0
+; !p.multi=[0,2,1]
+; cgimage,xpb*crop,/k
+; cgimage,ypb*crop,/k
+; !p.multi=0
+
+ind_col = WHERE(xpb eq 1) mod ncol
+ind_row = WHERE(ypb eq 1)/nrow
+
+
+a = MODE(ind_col)
+b = MODE(ind_col[WHERE(ind_col ne a)])
+
+c = MODE(ind_row)
+d = MODE(ind_row[WHERE(ind_row ne f)])
+
+
+
+; Just to make it sorted
+xpos = [a,b]
+ypos = [c,d]
+xpos = xpos[SORT(xpos)]
+ypos = ypos[SORT(ypos)]
+
+; Because fiducials are 2 pixels wide 
+xmask = [xpos[0]-1,xpos[0],xpos[1]-1,xpos[1]]
+ymask = [ypos[0]-1,ypos[0],ypos[1]-1,ypos[1]]
+
 finish = SYSTIME(1,/s)
 IF KEYWORD_SET(time) THEN print, 'merrygotrace took: '+strcompress(finish-start)+$
     ' seconds'
+
 end

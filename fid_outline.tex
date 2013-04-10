@@ -245,6 +245,20 @@ In a nutshell, \hl{\tt{scrib.pro}} takes an image of the sun with fiducials and 
         \item ...and others once we recognize them.
     \end{enumerate}
 
+\section{Dealing With Fiducials on Edge} % (fold)
+\label{sec:dealing_witb_fiducials_on_edge}
+    Sometimes when cropping the inner part of the sun, the cropped region will inadvertedly cut off a fiducial. There are two ways of dealing with this:
+
+    \begin{enumerate}
+         \item Crop so that fiducials aren't cut off
+         \item Deal with cut off fiducials
+     \end{enumerate} 
+
+     We are focusing on the latter. However, this in turn brings forth another problem; do we take an image with cut-off fiducials (CFs) and then eliminate them or do we try to find fiducials that aren't cut off, i.e., look around CFs? Our current method is to find the fiducials normally, as if the fiducials aren't cut off, then methodically eliminate any fiducials that are too close to the edge of our image. The result is that we need to identify the shape and size of a fiducial beforehand to apply those constraints on the on-edge or CFs. Also, this means that we need to identify ``how bad'' we will allow the fiducial finding program to continue finding CFs.
+
+     Also, if we see a CF on the edge, instead of cropping the image so that the CF is no longer in the image, we simply tell the program to ignore anything it finds on that side of the image. 
+% section dealing_witb_fiducials_on_edge (end)
+
 \section{Drawbacks}
 
     The main problems facing this program are:
@@ -272,22 +286,28 @@ In a nutshell, \hl{\tt{scrib.pro}} takes an image of the sun with fiducials and 
 
     \begin{enumerate}
         \item Sun is too close to the edge of the solar image\\
-            - When cropping, either need to fabricate null data or ignore altogether
+            - When cropping, either need to fabricate null data or ignore altogether\\
+            - Now looks at the image border and if it counts a certain number of pixels above a threshold, the image should be ignored.\\
+            - Fixed it (April 9, 2013)
         \item Part of sun is cut off in image\\
-            - Not only will cropping fail, limb fitting will also fail
+            - Not only will cropping fail, limb fitting will also fail\\
+            - Same as above\\
+            - Fixed it (April 9, 2013)
         \item Bad pixels\\
             - Threshold finding has been changed to remedy this
         \item When scanning in a circle, haven't completely coded fail-safes if it doesn't find auxiliary suns\\
             - Probably have to do something where if I don't detect the auxiliary suns, I'll scan at different radii at specific intervals
         \item Image is rotated more than 2 degrees\\
-            - Current fiducial finding method can't handle a rotated image well
-            - GRIPS proposal says the pendulum will swing up to $\pm$ .1 degree; is this the same rotation parameter in our image?
+            - Current fiducial finding method can't handle a rotated image well\\
+            - GRIPS proposal says the pendulum will swing up to $\pm$ .1 degree; is this the same rotation parameter in our image?\\
+            - Don't have to worry about this anymore
         \item Fiducial is too close to edge\\
-            - If a fiducial is too close to edge of cropped image, incomplete fiducial shape confuses program
-            - Not sure how to fix yet
-            - Trying a border mask
+            - If a fiducial is too close to edge of cropped image, incomplete fiducial shape confuses program\\
+            - Not sure how to fix yet\\
+            - Trying a border mask\\
+            - Problem addressed in Section \ref{sec:dealing_witb_fiducials_on_edge}
         \item Scanning in a cirle at high resolution (higher than 1 pixel a degree) makes the program   break, although I'm not sure why\\
-            - Just fixed it (Mar 13, 2013)
+            - Fixed it (Mar 13, 2013)
     \end{enumerate}
 
 % section how_to_break_code (end)
