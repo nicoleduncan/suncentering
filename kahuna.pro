@@ -723,12 +723,15 @@ end
 
 function edgefidcheck, input, thresh
 
-xpb = SHIFT_DIFF(EMBOSS(input),dir=3) lt thresh
-ypb = SHIFT_DIFF(EMBOSS(input,az=90),dir=1) lt thresh
+bigxpb = SHIFT_DIFF(EMBOSS(input),dir=3) lt thresh
+bigypb = SHIFT_DIFF(EMBOSS(input,az=90),dir=1) lt thresh
 
-tmpcrop = input[10:43,8:42]
-xpb = xpb[10:43,8:42]
-ypb = ypb[10:43,8:42]
+for p = 1,5 do begin
+
+
+tmpcrop = input[10:38+p,8:42]
+xpb = bigxpb[10:38+p,8:42]
+ypb = bigypb[10:38+p,8:42]
 
 s = size(tmpcrop,/d)
 bordermask = bytarr(s[0],s[1]) + 1
@@ -799,6 +802,8 @@ if WHERE(xmcrop eq 1) eq [-1] then print,'col_slice boo' else begin
     ; I can actually not use parentheses here, is it ok?
     ;Honestly, what's the purpose of doing this "X-Y lt thresh" instead of "X lt thresh"?
 
+
+    ; The problem is that I'm unable to quantify the fiducials in the way I want
         endif
         if WHERE(xpb[ind_col[i],*] eq 1) eq [-1] then print,'cropping -7:-1'
     endfor
@@ -813,16 +818,69 @@ if WHERE(ymcrop eq 1) eq [-1] then print,'row_slice boo' else begin
     endfor
 endelse
 
-print,''
-print, 'STAHP'
-
 ; wait, why is it that if I do something to tmpcrop it wiggs out?
 aa = tmpcrop
-window,0
-plot,float(aa[11,*]) - mode(aa),psym=-4
-window,1
-plot,(DERIV(DERIV(float(tmpcrop[11,*]))))[*],psym=-4
 
+!p.multi=[0,1,3]
+!p.charsize=2
+window,p
+; range = (float(tmpcrop[11,*]))[0:5]
+range = (float(tmpcrop[*,20]))[-6:-1]
+; window,0
+plot,range - mode(aa),psym=-4,title='plain slice from [-6:-1] edge of '+strcompress(8,/rem)+':'+$
+    strcompress(38+p,/rem),xs=3,ys=3
+vline,18
+vline,24
+vline,5-p
+; window,1
+plot,DERIV(range),psym=-4,title='1st deriv of slice',xs=3,ys=3
+vline,18
+vline,24
+vline,5-p
+plot,(DERIV(DERIV(range)))[*],psym=-4,title='2nd deriv of slice',xs=3,ys=3
+vline,18
+vline,24
+vline,5-p
+; window,2
+!p.multi=0
+
+; The right of the vline is where the fiducial is
+
+; 0: off screen
+; 1: 1 pixel shown
+; 2: 2 pixels shown
+; 3: Halway shown
+; 4: 4 pixels shown
+; 5: 5 pixels shown
+; 6: Fiducial is completely within image and is good
+
+endfor
+
+
+; I don't see any patterns... Let's try different patterns. 
+
+
+; Instead of looking only at edge 6 pixels...?
+
+
+
+; window,3
+; plot,DERIV(float(TS_SMOOTH(reform(range),10) -  range)),psym=-4,title='deriv of ts_smooth(x) - x'
+; vline,18
+; vline,24
+; window,4
+; cgimage,SHIFT_DIFF(EMBOSS(tmpcrop),dir=3),/k,title='filter of cropped',/axes
+; window,5
+; cgimage,(shift_diff(emboss(input),dir=3))[10:43,8:42],/k,title='cropped',/axes
+; window,6
+; cgimage,SHIFT_DIFF(EMBOSS(input[10:40,8:42],/edge_truncate),dir=3,/edge_truncate),/k,'filter of cropped with edge_truncate',/axes
+
+
+
+
+; So this is actually a good way to do it?
+; Not if the fiducial is on the edge, bro.
+; if this is okay, then just count how far it is from the edge
 stop
 
 
