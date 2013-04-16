@@ -138,7 +138,7 @@ FUNCTION quickmask, input_image, thresh
 ;           Threshold used to select pixels
 ;-
 
-
+; input_image = FLOAT(input_image)
 a = input_image[SORT(input_image)]
 niceimage = a[0:(1-!param.elim_perc/100)*(N_ELEMENTS(a)-1)]
 ; Eliminating the highest 1% of data
@@ -150,9 +150,9 @@ n_col = s[0]
 n_row = s[1]
 
 suncheck = input_image gt thresh
-
 xpos = TOTAL( TOTAL(suncheck, 2) * INDGEN(n_col) ) / TOTAL(suncheck)
 ypos = TOTAL( TOTAL(suncheck, 1) * INDGEN(n_row) ) / TOTAL(suncheck)
+
 RETURN, {xpos:xpos,ypos:ypos}
 END
 
@@ -160,6 +160,43 @@ END
 ;**************************************************************************************************
 ;*                                                                                                *
 ;**************************************************************************************************
+
+
+FUNCTION quickfidmask, input_image, thresh
+;+
+;   :Description:
+;       Finds center of mask where pixels are above a given threshold
+;
+;   :Params:
+;       input_image : in, required, type=byte
+;           2D array of pixels to mask with threshold
+;       thresh : in, required, type=float
+;           Threshold used to select pixels
+;-
+
+input_image = FLOAT(input_image)
+a = input_image[SORT(input_image)]
+niceimage = a[0:(1-!param.elim_perc/100)*(N_ELEMENTS(a)-1)]
+; Eliminating the highest 1% of data
+IF thresh eq !null then thresh = !param.reg1thresh*MAX(niceimage)
+; IF n_elements(thresh) EQ 0 THEN thresh = 0.25*MAX(image)
+
+s = SIZE(input_image,/dimensions)
+n_col = s[0]
+n_row = s[1]
+
+suncheck = input_image lt thresh
+xpos = TOTAL( TOTAL(suncheck, 2) * INDGEN(n_col) ) / TOTAL(suncheck)
+ypos = TOTAL( TOTAL(suncheck, 1) * INDGEN(n_row) ) / TOTAL(suncheck)
+
+RETURN, {xpos:xpos,ypos:ypos}
+END
+
+
+;**************************************************************************************************
+;*                                                                                                *
+;**************************************************************************************************
+
 
 
 FUNCTION whichcropmethod, region
@@ -727,147 +764,180 @@ bigxpb = SHIFT_DIFF(EMBOSS(input),dir=3) lt thresh
 bigypb = SHIFT_DIFF(EMBOSS(input,az=90),dir=1) lt thresh
 
 for p = 1,5 do begin
+    tmpcrop = input[10:38+p,8:42]
+    xpb = bigxpb[10:38+p,8:42]
+    ypb = bigypb[10:38+p,8:42]
+
+    s = size(tmpcrop,/d)
+    bordermask = bytarr(s[0],s[1]) + 1
+    ; any specific reason we have the border 2 pixels instead of 1?
+    bordermask[1:s[0]-2,1:s[1]-2] = 0
+
+    mcrop = bordermask * tmpcrop
+
+    ncol = s[0]
+    nrow = s[1]
+    ind_col = WHERE(xpb eq 1) mod ncol
+    ind_row = WHERE(ypb eq 1)/nrow
 
 
-tmpcrop = input[10:38+p,8:42]
-xpb = bigxpb[10:38+p,8:42]
-ypb = bigypb[10:38+p,8:42]
+    a = MODE(ind_col)
+    b = MODE(ind_col[WHERE(ind_col ne a)])
 
-s = size(tmpcrop,/d)
-bordermask = bytarr(s[0],s[1]) + 1
-; any specific reason we have the border 2 pixels instead of 1?
-bordermask[1:s[0]-2,1:s[1]-2] = 0
+    c = MODE(ind_row)
+    d = MODE(ind_row[WHERE(ind_row ne c)])
 
-mcrop = bordermask * tmpcrop
+    ; Just to make it sorted
+    xpos = [a,b]
+    ypos = [c,d]
+    xpos = xpos[SORT(xpos)]
+    ypos = ypos[SORT(ypos)]
 
-ncol = s[0]
-nrow = s[1]
-ind_col = WHERE(xpb eq 1) mod ncol
-ind_row = WHERE(ypb eq 1)/nrow
+    xmcrop = bordermask * xpb
+    ymcrop = bordermask * ypb
 
+    ind_col = WHERE(xmcrop eq 1) mod ncol
+    ind_row = WHERE(ymcrop eq 1)/nrow
 
-a = MODE(ind_col)
-b = MODE(ind_col[WHERE(ind_col ne a)])
+    ; if N_ELEMENTS(row_border) eq 1 then row_border = MODE(ind_row)
+    ; if N_ELEMENTS(col_border) eq 1 then col_border = MODE(ind_col)
 
-c = MODE(ind_row)
-d = MODE(ind_row[WHERE(ind_row ne c)])
+    ; Look at each index, 6 pixels in
 
-; Just to make it sorted
-xpos = [a,b]
-ypos = [c,d]
-xpos = xpos[SORT(xpos)]
-ypos = ypos[SORT(ypos)]
+    ; If we see a fiducial cut off, either
 
-xmcrop = bordermask * xpb
-ymcrop = bordermask * ypb
+    ; ignore fiducial
+    ; or
+    ; crop it out
+    ; need to identify whether to use 0:6 or -7:-1
+    if WHERE(xmcrop eq 1) eq [-1] then print,'col_slice boo' else begin
+        col_slice = FLTARR(N_ELEMENTS(ind_col),nrow)
+        for i=0,N_ELEMENTS(ind_col)-1 do begin
+            col_slice[i,*] = REFORM(tmpcrop[ind_col[i],*])
+            if WHERE(xpb[ind_col[i],*] eq 1) eq [0] then begin
+                print,'cropping 0:6'
 
-ind_col = WHERE(xmcrop eq 1) mod ncol
-ind_row = WHERE(ymcrop eq 1)/nrow
+                ; So this is the part of the program where we need to 
+                ; do the smart thing of checking to make sure that the fiducials are being
+                ; thresholded correctly, but how do we do that? 
 
-; if N_ELEMENTS(row_border) eq 1 then row_border = MODE(ind_row)
-; if N_ELEMENTS(col_border) eq 1 then col_border = MODE(ind_col)
+                ; What is somevalue? How do we quantify it?
 
-; Look at each index, 6 pixels in
+        ; if N_ELEMENTS(FLOAT(col_slice[i,0:6]) - MODE(tmpcrop) lt somevalue) lt 6 then okaybit=0 else okaybit=1
+        ; I think we should use something with derivatives because we know approximately 
+        ; how dim the fiducials will get. Instead of replying on pixel values, we rely
+        ; on the relative pixel changes which may/may not be more robust
 
-; If we see a fiducial cut off, either
+        if N_ELEMENTS(DERIV(DERIV(FLOAT(col_slice[i,0:6])))) gt 0 lt 6 then okb = 0 else okb = 1
 
-; ignore fiducial
-; or
-; crop it out
-; need to identify whether to use 0:6 or -7:-1
-if WHERE(xmcrop eq 1) eq [-1] then print,'col_slice boo' else begin
-    col_slice = FLTARR(N_ELEMENTS(ind_col),nrow)
-    for i=0,N_ELEMENTS(ind_col)-1 do begin
-        col_slice[i,*] = REFORM(tmpcrop[ind_col[i],*])
-        if WHERE(xpb[ind_col[i],*] eq 1) eq [0] then begin
-            print,'cropping 0:6'
+        ; This isn't going to work because the threshold of 0 is too high. According to this
+        ; current setup, if a fiducial is right on the edge, it'll ALWAYS be bad.
 
-            ; So this is the part of the program where we need to 
-            ; do the smart thing of checking to make sure that the fiducials are being
-            ; thresholded correctly, but how do we do that? 
-
-            ; What is somevalue? How do we quantify it?
-
-    ; if N_ELEMENTS(FLOAT(col_slice[i,0:6]) - MODE(tmpcrop) lt somevalue) lt 6 then okaybit=0 else okaybit=1
-    ; I think we should use something with derivatives because we know approximately 
-    ; how dim the fiducials will get. Instead of replying on pixel values, we rely
-    ; on the relative pixel changes which may/may not be more robust
-
-    if N_ELEMENTS(DERIV(DERIV(FLOAT(col_slice[i,0:6])))) gt 0 lt 6 then okb = 0 else okb = 1
-
-    ; This isn't going to work because the threshold of 0 is too high. According to this
-    ; current setup, if a fiducial is right on the edge, it'll ALWAYS be bad.
-
-    
-    ; I can actually not use parentheses here, is it ok?
-    ;Honestly, what's the purpose of doing this "X-Y lt thresh" instead of "X lt thresh"?
+        
+        ; I can actually not use parentheses here, is it ok?
+        ;Honestly, what's the purpose of doing this "X-Y lt thresh" instead of "X lt thresh"?
 
 
-    ; The problem is that I'm unable to quantify the fiducials in the way I want
-        endif
-        if WHERE(xpb[ind_col[i],*] eq 1) eq [-1] then print,'cropping -7:-1'
-    endfor
-endelse
+        ; The problem is that I'm unable to quantify the fiducials in the way I want
+            endif
+            if WHERE(xpb[ind_col[i],*] eq 1) eq [-1] then print,'cropping -7:-1'
+        endfor
+    endelse
 
-if WHERE(ymcrop eq 1) eq [-1] then print,'row_slice boo' else begin
-    row_slice = FLTARR(ncol,N_ELEMENTS(ind_row))
-    for i=0,N_ELEMENTS(ind_row)-1 do begin
-        row_slice[*,i] = REFORM(tmpcrop[*,ind_row[i]])
-        if WHERE(ypb[ind_row[i],*] eq 1) eq [0] then print,'cropping 0:6'
-        if WHERE(ypb[ind_row[i],*] eq 1) eq [-1] then print,'cropping -7:-1'
-    endfor
-endelse
+    if WHERE(ymcrop eq 1) eq [-1] then print,'row_slice boo' else begin
+        row_slice = FLTARR(ncol,N_ELEMENTS(ind_row))
+        for i=0,N_ELEMENTS(ind_row)-1 do begin
+            row_slice[*,i] = REFORM(tmpcrop[*,ind_row[i]])
+            if WHERE(ypb[ind_row[i],*] eq 1) eq [0] then print,'cropping 0:6'
+            if WHERE(ypb[ind_row[i],*] eq 1) eq [-1] then print,'cropping -7:-1'
+        endfor
+    endelse
 
-; wait, why is it that if I do something to tmpcrop it wiggs out?
-aa = tmpcrop
+    ; wait, why is it that if I do something to tmpcrop it wiggs out?
+    aa = tmpcrop
 
-!p.multi=[0,1,3]
-!p.charsize=2
-window,p
-; range = (float(tmpcrop[11,*]))[0:5]
-range = (FLOAT(tmpcrop[*,20]))[-6:-1]
+    !p.multi=[0,1,3]
+    oldcharsize = !p.charsize
+    !p.charsize=2
+    window,p
+    ; range = (float(tmpcrop[11,*]))[0:5]
+    range = (FLOAT(tmpcrop[*,20]))[-6:-1]
 
-plot,range - MODE(aa),psym=-4,title='plain slice from [-6:-1] edge of '+STRCOMPRESS(8,/rem)+':'+$
-    STRCOMPRESS(38+p,/rem),xs=3,ys=3
-vline,5-p
-vline,5-p
-plot,DERIV(range),psym=-4,title='1st deriv of slice',xs=3,ys=3
-vline,5-p
-plot,(DERIV(DERIV(range)))[*],psym=-4,title='2nd deriv of slice',xs=3,ys=3
-vline,5-p
+    plot,range - MODE(aa),psym=-4,title='plain slice from [-6:-1] edge of '+STRCOMPRESS(8,/rem)+':'+$
+        STRCOMPRESS(38+p,/rem),xs=3,ys=3
+    vline,5-p
+    vline,5-p
+    plot,DERIV(range),psym=-4,title='1st deriv of slice',xs=3,ys=3
+    vline,5-p
+    plot,(DERIV(DERIV(range)))[*],psym=-4,title='2nd deriv of slice',xs=3,ys=3
+    vline,5-p
 
-!p.multi=0
+    !p.multi=0
+    !p.charsize=oldcharsize
 
-; The right of the vline is where the fiducial is
-
-; 0: off screen
-; 1: 1 pixel shown
-; 2: 2 pixels shown
-; 3: Halway shown
-; 4: 4 pixels shown
-; 5: 5 pixels shown
-; 6: Fiducial is completely within image and is good
+    ; The right of the vline is where the fiducial is
 
 endfor
 
-
 ; I don't see any patterns... Let's try different patterns. 
-
 
 ; Instead of looking only at edge 6 pixels...?
 
-kernel = [[-.5,1,-.5],[1,1,1],[-.5,1,-.5]]
-; kernel = [[.1,.1,.1],[.1,.1,.1],[.1,.1,.1]]
-cgimage,convol(float(tmpcrop),kernel,/edge_truncate,/center) * (scale_vector(convol(float(tmpcrop),kernel,/edge_truncate,/center)) lt .3),/k
-kernel=[[0,1,0],[1,1,1],[0,1,0]]
-circ = convol(float(tmpcrop),kernel,/edge_truncate,/center)
-crop_circ = circ[5:15,16:27]
-cgimage,crop_circ,/k
-thresh = 850
-print,quickmask(crop_circ,thresh)
+; What is thi
 
-; omg, we can just convol() it, then find a quickmask!
+; cgimage,convol(float(tmpcrop),kernel,/edge_truncate,/center) * (scale_vector(convol(float(tmpcrop),kernel,/edge_truncate,/center)) lt .3),/k
 
+; kernel = [[-.5,1,-.5],[1,1,1],[-.5,1,-.5]]
+; kernel = [[0,1,0],[1,1,1],[0,1,0]]
+; kernel = [[0,0,1,0,0],[0,0,1,0,0],[1,1,1,1,1],[0,0,1,0,0],[0,0,1,0,0]]
+kernel = [[0,0,1,1,0,0],[0,0,1,1,0,0],[1,1,1,1,1,1],[1,1,1,1,1,1],[0,0,1,1,0,0],[0,0,1,1,0,0]]
+
+
+
+
+; fiducial locations
+; [24:33,16:27]
+; [24:33,0:10]
+; [5:15,0:10]
+; [5:15,16:27]
+
+first = [24,24,5,5]
+second = [33,33,15,15]
+third = [16,0,0,16]
+fourth = [27,10,10,27]
+
+for hail = 0,3 do begin
+    circ = convol(float(tmpcrop),kernel,/edge_truncate,/center)
+    crop_circ = circ[first[hail]:second[hail],third[hail]:fourth[hail]]
+
+    ; CONVOL before crop makes the image a little lighter, shape stays the same though
+
+    thresh = .9*max(crop_circ)
+    centers=quickfidmask(crop_circ,thresh)
+    glorb = tmpcrop[first[hail]:second[hail],third[hail]:fourth[hail]]
+    glorb[centers.xpos,*] =.8*max(crop_circ)
+    glorb[*,centers.ypos] = .8*max(crop_circ)
+
+    ; omg, we can just convol() it, then find a quickfidmask!
+    finefine = INTERPOLATE(crop_circ,FINDGEN((SIZE(crop_circ,/d))[0] *10)/10.,FINDGEN((SIZE(crop_circ,/d))[1] *10)/10.,/grid,cubic=-.5)
+    finefine[centers.xpos * 10,*] =.8*max(finefine)
+    finefine[*,10*centers.ypos] = .8*max(finefine)
+
+    !p.multi=[0,2,2]
+        window,20 + hail,xsize=700,ysize=1000
+        cgimage,glorb,/k
+        cgimage,tmpcrop[first[hail]:second[hail],third[hail]:fourth[hail]],/k
+        cgimage,finefine,/k,/axes,title='Interpolated circ_crop'
+        cgimage,crop_circ,/k,/axes,title='CONVOL() of fiducial'
+    !p.multi=0
+endfor
+
+; ********
+; ********
+; So from the result of these plots, we see that using quickfidmask works well for isolated fiducials but not really
+; on edge fiducials. 
+; ********
+; ********
 
 ; window,3
 ; plot,DERIV(float(TS_SMOOTH(reform(range),10) -  range)),psym=-4,title='deriv of ts_smooth(x) - x'
