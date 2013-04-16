@@ -860,6 +860,7 @@ for p = 1,5 do begin
     oldcharsize = !p.charsize
     !p.charsize=2
     window,p
+    ; ps_start,filename='slice'+strcompress(p,/rem)+'.eps',/encapsulated,/color
     ; range = (float(tmpcrop[11,*]))[0:5]
     range = (FLOAT(tmpcrop[*,20]))[-6:-1]
 
@@ -871,7 +872,7 @@ for p = 1,5 do begin
     vline,5-p
     plot,(DERIV(DERIV(range)))[*],psym=-4,title='2nd deriv of slice',xs=3,ys=3
     vline,5-p
-
+    ; ps_end
     !p.multi=0
     !p.charsize=oldcharsize
 
@@ -924,14 +925,19 @@ for hail = 0,3 do begin
     finefine[*,10*centers.ypos] = .8*max(finefine)
 
     !p.multi=[0,2,2]
-        window,20 + hail,xsize=700,ysize=1000
+        ; window,20 + hail,xsize=700,ysize=1000
+        ps_start,filename='cropcomp'+strcompress(hail,/rem)+'.eps',/encapsulated,/color,xsize=7,ysize=10
         cgimage,glorb,/k
         cgimage,tmpcrop[first[hail]:second[hail],third[hail]:fourth[hail]],/k
         cgimage,finefine,/k,/axes,title='Interpolated circ_crop'
         cgimage,crop_circ,/k,/axes,title='CONVOL() of fiducial'
+        ps_end,/png
     !p.multi=0
 endfor
-
+; cgimage,glorb,/k,output='glorb.png'
+; cgimage,tmpcrop[first[hail]:second[hail],third[hail]:fourth[hail]],/k,output='regularcrop.png'
+; cgimage,finefine,/k,/axes,title='Interpolated circ_crop',output='interpcrop.png'
+; cgimage,crop_circ,/k,/axes,title='CONVOL() of fiducial',output='convolcrop.png'
 ; ********
 ; ********
 ; So from the result of these plots, we see that using quickfidmask works well for isolated fiducials but not really
