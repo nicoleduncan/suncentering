@@ -354,6 +354,55 @@ After a cursory analysis at the plots we see that there is no obvious pattern fo
     \item A combination of the above
 \end{enumerate}
 
+After a second, third, and $N$th look, there exists a threshold to isolate fiducials. See Figure \ref{betterslice}.\\
+
+\begin{figure}[!ht]
+    \centering
+    \subfloat{
+        \includegraphics[width=0.5\linewidth, height = .34\textheight, keepaspectratio=true]{plots_tables_images/betterslice0.eps}
+        \includegraphics[width=0.5\linewidth, height = .34\textheight, keepaspectratio=true]{plots_tables_images/betterslice1.eps}
+        }  
+    \hspace{.5in}
+    \centering
+    \subfloat{
+        \includegraphics[width=0.5\linewidth, height = .34\textheight, keepaspectratio=true]{plots_tables_images/betterslice2.eps}
+        \includegraphics[width=0.5\linewidth, height = .34\textheight, keepaspectratio=true]{plots_tables_images/betterslice3.eps}
+        }
+    \hspace{.5in}
+    \centering
+    \subfloat{
+        \includegraphics[width=0.5\linewidth, height = .34\textheight, keepaspectratio=true]{plots_tables_images/betterslice4.eps}
+        \includegraphics[width=0.5\linewidth, height = .34\textheight, keepaspectratio=true]{plots_tables_images/betterslice5.eps}
+        }
+        \caption{Pixels to the right of the vertical line are recogznied as a fiducial}
+        \label{betterslice}
+\end{figure}
+
+If we use a threshold to count the numer of pixels below (in this case) -20, we can count how many pixels are in a fiducial. For example, the top left image in Figure \ref{betterslice} only has 1 pixel below the threshold which corresponds to the number of pixels of the fiducial we see. In the 2nd from top image in the right-most column, we see that there are 4 pixels below the threhsold of -20 which agrees with 4 pixels to the right of the vertical line. Using this method, we can accurately threshold pixels so that we can eliminate any that are cut off. The downside however is that the threshold varies from fiducial to fiducial. For example, in Figure \ref{anotherslice}, we see that the threshold is at -30.
+
+\begin{figure}[!ht]
+    \centering
+    \subfloat{
+        \includegraphics[width=0.5\linewidth, height = .34\textheight, keepaspectratio=true]{plots_tables_images/anotherslice1.eps}
+        \includegraphics[width=0.5\linewidth, height = .34\textheight, keepaspectratio=true]{plots_tables_images/anotherslice2.eps}
+        }  
+    \hspace{.5in}
+    \centering
+    \subfloat{
+        \includegraphics[width=0.5\linewidth, height = .34\textheight, keepaspectratio=true]{plots_tables_images/anotherslice3.eps}
+        \includegraphics[width=0.5\linewidth, height = .34\textheight, keepaspectratio=true]{plots_tables_images/anotherslice4.eps}
+        }
+    \hspace{.5in}
+    \centering
+    \subfloat{
+        \includegraphics[width=0.5\linewidth, height = .34\textheight, keepaspectratio=true]{plots_tables_images/anotherslice5.eps}
+        \includegraphics[width=0.5\linewidth, height = .34\textheight, keepaspectratio=true]{plots_tables_images/anotherslice6.eps}
+        }
+        \caption{Pixels to the left of the vertical line are recogznied as a fiducial. Compared to Figure \ref{betterslice}, the threshold here is -30}
+        \label{anotherslice}
+\end{figure}
+
+After applying the same techniques above to 2 more fiducials, the thresholds are approximately -30 as well. I also thought that perhaps whether we were looking in rows/columns affected the threshold somehow, but I looked at the same ficudial both directions and found the threshold to maintain around -30. 
 % subsection images (end)% section dealing_witb_fiducials_on_edge (end)
 
 \section{Drawbacks}

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.4-1.40.13 (TeX Live 2012) (format=pdflatex 2013.4.9)  16 APR 2013 10:43
+This is pdfTeX, Version 3.1415926-2.4-1.40.13 (TeX Live 2012) (format=pdflatex 2013.4.9)  16 APR 2013 14:23
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -809,6 +809,282 @@ Overfull \hbox (10.0057pt too wide) in paragraph at lines 332--345
  [][] 
  []
 
+
+Underfull \hbox (badness 10000) in paragraph at lines 357--358
+
+ []
+
+Package epstopdf Info: Source file: <plots_tables_images/betterslice0.eps>
+(epstopdf)                    date: 2013-04-16 12:49:43
+(epstopdf)                    size: 19376 bytes
+(epstopdf)             Output file: <plots_tables_images/betterslice0-eps-conve
+rted-to.pdf>
+(epstopdf)                    date: 2013-04-16 12:52:45
+(epstopdf)                    size: 11713 bytes
+(epstopdf)             Command: <repstopdf --outfile=plots_tables_images/better
+slice0-eps-converted-to.pdf plots_tables_images/betterslice0.eps>
+(epstopdf)             \includegraphics on input line 364.
+Package epstopdf Info: Output file is already uptodate.
+
+<plots_tables_images/betterslice0-eps-converted-to.pdf, id=264, 552.0625pt x 33
+8.26375pt>
+File: plots_tables_images/betterslice0-eps-converted-to.pdf Graphic file (type 
+pdf)
+ <use plots_tables_images/betterslice0-eps-converted-to.pdf>
+Package pdftex.def Info: plots_tables_images/betterslice0-eps-converted-to.pdf 
+used on input line 364.
+(pdftex.def)             Requested size: 234.88037pt x 143.9176pt.
+Package epstopdf Info: Source file: <plots_tables_images/betterslice1.eps>
+(epstopdf)                    date: 2013-04-16 12:49:43
+(epstopdf)                    size: 17049 bytes
+(epstopdf)             Output file: <plots_tables_images/betterslice1-eps-conve
+rted-to.pdf>
+(epstopdf)                    date: 2013-04-16 12:52:45
+(epstopdf)                    size: 11092 bytes
+(epstopdf)             Command: <repstopdf --outfile=plots_tables_images/better
+slice1-eps-converted-to.pdf plots_tables_images/betterslice1.eps>
+(epstopdf)             \includegraphics on input line 364.
+Package epstopdf Info: Output file is already uptodate.
+
+<plots_tables_images/betterslice1-eps-converted-to.pdf, id=265, 552.0625pt x 33
+8.26375pt>
+File: plots_tables_images/betterslice1-eps-converted-to.pdf Graphic file (type 
+pdf)
+ <use plots_tables_images/betterslice1-eps-converted-to.pdf>
+Package pdftex.def Info: plots_tables_images/betterslice1-eps-converted-to.pdf 
+used on input line 364.
+(pdftex.def)             Requested size: 234.88037pt x 143.9176pt.
+Package epstopdf Info: Source file: <plots_tables_images/betterslice2.eps>
+(epstopdf)                    date: 2013-04-16 12:49:43
+(epstopdf)                    size: 19315 bytes
+(epstopdf)             Output file: <plots_tables_images/betterslice2-eps-conve
+rted-to.pdf>
+(epstopdf)                    date: 2013-04-16 12:52:46
+(epstopdf)                    size: 11795 bytes
+(epstopdf)             Command: <repstopdf --outfile=plots_tables_images/better
+slice2-eps-converted-to.pdf plots_tables_images/betterslice2.eps>
+(epstopdf)             \includegraphics on input line 370.
+Package epstopdf Info: Output file is already uptodate.
+
+<plots_tables_images/betterslice2-eps-converted-to.pdf, id=266, 552.0625pt x 33
+8.26375pt>
+File: plots_tables_images/betterslice2-eps-converted-to.pdf Graphic file (type 
+pdf)
+ <use plots_tables_images/betterslice2-eps-converted-to.pdf>
+Package pdftex.def Info: plots_tables_images/betterslice2-eps-converted-to.pdf 
+used on input line 370.
+(pdftex.def)             Requested size: 234.88037pt x 143.9176pt.
+Package epstopdf Info: Source file: <plots_tables_images/betterslice3.eps>
+(epstopdf)                    date: 2013-04-16 12:49:43
+(epstopdf)                    size: 18209 bytes
+(epstopdf)             Output file: <plots_tables_images/betterslice3-eps-conve
+rted-to.pdf>
+(epstopdf)                    date: 2013-04-16 12:52:46
+(epstopdf)                    size: 11380 bytes
+(epstopdf)             Command: <repstopdf --outfile=plots_tables_images/better
+slice3-eps-converted-to.pdf plots_tables_images/betterslice3.eps>
+(epstopdf)             \includegraphics on input line 370.
+Package epstopdf Info: Output file is already uptodate.
+
+<plots_tables_images/betterslice3-eps-converted-to.pdf, id=267, 552.0625pt x 33
+8.26375pt>
+File: plots_tables_images/betterslice3-eps-converted-to.pdf Graphic file (type 
+pdf)
+ <use plots_tables_images/betterslice3-eps-converted-to.pdf>
+Package pdftex.def Info: plots_tables_images/betterslice3-eps-converted-to.pdf 
+used on input line 370.
+(pdftex.def)             Requested size: 234.88037pt x 143.9176pt.
+Package epstopdf Info: Source file: <plots_tables_images/betterslice4.eps>
+(epstopdf)                    date: 2013-04-16 12:49:43
+(epstopdf)                    size: 18337 bytes
+(epstopdf)             Output file: <plots_tables_images/betterslice4-eps-conve
+rted-to.pdf>
+(epstopdf)                    date: 2013-04-16 12:52:47
+(epstopdf)                    size: 11423 bytes
+(epstopdf)             Command: <repstopdf --outfile=plots_tables_images/better
+slice4-eps-converted-to.pdf plots_tables_images/betterslice4.eps>
+(epstopdf)             \includegraphics on input line 376.
+Package epstopdf Info: Output file is already uptodate.
+
+<plots_tables_images/betterslice4-eps-converted-to.pdf, id=268, 552.0625pt x 33
+8.26375pt>
+File: plots_tables_images/betterslice4-eps-converted-to.pdf Graphic file (type 
+pdf)
+ <use plots_tables_images/betterslice4-eps-converted-to.pdf>
+Package pdftex.def Info: plots_tables_images/betterslice4-eps-converted-to.pdf 
+used on input line 376.
+(pdftex.def)             Requested size: 234.88037pt x 143.9176pt.
+Package epstopdf Info: Source file: <plots_tables_images/betterslice5.eps>
+(epstopdf)                    date: 2013-04-16 12:49:43
+(epstopdf)                    size: 17389 bytes
+(epstopdf)             Output file: <plots_tables_images/betterslice5-eps-conve
+rted-to.pdf>
+(epstopdf)                    date: 2013-04-16 12:52:48
+(epstopdf)                    size: 11167 bytes
+(epstopdf)             Command: <repstopdf --outfile=plots_tables_images/better
+slice5-eps-converted-to.pdf plots_tables_images/betterslice5.eps>
+(epstopdf)             \includegraphics on input line 376.
+Package epstopdf Info: Output file is already uptodate.
+
+<plots_tables_images/betterslice5-eps-converted-to.pdf, id=269, 552.0625pt x 33
+8.26375pt>
+File: plots_tables_images/betterslice5-eps-converted-to.pdf Graphic file (type 
+pdf)
+ <use plots_tables_images/betterslice5-eps-converted-to.pdf>
+Package pdftex.def Info: plots_tables_images/betterslice5-eps-converted-to.pdf 
+used on input line 376.
+(pdftex.def)             Requested size: 234.88037pt x 143.9176pt.
+
+Overfull \hbox (10.0057pt too wide) in paragraph at lines 364--377
+ [][] 
+ []
+
+
+Overfull \hbox (10.0057pt too wide) in paragraph at lines 364--377
+ [][] 
+ []
+
+
+Overfull \hbox (10.0057pt too wide) in paragraph at lines 364--377
+ [][] 
+ []
+
+Package epstopdf Info: Source file: <plots_tables_images/anotherslice1.eps>
+(epstopdf)                    date: 2013-04-16 12:38:30
+(epstopdf)                    size: 17999 bytes
+(epstopdf)             Output file: <plots_tables_images/anotherslice1-eps-conv
+erted-to.pdf>
+(epstopdf)                    date: 2013-04-16 12:58:45
+(epstopdf)                    size: 11312 bytes
+(epstopdf)             Command: <repstopdf --outfile=plots_tables_images/anothe
+rslice1-eps-converted-to.pdf plots_tables_images/anotherslice1.eps>
+(epstopdf)             \includegraphics on input line 388.
+Package epstopdf Info: Output file is already uptodate.
+
+<plots_tables_images/anotherslice1-eps-converted-to.pdf, id=272, 552.0625pt x 3
+38.26375pt>
+File: plots_tables_images/anotherslice1-eps-converted-to.pdf Graphic file (type
+ pdf)
+ <use plots_tables_images/anotherslice1-eps-converted-to.pdf>
+Package pdftex.def Info: plots_tables_images/anotherslice1-eps-converted-to.pdf
+ used on input line 388.
+(pdftex.def)             Requested size: 234.88037pt x 143.9176pt.
+Package epstopdf Info: Source file: <plots_tables_images/anotherslice2.eps>
+(epstopdf)                    date: 2013-04-16 12:38:30
+(epstopdf)                    size: 18030 bytes
+(epstopdf)             Output file: <plots_tables_images/anotherslice2-eps-conv
+erted-to.pdf>
+(epstopdf)                    date: 2013-04-16 12:58:46
+(epstopdf)                    size: 11343 bytes
+(epstopdf)             Command: <repstopdf --outfile=plots_tables_images/anothe
+rslice2-eps-converted-to.pdf plots_tables_images/anotherslice2.eps>
+(epstopdf)             \includegraphics on input line 388.
+Package epstopdf Info: Output file is already uptodate.
+
+<plots_tables_images/anotherslice2-eps-converted-to.pdf, id=273, 552.0625pt x 3
+38.26375pt>
+File: plots_tables_images/anotherslice2-eps-converted-to.pdf Graphic file (type
+ pdf)
+ <use plots_tables_images/anotherslice2-eps-converted-to.pdf>
+Package pdftex.def Info: plots_tables_images/anotherslice2-eps-converted-to.pdf
+ used on input line 388.
+(pdftex.def)             Requested size: 234.88037pt x 143.9176pt.
+Package epstopdf Info: Source file: <plots_tables_images/anotherslice3.eps>
+(epstopdf)                    date: 2013-04-16 12:38:30
+(epstopdf)                    size: 18157 bytes
+(epstopdf)             Output file: <plots_tables_images/anotherslice3-eps-conv
+erted-to.pdf>
+(epstopdf)                    date: 2013-04-16 12:58:47
+(epstopdf)                    size: 11516 bytes
+(epstopdf)             Command: <repstopdf --outfile=plots_tables_images/anothe
+rslice3-eps-converted-to.pdf plots_tables_images/anotherslice3.eps>
+(epstopdf)             \includegraphics on input line 394.
+Package epstopdf Info: Output file is already uptodate.
+
+<plots_tables_images/anotherslice3-eps-converted-to.pdf, id=274, 552.0625pt x 3
+38.26375pt>
+File: plots_tables_images/anotherslice3-eps-converted-to.pdf Graphic file (type
+ pdf)
+ <use plots_tables_images/anotherslice3-eps-converted-to.pdf>
+Package pdftex.def Info: plots_tables_images/anotherslice3-eps-converted-to.pdf
+ used on input line 394.
+(pdftex.def)             Requested size: 234.88037pt x 143.9176pt.
+Package epstopdf Info: Source file: <plots_tables_images/anotherslice4.eps>
+(epstopdf)                    date: 2013-04-16 12:38:30
+(epstopdf)                    size: 19539 bytes
+(epstopdf)             Output file: <plots_tables_images/anotherslice4-eps-conv
+erted-to.pdf>
+(epstopdf)                    date: 2013-04-16 12:58:47
+(epstopdf)                    size: 11787 bytes
+(epstopdf)             Command: <repstopdf --outfile=plots_tables_images/anothe
+rslice4-eps-converted-to.pdf plots_tables_images/anotherslice4.eps>
+(epstopdf)             \includegraphics on input line 394.
+Package epstopdf Info: Output file is already uptodate.
+
+<plots_tables_images/anotherslice4-eps-converted-to.pdf, id=275, 552.0625pt x 3
+38.26375pt>
+File: plots_tables_images/anotherslice4-eps-converted-to.pdf Graphic file (type
+ pdf)
+ <use plots_tables_images/anotherslice4-eps-converted-to.pdf>
+Package pdftex.def Info: plots_tables_images/anotherslice4-eps-converted-to.pdf
+ used on input line 394.
+(pdftex.def)             Requested size: 234.88037pt x 143.9176pt.
+Package epstopdf Info: Source file: <plots_tables_images/anotherslice5.eps>
+(epstopdf)                    date: 2013-04-16 12:38:30
+(epstopdf)                    size: 19707 bytes
+(epstopdf)             Output file: <plots_tables_images/anotherslice5-eps-conv
+erted-to.pdf>
+(epstopdf)                    date: 2013-04-16 12:58:48
+(epstopdf)                    size: 11904 bytes
+(epstopdf)             Command: <repstopdf --outfile=plots_tables_images/anothe
+rslice5-eps-converted-to.pdf plots_tables_images/anotherslice5.eps>
+(epstopdf)             \includegraphics on input line 400.
+Package epstopdf Info: Output file is already uptodate.
+
+<plots_tables_images/anotherslice5-eps-converted-to.pdf, id=276, 552.0625pt x 3
+38.26375pt>
+File: plots_tables_images/anotherslice5-eps-converted-to.pdf Graphic file (type
+ pdf)
+ <use plots_tables_images/anotherslice5-eps-converted-to.pdf>
+Package pdftex.def Info: plots_tables_images/anotherslice5-eps-converted-to.pdf
+ used on input line 400.
+(pdftex.def)             Requested size: 234.88037pt x 143.9176pt.
+Package epstopdf Info: Source file: <plots_tables_images/anotherslice6.eps>
+(epstopdf)                    date: 2013-04-16 12:38:30
+(epstopdf)                    size: 18437 bytes
+(epstopdf)             Output file: <plots_tables_images/anotherslice6-eps-conv
+erted-to.pdf>
+(epstopdf)                    date: 2013-04-16 12:59:11
+(epstopdf)                    size: 11438 bytes
+(epstopdf)             Command: <repstopdf --outfile=plots_tables_images/anothe
+rslice6-eps-converted-to.pdf plots_tables_images/anotherslice6.eps>
+(epstopdf)             \includegraphics on input line 400.
+Package epstopdf Info: Output file is already uptodate.
+
+<plots_tables_images/anotherslice6-eps-converted-to.pdf, id=277, 552.0625pt x 3
+38.26375pt>
+File: plots_tables_images/anotherslice6-eps-converted-to.pdf Graphic file (type
+ pdf)
+ <use plots_tables_images/anotherslice6-eps-converted-to.pdf>
+Package pdftex.def Info: plots_tables_images/anotherslice6-eps-converted-to.pdf
+ used on input line 400.
+(pdftex.def)             Requested size: 234.88037pt x 143.9176pt.
+
+Overfull \hbox (10.0057pt too wide) in paragraph at lines 388--401
+ [][] 
+ []
+
+
+Overfull \hbox (10.0057pt too wide) in paragraph at lines 388--401
+ [][] 
+ []
+
+
+Overfull \hbox (10.0057pt too wide) in paragraph at lines 388--401
+ [][] 
+ []
+
+[10]
 Package epstopdf Info: Source file: <plots_tables_images/circfidcomp.eps>
 (epstopdf)                    date: 2013-02-20 16:03:15
 (epstopdf)                    size: 114861 bytes
@@ -818,39 +1094,46 @@ ted-to.pdf>
 (epstopdf)                    size: 28142 bytes
 (epstopdf)             Command: <repstopdf --outfile=plots_tables_images/circfi
 dcomp-eps-converted-to.pdf plots_tables_images/circfidcomp.eps>
-(epstopdf)             \includegraphics on input line 375.
+(epstopdf)             \includegraphics on input line 424.
 Package epstopdf Info: Output file is already uptodate.
 
-<plots_tables_images/circfidcomp-eps-converted-to.pdf, id=264, 552.0625pt x 662
+<plots_tables_images/circfidcomp-eps-converted-to.pdf, id=297, 552.0625pt x 662
 .475pt>
 File: plots_tables_images/circfidcomp-eps-converted-to.pdf Graphic file (type p
 df)
  <use plots_tables_images/circfidcomp-eps-converted-to.pdf>
 Package pdftex.def Info: plots_tables_images/circfidcomp-eps-converted-to.pdf u
-sed on input line 375.
+sed on input line 424.
 (pdftex.def)             Requested size: 422.77664pt x 507.3578pt.
- [10]
-[11 <./plots_tables_images/slice1-eps-converted-to.pdf> <./plots_tables_images/
-slice2-eps-converted-to.pdf> <./plots_tables_images/slice3-eps-converted-to.pdf
-> <./plots_tables_images/slice4-eps-converted-to.pdf> <./plots_tables_images/sl
-ice5-eps-converted-to.pdf> <./plots_tables_images/slice6-eps-converted-to.pdf>]
-[12 <./plots_tables_images/circfidcomp-eps-converted-to.pdf>]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 412.
- [13]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 412.
-
-(./fid_outline.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 412.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 412.
+ [11 <./plots_tables_images/slice1-eps-converted-to.pdf> <./plots_tables_images
+/slice2-eps-converted-to.pdf> <./plots_tables_images/slice3-eps-converted-to.pd
+f> <./plots_tables_images/slice4-eps-converted-to.pdf> <./plots_tables_images/s
+lice5-eps-converted-to.pdf> <./plots_tables_images/slice6-eps-converted-to.pdf>
+] [12 <./plots_tables_images/betterslice0-eps-converted-to.pdf> <./plots_tables
+_images/betterslice1-eps-converted-to.pdf> <./plots_tables_images/betterslice2-
+eps-converted-to.pdf> <./plots_tables_images/betterslice3-eps-converted-to.pdf>
+ <./plots_tables_images/betterslice4-eps-converted-to.pdf> <./plots_tables_imag
+es/betterslice5-eps-converted-to.pdf>] [13 <./plots_tables_images/anotherslice1
+-eps-converted-to.pdf> <./plots_tables_images/anotherslice2-eps-converted-to.pd
+f> <./plots_tables_images/anotherslice3-eps-converted-to.pdf> <./plots_tables_i
+mages/anotherslice4-eps-converted-to.pdf> <./plots_tables_images/anotherslice5-
+eps-converted-to.pdf> <./plots_tables_images/anotherslice6-eps-converted-to.pdf
+>] [14 <./plots_tables_images/circfidcomp-eps-converted-to.pdf>]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 461.
+ [15]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 461.
+ (./fid_outline.aux)
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 461.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 461.
 Package rerunfilecheck Info: File `fid_outline.out' has not changed.
 (rerunfilecheck)             Checksum: 4BD4BAB82FDD5C14C0207C614BA57250;1211.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 412.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 461.
  ) 
 Here is how much of TeX's memory you used:
- 8135 strings out of 493481
- 125655 string characters out of 3140966
- 211797 words of memory out of 3000000
- 11235 multiletter control sequences out of 15000+200000
+ 8207 strings out of 493481
+ 128808 string characters out of 3140966
+ 213064 words of memory out of 3000000
+ 11285 multiletter control sequences out of 15000+200000
  12330 words of font info for 48 fonts, out of 3000000 for 9000
  957 hyphenation exceptions out of 8191
  44i,9n,42p,807b,556s stack positions out of 5000i,500n,10000p,200000b,50000s
@@ -866,10 +1149,10 @@ l/texlive/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/t
 exlive/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/te
 xlive/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/tex
 live/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb>
-Output written on fid_outline.pdf (14 pages, 561458 bytes).
+Output written on fid_outline.pdf (16 pages, 663772 bytes).
 PDF statistics:
- 418 PDF objects out of 1000 (max. 8388607)
- 325 compressed objects within 4 object streams
- 85 named destinations out of 1000 (max. 500000)
- 289 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 525 PDF objects out of 1000 (max. 8388607)
+ 404 compressed objects within 5 object streams
+ 95 named destinations out of 1000 (max. 500000)
+ 349 words of extra memory for PDF output out of 10000 (max. 10000000)
 
