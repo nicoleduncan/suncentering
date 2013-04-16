@@ -825,23 +825,17 @@ aa = tmpcrop
 !p.charsize=2
 window,p
 ; range = (float(tmpcrop[11,*]))[0:5]
-range = (float(tmpcrop[*,20]))[-6:-1]
-; window,0
-plot,range - mode(aa),psym=-4,title='plain slice from [-6:-1] edge of '+strcompress(8,/rem)+':'+$
-    strcompress(38+p,/rem),xs=3,ys=3
-vline,18
-vline,24
+range = (FLOAT(tmpcrop[*,20]))[-6:-1]
+
+plot,range - MODE(aa),psym=-4,title='plain slice from [-6:-1] edge of '+STRCOMPRESS(8,/rem)+':'+$
+    STRCOMPRESS(38+p,/rem),xs=3,ys=3
 vline,5-p
-; window,1
+vline,5-p
 plot,DERIV(range),psym=-4,title='1st deriv of slice',xs=3,ys=3
-vline,18
-vline,24
 vline,5-p
 plot,(DERIV(DERIV(range)))[*],psym=-4,title='2nd deriv of slice',xs=3,ys=3
-vline,18
-vline,24
 vline,5-p
-; window,2
+
 !p.multi=0
 
 ; The right of the vline is where the fiducial is
@@ -862,6 +856,17 @@ endfor
 
 ; Instead of looking only at edge 6 pixels...?
 
+kernel = [[-.5,1,-.5],[1,1,1],[-.5,1,-.5]]
+; kernel = [[.1,.1,.1],[.1,.1,.1],[.1,.1,.1]]
+cgimage,convol(float(tmpcrop),kernel,/edge_truncate,/center) * (scale_vector(convol(float(tmpcrop),kernel,/edge_truncate,/center)) lt .3),/k
+kernel=[[0,1,0],[1,1,1],[0,1,0]]
+circ = convol(float(tmpcrop),kernel,/edge_truncate,/center)
+crop_circ = circ[5:15,16:27]
+cgimage,crop_circ,/k
+thresh = 850
+print,quickmask(crop_circ,thresh)
+
+; omg, we can just convol() it, then find a quickmask!
 
 
 ; window,3
