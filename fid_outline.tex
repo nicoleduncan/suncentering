@@ -186,7 +186,65 @@ In a nutshell, \hl{\tt{scrib.pro}} takes an image of the sun with fiducials and 
     If we expect the fiducials to be rotated only slightly, we can look at the same angle as if the image was not rotated. However, as the angle reaches 90 degrees, we will be increasingly unable to see the fiducials without decreasing the threshold of pixels to mask.
 
     % subsection shift_diff (end)
-\newpage 
+
+\section{Using convol()} % (fold)
+\label{sec:using_convol}
+    Instead of using two edge-detection filters, using a single \hl{\texttt{convol()}} filter with a custom kernel works well enough for isolated fiducials (Note: fails for fiducials cut off on the edge). Once we have a blurred, mostly-symmetric convolved image, we retreieve a mask above a certain threshold and find the center of it with the equation:
+
+    \begin{equation}
+        x = \frac{1}{M}\sum_{i=1}^{n}m_ix_i~,~y = \frac{1}{M}\sum_{i=1}^{n}m_iy_i
+    \end{equation}
+
+    Where $M$ is the total number of pixels we are taking into account and $m_ix_i$ gives us the `length' of each row/column that we total to find the center. The advantage of this method is that we can get sub-pixel values for the x and y position of the fiducials. The best approach would be to use the current \hl{\texttt{mode()}} method to find the approximate centers of the fiducials then crop a region around it, convolve it, then use the center of mass formula to get a more precise location.
+
+\subsection{Outline of Math} % (fold)
+\label{sub:outline_of_math}
+    The kernel used in the \hl{\texttt{convol()}} filter is:
+
+    \[ \begin{array}{cccccc}
+    0 & 0 & 1 & 1 & 0 & 0 \\
+    0 & 0 & 1 & 1 & 0 & 0 \\
+    1 & 1 & 1 & 1 & 1 & 1 \\
+    1 & 1 & 1 & 1 & 1 & 1 \\
+    0 & 0 & 1 & 1 & 0 & 0 \\
+    0 & 0 & 1 & 1 & 0 & 0 \end{array}\] 
+
+    This kernel produces a more symmetric fiducial after convolution than a 
+
+    \[ \begin{array}{ccccc}
+    0 & 0 & 1 & 0 & 0 \\
+    0 & 0 & 1 & 0 & 0 \\
+    1 & 1 & 1 & 1 & 1 \\
+    0 & 0 & 1 & 0 & 0 \\
+    0 & 0 & 1 & 0 & 0 \end{array}\] 
+
+    or
+
+    \[ \begin{array}{ccc}
+    0 & 1 & 0 \\
+    1 & 1 & 1 \\
+    0 & 1 & 0 \end{array}\] 
+
+    kernel.
+
+\begin{figure}[ht]
+        \begin{minipage}{.45\textwidth}
+            \centering
+                \includegraphics[width=\linewidth]{plots_tables_images/cropcomp0.png}
+                \caption{In the top right is the plain image. The bottom left is the plain image convolved with the kernel mentioned in \S \ref{sub:outline_of_math}. The top left is the center of the convolved image using a simple \emph{center-of-mass} formula. The bottom left is the comparison of the center of mass location to an image interpolated to 10x the number of $x$ and $y$ indices.}
+        \end{minipage}
+        \hspace{.5in}
+        \begin{minipage}{.45\textwidth}
+        \vspace{-.65in}
+            \centering
+                \includegraphics[width=\linewidth]{plots_tables_images/cropcomp1.png}
+                \caption{Here we use the same approach but see that for fiducials cut off by the edge, the simple \emph{center-of-mass} method doesn't work so well.}
+        \end{minipage}
+    \end{figure}
+% subsection outline_of_math (end)
+% section using_convol (end)
+
+\newpage
 
 \section{More Images}    
 
@@ -256,8 +314,47 @@ In a nutshell, \hl{\tt{scrib.pro}} takes an image of the sun with fiducials and 
 
      We are focusing on the latter. However, this in turn brings forth another problem; do we take an image with cut-off fiducials (CFs) and then eliminate them or do we try to find fiducials that aren't cut off, i.e., look around CFs? Our current method is to find the fiducials normally, as if the fiducials aren't cut off, then methodically eliminate any fiducials that are too close to the edge of our image. The result is that we need to identify the shape and size of a fiducial beforehand to apply those constraints on the on-edge or CFs. Also, this means that we need to identify ``how bad'' we will allow the fiducial finding program to continue finding CFs.
 
-     Also, if we see a CF on the edge, instead of cropping the image so that the CF is no longer in the image, we simply tell the program to ignore anything it finds on that side of the image. 
-% section dealing_witb_fiducials_on_edge (end)
+     Also, if we see a CF on the edge, instead of cropping the image so that the CF is no longer in the image, we simply tell the program to ignore anything it finds on that side of the image. To do this, we look at a 1 pixel border around the edge of our image and detect if there are any fiducials there to begin with. If there are, we look towards the inside 6 pixels deep. The reasoning behind 6 pixels is that if we look 6 pixels to the center and ``see'' a complete fiducial, then it isn't cut off and only the edge of the fiducial lies on the edge of the image. If we look 6 pixels in and find any number of fiducial pixels less than 6, then we know that the fiducial is cut off. 
+
+     Now, the problem is how to look for a fiducial. Currently, the imperfect method is to look at the pixel values themselves and try to find some pattern within them to isolate a fiducial. 
+
+
+\subsection{Images} % (fold)
+\label{sub:images}
+
+In Figure \ref{6slices}, the vertical line represents the left edge of a fiducial that is cut off on the right side of our image. Anything that is to the left of the vertical line we do not directly care about since it is not a fiducial, but we still need it for derivatives and such. Anything to the right of the vertical line represents a portion of the fiducial that is cut off in our image. The reasoning is that we look at a set of decreasingly cut off fiducials and try to isolate a pattern. The order of decreasing cut off goes from left to right, top to bottom. In the top left we see 1 pixel of the fiducial in the image and in the bottom right we see 6 pixels of the fiducial in the image; the fiducial is not cut off. 
+
+\begin{figure}[!ht]
+    \centering
+    \subfloat{
+        \includegraphics[width=0.5\linewidth, height = .34\textheight, keepaspectratio=true]{plots_tables_images/slice1.eps}
+        \includegraphics[width=0.5\linewidth, height = .34\textheight, keepaspectratio=true]{plots_tables_images/slice2.eps}
+        }  
+    \hspace{.5in}
+    \centering
+    \subfloat{
+        \includegraphics[width=0.5\linewidth, height = .34\textheight, keepaspectratio=true]{plots_tables_images/slice3.eps}
+        \includegraphics[width=0.5\linewidth, height = .34\textheight, keepaspectratio=true]{plots_tables_images/slice4.eps}
+        }
+    \hspace{.5in}
+    \centering
+    \subfloat{
+        \includegraphics[width=0.5\linewidth, height = .34\textheight, keepaspectratio=true]{plots_tables_images/slice5.eps}
+        \includegraphics[width=0.5\linewidth, height = .34\textheight, keepaspectratio=true]{plots_tables_images/slice6.eps}
+        }
+        \caption{Trying to find a pattern in the values of CFs.}
+        \label{6slices}
+\end{figure}
+
+After a cursory analysis at the plots we see that there is no obvious pattern for CFs. This can be remedied by either of 2 methods:
+
+\begin{enumerate}
+    \item Look at more pixels
+    \item Look in a different manner
+    \item A combination of the above
+\end{enumerate}
+
+% subsection images (end)% section dealing_witb_fiducials_on_edge (end)
 
 \section{Drawbacks}
 

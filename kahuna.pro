@@ -763,7 +763,7 @@ function edgefidcheck, input, thresh
 bigxpb = SHIFT_DIFF(EMBOSS(input),dir=3) lt thresh
 bigypb = SHIFT_DIFF(EMBOSS(input,az=90),dir=1) lt thresh
 
-for p = 1,5 do begin
+for p = 1,6 do begin
     tmpcrop = input[10:38+p,8:42]
     xpb = bigxpb[10:38+p,8:42]
     ypb = bigypb[10:38+p,8:42]
@@ -862,16 +862,16 @@ for p = 1,5 do begin
     window,p
     ; ps_start,filename='slice'+strcompress(p,/rem)+'.eps',/encapsulated,/color
     ; range = (float(tmpcrop[11,*]))[0:5]
-    range = (FLOAT(tmpcrop[*,20]))[-6:-1]
+    range = (FLOAT(tmpcrop[*,20]))[-7:-1]
 
     plot,range - MODE(aa),psym=-4,title='plain slice from [-6:-1] edge of '+STRCOMPRESS(8,/rem)+':'+$
         STRCOMPRESS(38+p,/rem),xs=3,ys=3
-    vline,5-p
-    vline,5-p
+    vline,6-p
+    vline,6-p
     plot,DERIV(range),psym=-4,title='1st deriv of slice',xs=3,ys=3
-    vline,5-p
+    vline,6-p
     plot,(DERIV(DERIV(range)))[*],psym=-4,title='2nd deriv of slice',xs=3,ys=3
-    vline,5-p
+    vline,6-p
     ; ps_end
     !p.multi=0
     !p.charsize=oldcharsize
