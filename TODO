@@ -1,0 +1,23 @@
+run emboss az =0 and az-180, ABS(A-B)
+
+->find fid centers for CF, at what point is it too bad <-
+
+image border check can be > 1 pixel, 6 pixels instead that we should care about in addition to 6 more (if sticking with range - mode(tmpcrop)
+
+does program break if fiducials on edge? if not, that's fine
+
+make doc of 3 fiducials I looked at and why -30 is good (and quantify it better) (and extend to 2 more fiducials (recrop))
+
+define how close to edge we throw out fiducial detection
+
+use binary mask centering maybe?
+
+find centers first then think about quentionability
+
+how many can we cut off and be ok?
+
+irregular grid?
+
+inquire about video from which our image is a freeze frame of
+
+if fid is good, THEN do binary mask center of it! Won't have to worry about edge stuff then
