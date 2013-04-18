@@ -213,7 +213,8 @@ FUNCTION whichcropmethod, region
 COMMON vblock, wholeimage
 
 ; crop_box = BYTE(!param.crop_box)
-a = wholeimage[SORT(wholeimage)]
+
+a = wholeimage[BSORT(wholeimage)]
 niceimage = a[0:(1-!param.elim_perc/100)*(N_ELEMENTS(a)-1)]
 
 thresh = !param.reg1thresh_mult*max(niceimage)
@@ -377,12 +378,10 @@ loop: BEGIN
     IF !param.file EQ 'dimsun1.fits' THEN radius = BYTE( !param.scan_radius ) 
 
     ; Have to use .3 instead of .25 for dimsun2, don't know why
-
-    sorted =  wholeimage[sort(wholeimage)]
-    thresh = !param.reg2thresh_mult*MAX( sorted[0:(1-!param.elim_perc/100)*(N_ELEMENTS(sorted)-1)] )
+    sorted =  wholeimage[bsort(wholeimage)]
+    thresh = !param.reg2thresh_mult*MAX(sorted[0:(1-!param.elim_perc/100)*(N_ELEMENTS(sorted)-1)] )
     ; ^^
     ; Well this doesn't work.
-    
     thresh = !param.reg2thresh_mult*MAX(wholeimage)
     ; Alright, for some reason, clipping out the top 1% changes the thresh from 53.7 to 64.5
     ; which makes the centerx,centery go from 337,76 (correct)
@@ -410,14 +409,13 @@ otherloop: BEGIN
     IF REGION EQ 3 THEN BEGIN
         thresh = 0.2*MAX(wholeimage) ;dimsun2 works if i set the thresh to .2 instead of .15
         ; The other sun is so dim that weird parts are being picked up. How to fix? Is being dim a problem?
-
-        sorted =  wholeimage[sort(wholeimage)]
+        sorted =  wholeimage[bsort(wholeimage)]
         thresh = !param.reg3thresh_mult*MAX( sorted[0:(1-!param.elim_perc/100)*(N_ELEMENTS(sorted)-1)] )
         ; ^^
         ; Well this doesn't work.
-    
-        thresh = !param.reg3thresh_mult*MAX(wholeimage)
-
+        ; print,thresh
+        ; thresh = !param.reg3thresh_mult*MAX(wholeimage)
+        
         ; check to make sure we're scanning at the right radius
         n_check = WHERE((wholeimage[x2,y2] GT thresh) EQ 1,n_where)
 
@@ -436,10 +434,10 @@ otherloop: BEGIN
             r2bit*=-1
             GOTO, otherloop
         ENDELSE
-
         ; Setting this to 0 actually messes up fitting. use only to show what pixels are being circscanned
         ; wholeimage[x[in_inner:out_inner],y[in_inner:out_inner]] = 0
         ; wholeimage[x2[in_outer:out_outer],y2[in_outer:out_outer]] = 0
+        ; stop
     ENDIF
 END
 
@@ -447,6 +445,8 @@ END
 centerangle = !dtor*(90 + MEAN([in_inner,out_inner]))
 centerx = mainxpos + radius*COS(centerangle)
 centery = mainypos + radius*SIN(centerangle)
+
+; This part fails with the bright pixels
 
 image = wholeimage[centerx - !param.crop_box:centerx + !param.crop_box,$
     centery - !param.crop_box:centery + !param.crop_box]
@@ -683,7 +683,6 @@ COMMON vblock, wholeimage
 
 start = SYSTIME(1,/s)
 
-
 center1 = {center1,xpos:0d,ypos:0d,thresh:0d}
 center2 = {center2,xpos:0d,ypos:0d,thresh:0d}
 center3 = {center3,xpos:0d,ypos:0d,thresh:0d}
@@ -703,7 +702,6 @@ center3.xpos = xpos
 center3.ypos = ypos
 center3.thresh = thresh
 
-
 theta = !radeg*atan((center3.ypos - center2.ypos)/(center3.xpos - center2.xpos))
 hypot = sqrt((center3.ypos - center2.ypos)^2 + (center3.xpos - center2.xpos)^2)
 offset = ((center1.xpos - center2.xpos)*(center3.ypos - center2.ypos) - $
@@ -716,6 +714,56 @@ IF KEYWORD_SET(time) THEN print, 'getstruct took: '+STRCOMPRESS(finish-start)+$
     ' seconds'
 RETURN
 END
+
+
+;**************************************************************************************************
+;*                                                                                                *
+;**************************************************************************************************
+
+
+function auxcrop;, mainxpos, mainypos, image, thresh, xpos, ypos, xoffset, yoffset, region=region, $
+     ;time=time
+
+; input the region
+
+
+; replacing circscancrop because this is so much simpler. 
+
+; we already know the center of the main sun, crop it out
+a = findgen(10,10)
+; if center is 5,5
+b = fltarr(10,10) + 1
+b[4:6,4:6] -= 1
+newmask = a*b
+
+; work with this image
+
+; thresh = .6*MAX(newmask[0:(1-!param.elim_perc/100)*(N_ELEMENTS(newmask)-1)])
+
+; but instead of .6 it's a parameter
+
+; shoud do a check where if there are no adjacent pixels near a bright pixel, eliminate it, BUT that would be a mean amount of calculation
+
+; quickmask newmask with the above thresh
+
+; the once we find center, crop out that part too, rinse above steps
+
+; Is it a problem that reg 3 needs the coords of reg 2? Nah old code does the same.
+
+; centerx = mainxpos + radius*COS(centerangle)
+; centery = mainypos + radius*SIN(centerangle)
+
+; ; This part fails with the bright pixels
+
+; image = wholeimage[centerx - !param.crop_box:centerx + !param.crop_box,$
+;     centery - !param.crop_box:centery + !param.crop_box]
+; xoffset = centerx- !param.crop_box
+; yoffset = centery- !param.crop_box
+
+
+; output the crop area
+; return, 
+end
 
 
 ;**************************************************************************************************
@@ -1611,17 +1659,49 @@ defsysv,'!param',c
 ; print,'Parameters:'
 ; for i=0,N_ELEMENTS(var)-1 do print,var[i],num[i],format='(A,A)'
 
-wholeimage = mrdfits(file)
-wholeimage[200,300] = 255
-wholeimage[202,139] = 255
-wholeimage[87,231] = 255
-wholeimage[401,45] = 255
-wholeimage[23,143] = 255
-wholeimage[34,290] = 255
-wholeimage[420,242] = 255
+; wholeimage = mrdfits(file)
 
-cgimage,wholeimage,/k
+; Centers of dottedimage.fits
+; wholeimage[200,300] = 255
+; wholeimage[202,139] = 255
+; wholeimage[87,231] = 255
+; wholeimage[401,45] = 255
+; wholeimage[23,143] = 255
+; wholeimage[34,290] = 255
+; wholeimage[420,242] = 255
+
+; Main sun x pos:       210.50238
+; Main sun y pos:       154.27054
+; 50% sun x pos:        337.80600
+; 50% sun y pos:        76.894958
+; 25% sun x pos:        78.683426
+; 25% sun y pos:        235.11536
+
+wholeimage = mrdfits('dottedimage.fits')
+rabbit = mrdfits('2whole.fits')
+rabbit=rabbit[0,*,*]
+turtle = mrdfits('partial3rd.fits')
+ox = mrdfits('2partials.fits')
+; wholeimage = mrdfits(file)
+; mwrfits,wholeimage,'dottedimage.fits',/create
+window,0
+cgimage,rabbit,/k
+window,1
+cgimage,turtle,/k
+window,2
+cgimage,ox,/k
+
+borderbit = bordercheck(wholeimage)
+
+; read_jpeg,'plots_tables_images/2whole.jpeg',lun
+; mwrfits,lun,'2whole.fits',/create
+; read_jpeg,'plots_tables_images/partial3rd.jpeg',red
+; mwrfits,red,'partial3rd.fits',/create
+; read_jpeg,'plots_tables_images/2partials.jpeg',stairs
+; mwrfits,stairs,'2partials.fits',/create
+
 stop
+
 getstruct, struct, time=time
 
 ; profiler,/report,data=data
@@ -1664,6 +1744,8 @@ crop = wholeimage[struct.center1.xpos-!param.safecrop:struct.center1.xpos+!param
     struct.center1.ypos-!param.safecrop:struct.center1.ypos+!param.safecrop]
 thresh = 0.5*MIN((SHIFT_DIFF(EMBOSS(crop),dir=3)))
 borderbit = bordercheck(wholeimage)
+
+stop
 
 rabbits = last6pixels(crop,thresh)
 turtles = galapagos(crop,thresh)
