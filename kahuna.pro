@@ -1612,8 +1612,16 @@ defsysv,'!param',c
 ; for i=0,N_ELEMENTS(var)-1 do print,var[i],num[i],format='(A,A)'
 
 wholeimage = mrdfits(file)
+wholeimage[200,300] = 255
+wholeimage[202,139] = 255
+wholeimage[87,231] = 255
+wholeimage[401,45] = 255
+wholeimage[23,143] = 255
+wholeimage[34,290] = 255
+wholeimage[420,242] = 255
 
-; stop
+cgimage,wholeimage,/k
+stop
 getstruct, struct, time=time
 
 ; profiler,/report,data=data
