@@ -1591,6 +1591,109 @@ end
 ;**************************************************************************************************
 
 
+pro smoothit, input
+
+sorted = float(input[bsort(input)])
+skimmed = sorted[0:(1-!param.elim_perc/100)*(N_ELEMENTS(sorted)-1)]
+
+smoothed = ts_smooth(skimmed,1000,order=3)
+reg_smooth = smooth(skimmed,1000,/edge_truncate)
+; !p.charsize=2
+; window,1
+; plot,DERIV(smoothed),yr=[0,.1],xr=[1e5,n_elements(skimmed)-1]
+; window,2
+; plot,DERIV(smooth(skimmed,1000)),yr=[0,.1],xr=[1e5,n_elements(skimmed)-1]
+
+; ps_start,filename='d_.eps',/encapsulated
+window,0
+plot,skimmed,xr=[1.3e5,n_elements(skimmed)-1],title='deriv(smooth)',yr=[-100,300]
+; oplot,deriv(reg_smooth)*3000
+oplot,scale_vector(deriv(reg_smooth),min(skimmed),max(skimmed))
+vline,141231.25
+vline,138022.30
+vline,134328.27
+xyouts, 1.42e5,200,'Main sun'
+xyouts, 1.39e5,200,'50% sun'
+xyouts, 1.35e5,200,'25% sun'
+; ps_end
+
+ps_start,filename='d_s_d_reg.eps',/encapsulated
+; window,1
+plot,skimmed,xr=[1.3e5,n_elements(skimmed)-1],title='deriv(smooth(deriv(smooth)))',yr=[-100,300]
+; oplot,deriv(smooth(deriv(reg_smooth)*2000000,1000,/edge_truncate))
+oplot,scale_vector(deriv(smooth(deriv(reg_smooth),1000,/edge_truncate)),min(skimmed),max(skimmed))
+vline,141231.25
+vline,138022.30
+vline,134328.27
+xyouts, 1.42e5,200,'Main sun'
+xyouts, 1.39e5,200,'50% sun'
+xyouts, 1.35e5,200,'25% sun'
+ps_end
+
+ps_start,filename='d_ts.eps',/encapsulated
+; window,2
+plot,skimmed,xr=[1.3e5,n_elements(skimmed)-1],title='deriv(ts_smooth)',yr=[-100,300]
+oplot,scale_vector(deriv(smoothed),min(skimmed),max(skimmed))
+; oplot,deriv(smoothed)*3000
+vline,141231.25
+vline,138022.30
+vline,134328.27
+xyouts, 1.42e5,200,'Main sun'
+xyouts, 1.39e5,200,'50% sun'
+xyouts, 1.35e5,200,'25% sun'
+ps_end
+
+ps_start,filename='d_s_d_ts.eps',/encapsulated
+; window,3
+plot,skimmed,xr=[1.3e5,n_elements(skimmed)-1],title='deriv(smooth(deriv(ts_smooth)))',yr=[-100,300]
+; oplot,deriv( smooth(deriv(smoothed)*2000000,1000,/edge_truncate) )
+oplot,scale_vector(deriv( smooth(deriv(smoothed),1000,/edge_truncate) ),min(skimmed),max(skimmed))
+xyouts, 1.42e5,200,'Main sun'
+xyouts, 1.39e5,200,'50% sun'
+xyouts, 1.35e5,200,'25% sun'
+
+vline,141231.25
+vline,138022.30
+vline,134328.27
+ps_end
+
+ps_start,filename='d_ts_d_reg.eps',/encapsulated
+; window,4
+plot,skimmed,xr=[1.3e5,n_elements(skimmed)-1],title='deriv(ts_smooth(deriv(smooth)))',yr=[-100,300]
+; oplot,deriv(ts_smooth(deriv(reg_smooth),1000,order=3))
+oplot,scale_vector(deriv(ts_smooth(deriv(reg_smooth),1000,order=3)),min(skimmed),max(skimmed))
+vline,141231.25
+vline,138022.30
+vline,134328.27
+xyouts, 1.42e5,200,'Main sun'
+xyouts, 1.39e5,200,'50% sun'
+xyouts, 1.35e5,200,'25% sun'
+ps_end
+
+ps_start,filename='d_ts_d_ts.eps',/encapsulated
+; window,5
+plot,skimmed,xr=[1.3e5,n_elements(skimmed)-1],title='deriv(ts_smooth(deriv(ts_smooth)))',yr=[-100,300]
+; oplot,deriv( ts_smooth(deriv(smoothed)*2000000,1000,order=3) )
+oplot,scale_vector(deriv( ts_smooth(deriv(smoothed),1000,order=3) ),min(skimmed),max(skimmed))
+; oplot,shift(deriv(deriv(smoothed*200000)),500)
+
+vline,141231.25
+vline,138022.30
+vline,134328.27
+xyouts, 1.42e5,200,'Main sun'
+xyouts, 1.39e5,200,'50% sun'
+xyouts, 1.35e5,200,'25% sun'
+ps_end
+
+stop
+end
+
+
+;**************************************************************************************************
+;*                                                                                                *
+;**************************************************************************************************
+
+
 ; docformat = 'rst'
 ;
 ;+
@@ -1684,12 +1787,12 @@ turtle = mrdfits('partial3rd.fits')
 ox = mrdfits('2partials.fits')
 ; wholeimage = mrdfits(file)
 ; mwrfits,wholeimage,'dottedimage.fits',/create
-window,0
-cgimage,rabbit,/k
-window,1
-cgimage,turtle,/k
-window,2
-cgimage,ox,/k
+; window,0
+; cgimage,rabbit,/k
+; window,1
+; cgimage,turtle,/k
+; window,2
+; cgimage,ox,/k
 
 borderbit = bordercheck(wholeimage)
 
@@ -1700,7 +1803,7 @@ borderbit = bordercheck(wholeimage)
 ; read_jpeg,'plots_tables_images/2partials.jpeg',stairs
 ; mwrfits,stairs,'2partials.fits',/create
 
-stop
+; stop
 
 getstruct, struct, time=time
 
@@ -1744,6 +1847,8 @@ crop = wholeimage[struct.center1.xpos-!param.safecrop:struct.center1.xpos+!param
     struct.center1.ypos-!param.safecrop:struct.center1.ypos+!param.safecrop]
 thresh = 0.5*MIN((SHIFT_DIFF(EMBOSS(crop),dir=3)))
 borderbit = bordercheck(wholeimage)
+
+smoothit,wholeimage
 
 stop
 
