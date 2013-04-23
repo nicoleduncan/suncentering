@@ -1594,11 +1594,45 @@ end
 pro smoothit, input
 
 sorted = float(input[bsort(input)])
+
+; u_input only looks good if the positions are so that the aux suns aren't in the same col/row as another sun
+; If there's any that do, it's going to be sucks.
+; Thus, this is only for looks
+u_input = input[uniq(input)]
+u_sort = float(u_input[sort(u_input)])
+
+n_col = (size(input,/dim))[0]
+n_row = (size(input,/dim))[1]
+xarr = fan(findgen(n_col),n_row)
+yarr = transpose(fan(findgen(n_row),n_col))
+
+xsort = xarr[bsort(input)]
+ysort = yarr[bsort(input)]
+
 skimmed = sorted[0:(1-!param.elim_perc/100)*(N_ELEMENTS(sorted)-1)]
 
-smoothed = ts_smooth(skimmed,1000,order=3)
-reg_smooth = smooth(skimmed,1000,/edge_truncate)
+; ps_start,filename='saysitall.eps',/encapsulated
+; !p.multi=[0,1,3]
+; plot,xsort,psym=3,title='X Positions'
+; vline,141231.25
+; vline,138022.30
+; vline,134328.27
+; plot,ysort,psym=3,title='Y Positions'
+; vline,141231.25
+; vline,138022.30
+; vline,134328.27
+; plot,sorted
+; vline,141231.25
+; vline,138022.30
+; vline,134328.27
+; !p.multi=0
+; ps_end
+; stop
 
+n_smooth = 100.
+smoothed = ts_smooth(skimmed,n_smooth,order=3)
+reg_smooth = smooth(skimmed,n_smooth,/edge_truncate)
+med_smooth = median(skimmed,n_smooth)
 
 
 ; the goal of smoothit is so that we can find the peaks of the suns, right? Once we have this 1D array we can work on isolating 1 or 2 suns.
@@ -1700,11 +1734,9 @@ reg_smooth = smooth(skimmed,1000,/edge_truncate)
 ; boundary is changing the least when suddenly it jumps to a high value. Am I inorrect in understanding this?
 
 
-
-
 window,0
-plot,skimmed,xr=[1.3e5,n_elements(skimmed)-1],title='deriv(ts_smooth(deriv(ts_smooth)))',yr=[-100,300]
-oplot,scale_vector(deriv(reg_smooth),min(skimmed),max(skimmed))
+plot,skimmed,xr=[1.3e5,n_elements(skimmed)-1],title='deriv(reg_smooth)',yr=[-100,300]
+oplot,scale_vector(deriv(smoothed),min(skimmed),max(skimmed))
 vline,141231.25
 vline,138022.30
 vline,134328.27
@@ -1712,11 +1744,29 @@ vline,134328.27
 
 window,1
 plot,skimmed,xr=[1.3e5,n_elements(skimmed)-1],title='deriv(ts_smooth(deriv(ts_smooth)))',yr=[-100,300]
-oplot,scale_vector(deriv( ts_smooth(deriv(smoothed),1000,order=3) ),min(skimmed),max(skimmed))
+oplot,scale_vector(deriv( ts_smooth(deriv(smoothed),n_smooth,order=3) ),min(skimmed),max(skimmed))
 vline,141231.25
 vline,138022.30
 vline,134328.27
 
+window,2
+plot,skimmed,xr=[1.3e5,n_elements(skimmed)-1],title='shift(deriv(reg_smooth),'+strcompress(n_smooth/2,/rem)+')',yr=[-100,300]
+oplot,shift(scale_vector(deriv(smoothed),min(skimmed),max(skimmed)),n_smooth/2)
+vline,141231.25
+vline,138022.30
+vline,134328.27
+
+window,3
+plot,histogram(skimmed,binsize=1),yr=[0,300]
+; maybe we should just histogram it, dude.
+; This way we don't have to fucking smooth it
+
+; ps_start,filename='histozoom.eps',/encapsulated
+; !p.multi=[0,1,2]
+; plot,histogram(skimmed,binsize=1)
+; plot,histogram(skimmed,binsize=1),yr=[0,300]
+; !p.multi=0
+; ps_end
 stop
 end
 

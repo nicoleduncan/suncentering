@@ -104,8 +104,35 @@ It turns out that \texttt{\hl{ts\_smooth}} takes an incredibly long time to run 
 
 \section{Drawbacks} % (fold)
 \label{sec:drawbacks}
+    
     The biggest problem with this method is that the pixel values overlap somewhat with different regions. Say the brightest region, region 1, is in the center of our image. Region 2 is at a brightness 50\% of the main sun. Say we now arrange the 2D plot as a 1D array and see two bumps, one for each solar region. Now, region 2 is intrinsically dimmer than region 1, which means there are going to be pixels in region 2 that will be comparative to the dark limb pixels of region 1. Since our 1D array (now that it's sorted, especially) has no spatial information, we cannot tell two pixels apart that have the same value but are in different regions. 
+
+    Another obvious drawback is the necessity of a \hl{\texttt{smooth}} filter. Not only does this require parameterization, it blurs out our data set. Instead of applying a filter, we can attempt to use a histogram plot to isolate the shape of our sorted main array. Figure \ref{histozoom} shows the structure of our three suns.
+
+\begin{figure}[!ht]
+    \centering
+    \includegraphics[width=.9\textwidth]{plots_tables_images/histozoom.eps}
+    \caption{The top is the histogram of the sorted array. The bottom is the same plot but zoomed to a y-range of [0:300].}
+    \label{histozoom}
+\end{figure}
+
+    Bring your attention to the double peak shape around the 50 tick on the x-axis. This is probably the result of the aforementioned inability to extract spatial data from a sorted array. The low-pixel values from one region are being binned into the same bin as the low-pixel values from another region. 
+
 % section drawbacks (end)
+
+\section{This Plot Says it All} % (fold)
+\label{sec:this_plot_says_it_all}
+
+    I wanted to see how many pixels were being counted in the wrong region, henceforth called ``leakage-pixels''. It turns out that it's not easy to see but it \emph{is} obvious that there are a fair number of them. Thus, it is safe to conclude that we cannot blindly use a sorted array without some sort of spatial reasoning. Figure \ref{saysitall} suggests we think harder about how to crop out auxiliary suns while operating on a single array.
+
+\begin{figure}[!ht]
+    \centering
+    \includegraphics[width=.9\textwidth]{plots_tables_images/saysitall.eps}
+    \caption{This plot reveals that when sorted, the regions bounded by the vertical lines (which are artificially places, not the result of any computation) include pixels from neighboring regions. For high-value pixels, i.e., the region bounded by the rightmost vertical line and the last element of the sorted array, the x and y positions are completely (no vertical dots) isolated from other regions. When we look at the middle region, we see that low-value pixels from the brightest region(most likely dark limb pixels) are being sorted into the middle region of the sorted array. The worst case scenario is the left-most region which has pixels from both the first and second regions.}
+    \label{saysitall}
+\end{figure}
+
+% section this_plot_says_it_all (end)
 
 \end{document}
 
