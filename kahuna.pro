@@ -1598,92 +1598,124 @@ skimmed = sorted[0:(1-!param.elim_perc/100)*(N_ELEMENTS(sorted)-1)]
 
 smoothed = ts_smooth(skimmed,1000,order=3)
 reg_smooth = smooth(skimmed,1000,/edge_truncate)
+
+
+
+; the goal of smoothit is so that we can find the peaks of the suns, right? Once we have this 1D array we can work on isolating 1 or 2 suns.
+; This way, we don't have to worry about keyword crap. 
+
+
 ; !p.charsize=2
 ; window,1
 ; plot,DERIV(smoothed),yr=[0,.1],xr=[1e5,n_elements(skimmed)-1]
 ; window,2
 ; plot,DERIV(smooth(skimmed,1000)),yr=[0,.1],xr=[1e5,n_elements(skimmed)-1]
 
-; ps_start,filename='d_.eps',/encapsulated
+; ; ps_start,filename='d_.eps',/encapsulated
+; window,0
+; plot,skimmed,xr=[1.3e5,n_elements(skimmed)-1],title='deriv(smooth)',yr=[-100,300]
+; ; oplot,deriv(reg_smooth)*3000
+; oplot,scale_vector(deriv(reg_smooth),min(skimmed),max(skimmed))
+; vline,141231.25
+; vline,138022.30
+; vline,134328.27
+; xyouts, 1.42e5,200,'Main sun'
+; xyouts, 1.39e5,200,'50% sun'
+; xyouts, 1.35e5,200,'25% sun'
+; ; ps_end
+
+; ps_start,filename='d_s_d_reg.eps',/encapsulated
+; ; window,1
+; plot,skimmed,xr=[1.3e5,n_elements(skimmed)-1],title='deriv(smooth(deriv(smooth)))',yr=[-100,300]
+; ; oplot,deriv(smooth(deriv(reg_smooth)*2000000,1000,/edge_truncate))
+; oplot,scale_vector(deriv(smooth(deriv(reg_smooth),1000,/edge_truncate)),min(skimmed),max(skimmed))
+; vline,141231.25
+; vline,138022.30
+; vline,134328.27
+; xyouts, 1.42e5,200,'Main sun'
+; xyouts, 1.39e5,200,'50% sun'
+; xyouts, 1.35e5,200,'25% sun'
+; ps_end
+
+; ps_start,filename='d_ts.eps',/encapsulated
+; ; window,2
+; plot,skimmed,xr=[1.3e5,n_elements(skimmed)-1],title='deriv(ts_smooth)',yr=[-100,300]
+; oplot,scale_vector(deriv(smoothed),min(skimmed),max(skimmed))
+; ; oplot,deriv(smoothed)*3000
+; vline,141231.25
+; vline,138022.30
+; vline,134328.27
+; xyouts, 1.42e5,200,'Main sun'
+; xyouts, 1.39e5,200,'50% sun'
+; xyouts, 1.35e5,200,'25% sun'
+; ps_end
+
+; ps_start,filename='d_s_d_ts.eps',/encapsulated
+; ; window,3
+; plot,skimmed,xr=[1.3e5,n_elements(skimmed)-1],title='deriv(smooth(deriv(ts_smooth)))',yr=[-100,300]
+; ; oplot,deriv( smooth(deriv(smoothed)*2000000,1000,/edge_truncate) )
+; oplot,scale_vector(deriv( smooth(deriv(smoothed),1000,/edge_truncate) ),min(skimmed),max(skimmed))
+; xyouts, 1.42e5,200,'Main sun'
+; xyouts, 1.39e5,200,'50% sun'
+; xyouts, 1.35e5,200,'25% sun'
+
+; vline,141231.25
+; vline,138022.30
+; vline,134328.27
+; ps_end
+
+; ps_start,filename='d_ts_d_reg.eps',/encapsulated
+; ; window,4
+; plot,skimmed,xr=[1.3e5,n_elements(skimmed)-1],title='deriv(ts_smooth(deriv(smooth)))',yr=[-100,300]
+; ; oplot,deriv(ts_smooth(deriv(reg_smooth),1000,order=3))
+; oplot,scale_vector(deriv(ts_smooth(deriv(reg_smooth),1000,order=3)),min(skimmed),max(skimmed))
+; vline,141231.25
+; vline,138022.30
+; vline,134328.27
+; xyouts, 1.42e5,200,'Main sun'
+; xyouts, 1.39e5,200,'50% sun'
+; xyouts, 1.35e5,200,'25% sun'
+; ps_end
+
+; ps_start,filename='d_ts_d_ts.eps',/encapsulated
+; ; window,5
+; plot,skimmed,xr=[1.3e5,n_elements(skimmed)-1],title='deriv(ts_smooth(deriv(ts_smooth)))',yr=[-100,300]
+; ; oplot,deriv( ts_smooth(deriv(smoothed)*2000000,1000,order=3) )
+; oplot,scale_vector(deriv( ts_smooth(deriv(smoothed),1000,order=3) ),min(skimmed),max(skimmed))
+; ; oplot,shift(deriv(deriv(smoothed*200000)),500)
+
+; vline,141231.25
+; vline,138022.30
+; vline,134328.27
+; xyouts, 1.42e5,200,'Main sun'
+; xyouts, 1.39e5,200,'50% sun'
+; xyouts, 1.35e5,200,'25% sun'
+; ps_end
+
+
+
+
+
+; I have a question: shouldn't the deriv(skimmed) have minima at the boundary lines? A minima would imply that
+; boundary is changing the least when suddenly it jumps to a high value. Am I inorrect in understanding this?
+
+
+
+
 window,0
-plot,skimmed,xr=[1.3e5,n_elements(skimmed)-1],title='deriv(smooth)',yr=[-100,300]
-; oplot,deriv(reg_smooth)*3000
+plot,skimmed,xr=[1.3e5,n_elements(skimmed)-1],title='deriv(ts_smooth(deriv(ts_smooth)))',yr=[-100,300]
 oplot,scale_vector(deriv(reg_smooth),min(skimmed),max(skimmed))
 vline,141231.25
 vline,138022.30
 vline,134328.27
-xyouts, 1.42e5,200,'Main sun'
-xyouts, 1.39e5,200,'50% sun'
-xyouts, 1.35e5,200,'25% sun'
-; ps_end
 
-ps_start,filename='d_s_d_reg.eps',/encapsulated
-; window,1
-plot,skimmed,xr=[1.3e5,n_elements(skimmed)-1],title='deriv(smooth(deriv(smooth)))',yr=[-100,300]
-; oplot,deriv(smooth(deriv(reg_smooth)*2000000,1000,/edge_truncate))
-oplot,scale_vector(deriv(smooth(deriv(reg_smooth),1000,/edge_truncate)),min(skimmed),max(skimmed))
-vline,141231.25
-vline,138022.30
-vline,134328.27
-xyouts, 1.42e5,200,'Main sun'
-xyouts, 1.39e5,200,'50% sun'
-xyouts, 1.35e5,200,'25% sun'
-ps_end
 
-ps_start,filename='d_ts.eps',/encapsulated
-; window,2
-plot,skimmed,xr=[1.3e5,n_elements(skimmed)-1],title='deriv(ts_smooth)',yr=[-100,300]
-oplot,scale_vector(deriv(smoothed),min(skimmed),max(skimmed))
-; oplot,deriv(smoothed)*3000
-vline,141231.25
-vline,138022.30
-vline,134328.27
-xyouts, 1.42e5,200,'Main sun'
-xyouts, 1.39e5,200,'50% sun'
-xyouts, 1.35e5,200,'25% sun'
-ps_end
-
-ps_start,filename='d_s_d_ts.eps',/encapsulated
-; window,3
-plot,skimmed,xr=[1.3e5,n_elements(skimmed)-1],title='deriv(smooth(deriv(ts_smooth)))',yr=[-100,300]
-; oplot,deriv( smooth(deriv(smoothed)*2000000,1000,/edge_truncate) )
-oplot,scale_vector(deriv( smooth(deriv(smoothed),1000,/edge_truncate) ),min(skimmed),max(skimmed))
-xyouts, 1.42e5,200,'Main sun'
-xyouts, 1.39e5,200,'50% sun'
-xyouts, 1.35e5,200,'25% sun'
-
-vline,141231.25
-vline,138022.30
-vline,134328.27
-ps_end
-
-ps_start,filename='d_ts_d_reg.eps',/encapsulated
-; window,4
-plot,skimmed,xr=[1.3e5,n_elements(skimmed)-1],title='deriv(ts_smooth(deriv(smooth)))',yr=[-100,300]
-; oplot,deriv(ts_smooth(deriv(reg_smooth),1000,order=3))
-oplot,scale_vector(deriv(ts_smooth(deriv(reg_smooth),1000,order=3)),min(skimmed),max(skimmed))
-vline,141231.25
-vline,138022.30
-vline,134328.27
-xyouts, 1.42e5,200,'Main sun'
-xyouts, 1.39e5,200,'50% sun'
-xyouts, 1.35e5,200,'25% sun'
-ps_end
-
-ps_start,filename='d_ts_d_ts.eps',/encapsulated
-; window,5
+window,1
 plot,skimmed,xr=[1.3e5,n_elements(skimmed)-1],title='deriv(ts_smooth(deriv(ts_smooth)))',yr=[-100,300]
-; oplot,deriv( ts_smooth(deriv(smoothed)*2000000,1000,order=3) )
 oplot,scale_vector(deriv( ts_smooth(deriv(smoothed),1000,order=3) ),min(skimmed),max(skimmed))
-; oplot,shift(deriv(deriv(smoothed*200000)),500)
-
 vline,141231.25
 vline,138022.30
 vline,134328.27
-xyouts, 1.42e5,200,'Main sun'
-xyouts, 1.39e5,200,'50% sun'
-xyouts, 1.35e5,200,'25% sun'
-ps_end
 
 stop
 end

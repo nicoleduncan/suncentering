@@ -32,7 +32,7 @@
 
 \section{Introduction} % (fold)
 \label{sec:introduction}
-An easier and faster way to crop our three suns in a single image is to find the brightest sun-like shape in our image, crop around it, set the area to zero, then find the next brighest sun-like shape. If we use sort to get a ``master array'' of positions and values, we can zero-out the parts of the image that are sun-like on the same array multiple times. The result is a fast and efficient cropping method.
+An easier and faster way to crop our three suns in a single image is to find the brightest sun-like shape in our image, crop around it, set the area to zero, then find the next brightest sun-like shape. If we use sort to get a ``master array'' of positions and values, we can zero-out the parts of the image that are sun-like on the same array multiple times. The result is a fast and efficient cropping method.
 
 % section introduction (end)
 
@@ -44,7 +44,7 @@ We plot a 2D image as a 1D spectrum to identify the shapes in our 2D image.
 \begin{figure}[!ht]
     \centering
     \includegraphics[width=.9\textwidth]{plots_tables_images/raw.eps}
-    \caption{The raw 2D image we started out with. There are 7 pixels in this image equal to 255, the max brightness for a byte array. These pixels simulate abnormally high values in our image as a result of bad bixels, gamma rays, etc.}
+    \caption{The raw 2D image we started out with. There are 7 pixels in this image equal to 255, the max brightness for a byte array. These pixels simulate abnormally high values in our image as a result of bad pixels, gamma rays, etc.}
     \label{raw}
 \end{figure}
 
@@ -57,7 +57,7 @@ Starting from Figure \ref{raw}, we plotted the lowest 99\% of the pixels when or
     \label{sorted}
 \end{figure}
 
-We see three distinct humps, indiciative of our three suns in the 2D image. Now, to find the boundaries where one sun ends and the other begins, we look at the derivative of Figure \ref{sorted}. However, simply taking the derivative does not result in a usable result so we must smooth our data first. I use both \texttt{\hl{smooth()}} and \texttt{\hl{ts\_smooth()}} in Figure \ref{comps}.
+We see three distinct humps, indicative of our three suns in the 2D image. Now, to find the boundaries where one sun ends and the other begins, we look at the derivative of Figure \ref{sorted}. However, simply taking the derivative does not result in a usable result so we must smooth our data first. I use both \texttt{\hl{smooth()}} and \texttt{\hl{ts\_smooth()}} in Figure \ref{comps}.
 
 \begin{figure}[!ht]
     \centering 
@@ -104,7 +104,7 @@ It turns out that \texttt{\hl{ts\_smooth}} takes an incredibly long time to run 
 
 \section{Drawbacks} % (fold)
 \label{sec:drawbacks}
-    The biggest problem with this method is that the pixel values overlap somewhat with different regions. Say the brighest region, region 1, is in the center of our image. Region 2 is at a brightness 50\% of the main sun. Say we now arrange the 2D plot as a 1D array and see two bumps, one for each solar region. Now, region 2 is intrinsically dimmer than region 1, which means there are going to be pixels in region 2 that will be comparative to the dark limb pixels of region 1. Since our 1D array (now that it's sorted, especially) has no spatial information, we cannot tell two pixels apart that have the same value but are in differnt regions. 
+    The biggest problem with this method is that the pixel values overlap somewhat with different regions. Say the brightest region, region 1, is in the center of our image. Region 2 is at a brightness 50\% of the main sun. Say we now arrange the 2D plot as a 1D array and see two bumps, one for each solar region. Now, region 2 is intrinsically dimmer than region 1, which means there are going to be pixels in region 2 that will be comparative to the dark limb pixels of region 1. Since our 1D array (now that it's sorted, especially) has no spatial information, we cannot tell two pixels apart that have the same value but are in different regions. 
 % section drawbacks (end)
 
 \end{document}

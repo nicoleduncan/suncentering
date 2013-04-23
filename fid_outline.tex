@@ -135,7 +135,7 @@ In a nutshell, \hl{\tt{scrib.pro}} takes an image of the sun with fiducials and 
      0 &  0 &  0 \\
      1 &  1 &  1 \end{array}\] 
 
-     The angle can be set to any abitrary value although if the angle is not divisible by 45, the kernel interpolates values between 1 and -1. For \hl{\texttt{emboss(az=30)}}, the kernel looks like:
+     The angle can be set to any arbitrary value although if the angle is not divisible by 45, the kernel interpolates values between 1 and -1. For \hl{\texttt{emboss(az=30)}}, the kernel looks like:
 
      \[ \begin{array}{ccc}
     1   & .66   & -.33 \\
@@ -305,7 +305,7 @@ In a nutshell, \hl{\tt{scrib.pro}} takes an image of the sun with fiducials and 
 
 \section{Dealing With Fiducials on Edge} % (fold)
 \label{sec:dealing_witb_fiducials_on_edge}
-    Sometimes when cropping the inner part of the sun, the cropped region will inadvertedly cut off a fiducial. There are two ways of dealing with this:
+    Sometimes when cropping the inner part of the sun, the cropped region will inadvertently cut off a fiducial. There are two ways of dealing with this:
 
     \begin{enumerate}
          \item Crop so that fiducials aren't cut off
@@ -378,7 +378,7 @@ After a second, third, and $N$th look, there exists a threshold to isolate fiduc
         \label{betterslice}
 \end{figure}
 
-If we use a threshold to count the numer of pixels below (in this case) -20, we can count how many pixels are in a fiducial. For example, the top left image in Figure \ref{betterslice} only has 1 pixel below the threshold which corresponds to the number of pixels of the fiducial we see. In the 2nd from top image in the right-most column, we see that there are 4 pixels below the threhsold of -20 which agrees with 4 pixels to the right of the vertical line. Using this method, we can accurately threshold pixels so that we can eliminate any that are cut off. The downside however is that the threshold varies from fiducial to fiducial. For example, in Figure \ref{anotherslice}, we see that the threshold is at -30.
+If we use a threshold to count the number of pixels below (in this case) -20, we can count how many pixels are in a fiducial. For example, the top left image in Figure \ref{betterslice} only has 1 pixel below the threshold which corresponds to the number of pixels of the fiducial we see. In the 2nd from top image in the right-most column, we see that there are 4 pixels below the threshold of -20 which agrees with 4 pixels to the right of the vertical line. Using this method, we can accurately threshold pixels so that we can eliminate any that are cut off. The downside however is that the threshold varies from fiducial to fiducial. For example, in Figure \ref{anotherslice}, we see that the threshold is at -30.
 
 \begin{figure}[!ht]
     \centering
@@ -452,7 +452,7 @@ After applying the same techniques above to 2 more fiducials, the thresholds are
             - Not sure how to fix yet\\
             - Trying a border mask\\
             - Problem addressed in Section \ref{sec:dealing_witb_fiducials_on_edge}
-        \item Scanning in a cirle at high resolution (higher than 1 pixel a degree) makes the program   break, although I'm not sure why\\
+        \item Scanning in a circle at high resolution (higher than 1 pixel a degree) makes the program   break, although I'm not sure why\\
             - Fixed it (Mar 13, 2013)
     \end{enumerate}
 
