@@ -48,6 +48,10 @@ Include all the checks we do
 \section{Finding Centers of Sun(s)} % (fold)
 \label{sec:finding_centers_of_sun}
 Process of center finding
+\subsection{Thresholds} % (fold)
+\label{sub:thresholds}
+We want a robust threshold so instead of using an arbitrary parameter multiplied by the max of the image, we sort the 2D image into a 1D array and return the postiion of the boundaries of the regions which are seen as humps.
+% subsection thresholds (end)
 % section finding_centers_of_sun (end)
 
 \section{Finding Fiducial Positions} % (fold)

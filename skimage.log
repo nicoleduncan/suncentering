@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.4-1.40.13 (TeX Live 2012) (format=pdflatex 2013.4.9)  23 APR 2013 16:30
+This is pdfTeX, Version 3.1415926-2.4-1.40.13 (TeX Live 2012) (format=pdflatex 2013.4.9)  24 APR 2013 12:52
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -16,24 +16,94 @@ kurmanji, latin, latvian, lithuanian, mongolian, mongolianlmc, bokmal, nynorsk,
  piedmontese, polish, portuguese, romanian, romansh, russian, sanskrit, serbian
 , serbianc, slovak, slovenian, spanish, swedish, turkish, turkmen, ukrainian, u
 ppersorbian, welsh, loaded.
-(/usr/local/texlive/2012/texmf-dist/tex/latex/base/article.cls
-Document Class: article 2007/10/19 v1.4h Standard LaTeX document class
-(/usr/local/texlive/2012/texmf-dist/tex/latex/base/size10.clo
-File: size10.clo 2007/10/19 v1.4h Standard LaTeX file (size option)
+(/usr/local/texlive/2012/texmf-dist/tex/latex/koma-script/scrartcl.cls
+Document Class: scrartcl 2012/07/29 v3.11b KOMA-Script document class (article)
+
+(/usr/local/texlive/2012/texmf-dist/tex/latex/koma-script/scrkbase.sty
+Package: scrkbase 2012/07/29 v3.11b KOMA-Script package (KOMA-Script-dependent 
+basics and keyval usage)
+
+(/usr/local/texlive/2012/texmf-dist/tex/latex/koma-script/scrbase.sty
+Package: scrbase 2012/07/29 v3.11b KOMA-Script package (KOMA-Script-independent
+ basics and keyval usage)
+
+(/usr/local/texlive/2012/texmf-dist/tex/latex/graphics/keyval.sty
+Package: keyval 1999/03/16 v1.13 key=value parser (DPC)
+\KV@toks@=\toks14
 )
-\c@part=\count79
-\c@section=\count80
-\c@subsection=\count81
-\c@subsubsection=\count82
-\c@paragraph=\count83
-\c@subparagraph=\count84
-\c@figure=\count85
-\c@table=\count86
-\abovecaptionskip=\skip41
-\belowcaptionskip=\skip42
+(/usr/local/texlive/2012/texmf-dist/tex/latex/koma-script/scrlfile.sty
+Package: scrlfile 2012/06/15 v3.12 KOMA-Script package (loading files)
+
+Package scrlfile, 2012/06/15 v3.12 KOMA-Script package (loading files)
+                  Copyright (C) Markus Kohm
+
+))) (/usr/local/texlive/2012/texmf-dist/tex/latex/koma-script/tocbasic.sty
+Package: tocbasic 2012/04/04 v3.10b KOMA-Script package (handling toc-files)
+)
+Package tocbasic Info: omitting babel extension for `toc'
+(tocbasic)             because of feature `nobabel' available
+(tocbasic)             for `toc' on input line 115.
+Package tocbasic Info: omitting babel extension for `lof'
+(tocbasic)             because of feature `nobabel' available
+(tocbasic)             for `lof' on input line 116.
+Package tocbasic Info: omitting babel extension for `lot'
+(tocbasic)             because of feature `nobabel' available
+(tocbasic)             for `lot' on input line 117.
+Package scrartcl Info: You've used obsolete option `10pt'.
+(scrartcl)             \KOMAExecuteOptions{fontsize=10pt} will be
+(scrartcl)             used instead.
+(scrartcl)             You may simply replace `10pt'
+(scrartcl)             by `fontsize=10pt'.
+Class scrartcl Info: File `scrsize10pt.clo' used to setup font sizes on input l
+ine 1267.
+
+(/usr/local/texlive/2012/texmf-dist/tex/latex/koma-script/scrsize10pt.clo
+File: scrsize10pt.clo 2012/07/29 v3.11b KOMA-Script font size class option (10p
+t)
+)
+(/usr/local/texlive/2012/texmf-dist/tex/latex/koma-script/typearea.sty
+Package: typearea 2012/07/29 v3.11b KOMA-Script package (type area)
+
+Package typearea, 2012/07/29 v3.11b KOMA-Script package (type area)
+                  Copyright (C) Frank Neukam, 1992-1994
+                  Copyright (C) Markus Kohm, 1994-
+
+\ta@bcor=\skip41
+\ta@div=\count79
+\ta@hblk=\skip42
+\ta@vblk=\skip43
+\ta@temp=\skip44
+Package typearea Info: These are the values describing the layout:
+(typearea)             DIV  = 8
+(typearea)             BCOR = 0.0pt
+(typearea)             \paperwidth      = 597.50793pt
+(typearea)              \textwidth      = 373.44246pt
+(typearea)              DIV departure   = -4%
+(typearea)              \evensidemargin = 39.76274pt
+(typearea)              \oddsidemargin  = 39.76274pt
+(typearea)             \paperheight     = 845.04694pt
+(typearea)              \textheight     = 538.0pt
+(typearea)              \topmargin      = 0.36087pt
+(typearea)              \headheight     = 15.0pt
+(typearea)              \headsep        = 18.0pt
+(typearea)              \topskip        = 10.0pt
+(typearea)              \footskip       = 42.0pt
+(typearea)              \baselineskip   = 12.0pt
+(typearea)              on input line 1213.
+)
+\c@part=\count80
+\c@section=\count81
+\c@subsection=\count82
+\c@subsubsection=\count83
+\c@paragraph=\count84
+\c@subparagraph=\count85
+\abovecaptionskip=\skip45
+\belowcaptionskip=\skip46
+\c@pti@nb@sid@b@x=\box26
+\c@figure=\count86
+\c@table=\count87
 \bibindent=\dimen102
-)
-(/usr/local/texlive/2012/texmf-dist/tex/latex/base/fontenc.sty
+) (/usr/local/texlive/2012/texmf-dist/tex/latex/base/fontenc.sty
 Package: fontenc 2005/09/27 v1.99g Standard LaTeX package
 
 (/usr/local/texlive/2012/texmf-dist/tex/latex/base/t1enc.def
@@ -42,7 +112,7 @@ LaTeX Font Info:    Redeclaring font encoding T1 on input line 43.
 ))
 (/usr/local/texlive/2012/texmf-dist/tex/latex/amsmath/amsmath.sty
 Package: amsmath 2013/01/14 v2.14 AMS math features
-\@mathmargin=\skip43
+\@mathmargin=\skip47
 
 For additional information on amsmath, use the `?' option.
 (/usr/local/texlive/2012/texmf-dist/tex/latex/amsmath/amstext.sty
@@ -50,7 +120,7 @@ Package: amstext 2000/06/29 v2.01
 
 (/usr/local/texlive/2012/texmf-dist/tex/latex/amsmath/amsgen.sty
 File: amsgen.sty 1999/11/30 v2.0
-\@emptytoks=\toks14
+\@emptytoks=\toks15
 \ex@=\dimen103
 ))
 (/usr/local/texlive/2012/texmf-dist/tex/latex/amsmath/amsbsy.sty
@@ -60,41 +130,41 @@ Package: amsbsy 1999/11/29 v1.2d
 (/usr/local/texlive/2012/texmf-dist/tex/latex/amsmath/amsopn.sty
 Package: amsopn 1999/12/14 v2.01 operator names
 )
-\inf@bad=\count87
+\inf@bad=\count88
 LaTeX Info: Redefining \frac on input line 210.
-\uproot@=\count88
-\leftroot@=\count89
+\uproot@=\count89
+\leftroot@=\count90
 LaTeX Info: Redefining \overline on input line 306.
-\classnum@=\count90
-\DOTSCASE@=\count91
+\classnum@=\count91
+\DOTSCASE@=\count92
 LaTeX Info: Redefining \ldots on input line 378.
 LaTeX Info: Redefining \dots on input line 381.
 LaTeX Info: Redefining \cdots on input line 466.
-\Mathstrutbox@=\box26
-\strutbox@=\box27
+\Mathstrutbox@=\box27
+\strutbox@=\box28
 \big@size=\dimen105
 LaTeX Font Info:    Redeclaring font encoding OML on input line 566.
 LaTeX Font Info:    Redeclaring font encoding OMS on input line 567.
-\macc@depth=\count92
-\c@MaxMatrixCols=\count93
+\macc@depth=\count93
+\c@MaxMatrixCols=\count94
 \dotsspace@=\muskip10
-\c@parentequation=\count94
-\dspbrk@lvl=\count95
-\tag@help=\toks15
-\row@=\count96
-\column@=\count97
-\maxfields@=\count98
-\andhelp@=\toks16
+\c@parentequation=\count95
+\dspbrk@lvl=\count96
+\tag@help=\toks16
+\row@=\count97
+\column@=\count98
+\maxfields@=\count99
+\andhelp@=\toks17
 \eqnshift@=\dimen106
 \alignsep@=\dimen107
 \tagshift@=\dimen108
 \tagwidth@=\dimen109
 \totwidth@=\dimen110
 \lineht@=\dimen111
-\@envbody=\toks17
-\multlinegap=\skip44
-\multlinetaggap=\skip45
-\mathdisplay@stack=\toks18
+\@envbody=\toks18
+\multlinegap=\skip48
+\multlinetaggap=\skip49
+\mathdisplay@stack=\toks19
 LaTeX Info: Redefining \[ on input line 2665.
 LaTeX Info: Redefining \] on input line 2666.
 )
@@ -111,31 +181,27 @@ Package: amssymb 2013/01/14 v3.01 AMS font symbols
 (/usr/local/texlive/2012/texmf-dist/tex/latex/mh/mathtools.sty
 Package: mathtools 2013/02/12 v1.13 mathematical typesetting tools
 
-(/usr/local/texlive/2012/texmf-dist/tex/latex/graphics/keyval.sty
-Package: keyval 1999/03/16 v1.13 key=value parser (DPC)
-\KV@toks@=\toks19
-)
 (/usr/local/texlive/2012/texmf-dist/tex/latex/tools/calc.sty
 Package: calc 2007/08/22 v4.3 Infix arithmetic (KKT,FJ)
-\calc@Acount=\count99
-\calc@Bcount=\count100
+\calc@Acount=\count100
+\calc@Bcount=\count101
 \calc@Adimen=\dimen112
 \calc@Bdimen=\dimen113
-\calc@Askip=\skip46
-\calc@Bskip=\skip47
+\calc@Askip=\skip50
+\calc@Bskip=\skip51
 LaTeX Info: Redefining \setlength on input line 76.
 LaTeX Info: Redefining \addtolength on input line 77.
-\calc@Ccount=\count101
-\calc@Cskip=\skip48
+\calc@Ccount=\count102
+\calc@Cskip=\skip52
 )
 (/usr/local/texlive/2012/texmf-dist/tex/latex/mh/mhsetup.sty
 Package: mhsetup 2010/01/21 v1.2a programming setup (MH)
 )
 LaTeX Info: Thecontrolsequence`\['isalreadyrobust on input line 129.
 LaTeX Info: Thecontrolsequence`\]'isalreadyrobust on input line 129.
-\g_MT_multlinerow_int=\count102
+\g_MT_multlinerow_int=\count103
 \l_MT_multwidth_dim=\dimen114
-\origjot=\skip49
+\origjot=\skip53
 \l_MT_shortvdotswithinadjustabove_dim=\dimen115
 \l_MT_shortvdotswithinadjustbelow_dim=\dimen116
 \l_MT_above_intertext_sep=\dimen117
@@ -160,7 +226,7 @@ Package: infwarerr 2010/04/08 v1.3 Providing info/warning/error messages (HO)
 (/usr/local/texlive/2012/texmf-dist/tex/generic/oberdiek/ltxcmds.sty
 Package: ltxcmds 2011/11/09 v1.22 LaTeX kernel commands for general use (HO)
 )
-\Gread@gobject=\count103
+\Gread@gobject=\count104
 ))
 (/usr/local/texlive/2012/texmf-dist/tex/latex/soul/soul.sty
 Package: soul 2003/11/17 v2.4 letterspacing/underlining (mf)
@@ -169,14 +235,14 @@ Package: soul 2003/11/17 v2.4 letterspacing/underlining (mf)
 \SOUL@cmds=\toks22
 \SOUL@buffer=\toks23
 \SOUL@token=\toks24
-\SOUL@spaceskip=\skip50
+\SOUL@spaceskip=\skip54
 \SOUL@ttwidth=\dimen121
 \SOUL@uldp=\dimen122
 \SOUL@ulht=\dimen123
 )
 (/usr/local/texlive/2012/texmf-dist/tex/latex/preprint/fullpage.sty
 Package: fullpage 1999/02/23 1.1 (PWD)
-\FP@margin=\skip51
+\FP@margin=\skip55
 )
 (/usr/local/texlive/2012/texmf-dist/tex/latex/tools/enumerate.sty
 Package: enumerate 1999/03/05 v3.00 enumerate extensions (DPC)
@@ -257,13 +323,13 @@ Package: auxhook 2011/03/04 v1.3 Hooks for auxiliary files (HO)
 Package: kvoptions 2011/06/30 v3.11 Key value format for package options (HO)
 )
 \@linkdim=\dimen126
-\Hy@linkcounter=\count104
-\Hy@pagecounter=\count105
+\Hy@linkcounter=\count105
+\Hy@pagecounter=\count106
 
 (/usr/local/texlive/2012/texmf-dist/tex/latex/hyperref/pd1enc.def
 File: pd1enc.def 2012/11/06 v6.83m Hyperref: PDFDocEncoding definition (HO)
 )
-\Hy@SavedSpaceFactor=\count106
+\Hy@SavedSpaceFactor=\count107
 
 (/usr/local/texlive/2012/texmf-dist/tex/latex/latexconfig/hyperref.cfg
 File: hyperref.cfg 2002/06/06 v1.2 hyperref configuration of TeXLive
@@ -276,7 +342,7 @@ Package hyperref Info: Plain pages OFF on input line 4458.
 Package hyperref Info: Backreferencing OFF on input line 4463.
 Package hyperref Info: Implicit mode ON; LaTeX internals redefined.
 Package hyperref Info: Bookmarks ON on input line 4688.
-\c@Hy@tempcnt=\count107
+\c@Hy@tempcnt=\count108
 
 (/usr/local/texlive/2012/texmf-dist/tex/latex/url/url.sty
 \Urlmuskip=\muskip11
@@ -284,7 +350,7 @@ Package: url 2006/04/12  ver 3.3  Verb mode for urls, etc.
 )
 LaTeX Info: Redefining \url on input line 5041.
 \XeTeXLinkMargin=\dimen127
-\Fld@menulength=\count108
+\Fld@menulength=\count109
 \Field@Width=\dimen128
 \Fld@charsize=\dimen129
 Package hyperref Info: Hyper figures OFF on input line 6295.
@@ -296,24 +362,24 @@ Package hyperref Info: Link coloring with OCG OFF on input line 6320.
 Package hyperref Info: PDF/A mode OFF on input line 6325.
 LaTeX Info: Redefining \ref on input line 6365.
 LaTeX Info: Redefining \pageref on input line 6369.
-\Hy@abspage=\count109
-\c@Item=\count110
-\c@Hfootnote=\count111
+\Hy@abspage=\count110
+\c@Item=\count111
+\c@Hfootnote=\count112
 )
 
 Package hyperref Message: Driver (autodetected): hpdftex.
 
 (/usr/local/texlive/2012/texmf-dist/tex/latex/hyperref/hpdftex.def
 File: hpdftex.def 2012/11/06 v6.83m Hyperref driver for pdfTeX
-\Fld@listcount=\count112
-\c@bookmark@seq@number=\count113
+\Fld@listcount=\count113
+\c@bookmark@seq@number=\count114
 
 (/usr/local/texlive/2012/texmf-dist/tex/latex/oberdiek/rerunfilecheck.sty
 Package: rerunfilecheck 2011/04/15 v1.7 Rerun checks for auxiliary files (HO)
 Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 2
 82.
 )
-\Hy@SectionHShift=\skip52
+\Hy@SectionHShift=\skip56
 )
 (/usr/local/texlive/2012/texmf-dist/tex/latex/caption/subcaption.sty
 Package: subcaption 2013/02/03 v1.1-62 Sub-captions (AR)
@@ -331,42 +397,53 @@ Package: caption3 2013/02/03 v1.5-62 caption3 kernel (AR)
 \caption@parindent=\dimen135
 \caption@hangindent=\dimen136
 )
-\c@ContinuedFloat=\count114
+Package caption Info: KOMA-Script document class.
+\c@ContinuedFloat=\count115
 Package caption Info: hyperref package is loaded.
 )
-\c@subfigure=\count115
-\c@subtable=\count116
+\c@subfigure=\count116
+\c@subtable=\count117
 )
-(./skimage.aux)
+(./deluxetable.sty
+Package: deluxetable 
+\pt@box=\box29
+\pt@width=\dimen137
+\pt@line=\count118
+\pt@column=\count119
+\pt@nlines=\count120
+\pt@ncol=\count121
+\pt@page=\count122
+\pt@tmpcapwidth=\dimen138
+) (./skimage.aux)
 \openout1 = `skimage.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 19.
-LaTeX Font Info:    ... okay on input line 19.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 19.
-LaTeX Font Info:    ... okay on input line 19.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 19.
-LaTeX Font Info:    ... okay on input line 19.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 19.
-LaTeX Font Info:    ... okay on input line 19.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 19.
-LaTeX Font Info:    ... okay on input line 19.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 19.
-LaTeX Font Info:    ... okay on input line 19.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 19.
-LaTeX Font Info:    ... okay on input line 19.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 21.
+LaTeX Font Info:    ... okay on input line 21.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 21.
+LaTeX Font Info:    ... okay on input line 21.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 21.
+LaTeX Font Info:    ... okay on input line 21.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 21.
+LaTeX Font Info:    ... okay on input line 21.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 21.
+LaTeX Font Info:    ... okay on input line 21.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 21.
+LaTeX Font Info:    ... okay on input line 21.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 21.
+LaTeX Font Info:    ... okay on input line 21.
 
 (/usr/local/texlive/2012/texmf-dist/tex/context/base/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count117
-\scratchdimen=\dimen137
-\scratchbox=\box28
-\nofMPsegments=\count118
-\nofMParguments=\count119
+\scratchcounter=\count123
+\scratchdimen=\dimen139
+\scratchbox=\box30
+\nofMPsegments=\count124
+\nofMParguments=\count125
 \everyMPshowfont=\toks26
-\MPscratchCnt=\count120
-\MPscratchDim=\dimen138
-\MPnumerator=\count121
-\makeMPintoPDFobject=\count122
+\MPscratchCnt=\count126
+\MPscratchDim=\dimen140
+\MPnumerator=\count127
+\makeMPintoPDFobject=\count128
 \everyMPtoPDFconversion=\toks27
 ) (/usr/local/texlive/2012/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
 Package: epstopdf-base 2010/02/09 v2.5 Base part for package epstopdf
@@ -383,8 +460,8 @@ G,.JBIG2,.JB2,.eps]
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
 e
 ))
-\AtBeginShipoutBox=\box29
-Package hyperref Info: Link coloring ON on input line 19.
+\AtBeginShipoutBox=\box31
+Package hyperref Info: Link coloring ON on input line 21.
 
 (/usr/local/texlive/2012/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2012/10/27 v2.43 Cross-referencing by name of section
@@ -392,11 +469,11 @@ Package: nameref 2012/10/27 v2.43 Cross-referencing by name of section
 (/usr/local/texlive/2012/texmf-dist/tex/generic/oberdiek/gettitlestring.sty
 Package: gettitlestring 2010/12/03 v1.4 Cleanup title references (HO)
 )
-\c@section@level=\count123
+\c@section@level=\count129
 )
-LaTeX Info: Redefining \ref on input line 19.
-LaTeX Info: Redefining \pageref on input line 19.
-LaTeX Info: Redefining \nameref on input line 19.
+LaTeX Info: Redefining \ref on input line 21.
+LaTeX Info: Redefining \pageref on input line 21.
+LaTeX Info: Redefining \nameref on input line 21.
 
 (./skimage.out) (./skimage.out)
 \@outlinefile=\write3
@@ -404,31 +481,40 @@ LaTeX Info: Redefining \nameref on input line 19.
 
 Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: End \AtBeginDocument code.
-LaTeX Font Info:    Try loading font information for U+msa on input line 22.
+LaTeX Font Info:    Try loading font information for T1+cmss on input line 24.
+
+(/usr/local/texlive/2012/texmf-dist/tex/latex/base/t1cmss.fd
+File: t1cmss.fd 1999/05/25 v2.5h Standard LaTeX font definitions
+)
+LaTeX Font Info:    Try loading font information for U+msa on input line 24.
 
 (/usr/local/texlive/2012/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 22.
+LaTeX Font Info:    Try loading font information for U+msb on input line 24.
 
 (/usr/local/texlive/2012/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-<plots_tables_images/skimmilk.jpg, id=20, 501.875pt x 501.875pt>
+<plots_tables_images/skimmilk.jpg, id=24, 501.875pt x 501.875pt>
 File: plots_tables_images/skimmilk.jpg Graphic file (type jpg)
 
 <use plots_tables_images/skimmilk.jpg>
-Package pdftex.def Info: plots_tables_images/skimmilk.jpg used on input line 25
+Package pdftex.def Info: plots_tables_images/skimmilk.jpg used on input line 27
 .
-(pdftex.def)             Requested size: 422.77664pt x 422.7974pt.
- (./skimage.toc [1
+(pdftex.def)             Requested size: 407.6684pt x 407.68819pt.
+ [1
+
 
 {/usr/local/texlive/2012/texmf-var/fonts/map/pdftex/updmap/pdftex.map} <./plots
-_tables_images/skimmilk.jpg>])
+_tables_images/skimmilk.jpg>]
+(./skimage.toc)
 \tf@toc=\write4
 \openout4 = `skimage.toc'.
 
- [2]
+ [1
+
+]
 Package epstopdf Info: Source file: <plots_tables_images/raw.eps>
 (epstopdf)                    date: 2013-04-22 15:52:05
 (epstopdf)                    size: 185746 bytes
@@ -438,15 +524,15 @@ df>
 (epstopdf)                    size: 13677 bytes
 (epstopdf)             Command: <repstopdf --outfile=plots_tables_images/raw-ep
 s-converted-to.pdf plots_tables_images/raw.eps>
-(epstopdf)             \includegraphics on input line 46.
+(epstopdf)             \includegraphics on input line 50.
 Package epstopdf Info: Output file is already uptodate.
 
-<plots_tables_images/raw-eps-converted-to.pdf, id=41, 552.0625pt x 338.26375pt>
+<plots_tables_images/raw-eps-converted-to.pdf, id=46, 552.0625pt x 338.26375pt>
 File: plots_tables_images/raw-eps-converted-to.pdf Graphic file (type pdf)
 <use plots_tables_images/raw-eps-converted-to.pdf>
 Package pdftex.def Info: plots_tables_images/raw-eps-converted-to.pdf used on i
-nput line 46.
-(pdftex.def)             Requested size: 422.77664pt x 259.05995pt.
+nput line 50.
+(pdftex.def)             Requested size: 407.6684pt x 249.80026pt.
 Package epstopdf Info: Source file: <plots_tables_images/sorted_array.eps>
 (epstopdf)                    date: 2013-04-22 15:58:27
 (epstopdf)                    size: 93168 bytes
@@ -456,18 +542,18 @@ rted-to.pdf>
 (epstopdf)                    size: 8218 bytes
 (epstopdf)             Command: <repstopdf --outfile=plots_tables_images/sorted
 _array-eps-converted-to.pdf plots_tables_images/sorted_array.eps>
-(epstopdf)             \includegraphics on input line 55.
+(epstopdf)             \includegraphics on input line 59.
 Package epstopdf Info: Output file is already uptodate.
 
-<plots_tables_images/sorted_array-eps-converted-to.pdf, id=44, 552.0625pt x 338
+<plots_tables_images/sorted_array-eps-converted-to.pdf, id=49, 552.0625pt x 338
 .26375pt>
 File: plots_tables_images/sorted_array-eps-converted-to.pdf Graphic file (type 
 pdf)
  <use plots_tables_images/sorted_array-eps-converted-to.pdf>
 Package pdftex.def Info: plots_tables_images/sorted_array-eps-converted-to.pdf 
-used on input line 55.
-(pdftex.def)             Requested size: 422.77664pt x 259.05995pt.
-LaTeX Font Info:    Try loading font information for T1+cmtt on input line 60.
+used on input line 59.
+(pdftex.def)             Requested size: 407.6684pt x 249.80026pt.
+LaTeX Font Info:    Try loading font information for T1+cmtt on input line 64.
 
 (/usr/local/texlive/2012/texmf-dist/tex/latex/base/t1cmtt.fd
 File: t1cmtt.fd 1999/05/25 v2.5h Standard LaTeX font definitions
@@ -481,18 +567,18 @@ pdf>
 (epstopdf)                    size: 16686 bytes
 (epstopdf)             Command: <repstopdf --outfile=plots_tables_images/d_ts-e
 ps-converted-to.pdf plots_tables_images/d_ts.eps>
-(epstopdf)             \includegraphics on input line 67.
+(epstopdf)             \includegraphics on input line 71.
 Package epstopdf Info: Output file is already uptodate.
 
-<plots_tables_images/d_ts-eps-converted-to.pdf, id=47, 552.0625pt x 338.26375pt
+<plots_tables_images/d_ts-eps-converted-to.pdf, id=52, 552.0625pt x 338.26375pt
 >
 File: plots_tables_images/d_ts-eps-converted-to.pdf Graphic file (type pdf)
  <use plots_tables_images/d_ts-eps-converted-to.pdf>
 Package pdftex.def Info: plots_tables_images/d_ts-eps-converted-to.pdf used on 
-input line 67.
-(pdftex.def)             Requested size: 274.80545pt x 168.3882pt.
+input line 71.
+(pdftex.def)             Requested size: 264.98508pt x 162.3699pt.
 
-Overfull \hbox (63.41713pt too wide) in paragraph at lines 67--68
+Overfull \hbox (61.15088pt too wide) in paragraph at lines 71--72
  [][] 
  []
 
@@ -505,18 +591,18 @@ Package epstopdf Info: Source file: <plots_tables_images/d_reg.eps>
 (epstopdf)                    size: 16017 bytes
 (epstopdf)             Command: <repstopdf --outfile=plots_tables_images/d_reg-
 eps-converted-to.pdf plots_tables_images/d_reg.eps>
-(epstopdf)             \includegraphics on input line 72.
+(epstopdf)             \includegraphics on input line 76.
 Package epstopdf Info: Output file is already uptodate.
 
-<plots_tables_images/d_reg-eps-converted-to.pdf, id=48, 552.0625pt x 338.26375p
+<plots_tables_images/d_reg-eps-converted-to.pdf, id=53, 552.0625pt x 338.26375p
 t>
 File: plots_tables_images/d_reg-eps-converted-to.pdf Graphic file (type pdf)
  <use plots_tables_images/d_reg-eps-converted-to.pdf>
 Package pdftex.def Info: plots_tables_images/d_reg-eps-converted-to.pdf used on
- input line 72.
-(pdftex.def)             Requested size: 274.80545pt x 168.3882pt.
+ input line 76.
+(pdftex.def)             Requested size: 264.98508pt x 162.3699pt.
 
-Overfull \hbox (63.41713pt too wide) in paragraph at lines 72--73
+Overfull \hbox (61.15088pt too wide) in paragraph at lines 76--77
  [][] 
  []
 
@@ -529,19 +615,19 @@ d-to.pdf>
 (epstopdf)                    size: 21559 bytes
 (epstopdf)             Command: <repstopdf --outfile=plots_tables_images/d_ts_d
 _ts-eps-converted-to.pdf plots_tables_images/d_ts_d_ts.eps>
-(epstopdf)             \includegraphics on input line 78.
+(epstopdf)             \includegraphics on input line 82.
 Package epstopdf Info: Output file is already uptodate.
 
-<plots_tables_images/d_ts_d_ts-eps-converted-to.pdf, id=49, 552.0625pt x 338.26
+<plots_tables_images/d_ts_d_ts-eps-converted-to.pdf, id=54, 552.0625pt x 338.26
 375pt>
 File: plots_tables_images/d_ts_d_ts-eps-converted-to.pdf Graphic file (type pdf
 )
  <use plots_tables_images/d_ts_d_ts-eps-converted-to.pdf>
 Package pdftex.def Info: plots_tables_images/d_ts_d_ts-eps-converted-to.pdf use
-d on input line 78.
-(pdftex.def)             Requested size: 274.80545pt x 168.3882pt.
+d on input line 82.
+(pdftex.def)             Requested size: 264.98508pt x 162.3699pt.
 
-Overfull \hbox (63.41713pt too wide) in paragraph at lines 78--79
+Overfull \hbox (61.15088pt too wide) in paragraph at lines 82--83
  [][] 
  []
 
@@ -554,19 +640,19 @@ ed-to.pdf>
 (epstopdf)                    size: 20854 bytes
 (epstopdf)             Command: <repstopdf --outfile=plots_tables_images/d_ts_d
 _reg-eps-converted-to.pdf plots_tables_images/d_ts_d_reg.eps>
-(epstopdf)             \includegraphics on input line 83.
+(epstopdf)             \includegraphics on input line 87.
 Package epstopdf Info: Output file is already uptodate.
 
-<plots_tables_images/d_ts_d_reg-eps-converted-to.pdf, id=50, 552.0625pt x 338.2
+<plots_tables_images/d_ts_d_reg-eps-converted-to.pdf, id=55, 552.0625pt x 338.2
 6375pt>
 File: plots_tables_images/d_ts_d_reg-eps-converted-to.pdf Graphic file (type pd
 f)
  <use plots_tables_images/d_ts_d_reg-eps-converted-to.pdf>
 Package pdftex.def Info: plots_tables_images/d_ts_d_reg-eps-converted-to.pdf us
-ed on input line 83.
-(pdftex.def)             Requested size: 274.80545pt x 168.3882pt.
+ed on input line 87.
+(pdftex.def)             Requested size: 264.98508pt x 162.3699pt.
 
-Overfull \hbox (63.41713pt too wide) in paragraph at lines 83--84
+Overfull \hbox (61.15088pt too wide) in paragraph at lines 87--88
  [][] 
  []
 
@@ -579,19 +665,19 @@ Package epstopdf Info: Source file: <plots_tables_images/d_s_d_ts.eps>
 (epstopdf)                    size: 20959 bytes
 (epstopdf)             Command: <repstopdf --outfile=plots_tables_images/d_s_d_
 ts-eps-converted-to.pdf plots_tables_images/d_s_d_ts.eps>
-(epstopdf)             \includegraphics on input line 89.
+(epstopdf)             \includegraphics on input line 93.
 Package epstopdf Info: Output file is already uptodate.
 
-<plots_tables_images/d_s_d_ts-eps-converted-to.pdf, id=51, 552.0625pt x 338.263
+<plots_tables_images/d_s_d_ts-eps-converted-to.pdf, id=56, 552.0625pt x 338.263
 75pt>
 File: plots_tables_images/d_s_d_ts-eps-converted-to.pdf Graphic file (type pdf)
 
  <use plots_tables_images/d_s_d_ts-eps-converted-to.pdf>
 Package pdftex.def Info: plots_tables_images/d_s_d_ts-eps-converted-to.pdf used
- on input line 89.
-(pdftex.def)             Requested size: 274.80545pt x 168.3882pt.
+ on input line 93.
+(pdftex.def)             Requested size: 264.98508pt x 162.3699pt.
 
-Overfull \hbox (63.41713pt too wide) in paragraph at lines 89--90
+Overfull \hbox (61.15088pt too wide) in paragraph at lines 93--94
  [][] 
  []
 
@@ -604,23 +690,30 @@ d-to.pdf>
 (epstopdf)                    size: 20785 bytes
 (epstopdf)             Command: <repstopdf --outfile=plots_tables_images/d_s_d_
 reg-eps-converted-to.pdf plots_tables_images/d_s_d_reg.eps>
-(epstopdf)             \includegraphics on input line 94.
+(epstopdf)             \includegraphics on input line 98.
 Package epstopdf Info: Output file is already uptodate.
 
-<plots_tables_images/d_s_d_reg-eps-converted-to.pdf, id=52, 552.0625pt x 338.26
+<plots_tables_images/d_s_d_reg-eps-converted-to.pdf, id=57, 552.0625pt x 338.26
 375pt>
 File: plots_tables_images/d_s_d_reg-eps-converted-to.pdf Graphic file (type pdf
 )
  <use plots_tables_images/d_s_d_reg-eps-converted-to.pdf>
 Package pdftex.def Info: plots_tables_images/d_s_d_reg-eps-converted-to.pdf use
-d on input line 94.
-(pdftex.def)             Requested size: 274.80545pt x 168.3882pt.
+d on input line 98.
+(pdftex.def)             Requested size: 264.98508pt x 162.3699pt.
 
-Overfull \hbox (63.41713pt too wide) in paragraph at lines 94--95
+Overfull \hbox (61.15088pt too wide) in paragraph at lines 98--99
  [][] 
  []
 
-[1 <./plots_tables_images/raw-eps-converted-to.pdf>]
+pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has 
+been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.113 
+       [1
+
+ <./plots_tables_images/raw-eps-converted-to.pdf>]
 Package epstopdf Info: Source file: <plots_tables_images/histozoom.eps>
 (epstopdf)                    date: 2013-04-23 15:26:09
 (epstopdf)                    size: 11308 bytes
@@ -630,17 +723,17 @@ d-to.pdf>
 (epstopdf)                    size: 8029 bytes
 (epstopdf)             Command: <repstopdf --outfile=plots_tables_images/histoz
 oom-eps-converted-to.pdf plots_tables_images/histozoom.eps>
-(epstopdf)             \includegraphics on input line 114.
+(epstopdf)             \includegraphics on input line 118.
 Package epstopdf Info: Output file is already uptodate.
 
-<plots_tables_images/histozoom-eps-converted-to.pdf, id=65, 552.0625pt x 338.26
+<plots_tables_images/histozoom-eps-converted-to.pdf, id=69, 552.0625pt x 338.26
 375pt>
 File: plots_tables_images/histozoom-eps-converted-to.pdf Graphic file (type pdf
 )
  <use plots_tables_images/histozoom-eps-converted-to.pdf>
 Package pdftex.def Info: plots_tables_images/histozoom-eps-converted-to.pdf use
-d on input line 114.
-(pdftex.def)             Requested size: 422.77664pt x 259.05995pt.
+d on input line 118.
+(pdftex.def)             Requested size: 407.6684pt x 249.80026pt.
 Package epstopdf Info: Source file: <plots_tables_images/saysitall.eps>
 (epstopdf)                    date: 2013-04-23 16:22:36
 (epstopdf)                    size: 2625780 bytes
@@ -650,53 +743,151 @@ d-to.pdf>
 (epstopdf)                    size: 865806 bytes
 (epstopdf)             Command: <repstopdf --outfile=plots_tables_images/saysit
 all-eps-converted-to.pdf plots_tables_images/saysitall.eps>
-(epstopdf)             \includegraphics on input line 130.
+(epstopdf)             \includegraphics on input line 134.
 Package epstopdf Info: Output file is already uptodate.
 
-<plots_tables_images/saysitall-eps-converted-to.pdf, id=67, 552.0625pt x 338.26
+<plots_tables_images/saysitall-eps-converted-to.pdf, id=71, 552.0625pt x 338.26
 375pt>
 File: plots_tables_images/saysitall-eps-converted-to.pdf Graphic file (type pdf
 )
  <use plots_tables_images/saysitall-eps-converted-to.pdf>
 Package pdftex.def Info: plots_tables_images/saysitall-eps-converted-to.pdf use
-d on input line 130.
-(pdftex.def)             Requested size: 422.77664pt x 259.05995pt.
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 137.
- [2 <./plots_tables_images/sorted_array-eps-converted-to.pdf>] [3 <./plots_tabl
-es_images/d_ts-eps-converted-to.pdf> <./plots_tables_images/d_reg-eps-converted
--to.pdf> <./plots_tables_images/d_ts_d_ts-eps-converted-to.pdf> <./plots_tables
-_images/d_ts_d_reg-eps-converted-to.pdf> <./plots_tables_images/d_s_d_ts-eps-co
-nverted-to.pdf> <./plots_tables_images/d_s_d_reg-eps-converted-to.pdf>] [4 <./p
-lots_tables_images/histozoom-eps-converted-to.pdf>] [5 <./plots_tables_images/s
-aysitall-eps-converted-to.pdf>]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 137.
+d on input line 134.
+(pdftex.def)             Requested size: 407.6684pt x 249.80026pt.
+
+Table 1 has been set to width 0.0pt
+
+! LaTeX Error: Something's wrong--perhaps a missing \item.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.190 \end{deluxetable}
+                       
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+
+! LaTeX Error: Something's wrong--perhaps a missing \item.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.190 \end{deluxetable}
+                       
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+! Missing } inserted.
+<inserted text> 
+                }
+l.190 \end{deluxetable}
+                       
+I've inserted something that you may have forgotten.
+(See the <inserted text> above.)
+With luck, this will get me unwedged. But if you
+really didn't forget anything, try typing `2' now; then
+my insertion and my current dilemma will both disappear.
+
+! Missing } inserted.
+<inserted text> 
+                }
+l.190 \end{deluxetable}
+                       
+I've inserted something that you may have forgotten.
+(See the <inserted text> above.)
+With luck, this will get me unwedged. But if you
+really didn't forget anything, try typing `2' now; then
+my insertion and my current dilemma will both disappear.
+
+! Missing \cr inserted.
+<inserted text> 
+                \cr 
+l.190 \end{deluxetable}
+                       
+I'm guessing that you meant to end an alignment here.
+
+! Missing { inserted.
+<inserted text> 
+                {
+l.190 \end{deluxetable}
+                       
+I've put in what seems to be necessary to fix
+the current column of the current alignment.
+Try to go on, since this might almost work.
+
+! Missing $ inserted.
+<inserted text> 
+                $
+l.190 \end{deluxetable}
+                       
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+! Missing } inserted.
+<inserted text> 
+                }
+l.190 \end{deluxetable}
+                       
+I've inserted something that you may have forgotten.
+(See the <inserted text> above.)
+With luck, this will get me unwedged. But if you
+really didn't forget anything, try typing `2' now; then
+my insertion and my current dilemma will both disappear.
+
+! Missing } inserted.
+<inserted text> 
+                }
+l.190 \end{deluxetable}
+                       
+I've inserted something that you may have forgotten.
+(See the <inserted text> above.)
+With luck, this will get me unwedged. But if you
+really didn't forget anything, try typing `2' now; then
+my insertion and my current dilemma will both disappear.
+
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 194.
+[2 <./plots_tables_images/sorted_array-eps-converted-to.pdf>]
+Overfull \vbox (62.28165pt too high) has occurred while \output is active []
+
+
+[3 <./plots_tables_images/d_ts-eps-converted-to.pdf> <./plots_tables_images/d_r
+eg-eps-converted-to.pdf> <./plots_tables_images/d_ts_d_ts-eps-converted-to.pdf>
+ <./plots_tables_images/d_ts_d_reg-eps-converted-to.pdf> <./plots_tables_images
+/d_s_d_ts-eps-converted-to.pdf> <./plots_tables_images/d_s_d_reg-eps-converted-
+to.pdf>] [4 <./plots_tables_images/histozoom-eps-converted-to.pdf> <./plots_tab
+les_images/saysitall-eps-converted-to.pdf>]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 194.
  (./skimage.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 137.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 137.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 194.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 194.
 Package rerunfilecheck Info: File `skimage.out' has not changed.
-(rerunfilecheck)             Checksum: 29791D214295EEE1278D910FFCC11E52;203.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 137.
+(rerunfilecheck)             Checksum: 137DED592A90C20C8935BAA5EA236002;250.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 194.
  ) 
 Here is how much of TeX's memory you used:
- 8059 strings out of 493481
- 122263 string characters out of 3140966
- 206061 words of memory out of 3000000
- 11234 multiletter control sequences out of 15000+200000
- 13898 words of font info for 40 fonts, out of 3000000 for 9000
+ 9410 strings out of 493481
+ 145857 string characters out of 3140966
+ 255117 words of memory out of 3000000
+ 12568 multiletter control sequences out of 15000+200000
+ 12480 words of font info for 36 fonts, out of 3000000 for 9000
  957 hyphenation exceptions out of 8191
- 42i,8n,40p,856b,395s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 48i,9n,52p,856b,399s stack positions out of 5000i,500n,10000p,200000b,50000s
 {/usr/local/texlive/2012/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc}
-</usr/local/texlive/2012/texmf-dist/fonts/type1/public/cm-super/sfbx1000.pfb></
-usr/local/texlive/2012/texmf-dist/fonts/type1/public/cm-super/sfbx1440.pfb></us
-r/local/texlive/2012/texmf-dist/fonts/type1/public/cm-super/sfrm1000.pfb></usr/
-local/texlive/2012/texmf-dist/fonts/type1/public/cm-super/sfrm1200.pfb></usr/lo
-cal/texlive/2012/texmf-dist/fonts/type1/public/cm-super/sfrm1728.pfb></usr/loca
-l/texlive/2012/texmf-dist/fonts/type1/public/cm-super/sfti1000.pfb></usr/local/
-texlive/2012/texmf-dist/fonts/type1/public/cm-super/sftt1000.pfb>
-Output written on skimage.pdf (7 pages, 1142718 bytes).
+</usr/local/texlive/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb><
+/usr/local/texlive/2012/texmf-dist/fonts/type1/public/cm-super/sfrm1000.pfb></u
+sr/local/texlive/2012/texmf-dist/fonts/type1/public/cm-super/sfrm1440.pfb></usr
+/local/texlive/2012/texmf-dist/fonts/type1/public/cm-super/sfsx1000.pfb></usr/l
+ocal/texlive/2012/texmf-dist/fonts/type1/public/cm-super/sfsx1440.pfb></usr/loc
+al/texlive/2012/texmf-dist/fonts/type1/public/cm-super/sfsx2074.pfb></usr/local
+/texlive/2012/texmf-dist/fonts/type1/public/cm-super/sfti1000.pfb></usr/local/t
+exlive/2012/texmf-dist/fonts/type1/public/cm-super/sftt1000.pfb>
+Output written on skimage.pdf (6 pages, 1155882 bytes).
 PDF statistics:
- 175 PDF objects out of 1000 (max. 8388607)
- 136 compressed objects within 2 object streams
+ 179 PDF objects out of 1000 (max. 8388607)
+ 140 compressed objects within 2 object streams
  19 named destinations out of 1000 (max. 500000)
- 88 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 96 words of extra memory for PDF output out of 10000 (max. 10000000)
 

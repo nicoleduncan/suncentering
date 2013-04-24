@@ -218,7 +218,6 @@ a = wholeimage[BSORT(wholeimage)]
 niceimage = a[0:(1-!param.elim_perc/100)*(N_ELEMENTS(a)-1)]
 
 thresh = !param.reg1thresh_mult*max(niceimage)
-thresh = !param.thresh100
 ducks = quickmask(wholeimage,thresh)
 
 image = wholeimage[ducks.xpos- !param.crop_box:ducks.xpos+ !param.crop_box, $
@@ -385,9 +384,6 @@ loop: BEGIN
     ; ^^
     ; Well this doesn't work.
     thresh = !param.reg2thresh_mult*MAX(wholeimage)
-
-    thresh = !param.thresh50
-
     ; Alright, for some reason, clipping out the top 1% changes the thresh from 53.7 to 64.5
     ; which makes the centerx,centery go from 337,76 (correct)
     ; to
@@ -421,8 +417,6 @@ otherloop: BEGIN
         ; print,thresh
         ; thresh = !param.reg3thresh_mult*MAX(wholeimage)
         
-        thresh = !param.thresh25
-
         ; check to make sure we're scanning at the right radius
         n_check = WHERE((wholeimage[x2,y2] GT thresh) EQ 1,n_where)
 
@@ -1598,7 +1592,7 @@ end
 ;**************************************************************************************************
 
 
-function smoothit, input
+pro smoothit, input
 
 sorted = float(input[bsort(input)])
 
@@ -1618,30 +1612,213 @@ ysort = yarr[bsort(input)]
 
 skimmed = sorted[0:(1-!param.elim_perc/100)*(N_ELEMENTS(sorted)-1)]
 
+; ps_start,filename='saysitall.eps',/encapsulated
+; !p.multi=[0,1,3]
+; plot,xsort,psym=3,title='X Positions'
+; vline,141231.25
+; vline,138022.30
+; vline,134328.27
+; plot,ysort,psym=3,title='Y Positions'
+; vline,141231.25
+; vline,138022.30
+; vline,134328.27
+; plot,sorted
+; vline,141231.25
+; vline,138022.30
+; vline,134328.27
+; !p.multi=0
+; ps_end
+; stop
+
 n_smooth = 100.
 smoothed = ts_smooth(skimmed,n_smooth,order=3)
 reg_smooth = smooth(skimmed,n_smooth,/edge_truncate)
 med_smooth = median(skimmed,n_smooth)
+
+
+; the goal of smoothit is so that we can find the peaks of the suns, right? Once we have this 1D array we can work on isolating 1 or 2 suns.
+; This way, we don't have to worry about keyword crap. 
+
+
+; !p.charsize=2
+; window,1
+; plot,DERIV(smoothed),yr=[0,.1],xr=[1e5,n_elements(skimmed)-1]
+; window,2
+; plot,DERIV(smooth(skimmed,1000)),yr=[0,.1],xr=[1e5,n_elements(skimmed)-1]
+
+; ; ps_start,filename='d_.eps',/encapsulated
+; window,0
+; plot,skimmed,xr=[1.3e5,n_elements(skimmed)-1],title='deriv(smooth)',yr=[-100,300]
+; ; oplot,deriv(reg_smooth)*3000
+; oplot,scale_vector(deriv(reg_smooth),min(skimmed),max(skimmed))
+; vline,141231.25
+; vline,138022.30
+; vline,134328.27
+; xyouts, 1.42e5,200,'Main sun'
+; xyouts, 1.39e5,200,'50% sun'
+; xyouts, 1.35e5,200,'25% sun'
+; ; ps_end
+
+; ps_start,filename='d_s_d_reg.eps',/encapsulated
+; ; window,1
+; plot,skimmed,xr=[1.3e5,n_elements(skimmed)-1],title='deriv(smooth(deriv(smooth)))',yr=[-100,300]
+; ; oplot,deriv(smooth(deriv(reg_smooth)*2000000,1000,/edge_truncate))
+; oplot,scale_vector(deriv(smooth(deriv(reg_smooth),1000,/edge_truncate)),min(skimmed),max(skimmed))
+; vline,141231.25
+; vline,138022.30
+; vline,134328.27
+; xyouts, 1.42e5,200,'Main sun'
+; xyouts, 1.39e5,200,'50% sun'
+; xyouts, 1.35e5,200,'25% sun'
+; ps_end
+
+; ps_start,filename='d_ts.eps',/encapsulated
+; ; window,2
+; plot,skimmed,xr=[1.3e5,n_elements(skimmed)-1],title='deriv(ts_smooth)',yr=[-100,300]
+; oplot,scale_vector(deriv(smoothed),min(skimmed),max(skimmed))
+; ; oplot,deriv(smoothed)*3000
+; vline,141231.25
+; vline,138022.30
+; vline,134328.27
+; xyouts, 1.42e5,200,'Main sun'
+; xyouts, 1.39e5,200,'50% sun'
+; xyouts, 1.35e5,200,'25% sun'
+; ps_end
+
+; ps_start,filename='d_s_d_ts.eps',/encapsulated
+; ; window,3
+; plot,skimmed,xr=[1.3e5,n_elements(skimmed)-1],title='deriv(smooth(deriv(ts_smooth)))',yr=[-100,300]
+; ; oplot,deriv( smooth(deriv(smoothed)*2000000,1000,/edge_truncate) )
+; oplot,scale_vector(deriv( smooth(deriv(smoothed),1000,/edge_truncate) ),min(skimmed),max(skimmed))
+; xyouts, 1.42e5,200,'Main sun'
+; xyouts, 1.39e5,200,'50% sun'
+; xyouts, 1.35e5,200,'25% sun'
+
+; vline,141231.25
+; vline,138022.30
+; vline,134328.27
+; ps_end
+
+; ps_start,filename='d_ts_d_reg.eps',/encapsulated
+; ; window,4
+; plot,skimmed,xr=[1.3e5,n_elements(skimmed)-1],title='deriv(ts_smooth(deriv(smooth)))',yr=[-100,300]
+; ; oplot,deriv(ts_smooth(deriv(reg_smooth),1000,order=3))
+; oplot,scale_vector(deriv(ts_smooth(deriv(reg_smooth),1000,order=3)),min(skimmed),max(skimmed))
+; vline,141231.25
+; vline,138022.30
+; vline,134328.27
+; xyouts, 1.42e5,200,'Main sun'
+; xyouts, 1.39e5,200,'50% sun'
+; xyouts, 1.35e5,200,'25% sun'
+; ps_end
+
+; ps_start,filename='d_ts_d_ts.eps',/encapsulated
+; ; window,5
+; plot,skimmed,xr=[1.3e5,n_elements(skimmed)-1],title='deriv(ts_smooth(deriv(ts_smooth)))',yr=[-100,300]
+; ; oplot,deriv( ts_smooth(deriv(smoothed)*2000000,1000,order=3) )
+; oplot,scale_vector(deriv( ts_smooth(deriv(smoothed),1000,order=3) ),min(skimmed),max(skimmed))
+; ; oplot,shift(deriv(deriv(smoothed*200000)),500)
+
+; vline,141231.25
+; vline,138022.30
+; vline,134328.27
+; xyouts, 1.42e5,200,'Main sun'
+; xyouts, 1.39e5,200,'50% sun'
+; xyouts, 1.35e5,200,'25% sun'
+; ps_end
+
+
+
+
+
+; I have a question: shouldn't the deriv(skimmed) have minima at the boundary lines? A minima would imply that
+; boundary is changing the least when suddenly it jumps to a high value. Am I inorrect in understanding this?
+
+
+; window,0
+; plot,skimmed,xr=[1.3e5,n_elements(skimmed)-1],title='deriv(reg_smooth)',yr=[-100,300]
+; oplot,scale_vector(deriv(smoothed),min(skimmed),max(skimmed))
+; vline,141231.25
+; vline,138022.30
+; vline,134328.27
+
+
+; window,1
+; plot,skimmed,xr=[1.3e5,n_elements(skimmed)-1],title='deriv(ts_smooth(deriv(ts_smooth)))',yr=[-100,300]
+; oplot,scale_vector(deriv( ts_smooth(deriv(smoothed),n_smooth,order=3) ),min(skimmed),max(skimmed))
+; vline,141231.25
+; vline,138022.30
+; vline,134328.27
+
+; window,2
+; plot,skimmed,xr=[1.3e5,n_elements(skimmed)-1],title='shift(deriv(reg_smooth),'+strcompress(n_smooth/2,/rem)+')',yr=[-100,300]
+; oplot,shift(scale_vector(deriv(smoothed),min(skimmed),max(skimmed)),n_smooth/2)
+; vline,141231.25
+; vline,138022.30
+; vline,134328.27
+
+; window,0
+; plot,skimmed,xr=[1.3e5,n_elements(skimmed)-1],title='deriv(reg_smooth)',yr=[0,.2]
+; oplot,deriv(smoothed)
+; vline,141231.25
+; vline,138022.30
+; vline,134328.27
+
+
+; window,1
+; plot,skimmed,xr=[1.3e5,n_elements(skimmed)-1],title='deriv(ts_smooth(deriv(ts_smooth)))',yr=[0,1]
+; oplot,scale_vector(deriv( ts_smooth(deriv(smoothed),n_smooth,order=3) ),0,1)
+; vline,141231.25
+; vline,138022.30
+; vline,134328.27
 
 ; find peak, zero out
 ; find peak, zero out
 
 arr = scale_vector(deriv( ts_smooth(deriv(smoothed),n_smooth,order=3) ),0,1)
 peak_1 = mean(where(arr gt .7))
+; t_arr = [arr[0:peak_1-100],arr[peak_1+100:n_elements(arr)-1]]
 arr[peak_1-100:peak_1+100]=0
+; peak_2 = mean(where(arr[t_arr gt. 6))
 peak_2 = mean(where(arr gt .6))
+; t_arr = [arr[0:peak_2-100],arr[peak_2+100:n_elements(arr)-1]]
 arr[peak_2-100:peak_2+100]=0
 peak_3 = mean(where(arr gt .5))
+
+; plot,skimmed,xr=[1.3e5,n_elements(skimmed)-1],title='deriv(ts_smooth(deriv(ts_smooth)))',yr=[0,1]
+; oplot,scale_vector(deriv( ts_smooth(deriv(smoothed),n_smooth,order=3) ),0,1)
+; vline,peak_1
+; vline,peak_2
+; vline,peak_3
 
 thresh100 = skimmed[peak_1+n_elements(skimmed)*.001]
 thresh50 = skimmed[peak_2+n_elements(skimmed)*.001]
 thresh25 = skimmed[peak_3+n_elements(skimmed)*.001]
 
-; print,thresh100
-; print,thresh50
-; print,thresh25
+print,thresh100
+print,thresh50
+print,thresh25
 
-return,{thresh100:thresh100,thresh50:thresh50,thresh25:thresh25}
+; window,2
+; plot,skimmed,xr=[1.3e5,n_elements(skimmed)-1],title='shift(deriv(reg_smooth),'+strcompress(n_smooth/2,/rem)+')',yr=[0,.2]
+; oplot,shift(deriv(smoothed),n_smooth/2)
+; vline,141231.25
+; vline,138022.30
+; vline,134328.27
+
+
+; window,3
+; plot,histogram(skimmed,binsize=1),yr=[0,300]
+; maybe we should just histogram it, dude.
+; This way we don't have to fucking smooth it
+
+; ps_start,filename='histozoom.eps',/encapsulated
+; !p.multi=[0,1,2]
+; plot,histogram(skimmed,binsize=1)
+; plot,histogram(skimmed,binsize=1),yr=[0,300]
+; !p.multi=0
+; ps_end
+stop
 end
 
 
@@ -1804,11 +1981,7 @@ crop = wholeimage[struct.center1.xpos-!param.safecrop:struct.center1.xpos+!param
 thresh = 0.5*MIN((SHIFT_DIFF(EMBOSS(crop),dir=3)))
 borderbit = bordercheck(wholeimage)
 
-; threshlist = smoothit(wholeimage)
-; thresh100 = threshlist.thresh100
-; thresh50  = threshlist.thresh50
-; thresh25  = threshlist.thresh25
-
+smoothit,wholeimage
 
 stop
 

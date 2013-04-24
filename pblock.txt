@@ -18,3 +18,6 @@ reg3thresh_mult .2
 scanflip 10
 deg_num 360
 res 100
+thresh100 123
+thresh50 62
+thresh25 20

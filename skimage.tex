@@ -1,4 +1,5 @@
-\documentclass[10pt]{article}
+\documentclass[10pt]{scrartcl}
+% \documentclass[10pt]{article}
 \usepackage[T1]{fontenc}
 \usepackage{amsmath,amsfonts,amssymb}
 \usepackage{mathtools}
@@ -8,6 +9,7 @@
 \usepackage{graphicx}
 \usepackage[colorlinks=true,urlcolor=blue]{hyperref}
 \usepackage{subcaption}
+\usepackage{deluxetable}
 
 \definecolor{Light}{gray}{.90}
 \sethlcolor{Light}
@@ -25,14 +27,16 @@
     \includegraphics[width=.9\textwidth]{plots_tables_images/skimmilk.jpg}    
 \end{figure}
 
+\clearpage
+
 \pagenumbering{Roman}
 \tableofcontents
-\newpage
+\clearpage
 \pagenumbering{arabic}
 
 \section{Introduction} % (fold)
 \label{sec:introduction}
-An easier and faster way to crop our three suns in a single image is to find the brightest sun-like shape in our image, crop around it, set the area to zero, then find the next brightest sun-like shape. If we use sort to get a ``master array'' of positions and values, we can zero-out the parts of the image that are sun-like on the same array multiple times. The result is a fast and efficient cropping method.
+An easier and faster way to crop our three suns in a single image is to find the brightest sun-like shape in our image, crop around it, set the area to zero, then find the next brightest sun-like shape. If we use sort to get a ``master array'' of positions and values, we can zero-out the parts of the image that are sun-like on the same array multiple times. The result is a fast and efficient cropping method. We also use the term ``skimmed'' to signify that we skim off the top 1\% of the pixels so that any extremely bright outliers will not be incorporated into our image.
 
 % section introduction (end)
 
@@ -93,7 +97,7 @@ We see three distinct humps, indicative of our three suns in the 2D image. Now, 
         \centering
         \includegraphics[width=1.3\textwidth]{plots_tables_images/d_s_d_reg.eps}
     \end{subfigure}
-    \caption{The vertical lines correspond to eyeballed boundaries of the sorted array. A large part of the left half of the array is cropped out to emphasize the shape of the humps and peaks. The derivative has been scaled to within the max/min of the starting master array.}
+    \caption{The vertical lines correspond to eyeballed boundaries of the sorted array. A large part of the left half of the array is cropped out to emphasize the shape of the humps and peaks. The derivative has been scaled to within the max/min of the starting master array. The width of the smoothing filter is 1000 wide.}
     \label{comps}
 \end{figure}
 
@@ -133,6 +137,59 @@ It turns out that \texttt{\hl{ts\_smooth}} takes an incredibly long time to run 
 \end{figure}
 
 % section this_plot_says_it_all (end)
+
+\section{Some Numbers} % (fold)
+\label{sec:some_numbers}
+Using the above methods, we find peaks of the second derivative of the smoothed 2D$\rightarrow$1D array. Using the peak positions, we place boundary thresholds for each of the suns. The result is a set of three thresholds based on the shape of the 1D image. We keep our code identical and only change the threshold value. Table \ref{threshcomp} shows that the thresholds we find are good!
+
+\begin{deluxetable}{rllr}
+% \scriptsize
+\tablecaption{Center Positions Using Different Thresholds}
+\tablewidth{0pt}
+\tablehead{
+    \colhead{Sun Brightness (\%)}
+&   \colhead{X Position}
+&   \colhead{Y Position}
+&   \colhead{Threshold}
+}
+\startdata
+& & & Old\\
+\hline
+100
+& 210.50238
+& 154.27054
+& 116.35\\
+%
+50
+& 337.80600
+& 76.894958
+& 76.5\\
+%
+25
+& 78.683426
+& 235.11536
+& 35.8\\
+\hline
+& & & New\\
+\hline
+100
+& 210.48686
+& 154.25601
+& 123\\
+%
+50
+& 337.91956
+& 77.234901
+& 62\\
+%
+25
+& 78.887283
+& 234.69048
+& 20\\
+\label{threshcomp}
+\end{deluxetable}
+
+% section some_numbers (end)
 
 \end{document}
 
