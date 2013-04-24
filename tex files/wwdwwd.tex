@@ -38,6 +38,11 @@ Something about the camera
 \section{Handling 2D Image} % (fold)
 \label{sec:handling_2d_image}
 Something about how we work around 2D image
+
+\section{Skimming the Top Off} % (fold)
+\label{sec:skimming_the_top_off}
+We want to eliminate any outlier pixels that are way too bright so we sort our 2D image as a 1D array and mask out the top 1\% of the pixels for our threshold. Actually, I'm just lying now. We don't need to do this anymore.
+% section skimming_the_top_off (end)
 % section handling_2d_image (end)
 
 \section{Deciding Whether or Not to Use Image} % (fold)

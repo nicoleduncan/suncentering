@@ -9,7 +9,7 @@
 \usepackage{graphicx}
 \usepackage[colorlinks=true,urlcolor=blue]{hyperref}
 \usepackage{subcaption}
-\usepackage{deluxetable}
+\usepackage{../deluxetable}
 
 \definecolor{Light}{gray}{.90}
 \sethlcolor{Light}
@@ -24,7 +24,7 @@
 
 \begin{figure}[!ht]
     \centering
-    \includegraphics[width=.9\textwidth]{plots_tables_images/skimmilk.jpg}    
+    \includegraphics[width=.9\textwidth]{../plots_tables_images/skimmilk.jpg}    
 \end{figure}
 
 \clearpage
@@ -36,7 +36,7 @@
 
 \section{Introduction} % (fold)
 \label{sec:introduction}
-An easier and faster way to crop our three suns in a single image is to find the brightest sun-like shape in our image, crop around it, set the area to zero, then find the next brightest sun-like shape. If we use sort to get a ``master array'' of positions and values, we can zero-out the parts of the image that are sun-like on the same array multiple times. The result is a fast and efficient cropping method. We also use the term ``skimmed'' to signify that we skim off the top 1\% of the pixels so that any extremely bright outliers will not be incorporated into our image.
+An easier and faster way to crop our three suns in a single image is to find the brightest sun-like shape in our image, crop around it, set the area to zero, then find the next brightest sun-like shape. If we use sort to get a ``master array'' of positions and values, we can zero-out the parts of the image that are sun-like on the same array multiple times. The result is a fast and efficient cropping method. We also use the term ``skimmed'' to signify that we skim off the top 1\% of the pixels so that any extremely bright outliers will not be incorporated into our image. Actually, that's a complete lie. We only used this ``skimming'' for the old way of finding a threshold which we have proven to be replaceable by our more robust method. Keeping the carton of skim milk though.
 
 % section introduction (end)
 
@@ -47,7 +47,7 @@ We plot a 2D image as a 1D spectrum to identify the shapes in our 2D image.
 
 \begin{figure}[!ht]
     \centering
-    \includegraphics[width=.9\textwidth]{plots_tables_images/raw.eps}
+    \includegraphics[width=.9\textwidth]{../plots_tables_images/raw.eps}
     \caption{The raw 2D image we started out with. There are 7 pixels in this image equal to 255, the max brightness for a byte array. These pixels simulate abnormally high values in our image as a result of bad pixels, gamma rays, etc.}
     \label{raw}
 \end{figure}
@@ -56,7 +56,7 @@ Starting from Figure \ref{raw}, we plotted the lowest 99\% of the pixels when or
 
 \begin{figure}[!ht]
     \centering
-    \includegraphics[width=.9\textwidth]{plots_tables_images/sorted_array.eps}
+    \includegraphics[width=.9\textwidth]{../plots_tables_images/sorted_array.eps}
     \caption{Lowest 99\% of sorted 2D image.}
     \label{sorted}
 \end{figure}
@@ -68,34 +68,34 @@ We see three distinct humps, indicative of our three suns in the 2D image. Now, 
     \hspace{-1.0in}
     \begin{subfigure}[b]{.45\linewidth}
         \centering
-        \includegraphics[width=1.3\textwidth]{plots_tables_images/d_ts.eps}
+        \includegraphics[width=1.3\textwidth]{../plots_tables_images/d_ts.eps}
     \end{subfigure}
     \hspace{.5in}
     \begin{subfigure}[b]{.45\linewidth}
         \centering
-        \includegraphics[width=1.3\textwidth]{plots_tables_images/d_reg.eps}
+        \includegraphics[width=1.3\textwidth]{../plots_tables_images/d_reg.eps}
     \end{subfigure}
    
    \hspace{-1.0in}
    \begin{subfigure}[b]{.45\linewidth}
         \centering
-        \includegraphics[width=1.3\textwidth]{plots_tables_images/d_ts_d_ts.eps}
+        \includegraphics[width=1.3\textwidth]{../plots_tables_images/d_ts_d_ts.eps}
     \end{subfigure}
     \hspace{.5in}
     \begin{subfigure}[b]{.45\linewidth}
         \centering
-        \includegraphics[width=1.3\textwidth]{plots_tables_images/d_ts_d_reg.eps}
+        \includegraphics[width=1.3\textwidth]{../plots_tables_images/d_ts_d_reg.eps}
     \end{subfigure}
 
     \hspace{-1.0in}
     \begin{subfigure}[b]{.45\linewidth}
         \centering
-        \includegraphics[width=1.3\textwidth]{plots_tables_images/d_s_d_ts.eps}
+        \includegraphics[width=1.3\textwidth]{../plots_tables_images/d_s_d_ts.eps}
     \end{subfigure}
     \hspace{.5in}
     \begin{subfigure}[b]{.45\linewidth}
         \centering
-        \includegraphics[width=1.3\textwidth]{plots_tables_images/d_s_d_reg.eps}
+        \includegraphics[width=1.3\textwidth]{../plots_tables_images/d_s_d_reg.eps}
     \end{subfigure}
     \caption{The vertical lines correspond to eyeballed boundaries of the sorted array. A large part of the left half of the array is cropped out to emphasize the shape of the humps and peaks. The derivative has been scaled to within the max/min of the starting master array. The width of the smoothing filter is 1000 wide.}
     \label{comps}
@@ -115,7 +115,7 @@ It turns out that \texttt{\hl{ts\_smooth}} takes an incredibly long time to run 
 
 \begin{figure}[!ht]
     \centering
-    \includegraphics[width=.9\textwidth]{plots_tables_images/histozoom.eps}
+    \includegraphics[width=.9\textwidth]{../plots_tables_images/histozoom.eps}
     \caption{The top is the histogram of the sorted array. The bottom is the same plot but zoomed to a y-range of [0:300].}
     \label{histozoom}
 \end{figure}
@@ -131,7 +131,7 @@ It turns out that \texttt{\hl{ts\_smooth}} takes an incredibly long time to run 
 
 \begin{figure}[!ht]
     \centering
-    \includegraphics[width=.9\textwidth]{plots_tables_images/saysitall.eps}
+    \includegraphics[width=.9\textwidth]{../plots_tables_images/saysitall.eps}
     \caption{This plot reveals that when sorted, the regions bounded by the vertical lines (which are artificially places, not the result of any computation) include pixels from neighboring regions. For high-value pixels, i.e., the region bounded by the rightmost vertical line and the last element of the sorted array, the x and y positions are completely (no vertical dots) isolated from other regions. When we look at the middle region, we see that low-value pixels from the brightest region(most likely dark limb pixels) are being sorted into the middle region of the sorted array. The worst case scenario is the left-most region which has pixels from both the first and second regions.}
     \label{saysitall}
 \end{figure}
@@ -140,10 +140,10 @@ It turns out that \texttt{\hl{ts\_smooth}} takes an incredibly long time to run 
 
 \section{Some Numbers} % (fold)
 \label{sec:some_numbers}
-Using the above methods, we find peaks of the second derivative of the smoothed 2D$\rightarrow$1D array. Using the peak positions, we place boundary thresholds for each of the suns. The result is a set of three thresholds based on the shape of the 1D image. We keep our code identical and only change the threshold value. Table \ref{threshcomp} shows that the thresholds we find are good!
+Using the above methods, we find peaks of the second derivative of the smoothed 2D$\rightarrow$1D array. Using the peak positions, we return the value of the sorted array at that peak position and set that to be a threshold. The result is a set of three thresholds based on the shape of the 1D image. We keep our code identical and only change the threshold value. Table \ref{threshcomp} shows that the thresholds we find are good! There is one small note however, the exactly position of the peak is not used, but rather the position +.1\% of the total number of pixels in the 1D array. The problem was that if we did simply return the sorted array value as a threshold, we'd get cropping errors. Adding a little bit to the threshold value is safe, however, since it reduces the number of pixels in our centering mask. The less pixels there are, the higher on the dome-shape we lie, which means the more circular our mask is. A more circular mask means a more accurate center position to use for our limb-fitting program. 
 
 \begin{deluxetable}{rllr}
-% \scriptsize
+\scriptsize
 \tablecaption{Center Positions Using Different Thresholds}
 \tablewidth{0pt}
 \tablehead{

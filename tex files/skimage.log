@@ -1,9 +1,9 @@
-This is pdfTeX, Version 3.1415926-2.4-1.40.13 (TeX Live 2012) (format=pdflatex 2013.4.9)  24 APR 2013 12:52
+This is pdfTeX, Version 3.1415926-2.4-1.40.13 (TeX Live 2012) (format=pdflatex 2013.4.9)  24 APR 2013 13:57
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
-**/Users/jerensuzuki/Documents/suncentering/skimage.tex
-(/Users/jerensuzuki/Documents/suncentering/skimage.tex
+**"/Users/jerensuzuki/Documents/suncentering/tex files/skimage.tex"
+(/Users/jerensuzuki/Documents/suncentering/tex files/skimage.tex
 LaTeX2e <2011/06/27>
 Babel <v3.8m> and hyphenation patterns for english, dumylang, nohyphenation, ge
 rman-x-2012-05-30, ngerman-x-2012-05-30, afrikaans, ancientgreek, ibycus, arabi
@@ -404,7 +404,11 @@ Package caption Info: hyperref package is loaded.
 \c@subfigure=\count116
 \c@subtable=\count117
 )
-(./deluxetable.sty
+(../deluxetable.sty
+
+LaTeX Warning: You have requested package `../deluxetable',
+               but the package provides `deluxetable'.
+
 Package: deluxetable 
 \pt@box=\box29
 \pt@width=\dimen137
@@ -496,18 +500,18 @@ LaTeX Font Info:    Try loading font information for U+msb on input line 24.
 (/usr/local/texlive/2012/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-<plots_tables_images/skimmilk.jpg, id=24, 501.875pt x 501.875pt>
-File: plots_tables_images/skimmilk.jpg Graphic file (type jpg)
+<../plots_tables_images/skimmilk.jpg, id=24, 501.875pt x 501.875pt>
+File: ../plots_tables_images/skimmilk.jpg Graphic file (type jpg)
 
-<use plots_tables_images/skimmilk.jpg>
-Package pdftex.def Info: plots_tables_images/skimmilk.jpg used on input line 27
-.
+<use ../plots_tables_images/skimmilk.jpg>
+Package pdftex.def Info: ../plots_tables_images/skimmilk.jpg used on input line
+ 27.
 (pdftex.def)             Requested size: 407.6684pt x 407.68819pt.
  [1
 
 
-{/usr/local/texlive/2012/texmf-var/fonts/map/pdftex/updmap/pdftex.map} <./plots
-_tables_images/skimmilk.jpg>]
+{/usr/local/texlive/2012/texmf-var/fonts/map/pdftex/updmap/pdftex.map} <../plot
+s_tables_images/skimmilk.jpg>]
 (./skimage.toc)
 \tf@toc=\write4
 \openout4 = `skimage.toc'.
@@ -515,191 +519,193 @@ _tables_images/skimmilk.jpg>]
  [1
 
 ]
-Package epstopdf Info: Source file: <plots_tables_images/raw.eps>
+Package epstopdf Info: Source file: <../plots_tables_images/raw.eps>
 (epstopdf)                    date: 2013-04-22 15:52:05
 (epstopdf)                    size: 185746 bytes
-(epstopdf)             Output file: <plots_tables_images/raw-eps-converted-to.p
-df>
+(epstopdf)             Output file: <../plots_tables_images/raw-eps-converted-t
+o.pdf>
 (epstopdf)                    date: 2013-04-22 15:53:40
 (epstopdf)                    size: 13677 bytes
-(epstopdf)             Command: <repstopdf --outfile=plots_tables_images/raw-ep
-s-converted-to.pdf plots_tables_images/raw.eps>
+(epstopdf)             Command: <repstopdf --outfile=../plots_tables_images/raw
+-eps-converted-to.pdf ../plots_tables_images/raw.eps>
 (epstopdf)             \includegraphics on input line 50.
 Package epstopdf Info: Output file is already uptodate.
 
-<plots_tables_images/raw-eps-converted-to.pdf, id=46, 552.0625pt x 338.26375pt>
-File: plots_tables_images/raw-eps-converted-to.pdf Graphic file (type pdf)
-<use plots_tables_images/raw-eps-converted-to.pdf>
-Package pdftex.def Info: plots_tables_images/raw-eps-converted-to.pdf used on i
-nput line 50.
+<../plots_tables_images/raw-eps-converted-to.pdf, id=46, 552.0625pt x 338.26375
+pt>
+File: ../plots_tables_images/raw-eps-converted-to.pdf Graphic file (type pdf)
+ <use ../plots_tables_images/raw-eps-converted-to.pdf>
+Package pdftex.def Info: ../plots_tables_images/raw-eps-converted-to.pdf used o
+n input line 50.
 (pdftex.def)             Requested size: 407.6684pt x 249.80026pt.
-Package epstopdf Info: Source file: <plots_tables_images/sorted_array.eps>
+Package epstopdf Info: Source file: <../plots_tables_images/sorted_array.eps>
 (epstopdf)                    date: 2013-04-22 15:58:27
 (epstopdf)                    size: 93168 bytes
-(epstopdf)             Output file: <plots_tables_images/sorted_array-eps-conve
-rted-to.pdf>
+(epstopdf)             Output file: <../plots_tables_images/sorted_array-eps-co
+nverted-to.pdf>
 (epstopdf)                    date: 2013-04-22 15:58:52
 (epstopdf)                    size: 8218 bytes
-(epstopdf)             Command: <repstopdf --outfile=plots_tables_images/sorted
-_array-eps-converted-to.pdf plots_tables_images/sorted_array.eps>
+(epstopdf)             Command: <repstopdf --outfile=../plots_tables_images/sor
+ted_array-eps-converted-to.pdf ../plots_tables_images/sorted_array.eps>
 (epstopdf)             \includegraphics on input line 59.
 Package epstopdf Info: Output file is already uptodate.
 
-<plots_tables_images/sorted_array-eps-converted-to.pdf, id=49, 552.0625pt x 338
-.26375pt>
-File: plots_tables_images/sorted_array-eps-converted-to.pdf Graphic file (type 
-pdf)
- <use plots_tables_images/sorted_array-eps-converted-to.pdf>
-Package pdftex.def Info: plots_tables_images/sorted_array-eps-converted-to.pdf 
-used on input line 59.
+<../plots_tables_images/sorted_array-eps-converted-to.pdf, id=49, 552.0625pt x 
+338.26375pt>
+File: ../plots_tables_images/sorted_array-eps-converted-to.pdf Graphic file (ty
+pe pdf)
+ <use ../plots_tables_images/sorted_array-eps-converted-to.pdf>
+Package pdftex.def Info: ../plots_tables_images/sorted_array-eps-converted-to.p
+df used on input line 59.
 (pdftex.def)             Requested size: 407.6684pt x 249.80026pt.
 LaTeX Font Info:    Try loading font information for T1+cmtt on input line 64.
 
 (/usr/local/texlive/2012/texmf-dist/tex/latex/base/t1cmtt.fd
 File: t1cmtt.fd 1999/05/25 v2.5h Standard LaTeX font definitions
 )
-Package epstopdf Info: Source file: <plots_tables_images/d_ts.eps>
+Package epstopdf Info: Source file: <../plots_tables_images/d_ts.eps>
 (epstopdf)                    date: 2013-04-22 15:50:03
 (epstopdf)                    size: 160564 bytes
-(epstopdf)             Output file: <plots_tables_images/d_ts-eps-converted-to.
-pdf>
+(epstopdf)             Output file: <../plots_tables_images/d_ts-eps-converted-
+to.pdf>
 (epstopdf)                    date: 2013-04-22 16:02:08
 (epstopdf)                    size: 16686 bytes
-(epstopdf)             Command: <repstopdf --outfile=plots_tables_images/d_ts-e
-ps-converted-to.pdf plots_tables_images/d_ts.eps>
+(epstopdf)             Command: <repstopdf --outfile=../plots_tables_images/d_t
+s-eps-converted-to.pdf ../plots_tables_images/d_ts.eps>
 (epstopdf)             \includegraphics on input line 71.
 Package epstopdf Info: Output file is already uptodate.
 
-<plots_tables_images/d_ts-eps-converted-to.pdf, id=52, 552.0625pt x 338.26375pt
->
-File: plots_tables_images/d_ts-eps-converted-to.pdf Graphic file (type pdf)
- <use plots_tables_images/d_ts-eps-converted-to.pdf>
-Package pdftex.def Info: plots_tables_images/d_ts-eps-converted-to.pdf used on 
-input line 71.
+<../plots_tables_images/d_ts-eps-converted-to.pdf, id=52, 552.0625pt x 338.2637
+5pt>
+File: ../plots_tables_images/d_ts-eps-converted-to.pdf Graphic file (type pdf)
+ <use ../plots_tables_images/d_ts-eps-converted-to.pdf>
+Package pdftex.def Info: ../plots_tables_images/d_ts-eps-converted-to.pdf used 
+on input line 71.
 (pdftex.def)             Requested size: 264.98508pt x 162.3699pt.
 
 Overfull \hbox (61.15088pt too wide) in paragraph at lines 71--72
  [][] 
  []
 
-Package epstopdf Info: Source file: <plots_tables_images/d_reg.eps>
+Package epstopdf Info: Source file: <../plots_tables_images/d_reg.eps>
 (epstopdf)                    date: 2013-04-22 15:45:42
 (epstopdf)                    size: 160512 bytes
-(epstopdf)             Output file: <plots_tables_images/d_reg-eps-converted-to
-.pdf>
+(epstopdf)             Output file: <../plots_tables_images/d_reg-eps-converted
+-to.pdf>
 (epstopdf)                    date: 2013-04-22 16:02:09
 (epstopdf)                    size: 16017 bytes
-(epstopdf)             Command: <repstopdf --outfile=plots_tables_images/d_reg-
-eps-converted-to.pdf plots_tables_images/d_reg.eps>
+(epstopdf)             Command: <repstopdf --outfile=../plots_tables_images/d_r
+eg-eps-converted-to.pdf ../plots_tables_images/d_reg.eps>
 (epstopdf)             \includegraphics on input line 76.
 Package epstopdf Info: Output file is already uptodate.
 
-<plots_tables_images/d_reg-eps-converted-to.pdf, id=53, 552.0625pt x 338.26375p
-t>
-File: plots_tables_images/d_reg-eps-converted-to.pdf Graphic file (type pdf)
- <use plots_tables_images/d_reg-eps-converted-to.pdf>
-Package pdftex.def Info: plots_tables_images/d_reg-eps-converted-to.pdf used on
- input line 76.
+<../plots_tables_images/d_reg-eps-converted-to.pdf, id=53, 552.0625pt x 338.263
+75pt>
+File: ../plots_tables_images/d_reg-eps-converted-to.pdf Graphic file (type pdf)
+
+ <use ../plots_tables_images/d_reg-eps-converted-to.pdf>
+Package pdftex.def Info: ../plots_tables_images/d_reg-eps-converted-to.pdf used
+ on input line 76.
 (pdftex.def)             Requested size: 264.98508pt x 162.3699pt.
 
 Overfull \hbox (61.15088pt too wide) in paragraph at lines 76--77
  [][] 
  []
 
-Package epstopdf Info: Source file: <plots_tables_images/d_ts_d_ts.eps>
+Package epstopdf Info: Source file: <../plots_tables_images/d_ts_d_ts.eps>
 (epstopdf)                    date: 2013-04-22 15:50:05
 (epstopdf)                    size: 161514 bytes
-(epstopdf)             Output file: <plots_tables_images/d_ts_d_ts-eps-converte
-d-to.pdf>
+(epstopdf)             Output file: <../plots_tables_images/d_ts_d_ts-eps-conve
+rted-to.pdf>
 (epstopdf)                    date: 2013-04-22 16:02:09
 (epstopdf)                    size: 21559 bytes
-(epstopdf)             Command: <repstopdf --outfile=plots_tables_images/d_ts_d
-_ts-eps-converted-to.pdf plots_tables_images/d_ts_d_ts.eps>
+(epstopdf)             Command: <repstopdf --outfile=../plots_tables_images/d_t
+s_d_ts-eps-converted-to.pdf ../plots_tables_images/d_ts_d_ts.eps>
 (epstopdf)             \includegraphics on input line 82.
 Package epstopdf Info: Output file is already uptodate.
 
-<plots_tables_images/d_ts_d_ts-eps-converted-to.pdf, id=54, 552.0625pt x 338.26
-375pt>
-File: plots_tables_images/d_ts_d_ts-eps-converted-to.pdf Graphic file (type pdf
-)
- <use plots_tables_images/d_ts_d_ts-eps-converted-to.pdf>
-Package pdftex.def Info: plots_tables_images/d_ts_d_ts-eps-converted-to.pdf use
-d on input line 82.
+<../plots_tables_images/d_ts_d_ts-eps-converted-to.pdf, id=54, 552.0625pt x 338
+.26375pt>
+File: ../plots_tables_images/d_ts_d_ts-eps-converted-to.pdf Graphic file (type 
+pdf)
+ <use ../plots_tables_images/d_ts_d_ts-eps-converted-to.pdf>
+Package pdftex.def Info: ../plots_tables_images/d_ts_d_ts-eps-converted-to.pdf 
+used on input line 82.
 (pdftex.def)             Requested size: 264.98508pt x 162.3699pt.
 
 Overfull \hbox (61.15088pt too wide) in paragraph at lines 82--83
  [][] 
  []
 
-Package epstopdf Info: Source file: <plots_tables_images/d_ts_d_reg.eps>
+Package epstopdf Info: Source file: <../plots_tables_images/d_ts_d_reg.eps>
 (epstopdf)                    date: 2013-04-22 15:50:04
 (epstopdf)                    size: 161451 bytes
-(epstopdf)             Output file: <plots_tables_images/d_ts_d_reg-eps-convert
-ed-to.pdf>
+(epstopdf)             Output file: <../plots_tables_images/d_ts_d_reg-eps-conv
+erted-to.pdf>
 (epstopdf)                    date: 2013-04-22 16:02:10
 (epstopdf)                    size: 20854 bytes
-(epstopdf)             Command: <repstopdf --outfile=plots_tables_images/d_ts_d
-_reg-eps-converted-to.pdf plots_tables_images/d_ts_d_reg.eps>
+(epstopdf)             Command: <repstopdf --outfile=../plots_tables_images/d_t
+s_d_reg-eps-converted-to.pdf ../plots_tables_images/d_ts_d_reg.eps>
 (epstopdf)             \includegraphics on input line 87.
 Package epstopdf Info: Output file is already uptodate.
 
-<plots_tables_images/d_ts_d_reg-eps-converted-to.pdf, id=55, 552.0625pt x 338.2
-6375pt>
-File: plots_tables_images/d_ts_d_reg-eps-converted-to.pdf Graphic file (type pd
-f)
- <use plots_tables_images/d_ts_d_reg-eps-converted-to.pdf>
-Package pdftex.def Info: plots_tables_images/d_ts_d_reg-eps-converted-to.pdf us
-ed on input line 87.
+<../plots_tables_images/d_ts_d_reg-eps-converted-to.pdf, id=55, 552.0625pt x 33
+8.26375pt>
+File: ../plots_tables_images/d_ts_d_reg-eps-converted-to.pdf Graphic file (type
+ pdf)
+ <use ../plots_tables_images/d_ts_d_reg-eps-converted-to.pdf>
+Package pdftex.def Info: ../plots_tables_images/d_ts_d_reg-eps-converted-to.pdf
+ used on input line 87.
 (pdftex.def)             Requested size: 264.98508pt x 162.3699pt.
 
 Overfull \hbox (61.15088pt too wide) in paragraph at lines 87--88
  [][] 
  []
 
-Package epstopdf Info: Source file: <plots_tables_images/d_s_d_ts.eps>
+Package epstopdf Info: Source file: <../plots_tables_images/d_s_d_ts.eps>
 (epstopdf)                    date: 2013-04-22 15:50:03
 (epstopdf)                    size: 161448 bytes
-(epstopdf)             Output file: <plots_tables_images/d_s_d_ts-eps-converted
--to.pdf>
+(epstopdf)             Output file: <../plots_tables_images/d_s_d_ts-eps-conver
+ted-to.pdf>
 (epstopdf)                    date: 2013-04-22 16:02:10
 (epstopdf)                    size: 20959 bytes
-(epstopdf)             Command: <repstopdf --outfile=plots_tables_images/d_s_d_
-ts-eps-converted-to.pdf plots_tables_images/d_s_d_ts.eps>
+(epstopdf)             Command: <repstopdf --outfile=../plots_tables_images/d_s
+_d_ts-eps-converted-to.pdf ../plots_tables_images/d_s_d_ts.eps>
 (epstopdf)             \includegraphics on input line 93.
 Package epstopdf Info: Output file is already uptodate.
 
-<plots_tables_images/d_s_d_ts-eps-converted-to.pdf, id=56, 552.0625pt x 338.263
-75pt>
-File: plots_tables_images/d_s_d_ts-eps-converted-to.pdf Graphic file (type pdf)
-
- <use plots_tables_images/d_s_d_ts-eps-converted-to.pdf>
-Package pdftex.def Info: plots_tables_images/d_s_d_ts-eps-converted-to.pdf used
- on input line 93.
+<../plots_tables_images/d_s_d_ts-eps-converted-to.pdf, id=56, 552.0625pt x 338.
+26375pt>
+File: ../plots_tables_images/d_s_d_ts-eps-converted-to.pdf Graphic file (type p
+df)
+ <use ../plots_tables_images/d_s_d_ts-eps-converted-to.pdf>
+Package pdftex.def Info: ../plots_tables_images/d_s_d_ts-eps-converted-to.pdf u
+sed on input line 93.
 (pdftex.def)             Requested size: 264.98508pt x 162.3699pt.
 
 Overfull \hbox (61.15088pt too wide) in paragraph at lines 93--94
  [][] 
  []
 
-Package epstopdf Info: Source file: <plots_tables_images/d_s_d_reg.eps>
+Package epstopdf Info: Source file: <../plots_tables_images/d_s_d_reg.eps>
 (epstopdf)                    date: 2013-04-22 15:50:03
 (epstopdf)                    size: 161442 bytes
-(epstopdf)             Output file: <plots_tables_images/d_s_d_reg-eps-converte
-d-to.pdf>
+(epstopdf)             Output file: <../plots_tables_images/d_s_d_reg-eps-conve
+rted-to.pdf>
 (epstopdf)                    date: 2013-04-22 16:02:11
 (epstopdf)                    size: 20785 bytes
-(epstopdf)             Command: <repstopdf --outfile=plots_tables_images/d_s_d_
-reg-eps-converted-to.pdf plots_tables_images/d_s_d_reg.eps>
+(epstopdf)             Command: <repstopdf --outfile=../plots_tables_images/d_s
+_d_reg-eps-converted-to.pdf ../plots_tables_images/d_s_d_reg.eps>
 (epstopdf)             \includegraphics on input line 98.
 Package epstopdf Info: Output file is already uptodate.
 
-<plots_tables_images/d_s_d_reg-eps-converted-to.pdf, id=57, 552.0625pt x 338.26
-375pt>
-File: plots_tables_images/d_s_d_reg-eps-converted-to.pdf Graphic file (type pdf
-)
- <use plots_tables_images/d_s_d_reg-eps-converted-to.pdf>
-Package pdftex.def Info: plots_tables_images/d_s_d_reg-eps-converted-to.pdf use
-d on input line 98.
+<../plots_tables_images/d_s_d_reg-eps-converted-to.pdf, id=57, 552.0625pt x 338
+.26375pt>
+File: ../plots_tables_images/d_s_d_reg-eps-converted-to.pdf Graphic file (type 
+pdf)
+ <use ../plots_tables_images/d_s_d_reg-eps-converted-to.pdf>
+Package pdftex.def Info: ../plots_tables_images/d_s_d_reg-eps-converted-to.pdf 
+used on input line 98.
 (pdftex.def)             Requested size: 264.98508pt x 162.3699pt.
 
 Overfull \hbox (61.15088pt too wide) in paragraph at lines 98--99
@@ -713,48 +719,48 @@ been already used, duplicate ignored
 l.113 
        [1
 
- <./plots_tables_images/raw-eps-converted-to.pdf>]
-Package epstopdf Info: Source file: <plots_tables_images/histozoom.eps>
+ <../plots_tables_images/raw-eps-converted-to.pdf>]
+Package epstopdf Info: Source file: <../plots_tables_images/histozoom.eps>
 (epstopdf)                    date: 2013-04-23 15:26:09
 (epstopdf)                    size: 11308 bytes
-(epstopdf)             Output file: <plots_tables_images/histozoom-eps-converte
-d-to.pdf>
+(epstopdf)             Output file: <../plots_tables_images/histozoom-eps-conve
+rted-to.pdf>
 (epstopdf)                    date: 2013-04-23 15:27:17
 (epstopdf)                    size: 8029 bytes
-(epstopdf)             Command: <repstopdf --outfile=plots_tables_images/histoz
-oom-eps-converted-to.pdf plots_tables_images/histozoom.eps>
+(epstopdf)             Command: <repstopdf --outfile=../plots_tables_images/his
+tozoom-eps-converted-to.pdf ../plots_tables_images/histozoom.eps>
 (epstopdf)             \includegraphics on input line 118.
 Package epstopdf Info: Output file is already uptodate.
 
-<plots_tables_images/histozoom-eps-converted-to.pdf, id=69, 552.0625pt x 338.26
-375pt>
-File: plots_tables_images/histozoom-eps-converted-to.pdf Graphic file (type pdf
-)
- <use plots_tables_images/histozoom-eps-converted-to.pdf>
-Package pdftex.def Info: plots_tables_images/histozoom-eps-converted-to.pdf use
-d on input line 118.
+<../plots_tables_images/histozoom-eps-converted-to.pdf, id=69, 552.0625pt x 338
+.26375pt>
+File: ../plots_tables_images/histozoom-eps-converted-to.pdf Graphic file (type 
+pdf)
+ <use ../plots_tables_images/histozoom-eps-converted-to.pdf>
+Package pdftex.def Info: ../plots_tables_images/histozoom-eps-converted-to.pdf 
+used on input line 118.
 (pdftex.def)             Requested size: 407.6684pt x 249.80026pt.
-Package epstopdf Info: Source file: <plots_tables_images/saysitall.eps>
+Package epstopdf Info: Source file: <../plots_tables_images/saysitall.eps>
 (epstopdf)                    date: 2013-04-23 16:22:36
 (epstopdf)                    size: 2625780 bytes
-(epstopdf)             Output file: <plots_tables_images/saysitall-eps-converte
-d-to.pdf>
+(epstopdf)             Output file: <../plots_tables_images/saysitall-eps-conve
+rted-to.pdf>
 (epstopdf)                    date: 2013-04-23 16:24:24
 (epstopdf)                    size: 865806 bytes
-(epstopdf)             Command: <repstopdf --outfile=plots_tables_images/saysit
-all-eps-converted-to.pdf plots_tables_images/saysitall.eps>
+(epstopdf)             Command: <repstopdf --outfile=../plots_tables_images/say
+sitall-eps-converted-to.pdf ../plots_tables_images/saysitall.eps>
 (epstopdf)             \includegraphics on input line 134.
 Package epstopdf Info: Output file is already uptodate.
 
-<plots_tables_images/saysitall-eps-converted-to.pdf, id=71, 552.0625pt x 338.26
-375pt>
-File: plots_tables_images/saysitall-eps-converted-to.pdf Graphic file (type pdf
-)
- <use plots_tables_images/saysitall-eps-converted-to.pdf>
-Package pdftex.def Info: plots_tables_images/saysitall-eps-converted-to.pdf use
-d on input line 134.
+<../plots_tables_images/saysitall-eps-converted-to.pdf, id=71, 552.0625pt x 338
+.26375pt>
+File: ../plots_tables_images/saysitall-eps-converted-to.pdf Graphic file (type 
+pdf)
+ <use ../plots_tables_images/saysitall-eps-converted-to.pdf>
+Package pdftex.def Info: ../plots_tables_images/saysitall-eps-converted-to.pdf 
+used on input line 134.
 (pdftex.def)             Requested size: 407.6684pt x 249.80026pt.
-
+ [2 <../plots_tables_images/sorted_array-eps-converted-to.pdf>]
 Table 1 has been set to width 0.0pt
 
 ! LaTeX Error: Something's wrong--perhaps a missing \item.
@@ -849,16 +855,12 @@ really didn't forget anything, try typing `2' now; then
 my insertion and my current dilemma will both disappear.
 
 Package atveryend Info: Empty hook `BeforeClearDocument' on input line 194.
-[2 <./plots_tables_images/sorted_array-eps-converted-to.pdf>]
-Overfull \vbox (62.28165pt too high) has occurred while \output is active []
-
-
-[3 <./plots_tables_images/d_ts-eps-converted-to.pdf> <./plots_tables_images/d_r
-eg-eps-converted-to.pdf> <./plots_tables_images/d_ts_d_ts-eps-converted-to.pdf>
- <./plots_tables_images/d_ts_d_reg-eps-converted-to.pdf> <./plots_tables_images
-/d_s_d_ts-eps-converted-to.pdf> <./plots_tables_images/d_s_d_reg-eps-converted-
-to.pdf>] [4 <./plots_tables_images/histozoom-eps-converted-to.pdf> <./plots_tab
-les_images/saysitall-eps-converted-to.pdf>]
+[3 <../plots_tables_images/d_ts-eps-converted-to.pdf> <../plots_tables_images/d
+_reg-eps-converted-to.pdf> <../plots_tables_images/d_ts_d_ts-eps-converted-to.p
+df> <../plots_tables_images/d_ts_d_reg-eps-converted-to.pdf> <../plots_tables_i
+mages/d_s_d_ts-eps-converted-to.pdf> <../plots_tables_images/d_s_d_reg-eps-conv
+erted-to.pdf>] [4 <../plots_tables_images/histozoom-eps-converted-to.pdf>]
+[5 <../plots_tables_images/saysitall-eps-converted-to.pdf>]
 Package atveryend Info: Empty hook `AfterLastShipout' on input line 194.
  (./skimage.aux)
 Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 194.
@@ -868,13 +870,13 @@ Package rerunfilecheck Info: File `skimage.out' has not changed.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 194.
  ) 
 Here is how much of TeX's memory you used:
- 9410 strings out of 493481
- 145857 string characters out of 3140966
- 255117 words of memory out of 3000000
- 12568 multiletter control sequences out of 15000+200000
- 12480 words of font info for 36 fonts, out of 3000000 for 9000
+ 9414 strings out of 493481
+ 146081 string characters out of 3140966
+ 253120 words of memory out of 3000000
+ 12569 multiletter control sequences out of 15000+200000
+ 13248 words of font info for 37 fonts, out of 3000000 for 9000
  957 hyphenation exceptions out of 8191
- 48i,9n,52p,856b,399s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 48i,9n,52p,1109b,399s stack positions out of 5000i,500n,10000p,200000b,50000s
 {/usr/local/texlive/2012/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc}
 </usr/local/texlive/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb><
 /usr/local/texlive/2012/texmf-dist/fonts/type1/public/cm-super/sfrm1000.pfb></u
@@ -884,10 +886,10 @@ ocal/texlive/2012/texmf-dist/fonts/type1/public/cm-super/sfsx1440.pfb></usr/loc
 al/texlive/2012/texmf-dist/fonts/type1/public/cm-super/sfsx2074.pfb></usr/local
 /texlive/2012/texmf-dist/fonts/type1/public/cm-super/sfti1000.pfb></usr/local/t
 exlive/2012/texmf-dist/fonts/type1/public/cm-super/sftt1000.pfb>
-Output written on skimage.pdf (6 pages, 1155882 bytes).
+Output written on skimage.pdf (7 pages, 1157290 bytes).
 PDF statistics:
- 179 PDF objects out of 1000 (max. 8388607)
- 140 compressed objects within 2 object streams
- 19 named destinations out of 1000 (max. 500000)
+ 185 PDF objects out of 1000 (max. 8388607)
+ 145 compressed objects within 2 object streams
+ 20 named destinations out of 1000 (max. 500000)
  96 words of extra memory for PDF output out of 10000 (max. 10000000)
 

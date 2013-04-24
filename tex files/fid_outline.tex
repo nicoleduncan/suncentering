@@ -58,13 +58,13 @@ In a nutshell, \hl{\tt{scrib.pro}} takes an image of the sun with fiducials and 
     \begin{figure}[h]
         \begin{minipage}{0.4\textwidth}
             \begin{center}
-            \includegraphics[width=.75\linewidth]{plots_tables_images/untouched.png}
+            \includegraphics[width=.75\linewidth]{../plots_tables_images/untouched.png}
             \caption{Raw image}
             \end{center}
         \end{minipage}
         \begin{minipage}{0.4\textwidth}
             \begin{center}
-            \includegraphics[width=.75\linewidth]{plots_tables_images/emboss.png}
+            \includegraphics[width=.75\linewidth]{../plots_tables_images/emboss.png}
             \caption{Image with \hl{\texttt{emboss()}} filter}
             \end{center}
         \end{minipage}
@@ -79,13 +79,13 @@ In a nutshell, \hl{\tt{scrib.pro}} takes an image of the sun with fiducials and 
     \begin{figure}[h]
         \begin{minipage}{0.4\textwidth}
             \begin{center}
-                \includegraphics[width=.75\linewidth]{plots_tables_images/emboss.png}
+                \includegraphics[width=.75\linewidth]{../plots_tables_images/emboss.png}
                 \caption{Image with \hl{\texttt{emboss()}} filter}
             \end{center}
         \end{minipage}
         \begin{minipage}{0.4\textwidth}
             \begin{center}
-                \includegraphics[width=.75\linewidth]{plots_tables_images/shiftdiff.png}
+                \includegraphics[width=.75\linewidth]{../plots_tables_images/shiftdiff.png}
                 \caption{Image with \hl{\texttt{emboss()}} filter and \hl{\texttt{shift\_diff()}} filter}
             \end{center}
         \end{minipage}
@@ -99,13 +99,13 @@ In a nutshell, \hl{\tt{scrib.pro}} takes an image of the sun with fiducials and 
     \begin{figure}[h]
         \begin{minipage}{0.4\textwidth}
             \begin{center}
-                \includegraphics[width=.75\linewidth]{plots_tables_images/below50.png}
+                \includegraphics[width=.75\linewidth]{../plots_tables_images/below50.png}
                 \caption{Pixels below -50}
             \end{center}
         \end{minipage}
         \begin{minipage}{0.4\textwidth}
             \begin{center}
-                \includegraphics[width=.75\linewidth]{plots_tables_images/below80.png}
+                \includegraphics[width=.75\linewidth]{../plots_tables_images/below80.png}
                 \caption{Pixels below -80}
             \end{center}
         \end{minipage}
@@ -166,7 +166,7 @@ In a nutshell, \hl{\tt{scrib.pro}} takes an image of the sun with fiducials and 
         \begin{minipage}{.45\textwidth}
             % \begin{center}
             \centering
-                \includegraphics[width=\linewidth]{plots_tables_images/dir3.png}
+                \includegraphics[width=\linewidth]{../plots_tables_images/dir3.png}
                 \caption{Pixels below -80 and with \hl{\texttt{shift\_diff(dir=3)}}}
             % \end{center}
         \end{minipage}
@@ -174,7 +174,7 @@ In a nutshell, \hl{\tt{scrib.pro}} takes an image of the sun with fiducials and 
         \begin{minipage}{.45\textwidth}
             % \begin{center}
             \centering
-                \includegraphics[width=\linewidth]{plots_tables_images/dir1.png}
+                \includegraphics[width=\linewidth]{../plots_tables_images/dir1.png}
                 \caption{Pixels below -30 and with \hl{\texttt{shift\_diff(dir=1)}}}
             % \end{center}
         \end{minipage}
@@ -230,14 +230,14 @@ In a nutshell, \hl{\tt{scrib.pro}} takes an image of the sun with fiducials and 
 \begin{figure}[ht]
         \begin{minipage}{.45\textwidth}
             \centering
-                \includegraphics[width=\linewidth]{plots_tables_images/cropcomp0.png}
+                \includegraphics[width=\linewidth]{../plots_tables_images/cropcomp0.png}
                 \caption{In the top right is the plain image. The bottom left is the plain image convolved with the kernel mentioned in \S \ref{sub:outline_of_math}. The top left is the center of the convolved image using a simple \emph{center-of-mass} formula. The bottom left is the comparison of the center of mass location to an image interpolated to 10x the number of $x$ and $y$ indices.}
         \end{minipage}
         \hspace{.5in}
         \begin{minipage}{.45\textwidth}
         \vspace{-.65in}
             \centering
-                \includegraphics[width=\linewidth]{plots_tables_images/cropcomp1.png}
+                \includegraphics[width=\linewidth]{../plots_tables_images/cropcomp1.png}
                 \caption{Here we use the same approach but see that for fiducials cut off by the edge, the simple \emph{center-of-mass} method doesn't work so well.}
         \end{minipage}
     \end{figure}
@@ -250,22 +250,22 @@ In a nutshell, \hl{\tt{scrib.pro}} takes an image of the sun with fiducials and 
 
 \begin{figure}[!ht]
     \centering
-    \includegraphics[width=.9\textwidth]{plots_tables_images/fidcomp.eps}    
+    \includegraphics[width=.9\textwidth]{../plots_tables_images/fidcomp.eps}    
     \caption{This is a simulated solar image with artificial fiducials. The goal was to see how the filters operated on smudgy fiducials. The results are good. In the second row, the image is filtered with \hl{\texttt{shift\_diff(dir=3)}} and in the third row, the image is filtered with \hl{\texttt{shift\_diff(dir=1)}}. This was done to improve the number of horizontal and vertical pixels for each direction since the default is at a diagonal.}
 \end{figure}
 
 
 \begin{figure}[!ht]
     \centering
-    \includegraphics[width=.9\textwidth]{plots_tables_images/mask_outline.eps}
+    \includegraphics[width=.9\textwidth]{../plots_tables_images/mask_outline.eps}
     \caption{The red outline pixels identify those above a threshold after running the two convolution filters. The rows tend to follow a spatial pattern of identifying the upper row of the 2x2 fiducial center. The blue outlined pixels identify the column pixels which are found using a 90 degree offset in the emboss filter. The position where the red and blue outlined pixels overlap mark the upper right pixel of the fiducial's 2x2 center. Since this is consistent for all 4 fiducials, we can confidently apply it to the dimmer suns. \emph{For now}.}
 \end{figure}
 
 \begin{figure}[!ht]
     \centering
     \subfloat{
-            \includegraphics[width=0.98\linewidth, height = .35\textheight, keepaspectratio=true]{plots_tables_images/dim25.eps}
-            \includegraphics[width=0.98\linewidth, height = .35\textheight, keepaspectratio=true]{plots_tables_images/dim50.eps}
+            \includegraphics[width=0.98\linewidth, height = .35\textheight, keepaspectratio=true]{../plots_tables_images/dim25.eps}
+            \includegraphics[width=0.98\linewidth, height = .35\textheight, keepaspectratio=true]{../plots_tables_images/dim50.eps}
         }
         \caption{By varying the threshold on the dimmer suns, we get the same masking pattern. For the 50\% dimmer sun, we use half the threshold value used for the 100\% sun. For the sun at 25\% the brightness of the main sun, we use a quarter of the threshold.}
 \end{figure}
@@ -279,8 +279,8 @@ In a nutshell, \hl{\tt{scrib.pro}} takes an image of the sun with fiducials and 
 \begin{figure}[!ht]
     \centering
     \subfloat{
-            \includegraphics[width=0.98\linewidth, height = .34\textheight, keepaspectratio=true]{plots_tables_images/fakeideal.eps}
-            \includegraphics[width=0.98\linewidth, height = .34\textheight, keepaspectratio=true]{plots_tables_images/whodunit.eps}
+            \includegraphics[width=0.98\linewidth, height = .34\textheight, keepaspectratio=true]{../plots_tables_images/fakeideal.eps}
+            \includegraphics[width=0.98\linewidth, height = .34\textheight, keepaspectratio=true]{../plots_tables_images/whodunit.eps}
         }    
         \caption{On the left we see the real fiducial values over a uniform 2D array. On the right is the result of the two convolution filters. Despite the ``blurry'' pixel values, the filters saw the edges of the fiducial.}
     \label{whodunit}
@@ -289,8 +289,8 @@ In a nutshell, \hl{\tt{scrib.pro}} takes an image of the sun with fiducials and 
 \begin{figure}[!ht]
     \centering
     \subfloat{
-            \includegraphics[width=0.98\linewidth, height = .34\textheight, keepaspectratio=true]{plots_tables_images/whodunitwho.eps}
-            \includegraphics[width=0.98\linewidth, height = .34\textheight, keepaspectratio=true]{plots_tables_images/tryhard.eps}
+            \includegraphics[width=0.98\linewidth, height = .34\textheight, keepaspectratio=true]{../plots_tables_images/whodunitwho.eps}
+            \includegraphics[width=0.98\linewidth, height = .34\textheight, keepaspectratio=true]{../plots_tables_images/tryhard.eps}
         }    
         \caption{On the left is the same image as Figure 12(b), but masked to values above a certain threshold. Here you see that there clearly exists a linear structure. I also tried instead of a gray background, a background that was equal to the most common pixel value (198 instead of 100). The goal was to try and blur out the fiducial as much as possible. On the right we see the convolution filter has a harder time finding the edges but we still see some clear vertical black lines that we can mask out.}
 \end{figure}
@@ -327,20 +327,20 @@ In Figure \ref{6slices}, the vertical line represents the left edge of a fiducia
 \begin{figure}[!ht]
     \centering
     \subfloat{
-        \includegraphics[width=0.5\linewidth, height = .34\textheight, keepaspectratio=true]{plots_tables_images/slice1.eps}
-        \includegraphics[width=0.5\linewidth, height = .34\textheight, keepaspectratio=true]{plots_tables_images/slice2.eps}
+        \includegraphics[width=0.5\linewidth, height = .34\textheight, keepaspectratio=true]{../plots_tables_images/slice1.eps}
+        \includegraphics[width=0.5\linewidth, height = .34\textheight, keepaspectratio=true]{../plots_tables_images/slice2.eps}
         }  
     \hspace{.5in}
     \centering
     \subfloat{
-        \includegraphics[width=0.5\linewidth, height = .34\textheight, keepaspectratio=true]{plots_tables_images/slice3.eps}
-        \includegraphics[width=0.5\linewidth, height = .34\textheight, keepaspectratio=true]{plots_tables_images/slice4.eps}
+        \includegraphics[width=0.5\linewidth, height = .34\textheight, keepaspectratio=true]{../plots_tables_images/slice3.eps}
+        \includegraphics[width=0.5\linewidth, height = .34\textheight, keepaspectratio=true]{../plots_tables_images/slice4.eps}
         }
     \hspace{.5in}
     \centering
     \subfloat{
-        \includegraphics[width=0.5\linewidth, height = .34\textheight, keepaspectratio=true]{plots_tables_images/slice5.eps}
-        \includegraphics[width=0.5\linewidth, height = .34\textheight, keepaspectratio=true]{plots_tables_images/slice6.eps}
+        \includegraphics[width=0.5\linewidth, height = .34\textheight, keepaspectratio=true]{../plots_tables_images/slice5.eps}
+        \includegraphics[width=0.5\linewidth, height = .34\textheight, keepaspectratio=true]{../plots_tables_images/slice6.eps}
         }
         \caption{Trying to find a pattern in the values of CFs.}
         \label{6slices}
@@ -359,20 +359,20 @@ After a second, third, and $N$th look, there exists a threshold to isolate fiduc
 \begin{figure}[!ht]
     \centering
     \subfloat{
-        \includegraphics[width=0.5\linewidth, height = .34\textheight, keepaspectratio=true]{plots_tables_images/betterslice0.eps}
-        \includegraphics[width=0.5\linewidth, height = .34\textheight, keepaspectratio=true]{plots_tables_images/betterslice1.eps}
+        \includegraphics[width=0.5\linewidth, height = .34\textheight, keepaspectratio=true]{../plots_tables_images/betterslice0.eps}
+        \includegraphics[width=0.5\linewidth, height = .34\textheight, keepaspectratio=true]{../plots_tables_images/betterslice1.eps}
         }  
     \hspace{.5in}
     \centering
     \subfloat{
-        \includegraphics[width=0.5\linewidth, height = .34\textheight, keepaspectratio=true]{plots_tables_images/betterslice2.eps}
-        \includegraphics[width=0.5\linewidth, height = .34\textheight, keepaspectratio=true]{plots_tables_images/betterslice3.eps}
+        \includegraphics[width=0.5\linewidth, height = .34\textheight, keepaspectratio=true]{../plots_tables_images/betterslice2.eps}
+        \includegraphics[width=0.5\linewidth, height = .34\textheight, keepaspectratio=true]{../plots_tables_images/betterslice3.eps}
         }
     \hspace{.5in}
     \centering
     \subfloat{
-        \includegraphics[width=0.5\linewidth, height = .34\textheight, keepaspectratio=true]{plots_tables_images/betterslice4.eps}
-        \includegraphics[width=0.5\linewidth, height = .34\textheight, keepaspectratio=true]{plots_tables_images/betterslice5.eps}
+        \includegraphics[width=0.5\linewidth, height = .34\textheight, keepaspectratio=true]{../plots_tables_images/betterslice4.eps}
+        \includegraphics[width=0.5\linewidth, height = .34\textheight, keepaspectratio=true]{../plots_tables_images/betterslice5.eps}
         }
         \caption{Pixels to the right of the vertical line are recogznied as a fiducial}
         \label{betterslice}
@@ -383,20 +383,20 @@ If we use a threshold to count the number of pixels below (in this case) -20, we
 \begin{figure}[!ht]
     \centering
     \subfloat{
-        \includegraphics[width=0.5\linewidth, height = .34\textheight, keepaspectratio=true]{plots_tables_images/anotherslice1.eps}
-        \includegraphics[width=0.5\linewidth, height = .34\textheight, keepaspectratio=true]{plots_tables_images/anotherslice2.eps}
+        \includegraphics[width=0.5\linewidth, height = .34\textheight, keepaspectratio=true]{../plots_tables_images/anotherslice1.eps}
+        \includegraphics[width=0.5\linewidth, height = .34\textheight, keepaspectratio=true]{../plots_tables_images/anotherslice2.eps}
         }  
     \hspace{.5in}
     \centering
     \subfloat{
-        \includegraphics[width=0.5\linewidth, height = .34\textheight, keepaspectratio=true]{plots_tables_images/anotherslice3.eps}
-        \includegraphics[width=0.5\linewidth, height = .34\textheight, keepaspectratio=true]{plots_tables_images/anotherslice4.eps}
+        \includegraphics[width=0.5\linewidth, height = .34\textheight, keepaspectratio=true]{../plots_tables_images/anotherslice3.eps}
+        \includegraphics[width=0.5\linewidth, height = .34\textheight, keepaspectratio=true]{../plots_tables_images/anotherslice4.eps}
         }
     \hspace{.5in}
     \centering
     \subfloat{
-        \includegraphics[width=0.5\linewidth, height = .34\textheight, keepaspectratio=true]{plots_tables_images/anotherslice5.eps}
-        \includegraphics[width=0.5\linewidth, height = .34\textheight, keepaspectratio=true]{plots_tables_images/anotherslice6.eps}
+        \includegraphics[width=0.5\linewidth, height = .34\textheight, keepaspectratio=true]{../plots_tables_images/anotherslice5.eps}
+        \includegraphics[width=0.5\linewidth, height = .34\textheight, keepaspectratio=true]{../plots_tables_images/anotherslice6.eps}
         }
         \caption{Pixels to the left of the vertical line are recogznied as a fiducial. Compared to Figure \ref{betterslice}, the threshold here is -30}
         \label{anotherslice}
@@ -421,7 +421,7 @@ After applying the same techniques above to 2 more fiducials, the thresholds are
 
 \begin{figure}
     \centering
-    \includegraphics[width=.9\textwidth]{plots_tables_images/circfidcomp.eps}
+    \includegraphics[width=.9\textwidth]{../plots_tables_images/circfidcomp.eps}
     \caption{The fiducials are initially circles but with a bit of distortion we see the typical method to find fiducials no longer works. Perhaps with circle-shaped fiducials we could apply some form of Gaussian fitting but using plus-signs instead works better since it's hard to calculate the rotation angle from a bunch of distorted circles.}
     \label{circfidcomp}
 \end{figure}

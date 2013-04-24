@@ -233,7 +233,7 @@ IF REGION NE 1 THEN BEGIN
     circscancrop, mainxpos, mainypos, image, thresh, xpos, ypos, xoffset, yoffset, region=region, time=time
 ENDIF
 
-print,'thresh is: ', thresh
+; print,'thresh is: ', thresh
 ; There is a strong fiducial at image[*,53], but it's not on the limb. It's pretty darn close though. 
 ; Now, need to replicate those conditions
 
@@ -1633,9 +1633,10 @@ peak_2 = mean(where(arr gt .6))
 arr[peak_2-100:peak_2+100]=0
 peak_3 = mean(where(arr gt .5))
 
-thresh100 = skimmed[peak_1+n_elements(skimmed)*.001]
-thresh50 = skimmed[peak_2+n_elements(skimmed)*.001]
-thresh25 = skimmed[peak_3+n_elements(skimmed)*.001]
+; Add a little more the position?
+thresh100 = skimmed[peak_1];+n_elements(skimmed)*.001]
+thresh50 = skimmed[peak_2];+n_elements(skimmed)*.001]
+thresh25 = skimmed[peak_3];+n_elements(skimmed)*.001]
 
 ; print,thresh100
 ; print,thresh50
@@ -1644,6 +1645,65 @@ thresh25 = skimmed[peak_3+n_elements(skimmed)*.001]
 return,{thresh100:thresh100,thresh50:thresh50,thresh25:thresh25}
 end
 
+;**************************************************************************************************
+;*                                                                                                *
+;**************************************************************************************************
+
+
+pro histosmoothed, input
+
+sorted = float(input[bsort(input)])
+
+; u_input only looks good if the positions are so that the aux suns aren't in the same col/row as another sun
+; If there's any that do, it's going to be sucks.
+; Thus, this is only for looks
+u_input = input[uniq(input)]
+u_sort = float(u_input[sort(u_input)])
+
+n_col = (size(input,/dim))[0]
+n_row = (size(input,/dim))[1]
+xarr = fan(findgen(n_col),n_row)
+yarr = transpose(fan(findgen(n_row),n_col))
+
+xsort = xarr[bsort(input)]
+ysort = yarr[bsort(input)]
+
+; Food for thought, do we ALWAYS WANT TO SKIM?
+skimmed = sorted[0:(1-!param.elim_perc/100)*(N_ELEMENTS(sorted)-1)]
+arr = histogram(skimmed,binsize=1)
+plot,arr,yr=[0,300]
+
+plot,DERIV(arr),/ys,yr=[0,60]
+vline,25
+vline,56
+vline,110
+
+stop
+
+n_smooth = 100.
+smoothed = ts_smooth(skimmed,n_smooth,order=3)
+reg_smooth = smooth(skimmed,n_smooth,/edge_truncate)
+med_smooth = median(skimmed,n_smooth)
+
+; find peak, zero out
+; find peak, zero out
+arr = scale_vector(deriv( ts_smooth(deriv(smoothed),n_smooth,order=3) ),0,1)
+peak_1 = mean(where(arr gt .7))
+arr[peak_1-100:peak_1+100]=0
+peak_2 = mean(where(arr gt .6))
+arr[peak_2-100:peak_2+100]=0
+peak_3 = mean(where(arr gt .5))
+
+; Add a little more the position?
+thresh100 = skimmed[peak_1];+n_elements(skimmed)*.001]
+thresh50 = skimmed[peak_2];+n_elements(skimmed)*.001]
+thresh25 = skimmed[peak_3];+n_elements(skimmed)*.001]
+
+; print,thresh100
+; print,thresh50
+; print,thresh25
+stop
+end
 
 ;**************************************************************************************************
 ;*                                                                                                *
@@ -1692,7 +1752,6 @@ end
 ;-
 COMPILE_OPT idl2 
 ON_ERROR,2
-
 start=SYSTIME(1,/s)
 
 ; profiler,/system
@@ -1736,11 +1795,11 @@ defsysv,'!param',c
 ; 25% sun x pos:        78.683426
 ; 25% sun y pos:        235.11536
 
-wholeimage = mrdfits('dottedimage.fits')
-rabbit = mrdfits('2whole.fits')
+wholeimage = mrdfits('dottedimage.fits',/silent)
+rabbit = mrdfits('2whole.fits',/silent)
 rabbit=rabbit[0,*,*]
-turtle = mrdfits('partial3rd.fits')
-ox = mrdfits('2partials.fits')
+turtle = mrdfits('partial3rd.fits',/silent)
+ox = mrdfits('2partials.fits',/silent)
 ; wholeimage = mrdfits(file)
 ; mwrfits,wholeimage,'dottedimage.fits',/create
 ; window,0
@@ -1805,11 +1864,11 @@ thresh = 0.5*MIN((SHIFT_DIFF(EMBOSS(crop),dir=3)))
 borderbit = bordercheck(wholeimage)
 
 ; threshlist = smoothit(wholeimage)
-; thresh100 = threshlist.thresh100
-; thresh50  = threshlist.thresh50
-; thresh25  = threshlist.thresh25
+; print,threshlist.thresh100
+; print,threshlist.thresh50
+; print,threshlist.thresh25
 
-
+histosmoothed,wholeimage
 stop
 
 rabbits = last6pixels(crop,thresh)
