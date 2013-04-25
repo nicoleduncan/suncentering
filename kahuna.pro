@@ -380,11 +380,11 @@ loop: BEGIN
     IF !param.file EQ 'dimsun1.fits' THEN radius = BYTE( !param.scan_radius ) 
 
     ; Have to use .3 instead of .25 for dimsun2, don't know why
-    sorted =  wholeimage[bsort(wholeimage)]
-    thresh = !param.reg2thresh_mult*MAX(sorted[0:(1-!param.elim_perc/100)*(N_ELEMENTS(sorted)-1)] )
-    ; ^^
-    ; Well this doesn't work.
-    thresh = !param.reg2thresh_mult*MAX(wholeimage)
+    ; sorted =  wholeimage[bsort(wholeimage)]
+    ; thresh = !param.reg2thresh_mult*MAX(sorted[0:(1-!param.elim_perc/100)*(N_ELEMENTS(sorted)-1)] )
+    ; ; ^^
+    ; ; Well this doesn't work.
+    ; thresh = !param.reg2thresh_mult*MAX(wholeimage)
 
     thresh = !param.thresh50
 
@@ -412,10 +412,10 @@ END
 
 otherloop: BEGIN
     IF REGION EQ 3 THEN BEGIN
-        thresh = 0.2*MAX(wholeimage) ;dimsun2 works if i set the thresh to .2 instead of .15
-        ; The other sun is so dim that weird parts are being picked up. How to fix? Is being dim a problem?
-        sorted =  wholeimage[bsort(wholeimage)]
-        thresh = !param.reg3thresh_mult*MAX( sorted[0:(1-!param.elim_perc/100)*(N_ELEMENTS(sorted)-1)] )
+        ; thresh = 0.2*MAX(wholeimage) ;dimsun2 works if i set the thresh to .2 instead of .15
+        ; ; The other sun is so dim that weird parts are being picked up. How to fix? Is being dim a problem?
+        ; sorted =  wholeimage[bsort(wholeimage)]
+        ; thresh = !param.reg3thresh_mult*MAX( sorted[0:(1-!param.elim_perc/100)*(N_ELEMENTS(sorted)-1)] )
         ; ^^
         ; Well this doesn't work.
         ; print,thresh
@@ -1616,6 +1616,22 @@ yarr = transpose(fan(findgen(n_row),n_col))
 xsort = xarr[bsort(input)]
 ysort = yarr[bsort(input)]
 
+!p.multi=[0,1,3]
+plot,xsort,psym=3,title='X Positions'
+vline,141231.25
+vline,138022.30
+vline,134328.27
+plot,ysort,psym=3,title='Y Positions'
+vline,141231.25
+vline,138022.30
+vline,134328.27
+plot,sorted
+vline,141231.25
+vline,138022.30
+vline,134328.27
+!p.multi=0
+
+stop
 skimmed = sorted[0:(1-!param.elim_perc/100)*(N_ELEMENTS(sorted)-1)]
 
 n_smooth = 100.
@@ -1626,21 +1642,17 @@ med_smooth = median(skimmed,n_smooth)
 ; find peak, zero out
 ; find peak, zero out
 
-arr = scale_vector(deriv( ts_smooth(deriv(smoothed),n_smooth,order=3) ),0,1)
-peak_1 = mean(where(arr gt .7))
+arr = scale_vector(deriv(ts_smooth(deriv(smoothed),n_smooth,order=3) ),0,1)
+peak_1 = mean(where(arr gt !param.peak1_thresh))
 arr[peak_1-100:peak_1+100]=0
-peak_2 = mean(where(arr gt .6))
+peak_2 = mean(where(arr gt !param.peak2_thresh))
 arr[peak_2-100:peak_2+100]=0
-peak_3 = mean(where(arr gt .5))
+peak_3 = mean(where(arr gt !param.peak3_thresh))
 
 ; Add a little more the position?
-thresh100 = skimmed[peak_1];+n_elements(skimmed)*.001]
-thresh50 = skimmed[peak_2];+n_elements(skimmed)*.001]
-thresh25 = skimmed[peak_3];+n_elements(skimmed)*.001]
-
-; print,thresh100
-; print,thresh50
-; print,thresh25
+thresh100 = skimmed[peak_1+n_elements(skimmed)*.001]
+thresh50 = skimmed[peak_2+n_elements(skimmed)*.001]
+thresh25 = skimmed[peak_3+n_elements(skimmed)*.001]
 
 return,{thresh100:thresh100,thresh50:thresh50,thresh25:thresh25}
 end
@@ -1670,16 +1682,17 @@ ysort = yarr[bsort(input)]
 
 ; Food for thought, do we ALWAYS WANT TO SKIM?
 skimmed = sorted[0:(1-!param.elim_perc/100)*(N_ELEMENTS(sorted)-1)]
-arr = histogram(skimmed,binsize=1)
+arr = histogram(skimmed)
+!p.multi=[0,1,2]
 plot,arr,yr=[0,300]
-
-plot,DERIV(arr),/ys,yr=[0,60]
 vline,25
 vline,56
 vline,110
-
-stop
-
+plot,DERIV(arr),/ys,yr=[-90,60],title='DERIV(array)'
+vline,25
+vline,56
+vline,110
+!p.multi=0
 n_smooth = 100.
 smoothed = ts_smooth(skimmed,n_smooth,order=3)
 reg_smooth = smooth(skimmed,n_smooth,/edge_truncate)
@@ -1688,16 +1701,22 @@ med_smooth = median(skimmed,n_smooth)
 ; find peak, zero out
 ; find peak, zero out
 arr = scale_vector(deriv( ts_smooth(deriv(smoothed),n_smooth,order=3) ),0,1)
-peak_1 = mean(where(arr gt .7))
+peak_1 = mean(where(arr gt !param.peak1_thresh))
 arr[peak_1-100:peak_1+100]=0
-peak_2 = mean(where(arr gt .6))
+peak_2 = mean(where(arr gt !param.peak2_thresh))
 arr[peak_2-100:peak_2+100]=0
-peak_3 = mean(where(arr gt .5))
+peak_3 = mean(where(arr gt !param.peak3_thresh))
 
 ; Add a little more the position?
 thresh100 = skimmed[peak_1];+n_elements(skimmed)*.001]
 thresh50 = skimmed[peak_2];+n_elements(skimmed)*.001]
 thresh25 = skimmed[peak_3];+n_elements(skimmed)*.001]
+
+
+; Things I could be doing:
+; do the same plots for histogram
+; make the saysitall.eps for a bunch of suns in a line
+; make program not freak out for 2 suns
 
 ; print,thresh100
 ; print,thresh50
@@ -1746,6 +1765,7 @@ end
 ;       Ignore center if sun is too close to edge (or if when cropping, we cro outside wholeimage)
 ;
 ;       Use 25% of median(image)
+;       Um, let's not (Apr24)
 ;
 ;       Make sure program doesn't freak out when sun isn't in POV
 ;       
@@ -1800,6 +1820,7 @@ rabbit = mrdfits('2whole.fits',/silent)
 rabbit=rabbit[0,*,*]
 turtle = mrdfits('partial3rd.fits',/silent)
 ox = mrdfits('2partials.fits',/silent)
+inaline = mrdfits('inaline.fits',/silent)
 ; wholeimage = mrdfits(file)
 ; mwrfits,wholeimage,'dottedimage.fits',/create
 ; window,0
@@ -1868,6 +1889,7 @@ borderbit = bordercheck(wholeimage)
 ; print,threshlist.thresh50
 ; print,threshlist.thresh25
 
+; threshlist = smoothit(inaline)
 histosmoothed,wholeimage
 stop
 

@@ -9,7 +9,7 @@
 \usepackage{graphicx}
 \usepackage[colorlinks=true,urlcolor=blue]{hyperref}
 \usepackage{subcaption}
-\usepackage{../deluxetable}
+\usepackage{deluxetable}
 
 \definecolor{Light}{gray}{.90}
 \sethlcolor{Light}
@@ -127,13 +127,22 @@ It turns out that \texttt{\hl{ts\_smooth}} takes an incredibly long time to run 
 \section{This Plot Says it All} % (fold)
 \label{sec:this_plot_says_it_all}
 
-    I wanted to see how many pixels were being counted in the wrong region, henceforth called ``leakage-pixels''. It turns out that it's not easy to see but it \emph{is} obvious that there are a fair number of them. Thus, it is safe to conclude that we cannot blindly use a sorted array without some sort of spatial reasoning. Figure \ref{saysitall} suggests we think harder about how to crop out auxiliary suns while operating on a single array.
+    I wanted to see how many pixels were being counted in the wrong region, henceforth called ``leakage-pixels''. It turns out that it's not easy to see but it \emph{is} obvious that there are a fair number of them. Depending on how we handle our cropping however, we may not have to worry about it. For example, after we find the center of the brightest region, we set the cropped region to zero so that the middle row thing in the top two plots of Figure \ref{saysitall} is blanked out horizontally. If that's the case, then when we look vertically in the second brightest region, we shouldn't have to worry about counting any pixels from the first region (since it's cropped out). 
 
 \begin{figure}[!ht]
     \centering
     \includegraphics[width=.9\textwidth]{../plots_tables_images/saysitall.eps}
-    \caption{This plot reveals that when sorted, the regions bounded by the vertical lines (which are artificially places, not the result of any computation) include pixels from neighboring regions. For high-value pixels, i.e., the region bounded by the rightmost vertical line and the last element of the sorted array, the x and y positions are completely (no vertical dots) isolated from other regions. When we look at the middle region, we see that low-value pixels from the brightest region(most likely dark limb pixels) are being sorted into the middle region of the sorted array. The worst case scenario is the left-most region which has pixels from both the first and second regions.}
+    \caption{This plot reveals that when sorted, the regions bounded by the vertical lines (which are artificially places, not the result of any computation) include pixels from neighboring regions. For high-value pixels, i.e., the region bounded by the rightmost vertical line and the last element of the sorted array, the x and y positions are completely (no vertical dots) isolated from other regions. When we look at the middle region, we see that low-value pixels from the brightest region(most likely dark limb pixels) are being sorted into the middle region of the sorted array. The worst case scenario is the left-most region which has pixels from both the first and second regions. This approach, however, is without the inclusion of cropping and then setting the cropped area to zero.}
     \label{saysitall}
+\end{figure}
+
+I also wanted to see what it would look like when the suns are lined up in a single axis: see Figure \ref{inaline}
+
+\begin{figure}[!ht]
+    \centering
+    \includegraphics[width=.9\textwidth]{../plots_tables_images/inaline.eps}
+    \caption{The suns are lined up vertically}
+    \label{inaline}
 \end{figure}
 
 % section this_plot_says_it_all (end)
@@ -143,14 +152,14 @@ It turns out that \texttt{\hl{ts\_smooth}} takes an incredibly long time to run 
 Using the above methods, we find peaks of the second derivative of the smoothed 2D$\rightarrow$1D array. Using the peak positions, we return the value of the sorted array at that peak position and set that to be a threshold. The result is a set of three thresholds based on the shape of the 1D image. We keep our code identical and only change the threshold value. Table \ref{threshcomp} shows that the thresholds we find are good! There is one small note however, the exactly position of the peak is not used, but rather the position +.1\% of the total number of pixels in the 1D array. The problem was that if we did simply return the sorted array value as a threshold, we'd get cropping errors. Adding a little bit to the threshold value is safe, however, since it reduces the number of pixels in our centering mask. The less pixels there are, the higher on the dome-shape we lie, which means the more circular our mask is. A more circular mask means a more accurate center position to use for our limb-fitting program. 
 
 \begin{deluxetable}{rllr}
-\scriptsize
+% \scriptsize
 \tablecaption{Center Positions Using Different Thresholds}
 \tablewidth{0pt}
 \tablehead{
-    \colhead{Sun Brightness (\%)}
-&   \colhead{X Position}
-&   \colhead{Y Position}
-&   \colhead{Threshold}
+    \colhead{Sun Brightness (\%)} %
+&   \colhead{X Position} %
+&   \colhead{Y Position} %
+&   \colhead{Threshold} %
 }
 \startdata
 & & & Old\\
@@ -185,11 +194,13 @@ Using the above methods, we find peaks of the second derivative of the smoothed 
 25
 & 78.887283
 & 234.69048
-& 20\\
+& 20
+\enddata
 \label{threshcomp}
 \end{deluxetable}
 
 % section some_numbers (end)
+
 
 \end{document}
 
