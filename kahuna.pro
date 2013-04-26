@@ -1726,7 +1726,7 @@ vline,peak_3
 ; ps_start,filename='quickcenters.eps',/encapsulated,xsize=6,ysize=7
     ; !p.multi=[0,1,4]
     ; plot,xsort,psym=3
-
+tic
     x1 = mean(xsort[peak_1:n_elements(xsort)-1])
     y1 = mean(ysort[peak_1:n_elements(ysort)-1])
 
@@ -1743,11 +1743,6 @@ vline,peak_3
 
 ; print,x2,y2
 ; stop
-    ;hats is a test
-    hats = where(xsort lt (x1 - !param.crop_box) and xsort gt (x1 + !param.crop_box))
-    x2 = mean((xsort[peak_2:peak_1])[hats])
-    y2 = mean((ysort[peak_2:peak_1])[hats])
-; stop
     ; stop
     ; x2 = mean((xsort[peak_2:peak_1])[where(xsort[peak_2:peak_1] ne 0)])
     ; y2 = mean((ysort[peak_2:peak_1])[where(ysort[peak_2:peak_1] ne 0)])
@@ -1755,27 +1750,63 @@ vline,peak_3
     ; so now I've got a center, but I've still got that sorted list.....
 
     ; xsort[where(xsort gt (x2 - !param.crop_box) and xsort lt (x2 + !param.crop_box))] = 0
-    b = where(xsort gt (x2 - !param.crop_box) and xsort lt (x2 + !param.crop_box),complement=reg2)
-
-
+    ; c = where(xsort[reg1] gt (x2 - !param.crop_box) and xsort[reg1] lt (x2 + !param.crop_box),complement=reg2)
+    ; d = where(xsort gt (x2 - !param.crop_box) and xsort lt (x2 + !param.crop_box),complement=reg2)
 
     ; plot,xsort,psym=3
-stop
     ; x3 = mean((xsort[peak_3:peak_2])[where(xsort[peak_3:peak_2] ne 0)])
     ; y3 = mean((ysort[peak_3:peak_2])[where(ysort[peak_3:peak_2] ne 0)])
+    ; combine xsort[reg1] and xsort[reg2]
 
-    x3 = mean((xsort[peak_3:peak_2])[reg2])
-    y3 = mean((ysort[peak_3:peak_2])[reg2])
+; a = findgen(50)
+
+; ; [0:10] bad, [30:40] bad
+
+; d = a[where(a gt 0 and a lt 10,complement=reg1)]
+; b = a[where(a gt 30 and a lt 40,complement=reg2)]
+; match,reg1,reg2,suba,subb
+
+; newreg = reg1[suba]
+
+    c = where(xsort gt (x2 - !param.crop_box) and xsort lt (x2 + !param.crop_box),complement=reg2)
+    match,reg1,reg2,suba,subb
+
+    x3 = mean((xsort[peak_3:peak_2])[reg1[suba]])
+    y3 = mean((ysort[peak_3:peak_2])[reg1[suba]])
+    print,'Without altering original arrays'
+    print,x1,y1
+    print,x2,y2
+    print,x3,y3
     
-    xsort[where(xsort gt (x3 - !param.crop_box) and xsort lt (x3 + !param.crop_box))] = 0
+    toc
 
-    ; plot,xsort,psym=3
-;     !p.multi=0
-; ps_end
-; stop
-print,'New Centers: ',x1,y1
-print,'New Centers: ',x2,y2
-print,'New Centers: ',x3,y3
+
+    tic
+        x1 = mean(xsort[peak_1:n_elements(xsort)-1])
+        y1 = mean(ysort[peak_1:n_elements(ysort)-1])
+
+        xsort[where(xsort gt (x1 - !param.crop_box) and xsort lt (x1 + !param.crop_box))] = 0
+
+        x2 = mean((xsort[peak_2:peak_1])[where(xsort[peak_2:peak_1] ne 0)])
+        y2 = mean((ysort[peak_2:peak_1])[where(ysort[peak_2:peak_1] ne 0)])
+
+        xsort[where(xsort gt (x2 - !param.crop_box) and xsort lt (x2 + !param.crop_box))] = 0
+
+        ; Where peak_3:2 ne 0 and peak_2:1 ne 0
+        x3 = mean((xsort[peak_3:peak_2])[where(xsort[peak_3:peak_2] ne 0)])
+        y3 = mean((ysort[peak_3:peak_2])[where(ysort[peak_3:peak_2] ne 0)])
+
+        xsort[where(xsort gt (x3 - !param.crop_box) and xsort lt (x3 + !param.crop_box))] = 0
+        print,'Setting array parts to 0'
+        print,x1,y1
+        print,x2,y2
+        print,x3,y3
+    toc
+
+
+
+stop
+
 
 window,1
 ps_start,filename='goodenough.eps',/encapsulated,xsize=2.5,ysize=3
