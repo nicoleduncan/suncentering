@@ -354,7 +354,7 @@ PRO circscancrop, mainxpos, mainypos, image, thresh, xpos, ypos, xoffset, yoffse
 ;           Print the elapsed time
 ;-
 
-COMPILE_OPT idl2 
+COMPILE_OPT idl2
 ON_ERROR,2
 
 COMMON vblock, wholeimage
@@ -690,7 +690,7 @@ PRO getstruct, struct, time=time
 ;       time: in, optional
 ;           Outputs how much time the program takes
 ;-
-COMPILE_OPT idl2 
+COMPILE_OPT idl2
 ON_ERROR,2
 
 COMMON vblock, wholeimage
@@ -1672,7 +1672,7 @@ end
 
 function fastcenter, input
 
-sorted = FLOAT(input[bsort(input)])
+sorted = (input[bsort(input)])
 sorted = sorted[0:(1-!param.elim_perc/1000)*(N_ELEMENTS(sorted)-1)]
 
 s = SIZE(input,/dim)
@@ -1723,52 +1723,21 @@ vline,peak_2
 vline,peak_3
 !p.multi=0
 
-; ps_start,filename='quickcenters.eps',/encapsulated,xsize=6,ysize=7
-    ; !p.multi=[0,1,4]
-    ; plot,xsort,psym=3
+xsort = fix(xsort)
+ysort = fix(ysort)
+
+
 tic
     x1 = mean(xsort[peak_1:n_elements(xsort)-1])
     y1 = mean(ysort[peak_1:n_elements(ysort)-1])
-
-    ; so now I've got a center, but I've still got that sorted list.....
-
-    ; xsort[where(xsort gt (x1 - !param.crop_box) and xsort lt (x1 + !param.crop_box))] = 0
-
-    ; plot,xsort,psym=3
-
+; stop
     a = where(xsort gt (x1 - !param.crop_box) and xsort lt (x1 + !param.crop_box),complement=reg1)
 
     x2 = mean((xsort[peak_2:peak_1])[reg1])
     y2 = mean((ysort[peak_2:peak_1])[reg1])
 
-; print,x2,y2
-; stop
-    ; stop
-    ; x2 = mean((xsort[peak_2:peak_1])[where(xsort[peak_2:peak_1] ne 0)])
-    ; y2 = mean((ysort[peak_2:peak_1])[where(ysort[peak_2:peak_1] ne 0)])
-    
-    ; so now I've got a center, but I've still got that sorted list.....
-
-    ; xsort[where(xsort gt (x2 - !param.crop_box) and xsort lt (x2 + !param.crop_box))] = 0
-    ; c = where(xsort[reg1] gt (x2 - !param.crop_box) and xsort[reg1] lt (x2 + !param.crop_box),complement=reg2)
-    ; d = where(xsort gt (x2 - !param.crop_box) and xsort lt (x2 + !param.crop_box),complement=reg2)
-
-    ; plot,xsort,psym=3
-    ; x3 = mean((xsort[peak_3:peak_2])[where(xsort[peak_3:peak_2] ne 0)])
-    ; y3 = mean((ysort[peak_3:peak_2])[where(ysort[peak_3:peak_2] ne 0)])
-    ; combine xsort[reg1] and xsort[reg2]
-
-; a = findgen(50)
-
-; ; [0:10] bad, [30:40] bad
-
-; d = a[where(a gt 0 and a lt 10,complement=reg1)]
-; b = a[where(a gt 30 and a lt 40,complement=reg2)]
-; match,reg1,reg2,suba,subb
-
-; newreg = reg1[suba]
-
     c = where(xsort gt (x2 - !param.crop_box) and xsort lt (x2 + !param.crop_box),complement=reg2)
+    ;Match is soooooo slow
     match,reg1,reg2,suba,subb
 
     x3 = mean((xsort[peak_3:peak_2])[reg1[suba]])
@@ -1777,46 +1746,64 @@ tic
     print,x1,y1
     print,x2,y2
     print,x3,y3
-    
-    toc
+
+toc
 
 
-    tic
-        x1 = mean(xsort[peak_1:n_elements(xsort)-1])
-        y1 = mean(ysort[peak_1:n_elements(ysort)-1])
+tic
+    x1 = mean(xsort[peak_1:n_elements(xsort)-1])
+    y1 = mean(ysort[peak_1:n_elements(ysort)-1])
 
-        xsort[where(xsort gt (x1 - !param.crop_box) and xsort lt (x1 + !param.crop_box))] = 0
+    xsort[where(xsort gt (x1 - !param.crop_box) and xsort lt (x1 + !param.crop_box))] = 0
+    ysort[where(ysort gt (y1 - !param.crop_box) and ysort lt (y1 + !param.crop_box))] = 0
 
-        x2 = mean((xsort[peak_2:peak_1])[where(xsort[peak_2:peak_1] ne 0)])
-        y2 = mean((ysort[peak_2:peak_1])[where(ysort[peak_2:peak_1] ne 0)])
+    x2 = mean((xsort[peak_2:peak_1])[where(xsort[peak_2:peak_1] ne 0)])
+    y2 = mean((ysort[peak_2:peak_1])[where(ysort[peak_2:peak_1] ne 0)])
 
-        xsort[where(xsort gt (x2 - !param.crop_box) and xsort lt (x2 + !param.crop_box))] = 0
+    xsort[where(xsort gt (x2 - !param.crop_box) and xsort lt (x2 + !param.crop_box))] = 0
+    ysort[where(ysort gt (y2 - !param.crop_box) and ysort lt (y2 + !param.crop_box))] = 0
 
-        ; Where peak_3:2 ne 0 and peak_2:1 ne 0
-        x3 = mean((xsort[peak_3:peak_2])[where(xsort[peak_3:peak_2] ne 0)])
-        y3 = mean((ysort[peak_3:peak_2])[where(ysort[peak_3:peak_2] ne 0)])
+    ; Where peak_3:2 ne 0 and peak_2:1 ne 0
+    x3 = mean((xsort[peak_3:peak_2])[where(xsort[peak_3:peak_2] ne 0)])
+    y3 = mean((ysort[peak_3:peak_2])[where(ysort[peak_3:peak_2] ne 0)])
 
-        xsort[where(xsort gt (x3 - !param.crop_box) and xsort lt (x3 + !param.crop_box))] = 0
-        print,'Setting array parts to 0'
-        print,x1,y1
-        print,x2,y2
-        print,x3,y3
-    toc
+    xsort[where(xsort gt (x3 - !param.crop_box) and xsort lt (x3 + !param.crop_box))] = 0
+    ysort[where(ysort gt (y3 - !param.crop_box) and ysort lt (y3 + !param.crop_box))] = 0
+
+    print,'Setting array parts to 0'
+    print,x1,y1
+    print,x2,y2
+    print,x3,y3
+    x1z = x1
+    y1z = y1
+    x2z = x2
+    y2z = y2
+    x3z = x3
+    y3z = y3
+
+    ; If we need xsort and ysort back, we NEED to use the other method
+    ; xsort = xarr[BSORT(input)]
+    ; xsort = xsort[0:(1-!param.elim_perc/1000)*(N_ELEMENTS(sorted)-1)]
+    ; ysort = yarr[BSORT(input)]
+    ; ysort = ysort[0:(1-!param.elim_perc/1000)*(N_ELEMENTS(sorted)-1)]
+
+toc
 
 
-
-stop
-
-
-window,1
-ps_start,filename='goodenough.eps',/encapsulated,xsize=2.5,ysize=3
-    !p.multi=[0,2,3]
+; window,1
+ps_start,filename='betterenough.eps',/encapsulated,xsize=3.5,ysize=3
+    !p.multi=[0,3,3]
     cgimage,input[210-60:210+60,153-60:153+60],/k
     cgimage,input[x1-60:x1+60,y1-60:y1+60],/k
+    cgimage,input[x1z-60:x1z+60,y1z-60:y1z+60],/k
+    
     cgimage,input[337-60:337+60,77-60:77+60],/k
     cgimage,input[x2-60:x2+60,y2-60:y2+60],/k
+    cgimage,input[x2z-60:x2z+60,y2z-60:y2z+60],/k
+    
     cgimage,input[83-60:83+60,232-60:232+60],/k
     cgimage,input[x3-60:x3+60,y3-60:y3+60],/k
+    cgimage,input[x3z-60:x3z+60,y3z-60:y3z+60],/k
     !p.multi=0
 ps_end
 
@@ -1938,7 +1925,7 @@ end
 ;       Make sure program doesn't freak out when sun isn't in POV
 ;       
 ;-
-COMPILE_OPT idl2 
+COMPILE_OPT idl2
 ON_ERROR,2
 start=SYSTIME(1,/s)
 

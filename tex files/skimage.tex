@@ -203,14 +203,7 @@ Using the above methods, we find peaks of the second derivative of the smoothed 
 \section{Taking this Method Further} % (fold)
 \label{sec:taking_this_method_further}
 
-    Once we have the sorted array we can try to do cool things with it. For example, we can attempt to find the quick centers of the three suns. We can do this by partitioning the sorted array into three parts, 1 for each sun. We average the positions of all pixels above a certain threshold and then zero-out a box that is 120x120 pixels wide centered at the recently-found center. We repeat the same process, computing the average position of all pixels above a certain threshold. We don't have to worry about the darker limb pixels of the main sun because we have set all the pixels around the center to 0. Figure \ref{goodenough} illustrates how accurate the process is to find centers. 
-
-\begin{figure}[!ht]
-    \centering
-    \includegraphics[width=.9\textwidth]{../plots_tables_images/goodenough.eps}
-    \caption{The left column are the cropped regions found by our previous method (scanning in a circle after we found the main sun position). The right column are the cropped regions found by the method of averaging positions of our sorted array.}
-    \label{goodneough}
-\end{figure}
+    Once we have the sorted array we can try to do cool things with it. For example, we can attempt to find the quick centers of the three suns. We can do this by partitioning the sorted array into three parts, 1 for each sun. We average the positions of all pixels above a certain threshold and then zero-out a box that is 120x120 pixels wide centered at the recently-found center. We repeat the same process, computing the average position of all pixels above a certain threshold. We don't have to worry about the darker limb pixels of the main sun because we have set all the pixels around the center to 0. 
 
 \begin{figure}[!ht]
     \centering
@@ -218,6 +211,11 @@ Using the above methods, we find peaks of the second derivative of the smoothed 
     \caption{The top row are the x positions plotted against the sorted pixel values. In the second row we find the center of the brightest region and set the x (and y) positions in a 60-wide window to 0. In the third region we find the pixel positions of the second brightest region and repeat the process of zeroing out neighboring pixels. In the third row, only the dimmest region remains, free from the dim pixels of the first two regions.}
     \label{quickcenters}
 \end{figure}
+
+\subsection{Without Zeroing Out the Array} % (fold)
+\label{sub:without_zeroing_out_the_array}
+    There is another method of finding the centers, this one without the need to set the parts of the sorted array to zero. The benefit is that if we need to use the sorted array for something else, we won't waste time having to redefine it. The downside is that it is a factor of 2 slower. Instead of setting parts of the array to 0, I use \hl{\texttt{where()}} statements to simply avoid looking at those areas. Figure \ref{betterenough} compares the relative accuracy of the rough centering methods.
+% subsection without_zeroing_out_the_array (end)
 
 \begin{deluxetable}{lcll}
 \tablecaption{Center Positions Using Different Methods}
@@ -245,25 +243,47 @@ Old
 & 83.4095
 & 232.106\\
 \hline
-New
+Zeroing Out
 & 100
-& 211.2756
-& 153.1704\\
+& 211.276
+& 153.170\\
 %
 "
 & 50
-& 336.4977
-& 82.6384\\
+& 336.498
+& 72.692\\
 %
 "
 & 25
 & 78.4613
-& 212.2920
+& 237.583\\
+\hline
+Using where() statements
+& 100
+& 211.276
+& 153.170\\
+%
+"
+& 50
+& 338.652
+& 83.962\\
+%
+"
+& 25
+& 81.698
+& 229.154
 \enddata
 \label{numethod}
 \end{deluxetable}
 
+\begin{figure}[!ht]
+    \centering
+    \includegraphics[width=.9\textwidth]{../plots_tables_images/betterenough.eps}
+    \caption{The left column is our present cropping method, the middle column is the method using \hl{\texttt{where()}} statements, and the right column uses the zero-out method.}
+    \label{betterenough}
+\end{figure}
 
+www
 % section taking_this_method_further (end)
 
 \end{document}

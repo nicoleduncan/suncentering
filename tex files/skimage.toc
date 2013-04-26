@@ -4,3 +4,4 @@
 \contentsline {section}{\numberline {4}This Plot Says it All}{2}{section.4}
 \contentsline {section}{\numberline {5}Some Numbers}{3}{section.5}
 \contentsline {section}{\numberline {6}Taking this Method Further}{4}{section.6}
+\contentsline {subsection}{\numberline {6.1}Without Zeroing Out the Array}{5}{subsection.6.1}
