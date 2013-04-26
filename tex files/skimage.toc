@@ -3,3 +3,4 @@
 \contentsline {section}{\numberline {3}Drawbacks}{2}{section.3}
 \contentsline {section}{\numberline {4}This Plot Says it All}{2}{section.4}
 \contentsline {section}{\numberline {5}Some Numbers}{3}{section.5}
+\contentsline {section}{\numberline {6}Taking this Method Further}{4}{section.6}

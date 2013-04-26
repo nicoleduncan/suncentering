@@ -229,6 +229,8 @@ mainypos = ducks.ypos
 xoffset = ducks.xpos- !param.crop_box
 yoffset = ducks.ypos- !param.crop_box
 
+; print,'main xpos',mainxpos
+; print,'main ypos',mainypos
 IF REGION NE 1 THEN BEGIN
     circscancrop, mainxpos, mainypos, image, thresh, xpos, ypos, xoffset, yoffset, region=region, time=time
 ENDIF
@@ -463,6 +465,11 @@ yoffset = centery- !param.crop_box
 finish = SYSTIME(1,/s)
 IF KEYWORD_SET(time) THEN print, 'getstruct took: '+STRCOMPRESS(finish-start)+$
     ' seconds'
+
+; print,'circscancrop center is ',centerx
+; print,'circscancrop center is ',centery
+
+
 RETURN
 END
 
@@ -1657,6 +1664,136 @@ thresh25 = skimmed[peak_3+n_elements(skimmed)*.001]
 return,{thresh100:thresh100,thresh50:thresh50,thresh25:thresh25}
 end
 
+
+;**************************************************************************************************
+;*                                                                                                *
+;**************************************************************************************************
+
+
+function fastcenter, input
+
+sorted = FLOAT(input[bsort(input)])
+sorted = sorted[0:(1-!param.elim_perc/1000)*(N_ELEMENTS(sorted)-1)]
+
+s = SIZE(input,/dim)
+
+n_col = s[0]
+n_row = s[1]
+
+xarr = FAN(FINDGEN(n_col),n_row)
+yarr = TRANSPOSE(FAN(FINDGEN(n_row),n_col))
+
+xsort = xarr[BSORT(input)]
+xsort = xsort[0:(1-!param.elim_perc/1000)*(N_ELEMENTS(sorted)-1)]
+ysort = yarr[BSORT(input)]
+ysort = ysort[0:(1-!param.elim_perc/1000)*(N_ELEMENTS(sorted)-1)]
+
+n_smooth = 100.
+smoothed = TS_SMOOTH(sorted,n_smooth,order=3)
+reg_smooth = SMOOTH(sorted,n_smooth,/edge_truncate)
+med_smooth = MEDIAN(sorted,n_smooth)
+
+; find peak, zero out
+; find peak, zero out
+
+arr = scale_vector(DERIV(TS_SMOOTH(DERIV(smoothed),n_smooth,order=3) ),0,1)
+peak_1 = MEAN(WHERE(arr gt !param.peak1_thresh))
+arr[peak_1-100:peak_1+100]=0
+peak_2 = MEAN(WHERE(arr gt !param.peak2_thresh))
+arr[peak_2-100:peak_2+100]=0
+peak_3 = MEAN(WHERE(arr gt !param.peak3_thresh))
+
+; Add a little more the position?
+thresh100 = sorted[peak_1+N_ELEMENTS(sorted)*.001]
+thresh50 = sorted[peak_2+N_ELEMENTS(sorted)*.001]
+thresh25 = sorted[peak_3+N_ELEMENTS(sorted)*.001]
+
+!p.multi=[0,1,3]
+plot,xsort,psym=3,title='X Positions'
+vline,peak_1
+vline,peak_2
+vline,peak_3
+plot,ysort,psym=3,title='Y Positions'
+vline,peak_1
+vline,peak_2
+vline,peak_3
+plot,sorted
+vline,peak_1
+vline,peak_2
+vline,peak_3
+!p.multi=0
+
+; ps_start,filename='quickcenters.eps',/encapsulated,xsize=6,ysize=7
+    ; !p.multi=[0,1,4]
+    ; plot,xsort,psym=3
+
+    x1 = mean(xsort[peak_1:n_elements(xsort)-1])
+    y1 = mean(ysort[peak_1:n_elements(ysort)-1])
+
+    ; so now I've got a center, but I've still got that sorted list.....
+
+    ; xsort[where(xsort gt (x1 - !param.crop_box) and xsort lt (x1 + !param.crop_box))] = 0
+
+    ; plot,xsort,psym=3
+
+    a = where(xsort gt (x1 - !param.crop_box) and xsort lt (x1 + !param.crop_box),complement=reg1)
+
+    x2 = mean((xsort[peak_2:peak_1])[reg1])
+    y2 = mean((ysort[peak_2:peak_1])[reg1])
+
+; print,x2,y2
+; stop
+    ;hats is a test
+    hats = where(xsort lt (x1 - !param.crop_box) and xsort gt (x1 + !param.crop_box))
+    x2 = mean((xsort[peak_2:peak_1])[hats])
+    y2 = mean((ysort[peak_2:peak_1])[hats])
+; stop
+    ; stop
+    ; x2 = mean((xsort[peak_2:peak_1])[where(xsort[peak_2:peak_1] ne 0)])
+    ; y2 = mean((ysort[peak_2:peak_1])[where(ysort[peak_2:peak_1] ne 0)])
+    
+    ; so now I've got a center, but I've still got that sorted list.....
+
+    ; xsort[where(xsort gt (x2 - !param.crop_box) and xsort lt (x2 + !param.crop_box))] = 0
+    b = where(xsort gt (x2 - !param.crop_box) and xsort lt (x2 + !param.crop_box),complement=reg2)
+
+
+
+    ; plot,xsort,psym=3
+stop
+    ; x3 = mean((xsort[peak_3:peak_2])[where(xsort[peak_3:peak_2] ne 0)])
+    ; y3 = mean((ysort[peak_3:peak_2])[where(ysort[peak_3:peak_2] ne 0)])
+
+    x3 = mean((xsort[peak_3:peak_2])[reg2])
+    y3 = mean((ysort[peak_3:peak_2])[reg2])
+    
+    xsort[where(xsort gt (x3 - !param.crop_box) and xsort lt (x3 + !param.crop_box))] = 0
+
+    ; plot,xsort,psym=3
+;     !p.multi=0
+; ps_end
+; stop
+print,'New Centers: ',x1,y1
+print,'New Centers: ',x2,y2
+print,'New Centers: ',x3,y3
+
+window,1
+ps_start,filename='goodenough.eps',/encapsulated,xsize=2.5,ysize=3
+    !p.multi=[0,2,3]
+    cgimage,input[210-60:210+60,153-60:153+60],/k
+    cgimage,input[x1-60:x1+60,y1-60:y1+60],/k
+    cgimage,input[337-60:337+60,77-60:77+60],/k
+    cgimage,input[x2-60:x2+60,y2-60:y2+60],/k
+    cgimage,input[83-60:83+60,232-60:232+60],/k
+    cgimage,input[x3-60:x3+60,y3-60:y3+60],/k
+    !p.multi=0
+ps_end
+
+stop
+return,{thresh100:thresh100,thresh50:thresh50,thresh25:thresh25}
+end
+
+
 ;**************************************************************************************************
 ;*                                                                                                *
 ;**************************************************************************************************
@@ -1889,6 +2026,7 @@ borderbit = bordercheck(wholeimage)
 ; print,threshlist.thresh50
 ; print,threshlist.thresh25
 
+gooooooooaaallll = fastcenter(wholeimage)
 ; threshlist = smoothit(inaline)
 histosmoothed,wholeimage
 stop
