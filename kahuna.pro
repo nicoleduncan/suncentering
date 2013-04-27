@@ -1638,7 +1638,8 @@ vline,138022.30
 vline,134328.27
 !p.multi=0
 
-stop
+
+
 skimmed = sorted[0:(1-!param.elim_perc/100)*(N_ELEMENTS(sorted)-1)]
 
 n_smooth = 100.
@@ -1650,6 +1651,9 @@ med_smooth = median(skimmed,n_smooth)
 ; find peak, zero out
 
 arr = scale_vector(deriv(ts_smooth(deriv(smoothed),n_smooth,order=3) ),0,1)
+
+
+; stop
 peak_1 = mean(where(arr gt !param.peak1_thresh))
 arr[peak_1-100:peak_1+100]=0
 peak_2 = mean(where(arr gt !param.peak2_thresh))
@@ -2043,6 +2047,8 @@ borderbit = bordercheck(wholeimage)
 ; print,threshlist.thresh100
 ; print,threshlist.thresh50
 ; print,threshlist.thresh25
+
+; histosmoothed,wholeimage
 
 gooooooooaaallll = fastcenter(wholeimage)
 ; threshlist = smoothit(inaline)
