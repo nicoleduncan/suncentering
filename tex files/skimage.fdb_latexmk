@@ -81,7 +81,7 @@
   "skimage.aux"
   "skimage.dvi"
   "skimage.out"
-["pdflatex"] 1367264718 "/Users/jerensuzuki/Documents/suncentering/tex files/skimage.tex" "skimage.pdf" "skimage" 1367264718
+["pdflatex"] 1367276572 "/Users/jerensuzuki/Documents/suncentering/tex files/skimage.tex" "skimage.pdf" "skimage" 1367276573
   "../plots_tables_images/betterenough-eps-converted-to.pdf" 1367013112 34663 473ec870ef265b0aa8170449d02b4255 ""
   "../plots_tables_images/betterenough.eps" 1367013039 186218 5502fc2410703ae7f014fb4234f38451 ""
   "../plots_tables_images/d_reg-eps-converted-to.pdf" 1366671729 16017 f5ae1d850470b45de1bc61298a6fbba3 ""
@@ -109,7 +109,7 @@
   "../plots_tables_images/skimmilk.jpg" 1366670353 40374 4b21d546a345481d4156305d8dec855d ""
   "../plots_tables_images/sorted_array-eps-converted-to.pdf" 1366671532 8218 6c262a607d3fdfcb5e9599f880c5005a ""
   "../plots_tables_images/sorted_array.eps" 1366671507 93168 ba44a66a0cb63c8d3052bafcf8a95547 ""
-  "/Users/jerensuzuki/Documents/suncentering/tex files/skimage.tex" 1367264717 16629 4f7bd0c8b6ad27cc4710f97dae5a049f ""
+  "/Users/jerensuzuki/Documents/suncentering/tex files/skimage.tex" 1367276572 18647 4df6928e78fddb97694736daeb615f17 ""
   "/usr/local/texlive/2012/../texmf-local/tex/latex/local/deluxetable.sty" 1366832326 11321 35b2c46627b671e19bd036ff4dbf9e85 ""
   "/usr/local/texlive/2012/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc" 1136849721 2971 def0b6c1f0b107b3b936def894055589 ""
   "/usr/local/texlive/2012/texmf-dist/fonts/map/fontname/texfonts.map" 1272929888 3287 e6b82fe08f5336d4d5ebc73fb1152e87 ""
@@ -204,10 +204,10 @@
   "/usr/local/texlive/2012/texmf-var/web2c/pdftex/pdflatex.fmt" 1365533092 3695389 a25b8c0e572ba939d367d1422fdf5a21 ""
   "/usr/local/texlive/2012/texmf.cnf" 1341108668 572 7ea7194897937febeb63145e1c3a1f03 ""
   "/usr/local/texlive/2012/texmf/web2c/texmf.cnf" 1336865692 31299 729e216d9b945005c0d4b079c0500bc9 ""
-  "skimage.aux" 1367264718 8721 a401b18d91b499bd161e0e302e5ba533 ""
-  "skimage.out" 1367264718 456 ab9b399b38a985814b7e2941406c8248 ""
-  "skimage.tex" 1367264717 16629 4f7bd0c8b6ad27cc4710f97dae5a049f ""
-  "skimage.toc" 1367264718 612 600f3607584b5872eba84de385a1559f ""
+  "skimage.aux" 1367276573 9019 85dbd5bd84f33c5e7e4dbe5d68ee0fd9 ""
+  "skimage.out" 1367276573 456 ab9b399b38a985814b7e2941406c8248 ""
+  "skimage.tex" 1367276572 18647 4df6928e78fddb97694736daeb615f17 ""
+  "skimage.toc" 1367276573 612 600f3607584b5872eba84de385a1559f ""
   (generated)
   "skimage.log"
   "skimage.aux"

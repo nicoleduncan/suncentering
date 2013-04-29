@@ -1,9 +1,7 @@
 FUNCTION setpeak, input
 
-
 ; for i = 1,10 do begin
-
-    ; scaled_input = scale_vector(input,0,BYTE(255*i/10.))
+;     scaled_input = scale_vector(input,0,BYTE(255*i/10.))
     scaled_input = input
     sorted = scaled_input[bsort(scaled_input)]
     sorted = sorted[0:(1-!param.elim_perc/1000)*(N_ELEMENTS(sorted)-1)]
@@ -20,7 +18,7 @@ FUNCTION setpeak, input
     ysort = yarr[BSORT(scaled_input)]
     ysort = ysort[0:(1-!param.elim_perc/1000)*(N_ELEMENTS(sorted)-1)]
 
-    n_smooth = 100.
+    n_smooth = !param.n_smooth
     smoothed = TS_SMOOTH(sorted,n_smooth,order=3)
     arr = DERIV(TS_SMOOTH(DERIV(smoothed),n_smooth,order=3))
 
@@ -66,9 +64,12 @@ FUNCTION setpeak, input
     ; peak_2 = MEAN(WHERE(arr eq MAX(arr)))
     ; arr[peak_2-200:peak_2+200]=0
     ; peak_3 = MEAN(WHERE(arr eq MAX(arr)))
+
+;     print,i
+;     print,'peak 1:',peak_1
+;     print,'peak 2:',peak_2
+;     print,'peak 3:',peak_3
+;     print,''
 ; endfor
-stop
-
-
-return,{peak_1:peak_1,peak_2:peak_2,peak_3:peak_3}
-endset
+return,{peak_1:peak_1,peak_2:peak_2,peak_3:peak_3,xsort:xsort,ysort:ysort}
+end
