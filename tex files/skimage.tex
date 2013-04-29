@@ -285,6 +285,209 @@ Using where() statements
 
 % section taking_this_method_further (end)
 
+\section{Robustness of Finding Thresholds} % (fold)
+\label{sec:robustness_of_finding_thresholds}
+
+We've established that we can use this method to find the approximate centers of the main and auxiliary suns, but perhaps the code is not robust enough to properly threshold our image in all scenarios. To test this, we have scaled our image to different levels and see how the program deals with a significantly brighter/dimmer image.
+
+\begin{deluxetable}{cllllll}
+    \tablecaption{Thresholds of Brighter/Dimmer Images Using Threshold on deriv(smooth(deriv(sorted)))}
+    \tablecolumns{7}
+    \tabletypesize{\scriptsize}
+    \tablewidth{0pt}
+    \tablehead{ 
+      \colhead{\% Scaling of 0-255} %
+    & \colhead{100\% Peak} %
+    & \colhead{50\% Peak} %
+    & \colhead{25\% Peak} %
+    & \colhead{100\% Peak Position} % 
+    & \colhead{50\% Peak Position} % 
+    & \colhead{25\% Peak Position} % 
+    }
+    \startdata
+    \hline
+    10
+    & 12.0079
+    & 6.10
+    & 0
+    & 141225
+    & 138114
+    & -1\\
+    %
+    20
+    & 24.4961
+    & 12.4488
+    & 3.81496
+    & 141225
+    & 138114
+    & 134328\\
+    %
+    30
+    & 36.5039
+    & 18.5512
+    & 0
+    & 141225
+    & 138114
+    & -1\\
+    %
+    40
+    & 48.9921
+    & 24.8976
+    & 7.62992
+    & 141225
+    & 138114
+    & 134328\\
+    %
+    50
+    & 61
+    & 31
+    & 9
+    & 141225
+    & 138114
+    & 134328\\
+    %
+    60
+    & 73.4882
+    & 37.3465
+    & 0
+    & 141225
+    & 138114
+    & -1\\
+    %
+    70
+    & 85.4961
+    & 43.4488
+    & 13.3150
+    & 141225
+    & 138114
+    & 134328\\
+    %
+    80
+    & 97.9843
+    & 49.7953
+    & 15.2598
+    & 141225
+    & 138114
+    & 134328\\
+    %
+    90
+    & 109.992
+    & 55.8976
+    & 17.1299
+    & 141225
+    & 138114
+    & 134328\\
+    %
+    100
+    & 122.48
+    & 62.2441
+    & 19.0748
+    & 141225
+    & 138114
+    & 134328\\
+\enddata
+\label{brightnesstest}
+\end{deluxetable}
+
+\begin{deluxetable}{cllllll}
+    \tablecaption{Thresholds of Brighter/Dimmer Images Using max() of on deriv(smooth(deriv(sorted)))}
+    \tablecolumns{7}
+    \tabletypesize{\scriptsize}
+    \tablewidth{0pt}
+    \tablehead{ 
+      \colhead{\% Scaling of 0-255} %
+    & \colhead{100\% Peak} %
+    & \colhead{50\% Peak} %
+    & \colhead{25\% Peak} %
+    & \colhead{100\% Peak Position} % 
+    & \colhead{50\% Peak Position} % 
+    & \colhead{25\% Peak Position} % 
+    }
+    \startdata
+    \hline
+    10
+    & 10.4331
+    & 5.31496
+    & 1.47638
+    & 141241
+    & 138114
+    & 134328\\
+    %
+    20
+    & 21.2835
+    & 10.8425
+    & 3.01181
+    & 141242
+    & 138114
+    & 134328\\
+    %
+    30
+    & 31.4173
+    & 16.1575
+    & 4.48819
+    & 141229
+    & 138114
+    & 134328\\
+    %
+    40
+    & 42.5669
+    & 21.6850
+    & 6.02362
+    & 141242
+    & 138114
+    & 134328\\
+    %
+    50
+    & 53
+    & 27
+    & 7.5
+    & 141234
+    & 138114
+    & 134328\\
+    %
+    60
+    & 63.8504
+    & 32.5276
+    & 9.03543
+    & 141242
+    & 138114
+    & 134328\\
+    %
+    70
+    & 73.5827
+    & 37.8425
+    & 10.5118
+    & 141229
+    & 138114
+    & 134327\\
+    %
+    80
+    & 85.1339
+    & 43.3701
+    & 12.0472
+    & 141242
+    & 138114
+    & 134328\\
+    %
+    90
+    & 94.6654
+    & 48.6850
+    & 13.5236
+    & 141229
+    & 138114
+    & 134328\\
+    %
+    100
+    & 106.417
+    & 54.2126
+    & 15.0591
+    & 141243
+    & 138114
+    & 134328\\
+\enddata
+\label{brightnesstestmax}
+\end{deluxetable}
+
 \end{document}
 
 
