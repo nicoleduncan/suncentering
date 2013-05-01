@@ -72,6 +72,5 @@ h = Histogram(labelRegionOutput, MIN=1, REVERSE_INDICES=ri, BINSIZE=1)
 ; reg3 = ri[ri[4]:ri[5]-1]
 ; toc
 
-stop
 RETURN, n_elements(h ne 1)
 END

@@ -87,9 +87,28 @@ defsysv,'!param',c
 wholeimage = mrdfits('dottedimage.fits',/silent)
 rabbit = mrdfits('2whole.fits',/silent)
 rabbit=REFORM(rabbit[0,*,*])
-turtle = mrdfits('partial3rd.fits',/silent)
-ox = mrdfits('2partials.fits',/silent)
-inaline = mrdfits('inaline.fits',/silent)
+reg13 = mrdfits('1_3.fits',/silent)
+reg23 = mrdfits('2_3.fits',/silent)
+; turtle = mrdfits('partial3rd.fits',/silent)
+; ox = mrdfits('2partials.fits',/silent)
+; inaline = mrdfits('inaline.fits',/silent)
+
+; read_jpeg,'plots_tables_images/1.jpeg',a
+; a = reform(a[0,*,*])
+; mwrfits,a,'1.fits'
+; read_jpeg,'plots_tables_images/2.jpeg',b
+; b = reform(b[0,*,*])
+; mwrfits,b,'2.fits'
+; read_jpeg,'plots_tables_images/3.jpeg',c
+; c = reform(c[0,*,*])
+; mwrfits,c,'3.fits'
+; read_jpeg,'plots_tables_images/1_3.jpeg',d
+; d = reform(d[0,*,*])
+; mwrfits,d,'1_3.fits'
+; read_jpeg,'plots_tables_images/2_3.jpeg',e
+; e = reform(e[0,*,*])
+; mwrfits,e,'2_3.fits'
+
 ; wholeimage = mrdfits(file)
 ; mwrfits,wholeimage,'dottedimage.fits',/create
 ; window,0
@@ -172,7 +191,7 @@ print,n_suns
 ;
 ; If we can rule out overall dimming, then we can just set thresholds of between 75-100% for reg1
 
-; If not...
+; If not... 
 
 
 
@@ -182,8 +201,10 @@ print,n_suns
 ; find region2
 ; find region3
 
+hailmary = fastercenter(rabbit,[1,2])
+
 stop
-gooooooooaaallll = fastcenter(wholeimage)
+; gooooooooaaallll = fastcenter(wholeimage)
 histosmoothed,wholeimage
 stop
 
