@@ -1,13 +1,13 @@
 FUNCTION setthresh, input
 
 
-for i = 1,10 do begin
+; for i = 1,10 do begin
 
-    scaled_input = scale_vector(input,0,BYTE(255*i/10.))
+    ; scaled_input = scale_vector(input,0,BYTE(255*i/10.))
 
-    peaks = setpeak(scaled_input)
+    peaks = setpeak(input)
 
-    sorted = scaled_input[bsort(scaled_input)]
+    sorted = scaled_input[bsort(input)]
     sorted = sorted[0:(1-!param.elim_perc/1000)*(N_ELEMENTS(sorted)-1)]
 
     ; s = SIZE(scaled_input,/dim)
@@ -65,8 +65,8 @@ for i = 1,10 do begin
     print,'Reg 3 thresh: ',thresh25
     print,''
     ; stop
-endfor
-stop
+; endfor
+; stop
 
 ; !p.multi=[0,1,3]
 ; plot,xsort,psym=3,title='X Positions'

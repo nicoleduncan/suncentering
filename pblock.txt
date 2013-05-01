@@ -11,7 +11,7 @@ reg1thresh_mult .65
 reg1thresh 0.25
 circscan_buffer 10
 elim_perc 1
-mask_border_perc 10
+mask_border_perc 5
 idealthresh_mult .25
 reg2thresh_mult .3
 reg3thresh_mult .2
@@ -25,3 +25,4 @@ peak1_thresh .7
 peak2_thresh .6
 peak3_thresh .5
 n_smooth 100
+smoothorder 3

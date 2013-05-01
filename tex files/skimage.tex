@@ -219,12 +219,13 @@ Using the above methods, we find peaks of the second derivative of the smoothed 
 
 \begin{deluxetable}{lcll}
 \tablecaption{Center Positions Using Different Methods}
+\tablecolumns{4}
 \tablewidth{0pt}
 \tablehead{
-    \colhead{Type} %
-&   \colhead{Sun Brightness (\%)} %
-&   \colhead{X Position} %
-&   \colhead{Y Position} %
+  \colhead{Type} %
+& \colhead{Sun Brightness (\%)} %
+& \colhead{X Position} %
+& \colhead{Y Position} %
 }
 \startdata
 \hline
@@ -271,7 +272,7 @@ Using where() statements
 "
 & 25
 & 81.698
-& 229.154
+& 229.154\\
 \enddata
 \label{numethod}
 \end{deluxetable}
@@ -289,6 +290,8 @@ Using where() statements
 \label{sec:robustness_of_finding_thresholds}
 
 We've established that we can use this method to find the approximate centers of the main and auxiliary suns, but perhaps the code is not robust enough to properly threshold our image in all scenarios. To test this, we have scaled our image to different levels and see how the program deals with a significantly brighter/dimmer image. Tables \ref{brightnesstest} and \ref{brightnesstestmax} reveal that using the \hl{\texttt{max()}} method provides a more robust calculation of the threshold. We could apply some dynamic changes to the threshold value, but it may be easier to just use \hl{\texttt{max()}} instead.
+
+Also, it turns out that eliminating the top 1\% of the image when sorting it clips a bit too much of the top off. Instead, we must resort to clipping the top .1\% instead. \\
 
 \begin{deluxetable}{cllllll}
     \tablecaption{Thresholds of Brighter/Dimmer Images Using Threshold on deriv(smooth(deriv(sorted)))}
@@ -389,7 +392,7 @@ We've established that we can use this method to find the approximate centers of
 \label{brightnesstest}
 \end{deluxetable}
 
-\begin{deluxetable}{cllllllrr}
+\begin{deluxetable}{cllllllll}
     \tablecaption{Thresholds of Brighter/Dimmer Images Using max() of on deriv(smooth(deriv(sorted)))}
     \tablecolumns{7}
     \tabletypesize{\scriptsize}
@@ -488,7 +491,7 @@ We've established that we can use this method to find the approximate centers of
 \label{brightnesstestmax}
 \end{deluxetable}
 
-\begin{deluxetable}{cllllllrr}
+\begin{deluxetable}{cllllllll}
     \tablecaption{Center Positions Using max() of on deriv(smooth(deriv(sorted)))}
     \tablecolumns{7}
     \tabletypesize{\scriptsize}

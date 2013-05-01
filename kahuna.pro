@@ -17,7 +17,7 @@
 ;       E-mail: jsuzuki@ssl.berkeley.edu
 ;-
 
-PRO kahuna, file, time=time
+PRO kahuna, time=time
 ;+
 ;   :Description:
 ;       This version uses limb fitting opposed to masking (tricenter). 
@@ -40,7 +40,7 @@ PRO kahuna, file, time=time
 ;       
 ;-
 COMPILE_OPT idl2
-ON_ERROR,2
+ON_ERROR,3
 start=SYSTIME(1,/s)
 
 ; profiler,/system
@@ -86,7 +86,7 @@ defsysv,'!param',c
 
 wholeimage = mrdfits('dottedimage.fits',/silent)
 rabbit = mrdfits('2whole.fits',/silent)
-rabbit=rabbit[0,*,*]
+rabbit=REFORM(rabbit[0,*,*])
 turtle = mrdfits('partial3rd.fits',/silent)
 ox = mrdfits('2partials.fits',/silent)
 inaline = mrdfits('inaline.fits',/silent)
@@ -99,16 +99,9 @@ inaline = mrdfits('inaline.fits',/silent)
 ; window,2
 ; cgimage,ox,/k
 
-borderbit = bordercheck(wholeimage)
-
-; read_jpeg,'plots_tables_images/2whole.jpeg',lun
-; mwrfits,lun,'2whole.fits',/create
-; read_jpeg,'plots_tables_images/partial3rd.jpeg',red
-; mwrfits,red,'partial3rd.fits',/create
-; read_jpeg,'plots_tables_images/2partials.jpeg',stairs
-; mwrfits,stairs,'2partials.fits',/create
-
-; stop
+; 1 is a good value
+borderbit = bordercheck(rabbit)
+print,borderbit
 
 ; profiler,/report,data=data
 ; profiler,/reset,/clear
@@ -146,13 +139,6 @@ borderbit = bordercheck(wholeimage)
 ; wholeimage3[struct.center3.xpos,*]=20
 ; wholeimage3[*,struct.center3.ypos]=20
 
-; ; window,0
-; ; cgimage,wholeimage,/k,output=strmid(file,0,7)+'_'+'region1.png'
-; ; ; window,2
-; ; cgimage,wholeimage2,/k,output=strmid(file,0,7)+'_'+'region2.png'
-; ; ; window,3
-; ; cgimage,wholeimage3,/k,output=strmid(file,0,7)+'_'+'region3.png'
-
 ; window,0
 ; cgimage,wholeimage,/k
 ; window,2
@@ -166,6 +152,37 @@ borderbit = bordercheck(wholeimage)
 
 
 ; threshlist = setthresh(wholeimage)
+n_suns = countsuns(rabbit)
+print,n_suns
+; do we care about which suns are in image? Do we find centers of whatever suns are in image, 
+; THEN worry about which suns they are?
+
+; Okay, so we have an image with 2 suns. Now what? 
+; Use countsuns to get average values of each region, use that to identify
+
+; But alas, brightest region isn't necessarily region1 and dimmest region isn't region 2
+
+; Must be a relative brightness thing
+
+; If region is ~25% other, regions 1 and 3
+; If one region is ~50% the other, regions 1/2 or 2/3
+; Improve on ^
+;
+; How to tell the difference between 1/2 at 50% brightess and a 2/3 at normal brightness?
+;
+; If we can rule out overall dimming, then we can just set thresholds of between 75-100% for reg1
+
+; If not...
+
+
+
+
+
+; find region1
+; find region2
+; find region3
+
+stop
 gooooooooaaallll = fastcenter(wholeimage)
 histosmoothed,wholeimage
 stop

@@ -35,24 +35,23 @@ for i = 1,10 do begin
 
 
     tic
-        x1 = mean(xsort[peak_1:n_elements(xsort)-1])
-        y1 = mean(ysort[peak_1:n_elements(ysort)-1])
+        x1 = MEAN(xsort[peak_1:N_ELEMENTS(xsort)-1])
+        y1 = MEAN(ysort[peak_1:N_ELEMENTS(ysort)-1])
 
-        xsort[where(xsort gt (x1 - !param.crop_box) and xsort lt (x1 + !param.crop_box))] = 0
-        ysort[where(ysort gt (y1 - !param.crop_box) and ysort lt (y1 + !param.crop_box))] = 0
+        xsort[WHERE(xsort gt (x1 - !param.crop_box) and xsort lt (x1 + !param.crop_box))] = 0
+        ysort[WHERE(ysort gt (y1 - !param.crop_box) and ysort lt (y1 + !param.crop_box))] = 0
 
-        x2 = mean((xsort[peak_2:peak_1])[where(xsort[peak_2:peak_1] ne 0)])
-        y2 = mean((ysort[peak_2:peak_1])[where(ysort[peak_2:peak_1] ne 0)])
+        x2 = MEAN((xsort[peak_2:peak_1])[WHERE(xsort[peak_2:peak_1] ne 0)])
+        y2 = MEAN((ysort[peak_2:peak_1])[WHERE(ysort[peak_2:peak_1] ne 0)])
 
-        xsort[where(xsort gt (x2 - !param.crop_box) and xsort lt (x2 + !param.crop_box))] = 0
-        ysort[where(ysort gt (y2 - !param.crop_box) and ysort lt (y2 + !param.crop_box))] = 0
+        xsort[WHERE(xsort gt (x2 - !param.crop_box) and xsort lt (x2 + !param.crop_box))] = 0
+        ysort[WHERE(ysort gt (y2 - !param.crop_box) and ysort lt (y2 + !param.crop_box))] = 0
 
-        ; Where peak_3:2 ne 0 and peak_2:1 ne 0
-        x3 = mean((xsort[peak_3:peak_2])[where(xsort[peak_3:peak_2] ne 0)])
-        y3 = mean((ysort[peak_3:peak_2])[where(ysort[peak_3:peak_2] ne 0)])
+        x3 = MEAN((xsort[peak_3:peak_2])[WHERE(xsort[peak_3:peak_2] ne 0)])
+        y3 = MEAN((ysort[peak_3:peak_2])[WHERE(ysort[peak_3:peak_2] ne 0)])
 
-        xsort[where(xsort gt (x3 - !param.crop_box) and xsort lt (x3 + !param.crop_box))] = 0
-        ysort[where(ysort gt (y3 - !param.crop_box) and ysort lt (y3 + !param.crop_box))] = 0
+        xsort[WHERE(xsort gt (x3 - !param.crop_box) and xsort lt (x3 + !param.crop_box))] = 0
+        ysort[WHERE(ysort gt (y3 - !param.crop_box) and ysort lt (y3 + !param.crop_box))] = 0
     toc
 
     print,i
@@ -87,5 +86,5 @@ endfor
 ; ps_end
 
 stop
-return,{thresh100:thresh100,thresh50:thresh50,thresh25:thresh25}
+return,{reg1:[x1,y1]],reg2:[x2,y2],reg3:[x3,y3]}
 end

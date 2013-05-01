@@ -14,13 +14,12 @@ FUNCTION setpeak, input
     yarr = TRANSPOSE(fan(FINDGEN(n_row),n_col))
 
     xsort = xarr[BSORT(scaled_input)]
-    xsort = xsort[0:(1-!param.elim_perc/1000)*(N_ELEMENTS(sorted)-1)]
+    xsort = xsort[0:(1- !param.elim_perc/1000)*(N_ELEMENTS(sorted)-1)]
     ysort = yarr[BSORT(scaled_input)]
-    ysort = ysort[0:(1-!param.elim_perc/1000)*(N_ELEMENTS(sorted)-1)]
+    ysort = ysort[0:(1- !param.elim_perc/1000)*(N_ELEMENTS(sorted)-1)]
 
-    n_smooth = !param.n_smooth
-    smoothed = TS_SMOOTH(sorted,n_smooth,order=3)
-    arr = DERIV(TS_SMOOTH(DERIV(smoothed),n_smooth,order=3))
+    smoothed = TS_SMOOTH(sorted, !param.n_smooth, order = !param.smoothorder)
+    arr = DERIV(TS_SMOOTH(DERIV(smoothed), !param.n_smooth, order = !param.smoothorder))
 
     if N_ELEMENTS(MAX(arr)) ne 1 then begin 
         maxi = WHERE(arr eq MAX(arr),n_maxi)
@@ -59,6 +58,7 @@ FUNCTION setpeak, input
         peak = maxi[max(maxi_check)]
     endif else peak_3  = MEAN(WHERE(arr eq MAX(arr)))
 
+    ; Old way, don't need to do this way anymore
     ; peak_1 = MEAN(WHERE(arr eq MAX(arr)))
     ; arr[peak_1-200:peak_1+200]=0
     ; peak_2 = MEAN(WHERE(arr eq MAX(arr)))
@@ -71,5 +71,6 @@ FUNCTION setpeak, input
 ;     print,'peak 3:',peak_3
 ;     print,''
 ; endfor
+
 return,{peak_1:peak_1,peak_2:peak_2,peak_3:peak_3,xsort:xsort,ysort:ysort}
 end
