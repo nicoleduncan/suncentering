@@ -1,7 +1,7 @@
-FUNCTION fastercenter, input, regarr
+FUNCTION fastercenter, input, idedsuns
 
-; regarr = [1,2,3]
-peakinfo = setbetterpeak(input,regarr)
+n_suns = N_ELEMENTS(idedsuns)
+peakinfo = setbetterpeak(input,n_suns)
 
 ; Not true all the time!!!
 ; peak_1 = (peakinfo.peakarr)[0]
@@ -11,14 +11,14 @@ peakinfo = setbetterpeak(input,regarr)
 xsort = peakinfo.xsort
 ysort = peakinfo.ysort
 
-peakreg = REPLICATE({reg:0,xpos:0.,ypos:0.},N_ELEMENTS(regarr))
+peakreg = REPLICATE({reg:0,xpos:0.,ypos:0.},n_suns)
 
 ; do we deal with region number here? Probably, right?
 ; Easiest to find centers then match up locations to regarr, Probably
 
 for i = 0,N_ELEMENTS(peakinfo.peakarr)-1 do begin
     apeak = peakinfo.peakarr[i]
-    peakreg[i].reg = regarr[i]
+    peakreg[i].reg = idedsuns[i]
 
     if i eq 0 then begin
         peakreg[i].xpos = MEAN(xsort[apeak:N_ELEMENTS(xsort)-1])

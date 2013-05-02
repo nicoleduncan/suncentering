@@ -16,5 +16,14 @@ min_val = 30
 
 if TOTAL(datmask*input*(input gt min_val)) gt 0 then okaybit=0 else okaybit=1
 
+
+
+; Let's not return a 1, let's return an array that centroid-okay
+
+; Either:
+
+; Recrop image			<- easy
+; ignore partial area 	<- might be lot harder
+
 return, okaybit
 end

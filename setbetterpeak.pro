@@ -1,12 +1,10 @@
-FUNCTION setbetterpeak, input, regarr
-
+FUNCTION setbetterpeak, input, n_suns
 
 ; bunch of if statements are ugly
 ; how to distinguish 1 peak from another? 
 ; Easier if I just find peaks and worry about identifying them later
 
-n_peaks = n_elements(regarr)
-peakarr = fltarr(n_peaks)
+peakarr = fltarr(n_suns)
 sorted = input[bsort(input)]
 sorted = sorted[0:(1-!param.elim_perc/1000)*(N_ELEMENTS(sorted)-1)]
 
@@ -26,7 +24,7 @@ smoothed = TS_SMOOTH(sorted, !param.n_smooth, order = !param.smoothorder)
 arr = DERIV(TS_SMOOTH(DERIV(smoothed), !param.n_smooth, order = !param.smoothorder))
 
 
-for i = 0,n_peaks-1 do begin
+for i = 0,n_suns-1 do begin
     if N_ELEMENTS(MAX(arr)) ne 1 then begin 
     maxi = WHERE(arr eq MAX(arr),n_maxi)
     maxi_check=fltarr(maxi)

@@ -8,6 +8,7 @@
 \usepackage{enumerate}
 \usepackage{graphicx}
 \usepackage[colorlinks=true,urlcolor=blue]{hyperref}
+\usepackage{caption}
 \usepackage{subcaption}
 \usepackage{deluxetable}
 
@@ -54,7 +55,49 @@ As of now, the code only works with an image with regions 1, 2, and 3 as whole. 
 \label{sec:dealing_with_3_suns}
 How do you tell the difference between 2 suns where one is $\approx 50$\% lower in intensity than the other? It is either a pair of region 1 and 2 suns or a pair of region 2 and 3 suns. Furthermore, how does one tell the difference from a region 1 and 2 sun that is somehow obscured to 50\% brightness and a region 2 and 3 sun at normal brightness? Unless there is a way to know whether or not something is artificially making the suns dimmer, it's hard. However, if we know that and we know the approximate thresholding, we can make guesses on which region is which.
 
-For example, if we have 2 regions, 1 is 25\% the brightness of the other, we know that they are regions 1 and 3. If we only see 1 sun however, we must guess what the maximum should be and see at what percentage the max of the sun is (is it 25\%? 50\%?). This seems inefficient and should be improved. 
+For example, if we have 2 regions, 1 is 25\% the brightness of the other, we know that they are regions 1 and 3. If we only see 1 sun however, we must guess what the maximum should be and see at what percentage the max of the sun is (is it 25\%? 50\%?). This seems inefficient and should be improved. \\
+
+Nicole suggests instead of using a foreknown number of suns we find the maxima of the 2nd deriv of the sorted array until we find no well-defined peaks. The problem with this approach is that we must define a ``well defined peak''. Figure \ref{reg12peaks} features the peaks of an image with the 100\% and 50\% sun which we try to take maximum of. Figure \ref{scaled12peaks} show that if we set some arbitrary thresholds, we can get the results we want. Now, how will those threshold hold up in different scenarios?
+
+
+\begin{figure}[!h]
+    \begin{center}
+    \begin{subfigure}[b]{.49\textwidth}
+        \centering
+        \includegraphics[width=1.\textwidth]{../plots_tables_images/reg12.eps}
+        \caption{2nd deriv of sorred array}
+        \label{reg12peaks}
+    \end{subfigure}
+    \begin{subfigure}[b]{.49\textwidth}
+        \centering
+        \includegraphics[width=1.\textwidth]{../plots_tables_images/scaledreg12.eps}
+        \caption{Scaled positive values of 2nd deriv from 0 to 1, then thresholded to above .2}
+        \label{scaled12peaks}
+    \end{subfigure}
+
+   \begin{subfigure}[b]{.49\textwidth}
+        \centering
+        \includegraphics[width=1.\textwidth]{../plots_tables_images/reg23.eps}
+        \caption{Now looking at the 50\% and 25\% sun}
+        \label{reg23peaks}
+    \end{subfigure}
+    \begin{subfigure}[b]{.49\textwidth}
+        \centering
+        \includegraphics[width=1.\textwidth]{../plots_tables_images/scaledreg23.eps}
+        \caption{}
+        \label{scaled23peaks}
+    \end{subfigure}
+    \caption{}
+    \end{center}
+\end{figure}
+
+
+If we look at the 50\% and 25\% brightness sun, we see in Figure \ref{scaled23peaks} that the same threshold which worked quite well in the first set of plots doesn't quite work well for others. The main problem is that we can find the maxima over and over, but we need to know when to stop. We can use \hl{\texttt{countsuns()}} to return the number of suns we have. Now the problem is that we don't know which peaks are for which suns. We cannot assume the highest peak is always the 100\% sun because there may be a case where only the 50\% and 25\% suns are available for centering. \\
+
+If we ignore these problems and focus only on thresholding the image, the program can correctly identify 2 suns and label them with the appropriate region. 
+
+
+
 % section dealing_with_3_suns (end)
 
 \end{document}

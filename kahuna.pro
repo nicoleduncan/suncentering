@@ -40,7 +40,7 @@ PRO kahuna, time=time
 ;       
 ;-
 COMPILE_OPT idl2
-ON_ERROR,3
+ON_ERROR,1
 start=SYSTIME(1,/s)
 
 ; profiler,/system
@@ -104,10 +104,6 @@ reg23 = mrdfits('2_3.fits',/silent)
 ; window,2
 ; cgimage,ox,/k
 
-; 1 is a good value
-borderbit = bordercheck(reg12)
-print,borderbit
-
 ; profiler,/report,data=data
 ; profiler,/reset,/clear
 
@@ -155,10 +151,12 @@ print,borderbit
 ;     struct.center1.ypos-!param.safecrop:struct.center1.ypos+!param.safecrop]
 ; thresh = 0.5*MIN((SHIFT_DIFF(EMBOSS(crop),dir=3)))
 
-
+im = reg23
 ; threshlist = setthresh(wholeimage)
-n_suns = countsuns(reg12)
-print,n_suns
+; 1 is a good value
+borderbit = bordercheck(im)
+idedsuns = idsuns(im)
+
 ; do we care about which suns are in image? Do we find centers of whatever suns are in image, 
 ; THEN worry about which suns they are?
 
@@ -187,10 +185,21 @@ print,n_suns
 ; find region2
 ; find region3
 
-hailmary = fastercenter(reg12,[1,2])
+; Want a program that gives me [1,2],[1],[1,3],etc.
 
+; works:
+; reg12
+; im
+; reg13
+
+hailmary = fastercenter(im,idedsuns)
+print,hailmary
+!p.multi=[0,1,2]
+cgimage,im[hailmary[0].xpos-60:hailmary[0].xpos+60,hailmary[0].ypos-60:hailmary[0].ypos+60],/k
+cgimage,im[hailmary[1].xpos-60:hailmary[1].xpos+60,hailmary[1].ypos-60:hailmary[1].ypos+60],/k
+!p.multi=0
 stop
-; gooooooooaaallll = fastcenter(wholeimage)
+
 histosmoothed,wholeimage
 stop
 
