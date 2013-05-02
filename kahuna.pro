@@ -85,41 +85,27 @@ defsysv,'!param',c
 ; 25% sun y pos:        235.11536
 
 wholeimage = mrdfits('dottedimage.fits',/silent)
-rabbit = mrdfits('2whole.fits',/silent)
-rabbit=REFORM(rabbit[0,*,*])
-reg13 = mrdfits('1_3.fits',/silent)
-reg23 = mrdfits('2_3.fits',/silent)
 ; turtle = mrdfits('partial3rd.fits',/silent)
 ; ox = mrdfits('2partials.fits',/silent)
 ; inaline = mrdfits('inaline.fits',/silent)
 
-; read_jpeg,'plots_tables_images/1.jpeg',a
-; a = reform(a[0,*,*])
-; mwrfits,a,'1.fits'
-; read_jpeg,'plots_tables_images/2.jpeg',b
-; b = reform(b[0,*,*])
-; mwrfits,b,'2.fits'
-; read_jpeg,'plots_tables_images/3.jpeg',c
-; c = reform(c[0,*,*])
-; mwrfits,c,'3.fits'
-; read_jpeg,'plots_tables_images/1_3.jpeg',d
-; d = reform(d[0,*,*])
-; mwrfits,d,'1_3.fits'
-; read_jpeg,'plots_tables_images/2_3.jpeg',e
-; e = reform(e[0,*,*])
-; mwrfits,e,'2_3.fits'
+reg12 = mrdfits('1_2.fits',/silent)
+reg13 = mrdfits('1_3.fits',/silent)
+reg23 = mrdfits('2_3.fits',/silent)
+
+
 
 ; wholeimage = mrdfits(file)
 ; mwrfits,wholeimage,'dottedimage.fits',/create
 ; window,0
-; cgimage,rabbit,/k
+; cgimage,reg12,/k
 ; window,1
 ; cgimage,turtle,/k
 ; window,2
 ; cgimage,ox,/k
 
 ; 1 is a good value
-borderbit = bordercheck(rabbit)
+borderbit = bordercheck(reg12)
 print,borderbit
 
 ; profiler,/report,data=data
@@ -171,7 +157,7 @@ print,borderbit
 
 
 ; threshlist = setthresh(wholeimage)
-n_suns = countsuns(rabbit)
+n_suns = countsuns(reg12)
 print,n_suns
 ; do we care about which suns are in image? Do we find centers of whatever suns are in image, 
 ; THEN worry about which suns they are?
@@ -201,7 +187,7 @@ print,n_suns
 ; find region2
 ; find region3
 
-hailmary = fastercenter(rabbit,[1,2])
+hailmary = fastercenter(reg12,[1,2])
 
 stop
 ; gooooooooaaallll = fastcenter(wholeimage)
