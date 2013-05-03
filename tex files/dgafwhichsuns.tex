@@ -42,13 +42,14 @@
     \end{matrix}$
 \end{center}
 
-Where each row corresponds to a possibility of which regions will be in the image. this table already accounts for partial suns which we do not find centers of. 
+Where each row corresponds to a possibility of which regions will be in the image. This table already accounts for partial suns which we do not find centers of. 
 % section introdution (end)
 
 \section{Flexibilizing Our Code} % (fold)
 \label{sec:flexibilizing_our_code}
 
-As of now, the code only works with an image with regions 1, 2, and 3 as whole. The first step to make the code work under any condition is to create a workflow that efficiently makes decisions based on how many regions/what those regions are. The first step is to check if there are any partial suns, and if so, which. Once we have isolated which regions are center-friendly, we pass the region id(s) into the program. For example, for our current setup, we'd pass reg1, reg2, and reg3 as parameters in our program. There is a small problem however where in the current setup, the auxiliary regions depend on the position of the primary region. If for some reason the primary region is cut off, we're going to have some problems here.
+The first step is to check if there are any partial suns, and if so, which. Once we have isolated which regions are center-friendly, we pass the region id(s) into the remainder of the program. For example, for our current setup, we'd pass reg1, reg2, and reg3 as parameters in our program. The way we identify regions is slightly worrisome to me; as of now we look at the pixel values of a region and split the image into three sections. If the max of a region is identified to fall within a specific section, it is assigned a region number accordingly. I'm not sure how robust this decision-making process is.
+
 % section flexibilizing_our_code (end)
 
 \section{Dealing with < 3 suns} % (fold)
@@ -65,7 +66,7 @@ Nicole suggests instead of using a foreknown number of suns we find the maxima o
     \begin{subfigure}[b]{.49\textwidth}
         \centering
         \includegraphics[width=1.\textwidth]{../plots_tables_images/reg12.eps}
-        \caption{2nd deriv of sorred array}
+        \caption{2nd deriv of sorted array of 100\% and 50\% suns}
         \label{reg12peaks}
     \end{subfigure}
     \begin{subfigure}[b]{.49\textwidth}
@@ -96,7 +97,6 @@ If we look at the 50\% and 25\% brightness sun, we see in Figure \ref{scaled23pe
 
 Still working on this part. 
 
-
 % section dealing_with_3_suns (end)
 
 \section{Partial Suns} % (fold)
@@ -111,27 +111,67 @@ Another big problem with identifying suns is how to deal with partial suns. We w
     \item Return the fixed image with the partial sun removed
 \end{enumerate}
 
-Figure \ref{fixtheregion} shows the starting and ending product of the peocess to fix an image. The benefit of this approach (zero out) is the simplicity and speed. The other options were to operate on the starting image but ignore the partial area or to recrop the rest of the image.
+Figure \ref{fixtheregion} shows the starting and ending product of the process to fix an image. The benefit of this approach (zero out) is the simplicity and speed. The other options were to operate on the starting image but ignore the partial area or to recrop the rest of the image.
 
 \begin{figure}[!ht]
     \centering
-   \begin{subfigure}[b]{.49\textwidth}
+   \begin{subfigure}{.49\textwidth}
         \centering
         \includegraphics[width=1.\textwidth]{../plots_tables_images/inputimage.eps}
         \caption{Original image}
         \label{og_image}
     \end{subfigure}
-    \begin{subfigure}[b]{.49\textwidth}
+    \begin{subfigure}{.49\textwidth}
+        \centering
+        \includegraphics[width=1.\textwidth]{../plots_tables_images/beforezero.eps}
+        \caption{Border mask that looks for suns too close to the edge}
+    \end{subfigure}
+    \begin{subfigure}{.49\textwidth}
+        \centering
+        \includegraphics[width=1.\textwidth]{../plots_tables_images/whatbordersees.eps}
+        \caption{Pixels above a threshold in the border mask}
+    \end{subfigure}
+    \begin{subfigure}{.49\textwidth}
+        \centering
+        \includegraphics[width=1.\textwidth]{../plots_tables_images/afterzero.eps}
+        \caption{Cropped out the partial sun}
+    \end{subfigure}
+    \begin{subfigure}{.49\textwidth}
         \centering
         \includegraphics[width=1.\textwidth]{../plots_tables_images/fixedimage.eps}
-        \caption{Image with the partial sun cropped out}
+        \caption{Whole image with the partial sun cropped out}
         \label{fixed_image}
     \end{subfigure}
-    \caption{}
+    \caption{The process we use to remove partial suns and only identify the whole suns}
     \label{fixtheregion}
 \end{figure}
 
-The problem with this method is where it find the center of mass of the partial. If there are two partial suns, the center will not be on either of the suns and will possibly end up cropping a totally usable sun.
+This workflow has been tested and works with the following configurations:
+\begin{enumerate}
+    \item R1 \& R2
+    \item R2 \& R3
+    \item R1 \& R3
+    \item R1 \& R2 \& R3
+    \item R1 \& partial R2
+    \item R1 \& partial R3
+    \item R1 \& partial R2 \& partial R3
+\end{enumerate}
+
+
+Now that I put it like this, I still need to work on
+\begin{enumerate}
+    \item partial R1 \& R2
+    \item partial R1 \& R3
+    \item R1 \& partial R2 \& R3
+    \item partial R1 \& partial R2 \& R3
+    \item partial R1 \& R2 \& partial R3
+    \item partial R1 \& R2 \& R3
+    \item R2 \& partial R3
+\end{enumerate}
+
+Perhaps it's a good idea to get an idea of what kind of situations can arise on the craft. Will all of these occur?
+
+
 % section partial_suns (end)
 
 \end{document}

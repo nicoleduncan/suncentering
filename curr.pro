@@ -22,10 +22,7 @@ PRO curr, time=time
 ;-
 COMPILE_OPT idl2
 ON_ERROR,1
-start=SYSTIME(1,/s)
-
-; profiler,/system
-; profiler
+if keyword_set(time) then tic
 
 ; DEATH TO THE COMMON BLOCK (or not)
 COMMON vblock, wholeimage
@@ -44,27 +41,6 @@ c = CREATE_STRUCT(c,'file','dimsun1.fits')
 
 defsysv,'!param',c
 
-; print,'Parameters:'
-; for i=0,N_ELEMENTS(var)-1 do print,var[i],num[i],format='(A,A)'
-
-; wholeimage = mrdfits(file)
-
-; Centers of dottedimage.fits
-; wholeimage[200,300] = 255
-; wholeimage[202,139] = 255
-; wholeimage[87,231] = 255
-; wholeimage[401,45] = 255
-; wholeimage[23,143] = 255
-; wholeimage[34,290] = 255
-; wholeimage[420,242] = 255
-
-; Main sun x pos:       210.50238
-; Main sun y pos:       154.27054
-; 50% sun x pos:        337.80600
-; 50% sun y pos:        76.894958
-; 25% sun x pos:        78.683426
-; 25% sun y pos:        235.11536
-
 wholeimage = mrdfits('dottedimage.fits',/silent)
 turtle = mrdfits('partial3rd.fits',/silent)
 kanga = mrdfits('2partials.fits',/silent)
@@ -74,38 +50,40 @@ reg12 = mrdfits('1_2.fits',/silent)
 reg13 = mrdfits('1_3.fits',/silent)
 reg23 = mrdfits('2_3.fits',/silent)
 
-; read_jpeg,'2partials.jpeg',a
-; a=reform(a[0,*,*])
-; mwrfits,a,'2partials.fits',/create
+; im = reg12
+; newimage = imageprep(im)
+; im = newimage
+; idedsuns = idsuns(im)
+; hailmary = fastercenter(im,idedsuns)
+; print,hailmary
 
+; im = reg23
+; newimage = imageprep(im)
+; im = newimage
+; idedsuns = idsuns(im)
+; hailmary = fastercenter(im,idedsuns)
+; print,hailmary
 
-im = wholeimage
-newimage = imageprep(im)
-im = newimage
-idedsuns = idsuns(im)
-hailmary = fastercenter(im,idedsuns)
-print,hailmary
+; im = reg13
+; newimage = imageprep(im)
+; im = newimage
+; idedsuns = idsuns(im)
+; hailmary = fastercenter(im,idedsuns)
+; print,hailmary
 
-im = reg12
-newimage = imageprep(im)
-im = newimage
-idedsuns = idsuns(im)
-hailmary = fastercenter(im,idedsuns)
-print,hailmary
+; im = turtle
+; newimage = imageprep(im)
+; im = newimage
+; idedsuns = idsuns(im)
+; hailmary = fastercenter(im,idedsuns)
+; print,hailmary
 
-im = reg23
-newimage = imageprep(im)
-im = newimage
-idedsuns = idsuns(im)
-hailmary = fastercenter(im,idedsuns)
-print,hailmary
-
-im = reg13
-newimage = imageprep(im)
-im = newimage
-idedsuns = idsuns(im)
-hailmary = fastercenter(im,idedsuns)
-print,hailmary
+; im = kanga
+; newimage = imageprep(im)
+; im = newimage
+; idedsuns = idsuns(im)
+; hailmary = fastercenter(im,idedsuns)
+; print,hailmary
 
 im = turtle
 newimage = imageprep(im)
@@ -114,29 +92,14 @@ idedsuns = idsuns(im)
 hailmary = fastercenter(im,idedsuns)
 print,hailmary
 
-im = kanga
-newimage = imageprep(im)
-im = newimage
-idedsuns = idsuns(im)
-hailmary = fastercenter(im,idedsuns)
-print,hailmary
-
-im = wholeimage
-newimage = imageprep(im)
-im = newimage
-idedsuns = idsuns(im)
-hailmary = fastercenter(im,idedsuns)
-print,hailmary
-
-!p.multi=[0,1,2]
-cgimage,im[hailmary[0].xpos-60:hailmary[0].xpos+60,hailmary[0].ypos-60:hailmary[0].ypos+60],/k
-cgimage,im[hailmary[1].xpos-60:hailmary[1].xpos+60,hailmary[1].ypos-60:hailmary[1].ypos+60],/k
+!p.multi=[0,1,n_elements(idedsuns)]
+for i = 0,n_elements(idedsuns)-1 do begin
+    cgimage,im[hailmary[i].xpos-60:hailmary[i].xpos+60,hailmary[i].ypos-60:hailmary[i].ypos+60],/k
+endfor
 !p.multi=0
 stop
 
 edgefidbit = edgefidcheck(crop,thresh)
 
-finish = SYSTIME(1,/s)
-IF KEYWORD_SET(time) THEN print, 'merrygotrace took: '+strcompress(finish-start)+$
-    ' seconds'
+; if keyword_set(time) then toc
 end

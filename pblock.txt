@@ -21,8 +21,5 @@ res 100
 thresh100 123
 thresh50 62
 thresh25 20
-peak1_thresh .7
-peak2_thresh .6
-peak3_thresh .5
 n_smooth 100
 smoothorder 3
