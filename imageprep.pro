@@ -37,12 +37,16 @@ if total(labelregionoutput) eq 0 then return, input else begin
 		partial = ri[ri[i]:ri[i+1]-1]
 		xpos = MEAN(xarr[partial])
 		ypos = MEAN(yarr[partial])
-
-		paddedimage = BYTARR(s+100)
-		paddedimage[50,50]=input
-		;50 wide
-		paddedimage[xpos+0:xpos+100,ypos+0:ypos+100]=0
-		input = paddedimage[50:s[0]+49,50:s[1]+49]
+        ; center positions are definitely fucked up
+		sidepad = 80
+        paddedimage = BYTARR(s+sidepad*2)
+		paddedimage[sidepad,sidepad]=input
+		; Back to 50 wide
+        ; stop
+        ; either not padding enough or cropping too close
+		paddedimage[xpos+sidepad - !param.crop_box:xpos+sidepad + !param.crop_box,$
+            ypos+sidepad - !param.crop_box:ypos+sidepad + !param.crop_box]=0
+		input = paddedimage[sidepad:s[0]+sidepad-1,sidepad:s[1]+sidepad-1]
         ; cgimage,datmask*input,/k,output='afterzero.eps'
         ; stop
 	endfor

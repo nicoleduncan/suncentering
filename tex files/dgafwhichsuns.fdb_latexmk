@@ -1,5 +1,5 @@
 # Fdb version 3
-["pdflatex"] 1367619475 "/Users/jerensuzuki/Documents/suncentering/tex files/dgafwhichsuns.tex" "dgafwhichsuns.pdf" "dgafwhichsuns" 1367619476
+["pdflatex"] 1367623190 "/Users/jerensuzuki/Documents/suncentering/tex files/dgafwhichsuns.tex" "dgafwhichsuns.pdf" "dgafwhichsuns" 1367623190
   "../plots_tables_images/afterzero-eps-converted-to.pdf" 1367618385 11594 caaae0a12a949012c789e7cab9b58b13 ""
   "../plots_tables_images/afterzero.eps" 1367618221 67021 b29da5caa82b2bfb22308f0e61606924 ""
   "../plots_tables_images/beforezero-eps-converted-to.pdf" 1367618385 12959 fe8aab27c2129345d077799a855b37fb ""
@@ -18,7 +18,7 @@
   "../plots_tables_images/scaledreg23.eps" 1367527592 709443 32c11f10b8baeed15034c73fba548064 ""
   "../plots_tables_images/whatbordersees-eps-converted-to.pdf" 1367618408 5241 0f59b29b9d24d1bf7ecfc6ce19a9c8c7 ""
   "../plots_tables_images/whatbordersees.eps" 1367618221 41421 6c2ccc32944b7bc9baf6e1bf231a9f63 ""
-  "/Users/jerensuzuki/Documents/suncentering/tex files/dgafwhichsuns.tex" 1367619474 8148 5ad807048c300f9bc5775a45cc872c73 ""
+  "/Users/jerensuzuki/Documents/suncentering/tex files/dgafwhichsuns.tex" 1367623189 8061 0cfc311001f5de7cd801061133342300 ""
   "/usr/local/texlive/2012/../texmf-local/tex/latex/local/deluxetable.sty" 1366832326 11321 35b2c46627b671e19bd036ff4dbf9e85 ""
   "/usr/local/texlive/2012/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc" 1136849721 2971 def0b6c1f0b107b3b936def894055589 ""
   "/usr/local/texlive/2012/texmf-dist/fonts/map/fontname/texfonts.map" 1272929888 3287 e6b82fe08f5336d4d5ebc73fb1152e87 ""
@@ -112,13 +112,13 @@
   "/usr/local/texlive/2012/texmf-var/web2c/pdftex/pdflatex.fmt" 1365533092 3695389 a25b8c0e572ba939d367d1422fdf5a21 ""
   "/usr/local/texlive/2012/texmf.cnf" 1341108668 572 7ea7194897937febeb63145e1c3a1f03 ""
   "/usr/local/texlive/2012/texmf/web2c/texmf.cnf" 1336865692 31299 729e216d9b945005c0d4b079c0500bc9 ""
-  "dgafwhichsuns.aux" 1367619475 2969 306fb3801086a9dd0695c764498635d1 ""
-  "dgafwhichsuns.out" 1367619475 206 a2693ccde99473df424fdaa44045e707 ""
-  "dgafwhichsuns.tex" 1367619474 8148 5ad807048c300f9bc5775a45cc872c73 ""
-  "dgafwhichsuns.toc" 1367619475 286 2dc398ec3a6e4785e174a98d210f4fb2 ""
+  "dgafwhichsuns.aux" 1367623190 2969 306fb3801086a9dd0695c764498635d1 ""
+  "dgafwhichsuns.out" 1367623190 206 a2693ccde99473df424fdaa44045e707 ""
+  "dgafwhichsuns.tex" 1367623189 8061 0cfc311001f5de7cd801061133342300 ""
+  "dgafwhichsuns.toc" 1367623190 286 2dc398ec3a6e4785e174a98d210f4fb2 ""
   (generated)
   "dgafwhichsuns.out"
   "dgafwhichsuns.log"
   "dgafwhichsuns.pdf"
-  "dgafwhichsuns.toc"
   "dgafwhichsuns.aux"
+  "dgafwhichsuns.toc"

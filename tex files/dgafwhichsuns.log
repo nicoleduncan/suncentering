@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.4-1.40.13 (TeX Live 2012) (format=pdflatex 2013.4.9)  3 MAY 2013 15:17
+This is pdfTeX, Version 3.1415926-2.4-1.40.13 (TeX Live 2012) (format=pdflatex 2013.4.9)  3 MAY 2013 16:19
 entering extended mode
  \write18 enabled.
  %&-line parsing enabled.
@@ -718,15 +718,15 @@ tables_images/inputimage-eps-converted-to.pdf> <../plots_tables_images/beforeze
 ro-eps-converted-to.pdf> <../plots_tables_images/whatbordersees-eps-converted-t
 o.pdf> <../plots_tables_images/afterzero-eps-converted-to.pdf> <../plots_tables
 _images/fixedimage-eps-converted-to.pdf>]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 177.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 174.
  [4]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 177.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 174.
  (./dgafwhichsuns.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 177.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 177.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 174.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 174.
 Package rerunfilecheck Info: File `dgafwhichsuns.out' has not changed.
 (rerunfilecheck)             Checksum: A2693CCDE99473DF424FDAA44045E707;206.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 177.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 174.
  ) 
 Here is how much of TeX's memory you used:
  9419 strings out of 493481
@@ -747,7 +747,7 @@ al/texlive/2012/texmf-dist/fonts/type1/public/cm-super/sfsx1000.pfb></usr/local
 exlive/2012/texmf-dist/fonts/type1/public/cm-super/sfsx2074.pfb></usr/local/tex
 live/2012/texmf-dist/fonts/type1/public/cm-super/sfti1000.pfb></usr/local/texli
 ve/2012/texmf-dist/fonts/type1/public/cm-super/sftt1000.pfb>
-Output written on dgafwhichsuns.pdf (5 pages, 644132 bytes).
+Output written on dgafwhichsuns.pdf (5 pages, 644608 bytes).
 PDF statistics:
  172 PDF objects out of 1000 (max. 8388607)
  135 compressed objects within 2 object streams

@@ -17,7 +17,6 @@ for i = 0,nsuns-1 do begin
 	somesun = ri[ri[ind[i]]:ri[ind[i]+1]-1]
 	skimmed = (input[somesun])[bsort(input[somesun])]
 	regmax[i] = max(skimmed[0:(1-!param.elim_perc/100)*N_ELEMENTS(skimmed)])
-
 	; Shoudld be a way to do this quickly with logical operators but that requires thinking
 	; This way is iffy...... iffy...
 	if regmax[i] gt .6*255b then whichregion[i]=1
