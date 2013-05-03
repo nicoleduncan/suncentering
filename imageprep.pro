@@ -26,9 +26,9 @@ fixLabelRegionImage = BYTARR(s + 2)
 fixLabelRegionImage[1,1] = maskcheck
 labelRegionOutput = LABEL_REGION(fixLabelRegionImage)
 labelRegionOutput = labelRegionOutput[1:s[0], 1:s[1]]
-loadct,15
-cgimage,datmask*input,/k,output='beforezero.eps'
-cgimage,(datmask*input gt min_val)*datmask*input,/k,output='whatbordersees.eps'
+; loadct,15
+; cgimage,datmask*input,/k,output='beforezero.eps'
+; cgimage,(datmask*input gt min_val)*datmask*input,/k,output='whatbordersees.eps'
 if total(labelregionoutput) eq 0 then return, input else begin
 	h = HISTOGRAM(labelRegionOutput, MIN=1, REVERSE_INDICES=ri, BINSIZE=1)
 	n_partial = n_elements(where(h ne 1))
@@ -43,8 +43,8 @@ if total(labelregionoutput) eq 0 then return, input else begin
 		;50 wide
 		paddedimage[xpos+0:xpos+100,ypos+0:ypos+100]=0
 		input = paddedimage[50:s[0]+49,50:s[1]+49]
-        cgimage,datmask*input,/k,output='afterzero.eps'
-        stop
+        ; cgimage,datmask*input,/k,output='afterzero.eps'
+        ; stop
 	endfor
 	return, input
 endelse

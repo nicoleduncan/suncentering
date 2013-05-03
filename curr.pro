@@ -49,54 +49,48 @@ kanga = mrdfits('2partials.fits',/silent)
 reg12 = mrdfits('1_2.fits',/silent)
 reg13 = mrdfits('1_3.fits',/silent)
 reg23 = mrdfits('2_3.fits',/silent)
+w2_p3 = mrdfits('w2_p3.fits',/sil)
+p1_w2_w3 = mrdfits('p1_w2_w3.fits',/sil)
+p1_w2_p3 = mrdfits('p1_w2_p3.fits',/sil)
+p1_p2_w3 = mrdfits('p1_p2_w3.fits',/sil)
+w1_p2_w3 = mrdfits('w1_p2_w3.fits',/sil)
+p1_w3 = mrdfits('p1_w3.fits',/sil)
+p1_w2 = mrdfits('p1_w2.fits',/sil)
 
-; im = reg12
-; newimage = imageprep(im)
-; im = newimage
-; idedsuns = idsuns(im)
-; hailmary = fastercenter(im,idedsuns)
-; print,hailmary
-
-; im = reg23
-; newimage = imageprep(im)
-; im = newimage
-; idedsuns = idsuns(im)
-; hailmary = fastercenter(im,idedsuns)
-; print,hailmary
-
-; im = reg13
-; newimage = imageprep(im)
-; im = newimage
-; idedsuns = idsuns(im)
-; hailmary = fastercenter(im,idedsuns)
-; print,hailmary
-
-; im = turtle
-; newimage = imageprep(im)
-; im = newimage
-; idedsuns = idsuns(im)
-; hailmary = fastercenter(im,idedsuns)
-; print,hailmary
-
-; im = kanga
-; newimage = imageprep(im)
-; im = newimage
-; idedsuns = idsuns(im)
-; hailmary = fastercenter(im,idedsuns)
-; print,hailmary
-
-im = turtle
-newimage = imageprep(im)
-im = newimage
-idedsuns = idsuns(im)
-hailmary = fastercenter(im,idedsuns)
-print,hailmary
-
-!p.multi=[0,1,n_elements(idedsuns)]
-for i = 0,n_elements(idedsuns)-1 do begin
-    cgimage,im[hailmary[i].xpos-60:hailmary[i].xpos+60,hailmary[i].ypos-60:hailmary[i].ypos+60],/k
+for j=0,11 do begin
+    case j of
+        0 : im=turtle
+        1 : im=reg12
+        2 : im=reg13
+        3 : im=reg23
+        4 : im=kanga
+        5 : im=wholeimage
+        6 : im=w2_p3
+        7 : im=p1_w2_w3     ;good up to here
+        8 : im=p1_w2_p3     ;fais on ths one
+        9 : im=p1_p2_w3
+        10 : im=p1_w3
+        11 : im=p1_w2
+    endcase
+    
+    newimage = imageprep(im)
+    im = newimage
+    idedsuns = idsuns(im)
+    hailmary = fastercenter(im,idedsuns)
+    print,idedsuns
+    ; !p.multi=[0,1,n_elements(idedsuns)]
+    ; for i = 0,n_elements(idedsuns)-1 do begin
+    ;     cgimage,im[hailmary[i].xpos-60:hailmary[i].xpos+60,hailmary[i].ypos-60:hailmary[i].ypos+60],/k
+    ; endfor
+    ; !p.multi=0
+    print,j
+    wait,1
 endfor
-!p.multi=0
+
+
+
+
+
 stop
 
 edgefidbit = edgefidcheck(crop,thresh)
