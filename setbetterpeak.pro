@@ -23,7 +23,6 @@ ysort = ysort[0:(1- !param.elim_perc/1000)*(N_ELEMENTS(sorted)-1)]
 smoothed = TS_SMOOTH(sorted, !param.n_smooth, order = !param.smoothorder)
 arr = DERIV(TS_SMOOTH(DERIV(smoothed), !param.n_smooth, order = !param.smoothorder))
 
-
 for i = 0,n_suns-1 do begin
     if N_ELEMENTS(MAX(arr)) ne 1 then begin 
     maxi = WHERE(arr eq MAX(arr),n_maxi)

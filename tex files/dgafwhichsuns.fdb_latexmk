@@ -1,5 +1,9 @@
 # Fdb version 3
-["pdflatex"] 1367528368 "/Users/jerensuzuki/Documents/suncentering/tex files/dgafwhichsuns.tex" "dgafwhichsuns.pdf" "dgafwhichsuns" 1367528368
+["pdflatex"] 1367600491 "/Users/jerensuzuki/Documents/suncentering/tex files/dgafwhichsuns.tex" "dgafwhichsuns.pdf" "dgafwhichsuns" 1367600491
+  "../plots_tables_images/fixedimage-eps-converted-to.pdf" 1367600251 51558 607c3e7dd558e2ce617440d586e82a24 ""
+  "../plots_tables_images/fixedimage.eps" 1367600182 181971 64c6f23288914c5421118d1b00c36c39 ""
+  "../plots_tables_images/inputimage-eps-converted-to.pdf" 1367600251 52979 44657a4fc7979c469ab517c8d3926881 ""
+  "../plots_tables_images/inputimage.eps" 1367600163 185746 74c506c91ce91a50b417817f910c0ba2 ""
   "../plots_tables_images/reg12-eps-converted-to.pdf" 1367524126 16553 6359ad44b3e88f51484d4e11d1ef6f78 ""
   "../plots_tables_images/reg12.eps" 1367524077 92879 f68cdf0ebb09b779f21c8072694252a4 ""
   "../plots_tables_images/reg23-eps-converted-to.pdf" 1367527670 11207 1b937c524ab286e2a001b1726584c73b ""
@@ -8,7 +12,7 @@
   "../plots_tables_images/scaledreg12.eps" 1367526217 708807 e061c424865f21829e11cdf4c0b18af5 ""
   "../plots_tables_images/scaledreg23-eps-converted-to.pdf" 1367527670 170102 5c76280db05921bc244c7c522df3ba9b ""
   "../plots_tables_images/scaledreg23.eps" 1367527592 709443 32c11f10b8baeed15034c73fba548064 ""
-  "/Users/jerensuzuki/Documents/suncentering/tex files/dgafwhichsuns.tex" 1367528366 5215 18d0505a5c57224cad72166fdf9e28ae ""
+  "/Users/jerensuzuki/Documents/suncentering/tex files/dgafwhichsuns.tex" 1367600491 6601 3a6313a404b50a237dd482796ba06e65 ""
   "/usr/local/texlive/2012/../texmf-local/tex/latex/local/deluxetable.sty" 1366832326 11321 35b2c46627b671e19bd036ff4dbf9e85 ""
   "/usr/local/texlive/2012/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc" 1136849721 2971 def0b6c1f0b107b3b936def894055589 ""
   "/usr/local/texlive/2012/texmf-dist/fonts/map/fontname/texfonts.map" 1272929888 3287 e6b82fe08f5336d4d5ebc73fb1152e87 ""
@@ -102,10 +106,10 @@
   "/usr/local/texlive/2012/texmf-var/web2c/pdftex/pdflatex.fmt" 1365533092 3695389 a25b8c0e572ba939d367d1422fdf5a21 ""
   "/usr/local/texlive/2012/texmf.cnf" 1341108668 572 7ea7194897937febeb63145e1c3a1f03 ""
   "/usr/local/texlive/2012/texmf/web2c/texmf.cnf" 1336865692 31299 729e216d9b945005c0d4b079c0500bc9 ""
-  "dgafwhichsuns.aux" 1367528368 2104 a0265764ff0678346478b0a7f996ad96 ""
-  "dgafwhichsuns.out" 1367528368 159 90197463aa34a60791fff898680729bb ""
-  "dgafwhichsuns.tex" 1367528366 5215 18d0505a5c57224cad72166fdf9e28ae ""
-  "dgafwhichsuns.toc" 1367528368 219 a607193ed32dbc1cdb01621f4e9757e2 ""
+  "dgafwhichsuns.aux" 1367600491 2763 a321c832bfe77b2b2659890bbb3290b3 ""
+  "dgafwhichsuns.out" 1367600491 206 a2693ccde99473df424fdaa44045e707 ""
+  "dgafwhichsuns.tex" 1367600491 6601 3a6313a404b50a237dd482796ba06e65 ""
+  "dgafwhichsuns.toc" 1367600491 286 2dc398ec3a6e4785e174a98d210f4fb2 ""
   (generated)
   "dgafwhichsuns.out"
   "dgafwhichsuns.log"

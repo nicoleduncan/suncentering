@@ -94,11 +94,45 @@ Nicole suggests instead of using a foreknown number of suns we find the maxima o
 
 If we look at the 50\% and 25\% brightness sun, we see in Figure \ref{scaled23peaks} that the same threshold which worked quite well in the first set of plots doesn't quite work well for others. The main problem is that we can find the maxima over and over, but we need to know when to stop. We can use \hl{\texttt{countsuns()}} to return the number of suns we have. Now the problem is that we don't know which peaks are for which suns. We cannot assume the highest peak is always the 100\% sun because there may be a case where only the 50\% and 25\% suns are available for centering. \\
 
-If we ignore these problems and focus only on thresholding the image, the program can correctly identify 2 suns and label them with the appropriate region. 
-
+Still working on this part. 
 
 
 % section dealing_with_3_suns (end)
+
+\section{Partial Suns} % (fold)
+\label{sec:partial_suns}
+Another big problem with identifying suns is how to deal with partial suns. We want to be able to take an image with 2 whole suns and 1 partial sun, eliminate the partial sun, and take the centers of the remaining regions. We accomplish this by:
+
+\begin{enumerate}
+    \item Reading in our image
+    \item Scanning the border a certain length in to check for suns
+    \item If any pixels are found, identify the partial sun as a mask and find the center of it
+    \item Using the center position, zero-out a box of a certain length
+    \item Return the fixed image with the partial sun removed
+\end{enumerate}
+
+Figure \ref{fixtheregion} shows the starting and ending product of the peocess to fix an image. The benefit of this approach (zero out) is the simplicity and speed. The other options were to operate on the starting image but ignore the partial area or to recrop the rest of the image.
+
+\begin{figure}[!ht]
+    \centering
+   \begin{subfigure}[b]{.49\textwidth}
+        \centering
+        \includegraphics[width=1.\textwidth]{../plots_tables_images/inputimage.eps}
+        \caption{Original image}
+        \label{og_image}
+    \end{subfigure}
+    \begin{subfigure}[b]{.49\textwidth}
+        \centering
+        \includegraphics[width=1.\textwidth]{../plots_tables_images/fixedimage.eps}
+        \caption{Image with the partial sun cropped out}
+        \label{fixed_image}
+    \end{subfigure}
+    \caption{}
+    \label{fixtheregion}
+\end{figure}
+
+The problem with this method is where it find the center of mass of the partial. If there are two partial suns, the center will not be on either of the suns and will possibly end up cropping a totally usable sun.
+% section partial_suns (end)
 
 \end{document}
 

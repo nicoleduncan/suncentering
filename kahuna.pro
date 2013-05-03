@@ -85,15 +85,17 @@ defsysv,'!param',c
 ; 25% sun y pos:        235.11536
 
 wholeimage = mrdfits('dottedimage.fits',/silent)
-; turtle = mrdfits('partial3rd.fits',/silent)
-; ox = mrdfits('2partials.fits',/silent)
+turtle = mrdfits('partial3rd.fits',/silent)
+kanga = mrdfits('2partials.fits',/silent)
 ; inaline = mrdfits('inaline.fits',/silent)
 
 reg12 = mrdfits('1_2.fits',/silent)
 reg13 = mrdfits('1_3.fits',/silent)
 reg23 = mrdfits('2_3.fits',/silent)
 
-
+; read_jpeg,'2partials.jpeg',a
+; a=reform(a[0,*,*])
+; mwrfits,a,'2partials.fits',/create
 
 ; wholeimage = mrdfits(file)
 ; mwrfits,wholeimage,'dottedimage.fits',/create
@@ -151,10 +153,53 @@ reg23 = mrdfits('2_3.fits',/silent)
 ;     struct.center1.ypos-!param.safecrop:struct.center1.ypos+!param.safecrop]
 ; thresh = 0.5*MIN((SHIFT_DIFF(EMBOSS(crop),dir=3)))
 
-im = reg23
+; im = wholeimage
+; newimage = imageprep(im)
+; im = newimage
+; idedsuns = idsuns(im)
+; hailmary = fastercenter(im,idedsuns)
+; print,hailmary
+
+; im = reg12
+; newimage = imageprep(im)
+; im = newimage
+; idedsuns = idsuns(im)
+; hailmary = fastercenter(im,idedsuns)
+; print,hailmary
+
+; im = reg23
+; newimage = imageprep(im)
+; im = newimage
+; idedsuns = idsuns(im)
+; hailmary = fastercenter(im,idedsuns)
+; print,hailmary
+
+; im = reg13
+; newimage = imageprep(im)
+; im = newimage
+; idedsuns = idsuns(im)
+; hailmary = fastercenter(im,idedsuns)
+; print,hailmary
+
+; im = turtle
+; newimage = imageprep(im)
+; im = newimage
+; idedsuns = idsuns(im)
+; hailmary = fastercenter(im,idedsuns)
+; print,hailmary
+
+; im = kanga
+; newimage = imageprep(im)
+; im = newimage
+; idedsuns = idsuns(im)
+; hailmary = fastercenter(im,idedsuns)
+; print,hailmary
+
+im = wholeimage
 ; threshlist = setthresh(wholeimage)
 ; 1 is a good value
-borderbit = bordercheck(im)
+newimage = imageprep(im)
+im = newimage
 idedsuns = idsuns(im)
 
 ; do we care about which suns are in image? Do we find centers of whatever suns are in image, 

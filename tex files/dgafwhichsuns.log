@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.4-1.40.13 (TeX Live 2012) (format=pdflatex 2013.4.9)  2 MAY 2013 13:59
+This is pdfTeX, Version 3.1415926-2.4-1.40.13 (TeX Live 2012) (format=pdflatex 2013.4.9)  3 MAY 2013 10:01
 entering extended mode
  \write18 enabled.
  %&-line parsing enabled.
@@ -525,7 +525,7 @@ Package epstopdf Info: Source file: <../plots_tables_images/reg12.eps>
 (epstopdf)             \includegraphics on input line 67.
 Package epstopdf Info: Output file is already uptodate.
 
-<../plots_tables_images/reg12-eps-converted-to.pdf, id=32, 552.0625pt x 338.263
+<../plots_tables_images/reg12-eps-converted-to.pdf, id=37, 552.0625pt x 338.263
 75pt>
 File: ../plots_tables_images/reg12-eps-converted-to.pdf Graphic file (type pdf)
 
@@ -545,7 +545,7 @@ edreg12-eps-converted-to.pdf ../plots_tables_images/scaledreg12.eps>
 (epstopdf)             \includegraphics on input line 73.
 Package epstopdf Info: Output file is already uptodate.
 
-<../plots_tables_images/scaledreg12-eps-converted-to.pdf, id=33, 552.0625pt x 3
+<../plots_tables_images/scaledreg12-eps-converted-to.pdf, id=38, 552.0625pt x 3
 38.26375pt>
 File: ../plots_tables_images/scaledreg12-eps-converted-to.pdf Graphic file (typ
 e pdf)
@@ -565,7 +565,7 @@ Package epstopdf Info: Source file: <../plots_tables_images/reg23.eps>
 (epstopdf)             \includegraphics on input line 80.
 Package epstopdf Info: Output file is already uptodate.
 
-<../plots_tables_images/reg23-eps-converted-to.pdf, id=34, 552.0625pt x 338.263
+<../plots_tables_images/reg23-eps-converted-to.pdf, id=39, 552.0625pt x 338.263
 75pt>
 File: ../plots_tables_images/reg23-eps-converted-to.pdf Graphic file (type pdf)
 
@@ -585,7 +585,7 @@ edreg23-eps-converted-to.pdf ../plots_tables_images/scaledreg23.eps>
 (epstopdf)             \includegraphics on input line 86.
 Package epstopdf Info: Output file is already uptodate.
 
-<../plots_tables_images/scaledreg23-eps-converted-to.pdf, id=35, 552.0625pt x 3
+<../plots_tables_images/scaledreg23-eps-converted-to.pdf, id=40, 552.0625pt x 3
 38.26375pt>
 File: ../plots_tables_images/scaledreg23-eps-converted-to.pdf Graphic file (typ
 e pdf)
@@ -601,25 +601,73 @@ LaTeX Font Info:    Try loading font information for T1+cmtt on input line 95.
 (/usr/local/texlive/2012/texmf-dist/tex/latex/base/t1cmtt.fd
 File: t1cmtt.fd 1999/05/25 v2.5h Standard LaTeX font definitions
 )
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 99.
- [1
+Underfull \hbox (badness 10000) in paragraph at lines 95--96
 
-] [2 <../plots_tables_images/reg12-eps-converted-to.pdf> <../plots_tables_image
-s/scaledreg12-eps-converted-to.pdf> <../plots_tables_images/reg23-eps-converted
--to.pdf> <../plots_tables_images/scaledreg23-eps-converted-to.pdf>]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 99.
+ []
+
+[1
+
+]
+Package epstopdf Info: Source file: <../plots_tables_images/inputimage.eps>
+(epstopdf)                    date: 2013-05-03 09:56:03
+(epstopdf)                    size: 185746 bytes
+(epstopdf)             Output file: <../plots_tables_images/inputimage-eps-conv
+erted-to.pdf>
+(epstopdf)                    date: 2013-05-03 09:57:31
+(epstopdf)                    size: 52979 bytes
+(epstopdf)             Command: <epstopdf --outfile=../plots_tables_images/inpu
+timage-eps-converted-to.pdf ../plots_tables_images/inputimage.eps>
+(epstopdf)             \includegraphics on input line 120.
+Package epstopdf Info: Output file is already uptodate.
+
+<../plots_tables_images/inputimage-eps-converted-to.pdf, id=52, 552.0625pt x 33
+8.26375pt>
+File: ../plots_tables_images/inputimage-eps-converted-to.pdf Graphic file (type
+ pdf)
+ <use ../plots_tables_images/inputimage-eps-converted-to.pdf>
+Package pdftex.def Info: ../plots_tables_images/inputimage-eps-converted-to.pdf
+ used on input line 120.
+(pdftex.def)             Requested size: 221.95677pt x 135.9999pt.
+Package epstopdf Info: Source file: <../plots_tables_images/fixedimage.eps>
+(epstopdf)                    date: 2013-05-03 09:56:22
+(epstopdf)                    size: 181971 bytes
+(epstopdf)             Output file: <../plots_tables_images/fixedimage-eps-conv
+erted-to.pdf>
+(epstopdf)                    date: 2013-05-03 09:57:31
+(epstopdf)                    size: 51558 bytes
+(epstopdf)             Command: <epstopdf --outfile=../plots_tables_images/fixe
+dimage-eps-converted-to.pdf ../plots_tables_images/fixedimage.eps>
+(epstopdf)             \includegraphics on input line 126.
+Package epstopdf Info: Output file is already uptodate.
+
+<../plots_tables_images/fixedimage-eps-converted-to.pdf, id=53, 552.0625pt x 33
+8.26375pt>
+File: ../plots_tables_images/fixedimage-eps-converted-to.pdf Graphic file (type
+ pdf)
+ <use ../plots_tables_images/fixedimage-eps-converted-to.pdf>
+Package pdftex.def Info: ../plots_tables_images/fixedimage-eps-converted-to.pdf
+ used on input line 126.
+(pdftex.def)             Requested size: 221.95677pt x 135.9999pt.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 136.
+
+[2 <../plots_tables_images/reg12-eps-converted-to.pdf> <../plots_tables_images/
+scaledreg12-eps-converted-to.pdf> <../plots_tables_images/reg23-eps-converted-t
+o.pdf> <../plots_tables_images/scaledreg23-eps-converted-to.pdf>] [3 <../plots_
+tables_images/inputimage-eps-converted-to.pdf> <../plots_tables_images/fixedima
+ge-eps-converted-to.pdf>]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 136.
  (./dgafwhichsuns.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 99.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 99.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 136.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 136.
 Package rerunfilecheck Info: File `dgafwhichsuns.out' has not changed.
-(rerunfilecheck)             Checksum: 90197463AA34A60791FFF898680729BB;159.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 99.
+(rerunfilecheck)             Checksum: A2693CCDE99473DF424FDAA44045E707;206.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 136.
  ) 
 Here is how much of TeX's memory you used:
- 9364 strings out of 493481
- 144587 string characters out of 3140966
- 253015 words of memory out of 3000000
- 12539 multiletter control sequences out of 15000+200000
+ 9389 strings out of 493481
+ 145243 string characters out of 3140966
+ 253311 words of memory out of 3000000
+ 12554 multiletter control sequences out of 15000+200000
  13245 words of font info for 37 fonts, out of 3000000 for 9000
  957 hyphenation exceptions out of 8191
  40i,8n,46p,809b,540s stack positions out of 5000i,500n,10000p,200000b,50000s
@@ -634,10 +682,10 @@ al/texlive/2012/texmf-dist/fonts/type1/public/cm-super/sfsx1000.pfb></usr/local
 exlive/2012/texmf-dist/fonts/type1/public/cm-super/sfsx2074.pfb></usr/local/tex
 live/2012/texmf-dist/fonts/type1/public/cm-super/sfti1000.pfb></usr/local/texli
 ve/2012/texmf-dist/fonts/type1/public/cm-super/sftt1000.pfb>
-Output written on dgafwhichsuns.pdf (3 pages, 514427 bytes).
+Output written on dgafwhichsuns.pdf (4 pages, 617981 bytes).
 PDF statistics:
- 113 PDF objects out of 1000 (max. 8388607)
- 89 compressed objects within 1 object stream
- 9 named destinations out of 1000 (max. 500000)
- 45 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 139 PDF objects out of 1000 (max. 8388607)
+ 109 compressed objects within 2 object streams
+ 17 named destinations out of 1000 (max. 500000)
+ 63 words of extra memory for PDF output out of 10000 (max. 10000000)
 
