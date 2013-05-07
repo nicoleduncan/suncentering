@@ -118,14 +118,14 @@ reg23 = mrdfits('2_3.fits',/silent)
 ; *******              *******
 ; ****************************
 
-; getstruct, struct, time=time
-; print,'Main sun x pos:',struct.center1.xpos
-; print,'Main sun y pos:',struct.center1.ypos
-; print,'50% sun x pos: ',struct.center2.xpos
-; print,'50% sun y pos: ',struct.center2.ypos
-; print,'25% sun x pos: ',struct.center3.xpos
-; print,'25% sun y pos: ',struct.center3.ypos
-
+getstruct, struct, time=time
+print,'Main sun x pos:',struct.center1.xpos
+print,'Main sun y pos:',struct.center1.ypos
+print,'50% sun x pos: ',struct.center2.xpos
+print,'50% sun y pos: ',struct.center2.ypos
+print,'25% sun x pos: ',struct.center3.xpos
+print,'25% sun y pos: ',struct.center3.ypos
+stop
 ; ****************************
 ; *******              *******
 ; *******              *******

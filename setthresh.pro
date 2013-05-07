@@ -59,11 +59,11 @@ FUNCTION setthresh, input
     ; window,i
     ; cgimage,scaled_input*(scaled_input gt thresh100),/k
 
-    print,'Scale factor ',i
-    print,'Reg 1 thresh: ',thresh100
-    print,'Reg 2 thresh: ',thresh50
-    print,'Reg 3 thresh: ',thresh25
-    print,''
+    ; print,'Scale factor ',i
+    ; print,'Reg 1 thresh: ',thresh100
+    ; print,'Reg 2 thresh: ',thresh50
+    ; print,'Reg 3 thresh: ',thresh25
+    ; print,''
     ; stop
 ; endfor
 ; stop

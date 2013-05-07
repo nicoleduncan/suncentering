@@ -21,7 +21,17 @@ ysort = yarr[BSORT(input)]
 ysort = ysort[0:(1- !param.elim_perc/1000)*(N_ELEMENTS(sorted)-1)]
 
 smoothed = TS_SMOOTH(sorted, !param.n_smooth, order = !param.smoothorder)
+; smoothed = SMOOTH(sorted, !param.n_smooth)
+; smoothed = TS_SMOOTH(sorted, 200, order = 3)
 arr = DERIV(TS_SMOOTH(DERIV(smoothed), !param.n_smooth, order = !param.smoothorder))
+; stop
+; arr = DERIV(SMOOTH(DERIV(smoothed), !param.n_smooth))
+; stop
+; plot,arr,psym=3,xr=[1.3e5,n_elements(arr)-1]  
+
+
+; arr is returning the wrong peaks.... how to fix?
+; Change smoothing parameter?
 
 for i = 0,n_suns-1 do begin
     if N_ELEMENTS(MAX(arr)) ne 1 then begin 
@@ -38,5 +48,5 @@ for i = 0,n_suns-1 do begin
     arr[peakarr[i]-200:peakarr[i]+200]=0
 endfor
 
-return,{peakarr:peakarr,xsort:xsort,ysort:ysort}
+return,{peakarr:peakarr,xsort:xsort,ysort:ysort,sorted:sorted}
 end

@@ -13,7 +13,7 @@ PRO getstruct, struct, time=time
 ;           Outputs how much time the program takes
 ;-
 COMPILE_OPT idl2
-ON_ERROR,2
+ON_ERROR,1
 
 COMMON vblock, wholeimage
 
