@@ -5,10 +5,10 @@ FUNCTION checkimage, input
 s = SIZE(input,/dim)
 n_col = s[0]
 n_row = s[1]
-min_val = 30
-maskcheck = input gt min_val
 a=setbetterthresh(input)
-; min_val=?
+min_val = min(a.thresh)*2
+; if I set thresh to min, n_suns goes to 5 
+maskcheck = input gt min_val
 
 xarr = fan(FINDGEN(n_col),n_row)
 yarr = TRANSPOSE(fan(FINDGEN(n_row),n_col))
@@ -21,7 +21,6 @@ labelRegionOutput = labelRegionOutput[1:s[0], 1:s[1]]
 
 h = HISTOGRAM(labelRegionOutput, MIN=1, REVERSE_INDICES=ri, BINSIZE=1)
 n_suns = n_elements(where(h ne 1))
-
 
 raisboss = REPLICATE({reg:0.,xpos:0.,ypos:0.,passbit:0},n_suns)
 

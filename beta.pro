@@ -44,11 +44,6 @@ c = CREATE_STRUCT(c,'file','dimsun1.fits')
 
 defsysv,'!param',c
 
-; print,'Parameters:'
-; for i=0,N_ELEMENTS(var)-1 do print,var[i],num[i],format='(A,A)'
-
-; wholeimage = mrdfits(file)
-
 ; Centers of dottedimage.fits
 ; wholeimage[200,300] = 255
 ; wholeimage[202,139] = 255
@@ -65,8 +60,36 @@ defsysv,'!param',c
 ; 25% sun x pos:        78.683426
 ; 25% sun y pos:        235.11536
 
-wholeimage = mrdfits('dottedimage.fits',/silent)
 
+
+; How do we run the least number of setbetterpeak? We really only need to run it once
+; a=setbetterthresh(wholeimage)
+; turn setbetterthresh into a sysvar setting function
+
+wholeimage = mrdfits('dottedimage.fits',/silent)
+w1_w2_p3 = mrdfits('partial3rd.fits',/silent)
+; takes 1.3s
+startimage=w1_w2_p3
+defsysvarthresh,startimage
+
+grannysmith = everysun(startimage)
+
+; why does picksun decide to use the modified startimage?
+fuji = picksun(startimage, grannysmith)
+
+; Now we have a struc that has centers, thresh, and if it's a partial
+
+; pass this into limbfit
+; limbfit passes into makelimbstrips
+; makelimbstrips passes into makestrips
+
+limbfittedcentroids=centroidwholesuns(fuji)
+
+
+; testestest = checkimage(startimage)
+
+
+stop
 ; ****************************
 ; *******              *******
 ; *******              *******
@@ -75,7 +98,7 @@ wholeimage = mrdfits('dottedimage.fits',/silent)
 profiler,/system
 profiler
 ; tic
-getstruct, struct, time=time
+
 ; toc
 profiler,/report
 profiler,/reset,/clear

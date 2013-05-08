@@ -1,4 +1,4 @@
-PRO bettermakestrips, thresh, xstrips, ystrips, region=region, time=time
+PRO makestrips, thresh, xstrips, ystrips, region=region, time=time
 ;+
 ;   :Description:
 ;       Only saves 5 strips centered around the solar diameter to reduce the amount of limb-
@@ -24,7 +24,7 @@ IF region eq !null then region = 1
 
 COMMON vblock, wholeimage
 
-struct = whichcropmethod(region)
+struct = betterwhichcropmethod(region)
 ducks = quickmask(struct.image)
 thresh = struct.thresh
 
