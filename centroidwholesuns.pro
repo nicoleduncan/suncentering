@@ -15,37 +15,23 @@ FUNCTION centroidwholesuns, inputstruct
 COMPILE_OPT idl2
 ON_ERROR,1
 
-COMMON vblock, wholeimage
+COMMON vblock, w1_w2_p3
 
-stop
-center1 = {center1,xpos:0d,ypos:0d,thresh:0d}
-center2 = {center2,xpos:0d,ypos:0d,thresh:0d}
-center3 = {center3,xpos:0d,ypos:0d,thresh:0d}
+; here we make the eexecutive decision to trim out input structure
+; do we keep the parts where it's partial?
+wholesunstruct = inputstruct[where(inputstruct.partial ne 1)]
+
+centers = limbfit(wholesunstruct)
 
 
-limbfit, thresh, xpos, ypos, plot=plot, region=1, time=time
-center1.xpos = xpos
-center1.ypos = ypos
-center1.thresh = thresh
+; only usable with 3, this is going to be a fair amount of work so I'll leave it here
+; theta = !radeg*atan((center3.ypos - center2.ypos)/(center3.xpos - center2.xpos))
+; hypot = sqrt((center3.ypos - center2.ypos)^2 + (center3.xpos - center2.xpos)^2)
+; offset = ((center1.xpos - center2.xpos)*(center3.ypos - center2.ypos) - $
+;     (center1.ypos - center2.ypos)*(center3.xpos - center2.xpos))/hypot
 
-limbfit, thresh, xpos, ypos, plot=plot, region=2, time=time
-center2.xpos = xpos
-center2.ypos = ypos
-center2.thresh = thresh
+; struct = {KAHUNA, center1:center1, center2:center2, center3:center3, $
+;     theta:theta, offset:offset}
 
-limbfit, thresh, xpos, ypos, plot=plot, region=3, time=time
-center3.xpos = xpos
-center3.ypos = ypos
-center3.thresh = thresh
-
-theta = !radeg*atan((center3.ypos - center2.ypos)/(center3.xpos - center2.xpos))
-hypot = sqrt((center3.ypos - center2.ypos)^2 + (center3.xpos - center2.xpos)^2)
-offset = ((center1.xpos - center2.xpos)*(center3.ypos - center2.ypos) - $
-    (center1.ypos - center2.ypos)*(center3.xpos - center2.xpos))/hypot
-
-struct = {KAHUNA, center1:center1, center2:center2, center3:center3, $
-    theta:theta, offset:offset}
-finish = SYSTIME(1,/s)
-
-RETURN,1
+RETURN,centers
 END

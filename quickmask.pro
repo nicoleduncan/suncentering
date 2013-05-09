@@ -11,11 +11,7 @@ FUNCTION quickmask, input_image, thresh
 ;-
 
 ; input_image = FLOAT(input_image)
-a = input_image[SORT(input_image)]
-niceimage = a[0:(1-!param.elim_perc/100)*(N_ELEMENTS(a)-1)]
-; Eliminating the highest 1% of data
-IF thresh eq !null then thresh = !param.reg1thresh*MAX(niceimage)
-; IF n_elements(thresh) EQ 0 THEN thresh = 0.25*MAX(image)
+a = input_image[BSORT(input_image)]
 
 s = SIZE(input_image,/dimensions)
 n_col = s[0]

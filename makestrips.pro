@@ -1,55 +1,23 @@
-PRO makestrips, thresh, xstrips, ystrips, region=region, time=time
-;+
-;   :Description:
-;       Only saves 5 strips centered around the solar diameter to reduce the amount of limb-
-;           darkened pixels and to make the polynomial-fitted limbs more-or-less look similar. 
-;
-;   :Params:
-;   thresh : out, required, type=float
-;       Threshold used to select pixels
-;   xstrips : out, required, type=structure
-;       Structure containing row strips
-;   ystrips : out, required, type=structure
-;       Structure containing column strips
-;
-;   :Keywords:
-;   region : in, required, type=integer, default=1
-;       Which sun out of the three to find the center of. Defaults to the brightest sun
-;   time : in, optional
-;       Prints elapsed time
-;-
+FUNCTION makestrips, inputstruct
 
-; IF n_elements(region) EQ 0 THEN region = 1
-IF region eq !null then region = 1
+COMMON vblock, w1_w2_p3
+; what do we have to work with here?
+; we already have rough centers
 
-COMMON vblock, wholeimage
+; to start, make it work for 1 case
 
-struct = betterwhichcropmethod(region)
-ducks = quickmask(struct.image)
-thresh = struct.thresh
+im=w1_w2_p3
 
-start = SYSTIME(1,/seconds)
+for i = 0, N_ELEMENTS(inputstruct)-1 do begin
+    crop = im[inputstruct[i].xpos - !param.crop_box : inputstruct[i].xpos + !param.crop_box,$
+        inputstruct[i].ypos - !param.crop_box : inputstruct[i].ypos + !param.crop_box]
+    for j = 0, !param.nstrips - 1 do begin
+        inputstruct[i].xstrips[j].rowindex = j
+        inputstruct[i].xstrips[j].array = crop[*,( !param.crop_box)+(j - !param.nstrips/2) * !param.scan_width]
+        inputstruct[i].ystrips[j].colindex = j
+        inputstruct[i].ystrips[j].array = crop[( !param.crop_box)+(j - !param.nstrips/2) * !param.scan_width,*]
+    endfor
+endfor
 
-animage = struct.image
-s = SIZE(animage,/dimensions)
-length = s[0]
-height = s[1]
-
-rowchord_endpoints = FLTARR(2,!param.nstrips)
-colchord_endpoints = FLTARR(2,!param.nstrips)
-
-xstrips = REPLICATE({ROWINDEX:0, ARRAY:BYTARR(length), xoffset:struct.xoffset}, !param.nstrips)
-ystrips = REPLICATE({COLINDEX:0, ARRAY:BYTARR(height), yoffset:struct.yoffset}, !param.nstrips)
-
-FOR i = 0,!param.nstrips - 1 DO BEGIN
-    xstrips[i].ROWINDEX = i
-    xstrips[i].ARRAY = animage[*, ROUND(ducks.xpos)+(i-!param.nstrips/2)* !param.scan_width]
-    ystrips[i].COLINDEX = i
-    ystrips[i].ARRAY = animage[ROUND(ducks.ypos)+(i-!param.nstrips/2)* !param.scan_width,*]
-ENDFOR
-
-finish = SYSTIME(1,/seconds)
-IF KEYWORD_SET(time) THEN  print,'Elapsed Time for makestrips: ', $
-    STRCOMPRESS(finish-start,/rem),' seconds'
-RETURN
+RETURN,inputstruct
 END

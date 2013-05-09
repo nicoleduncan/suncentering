@@ -26,7 +26,7 @@ xarr = [findgen(n_col),replicate(n_col,n_row-1),reverse(findgen(n_col-1)),replic
 yarr = [replicate(0,n_col),findgen(n_row-1),replicate(n_row,n_col-1),reverse(findgen(n_row-2))]
 
 if total(borderarr) gt 6 then begin
-    print,'Time to scan'
+    ; print,'Time to scan'
     for i =0,n_elements(borderarr)-1 do begin
         if borderarr[i+1] + borderarr[i] eq 2 then vec=[vec,i] else vec=!null
         if n_elements(vec) gt 6 then break

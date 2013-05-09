@@ -28,7 +28,7 @@ start=SYSTIME(1,/s)
 ; profiler
 
 ; DEATH TO THE COMMON BLOCK (or not)
-COMMON vblock, wholeimage
+COMMON vblock, w1_w2_p3
 file = 'dimsun1.fits'
 readcol,'pblock.txt',var,num,format='A,F',delimiter=' '
     for i=0,N_ELEMENTS(var)-1 do (SCOPE_VARFETCH(var[i],/enter,level=0))=num[i]
@@ -74,17 +74,10 @@ defsysvarthresh,startimage
 
 grannysmith = everysun(startimage)
 
-; why does picksun decide to use the modified startimage?
 fuji = picksun(startimage, grannysmith)
 
-; Now we have a struc that has centers, thresh, and if it's a partial
-
-; pass this into limbfit
-; limbfit passes into makelimbstrips
-; makelimbstrips passes into makestrips
-
+; how do I pass the right image w/o common blocks?
 limbfittedcentroids=centroidwholesuns(fuji)
-
 
 ; testestest = checkimage(startimage)
 
