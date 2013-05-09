@@ -68,8 +68,23 @@ defsysv,'!param',c
 
 wholeimage = mrdfits('dottedimage.fits',/silent)
 w1_w2_p3 = mrdfits('partial3rd.fits',/silent)
+w1_p2_p3 = mrdfits('2partials.fits',/silent)
+; inaline = mrdfits('inaline.fits',/silent)
+reg12 = mrdfits('1_2.fits',/silent)
+reg13 = mrdfits('1_3.fits',/silent)
+reg23 = mrdfits('2_3.fits',/silent)
+w2_p3 = mrdfits('w2_p3.fits',/sil)
+p1_w2_w3 = mrdfits('p1_w2_w3.fits',/sil)
+p1_w2_p3 = mrdfits('p1_w2_p3.fits',/sil)
+p1_p2_w3 = mrdfits('p1_p2_w3.fits',/sil)
+w1_p2_w3 = mrdfits('w1_p2_w3.fits',/sil)
+p1_w3 = mrdfits('p1_w3.fits',/sil)
+p1_w2 = mrdfits('p1_w2.fits',/sil)
+w1_p3 = mrdfits('w1_p3.fits',/sil)
+
+
 ; takes 1.3s
-startimage=w1_w2_p3
+startimage=p1_w2_w3
 defsysvarthresh,startimage
 
 grannysmith = everysun(startimage)
@@ -77,39 +92,22 @@ grannysmith = everysun(startimage)
 fuji = picksun(startimage, grannysmith)
 
 ; how do I pass the right image w/o common blocks?
-limbfittedcentroids=centroidwholesuns(fuji)
+limbfittedcentroids=centroidwholesuns(fuji,startimage)
+tmpimage = startimage
+for i =0,n_elements(limbfittedcentroids)-1 do begin
+    tmpimage[limbfittedcentroids[i].limbxpos,*] = 255
+    tmpimage[*,limbfittedcentroids[i].limbypos] = 255
+endfor
 
-; testestest = checkimage(startimage)
+cgimage,tmpimage,/k
 
-
-stop
-; ****************************
-; *******              *******
-; *******              *******
-; *******              *******
-; ****************************
-profiler,/system
-profiler
-; tic
-
-; toc
-profiler,/report
-profiler,/reset,/clear
-print,'Main sun x pos:',struct.center1.xpos
-print,'Main sun y pos:',struct.center1.ypos
-print,'50% sun x pos: ',struct.center2.xpos
-print,'50% sun y pos: ',struct.center2.ypos
-print,'25% sun x pos: ',struct.center3.xpos
-print,'25% sun y pos: ',struct.center3.ypos
-
-; ****************************
-; *******              *******
-; *******              *******
-; *******              *******
-; ****************************
+print,'Main sun x pos:',limbfittedcentroids[0].limbxpos
+print,'Main sun y pos:',limbfittedcentroids[0].limbypos
+print,'50% sun x pos: ',limbfittedcentroids[1].limbxpos
+print,'50% sun y pos: ',limbfittedcentroids[1].limbypos
+print,'25% sun x pos: ',limbfittedcentroids[2].limbxpos
+print,'25% sun y pos: ',limbfittedcentroids[2].limbypos
 
 stop
-finish = SYSTIME(1,/s)
-IF KEYWORD_SET(time) THEN print, 'merrygotrace took: '+strcompress(finish-start)+$
-    ' seconds'
+
 end

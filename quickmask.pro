@@ -10,9 +10,6 @@ FUNCTION quickmask, input_image, thresh
 ;           Threshold used to select pixels
 ;-
 
-; input_image = FLOAT(input_image)
-a = input_image[BSORT(input_image)]
-
 s = SIZE(input_image,/dimensions)
 n_col = s[0]
 n_row = s[1]

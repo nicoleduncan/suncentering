@@ -1,13 +1,10 @@
-FUNCTION makestrips, inputstruct
+FUNCTION makestrips, inputstruct, inputimage
 
-COMMON vblock, w1_w2_p3
 ; what do we have to work with here?
 ; we already have rough centers
 
 ; to start, make it work for 1 case
-
-im=w1_w2_p3
-
+im=inputimage
 for i = 0, N_ELEMENTS(inputstruct)-1 do begin
     crop = im[inputstruct[i].xpos - !param.crop_box : inputstruct[i].xpos + !param.crop_box,$
         inputstruct[i].ypos - !param.crop_box : inputstruct[i].ypos + !param.crop_box]

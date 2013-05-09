@@ -1,10 +1,7 @@
-FUNCTION limbfit, inputstruct
-
-
-COMMON vblock, w1_w2_p3
+FUNCTION limbfit, inputstruct, inputimage
 
 ; Run the program to get our structures
-a=makelimbstrips(inputstruct)
+a=makelimbstrips(inputstruct,inputimage)
 
 xlen    = 0
 xsum    = 0

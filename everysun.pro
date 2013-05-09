@@ -31,7 +31,7 @@ for i = 0,n_suns-1 do BEGIN
     gig = quickmask(temparr, asun[i].thresh)
     asun[i].xpos = gig.xpos
     asun[i].ypos = gig.ypos
-
+    
     sidepad = 80
     s = size(temparr,/d)
     paddedimage = BYTARR(s+sidepad*2)

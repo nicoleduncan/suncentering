@@ -1,10 +1,8 @@
-FUNCTION makelimbstrips, inputstruct
-
-COMMON vblock, w1_w2_p3
+FUNCTION makelimbstrips, inputstruct,inputimage
 
 ; Going through and doing a little commenting, think I forgot how this works:
 
-a=makestrips(inputstruct)
+a=makestrips(inputstruct,inputimage)
 
 ministrip_side_buffer = BYTE( !param.ministrip_length)/2 
 ; have to byte it since we read the ministrip_length as a float
