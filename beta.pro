@@ -60,19 +60,12 @@ defsysv,'!param',c
 ; 25% sun x pos:        78.683426
 ; 25% sun y pos:        235.11536
 
-
-
-; How do we run the least number of setbetterpeak? We really only need to run it once
-; a=setbetterthresh(wholeimage)
-; turn setbetterthresh into a sysvar setting function
-
-wholeimage = mrdfits('dottedimage.fits',/silent)
-w1_w2_p3 = mrdfits('partial3rd.fits',/silent)
-w1_p2_p3 = mrdfits('2partials.fits',/silent)
-; inaline = mrdfits('inaline.fits',/silent)
-reg12 = mrdfits('1_2.fits',/silent)
-reg13 = mrdfits('1_3.fits',/silent)
-reg23 = mrdfits('2_3.fits',/silent)
+wholeimage = mrdfits('dottedimage.fits',/sil)
+w1_w2_p3 = mrdfits('partial3rd.fits',/sil)
+w1_p2_p3 = mrdfits('2partials.fits',/sil)
+reg12 = mrdfits('1_2.fits',/sil)
+reg13 = mrdfits('1_3.fits',/sil)
+reg23 = mrdfits('2_3.fits',/sil)
 w2_p3 = mrdfits('w2_p3.fits',/sil)
 p1_w2_w3 = mrdfits('p1_w2_w3.fits',/sil)
 p1_w2_p3 = mrdfits('p1_w2_p3.fits',/sil)
@@ -83,8 +76,7 @@ p1_w2 = mrdfits('p1_w2.fits',/sil)
 w1_p3 = mrdfits('w1_p3.fits',/sil)
 
 
-; takes 1.3s
-startimage=p1_w2_w3
+startimage=w1_p2_p3
 defsysvarthresh,startimage
 
 grannysmith = everysun(startimage)

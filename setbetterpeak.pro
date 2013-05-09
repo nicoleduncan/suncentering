@@ -22,6 +22,9 @@ ysort = ysort[0:(1- !param.elim_perc/1000)*(N_ELEMENTS(sorted)-1)]
 
 
 ; THESE TAKE SO MUCH TIME
+
+; Dig into this
+
 smoothed = TS_SMOOTH(sorted, !param.n_smooth, order = !param.smoothorder)
 ; smoothed = SMOOTH(sorted, !param.n_smooth)
 ; smoothed = TS_SMOOTH(sorted, 200, order = 3)

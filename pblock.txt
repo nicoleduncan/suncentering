@@ -8,7 +8,6 @@ truecrop 21
 crop_box 60
 elim_perc 1
 scanflip 10
-deg_num 360
 res 100
 n_smooth 200
 smoothorder 3
