@@ -1,8 +1,8 @@
 FUNCTION crosstest, inputimage, inputstruct
 
-for i = 0,N_ELEMENTS(inputstruct)-1 do begin
-    acrop = inputimage[inputstruct[0].limbxpos - !param.soldiskr : inputstruct[0].limbxpos + !param.soldiskr,$
-    inputstruct[0].limbypos - !param.soldiskr : inputstruct[0].limbypos + !param.soldiskr]
+for kk = 0,N_ELEMENTS(inputstruct)-1 do begin
+    acrop = inputimage[inputstruct[kk].limbxpos - !param.soldiskr : inputstruct[kk].limbxpos + !param.soldiskr,$
+    inputstruct[kk].limbypos - !param.soldiskr : inputstruct[kk].limbypos + !param.soldiskr]
 
     badcrop = acrop[0:-6,0:-4]
 
@@ -84,11 +84,6 @@ for i = 0,N_ELEMENTS(inputstruct)-1 do begin
     d[c+adjacent-1] = 0
     xpos = (uniq_col*d)[WHERE(uniq_col*d ne 0)]
 
-    ; if xpos and ypos are in cross_col and cross_row, it's OK
-    
-    ; cross_col = cross_col[UNIQ(cross_col,SORT(cross_col))]
-    ; cross_row = cross_row[UNIQ(cross_row,SORT(cross_row))]
-
     superset = [cross_col,xpos]
     if N_ELEMENTS(superset[UNIQ(superset,SORT(superset))]) gt 0 then xpos = xpos
     superset = [cross_row,ypos]
@@ -98,45 +93,10 @@ for i = 0,N_ELEMENTS(inputstruct)-1 do begin
     coords[0,*] = cross_col
     coords[1,*] = cross_row
 
-    ; if any row of chords does not have an xpos or ypos component, eliMINate it
-
-    ; >> print,coords
-    ;   16.0000      15.0000
-    ;   16.0000      16.0000
-    ;   16.0000      36.0000
-
-    ; >> print,xpos
-    ;       16.0000
-    ; >> print,ypos
-    ;       16.0000      36.0000
-
-    ; How to tie these two things together?
-
-    ; Look at one at a time
-
-    ; coords[0,0] -> is it an xpos?
-    ; coords[0,1] -> is it a ypos? 
-    ; if so, coords[*,0] is OK
-
-    ; go to next one
-    ; crosses = REPLICATE({fid:[0,0],good:0},5)
-    ; why 5?
-    ; count=0
-    ; Number of fiducials isn't something we know beforehand, use pointers?
-    ; or... empty arrays?
     places = 0
     for jj=0,2 do begin
-            ; ; coords[2,jj] = TOTAL(coords[0,jj] eq xpos) ne 0 and $
-            ; ;      TOTAL(coords[1,jj] eq ypos) ne 0 ? 1 : 0
-            ;  fid[*,jj] = TOTAL(coords[0,jj] eq xpos) ne 0 and $
-            ;      TOTAL(coords[1,jj] eq ypos) ne 0 ? coords[0:1,jj] : 0
-            ; ; crosses[jj].fid = TOTAL(coords[0,jj] eq xpos) ne 0 and $
-            ; ;      TOTAL(coords[1,jj] eq ypos) ne 0 ? coords[0:1,jj] : 0
         if TOTAL(coords[0,jj] eq xpos) ne 0 and TOTAL(coords[1,jj] eq ypos) ne 0 then begin
-            ; crosses[count].fid = coords[0:1,jj]
             places = [places,coords[0:1,jj]]
-            ; crosses[count].good=1
-            ; count++
         endif
     endfor
     
