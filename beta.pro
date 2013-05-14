@@ -83,8 +83,14 @@ grannysmith = everysun(startimage)
 
 fuji = picksun(startimage, grannysmith)
 
-; how do I pass the right image w/o common blocks?
 limbfittedcentroids=centroidwholesuns(fuji,startimage)
+
+; fiducial stuff here!!!
+
+a = crosstest(startimage,limbfittedcentroids)
+
+
+
 tmpimage = startimage
 for i =0,n_elements(limbfittedcentroids)-1 do begin
     tmpimage[limbfittedcentroids[i].limbxpos,*] = 255
@@ -92,7 +98,7 @@ for i =0,n_elements(limbfittedcentroids)-1 do begin
 endfor
 
 cgimage,tmpimage,/k
-
+stop
 print,'Main sun x pos:',limbfittedcentroids[0].limbxpos
 print,'Main sun y pos:',limbfittedcentroids[0].limbypos
 print,'50% sun x pos: ',limbfittedcentroids[1].limbxpos

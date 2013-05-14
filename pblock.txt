@@ -11,3 +11,4 @@ scanflip 10
 res 100
 n_smooth 200
 smoothorder 3
+soldiskr 20
