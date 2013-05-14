@@ -18,7 +18,7 @@ limbystrips = REPLICATE({limbystrips, colindex:0, begindex:0, endindex:0, $
         endpoints:BYTARR( !param.ministrip_length)}, !param.nstrips)
 
 asun = replicate({xpos:0.,ypos:0.,reg:0,thresh:0.,partial:0.,xstrips:xstrips,ystrips:ystrips,$
-    limbxstrips:limbxstrips,limbystrips:limbystrips,limbxpos:0.,limbypos:0.},n_suns)
+    limbxstrips:limbxstrips,limbystrips:limbystrips,limbxpos:0.,limbypos:0.,fidlocations:{blank:0.}},n_suns)
 
 for i = 0,n_suns-1 do BEGIN
     asun[i].reg = idedsuns[where(idedsuns eq min(idedsuns))]
