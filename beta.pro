@@ -75,8 +75,24 @@ p1_w3 = mrdfits('p1_w3.fits',/sil)
 p1_w2 = mrdfits('p1_w2.fits',/sil)
 w1_p3 = mrdfits('w1_p3.fits',/sil)
 
+startimage=wholeimage
+; startimage=w1_w2_p3
+; startimage=w1_p2_p3
+; startimage=reg12
+; startimage=reg23
+; startimage=reg13
+; startimage=w2_p3
+; startimage=p1_w2_w3
+; startimage=p1_w2_p3
+; ; THESE TWO WIGG OUT
+; ; vv
+; startimage=p1_p2_w3
+; startimage=w1_p2_w3
+; ; ^^
+; startimage=p1_w3
+; startimage=p1_w2
+; startimage=w1_p3
 
-startimage=w1_p2_p3
 defsysvarthresh,startimage
 
 grannysmith = everysun(startimage)
@@ -85,12 +101,6 @@ fuji = picksun(startimage, grannysmith)
 
 limbfittedcentroids=centroidwholesuns(fuji,startimage)
 
-; fiducial stuff here!!!
-
-a = crosstest(startimage,limbfittedcentroids)
-
-
-
 tmpimage = startimage
 for i =0,n_elements(limbfittedcentroids)-1 do begin
     tmpimage[limbfittedcentroids[i].limbxpos,*] = 255
@@ -98,6 +108,12 @@ for i =0,n_elements(limbfittedcentroids)-1 do begin
 endfor
 
 cgimage,tmpimage,/k
+
+
+
+
+a = corr_fid(startimage,limbfittedcentroids)
+; a = crosstest(startimage,limbfittedcentroids)
 stop
 print,'Main sun x pos:',limbfittedcentroids[0].limbxpos
 print,'Main sun y pos:',limbfittedcentroids[0].limbypos

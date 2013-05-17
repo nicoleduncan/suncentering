@@ -20,60 +20,26 @@ xsort = xsort[0:(1- !param.elim_perc/1000)*(N_ELEMENTS(sorted)-1)]
 ysort = yarr[BSORT(input)]
 ysort = ysort[0:(1- !param.elim_perc/1000)*(N_ELEMENTS(sorted)-1)]
 
+; It just doesn't work. Gives the illusion of working if I run it after ts_smooth 
+; for some god-knows-what reason
 
-; THESE TAKE SO MUCH TIME
+; arr = deriv(smooth(deriv(smooth(sorted, !param.n_smooth,/edge_truncate)), !param.n_smooth,/edge_truncate))
+; arr = arr[0:n_elements(arr)*(1 - !param.elim_perc/100)]
+; arr[0:( !param.elim_perc/100)*n_elements(arr)]=0
 
-; Dig into this
-; .6 each one
-smoothed = TS_SMOOTH(sorted, !param.n_smooth, order = !param.smoothorder)
+; changed from
+smooth = TS_SMOOTH(sorted, !param.n_smooth, order = !param.smoothorder-1)
+arr = DERIV(TS_SMOOTH(DERIV(smooth), !param.n_smooth, order = !param.smoothorder-1))
 
-arr = DERIV(TS_SMOOTH(DERIV(smoothed), !param.n_smooth, order = !param.smoothorder))
-
-; smoothed = smooth(sorted, 1000, /edge_truncate)
-; arr = DERIV(SMOOTH(DERIV(smoothed), 1000, /edge_truncate))
-; smoothed needs to be better!
-; stop
-; stop
-; stop
-; We really need better alternatives
-; ps_start,filename='doubletssmooth.eps',/encap
-; plot,arr,xr=[1.3e5,n_elements(arr)-1],yr=[-.01,.01]
+; ps_start,filename='smoothtest.eps',/color,/encap
+; plot,sorted,xr=[1.37e5,1.39e5],yr=[48,100]
+; loadct,34
+; oplot,smooth(sorted,300),color=15
+; oplot,ts_smooth(sorted,300,order=2),color=255
 ; ps_end
 
-; ps_start,filename='firstsmoothonly.eps',/encap
-; plot,DERIV(DERIV(smoothed)),xr=[1.3e5,n_elements(arr)-1],yr=[-.01,.01] 
-; ps_end
-
-; ps_start,filename='justsmooth.eps',/encap
-; plot,DERIV(smooth(DERIV(smoothed), !param.n_smooth,/edge_wrap)),xr=[1.3e5,n_elements(arr)-1],yr=[-.01,.01] 
-; ps_end
-
-; ps_start,filename='nowrap.eps',/encap
-; plot,DERIV(smooth(DERIV(smoothed), !param.n_smooth)),xr=[1.3e5,n_elements(arr)-1],yr=[-.01,.01] 
-; ps_end
 
 ; stop
-; stop
-; stop
-
-
-
-
-; stop
-; window,0
-; plot,DERIV(TS_SMOOTH(DERIV(smoothed), !param.n_smooth, order = !param.smoothorder)),xr=[1.35e5,n_elements(arr)-1]
-; window,1
-; plot,DERIV(SMOOTH(DERIV(smoothed),!param.n_smooth,/edge_truncate)),xr=[1.35e5,n_elements(arr)-1]
-
-; stop
-; arr = DERIV(SMOOTH(DERIV(smoothed), !param.n_smooth))
-; stop
-; plot,arr,psym=3,xr=[1.3e5,n_elements(arr)-1]  
-
-
-; arr is returning the wrong peaks.... how to fix?
-; Change smoothing parameter?
-
 for i = 0,n_suns-1 do begin
     if N_ELEMENTS(MAX(arr)) ne 1 then begin 
     maxi = WHERE(arr eq MAX(arr),n_maxi)
