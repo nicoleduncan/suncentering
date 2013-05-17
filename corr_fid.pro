@@ -22,7 +22,7 @@ pixelfiducials = indgen(s)
 fidlength = 3
 fidwidth=2
 threshold = mean(image)  + fidthresh*stddev(image)
-
+newthresh = mean(image)  + fidthresh/2*stddev(image)
 ; wait, is their thresh thing so that the image peaks at a 
 
 ; oh it does. /facepalm
@@ -85,9 +85,6 @@ for i = 1, s[0]-2 do begin
     endfor
 endfor
 toc
-
-
-newthresh = mean(image)  + fidthresh/2*stddev(image)
 
 ; let's interp to subpixel values, yo.
 ; Let's try to do it Albert's way first
