@@ -1,6 +1,7 @@
 FUNCTION corr_fid, inputimage, inputstruct
 ; tic
-acrop = inputimage[inputstruct[0].limbxpos - !param.soldiskr : inputstruct[0].limbxpos + !param.soldiskr,$
+acrop = inputimage[inputstruct[0].limbxpos - !param.soldiskr : $
+inputstruct[0].limbxpos + !param.soldiskr,$
 inputstruct[0].limbypos - !param.soldiskr : inputstruct[0].limbypos + !param.soldiskr]
 
 ; badcrop = acrop[0:-6,0:-4]
@@ -17,7 +18,7 @@ image = convol(float(badcrop),kernel,/edge_Truncate)
 ; well, c++'s c_corr is like idl's convol()
 
 cgimage,image,/k
-fidthresh=.5
+fidthresh = .5
 pixelfiducials = indgen(s)
 fidlength = 3
 fidwidth=2
@@ -90,33 +91,49 @@ toc
 ; Let's try to do it Albert's way first
 
 ; It's already stupid fast as it is.
+; tic
+; for k = 0,n_elements(fidpos)-1 do begin
+;     caa=0
+;     cbb=0
+;     avg=0
+;     xrange = [fidpos[k].x - fidwidth,fidpos[k].x + fidwidth + 1]
+;     yrange = [fidpos[k].y - fidwidth,fidpos[k].y + fidwidth + 1]
+;     for aa = 0,xrange[1]-xrange[0] do begin
+;         for bb = 0,yrange[1]-yrange[0] do begin
+;             thisvalue = image[aa+xrange[0],bb+yrange[0]]
+;             ; stop
+;             if thisvalue lt newthresh then begin
+;             ; print,"lawls"
+;                 caa += aa*thisvalue
+;                 cbb += bb*thisvalue
+;                 avg += thisvalue
+;             endif
+;         endfor
+;     endfor
+;     fidpos[k].subpx=caa/avg+xrange[0]
+;     fidpos[k].subpy=cbb/avg+yrange[0]
+; endfor
+; toc
+; print,fidpos
+
+
+; Let's use parapeak instead of mask centroiding
+; It doesn't actually take a long time, only because it needs to compile a few necessary programs.
+; tic
 for k = 0,n_elements(fidpos)-1 do begin
-    caa=0
-    cbb=0
-    avg=0
-    xrange = [fidpos[k].x - fidwidth,fidpos[k].x + fidwidth + 1]
-    yrange = [fidpos[k].y - fidwidth,fidpos[k].y + fidwidth + 1]
-    for aa = 0,xrange[1]-xrange[0] do begin
-        for bb = 0,yrange[1]-yrange[0] do begin
-            thisvalue = image[aa+xrange[0],bb+yrange[0]]
-            ; stop
-            if thisvalue lt newthresh then begin
-            ; print,"lawls"
-                caa += aa*thisvalue
-                cbb += bb*thisvalue
-                avg += thisvalue
-            endif
-        endfor
-    endfor
-    fidpos[k].subpx=caa/avg+xrange[0]
-    fidpos[k].subpy=cbb/avg+yrange[0]
+    ; Have to do 1/z because convol() makes the highest correlation area a low value 
+    ; instead of cross_correlate's high value
+
+    z = 1000/image[fidpos[k].x-1:fidpos[k].x+1,fidpos[k].y-1:fidpos[k].y+1]
+    ; the convol values are on the order of 10^3 so we have to normalize it! Makes sense. But this
+    ; means we have to normalzie it all the time?
+    result = parapeak(z)
+    fidpos[k].subpx = fidpos[k].x + z[0]
+    fidpos[k].subpy = fidpos[k].y + z[1]
 endfor
+; toc
 
 ; How to deal with edge fiducials?
 
-
-
-print,fidpos
-stop
-RETURN,1
+RETURN,fidpos
 END

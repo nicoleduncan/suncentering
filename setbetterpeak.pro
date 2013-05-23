@@ -20,16 +20,64 @@ xsort = xsort[0:(1- !param.elim_perc/1000)*(N_ELEMENTS(sorted)-1)]
 ysort = yarr[BSORT(input)]
 ysort = ysort[0:(1- !param.elim_perc/1000)*(N_ELEMENTS(sorted)-1)]
 
-; It just doesn't work. Gives the illusion of working if I run it after ts_smooth 
-; for some god-knows-what reason
-
-; arr = deriv(smooth(deriv(smooth(sorted, !param.n_smooth,/edge_truncate)), !param.n_smooth,/edge_truncate))
-; arr = arr[0:n_elements(arr)*(1 - !param.elim_perc/100)]
-; arr[0:( !param.elim_perc/100)*n_elements(arr)]=0
-
 ; changed from
-smooth = TS_SMOOTH(sorted, !param.n_smooth, order = !param.smoothorder-1)
-arr = DERIV(TS_SMOOTH(DERIV(smooth), !param.n_smooth, order = !param.smoothorder-1))
+; smooth = TS_SMOOTH(sorted, !param.n_smooth, order = !param.smoothorder-1)
+; arr = DERIV(TS_SMOOTH(DERIV(smooth), !param.n_smooth, order = !param.smoothorder-1))
+
+; c = float(sorted-shift(sorted,1))
+; expanded = findgen(n_elements(sorted))
+; ; toc
+; ; c[where(c eq 0)]= !values.f_nan
+; ; plot,shift(sorted,1)+shift(sorted,2)+shift(sorted,3)+shift(sorted,4)+shift(sorted,5),psym=3
+; plot,c,yr=[0,1.2],psym=3,xr=[1.30e5,1.42e5]
+; ; need to pad it so that the mod is okay
+; binsize = 200
+; padnum = binsize - (n_elements(c) mod binsize)
+; ; stop
+; c = [fltarr(padnum),c]
+; ; stop
+; d = reform(c,binsize,n_elements(c)/binsize)
+; e = total(d,1)
+; for i = 0,n_elements(e)-1 do begin
+;     if i eq 0 then vv = fltarr(binsize)+e[i] else vv = [vv,fltarr(binsize)+e[i]]
+; endfor
+; plot,vv,xr=[1.30e5,1.42e5],psym=3
+; vline,141225
+; vline,138077
+; vline,134314
+; Well this doesn't work.
+; omfg
+; omfg
+; o
+; m
+; f
+; g
+; good fucking god. 
+
+a = deriv(smooth(float(sorted),200,/edge_truncate))
+arr = deriv(smooth(a,200,/edge_truncate))
+; toc
+; plot,b
+; vline,141225
+; vline,138077
+; vline,134314
+; stop
+; d= shift(c,1)-c
+; plot,d,xr=[1.30e5,1.39e5],psym=-4
+; !p.multi=0
+; deriv = dy/dx, but dx=same for all cases
+
+
+; let's filter stuff out in the freq domain?
+
+; fft takes up too much resources
+; tic ; .52 s
+; a=shift(fft(deriv(sorted)),n_elements(sorted)/2)
+; a[where(abs(a) gt .0005)]=0
+; b=fft(a,/inverse)
+; toc
+
+; Need a faster way to smooth
 
 ; ps_start,filename='smoothtest.eps',/color,/encap
 ; plot,sorted,xr=[1.37e5,1.39e5],yr=[48,100]
@@ -38,22 +86,22 @@ arr = DERIV(TS_SMOOTH(DERIV(smooth), !param.n_smooth, order = !param.smoothorder
 ; oplot,ts_smooth(sorted,300,order=2),color=255
 ; ps_end
 
+; Here we are again, old friend.
 
 ; stop
 for i = 0,n_suns-1 do begin
     if N_ELEMENTS(MAX(arr)) ne 1 then begin 
-    maxi = WHERE(arr eq MAX(arr),n_maxi)
-    maxi_check=fltarr(maxi)
-    tempthresh = .9*MAX(arr)
-    for i = 0,n_elements(maxi) do begin
-        chunk = arr[maxi[i]-50:maxi[i]+50]
-        maxi_check[i] = n_elements(chunk gt tempthresh)
-    endfor
-    peakarr[i] = maxi[max(maxi_check)]
+        maxi = WHERE(arr eq MAX(arr),n_maxi)
+        maxi_check=FLTARR(maxi)
+        tempthresh = .9*MAX(arr)
+        for i = 0,N_ELEMENTS(maxi) do begin
+            chunk = arr[maxi[i]-50:maxi[i]+50]
+            maxi_check[i] = N_ELEMENTS(chunk gt tempthresh)
+        endfor
+        peakarr[i] = maxi[(maxi_check)]
     endif else peakarr[i] = MEAN(WHERE(arr eq MAX(arr)))
-
-    arr[peakarr[i]-200:peakarr[i]+200]=0
+        arr[peakarr[i]-200:peakarr[i]+200]=0
 endfor
-
+; stop
 return,{peakarr:peakarr,xsort:xsort,ysort:ysort,sorted:sorted}
 end

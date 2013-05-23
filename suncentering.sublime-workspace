@@ -1,0 +1,974 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"twee",
+				"tweet_words"
+			],
+			[
+				"match",
+				"matched_word"
+			],
+			[
+				"tew",
+				"tweet_words"
+			],
+			[
+				"tweet",
+				"tweet_words"
+			],
+			[
+				"sent",
+				"sent_file"
+			],
+			[
+				"matche",
+				"matched_score"
+			],
+			[
+				"matched",
+				"matched_word"
+			],
+			[
+				"line",
+				"line_str"
+			],
+			[
+				"json",
+				"json_data"
+			],
+			[
+				"res",
+				"response"
+			],
+			[
+				"this",
+				"thisvalue"
+			],
+			[
+				"fid",
+				"fidpos"
+			],
+			[
+				"d",
+				"d"
+			],
+			[
+				"bin_row",
+				"bin_row"
+			],
+			[
+				"su",
+				"superset"
+			],
+			[
+				"uniq",
+				"uniq_row_stack"
+			],
+			[
+				"uniq_",
+				"uniq_row"
+			],
+			[
+				"uni",
+				"uniq_row"
+			],
+			[
+				"uniq_row",
+				"uniq_row_stack"
+			],
+			[
+				"uniq_ro",
+				"uniq_row_stack"
+			],
+			[
+				"uniw",
+				"uniq_row"
+			],
+			[
+				"cross",
+				"cross_col"
+			],
+			[
+				"n_c",
+				"n_col_indices"
+			],
+			[
+				"c",
+				"c"
+			],
+			[
+				"inputs",
+				"inputstruct"
+			],
+			[
+				"inpu",
+				"inputstruct"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "beta.pro",
+			"settings":
+			{
+				"buffer_size": 3158,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "everysun.pro",
+			"settings":
+			{
+				"buffer_size": 1708,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "crosstest.pro",
+			"settings":
+			{
+				"buffer_size": 6011,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "corr_fid.pro",
+			"settings":
+			{
+				"buffer_size": 4309,
+				"line_ending": "Unix",
+				"name": "FUNCTION corr_fid"
+			}
+		},
+		{
+			"file": "pblock.txt",
+			"settings":
+			{
+				"buffer_size": 168,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "makelimbstrips.pro",
+			"settings":
+			{
+				"buffer_size": 2793,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "makestrips.pro",
+			"settings":
+			{
+				"buffer_size": 795,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "setbetterpeak.pro",
+			"settings":
+			{
+				"buffer_size": 1878,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "setbetterthresh.pro",
+			"settings":
+			{
+				"buffer_size": 341,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "tex files/multisuncentroid.tex",
+			"settings":
+			{
+				"buffer_size": 10065,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/Users/jerensuzuki/Library/Application Support/Sublime Text 3/Packages/User/Preferences.sublime-settings",
+			"settings":
+			{
+				"buffer_size": 308,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "tex files/skimage.tex",
+			"settings":
+			{
+				"buffer_size": 18834,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "tex files/dgafwhichsuns.tex",
+			"settings":
+			{
+				"buffer_size": 8061,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/Users/jerensuzuki/Documents/Data Science/datasci_course_materials/assignment1/term_sentiment.py",
+			"settings":
+			{
+				"buffer_size": 3203,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/Users/jerensuzuki/Documents/Data Science/datasci_course_materials/assignment1/tweet_sentiment.py",
+			"settings":
+			{
+				"buffer_size": 1861,
+				"line_ending": "Unix"
+			}
+		}
+	],
+	"build_system": "",
+	"command_palette":
+	{
+		"height": 207.0,
+		"selected_items":
+		[
+			[
+				"repl",
+				"Package Control: Enable Package"
+			],
+			[
+				"install",
+				"Package Control: Install Package"
+			]
+		],
+		"width": 449.0
+	},
+	"console":
+	{
+		"height": 0.0,
+		"history":
+		[
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/Users/jerensuzuki/Library/Application Support/Sublime Text 3/Packages/User/Preferences.sublime-settings",
+		"/Users/jerensuzuki/Documents/suncentering/parapeak.pro",
+		"/Users/jerensuzuki/Documents/suncentering/since_version.pro",
+		"/Users/jerensuzuki/Documents/suncentering/same_data2.pro",
+		"/Users/jerensuzuki/Documents/suncentering/same_data.pro",
+		"/Users/jerensuzuki/Documents/Data Science/datasci_course_materials/assignment1/tweet_sentiment.py",
+		"/Users/jerensuzuki/Documents/Data Science/datasci_course_materials/assignment1/trim.json",
+		"/Users/jerensuzuki/Documents/Data Science/datasci_course_materials/assignment1/print.py",
+		"/Users/jerensuzuki/Documents/Data Science/datasci_course_materials/assignment1/output.json",
+		"/Users/jerensuzuki/Documents/Data Science/datasci_course_materials/assignment1/2sout.json",
+		"/Users/jerensuzuki/Documents/Data Science/datasci_course_materials/assignment1/sout.txt",
+		"/Users/jerensuzuki/Documents/Data Science/datasci_course_materials/assignment1/sout.json",
+		"/Users/jerensuzuki/Documents/Data Science/datasci_course_materials/assignment1/my_tweet_sentiment.py",
+		"/Users/jerensuzuki/Documents/Data Science/print.py",
+		"/Users/jerensuzuki/Documents/Data Science/my_tweet_sentiment.py",
+		"/Users/jerensuzuki/Documents/suncentering/quickmask.pro",
+		"/Users/jerensuzuki/Documents/suncentering/msmooth.pro",
+		"/Users/jerensuzuki/Documents/suncentering/filter_image.pro",
+		"/Users/jerensuzuki/Documents/suncentering/dydx.pro",
+		"/Users/jerensuzuki/Documents/suncentering/crosstest.pro",
+		"/Users/jerensuzuki/Documents/suncentering/galapagos.pro",
+		"/Users/jerensuzuki/Documents/suncentering/scratch.pro",
+		"/Users/jerensuzuki/Documents/suncentering/barkbark.pro",
+		"/Users/jerensuzuki/Documents/suncentering/tex files/skimage.tex",
+		"/Users/jerensuzuki/Documents/suncentering/tex files/fid_outline.tex",
+		"/Users/jerensuzuki/Documents/suncentering/tex files/bunch_of_fid_edges.tex",
+		"/Users/jerensuzuki/Documents/suncentering/tex files/howbadisbad.tex"
+	],
+	"find":
+	{
+		"height": 35.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"line_str",
+			"json_data",
+			"afinnfile",
+			"tweet_text",
+			"tweet",
+			"letter",
+			"lang",
+			"tweet_file",
+			"'",
+			"colrange",
+			"rowrange",
+			"range",
+			"n_elements",
+			".x",
+			"abs",
+			"n_elements",
+			"someypos",
+			"somexpos",
+			"j",
+			"j+",
+			"[i",
+			"gt ",
+			"gt",
+			"jltfidlength",
+			")<",
+			">",
+			"someval",
+			"kk",
+			"*d",
+			"d)",
+			"row",
+			"*d",
+			"d[",
+			"d",
+			"d[",
+			"d =",
+			"ne 1",
+			"col",
+			"nn",
+			"mm",
+			"col",
+			"uniq_col",
+			"-1",
+			"mm",
+			"uniq_col",
+			"acent",
+			"superset",
+			"old_",
+			"truncate",
+			"!param.n_smooth",
+			"inputstruct[0]",
+			"total",
+			"sort",
+			"n_elements",
+			"uniq",
+			"fltarr",
+			"min",
+			"shift",
+			"where",
+			"together",
+			"[a",
+			"for i = 0,n_row_indices-1 do begin\n    uniq_row_stack[i] = n_elements(where(ind_row eq uniq_row[i] eq 1))\nendfor",
+			"n_x",
+			"col",
+			"row",
+			"d = (fltarr(n_elements(uniq_row)) +1)\n    d[c+a-1] = 0\n    xpos = (uniq_row*d)[where(uniq_row*d ne 0)]",
+			"[b",
+			"[a",
+			"row",
+			"fine",
+			"col",
+			"xpos",
+			"col",
+			"row",
+			"ind",
+			"col",
+			"where(xpos - shift(xpos,1) eq 1",
+			"ypos",
+			"-1 t",
+			"eq 1 t",
+			"eq 1",
+			"(d",
+			"(c",
+			"(a",
+			"11",
+			"if where(",
+			"if where(b eq 1)",
+			"= ",
+			"xpos",
+			"badxpos",
+			"wnxpos",
+			"b eq",
+			"a e",
+			"a",
+			"xpos",
+			"(xpos-shift(xpos,-1))",
+			"(xpos-shift(xpos,1))",
+			"plot_edges",
+			"l",
+			"bordermask",
+			"badcrop",
+			"s",
+			"saysitall.eps",
+			"!param.n_smooth",
+			"inputstruct[0].thresh",
+			"thresh",
+			"tmpcrop",
+			"10",
+			"!param.crop_box",
+			"xp",
+			"Partial",
+			"      ",
+			"     ",
+			"    ",
+			"mages/",
+			"smoothedarr",
+			"rr)-1]",
+			"edge_truncate",
+			"caption",
+			"label"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 5,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "beta.pro",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 3158,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								978,
+								978
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/IDL/Syntaxes/IDL.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 783.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "everysun.pro",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1708,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1521,
+								1521
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/IDL/Syntaxes/IDL.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true,
+							"word_wrap": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "crosstest.pro",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 6011,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								5531,
+								5531
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/IDL/Syntaxes/IDL.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 2013.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "corr_fid.pro",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 4309,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								4199,
+								4199
+							]
+						],
+						"settings":
+						{
+							"auto_name": "FUNCTION corr_fid",
+							"syntax": "Packages/IDL/Syntaxes/IDL.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 1309.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "pblock.txt",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 168,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								165,
+								157
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Text/Plain text.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "makelimbstrips.pro",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2793,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2597,
+								2597
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/IDL/Syntaxes/IDL.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true,
+							"word_wrap": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 6,
+					"file": "makestrips.pro",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 795,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/IDL/Syntaxes/IDL.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 7,
+					"file": "setbetterpeak.pro",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1878,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1340,
+								1340
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/IDL/Syntaxes/IDL.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 8,
+					"file": "setbetterthresh.pro",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 341,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								341,
+								341
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/IDL/Syntaxes/IDL.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				}
+			]
+		},
+		{
+			"selected": 1,
+			"sheets":
+			[
+				{
+					"buffer": 9,
+					"file": "tex files/multisuncentroid.tex",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 10065,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								10056,
+								10056
+							]
+						],
+						"settings":
+						{
+							"spell_check": false,
+							"syntax": "Packages/LaTeX/LaTeX.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 10,
+					"file": "/Users/jerensuzuki/Library/Application Support/Sublime Text 3/Packages/User/Preferences.sublime-settings",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 308,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								308,
+								308
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JSON.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 11,
+					"file": "tex files/skimage.tex",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 18834,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								5633,
+								5633
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/LaTeX/LaTeX.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 12,
+					"file": "tex files/dgafwhichsuns.tex",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 8061,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								4462,
+								3385
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/LaTeX/LaTeX.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 13,
+					"file": "/Users/jerensuzuki/Documents/Data Science/datasci_course_materials/assignment1/term_sentiment.py",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 3203,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2993,
+								2993
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Python/Python.tmLanguage",
+							"word_wrap": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 110.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 14,
+					"file": "/Users/jerensuzuki/Documents/Data Science/datasci_course_materials/assignment1/tweet_sentiment.py",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1861,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								841,
+								841
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Python/Python.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 18.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 23.0
+	},
+	"input":
+	{
+		"height": 0.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			],
+			[
+				1,
+				0,
+				2,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			0.5,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.exec":
+	{
+		"height": 100.0
+	},
+	"project": "suncentering.sublime-project",
+	"replace":
+	{
+		"height": 42.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 237.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}

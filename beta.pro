@@ -1,31 +1,18 @@
-PRO beta, time=time
+PRO beta
 ;+
 ;   :Description:
-;       This version uses limb fitting opposed to masking (tricenter). 
+;      Finds the center of N whole suns and M partial suns using limb-fitting for the whole suns and simple centroiding for the partial suns
 ;
 ;   :Params:
 ;
-;   :Keywords:
-;       time: in, optional
-;           Outputs how much time the program takes
-;
 ;   :TODO: 
-;       Find and ISOLATE fiducials, not just mask them out
+;       NONE, BRAH
 ;
-;       Ignore center if sun is too close to edge (or if when cropping, we cro outside wholeimage)
-;
-;       Use 25% of median(image)
-;       Um, let's not (Apr24)
-;
-;       Make sure program doesn't freak out when sun isn't in POV
-;       
 ;-
 COMPILE_OPT idl2
 ON_ERROR,1
 start=SYSTIME(1,/s)
 
-; profiler,/system
-; profiler
 
 ; DEATH TO THE COMMON BLOCK (or not)
 COMMON vblock, w1_w2_p3
@@ -42,6 +29,7 @@ endfor
 
 c = CREATE_STRUCT(c,'file','dimsun1.fits')
 
+; Load parameters from a txt file and make then system variables
 defsysv,'!param',c
 
 ; Centers of dottedimage.fits
@@ -60,6 +48,7 @@ defsysv,'!param',c
 ; 25% sun x pos:        78.683426
 ; 25% sun y pos:        235.11536
 
+; Our list of images to take centers of
 wholeimage = mrdfits('dottedimage.fits',/sil)
 w1_w2_p3 = mrdfits('partial3rd.fits',/sil)
 w1_p2_p3 = mrdfits('2partials.fits',/sil)
@@ -75,8 +64,10 @@ p1_w3 = mrdfits('p1_w3.fits',/sil)
 p1_w2 = mrdfits('p1_w2.fits',/sil)
 w1_p3 = mrdfits('w1_p3.fits',/sil)
 
-startimage=wholeimage
-; startimage=w1_w2_p3
+; Take your pick of which to center
+
+; startimage=wholeimage
+startimage=w1_w2_p3
 ; startimage=w1_p2_p3
 ; startimage=reg12
 ; startimage=reg23
@@ -84,14 +75,14 @@ startimage=wholeimage
 ; startimage=w2_p3
 ; startimage=p1_w2_w3
 ; startimage=p1_w2_p3
-; ; THESE TWO WIGG OUT
-; ; vv
 ; startimage=p1_p2_w3
 ; startimage=w1_p2_w3
-; ; ^^
 ; startimage=p1_w3
 ; startimage=p1_w2
-; startimage=w1_p3
+startimage=w1_p3
+
+; takes ~.07 s to run everything up to fid_locate
+tic
 
 defsysvarthresh,startimage
 
@@ -106,13 +97,25 @@ for i =0,n_elements(limbfittedcentroids)-1 do begin
     tmpimage[limbfittedcentroids[i].limbxpos,*] = 255
     tmpimage[*,limbfittedcentroids[i].limbypos] = 255
 endfor
-
+a = fid_locate(startimage,limbfittedcentroids)
+toc
 cgimage,tmpimage,/k
 
+atmp = startimage
+a = fid_locate(startimage,limbfittedcentroids)
 
+; stop
+for i = 0,n_elements(a)-1 do begin
+    atmp[a[i].x + limbfittedcentroids[0].limbxpos - !param.soldiskr,a[i].y + limbfittedcentroids[0].limbypos - !param.soldiskr]=255
+endfor
 
+; acrop = atmp[limbfittedcentroids[0].limbxpos - !param.soldiskr : $
+; limbfittedcentroids[0].limbxpos + !param.soldiskr,$
+; limbfittedcentroids[0].limbypos - !param.soldiskr : limbfittedcentroids[0].limbypos + !param.soldiskr]
+; acrop = acrop[0:-5,0:-4]
+; cgimage,acrop,/k,output='notsubpix.png'
 
-a = corr_fid(startimage,limbfittedcentroids)
+; a = corr_fid(startimage,limbfittedcentroids)
 ; a = crosstest(startimage,limbfittedcentroids)
 stop
 print,'Main sun x pos:',limbfittedcentroids[0].limbxpos

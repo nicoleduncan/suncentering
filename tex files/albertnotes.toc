@@ -1,0 +1,4 @@
+\contentsline {section}{\numberline {1}Introduction}{1}{section.1}
+\contentsline {section}{\numberline {2}Rough Center vs Sub-Pixel Center}{1}{section.2}
+\contentsline {section}{\numberline {3}Information Depth}{1}{section.3}
+\contentsline {section}{\numberline {4}Cut off Fiducials}{2}{section.4}

@@ -46,6 +46,12 @@ if total(borderarr) gt 6 then begin
         borderarr[vec[0]:vec[0]+70]=0
     endif
     ; not setting sun to partial
+
+
+
+
+; p1_p2_w3
+; stop
     inputsuns[where(inputsuns.reg eq closest_sun[0])].partial=1
 
 ; Must be a better way to do this!!!
