@@ -172,7 +172,7 @@ libdata[libdataItem++] = new Array("obsolete_code/centroidtest.html", "centroidt
 libdata[libdataItem++] = new Array("obsolete_code/centroidwholesuns.html", "centroidwholesuns.pro", '.pro file in <a href="obsolete_code/dir-overview.html">obsolete_code/ directory</a>', "centroidwholesuns.pro", "", "", "", "", "          -1", "");
   
   
-  libdata[libdataItem++] = new Array("obsolete_code/centroidwholesuns.html#centroidwholesuns", "centroidwholesuns", 'routine in <a href="obsolete_code/centroidwholesuns.html">centroidwholesuns.pro</a>', "centroidwholesuns.pro", "", "centroidwholesuns", "       Finds the centers of a triple-sun image and loads all relevant information        including offsets and angles into a new structure.   ", "inputstructinputimage", "          -1", "");
+  libdata[libdataItem++] = new Array("obsolete_code/centroidwholesuns.html#centroidwholesuns", "centroidwholesuns", 'routine in <a href="obsolete_code/centroidwholesuns.html">centroidwholesuns.pro</a>', "centroidwholesuns.pro", "", "centroidwholesuns", "       Finds the centers of a triple-sun image and loads all relevant information        including offsets and angles into a new structure.   ", "inputstruct           Structure containing the centers and cropped images of all 3 suns   inputimage           Image that we start out with   ", "          -1", "");
   
   
 
