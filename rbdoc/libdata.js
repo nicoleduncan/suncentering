@@ -11,6 +11,41 @@ libdataItem = 0;
 
 
 
+libdata[libdataItem++] = new Array("obsolete_code/alpha.html", "alpha.pro", '.pro file in <a href="obsolete_code/dir-overview.html">obsolete_code/ directory</a>', "alpha.pro", "   JEREN SUZUKI: <span class= code-output >   Space Sciences Laboratory</span> <span class= code-output >   7 Gauss Way</span> <span class= code-output >   Berkeley, CA 94720 USA</span> <span class= code-output >   E-mail: jsuzuki@ssl.berkeley.edu</span>  ", "", " NAME:    KAHUNA   PURPOSE:    Finds the center of 3 suns in a single image. Currently limited to a .bmp test image. Instead    of scanning rows to crop, scans in a circle. Using solar centers, identifies fiducial positions.   ", "", "          -1", "");
+  
+  
+  libdata[libdataItem++] = new Array("obsolete_code/alpha.html#alpha", "alpha", 'routine in <a href="obsolete_code/alpha.html">alpha.pro</a>', "alpha.pro", "", "alpha", "       This version uses limb fitting opposed to masking (tricenter).   ", "time           Outputs how much time the program takes   ", "          -1", "       Find and ISOLATE fiducials, not just mask them out         Ignore center if sun is too close to edge (or if when cropping, we cro outside wholeimage)         Use 25% of median(image)        Um, let's not (Apr24)         Make sure program doesn't freak out when sun isn't in POV   ");
+  
+  
+
+libdata[libdataItem++] = new Array("obsolete_code/barkbark.html", "barkbark.pro", '.pro file in <a href="obsolete_code/dir-overview.html">obsolete_code/ directory</a>', "barkbark.pro", "", "", "", "", "          -1", "");
+  
+  
+  libdata[libdataItem++] = new Array("obsolete_code/barkbark.html#barkbark", "barkbark", 'routine in <a href="obsolete_code/barkbark.html">barkbark.pro</a>', "barkbark.pro", "", "barkbark", "", "inputthresh", "          -1", "");
+  
+  
+
+libdata[libdataItem++] = new Array("./beta.html", "beta.pro", '.pro file in <a href="./dir-overview.html">./ directory</a>', "beta.pro", "", "", "", "", "          -1", "");
+  
+  
+  libdata[libdataItem++] = new Array("./beta.html#beta", "beta", 'routine in <a href="./beta.html">beta.pro</a>', "beta.pro", "", "beta", "      Finds the center of N whole suns and M partial suns using limb-fitting for the whole suns and simple centroiding for the partial suns   ", "", "          -1", "       NONE, BRAH   idldoc,root='/Users/jerensuzuki/Documents/suncentering', output='rbdoc',format_style='rst',/user,/quiet,markup_style='rst'  ");
+  
+  
+
+libdata[libdataItem++] = new Array("obsolete_code/betterwhichcropmethod.html", "betterwhichcropmethod.pro", '.pro file in <a href="obsolete_code/dir-overview.html">obsolete_code/ directory</a>', "betterwhichcropmethod.pro", "", "", "", "", "          -1", "");
+  
+  
+  libdata[libdataItem++] = new Array("obsolete_code/betterwhichcropmethod.html#betterwhichcropmethod", "betterwhichcropmethod", 'routine in <a href="obsolete_code/betterwhichcropmethod.html">betterwhichcropmethod.pro</a>', "betterwhichcropmethod.pro", "", "betterwhichcropmethod", "       Crops differently according to which region is selected.   ", "region           1) main sun            2) 50% brightness sun            3) 25% brightness sun  ", "          -1", "");
+  
+  
+
+libdata[libdataItem++] = new Array("obsolete_code/bordercheck.html", "bordercheck.pro", '.pro file in <a href="obsolete_code/dir-overview.html">obsolete_code/ directory</a>', "bordercheck.pro", "", "", "", "", "          -1", "");
+  
+  
+  libdata[libdataItem++] = new Array("obsolete_code/bordercheck.html#bordercheck", "bordercheck", 'routine in <a href="obsolete_code/bordercheck.html">bordercheck.pro</a>', "bordercheck.pro", "", "bordercheck", "", "input", "          -1", "");
+  
+  
+
 libdata[libdataItem++] = new Array("obsolete_code/boxit.html", "boxit.pro", '.pro file in <a href="obsolete_code/dir-overview.html">obsolete_code/ directory</a>', "boxit.pro", "", "", "", "", "          -1", "");
   
   
@@ -127,6 +162,34 @@ libdata[libdataItem++] = new Array("obsolete_code/centerv4.html", "centerv4.pro"
   
   
 
+libdata[libdataItem++] = new Array("obsolete_code/centroidtest.html", "centroidtest.pro", '.pro file in <a href="obsolete_code/dir-overview.html">obsolete_code/ directory</a>', "centroidtest.pro", "", "", "", "", "          -1", "");
+  
+  
+  libdata[libdataItem++] = new Array("obsolete_code/centroidtest.html#centroidtest", "centroidtest", 'routine in <a href="obsolete_code/centroidtest.html">centroidtest.pro</a>', "centroidtest.pro", "", "centroidtest", "", "input", "          -1", "");
+  
+  
+
+libdata[libdataItem++] = new Array("obsolete_code/centroidwholesuns.html", "centroidwholesuns.pro", '.pro file in <a href="obsolete_code/dir-overview.html">obsolete_code/ directory</a>', "centroidwholesuns.pro", "", "", "", "", "          -1", "");
+  
+  
+  libdata[libdataItem++] = new Array("obsolete_code/centroidwholesuns.html#centroidwholesuns", "centroidwholesuns", 'routine in <a href="obsolete_code/centroidwholesuns.html">centroidwholesuns.pro</a>', "centroidwholesuns.pro", "", "centroidwholesuns", "       Finds the centers of a triple-sun image and loads all relevant information        including offsets and angles into a new structure.   ", "inputstructinputimage", "          -1", "");
+  
+  
+
+libdata[libdataItem++] = new Array("./checkimage.html", "checkimage.pro", '.pro file in <a href="./dir-overview.html">./ directory</a>', "checkimage.pro", "", "", "", "", "          -1", "");
+  
+  
+  libdata[libdataItem++] = new Array("./checkimage.html#checkimage", "checkimage", 'routine in <a href="./checkimage.html">checkimage.pro</a>', "checkimage.pro", "", "checkimage", "       Checks image   ", "input", "          -1", "");
+  
+  
+
+libdata[libdataItem++] = new Array("obsolete_code/circscancrop.html", "circscancrop.pro", '.pro file in <a href="obsolete_code/dir-overview.html">obsolete_code/ directory</a>', "circscancrop.pro", "", "", "", "", "          -1", "");
+  
+  
+  libdata[libdataItem++] = new Array("obsolete_code/circscancrop.html#circscancrop", "circscancrop", 'routine in <a href="obsolete_code/circscancrop.html">circscancrop.pro</a>', "circscancrop.pro", "", "circscancrop", "       Quickly finds the center of the main sun, scans in a circle, and locates the two secondary        suns' centers. Crops either of the secondary suns based on what region specified.   ", "region           Which sun out of the three to find the center of. Defaults to the brightest sun  time           Print the elapsed time  mainxpos           X position of 100% brightness sun to scan in a circle around  mainypos           Y position of 100% brightness sun to scan in a circle around  image           Cropped area  thresh           Threshold used in finding center  xpos           Computed X position of center  ypos           Computed Y position of center  xoffset           X offset of cropped region's bottom left corner  yoffset           Y offset of cropped region's bottom left corner   ", "          -1", "");
+  
+  
+
 libdata[libdataItem++] = new Array("obsolete_code/closest.html", "closest.pro", '.pro file in <a href="obsolete_code/dir-overview.html">obsolete_code/ directory</a>', "closest.pro", "", "", "", "", "          -1", "");
   
   
@@ -141,10 +204,45 @@ libdata[libdataItem++] = new Array("obsolete_code/comparemethods.html", "compare
   
   
 
+libdata[libdataItem++] = new Array("obsolete_code/corr_fid.html", "corr_fid.pro", '.pro file in <a href="obsolete_code/dir-overview.html">obsolete_code/ directory</a>', "corr_fid.pro", "", "", "", "", "          -1", "");
+  
+  
+  libdata[libdataItem++] = new Array("obsolete_code/corr_fid.html#corr_fid", "corr_fid", 'routine in <a href="obsolete_code/corr_fid.html">corr_fid.pro</a>', "corr_fid.pro", "", "corr_fid", "", "inputimageinputstruct", "          -1", "");
+  
+  
+
+libdata[libdataItem++] = new Array("obsolete_code/countsuns.html", "countsuns.pro", '.pro file in <a href="obsolete_code/dir-overview.html">obsolete_code/ directory</a>', "countsuns.pro", "", "", "", "", "          -1", "");
+  
+  
+  libdata[libdataItem++] = new Array("obsolete_code/countsuns.html#countsuns", "countsuns", 'routine in <a href="obsolete_code/countsuns.html">countsuns.pro</a>', "countsuns.pro", "", "countsuns", "", "input", "          -1", "");
+  
+  
+
 libdata[libdataItem++] = new Array("obsolete_code/cropit.html", "cropit.pro", '.pro file in <a href="obsolete_code/dir-overview.html">obsolete_code/ directory</a>', "cropit.pro", "", "", "", "", "          -1", "");
   
   
   libdata[libdataItem++] = new Array("obsolete_code/cropit.html#cropit", "cropit", 'routine in <a href="obsolete_code/cropit.html">cropit.pro</a>', "cropit.pro", "", "cropit", "       Loads a triple-sun image and crops out selected regions one-by-one.   ", "region           Which sun out of the three to find the center of. Defaults to the brightest sun  time         Print the elapsed time   inputarr           Starting image to crop  location           Structure containing the cropped image along with the X and Y distances from origin  scan_width           How apart the scans are for minicrop().  sigmavalue          Sets the threshold to be: <span class= code-output >max(image) - sigmavalue*stddev(image)</span>  sundiam           Approximate diameter of sun in pixels. (Based on bmp image)   ", "          -1", "       cropped = cropit(inputarr,scan_width,sigmavalue,sundiam,region=1)   ");
+  
+  
+
+libdata[libdataItem++] = new Array("obsolete_code/cropme.html", "cropme.pro", '.pro file in <a href="obsolete_code/dir-overview.html">obsolete_code/ directory</a>', "cropme.pro", "", "", "", "", "          -1", "");
+  
+  
+  libdata[libdataItem++] = new Array("obsolete_code/cropme.html#cropme", "cropme", 'routine in <a href="obsolete_code/cropme.html">cropme.pro</a>', "cropme.pro", "", "cropme", "", "inputpix", "          -1", "");
+  
+  
+
+libdata[libdataItem++] = new Array("obsolete_code/crosstest.html", "crosstest.pro", '.pro file in <a href="obsolete_code/dir-overview.html">obsolete_code/ directory</a>', "crosstest.pro", "", "", "", "", "          -1", "");
+  
+  
+  libdata[libdataItem++] = new Array("obsolete_code/crosstest.html#crosstest", "crosstest", 'routine in <a href="obsolete_code/crosstest.html">crosstest.pro</a>', "crosstest.pro", "", "crosstest", "", "inputimageinputstruct", "          -1", "");
+  
+  
+
+libdata[libdataItem++] = new Array("obsolete_code/curr.html", "curr.pro", '.pro file in <a href="obsolete_code/dir-overview.html">obsolete_code/ directory</a>', "curr.pro", "", "", "", "", "          -1", "");
+  
+  
+  libdata[libdataItem++] = new Array("obsolete_code/curr.html#curr", "curr", 'routine in <a href="obsolete_code/curr.html">curr.pro</a>', "curr.pro", "", "curr", "       This version uses limb fitting opposed to masking (tricenter).   ", "time           Outputs how much time the program takes   ", "          -1", "       Find and ISOLATE fiducials, not just mask them out         Ignore center if sun is too close to edge (or if when cropping, we cro outside wholeimage)         Use 25% of median(image)        Um, let's not (Apr24)         Make sure program doesn't freak out when sun isn't in POV   ");
   
   
 
@@ -191,6 +289,13 @@ libdata[libdataItem++] = new Array("obsolete_code/data__minicrop.html", "data__m
   
   
 
+libdata[libdataItem++] = new Array("./defsysvarthresh.html", "defsysvarthresh.pro", '.pro file in <a href="./dir-overview.html">./ directory</a>', "defsysvarthresh.pro", "", "", "", "", "          -1", "");
+  
+  
+  libdata[libdataItem++] = new Array("./defsysvarthresh.html#defsysvarthresh", "defsysvarthresh", 'routine in <a href="./defsysvarthresh.html">defsysvarthresh.pro</a>', "defsysvarthresh.pro", "", "defsysvarthresh", "       Defines solar thresholds   ", "input           Starting input image   ", "          -1", "");
+  
+  
+
 libdata[libdataItem++] = new Array("obsolete_code/doesntfindanything.html", "doesntfindanything.pro", '.pro file in <a href="obsolete_code/dir-overview.html">obsolete_code/ directory</a>', "doesntfindanything.pro", "", "", "", "", "          -1", "");
   
   
@@ -198,7 +303,75 @@ libdata[libdataItem++] = new Array("obsolete_code/doesntfindanything.html", "doe
   
   
 
-libdata[libdataItem++] = new Array("./fidcomp.html", "fidcomp.pro", '.pro file in <a href="./dir-overview.html">./ directory</a>', "fidcomp.pro", "", "", "", "", "          -1", "");
+libdata[libdataItem++] = new Array("obsolete_code/edgefidcheck.html", "edgefidcheck.pro", '.pro file in <a href="obsolete_code/dir-overview.html">obsolete_code/ directory</a>', "edgefidcheck.pro", "", "", "", "", "          -1", "");
+  
+  
+  libdata[libdataItem++] = new Array("obsolete_code/edgefidcheck.html#edgefidcheck", "edgefidcheck", 'routine in <a href="obsolete_code/edgefidcheck.html">edgefidcheck.pro</a>', "edgefidcheck.pro", "", "edgefidcheck", "", "inputthresh", "          -1", "");
+  
+  
+
+libdata[libdataItem++] = new Array("obsolete_code/evenfastercenter.html", "evenfastercenter.pro", '.pro file in <a href="obsolete_code/dir-overview.html">obsolete_code/ directory</a>', "evenfastercenter.pro", "", "", "", "", "          -1", "");
+  
+  
+  libdata[libdataItem++] = new Array("obsolete_code/evenfastercenter.html#evenfastercenter", "evenfastercenter", 'routine in <a href="obsolete_code/evenfastercenter.html">evenfastercenter.pro</a>', "evenfastercenter.pro", "", "evenfastercenter", "", "inputidedsuns", "          -1", "");
+  
+  
+
+libdata[libdataItem++] = new Array("./everysun.html", "everysun.pro", '.pro file in <a href="./dir-overview.html">./ directory</a>', "everysun.pro", "", "", "", "", "          -1", "");
+  
+  
+  libdata[libdataItem++] = new Array("./everysun.html#everysun", "everysun", 'routine in <a href="./everysun.html">everysun.pro</a>', "everysun.pro", "", "everysun", "       Finds the rough centroiding centers of any and all suns   ", "input           The raw input image   ", "          -1", "");
+  
+  
+
+libdata[libdataItem++] = new Array("obsolete_code/fastcenter.html", "fastcenter.pro", '.pro file in <a href="obsolete_code/dir-overview.html">obsolete_code/ directory</a>', "fastcenter.pro", "", "", "", "", "          -1", "");
+  
+  
+  libdata[libdataItem++] = new Array("obsolete_code/fastcenter.html#fastcenter", "fastcenter", 'routine in <a href="obsolete_code/fastcenter.html">fastcenter.pro</a>', "fastcenter.pro", "", "fastcenter", "", "input", "          -1", "");
+  
+  
+
+libdata[libdataItem++] = new Array("obsolete_code/fastercenter.html", "fastercenter.pro", '.pro file in <a href="obsolete_code/dir-overview.html">obsolete_code/ directory</a>', "fastercenter.pro", "", "", "", "", "          -1", "");
+  
+  
+  libdata[libdataItem++] = new Array("obsolete_code/fastercenter.html#fastercenter", "fastercenter", 'routine in <a href="obsolete_code/fastercenter.html">fastercenter.pro</a>', "fastercenter.pro", "", "fastercenter", "", "inputidedsuns", "          -1", "");
+  
+  
+
+libdata[libdataItem++] = new Array("obsolete_code/ff.html", "ff.pro", '.pro file in <a href="obsolete_code/dir-overview.html">obsolete_code/ directory</a>', "ff.pro", "", "", "", "", "          -1", "");
+  
+  
+  libdata[libdataItem++] = new Array("obsolete_code/ff.html#ff", "ff", 'routine in <a href="obsolete_code/ff.html">ff.pro</a>', "ff.pro", "", "ff", "", "", "          -1", "");
+  
+  libdata[libdataItem++] = new Array("obsolete_code/ff.html#dim3", "dim3", 'routine in <a href="obsolete_code/ff.html">ff.pro</a>', "ff.pro", "", "dim3", "", "", "          -1", "");
+  
+  
+
+libdata[libdataItem++] = new Array("./fid_locate.html", "fid_locate.pro", '.pro file in <a href="./dir-overview.html">./ directory</a>', "fid_locate.pro", "", "", "", "", "          -1", "");
+  
+  
+  libdata[libdataItem++] = new Array("./fid_locate.html#fid_locate", "fid_locate", 'routine in <a href="./fid_locate.html">fid_locate.pro</a>', "fid_locate.pro", "", "fid_locate", "       Locates the whole and sub-pixel positions of fiducials in a cropped solar image   ", "mcenter           Finds the center of the local maxima using a binary mask instead of parabolic peak fitting.   inputimage           The raw input image   inputstruct           Structure containing all the solar information   ", "          -1", "");
+  
+  
+
+libdata[libdataItem++] = new Array("plots_tables_images/fidcomp.html", "fidcomp.pro", '.pro file in <a href="plots_tables_images/dir-overview.html">plots_tables_images/ directory</a>', "fidcomp.pro", "", "", "", "", "          -1", "");
+  
+
+libdata[libdataItem++] = new Array("obsolete_code/findf.html", "findf.pro", '.pro file in <a href="obsolete_code/dir-overview.html">obsolete_code/ directory</a>', "findf.pro", "", "", "", "", "          -1", "");
+  
+
+libdata[libdataItem++] = new Array("obsolete_code/galapagos.html", "galapagos.pro", '.pro file in <a href="obsolete_code/dir-overview.html">obsolete_code/ directory</a>', "galapagos.pro", "", "", "", "", "          -1", "");
+  
+  
+  libdata[libdataItem++] = new Array("obsolete_code/galapagos.html#galapagos", "galapagos", 'routine in <a href="obsolete_code/galapagos.html">galapagos.pro</a>', "galapagos.pro", "", "galapagos", "", "inputthresh", "          -1", "");
+  
+  
+
+libdata[libdataItem++] = new Array("obsolete_code/getstruct copy.html", "getstruct copy.pro", '.pro file in <a href="obsolete_code/dir-overview.html">obsolete_code/ directory</a>', "getstruct copy.pro", "", "", "", "", "          -1", "");
+  
+  
+  libdata[libdataItem++] = new Array("obsolete_code/getstruct copy.html#getstruct", "getstruct", 'routine in <a href="obsolete_code/getstruct copy.html">getstruct copy.pro</a>', "getstruct copy.pro", "", "getstruct", "       Finds the centers of a triple-sun image and loads all relevant information        including offsets and angles into a new structure.   ", "time           Outputs how much time the program takes  struct           Structure containing the centers and cropped images of all 3 suns   ", "          -1", "");
+  
   
 
 libdata[libdataItem++] = new Array("obsolete_code/getstruct.html", "getstruct.pro", '.pro file in <a href="obsolete_code/dir-overview.html">obsolete_code/ directory</a>', "getstruct.pro", "", "", "", "", "          -1", "");
@@ -208,10 +381,161 @@ libdata[libdataItem++] = new Array("obsolete_code/getstruct.html", "getstruct.pr
   
   
 
+libdata[libdataItem++] = new Array("obsolete_code/histosmoothed.html", "histosmoothed.pro", '.pro file in <a href="obsolete_code/dir-overview.html">obsolete_code/ directory</a>', "histosmoothed.pro", "", "", "", "", "          -1", "");
+  
+  
+  libdata[libdataItem++] = new Array("obsolete_code/histosmoothed.html#histosmoothed", "histosmoothed", 'routine in <a href="obsolete_code/histosmoothed.html">histosmoothed.pro</a>', "histosmoothed.pro", "", "histosmoothed", "", "input", "          -1", "");
+  
+  
+
+libdata[libdataItem++] = new Array("obsolete_code/horiz.html", "horiz.pro", '.pro file in <a href="obsolete_code/dir-overview.html">obsolete_code/ directory</a>', "horiz.pro", "", "", "", "", "          -1", "");
+  
+
+libdata[libdataItem++] = new Array("./idsuns.html", "idsuns.pro", '.pro file in <a href="./dir-overview.html">./ directory</a>', "idsuns.pro", "", "", "", "", "          -1", "");
+  
+  
+  libdata[libdataItem++] = new Array("./idsuns.html#idsuns", "idsuns", 'routine in <a href="./idsuns.html">idsuns.pro</a>', "idsuns.pro", "", "idsuns", "       Defines solar regions   ", "input           Starting input image   ", "          -1", "");
+  
+  
+
+libdata[libdataItem++] = new Array("obsolete_code/imageprep.html", "imageprep.pro", '.pro file in <a href="obsolete_code/dir-overview.html">obsolete_code/ directory</a>', "imageprep.pro", "", "", "", "", "          -1", "");
+  
+  
+  libdata[libdataItem++] = new Array("obsolete_code/imageprep.html#imageprep", "imageprep", 'routine in <a href="obsolete_code/imageprep.html">imageprep.pro</a>', "imageprep.pro", "", "imageprep", "", "input", "          -1", "");
+  
+  
+
+libdata[libdataItem++] = new Array("obsolete_code/kahuna _before_non-comment_removal.html", "kahuna _before_non-comment_removal.pro", '.pro file in <a href="obsolete_code/dir-overview.html">obsolete_code/ directory</a>', "kahuna _before_non-comment_removal.pro", "   JEREN SUZUKI: <span class= code-output >   Space Sciences Laboratory</span> <span class= code-output >   7 Gauss Way</span> <span class= code-output >   Berkeley, CA 94720 USA</span> <span class= code-output >   E-mail: jsuzuki@ssl.berkeley.edu</span>  ", "", " NAME:    KAHUNA   PURPOSE:    Finds the center of 3 suns in a single image. Currently limited to a .bmp test image. Instead    of scanning rows to crop, scans in a circle. Using solar centers, identifies fiducial positions.   ", "", "          -1", "");
+  
+  
+  libdata[libdataItem++] = new Array("obsolete_code/kahuna _before_non-comment_removal.html#makelimbstrips", "makelimbstrips", 'routine in <a href="obsolete_code/kahuna _before_non-comment_removal.html">kahuna _before_non-comment_removal.pro</a>', "kahuna _before_non-comment_removal.pro", "", "makelimbstrips", "       Makes limb strips from full-length strips   ", "region           Which sun out of the three to find the center of. Defaults to the brightest sun  time           Prints the elapsed time  thresh           Threshold used to select pixels  xstrips           Structure containing row strips  ystrips           Structure containing column strips   ", "          -1", "");
+  
+  libdata[libdataItem++] = new Array("obsolete_code/kahuna _before_non-comment_removal.html#quickmask", "quickmask", 'routine in <a href="obsolete_code/kahuna _before_non-comment_removal.html">kahuna _before_non-comment_removal.pro</a>', "kahuna _before_non-comment_removal.pro", "", "quickmask", "       Finds center of mask where pixels are above a given threshold   ", "input_image           2D array of pixels to mask with threshold  thresh           Threshold used to select pixels  ", "          -1", "");
+  
+  libdata[libdataItem++] = new Array("obsolete_code/kahuna _before_non-comment_removal.html#whichcropmethod", "whichcropmethod", 'routine in <a href="obsolete_code/kahuna _before_non-comment_removal.html">kahuna _before_non-comment_removal.pro</a>', "kahuna _before_non-comment_removal.pro", "", "whichcropmethod", "       Crops differently according to which region is selected.   ", "region           1) main sun            2) 50% brightness sun            3) 25% brightness sun  ", "          -1", "");
+  
+  libdata[libdataItem++] = new Array("obsolete_code/kahuna _before_non-comment_removal.html#makestrips", "makestrips", 'routine in <a href="obsolete_code/kahuna _before_non-comment_removal.html">kahuna _before_non-comment_removal.pro</a>', "kahuna _before_non-comment_removal.pro", "", "makestrips", "       Only saves 5 strips centered around the solar diameter to reduce the amount of limb-            darkened pixels and to make the polynomial-fitted limbs more-or-less look similar.   ", "region       Which sun out of the three to find the center of. Defaults to the brightest sun  time       Prints elapsed time  thresh       Threshold used to select pixels  xstrips       Structure containing row strips  ystrips       Structure containing column strips   ", "          -1", "");
+  
+  libdata[libdataItem++] = new Array("obsolete_code/kahuna _before_non-comment_removal.html#circscancrop", "circscancrop", 'routine in <a href="obsolete_code/kahuna _before_non-comment_removal.html">kahuna _before_non-comment_removal.pro</a>', "kahuna _before_non-comment_removal.pro", "", "circscancrop", "       Quickly finds the center of the main sun, scans in a circle, and locates the two secondary        suns' centers. Crops either of the secondary suns based on what region specified.   ", "region           Which sun out of the three to find the center of. Defaults to the brightest sun  time           Print the elapsed time  mainxpos           X position of 100% brightness sun to scan in a circle around  mainypos           Y position of 100% brightness sun to scan in a circle around  image           Cropped area  thresh           Threshold used in finding center  xpos           Computed X position of center  ypos           Computed Y position of center  xoffset           X offset of cropped region's bottom left corner  yoffset           Y offset of cropped region's bottom left corner   ", "          -1", "");
+  
+  libdata[libdataItem++] = new Array("obsolete_code/kahuna _before_non-comment_removal.html#limbfit", "limbfit", 'routine in <a href="obsolete_code/kahuna _before_non-comment_removal.html">kahuna _before_non-comment_removal.pro</a>', "kahuna _before_non-comment_removal.pro", "", "limbfit", "       Uses the data from makelimbstrips and fits an n-th order polynomial to the limb to find where        it crosses the threshold.   ", "plot           Makes some nice plots  region           Which sun out of the three to find the center of. Defaults to the brightest sun  time           Prints the elapsed time  thresh           Threshold used to select pixels  xpos           X center  ypos           Y center   ", "          -1", "");
+  
+  libdata[libdataItem++] = new Array("obsolete_code/kahuna _before_non-comment_removal.html#getstruct", "getstruct", 'routine in <a href="obsolete_code/kahuna _before_non-comment_removal.html">kahuna _before_non-comment_removal.pro</a>', "kahuna _before_non-comment_removal.pro", "", "getstruct", "       Finds the centers of a triple-sun image and loads all relevant information        including offsets and angles into a new structure.   ", "time           Outputs how much time the program takes  struct           Structure containing the centers and cropped images of all 3 suns   ", "          -1", "");
+  
+  
+
+libdata[libdataItem++] = new Array("obsolete_code/kahuna copy.html", "kahuna copy.pro", '.pro file in <a href="obsolete_code/dir-overview.html">obsolete_code/ directory</a>', "kahuna copy.pro", "   JEREN SUZUKI: <span class= code-output >   Space Sciences Laboratory</span> <span class= code-output >   7 Gauss Way</span> <span class= code-output >   Berkeley, CA 94720 USA</span> <span class= code-output >   E-mail: jsuzuki@ssl.berkeley.edu</span>  ", "", " NAME:    KAHUNA   PURPOSE:    Finds the center of 3 suns in a single image. Currently limited to a .bmp test image. Instead    of scanning rows to crop, scans in a circle. Using solar centers, identifies fiducial positions.   ", "", "          -1", "");
+  
+  
+  libdata[libdataItem++] = new Array("obsolete_code/kahuna copy.html#kahuna", "kahuna", 'routine in <a href="obsolete_code/kahuna copy.html">kahuna copy.pro</a>', "kahuna copy.pro", "", "kahuna", "       This version uses limb fitting opposed to masking (tricenter).   ", "time           Outputs how much time the program takes   ", "          -1", "       Find and ISOLATE fiducials, not just mask them out         Ignore center if sun is too close to edge (or if when cropping, we cro outside wholeimage)         Use 25% of median(image)        Um, let's not (Apr24)         Make sure program doesn't freak out when sun isn't in POV   ");
+  
+  
+
+libdata[libdataItem++] = new Array("obsolete_code/kahuna.html", "kahuna.pro", '.pro file in <a href="obsolete_code/dir-overview.html">obsolete_code/ directory</a>', "kahuna.pro", "   JEREN SUZUKI: <span class= code-output >   Space Sciences Laboratory</span> <span class= code-output >   7 Gauss Way</span> <span class= code-output >   Berkeley, CA 94720 USA</span> <span class= code-output >   E-mail: jsuzuki@ssl.berkeley.edu</span>  ", "", " NAME:    KAHUNA   PURPOSE:    Finds the center of 3 suns in a single image. Currently limited to a .bmp test image. Instead    of scanning rows to crop, scans in a circle. Using solar centers, identifies fiducial positions.   ", "", "          -1", "");
+  
+  
+  libdata[libdataItem++] = new Array("obsolete_code/kahuna.html#makelimbstrips", "makelimbstrips", 'routine in <a href="obsolete_code/kahuna.html">kahuna.pro</a>', "kahuna.pro", "", "makelimbstrips", "       Makes limb strips from full-length strips   ", "region           Which sun out of the three to find the center of. Defaults to the brightest sun  time           Prints the elapsed time  thresh           Threshold used to select pixels  xstrips           Structure containing row strips  ystrips           Structure containing column strips   ", "          -1", "");
+  
+  libdata[libdataItem++] = new Array("obsolete_code/kahuna.html#quickmask", "quickmask", 'routine in <a href="obsolete_code/kahuna.html">kahuna.pro</a>', "kahuna.pro", "", "quickmask", "       Finds center of mask where pixels are above a given threshold   ", "input_image           2D array of pixels to mask with threshold  thresh           Threshold used to select pixels  ", "          -1", "");
+  
+  libdata[libdataItem++] = new Array("obsolete_code/kahuna.html#whichcropmethod", "whichcropmethod", 'routine in <a href="obsolete_code/kahuna.html">kahuna.pro</a>', "kahuna.pro", "", "whichcropmethod", "       Crops differently according to which region is selected.   ", "region           1) main sun            2) 50% brightness sun            3) 25% brightness sun  ", "          -1", "");
+  
+  libdata[libdataItem++] = new Array("obsolete_code/kahuna.html#makestrips", "makestrips", 'routine in <a href="obsolete_code/kahuna.html">kahuna.pro</a>', "kahuna.pro", "", "makestrips", "       Only saves 5 strips centered around the solar diameter to reduce the amount of limb-            darkened pixels and to make the polynomial-fitted limbs more-or-less look similar.   ", "region       Which sun out of the three to find the center of. Defaults to the brightest sun  time       Prints elapsed time  thresh       Threshold used to select pixels  xstrips       Structure containing row strips  ystrips       Structure containing column strips   ", "          -1", "");
+  
+  libdata[libdataItem++] = new Array("obsolete_code/kahuna.html#circscancrop", "circscancrop", 'routine in <a href="obsolete_code/kahuna.html">kahuna.pro</a>', "kahuna.pro", "", "circscancrop", "       Quickly finds the center of the main sun, scans in a circle, and locates the two secondary        suns' centers. Crops either of the secondary suns based on what region specified.   ", "region           Which sun out of the three to find the center of. Defaults to the brightest sun  time           Print the elapsed time  mainxpos           X position of 100% brightness sun to scan in a circle around  mainypos           Y position of 100% brightness sun to scan in a circle around  image           Cropped area  thresh           Threshold used in finding center  xpos           Computed X position of center  ypos           Computed Y position of center  xoffset           X offset of cropped region's bottom left corner  yoffset           Y offset of cropped region's bottom left corner   ", "          -1", "");
+  
+  libdata[libdataItem++] = new Array("obsolete_code/kahuna.html#limbfit", "limbfit", 'routine in <a href="obsolete_code/kahuna.html">kahuna.pro</a>', "kahuna.pro", "", "limbfit", "       Uses the data from makelimbstrips and fits an n-th order polynomial to the limb to find where        it crosses the threshold.   ", "plot           Makes some nice plots  region           Which sun out of the three to find the center of. Defaults to the brightest sun  time           Prints the elapsed time  thresh           Threshold used to select pixels  xpos           X center  ypos           Y center   ", "          -1", "");
+  
+  libdata[libdataItem++] = new Array("obsolete_code/kahuna.html#getstruct", "getstruct", 'routine in <a href="obsolete_code/kahuna.html">kahuna.pro</a>', "kahuna.pro", "", "getstruct", "       Finds the centers of a triple-sun image and loads all relevant information        including offsets and angles into a new structure.   ", "time           Outputs how much time the program takes  struct           Structure containing the centers and cropped images of all 3 suns   ", "          -1", "");
+  
+  libdata[libdataItem++] = new Array("obsolete_code/kahuna.html#cropme", "cropme", 'routine in <a href="obsolete_code/kahuna.html">kahuna.pro</a>', "kahuna.pro", "", "cropme", "", "inputpix", "          -1", "");
+  
+  libdata[libdataItem++] = new Array("obsolete_code/kahuna.html#bordercheck", "bordercheck", 'routine in <a href="obsolete_code/kahuna.html">kahuna.pro</a>', "kahuna.pro", "", "bordercheck", "", "input", "          -1", "");
+  
+  libdata[libdataItem++] = new Array("obsolete_code/kahuna.html#edgefidcheck", "edgefidcheck", 'routine in <a href="obsolete_code/kahuna.html">kahuna.pro</a>', "kahuna.pro", "", "edgefidcheck", "", "inputthresh", "          -1", "");
+  
+  
+
+libdata[libdataItem++] = new Array("obsolete_code/kahuna_apr24.html", "kahuna_apr24.pro", '.pro file in <a href="obsolete_code/dir-overview.html">obsolete_code/ directory</a>', "kahuna_apr24.pro", "   JEREN SUZUKI: <span class= code-output >   Space Sciences Laboratory</span> <span class= code-output >   7 Gauss Way</span> <span class= code-output >   Berkeley, CA 94720 USA</span> <span class= code-output >   E-mail: jsuzuki@ssl.berkeley.edu</span>  ", "", " NAME:    KAHUNA   PURPOSE:    Finds the center of 3 suns in a single image. Currently limited to a .bmp test image. Instead    of scanning rows to crop, scans in a circle. Using solar centers, identifies fiducial positions.   ", "", "          -1", "");
+  
+  
+  libdata[libdataItem++] = new Array("obsolete_code/kahuna_apr24.html#makelimbstrips", "makelimbstrips", 'routine in <a href="obsolete_code/kahuna_apr24.html">kahuna_apr24.pro</a>', "kahuna_apr24.pro", "", "makelimbstrips", "       Makes limb strips from full-length strips   ", "region           Which sun out of the three to find the center of. Defaults to the brightest sun  time           Prints the elapsed time  thresh           Threshold used to select pixels  xstrips           Structure containing row strips  ystrips           Structure containing column strips   ", "          -1", "");
+  
+  libdata[libdataItem++] = new Array("obsolete_code/kahuna_apr24.html#quickmask", "quickmask", 'routine in <a href="obsolete_code/kahuna_apr24.html">kahuna_apr24.pro</a>', "kahuna_apr24.pro", "", "quickmask", "       Finds center of mask where pixels are above a given threshold   ", "input_image           2D array of pixels to mask with threshold  thresh           Threshold used to select pixels  ", "          -1", "");
+  
+  libdata[libdataItem++] = new Array("obsolete_code/kahuna_apr24.html#quickfidmask", "quickfidmask", 'routine in <a href="obsolete_code/kahuna_apr24.html">kahuna_apr24.pro</a>', "kahuna_apr24.pro", "", "quickfidmask", "       Finds center of mask where pixels are above a given threshold   ", "input_image           2D array of pixels to mask with threshold  thresh           Threshold used to select pixels  ", "          -1", "");
+  
+  libdata[libdataItem++] = new Array("obsolete_code/kahuna_apr24.html#whichcropmethod", "whichcropmethod", 'routine in <a href="obsolete_code/kahuna_apr24.html">kahuna_apr24.pro</a>', "kahuna_apr24.pro", "", "whichcropmethod", "       Crops differently according to which region is selected.   ", "region           1) main sun            2) 50% brightness sun            3) 25% brightness sun  ", "          -1", "");
+  
+  libdata[libdataItem++] = new Array("obsolete_code/kahuna_apr24.html#makestrips", "makestrips", 'routine in <a href="obsolete_code/kahuna_apr24.html">kahuna_apr24.pro</a>', "kahuna_apr24.pro", "", "makestrips", "       Only saves 5 strips centered around the solar diameter to reduce the amount of limb-            darkened pixels and to make the polynomial-fitted limbs more-or-less look similar.   ", "region       Which sun out of the three to find the center of. Defaults to the brightest sun  time       Prints elapsed time  thresh       Threshold used to select pixels  xstrips       Structure containing row strips  ystrips       Structure containing column strips   ", "          -1", "");
+  
+  libdata[libdataItem++] = new Array("obsolete_code/kahuna_apr24.html#circscancrop", "circscancrop", 'routine in <a href="obsolete_code/kahuna_apr24.html">kahuna_apr24.pro</a>', "kahuna_apr24.pro", "", "circscancrop", "       Quickly finds the center of the main sun, scans in a circle, and locates the two secondary        suns' centers. Crops either of the secondary suns based on what region specified.   ", "region           Which sun out of the three to find the center of. Defaults to the brightest sun  time           Print the elapsed time  mainxpos           X position of 100% brightness sun to scan in a circle around  mainypos           Y position of 100% brightness sun to scan in a circle around  image           Cropped area  thresh           Threshold used in finding center  xpos           Computed X position of center  ypos           Computed Y position of center  xoffset           X offset of cropped region's bottom left corner  yoffset           Y offset of cropped region's bottom left corner   ", "          -1", "");
+  
+  libdata[libdataItem++] = new Array("obsolete_code/kahuna_apr24.html#limbfit", "limbfit", 'routine in <a href="obsolete_code/kahuna_apr24.html">kahuna_apr24.pro</a>', "kahuna_apr24.pro", "", "limbfit", "       Uses the data from makelimbstrips and fits an n-th order polynomial to the limb to find where        it crosses the threshold.   ", "plot           Makes some nice plots  region           Which sun out of the three to find the center of. Defaults to the brightest sun  time           Prints the elapsed time  thresh           Threshold used to select pixels  xpos           X center  ypos           Y center   ", "          -1", "");
+  
+  libdata[libdataItem++] = new Array("obsolete_code/kahuna_apr24.html#getstruct", "getstruct", 'routine in <a href="obsolete_code/kahuna_apr24.html">kahuna_apr24.pro</a>', "kahuna_apr24.pro", "", "getstruct", "       Finds the centers of a triple-sun image and loads all relevant information        including offsets and angles into a new structure.   ", "time           Outputs how much time the program takes  struct           Structure containing the centers and cropped images of all 3 suns   ", "          -1", "");
+  
+  libdata[libdataItem++] = new Array("obsolete_code/kahuna_apr24.html#auxcrop", "auxcrop", 'routine in <a href="obsolete_code/kahuna_apr24.html">kahuna_apr24.pro</a>', "kahuna_apr24.pro", "", "auxcrop", "", "", "          -1", "");
+  
+  libdata[libdataItem++] = new Array("obsolete_code/kahuna_apr24.html#cropme", "cropme", 'routine in <a href="obsolete_code/kahuna_apr24.html">kahuna_apr24.pro</a>', "kahuna_apr24.pro", "", "cropme", "", "inputpix", "          -1", "");
+  
+  libdata[libdataItem++] = new Array("obsolete_code/kahuna_apr24.html#bordercheck", "bordercheck", 'routine in <a href="obsolete_code/kahuna_apr24.html">kahuna_apr24.pro</a>', "kahuna_apr24.pro", "", "bordercheck", "", "input", "          -1", "");
+  
+  libdata[libdataItem++] = new Array("obsolete_code/kahuna_apr24.html#morescratch", "morescratch", 'routine in <a href="obsolete_code/kahuna_apr24.html">kahuna_apr24.pro</a>', "kahuna_apr24.pro", "", "morescratch", "", "inputthresh", "          -1", "");
+  
+  libdata[libdataItem++] = new Array("obsolete_code/kahuna_apr24.html#edgefidcheck", "edgefidcheck", 'routine in <a href="obsolete_code/kahuna_apr24.html">kahuna_apr24.pro</a>', "kahuna_apr24.pro", "", "edgefidcheck", "", "inputthresh", "          -1", "");
+  
+  libdata[libdataItem++] = new Array("obsolete_code/kahuna_apr24.html#galapagos", "galapagos", 'routine in <a href="obsolete_code/kahuna_apr24.html">kahuna_apr24.pro</a>', "kahuna_apr24.pro", "", "galapagos", "", "inputthresh", "          -1", "");
+  
+  libdata[libdataItem++] = new Array("obsolete_code/kahuna_apr24.html#scratch", "scratch", 'routine in <a href="obsolete_code/kahuna_apr24.html">kahuna_apr24.pro</a>', "kahuna_apr24.pro", "", "scratch", "", "inputthresh", "          -1", "");
+  
+  libdata[libdataItem++] = new Array("obsolete_code/kahuna_apr24.html#barkbark", "barkbark", 'routine in <a href="obsolete_code/kahuna_apr24.html">kahuna_apr24.pro</a>', "kahuna_apr24.pro", "", "barkbark", "", "inputthresh", "          -1", "");
+  
+  libdata[libdataItem++] = new Array("obsolete_code/kahuna_apr24.html#last6pixels", "last6pixels", 'routine in <a href="obsolete_code/kahuna_apr24.html">kahuna_apr24.pro</a>', "kahuna_apr24.pro", "", "last6pixels", "", "inputthresh", "          -1", "");
+  
+  libdata[libdataItem++] = new Array("obsolete_code/kahuna_apr24.html#smoothit", "smoothit", 'routine in <a href="obsolete_code/kahuna_apr24.html">kahuna_apr24.pro</a>', "kahuna_apr24.pro", "", "smoothit", "", "input", "          -1", "");
+  
+  
+
+libdata[libdataItem++] = new Array("obsolete_code/last6pixels.html", "last6pixels.pro", '.pro file in <a href="obsolete_code/dir-overview.html">obsolete_code/ directory</a>', "last6pixels.pro", "", "", "", "", "          -1", "");
+  
+  
+  libdata[libdataItem++] = new Array("obsolete_code/last6pixels.html#last6pixels", "last6pixels", 'routine in <a href="obsolete_code/last6pixels.html">last6pixels.pro</a>', "last6pixels.pro", "", "last6pixels", "", "inputthresh", "          -1", "");
+  
+  
+
+libdata[libdataItem++] = new Array("obsolete_code/lclxtrem.html", "lclxtrem.pro", '.pro file in <a href="obsolete_code/dir-overview.html">obsolete_code/ directory</a>', "lclxtrem.pro", "", "", "", "", "          -1", "");
+  
+  
+  libdata[libdataItem++] = new Array("obsolete_code/lclxtrem.html#lclxtrem", "lclxtrem", 'routine in <a href="obsolete_code/lclxtrem.html">lclxtrem.pro</a>', "lclxtrem.pro", "", "lclxtrem", " NAME:   lclxtrem  PURPOSE:   Find local minima or maxima in a 1-d vector.  DESCRIPTION:   CATEGORY:   Spectroscopy  CALLING SEQUENCE:   idx=lclxtrem(vec,width,[/MAXIMA])  INPUTS:   vec - Input vector of data points.   width - size of zone to search, minima (or maxima) separated by less than             width are never returned.  (Default = 5)  OPTIONAL INPUT PARAMETERS:   KEYWORD INPUT PARAMETERS:   MAXIMA  - Flag, if set, causes program to search for local maxima, the default             is to search for local minima  OUTPUTS:   Returns indicies into vec that give local extrema.  KEYWORD OUTPUT PARAMETERS:   COMMON BLOCKS:   SIDE EFFECTS:   RESTRICTIONS:   PROCEDURE:   MODIFICATION HISTORY:   97/12/5, Written by Marc W. Buie, Lowell Observatory   ", "MAXIMAvecin_width", "          -1", "");
+  
+  
+
+libdata[libdataItem++] = new Array("obsolete_code/limbfit copy.html", "limbfit copy.pro", '.pro file in <a href="obsolete_code/dir-overview.html">obsolete_code/ directory</a>', "limbfit copy.pro", "", "", "", "", "          -1", "");
+  
+  
+  libdata[libdataItem++] = new Array("obsolete_code/limbfit copy.html#limbfit", "limbfit", 'routine in <a href="obsolete_code/limbfit copy.html">limbfit copy.pro</a>', "limbfit copy.pro", "", "limbfit", "       Uses the data from makelimbstrips and fits an n-th order polynomial to the limb to find where        it crosses the threshold.   ", "plot           Makes some nice plots  region           Which sun out of the three to find the center of. Defaults to the brightest sun  time           Prints the elapsed time  thresh           Threshold used to select pixels  xpos           X center  ypos           Y center   ", "          -1", "");
+  
+  
+
+libdata[libdataItem++] = new Array("./limbfit.html", "limbfit.pro", '.pro file in <a href="./dir-overview.html">./ directory</a>', "limbfit.pro", "", "", "", "", "          -1", "");
+  
+  
+  libdata[libdataItem++] = new Array("./limbfit.html#limbfit", "limbfit", 'routine in <a href="./limbfit.html">limbfit.pro</a>', "limbfit.pro", "", "limbfit", "       Fits 2nd order polynomial to limb strips   ", "inputstruct           Structure containing all the solar information   inputimage           Starting input image   ", "          -1", "");
+  
+  
+
 libdata[libdataItem++] = new Array("obsolete_code/limbfit.html", "limbfit.pro", '.pro file in <a href="obsolete_code/dir-overview.html">obsolete_code/ directory</a>', "limbfit.pro", "", "", "", "", "          -1", "");
   
   
   libdata[libdataItem++] = new Array("obsolete_code/limbfit.html#limbfit", "limbfit", 'routine in <a href="obsolete_code/limbfit.html">limbfit.pro</a>', "limbfit.pro", "", "limbfit", "   Uses the data from makelimbstrips and fits an n-th order polynomial to the limb to find where        it crosses the threshold.   ", "nstrips           How many strips to select, centered around the row/col diameter  plot           Makes some nice plots  region           Which sun out of the three to find the center of. Defaults to the brightest sun  time           Prints the elapsed time  thresh           Threshold used to select pixels  xpos           X center  ypos           Y center   file           File to be read in  ministrip_length           How long the trimmed down strip will be  order           What order polynomial to use for POLY_FIT()  scan_width           Indicates how far apart to scan  sigmavalue           Sets the threshold to be:            max(image) - sigmavalue*stddev(image)   sundiam           Approximate diameter of sun in pixels. (Based on bmp image)  ", "          -1", "");
+  
+  
+
+libdata[libdataItem++] = new Array("./makelimbstrips.html", "makelimbstrips.pro", '.pro file in <a href="./dir-overview.html">./ directory</a>', "makelimbstrips.pro", "", "", "", "", "          -1", "");
+  
+  
+  libdata[libdataItem++] = new Array("./makelimbstrips.html#makelimbstrips", "makelimbstrips", 'routine in <a href="./makelimbstrips.html">makelimbstrips.pro</a>', "makelimbstrips.pro", "", "makelimbstrips", "       Makes limb strips from whole strips   ", "inputstruct           Structure containing all the solar information   inputimage           The raw input image   ", "          -1", "");
   
   
 
@@ -229,22 +553,36 @@ libdata[libdataItem++] = new Array("obsolete_code/makestrips.html", "makestrips.
   
   
 
-libdata[libdataItem++] = new Array("./merrygotrace.html", "merrygotrace.pro", '.pro file in <a href="./dir-overview.html">./ directory</a>', "merrygotrace.pro", "   JEREN SUZUKI: <span class= code-output >   Space Sciences Laboratory</span> <span class= code-output >   7 Gauss Way</span> <span class= code-output >   Berkeley, CA 94720 USA</span> <span class= code-output >   E-mail: jsuzuki@ssl.berkeley.edu</span>  ", "", " NAME:    MERRYGOTRACE   PURPOSE:    Finds the center of 3 suns in a single image. Currently limited to a .bmp test image. Instead    of scanning rows to crop, scans in a circle.   ", "", "          -1", "");
+libdata[libdataItem++] = new Array("./makestrips.html", "makestrips.pro", '.pro file in <a href="./dir-overview.html">./ directory</a>', "makestrips.pro", "", "", "", "", "          -1", "");
   
   
-  libdata[libdataItem++] = new Array("./merrygotrace.html#makelimbstrips", "makelimbstrips", 'routine in <a href="./merrygotrace.html">merrygotrace.pro</a>', "merrygotrace.pro", "", "makelimbstrips", "       Makes limb strips from full-length strips   ", "region           Which sun out of the three to find the center of. Defaults to the brightest sun  time           Prints the elapsed time  thresh           Threshold used to select pixels  xstrips           Structure containing row strips  ystrips           Structure containing column strips   ", "          -1", "");
+  libdata[libdataItem++] = new Array("./makestrips.html#makestrips", "makestrips", 'routine in <a href="./makestrips.html">makestrips.pro</a>', "makestrips.pro", "", "makestrips", "       Makes strips using approx centroiding method to make cropped areas   ", "inputstruct           Structure containing all the solar information   inputimage           The raw input image   ", "          -1", "");
   
-  libdata[libdataItem++] = new Array("./merrygotrace.html#quickmask", "quickmask", 'routine in <a href="./merrygotrace.html">merrygotrace.pro</a>', "merrygotrace.pro", "", "quickmask", "       Finds center of mask where pixels are above a given threshold   ", "image           2D array of pixels to mask with threshold  thresh           Threshold used to select pixels  ", "          -1", "");
   
-  libdata[libdataItem++] = new Array("./merrygotrace.html#whichcropmethod", "whichcropmethod", 'routine in <a href="./merrygotrace.html">merrygotrace.pro</a>', "merrygotrace.pro", "", "whichcropmethod", "       Crops differently according to which region is selected.   ", "region           1) main sun            2) 50% brightness sun            3) 25% brightness sun  ", "          -1", "");
+
+libdata[libdataItem++] = new Array("obsolete_code/makestrips_may8.html", "makestrips_may8.pro", '.pro file in <a href="obsolete_code/dir-overview.html">obsolete_code/ directory</a>', "makestrips_may8.pro", "", "", "", "", "          -1", "");
   
-  libdata[libdataItem++] = new Array("./merrygotrace.html#makestrips", "makestrips", 'routine in <a href="./merrygotrace.html">merrygotrace.pro</a>', "merrygotrace.pro", "", "makestrips", "       Only saves 5 strips centered around the solar diameter to reduce the amount of limb-            darkened pixels and to make the polynomial-fitted limbs more-or-less look similar.   ", "region       Which sun out of the three to find the center of. Defaults to the brightest sun  time       Prints elapsed time  thresh       Threshold used to select pixels  xstrips       Structure containing row strips  ystrips       Structure containing column strips   ", "          -1", "");
   
-  libdata[libdataItem++] = new Array("./merrygotrace.html#circscancrop", "circscancrop", 'routine in <a href="./merrygotrace.html">merrygotrace.pro</a>', "merrygotrace.pro", "", "circscancrop", "       Quickly finds the center of the main sun, scans in a circle, and locates the two secondary        suns' centers. Crops either of the secondary suns based on what region specified.   ", "region           Which sun out of the three to find the center of. Defaults to the brightest sun  time           Print the elapsed time  mainxpos           X position of 100% brightness sun to scan in a circle around  mainypos           Y position of 100% brightness sun to scan in a circle around  image           Cropped area  thresh           Threshold used in finding center  xpos           Computed X position of center  ypos           Computed Y position of center  xoffset           X offset of cropped region's bottom left corner  yoffset           Y offset of cropped region's bottom left corner   ", "          -1", "");
+  libdata[libdataItem++] = new Array("obsolete_code/makestrips_may8.html#makestrips", "makestrips", 'routine in <a href="obsolete_code/makestrips_may8.html">makestrips_may8.pro</a>', "makestrips_may8.pro", "", "makestrips", "       Only saves 5 strips centered around the solar diameter to reduce the amount of limb-            darkened pixels and to make the polynomial-fitted limbs more-or-less look similar.   ", "region       Which sun out of the three to find the center of. Defaults to the brightest sun  time       Prints elapsed time  thresh       Threshold used to select pixels  xstrips       Structure containing row strips  ystrips       Structure containing column strips   ", "          -1", "");
   
-  libdata[libdataItem++] = new Array("./merrygotrace.html#limbfit", "limbfit", 'routine in <a href="./merrygotrace.html">merrygotrace.pro</a>', "merrygotrace.pro", "", "limbfit", "       Uses the data from makelimbstrips and fits an n-th order polynomial to the limb to find where        it crosses the threshold.   ", "plot           Makes some nice plots  region           Which sun out of the three to find the center of. Defaults to the brightest sun  time           Prints the elapsed time  thresh           Threshold used to select pixels  xpos           X center  ypos           Y center   ", "          -1", "");
   
-  libdata[libdataItem++] = new Array("./merrygotrace.html#getstruct", "getstruct", 'routine in <a href="./merrygotrace.html">merrygotrace.pro</a>', "merrygotrace.pro", "", "getstruct", "       Finds the centers of a triple-sun image and loads all relevant information        including offsets and angles into a new structure.   ", "time           Outputs how much time the program takes  struct           Structure containing the centers and cropped images of all 3 suns   ", "          -1", "");
+
+libdata[libdataItem++] = new Array("obsolete_code/merrygotrace.html", "merrygotrace.pro", '.pro file in <a href="obsolete_code/dir-overview.html">obsolete_code/ directory</a>', "merrygotrace.pro", "   JEREN SUZUKI: <span class= code-output >   Space Sciences Laboratory</span> <span class= code-output >   7 Gauss Way</span> <span class= code-output >   Berkeley, CA 94720 USA</span> <span class= code-output >   E-mail: jsuzuki@ssl.berkeley.edu</span>  ", "", " NAME:    MERRYGOTRACE   PURPOSE:    Finds the center of 3 suns in a single image. Currently limited to a .bmp test image. Instead    of scanning rows to crop, scans in a circle.   ", "", "          -1", "");
+  
+  
+  libdata[libdataItem++] = new Array("obsolete_code/merrygotrace.html#makelimbstrips", "makelimbstrips", 'routine in <a href="obsolete_code/merrygotrace.html">merrygotrace.pro</a>', "merrygotrace.pro", "", "makelimbstrips", "       Makes limb strips from full-length strips   ", "region           Which sun out of the three to find the center of. Defaults to the brightest sun  time           Prints the elapsed time  thresh           Threshold used to select pixels  xstrips           Structure containing row strips  ystrips           Structure containing column strips   ", "          -1", "");
+  
+  libdata[libdataItem++] = new Array("obsolete_code/merrygotrace.html#quickmask", "quickmask", 'routine in <a href="obsolete_code/merrygotrace.html">merrygotrace.pro</a>', "merrygotrace.pro", "", "quickmask", "       Finds center of mask where pixels are above a given threshold   ", "image           2D array of pixels to mask with threshold  thresh           Threshold used to select pixels  ", "          -1", "");
+  
+  libdata[libdataItem++] = new Array("obsolete_code/merrygotrace.html#whichcropmethod", "whichcropmethod", 'routine in <a href="obsolete_code/merrygotrace.html">merrygotrace.pro</a>', "merrygotrace.pro", "", "whichcropmethod", "       Crops differently according to which region is selected.   ", "region           1) main sun            2) 50% brightness sun            3) 25% brightness sun  ", "          -1", "");
+  
+  libdata[libdataItem++] = new Array("obsolete_code/merrygotrace.html#makestrips", "makestrips", 'routine in <a href="obsolete_code/merrygotrace.html">merrygotrace.pro</a>', "merrygotrace.pro", "", "makestrips", "       Only saves 5 strips centered around the solar diameter to reduce the amount of limb-            darkened pixels and to make the polynomial-fitted limbs more-or-less look similar.   ", "region       Which sun out of the three to find the center of. Defaults to the brightest sun  time       Prints elapsed time  thresh       Threshold used to select pixels  xstrips       Structure containing row strips  ystrips       Structure containing column strips   ", "          -1", "");
+  
+  libdata[libdataItem++] = new Array("obsolete_code/merrygotrace.html#circscancrop", "circscancrop", 'routine in <a href="obsolete_code/merrygotrace.html">merrygotrace.pro</a>', "merrygotrace.pro", "", "circscancrop", "       Quickly finds the center of the main sun, scans in a circle, and locates the two secondary        suns' centers. Crops either of the secondary suns based on what region specified.   ", "region           Which sun out of the three to find the center of. Defaults to the brightest sun  time           Print the elapsed time  mainxpos           X position of 100% brightness sun to scan in a circle around  mainypos           Y position of 100% brightness sun to scan in a circle around  image           Cropped area  thresh           Threshold used in finding center  xpos           Computed X position of center  ypos           Computed Y position of center  xoffset           X offset of cropped region's bottom left corner  yoffset           Y offset of cropped region's bottom left corner   ", "          -1", "");
+  
+  libdata[libdataItem++] = new Array("obsolete_code/merrygotrace.html#limbfit", "limbfit", 'routine in <a href="obsolete_code/merrygotrace.html">merrygotrace.pro</a>', "merrygotrace.pro", "", "limbfit", "       Uses the data from makelimbstrips and fits an n-th order polynomial to the limb to find where        it crosses the threshold.   ", "plot           Makes some nice plots  region           Which sun out of the three to find the center of. Defaults to the brightest sun  time           Prints the elapsed time  thresh           Threshold used to select pixels  xpos           X center  ypos           Y center   ", "          -1", "");
+  
+  libdata[libdataItem++] = new Array("obsolete_code/merrygotrace.html#getstruct", "getstruct", 'routine in <a href="obsolete_code/merrygotrace.html">merrygotrace.pro</a>', "merrygotrace.pro", "", "getstruct", "       Finds the centers of a triple-sun image and loads all relevant information        including offsets and angles into a new structure.   ", "time           Outputs how much time the program takes  struct           Structure containing the centers and cropped images of all 3 suns   ", "          -1", "");
   
   
 
@@ -275,6 +613,13 @@ libdata[libdataItem++] = new Array("obsolete_code/minicrop.html", "minicrop.pro"
   
   
   libdata[libdataItem++] = new Array("obsolete_code/minicrop.html#minicrop", "minicrop", 'routine in <a href="obsolete_code/minicrop.html">minicrop.pro</a>', "minicrop.pro", "", "minicrop", "       Small function to keep code small in cropit. Finds the row where the threshold is crossed        and then steps back in the x-direction to find the left side of the cropping box. Skips        over the sun by a predetermined value then crops out the sun.   ", "time           Print the elapsed time  temparr           2D array to check boundary limits of  rowscan           Where to crop the rows from  colscan           Where to crop the columns from  rowendscan           Where to crop the rows to  colendscan           Where to crop the columns to  scan_width           How apart the scans are for minicrop().  sundiam           Approximate diameter of sun in pixels. (Based on bmp image)  thresh           What the minimum threshold will be for scanning   ", "          -1", "");
+  
+  
+
+libdata[libdataItem++] = new Array("obsolete_code/morescratch.html", "morescratch.pro", '.pro file in <a href="obsolete_code/dir-overview.html">obsolete_code/ directory</a>', "morescratch.pro", "", "", "", "", "          -1", "");
+  
+  
+  libdata[libdataItem++] = new Array("obsolete_code/morescratch.html#morescratch", "morescratch", 'routine in <a href="obsolete_code/morescratch.html">morescratch.pro</a>', "morescratch.pro", "", "morescratch", "", "inputthresh", "          -1", "");
   
   
 
@@ -339,6 +684,13 @@ libdata[libdataItem++] = new Array("obsolete_code/nutricenter.html", "nutricente
   
   
 
+libdata[libdataItem++] = new Array("./paradip.html", "paradip.pro", '.pro file in <a href="./dir-overview.html">./ directory</a>', "paradip.pro", "", "", " PROJECT:        HESSI  NAME:    PARADIP   PURPOSE:    Given a 3x3 array, does parabolic fits to determine position and value of dip. Different from PARAPEAK in that this computes the fit of the dip and not a peak. I don't like having to normalie my data so I'd rather do it this way.   CATEGORY:    IMAGE   CALLING SEQUENCE:    Result = paradip (z, err_msg=err_msg)   INPUTS:    z - (3,3) array of image values.  Middle value should be highest, corners lowest.   OUTPUT KEYWORDS:    err_msg - '' if no error, otherwise contains error message   OUTPUT:    Returns a 3-element vector containing the x,y coordinates of the peak (relative to the middle      of the central pixel) in units of pixel size and the value at the inferred peak.   PROCEDURE:    Given a 3x3 array in which the corner values are lower than any intermediate value,    PARADIP assumes that these correspond to the top of a 2-D circular gaussian; does    a pair of 1-D parabolic fits and returns the 2-D peak location and value.    The 3x3 array supposedly represents the function z at x=0,1,2 and y=0,1,2     Note that there is considerable redundancy in the data which has not been exploited.    An alternate technique would be to use just the 5 values in the '+' shaped configuration.   COMMON BLOCKS:    None.  ", "", "          -1", "");
+  
+  
+  libdata[libdataItem++] = new Array("./paradip.html#paradip", "paradip", 'routine in <a href="./paradip.html">paradip.pro</a>', "paradip.pro", "", "paradip", "", "err_msgz", "          -1", "");
+  
+  
+
 libdata[libdataItem++] = new Array("obsolete_code/pb_lines_intersection.html", "pb_lines_intersection.pro", '.pro file in <a href="obsolete_code/dir-overview.html">obsolete_code/ directory</a>', "pb_lines_intersection.pro", "", "", " NAME:  PB_LINES_INTERSECTION   PURPOSE:  Use this function to find the intersection point of two lines  defined as segments (start and endpoints are provided).  For  now the lines must be coplanar (i.e. 2D).   CALLING SEQUENCE:  result = PB_LINES_INTERSECTION(LineA, LineB, $    [UA = variable], [UB = variable], $    [PARALLEL = variable], [COINCIDENT = variable], $    [ONSEGMENT = variable], $    [ANGLE = angle])   RETURNED VALUE:  A two element array of the intersection [X, Y].  If the  lines are parallel or coincident then the returned  value contains NANs and the appropriate output keyword is  returned as TRUE(non-zero).   ARGUMENTS:  LINEA and LINEB  4 element arrays that define the start and    end points of the lines in the form [x0,y0,x1,y1] or    [[x0,y0],[x1,y1]]   KEYWORDS:  ANGLE Set equal to a named variable to retrieve the angle (in radians) between    A and B as swept from A to B positive CCW.  The angle is between -pi and +pi  UA and UB  The parametric scaling constants calculated from the input    points.  PARALLEL Set this equal to a named variable which is returned    as TRUE (non-zero) if the lines are parallel  COINCIDENT Set this equal to a named variable which is returned    as TRUE (non-zero) if the lines are coincident (and parallel, too!)  ONSEGMENT Set this equal to anamed variable to retrieve a two    element flag indicating the point lies within the corresponding    segments.  For example, [1,0] indicates that the point is within    the two points defining the A line but it is outside the endpoints    of the B line (but lines A and B still intersect somewhere).   REFERENCE:  Paul Bourke's Geometry Resources located at  http://local.wasp.uwa.edu.au/~pbourke/geometry/lineline2d/  http://local.wasp.uwa.edu.au/~pbourke/geometry/insidepoly/   EXAMPLE:  A = [1.0,1.0,2.0,2.0]  B = [1.0,2.0,2.0,1.0]  xy = PB_LINES_INTERSECTION(A,B)  plot, A[[0,2]],A[[1,3]]  oplot, B[[0,2]],B[[1,3]]  plots, xy[0],xy[1],psym = 6   MODIFICATION HISTORY:  2007-07-15 BT adapted from description in reference.  2012-02-13 BT switched to cg* graphics  ", "", "          -1", "");
   
   
@@ -352,10 +704,38 @@ libdata[libdataItem++] = new Array("obsolete_code/pb_lines_intersection.html", "
   
   
 
+libdata[libdataItem++] = new Array("./picksun.html", "picksun.pro", '.pro file in <a href="./dir-overview.html">./ directory</a>', "picksun.pro", "", "", "", "", "          -1", "");
+  
+  
+  libdata[libdataItem++] = new Array("./picksun.html#picksun", "picksun", 'routine in <a href="./picksun.html">picksun.pro</a>', "picksun.pro", "", "picksun", "       Decides which suns to ignore. Looks along the border pixels of the image and if 6 consecutive pixels are seen, it finds the closest sun (which will be a partial sun) and marks it as no good   ", "inputimage           The raw input image   inputsuns           Structure containing all the solar information   ", "          -1", "");
+  
+  
+
 libdata[libdataItem++] = new Array("obsolete_code/quantifyblur.html", "quantifyblur.pro", '.pro file in <a href="obsolete_code/dir-overview.html">obsolete_code/ directory</a>', "quantifyblur.pro", "", "", "", "", "          -1", "");
   
   
   libdata[libdataItem++] = new Array("obsolete_code/quantifyblur.html#quantifyblur", "quantifyblur", 'routine in <a href="obsolete_code/quantifyblur.html">quantifyblur.pro</a>', "quantifyblur.pro", "", "quantifyblur", "       Quantify how many pixels it takes to make transitions.         Black   -&gt;  1-sigma        1-sigma -&gt;  White        Black   -&gt;  White        over x & y  ", "", "          -1", "");
+  
+  
+
+libdata[libdataItem++] = new Array("obsolete_code/quickfidmask.html", "quickfidmask.pro", '.pro file in <a href="obsolete_code/dir-overview.html">obsolete_code/ directory</a>', "quickfidmask.pro", "", "", "", "", "          -1", "");
+  
+  
+  libdata[libdataItem++] = new Array("obsolete_code/quickfidmask.html#quickfidmask", "quickfidmask", 'routine in <a href="obsolete_code/quickfidmask.html">quickfidmask.pro</a>', "quickfidmask.pro", "", "quickfidmask", "       Finds center of mask where pixels are above a given threshold   ", "input_image           2D array of pixels to mask with threshold  thresh           Threshold used to select pixels  ", "          -1", "");
+  
+  
+
+libdata[libdataItem++] = new Array("./quickmask.html", "quickmask.pro", '.pro file in <a href="./dir-overview.html">./ directory</a>', "quickmask.pro", "", "", "", "", "          -1", "");
+  
+  
+  libdata[libdataItem++] = new Array("./quickmask.html#quickmask", "quickmask", 'routine in <a href="./quickmask.html">quickmask.pro</a>', "quickmask.pro", "", "quickmask", "       Finds center of mask where pixels are above a given threshold   ", "input_image           2D array of pixels to mask with threshold  thresh           Threshold used to select pixels  ", "          -1", "");
+  
+  
+
+libdata[libdataItem++] = new Array("obsolete_code/quickmask.html", "quickmask.pro", '.pro file in <a href="obsolete_code/dir-overview.html">obsolete_code/ directory</a>', "quickmask.pro", "", "", "", "", "          -1", "");
+  
+  
+  libdata[libdataItem++] = new Array("obsolete_code/quickmask.html#quickmask", "quickmask", 'routine in <a href="obsolete_code/quickmask.html">quickmask.pro</a>', "quickmask.pro", "", "quickmask", "       Finds center of mask where pixels are above a given threshold   ", "input_image           2D array of pixels to mask with threshold  thresh           Threshold used to select pixels  ", "          -1", "");
   
   
 
@@ -378,6 +758,12 @@ libdata[libdataItem++] = new Array("obsolete_code/rb.html", "rb.pro", '.pro file
   
   
 
+libdata[libdataItem++] = new Array("obsolete_code/rotated_fiducials.html", "rotated_fiducials.pro", '.pro file in <a href="obsolete_code/dir-overview.html">obsolete_code/ directory</a>', "rotated_fiducials.pro", "", "", "", "", "          -1", "");
+  
+
+libdata[libdataItem++] = new Array("obsolete_code/rottest.html", "rottest.pro", '.pro file in <a href="obsolete_code/dir-overview.html">obsolete_code/ directory</a>', "rottest.pro", "", "", "", "", "          -1", "");
+  
+
 libdata[libdataItem++] = new Array("obsolete_code/scatter.html", "scatter.pro", '.pro file in <a href="obsolete_code/dir-overview.html">obsolete_code/ directory</a>', "scatter.pro", "   JEREN SUZUKI: <span class= code-output >   Space Sciences Laboratory</span> <span class= code-output >   7 Gauss Way</span> <span class= code-output >   Berkeley, CA 94720 USA</span> <span class= code-output >   E-mail: jsuzuki@ssl.berkeley.edu</span>  ", "", " Bunch of code deisgned to make sure the things I write are doing the things I want   Compiled the doc with idldoc,root='/Users/jerensuzuki/Documents/suncentering', $  output='rbdoc',format_style='rst',/user,/quiet,markup_style='rst'   ", "", "          -1", "");
   
   
@@ -389,7 +775,42 @@ libdata[libdataItem++] = new Array("obsolete_code/scatter.html", "scatter.pro", 
   
   
 
-libdata[libdataItem++] = new Array("./scrib.html", "scrib.pro", '.pro file in <a href="./dir-overview.html">./ directory</a>', "scrib.pro", "", "", "", "", "          -1", "");
+libdata[libdataItem++] = new Array("obsolete_code/scratch.html", "scratch.pro", '.pro file in <a href="obsolete_code/dir-overview.html">obsolete_code/ directory</a>', "scratch.pro", "", "", "", "", "          -1", "");
+  
+  
+  libdata[libdataItem++] = new Array("obsolete_code/scratch.html#scratch", "scratch", 'routine in <a href="obsolete_code/scratch.html">scratch.pro</a>', "scratch.pro", "", "scratch", "", "inputthresh", "          -1", "");
+  
+  
+
+libdata[libdataItem++] = new Array("plots_tables_images/scrib.html", "scrib.pro", '.pro file in <a href="plots_tables_images/dir-overview.html">plots_tables_images/ directory</a>', "scrib.pro", "", "", "", "", "          -1", "");
+  
+
+libdata[libdataItem++] = new Array("./setbetterpeak.html", "setbetterpeak.pro", '.pro file in <a href="./dir-overview.html">./ directory</a>', "setbetterpeak.pro", "", "", "", "", "          -1", "");
+  
+  
+  libdata[libdataItem++] = new Array("./setbetterpeak.html#setbetterpeak", "setbetterpeak", 'routine in <a href="./setbetterpeak.html">setbetterpeak.pro</a>', "setbetterpeak.pro", "", "setbetterpeak", "       Makes strips using approx centroiding method to make cropped areas   ", "input           Starting input image   n_suns           Number of suns   ", "          -1", "");
+  
+  
+
+libdata[libdataItem++] = new Array("obsolete_code/setbetterthresh.html", "setbetterthresh.pro", '.pro file in <a href="obsolete_code/dir-overview.html">obsolete_code/ directory</a>', "setbetterthresh.pro", "", "", "", "", "          -1", "");
+  
+  
+  libdata[libdataItem++] = new Array("obsolete_code/setbetterthresh.html#setbetterthresh", "setbetterthresh", 'routine in <a href="obsolete_code/setbetterthresh.html">setbetterthresh.pro</a>', "setbetterthresh.pro", "", "setbetterthresh", "", "input", "          -1", "");
+  
+  
+
+libdata[libdataItem++] = new Array("obsolete_code/setpeak.html", "setpeak.pro", '.pro file in <a href="obsolete_code/dir-overview.html">obsolete_code/ directory</a>', "setpeak.pro", "", "", "", "", "          -1", "");
+  
+  
+  libdata[libdataItem++] = new Array("obsolete_code/setpeak.html#setpeak", "setpeak", 'routine in <a href="obsolete_code/setpeak.html">setpeak.pro</a>', "setpeak.pro", "", "setpeak", "", "input", "          -1", "");
+  
+  
+
+libdata[libdataItem++] = new Array("obsolete_code/setthresh.html", "setthresh.pro", '.pro file in <a href="obsolete_code/dir-overview.html">obsolete_code/ directory</a>', "setthresh.pro", "", "", "", "", "          -1", "");
+  
+  
+  libdata[libdataItem++] = new Array("obsolete_code/setthresh.html#setthresh", "setthresh", 'routine in <a href="obsolete_code/setthresh.html">setthresh.pro</a>', "setthresh.pro", "", "setthresh", "", "input", "          -1", "");
+  
   
 
 libdata[libdataItem++] = new Array("obsolete_code/tmp.html", "tmp.pro", '.pro file in <a href="obsolete_code/dir-overview.html">obsolete_code/ directory</a>', "tmp.pro", "", "", "", "", "          -1", "");
@@ -426,6 +847,20 @@ libdata[libdataItem++] = new Array("obsolete_code/trimask.html", "trimask.pro", 
   
   
   libdata[libdataItem++] = new Array("obsolete_code/trimask.html#trimask", "trimask", 'routine in <a href="obsolete_code/trimask.html">trimask.pro</a>', "trimask.pro", "", "trimask", "       Had to make a new version of comp3 because the old one called scanbox() by default   ", "region           Which sun out of the three to find the center of. Defaults to the brightest sun  time           Print the elapsed time  file           What file to load in  xpos           Computed X position of center  ypos           Computed Y position of center  scan_width           How apart the scans are for minicrop().  sigmavalue          Sets the threshold to be: <span class= code-output >max(image) - sigmavalue*stddev(image)</span>  sundiam           Approximate diameter of sun in pixels. (Based on bmp image)  thresh           Threshold used in finding center   ", "          -1", "");
+  
+  
+
+libdata[libdataItem++] = new Array("obsolete_code/whichcropmethod copy.html", "whichcropmethod copy.pro", '.pro file in <a href="obsolete_code/dir-overview.html">obsolete_code/ directory</a>', "whichcropmethod copy.pro", "", "", "", "", "          -1", "");
+  
+  
+  libdata[libdataItem++] = new Array("obsolete_code/whichcropmethod copy.html#whichcropmethod", "whichcropmethod", 'routine in <a href="obsolete_code/whichcropmethod copy.html">whichcropmethod copy.pro</a>', "whichcropmethod copy.pro", "", "whichcropmethod", "       Crops differently according to which region is selected.   ", "region           1) main sun            2) 50% brightness sun            3) 25% brightness sun  ", "          -1", "");
+  
+  
+
+libdata[libdataItem++] = new Array("obsolete_code/whichcropmethod.html", "whichcropmethod.pro", '.pro file in <a href="obsolete_code/dir-overview.html">obsolete_code/ directory</a>', "whichcropmethod.pro", "", "", "", "", "          -1", "");
+  
+  
+  libdata[libdataItem++] = new Array("obsolete_code/whichcropmethod.html#whichcropmethod", "whichcropmethod", 'routine in <a href="obsolete_code/whichcropmethod.html">whichcropmethod.pro</a>', "whichcropmethod.pro", "", "whichcropmethod", "       Crops differently according to which region is selected.   ", "region           1) main sun            2) 50% brightness sun            3) 25% brightness sun  ", "          -1", "");
   
   
 
