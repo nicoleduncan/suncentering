@@ -36,11 +36,15 @@ ysort = ysort[0:(1- !param.elim_perc/1000)*(N_ELEMENTS(sorted)-1)]
 a = DERIV(SMOOTH(FLOAT(sorted), !param.n_smooth, /edge_truncate))
 arr = DERIV(SMOOTH(a, !param.n_smooth, /edge_truncate))
 
-for i = 0,n_suns-1 do begin
-    peakarr[i] = MEAN(WHERE(arr eq MAX(arr)))
-    ; so that the next peak is the real peak
-    arr[peakarr[i]-200:peakarr[i]+200]=0
-endfor
+if n_suns gt 1 then begin
+    for i = 0,n_suns-1 do begin
+        peakarr[i] = MEAN(WHERE(arr eq MAX(arr)))
+        ; so that the next peak is the real peak
+        arr[peakarr[i]-200:peakarr[i]+200]=0
+    endfor
+endif else begin
+    peakarr = MEAN(WHERE(a eq MAX(a)))
+endelse
 
 RETURN,{peakarr:peakarr,xsort:xsort,ysort:ysort,sorted:sorted}
 end

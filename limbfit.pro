@@ -17,7 +17,6 @@ FUNCTION limbfit, inputstruct, inputimage
 ; Run the program to get our structures
 a=makelimbstrips(inputstruct,inputimage)
 
-
 xlen    = 0
 xsum    = 0
 xnum    = 0   

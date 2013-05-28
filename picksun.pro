@@ -27,7 +27,7 @@ if WHERE(names eq 'REG2') ne -1 then a[1] = !thresh.reg2
 if WHERE(names eq 'REG3') ne -1 then a[2] = !thresh.reg3
 
 ; scan in bottom,right,top,left
-threshmask = inputimage gt MIN(a)
+threshmask = inputimage gt MIN(a[where(a ne 0)])
 bottom = threshmask[*,0]
 top = threshmask[*,-1]
 left = REFORM(threshmask[0,*])

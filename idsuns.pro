@@ -10,7 +10,7 @@ FUNCTION idsuns, input
 ;-
 
 ; Well, we don't know anything about thresholds but we know they can't be any lower than 20, right? *awkward laugh*
-bimask = input gt 20
+bimask = input gt 30
 
 s = SIZE(bimask, /DIMENSIONS)
 labelme = BYTARR(s + 2)

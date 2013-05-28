@@ -28,15 +28,27 @@ xstrips = REPLICATE({wholexstrips,rowindex:0, array:BYTARR(2* !param.crop_box + 
 ystrips = REPLICATE({wholeystrips,colindex:0, array:BYTARR(2* !param.crop_box + 1)}, !param.nstrips)
 
 ; There is a pair of strips, the start points as well as the end points, for each strip above.
+; limbxstrips = REPLICATE({limbxstrips, rowindex:0, begindex:0, endindex:0, $
+;         startpoints:BYTARR( !param.ministrip_length), $
+;         endpoints:BYTARR( !param.ministrip_length)}, !param.nstrips)
+; limbystrips = REPLICATE({limbystrips, colindex:0, begindex:0, endindex:0, $
+;         startpoints:BYTARR( !param.ministrip_length), $
+;         endpoints:BYTARR( !param.ministrip_length)}, !param.nstrips)
+
 limbxstrips = REPLICATE({limbxstrips, rowindex:0, begindex:0, endindex:0, $
-        startpoints:BYTARR( !param.ministrip_length), $
-        endpoints:BYTARR( !param.ministrip_length)}, !param.nstrips)
+        startpoints:BYTARR(4), endpoints:BYTARR(4)}, !param.nstrips)
 limbystrips = REPLICATE({limbystrips, colindex:0, begindex:0, endindex:0, $
-        startpoints:BYTARR( !param.ministrip_length), $
-        endpoints:BYTARR( !param.ministrip_length)}, !param.nstrips)
+        startpoints:BYTARR(4), endpoints:BYTARR(4)}, !param.nstrips)
+
+
+; limbxstrips = REPLICATE({limbxstrips, rowindex:0, begindex:0, endindex:0, $
+;         startpoints:BYTARR(2), endpoints:BYTARR(2)}, !param.nstrips)
+; limbystrips = REPLICATE({limbystrips, colindex:0, begindex:0, endindex:0, $
+;         startpoints:BYTARR( 2), endpoints:BYTARR( 2)}, !param.nstrips)
+
 
 ; Doesn't matter what we call it, but this is the more-or-less complete structure we fill
-asun = REPLICATE({xpos:0.,ypos:0.,reg:0,thresh:0.,partial:0.,xstrips:xstrips,ystrips:ystrips,limbxstrips:limbxstrips,limbystrips:limbystrips,limbxpos:0.,limbypos:0.,fidlocations:{blank:0.}},n_suns)
+asun = REPLICATE({xpos:0.,ypos:0.,reg:0,thresh:0.,partial:0.,xstrips:xstrips,ystrips:ystrips,limbxstrips:limbxstrips,limbystrips:limbystrips,limbxpos:0.,limbypos:0.,npix:0.,fidlocations:{blank:0.}},n_suns)
 
 for i = 0,n_suns-1 do BEGIN
     asun[i].reg = idedsuns[WHERE(idedsuns eq MIN(idedsuns))]
@@ -52,6 +64,8 @@ for i = 0,n_suns-1 do BEGIN
     asun[i].xpos = gig.xpos
     asun[i].ypos = gig.ypos
     
+    asun[i].npix = n_elements(temparr[where(temparr gt asun[i].thresh)])
+
     ; Need to pad the image because after for each center we find, we zero that part of the image out so that the next maximum in the image corresponds to the next lower region number
 
     sidepad = 80
@@ -60,9 +74,9 @@ for i = 0,n_suns-1 do BEGIN
     paddedimage[sidepad,sidepad]=temparr
     paddedimage[gig.xpos+sidepad - !param.crop_box:gig.xpos+sidepad + !param.crop_box, gig.ypos+sidepad - !param.crop_box:gig.ypos+sidepad + !param.crop_box]=0
     temparr = paddedimage[sidepad:s[0]+sidepad-1,sidepad:s[1]+sidepad-1]
-
     ; or set it to 999, that's basically like 0
     idedsuns[WHERE(idedsuns eq MIN(idedsuns))] = 999
+
 endfor
 
 RETURN,asun

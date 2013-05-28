@@ -14,19 +14,6 @@ PRO beta
 COMPILE_OPT idl2
 ON_ERROR,1
 
-readcol,'pblock.txt',var,num,format='A,F',delimiter=' '
-    for i=0,N_ELEMENTS(var)-1 do (SCOPE_VARFETCH(var[i],/enter,level=0))=num[i]
-
-c = CREATE_STRUCT(var[0],num[0])
-
-;This takes, like, no time.
-for i=1,N_ELEMENTS(var)-1 do begin
-    c = CREATE_STRUCT(c,var[i],num[i])
-endfor
-
-; Load parameters from a txt file and make then system variables
-defsysv,'!param',c
-
 ; Centers of dottedimage.fits
 ; wholeimage[200,300] = 255
 ; wholeimage[202,139] = 255
@@ -58,6 +45,10 @@ w1_p2_w3 = mrdfits('fits_files/w1_p2_w3.fits',/sil)
 p1_w3 = mrdfits('fits_files/p1_w3.fits',/sil)
 p1_w2 = mrdfits('fits_files/p1_w2.fits',/sil)
 w1_p3 = mrdfits('fits_files/w1_p3.fits',/sil)
+albsun = mrdfits('fits_files/albsun.fits',/sil)
+corner = mrdfits('fits_files/corner.fits',/sil)
+corner2 = mrdfits('fits_files/corner2.fits',/sil)
+corner3 = mrdfits('fits_files/corner3.fits',/sil)
 
 ; Take your pick of which to center
 
@@ -68,16 +59,21 @@ w1_p3 = mrdfits('fits_files/w1_p3.fits',/sil)
 ; startimage=reg23
 ; startimage=reg13
 ; startimage=w2_p3
-startimage=p1_w2_w3
+; startimage=p1_w2_w3
 ; startimage=p1_w2_p3
 ; startimage=p1_p2_w3
 ; startimage=w1_p2_w3
 ; startimage=p1_w3
 ; startimage=p1_w2
 ; startimage=w1_p3
+startimage =albsun
+
+; a = partialcenter(corner)
 
 ; takes ~.07 s to run everything up to fid_locate
 tic
+
+defparams
 
 defsysvarthresh,startimage
 
@@ -88,10 +84,18 @@ fuji = picksun(startimage, grannysmith)
 limbfittedcentroids=centroidwholesuns(fuji,startimage)
 
 tmpimage = startimage
-for i =0,n_elements(limbfittedcentroids)-1 do begin
-    tmpimage[limbfittedcentroids[i].limbxpos,*] = 255
-    tmpimage[*,limbfittedcentroids[i].limbypos] = 255
-endfor
+
+if n_elements(limbfittedcentroids) gt 1 then begin
+    for i =0,n_elements(limbfittedcentroids)-1 do begin
+        tmpimage[limbfittedcentroids[i].limbxpos,*] = 255
+        tmpimage[*,limbfittedcentroids[i].limbypos] = 255
+    endfor
+endif else begin
+    tmpimage[limbfittedcentroids[0].limbxpos,*] = 255
+    tmpimage[limbfittedcentroids[0].limbxpos-1,*] = 255
+    tmpimage[*,limbfittedcentroids[0].limbypos] = 255
+endelse
+
 a = fid_locate(startimage,limbfittedcentroids)
 toc
 cgimage,tmpimage,/k
