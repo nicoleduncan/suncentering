@@ -3,7 +3,7 @@ sundiam 70
 nstrips 5
 order 2
 ministrip_length 13
-crop_box 120
+crop_box 60
 elim_perc 1
 n_smooth 200
 soldiskr 20

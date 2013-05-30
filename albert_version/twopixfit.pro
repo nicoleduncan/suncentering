@@ -1,7 +1,7 @@
 FUNCTION twopixfit, inputstruct, inputimage
 ;+
 ;   :Description:
-;       Fits 2nd order polynomial to limb strips 
+;       Linear fit to limb strips 
 ;
 ;   :Params:
 ;       inputstruct: in, required
@@ -15,18 +15,12 @@ FUNCTION twopixfit, inputstruct, inputimage
 ;-
 
 ; Run the program to get our structures
-a=makeskinnylimbstrips(inputstruct,inputimage)
 a = makeslimlimbstrips(inputstruct,inputimage)
 
 xlen    = 0
-xsum    = 0
-xnum    = 0   
 ylen    = 0
-ysum    = 0
-ynum    = 0
 xarr    = FINDGEN(N_ELEMENTS(a[0].limbxstrips[0].startpoints))
 yarr    = FINDGEN(N_ELEMENTS(a[0].limbystrips[0].startpoints))
-tx      = FINDGEN(N_ELEMENTS(a[0].limbxstrips[0].startpoints) * 1000)/100
 xlenarr = FLTARR(N_ELEMENTS(a[0].limbxstrips))
 ylenarr = FLTARR(N_ELEMENTS(a[0].limbystrips))
 
@@ -54,12 +48,12 @@ for jj = 0,n_elements(a)-1 do begin
         endelse
 
         ; Stick the midpoints in an array to take the mean of later
-        xlenarr[n] = MEAN([[stripend],[stripbeg]])
+        xlenarr[n] = MEAN([[stripend],[stripbeg]],/NaN)
 
     endfor    
 
     for n=0, !param.nstrips-1 do begin
-        startresult = reform(linfit(xarr,a[jj].limbystrips[n].startpoints))
+        startresult = reform(linfit(yarr,a[jj].limbystrips[n].startpoints))
         endresult = reform(linfit(yarr,a[jj].limbystrips[n].startpoints))
 
         if a[jj].limbystrips[n].begindex gt 0 then begin
@@ -78,12 +72,13 @@ for jj = 0,n_elements(a)-1 do begin
             stripend    = 0
         endelse
 
-        ylenarr[n] = MEAN([[stripend],[stripbeg]])
+        ;Quick solution is to take the not-infite means, long-term is to get better lib chords
+        ylenarr[n] = MEAN([[stripend],[stripbeg]],/NaN)
     endfor    
 
     ; Get the midpoint of the chords
-    a[jj].limbxpos = MEAN(xlenarr[WHERE(xlenarr ne 0)]) + a[jj].xpos - !param.crop_box
-    a[jj].limbypos = MEAN(ylenarr[WHERE(ylenarr ne 0)]) + a[jj].ypos - !param.crop_box
+    a[jj].limbxpos = MEAN(xlenarr[WHERE(xlenarr ne 0)],/NaN) + a[jj].xpos - !param.crop_box
+    a[jj].limbypos = MEAN(ylenarr[WHERE(ylenarr ne 0)],/NaN) + a[jj].ypos - !param.crop_box
 endfor
 
 RETURN,a

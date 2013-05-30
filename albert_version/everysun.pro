@@ -36,9 +36,9 @@ ystrips = REPLICATE({wholeystrips,colindex:0, array:BYTARR(2* !param.crop_box + 
 ;         endpoints:BYTARR( !param.ministrip_length)}, !param.nstrips)
 
 limbxstrips = REPLICATE({limbxstrips, rowindex:0, begindex:0, endindex:0, $
-        startpoints:BYTARR(4), endpoints:BYTARR(4)}, !param.nstrips)
+        startpoints:BYTARR( !param.ministrip_length), endpoints:BYTARR( !param.ministrip_length)}, !param.nstrips)
 limbystrips = REPLICATE({limbystrips, colindex:0, begindex:0, endindex:0, $
-        startpoints:BYTARR(4), endpoints:BYTARR(4)}, !param.nstrips)
+        startpoints:BYTARR( !param.ministrip_length), endpoints:BYTARR( !param.ministrip_length)}, !param.nstrips)
 
 
 ; limbxstrips = REPLICATE({limbxstrips, rowindex:0, begindex:0, endindex:0, $
