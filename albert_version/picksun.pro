@@ -95,16 +95,15 @@ if WHERE(names eq 'REG3') ne -1 then a[2] = !thresh.reg3
 ; Use a new method that checks to see if the center of the blob is within a distance of the border
 
 amask = FLTARR(s)+1
-cornergone = .25
 
-n = cornergone*s[0]
+n = !param.triangle_size*s[0]
 i = REBIN(INDGEN(n), n, n)           
 j = REBIN(TRANSPOSE(INDGEN(n)), n, n)
 botleft = ROTATE(i ge j,1)
 botright = j ge i
 
 amask[0,0] = botleft
-amask[(1-cornergone)*s[0],0]=botright
+amask[(1 - !param.triangle_size)*s[0],0]=botright
 ; 1296*966
 padding = 100
 paddedimage = FLTARR(s+padding*2)
@@ -113,16 +112,16 @@ paddedimage[padding,padding]=amask
 ; ghetto erode:
 ; pad mask with lots of 0s
 ; shift mask right, set to 1
-right = SHIFT(paddedimage,50,0)
+right = SHIFT(paddedimage , !param.border_pad,0)
 ; shift mask left, ditto
-left = SHIFT(paddedimage,-50,0)
+left = SHIFT(paddedimage, - !param.border_pad,0)
 ; shift mask up
-up = SHIFT(paddedimage,0,50)
+up = SHIFT(paddedimage,0 , !param.border_pad)
 ; shift mask down
-down = SHIFT(paddedimage,0,-50)
+down = SHIFT(paddedimage,0, - !param.border_pad)
 
 ; This is sketchy, only can do this because we know for exact the shape of the triangle
-side = SQRT((50.^2)/2)
+side = SQRT( ( !param.border_pad^2)/2)
 
 upright = SHIFT(paddedimage,-side,side)
 upleft = SHIFT(paddedimage,side,side)

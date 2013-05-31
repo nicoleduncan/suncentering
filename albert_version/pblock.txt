@@ -8,3 +8,5 @@ n_smooth 900
 soldiskr 60
 partial_perc .05
 sunpixnum 3000
+border_pad 50
+triangle_size .25
