@@ -27,94 +27,131 @@ if WHERE(names eq 'REG2') ne -1 then a[1] = !thresh.reg2
 if WHERE(names eq 'REG3') ne -1 then a[2] = !thresh.reg3
 
 ; scan in bottom,right,top,left
-threshmask = inputimage gt MIN(a[where(a ne 0)])
-bottom = threshmask[*,0]
-top = threshmask[*,-1]
-left = REFORM(threshmask[0,*])
-right = REFORM(threshmask[-1,*])
 
-borderarr = [bottom,right,REVERSE(top),REVERSE(left)]
+; threshmask = inputimage gt MIN(a[where(a ne 0)])
+; bottom = threshmask[*,0]
+; top = threshmask[*,-1]
+; left = REFORM(threshmask[0,*])
+; right = REFORM(threshmask[-1,*])
 
-xarr = [FINDGEN(n_col),REPLICATE(n_col-1,n_row),REVERSE(FINDGEN(n_col)),REPLICATE(0,n_row)]
-yarr = [REPLICATE(0,n_col),FINDGEN(n_row),REPLICATE(n_row-1,n_col),REVERSE(FINDGEN(n_row))]
+; borderarr = [bottom,right,REVERSE(top),REVERSE(left)]
 
-; If we have 6 consecutive pixels then it's bad
-if TOTAL(borderarr) gt 6 then begin
-    for i =0,N_ELEMENTS(borderarr)-1 do begin
-        ; Keep track of how many consecutive picels there are
-        if borderarr[i+1] + borderarr[i] eq 2 then vec = [vec,i] else vec = !Null
-        ; If we get 6 in a row, get out of this for loop
-        if N_ELEMENTS(vec) gt 6 then break
-    endfor
+; xarr = [FINDGEN(n_col),REPLICATE(n_col-1,n_row),REVERSE(FINDGEN(n_col)),REPLICATE(0,n_row)]
+; yarr = [REPLICATE(0,n_col),FINDGEN(n_row),REPLICATE(n_row-1,n_col),REVERSE(FINDGEN(n_row))]
 
-    if vec ne !Null then begin
-        xcenter = MEAN(xarr[vec])
-        ycenter = MEAN(yarr[vec])
-        ; Pick closest center
-        sundist = SQRT((inputstruct.xpos-xcenter)^2 + (inputstruct.ypos-ycenter)^2)
-        closest_sun = (inputstruct.reg)[WHERE(sundist eq MIN(sundist))]
-        borderarr[vec[0]:vec[0] + !param.sundiam]=0
-    endif
+; ; If we have 6 consecutive pixels then it's bad
+; if TOTAL(borderarr) gt 6 then begin
+;     for i =0,N_ELEMENTS(borderarr)-1 do begin
+;         ; Keep track of how many consecutive picels there are
+;         if borderarr[i+1] + borderarr[i] eq 2 then vec = [vec,i] else vec = !Null
+;         ; If we get 6 in a row, get out of this for loop
+;         if N_ELEMENTS(vec) gt 6 then break
+;     endfor
+
+;     if vec ne !Null then begin
+;         xcenter = MEAN(xarr[vec])
+;         ycenter = MEAN(yarr[vec])
+;         ; Pick closest center
+;         sundist = SQRT((inputstruct.xpos-xcenter)^2 + (inputstruct.ypos-ycenter)^2)
+;         closest_sun = (inputstruct.reg)[WHERE(sundist eq MIN(sundist))]
+;         borderarr[vec[0]:vec[0] + !param.sundiam]=0
+;     endif
     
-    ; Set the closest sun to the xcenter,ycenter of the consecutive 6 pixels to nearest center
-    inputstruct[WHERE(inputstruct.reg eq closest_sun[0])].partial=1
+;     ; Set the closest sun to the xcenter,ycenter of the consecutive 6 pixels to nearest center
+;     inputstruct[WHERE(inputstruct.reg eq closest_sun[0])].partial=1
 
 
-    ; We have 3 suns so I'm making 1 nested if loop
-    if TOTAL(borderarr) gt 6 then begin
-        for i =0,N_ELEMENTS(borderarr)-1 do begin
-            if borderarr[i+1] + borderarr[i] eq 2 then vec = [vec,i] else vec = !Null
-            if N_ELEMENTS(vec) gt 6 then break
-        endfor
+;     ; We have 3 suns so I'm making 1 nested if loop
+;     if TOTAL(borderarr) gt 6 then begin
+;         for i =0,N_ELEMENTS(borderarr)-1 do begin
+;             if borderarr[i+1] + borderarr[i] eq 2 then vec = [vec,i] else vec = !Null
+;             if N_ELEMENTS(vec) gt 6 then break
+;         endfor
 
-        if vec ne !Null then begin
-            xcenter = MEAN(xarr[vec])
-            ycenter = MEAN(yarr[vec])
+;         if vec ne !Null then begin
+;             xcenter = MEAN(xarr[vec])
+;             ycenter = MEAN(yarr[vec])
 
-            ; pick closest center
-            sundist = SQRT((inputstruct.xpos-xcenter)^2 + (inputstruct.ypos-ycenter)^2)
-            closest_sun = (inputstruct.reg)[WHERE(sundist eq MIN(sundist))]
-            borderarr[vec[0]:vec[0] + !param.sundiam]=0
-        endif
+;             ; pick closest center
+;             sundist = SQRT((inputstruct.xpos-xcenter)^2 + (inputstruct.ypos-ycenter)^2)
+;             closest_sun = (inputstruct.reg)[WHERE(sundist eq MIN(sundist))]
+;             borderarr[vec[0]:vec[0] + !param.sundiam]=0
+;         endif
 
-        inputstruct[WHERE(inputstruct.reg eq closest_sun[0])].partial=1
-    endif
-endif
+;         inputstruct[WHERE(inputstruct.reg eq closest_sun[0])].partial=1
+;     endif
+; endif
 
 
 ; Trying a new method instead of the consecutive 6 pixels check
-if N_ELEMENTS(inputstruct) eq 1 then begin
-    if inputstruct[0].npix lt !param.sunpixnum * !param.partial_perc then inputstruct[0].partial = 1
-endif else begin
-    for i = 0,N_ELEMENTS(inputstruct)-1 do begin
-        if inputstruct[i].npix lt !param.sunpixnum * !param.partial_perc then inputstruct[i].partial = 1
-    endfor
-endelse
+; if N_ELEMENTS(inputstruct) eq 1 then begin
+;     if inputstruct[0].npix lt !param.sunpixnum * !param.partial_perc then inputstruct[0].partial = 1
+; endif else begin
+;     for i = 0,N_ELEMENTS(inputstruct)-1 do begin
+;         if inputstruct[i].npix lt !param.sunpixnum * !param.partial_perc then inputstruct[i].partial = 1
+;     endfor
+; endelse
 
 ; Use a new method that checks to see if the center of the blob is within a distance of the border
 
 amask = FLTARR(s)+1
 cornergone = .25
-DMZ = 50
+
 n = cornergone*s[0]
 i = REBIN(INDGEN(n), n, n)           
 j = REBIN(TRANSPOSE(INDGEN(n)), n, n)
-botleft = rotate(i ge j,1)
+botleft = ROTATE(i ge j,1)
 botright = j ge i
 
 amask[0,0] = botleft
 amask[(1-cornergone)*s[0],0]=botright
-cgimage,
-brah = erode(amask,replicate(1,50,50))
-; amask now has snipped bottom corners
-; erode works well, but takes way too long
-; cgimage,brah*findgen(s),/k,output='cutcornerwborder.eps'
-; cgimage,amask*findgen(s),/k,output='cutcorner.eps'
+; 1296*966
+padding = 100
+paddedimage = FLTARR(s+padding*2)
+paddedimage[padding,padding]=amask
+
+; ghetto erode:
+; pad mask with lots of 0s
+; shift mask right, set to 1
+right = SHIFT(paddedimage,50,0)
+; shift mask left, ditto
+left = SHIFT(paddedimage,-50,0)
+; shift mask up
+up = SHIFT(paddedimage,0,50)
+; shift mask down
+down = SHIFT(paddedimage,0,-50)
+
+; This is sketchy, only can do this because we know for exact the shape of the triangle
+side = SQRT((50.^2)/2)
+
+upright = SHIFT(paddedimage,-side,side)
+upleft = SHIFT(paddedimage,side,side)
+
+; multiple all masks together
+tiny = right*left*up*down*upright*upleft
+; unpad
+fixedmask = tiny[padding:s[0]+padding-1,padding:s[1]+padding-1]
+
+; take that erode
+; done
+
+; cgimage,(amask-fixedmask)*rotate(FINDGEN(s),2),/k
+
+a = fixedmask
+
+; This works, right?
+
+if N_ELEMENTS(inputstruct) eq 1 then begin
+    a[inputstruct[0].xpos,inputstruct[0].ypos] = !values.f_nan
+    if MEAN(a) eq !values.f_nan then inputstruct[0].partial = 1
+endif else begin
+    for i = 0,N_ELEMENTS(inputstruct)-1 do begin
+        a[inputstruct[i].xpos,inputstruct[i].ypos] = !values.f_nan
+        if MEAN(a) eq !values.f_nan then inputstruct[i].partial = 1
+        a = fixedmask
+    endfor
+endelse
 
 
-
-
-
-stop
 RETURN,inputstruct
 end

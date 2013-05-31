@@ -441,7 +441,7 @@ The problem with the second method is that the shape of our mask is designed suc
         \caption{A proposed mask that looks within a certain distance form the border.}
         \label{aborder}
     \end{subfigure}
-    \caption{The problem with the mask in \ref{aborder} is that we use an erode function (\emph{which takes an ungodly amount of time}) to shrink the mask used in \ref{noborder}.}
+    \caption{There \emph{used} to be a problem with the mask in \ref{aborder}; it used an erode function (\emph{which takes an ungodly amount of time}) to shrink the mask used in \ref{noborder}. Now I pad the image, shift it in all 4 directions, then multiply the masks together.}
     \label{cuttingcorners}
 \end{figure}
 

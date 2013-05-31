@@ -25,11 +25,11 @@ xlenarr = FLTARR(N_ELEMENTS(a[0].limbxstrips))
 ylenarr = FLTARR(N_ELEMENTS(a[0].limbystrips))
 
 ;Deal with rows
-for jj = 0,n_elements(a)-1 do begin
+for jj = 0,N_ELEMENTS(a)-1 do begin
     for n=0, !param.nstrips-1 do begin
         
-        startresult = reform(linfit(xarr,a[jj].limbxstrips[n].startpoints))
-        endresult = reform(linfit(xarr,a[jj].limbxstrips[n].startpoints))
+        startresult = REFORM(LINFIT(xarr,a[jj].limbxstrips[n].startpoints))
+        endresult = REFORM(LINFIT(xarr,a[jj].limbxstrips[n].startpoints))
         
         if a[jj].limbxstrips[n].begindex gt 0 then begin
             begusable = (a[jj].thresh - startresult[0])/startresult[1]
@@ -53,8 +53,8 @@ for jj = 0,n_elements(a)-1 do begin
     endfor    
 
     for n=0, !param.nstrips-1 do begin
-        startresult = reform(linfit(yarr,a[jj].limbystrips[n].startpoints))
-        endresult = reform(linfit(yarr,a[jj].limbystrips[n].startpoints))
+        startresult = REFORM(LINFIT(yarr,a[jj].limbystrips[n].startpoints))
+        endresult = REFORM(LINFIT(yarr,a[jj].limbystrips[n].startpoints))
 
         if a[jj].limbystrips[n].begindex gt 0 then begin
             begusable = (a[jj].thresh - startresult[0])/startresult[1]

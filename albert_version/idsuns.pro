@@ -34,6 +34,6 @@ for i = 0, nsuns-1 do begin
 	if regmax gt .3*255b and regmax lt .6*255b then whichregion[i]=2
 	if regmax lt .3*255b then whichregion[i]=3
 endfor
-; stop
+
 RETURN, whichregion
 END

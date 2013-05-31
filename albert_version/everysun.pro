@@ -64,7 +64,7 @@ for i = 0,n_suns-1 do BEGIN
     asun[i].xpos = gig.xpos
     asun[i].ypos = gig.ypos
     
-    asun[i].npix = n_elements(temparr[where(temparr gt asun[i].thresh)])
+    asun[i].npix = N_ELEMENTS(temparr[WHERE(temparr gt asun[i].thresh)])
 
     ; Need to pad the image because after for each center we find, we zero that part of the image out so that the next maximum in the image corresponds to the next lower region number
 
