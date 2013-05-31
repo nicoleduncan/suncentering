@@ -91,5 +91,30 @@ endif else begin
     endfor
 endelse
 
+; Use a new method that checks to see if the center of the blob is within a distance of the border
+
+amask = FLTARR(s)+1
+cornergone = .25
+DMZ = 50
+n = cornergone*s[0]
+i = REBIN(INDGEN(n), n, n)           
+j = REBIN(TRANSPOSE(INDGEN(n)), n, n)
+botleft = rotate(i ge j,1)
+botright = j ge i
+
+amask[0,0] = botleft
+amask[(1-cornergone)*s[0],0]=botright
+cgimage,
+brah = erode(amask,replicate(1,50,50))
+; amask now has snipped bottom corners
+; erode works well, but takes way too long
+; cgimage,brah*findgen(s),/k,output='cutcornerwborder.eps'
+; cgimage,amask*findgen(s),/k,output='cutcorner.eps'
+
+
+
+
+
+stop
 RETURN,inputstruct
 end

@@ -141,7 +141,7 @@ PTR\_FREE            &      1  &  0.00000 & 0.00000 & 1\\
 PTR\_NEW             &      2  &  0.00000 & 0.00000 & 1\\
 PTRARR              &      1  &  0.00000 & 0.00000 & 1\\
 STRUPCASE           &      1  &  0.00000 & 0.00000 & 1\\
-INTARR              &      1  &  0.00000 & 0.00000 & 1\\
+INTARR              &      1  &  0.00000 & 0.00000 & 1
 \enddata
 \label{slow}
 \end{deluxetable}
@@ -151,7 +151,7 @@ INTARR              &      1  &  0.00000 & 0.00000 & 1\\
 \section{Code Flow Chart} % (fold)
 \label{sec:code_flow_chart}
 
-\begin{figure}[!h]
+\begin{figure}[!ht]
     \centering
     \includegraphics[width=.9\textwidth]{../plots_tables_images/alpha_flow.eps}    
     \caption{}
@@ -241,7 +241,7 @@ for (int m = 1; m < correlation.rows-1; m++)
 \section{Comparison to Albert's Code} % (fold)
 \label{sec:comparison_to_albert_s_code}
 
-\begin{figure} [!h]
+\begin{figure} [!ht]
     \centering
     \hspace{-1.0in}
     \begin{subfigure}[b]{.45\linewidth}
@@ -277,7 +277,7 @@ for (int m = 1; m < correlation.rows-1; m++)
 3 & 690.2598 & 690.985 & 226.1973 & 226.961\\                      
 4 & 643.4235 & 644.227 & 241.8869 & 242.636\\
 5 & 755.8672 & 756.764 & 279.6622 & 280.443\\                                  
-6 & 706.0065 & 706.809 & 295.3022 & 295.957\\                                        
+6 & 706.0065 & 706.809 & 295.3022 & 295.957
 \enddata
 \label{fidpos}
 \end{deluxetable}
@@ -288,23 +288,24 @@ In Table \ref{fidpos} The fiducial positions are typically within 1 pixel of Alb
 \section{Partial Sun Checking} % (fold)
 \label{sec:partial_sun_checking}
 
-We're motivaed to keep some center data regardless of how cut off a sun may be. To do this, we must quantify the poorness of the fit as more sun is cut off. Figures \ref{croptestside} and \ref{croptestcorner} aim to quantify the worsenings of the exaluated centers. We start by lining up the edge of the image to the solar limb then cropping in 10 columns. 
+We're motivated to keep some center data regardless of how cut off a sun may be. To do this, we must quantify the poorness of the fit as more sun is cut off. Figures \ref{croptestside} and \ref{croptestcorner} aim to quantify the worsening of the evaluated centers. We start by lining up the edge of the image to the solar limb then cropping in 10 columns. \\
 
-\begin{figure}[!h]
+The whole solar image consists of 26,597 pixels above the threshold.
+\begin{figure}[!ht]
     \centering
     \includegraphics[width=.9\textwidth]{../plots_tables_images/cutofftestside.eps}    
     \caption{The green pixel is the image's true center and the red pixel is the center of the cropped image. The images are cropped 10 columns at a time.}
-    \label{croptestside}
+    \label{crop9side}
 \end{figure}
-\begin{figure}[!h]
+\begin{figure}[!ht]
     \centering
     \includegraphics[width=.9\textwidth]{../plots_tables_images/cutofftestcorner.eps}    
     \caption{The green pixel is the image's true center and the red pixel is the center of the cropped image. The images are cropped 10 columns at a time.}
-    \label{croptestcorner}
+    \label{crop9corner}
 \end{figure}
 
 \begin{deluxetable}{crr}
-\tablecaption{Side Crop Test}
+\tablecaption{Side Crop Test for Figure \ref{crop9side}}
 \tabletypesize{\scriptsize}
 \tablewidth{0pt}
 \tablehead{
@@ -321,13 +322,13 @@ We're motivaed to keep some center data regardless of how cut off a sun may be. 
 60 & -20.9117 & -0.0872879 \\
 70 & -25.7588 & -0.277687 \\
 80 & -30.8586 & -0.321724 \\
-90 & -36.1318 & -0.318489 \\
+90 & -36.1318 & -0.318489
 \enddata
 \label{cpos}
 \end{deluxetable}
 
 \begin{deluxetable}{crr}
-\tablecaption{Corner Crop Test}
+\tablecaption{Corner Crop Test for Figure \ref{crop9corner}}
 \tabletypesize{\scriptsize}
 \tablewidth{0pt}
 \tablehead{
@@ -344,7 +345,66 @@ We're motivaed to keep some center data regardless of how cut off a sun may be. 
 60 & -23.0267 & -22.9181 \\
 70 & -27.5755 & -27.8987 \\
 80 & -32.1102 & -32.4790 \\
-90 & -36.6139 & -37.0980 \\
+90 & -36.6139 & -37.0980
+\enddata
+\label{ccpos}
+\end{deluxetable}
+
+\begin{figure}[!ht]
+    \centering
+    \includegraphics[width=.9\textwidth]{../plots_tables_images/side5col.eps}
+    \caption{The sun is being cropped off 5 columns at a time, opposed to the earlier Figures' 10.}
+    \label{croptestside}
+\end{figure}
+\begin{figure}[!ht]
+    \centering
+    \includegraphics[width=.9\textwidth]{../plots_tables_images/diag5col.eps}
+    \caption{}
+    \label{croptestcorner}
+\end{figure}
+
+\begin{deluxetable}{crrrr}
+\tablecaption{Side Crop Test for Figure \ref{croptestside}}
+\tabletypesize{\scriptsize}
+\tablewidth{0pt}
+\tablehead{
+    \colhead{Amount Cropped from Limb (pixels)} %
+&   \colhead{$x_\textrm{True} - x_{\textrm{Cropped}}$} %
+&   \colhead{$y_\textrm{True} - y_{\textrm{Cropped}}$} %
+&   \colhead{$N_{\textrm{pixels}}$ above threshold} %
+&   \colhead{Percentage of Total Pixels} %
+}
+\startdata
+5  & -1.17771 & -0.0108643 & 26250 & 98.6953\\
+10 & -2.52845 & -0.0205002 & 25838 & 97.1463\\
+15 & -4.07970 & -0.0376663 & 25353 & 95.3228\\
+20 & -5.82758 & -0.0490799 & 24795 & 93.2248\\
+25 & -7.63260 & -0.0522766 & 24208 & 91.0178\\
+30 & -9.60011 & -0.0380630 & 23557 & 88.5701
+\enddata
+\label{ccpos}
+\end{deluxetable}
+
+
+
+\begin{deluxetable}{crrrr}
+\tablecaption{Corner Crop Test for Figure \ref{croptestcorner}}
+\tabletypesize{\scriptsize}
+\tablewidth{0pt}
+\tablehead{
+    \colhead{Amount Cropped from Limb (pixels)} %
+&   \colhead{$x_\textrm{True} - x_{\textrm{Cropped}}$} %
+&   \colhead{$y_\textrm{True} - y_{\textrm{Cropped}}$} %
+&   \colhead{$N_{\textrm{pixels}}$ above threshold} %
+&   \colhead{Percentage of Total Pixels} %
+}
+\startdata
+5  & -1.17902 & -1.22132 & 25896 & 97.3644 \\
+10 & -2.58559 & -2.60790 & 25079 & 94.2926 \\
+15 & -4.23825 & -4.28215 & 24113 & 90.6606 \\
+20 & -6.22114 & -6.27864 & 22994 & 86.4534 \\
+25 & -8.41805 & -8.49775 & 21805 & 81.9829 \\
+30 & -10.8070 & -10.8650 & 20544 & 77.2418
 \enddata
 \label{ccpos}
 \end{deluxetable}
@@ -353,7 +413,39 @@ We're motivaed to keep some center data regardless of how cut off a sun may be. 
 
 \section{Glaring Problems} % (fold)
 \label{sec:glaring_problems}
-I was having trouble with proper thresholding but it was alleviated with increasing the smoothing parameter. \emph{Go parameter block!}
+I was having trouble with proper thresholding but it was alleviated with increasing the smoothing parameter. \emph{Go parameter block!}\\
+
+Our attempts to identify partial suns has evolved from:
+
+\begin{enumerate}
+    \item Determining if center of sun is within certain distance of border
+    \item Count pixels on very border of image, if 6 consecutive pixels found, mark nearest sun as partial
+    \item Count number of solar pixels above threshold, if below a certain amount, marked as partial sun
+\end{enumerate}
+
+The problem with the second method is that the shape of our mask is designed such that the bottom two corners will always be dark so scanning in a border-pattern will return ill results. We've opted to return to the first method, masking the sun, regardless of shape, and measuring the distance between the mask center and the edge of the image. 
+
+\begin{figure}[!ht]
+    \centering
+    \hspace{-1.0in}
+    \begin{subfigure}[b]{.45\linewidth}
+        \centering
+        \includegraphics[width=1.3\textwidth]{../plots_tables_images/cutcorner.eps}
+        \caption{What our mask should look like - side of black triangle is 1/4 of image width}
+        \label{noborder}
+    \end{subfigure}
+    \hspace{.5in}
+    \begin{subfigure}[b]{.45\linewidth}
+        \centering
+        \includegraphics[width=1.3\textwidth]{../plots_tables_images/cutcornerwborder.eps}
+        \caption{A proposed mask that looks within a certain distance form the border.}
+        \label{aborder}
+    \end{subfigure}
+    \caption{The problem with the mask in \ref{aborder} is that we use an erode function (\emph{which takes an ungodly amount of time}) to shrink the mask used in \ref{noborder}.}
+    \label{cuttingcorners}
+\end{figure}
+
+A possible approach is to use the mask in Figure \ref{noborder} and check the distance to the closest non-0 pixel; the problem with this method are the numerous \hl{\texttt{sqrt()}} calls to each pixel on the border of our image. 
 
 \begin{deluxetable}{lrr}
 \tablecaption{Comparison of Center Positions}
@@ -366,7 +458,7 @@ I was having trouble with proper thresholding but it was alleviated with increas
 }
 \startdata
 Mine & 710.811 & 230.695\\
-Albert's & 709.7835 & 230.1023\\
+Albert's & 709.7835 & 230.1023
 \enddata
 \label{cpos}
 \end{deluxetable}

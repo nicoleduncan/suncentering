@@ -4,4 +4,4 @@
 \contentsline {section}{\numberline {4}The Dreaded Nested For Loop}{4}{section.4}
 \contentsline {section}{\numberline {5}Comparison to Albert's Code}{5}{section.5}
 \contentsline {section}{\numberline {6}Partial Sun Checking}{5}{section.6}
-\contentsline {section}{\numberline {7}Glaring Problems}{6}{section.7}
+\contentsline {section}{\numberline {7}Glaring Problems}{5}{section.7}
