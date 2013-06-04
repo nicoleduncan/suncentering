@@ -67,6 +67,7 @@ n_fid = 5
 ; shaved off .1 seconds by removing the many abs() statements
 ; That's a motherfucking 33%
 
+
 for i = 1, s[0]-2 do begin
     for j = 1,s[1]-2 do begin
         ; The correlation value at some position

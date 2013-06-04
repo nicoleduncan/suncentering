@@ -102,7 +102,8 @@ endif else begin
     tmpimage[*,limbfittedcentroids[0].limbypos-1:limbfittedcentroids[0].limbypos+1] = 255
 endelse
 
-a = fid_locate(startimage,limbfittedcentroids)
+bbb = fid_faster(startimage,limbfittedcentroids)
+; a = fid_locate(startimage,limbfittedcentroids)
 toc
 profiler,/report,data=data
 profiler,/reset,/clear
@@ -113,7 +114,8 @@ print,data[sort(-data.time)],format='(A-20, I7, F12.5, F10.5, I9)'
 
 atmp = startimage
 
-a = fid_locate(startimage,limbfittedcentroids)
+bbb = fid_faster(startimage,limbfittedcentroids)
+; a = fid_locate(startimage,limbfittedcentroids)
 
 ; stop
 for i = 0,n_elements(a)-1 do begin
@@ -145,16 +147,20 @@ ztmp[706.0065,966-295.3022] = 255
 ; gg = startimage[limbfittedcentroids[0].limbxpos-120:limbfittedcentroids[0].limbxpos+120,limbfittedcentroids[0].limbypos-120:limbfittedcentroids[0].limbypos+120]
 ; cgimage,gg*(gg gt !thresh.reg3),/k
 
-ctt = cutofftest(startimage,limbfittedcentroids)
+; ctt = cutofftest(startimage,limbfittedcentroids,a)
 
-stop
-print,'Main sun x pos:',limbfittedcentroids[0].limbxpos
-print,'Main sun y pos:',limbfittedcentroids[0].limbypos
-print,'50% sun x pos: ',limbfittedcentroids[1].limbxpos
-print,'50% sun y pos: ',limbfittedcentroids[1].limbypos
-print,'25% sun x pos: ',limbfittedcentroids[2].limbxpos
-print,'25% sun y pos: ',limbfittedcentroids[2].limbypos
+; tic
+bbb = fid_faster(startimage,limbfittedcentroids)
+; toc
 
-stop
+; stop
+; print,'Main sun x pos:',limbfittedcentroids[0].limbxpos
+; print,'Main sun y pos:',limbfittedcentroids[0].limbypos
+; print,'50% sun x pos: ',limbfittedcentroids[1].limbxpos
+; print,'50% sun y pos: ',limbfittedcentroids[1].limbypos
+; print,'25% sun x pos: ',limbfittedcentroids[2].limbxpos
+; print,'25% sun y pos: ',limbfittedcentroids[2].limbypos
+
+; stop
 
 end
