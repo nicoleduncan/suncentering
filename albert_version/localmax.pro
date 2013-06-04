@@ -1,11 +1,12 @@
 FUNCTION localmax, img, floor, ceiling
 
-; .01 to shift 24 times
+; .005 to shift 24 times
 ; This seems super incredibly inefficient
-; only 2x faster than nested forloop
 ; HAS TO BE a better way
 
-; outer 8
+; I tried forlooping over a smaller interval (3400 instead of 58000) but it still took .04 s
+
+; ; outer 8
 dx1 = SHIFT(img,-1,-1)
 dx2 = SHIFT(img,-1,0)
 dx3 = SHIFT(img,-1,1)
@@ -40,10 +41,61 @@ m = (img lt dx1) and (img lt dx2) and (img lt dx3) and (img lt dx4) and $
 (img lt dx21) and (img lt dx22) and (img lt dx23) and (img lt dx24) and $ 
 (img gt floor) and (img lt ceiling)
 
+; n = (img gt floor) and (img lt ceiling)
+
 s = SIZE(img,/dim)
 fids = WHERE(m eq 1,n_count)
 xpos = fids mod s[0]
 ypos = fids/s[1]
 
-RETURN,{x:xpos,y:ypos}
+; ; 58000 -> 3400, not much of an improvement...
+; xx=0
+; for i = 0,n_count-1 do begin
+;     if img[xpos[i],ypos[i]] lt img[xpos[i]-1,ypos[i]] and $
+;     img[xpos[i],ypos[i]] lt img[xpos[i]+1,ypos[i]] and $
+;     img[xpos[i],ypos[i]] lt img[xpos[i],ypos[i]-1] and $
+;     img[xpos[i],ypos[i]] lt img[xpos[i],ypos[i]+1] and $
+;     img[xpos[i],ypos[i]] lt img[xpos[i]+1,ypos[i]+1] and $
+;     img[xpos[i],ypos[i]] lt img[xpos[i]-1,ypos[i]+1] and $
+;     img[xpos[i],ypos[i]] lt img[xpos[i]-1,ypos[i]-1] and $
+;     img[xpos[i],ypos[i]] lt img[xpos[i]+1,ypos[i]-1] and $ 
+
+;     img[xpos[i],ypos[i]] lt img[xpos[i]-2,ypos[i]-2] and $
+;     img[xpos[i],ypos[i]] lt img[xpos[i]-2,ypos[i]-1] and $
+;     img[xpos[i],ypos[i]] lt img[xpos[i]-2,ypos[i]] and $
+;     img[xpos[i],ypos[i]] lt img[xpos[i]-2,ypos[i]+1] and $
+;     img[xpos[i],ypos[i]] lt img[xpos[i]-2,ypos[i]+2] and $
+;     img[xpos[i],ypos[i]] lt img[xpos[i]+2,ypos[i]-2] and $
+;     img[xpos[i],ypos[i]] lt img[xpos[i]+2,ypos[i]-1] and $
+;     img[xpos[i],ypos[i]] lt img[xpos[i]+2,ypos[i]] and $
+;     img[xpos[i],ypos[i]] lt img[xpos[i]+2,ypos[i]+1] and $
+;     img[xpos[i],ypos[i]] lt img[xpos[i]+2,ypos[i]+2] and $
+;     img[xpos[i],ypos[i]] lt img[xpos[i]-1,ypos[i]-2] and $
+;     img[xpos[i],ypos[i]] lt img[xpos[i]-1,ypos[i]+2] and $
+;     img[xpos[i],ypos[i]] lt img[xpos[i],ypos[i]-2] and $
+;     img[xpos[i],ypos[i]] lt img[xpos[i],ypos[i]+2] and $
+;     img[xpos[i],ypos[i]] lt img[xpos[i]+1,ypos[i]-2] and $
+;     img[xpos[i],ypos[i]] lt img[xpos[i]+1,ypos[i]+2] then begin
+;         if total(xx) eq 0 then begin
+;             xx = xpos[i]
+;             yy = ypos[i] 
+;         endif else begin
+;             xx=[xx,xpos[i]]
+;             yy=[yy,ypos[i]]
+;         endelse
+;     endif
+; endfor
+
+subpx = fltarr(n_count,/nozero)
+subpy = fltarr(n_count,/nozero)
+
+for k = 0,n_count-1 do begin
+    z = img[xpos[k]-1:xpos[k]+1,ypos[k]-1:ypos[k]+1]
+    result = paradip(z)
+    ; result = parapeak(1/z)
+    subpx[k] = xpos[k] + result[0]
+    subpy[k] = ypos[k] + result[1]
+endfor
+
+RETURN,{x:xpos,y:ypos,subpx:subpx,subpy:subpy}
 end

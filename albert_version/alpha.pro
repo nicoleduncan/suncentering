@@ -77,6 +77,7 @@ profiler
 profiler,/system
 ; takes ~.07 s to run everything up to fid_locate
 ; takes ~.2 s to run albert's image
+
 tic
 
 defparams
@@ -104,7 +105,7 @@ endelse
 
 bbb = fid_faster(startimage,limbfittedcentroids)
 ; a = fid_locate(startimage,limbfittedcentroids)
-toc
+
 profiler,/report,data=data
 profiler,/reset,/clear
 print,data[sort(-data.time)],format='(A-20, I7, F12.5, F10.5, I9)'
@@ -115,6 +116,9 @@ print,data[sort(-data.time)],format='(A-20, I7, F12.5, F10.5, I9)'
 atmp = startimage
 
 bbb = fid_faster(startimage,limbfittedcentroids)
+
+toc
+print,bbb
 ; a = fid_locate(startimage,limbfittedcentroids)
 
 ; stop
@@ -148,10 +152,14 @@ ztmp[706.0065,966-295.3022] = 255
 ; cgimage,gg*(gg gt !thresh.reg3),/k
 
 ; ctt = cutofftest(startimage,limbfittedcentroids,a)
-
-; tic
+print,'fid_faster'
+tic
 bbb = fid_faster(startimage,limbfittedcentroids)
-; toc
+toc
+print,'fid_locate'
+tic
+a = fid_locate(startimage,limbfittedcentroids)
+toc
 
 ; stop
 ; print,'Main sun x pos:',limbfittedcentroids[0].limbxpos
