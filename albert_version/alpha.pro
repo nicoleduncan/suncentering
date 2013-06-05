@@ -103,7 +103,7 @@ endif else begin
     tmpimage[*,limbfittedcentroids[0].limbypos-1:limbfittedcentroids[0].limbypos+1] = 255
 endelse
 
-bbb = fid_faster(startimage,limbfittedcentroids)
+bbb = gord_fid(startimage,limbfittedcentroids)
 ; a = fid_locate(startimage,limbfittedcentroids)
 
 profiler,/report,data=data
@@ -115,7 +115,7 @@ print,data[sort(-data.time)],format='(A-20, I7, F12.5, F10.5, I9)'
 
 atmp = startimage
 
-bbb = fid_faster(startimage,limbfittedcentroids)
+bbb = gord_fid(startimage,limbfittedcentroids)
 
 toc
 print,bbb
@@ -152,6 +152,10 @@ ztmp[706.0065,966-295.3022] = 255
 ; cgimage,gg*(gg gt !thresh.reg3),/k
 
 ; ctt = cutofftest(startimage,limbfittedcentroids,a)
+print,'gord_fid'
+tic
+bbb = gord_fid(startimage,limbfittedcentroids)
+toc
 print,'fid_faster'
 tic
 bbb = fid_faster(startimage,limbfittedcentroids)
