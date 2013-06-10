@@ -106,10 +106,10 @@ n_col = (size(crop,/dim))[0]
 kernel = [1,0,0,0,1]
 
 ; we don't want pluses though, we want smooth hills
-kernel = [1,1,1,1,1,0,0,0,0,0,1,1,1,1,1]
+; kernel = [1,1,1,1,1,0,0,0,0,0,1,1,1,1,1]
 ; looks good:
 ; kernel = [1,-1,-1,-1,1]
-; kernel = [1,0,1]
+kernel = [1,0,1]
 
 ; for i = 0,n_col-1 do begin
 
@@ -212,14 +212,15 @@ endfor
 ; 10x faster than old method
 
 
+loadct,15
+cgimage,atmp,/k
+
 ; Looking into alternative method instead of nested for loop
 
 tic
 a=localmax(somearea,fidfloor,threshold)
 toc
 
-loadct,15
-cgimage,atmp,/k
 ; cgimage,im*tyim,/k
 
 ; 54,108

@@ -78,7 +78,7 @@ profiler,/system
 ; takes ~.07 s to run everything up to fid_locate
 ; takes ~.2 s to run albert's image
 
-tic
+
 
 defparams
 
@@ -103,7 +103,9 @@ endif else begin
     tmpimage[*,limbfittedcentroids[0].limbypos-1:limbfittedcentroids[0].limbypos+1] = 255
 endelse
 
+
 bbb = gord_fid(startimage,limbfittedcentroids)
+
 ; a = fid_locate(startimage,limbfittedcentroids)
 
 profiler,/report,data=data
@@ -117,7 +119,7 @@ atmp = startimage
 
 bbb = gord_fid(startimage,limbfittedcentroids)
 
-toc
+
 print,bbb
 ; a = fid_locate(startimage,limbfittedcentroids)
 
@@ -154,7 +156,7 @@ ztmp[706.0065,966-295.3022] = 255
 ; ctt = cutofftest(startimage,limbfittedcentroids,a)
 print,'gord_fid'
 tic
-bbb = gord_fid(startimage,limbfittedcentroids)
+aaa = gord_fid(startimage,limbfittedcentroids)
 toc
 print,'fid_faster'
 tic
@@ -173,6 +175,6 @@ toc
 ; print,'25% sun x pos: ',limbfittedcentroids[2].limbxpos
 ; print,'25% sun y pos: ',limbfittedcentroids[2].limbypos
 
-; stop
+stop
 
 end
