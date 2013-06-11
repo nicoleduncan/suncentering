@@ -3,3 +3,4 @@
 \contentsline {subsection}{\numberline {2.1}Using Gaussian Fits}{2}{subsection.2.1}
 \contentsline {subsection}{\numberline {2.2}1D Sums}{2}{subsection.2.2}
 \contentsline {subsection}{\numberline {2.3}Sub-Pixel Fitting}{2}{subsection.2.3}
+\contentsline {section}{\numberline {3}Comparison of Fiducial Finding Methods}{4}{section.3}

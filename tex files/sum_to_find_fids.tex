@@ -267,7 +267,7 @@ We're walking a fine line here; instead of minimizing our $\chi^2/N$, we're maxi
         \includegraphics[width=1.2\linewidth]{../plots_tables_images/1d1dcrop_6_9.eps}
         % \caption{}
     \end{subfigure}
-    \caption{}
+    \caption{Each possible fiducial candidate}
     \label{lotsofcrop}
 \end{figure}
 
@@ -404,14 +404,65 @@ We're walking a fine line here; instead of minimizing our $\chi^2/N$, we're maxi
 
 \subsection{Sub-Pixel Fitting} % (fold)
 \label{sub:sub_pixel_fitting}
-Once I know where the peaks are in the arrays of Figure \ref{lotsofplot}, I perform a quick parabolic fit to the 3 pixels encompassing the peak maximum. This method is at least 1 order of magnitude faster to find the sub-pixel peak than the gaussian peak-fitting method. 
+Once I know where the peaks are in the arrays of Figure \ref{lotsofplot}, I fit a parabola to the 3 pixels encompassing the peak maximum in each direction. 
 
 % subsection sub_pixel_fitting (end)
-
 
 % subsection 1d_sums (end)
 
 % section finding_fiducials (end)
+
+
+\section{Comparison of Fiducial Finding Methods} % (fold)
+\label{sec:comparison_of_fiducial_finding_methods}
+
+Table \ref{fidcomp} compares the Gaussian and parabolic-peak fitting results to Albert's fiducial positions.
+
+\begin{deluxetable}{cccccccc}
+\tablecaption{Comparison of peak-fitting}
+\tabletypesize{\scriptsize}
+\tablewidth{0pt}
+\tablehead{
+    \colhead{X pos} %
+&   \colhead{Sub-pixel x} %
+&   \colhead{Sub-pixel x} %
+&   \colhead{Albert's x} %
+&   \colhead{Y pos} %
+&   \colhead{Sub-pixel y} %
+&   \colhead{Sub-pixel y} %
+&   \colhead{Albert's y}  \\
+
+    \colhead{} %
+&   \colhead{(Parabolic} %
+&   \colhead{(Gaussian} %
+&   \colhead{}
+&   \colhead{}
+&   \colhead{(Parabolic}
+&   \colhead{(Gaussian} %
+&   \colhead{} \\
+
+    \colhead{} %
+&   \colhead{Peak Fitting)} %
+&   \colhead{Peak Fitting)} %
+&   \colhead{}
+&   \colhead{}
+&   \colhead{Peak Fitting)} %
+&   \colhead{Peak Fitting)} %
+&   \colhead{}
+}
+\startdata
+54  & 54.4053 & 54.4478 & 53.9459 & 108 & 107.946 & 108.044 & 109.100\\
+70  & 70.3620 & 70.3049 &  & 39  & 38.7651 & 37.7765 & \\
+101 & 101.355 & 101.287 & 100.782 & 123 & 124.465 & 123.740 & 124.789\\
+116 & 117.014 & 117.017 & 116.529 & 54  & 55.1857 & 54.8310 & 55.6844\\
+136 & 135.756 & 135.700 &  & 215 & 213.553 & 217.142 & \\
+151 & 151.477 & 151.437 & 150.967 & 139 & 138.696 & 139.406 & 140.352\\
+166 & 166.980 & 166.882 & 166.390 & 70  & 69.6979 & 70.3697 & 71.3244
+\enddata
+\label{fidcomp}
+\end{deluxetable}
+
+% section comparison_of_fiducial_finding_methods (end)
 
 \end{document}
 

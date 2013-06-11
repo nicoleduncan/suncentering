@@ -56,7 +56,9 @@ for i = 0,N_ELEMENTS(xx)-1 do begin
             colsum=TOTAL(aa,2)
             xsum=SMOOTH(colsum,10)-colsum
             dw = WHERE(xsum gt somethresh,n_dw)
-        
+            
+
+
 
 
             if n_bw ne 0 and n_dw ne 0 then begin
@@ -67,8 +69,8 @@ for i = 0,N_ELEMENTS(xx)-1 do begin
                     ; ygauss = GAUSSFIT(FINDGEN(length),rowsum,ycoeff,nterms=5)
                     
                     ; [1] is the center term
-                    ; fidpos[k].subx = xcoeff[1] + xx[i]-15
-                    ; fidpos[k].suby = ycoeff[1] + yy[j]-15
+                    ; print,xcoeff[1] + xx[i]-15
+                    ; print,ycoeff[1] + yy[j]-15
 
 
 
@@ -112,12 +114,6 @@ endfor
 
 
 ; 20 possible fiducial candidates, how many have duplciates indices? 13? don't think so.
-
-
-
-
-
-
 
 
 

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.4-1.40.13 (TeX Live 2012) (format=pdflatex 2013.4.9)  10 JUN 2013 17:38
+This is pdfTeX, Version 3.1415926-2.4-1.40.13 (TeX Live 2012) (format=pdflatex 2013.4.9)  10 JUN 2013 18:37
 entering extended mode
  \write18 enabled.
  %&-line parsing enabled.
@@ -523,7 +523,7 @@ th_expl-eps-converted-to.pdf ../plots_tables_images/smooth_expl.eps>
 (epstopdf)             \includegraphics on input line 41.
 Package epstopdf Info: Output file is already uptodate.
 
-<../plots_tables_images/smooth_expl-eps-converted-to.pdf, id=40, 552.0625pt x 3
+<../plots_tables_images/smooth_expl-eps-converted-to.pdf, id=45, 552.0625pt x 3
 38.26375pt>
 File: ../plots_tables_images/smooth_expl-eps-converted-to.pdf Graphic file (typ
 e pdf)
@@ -543,7 +543,7 @@ thcomp-eps-converted-to.pdf ../plots_tables_images/smoothcomp.eps>
 (epstopdf)             \includegraphics on input line 46.
 Package epstopdf Info: Output file is already uptodate.
 
-<../plots_tables_images/smoothcomp-eps-converted-to.pdf, id=41, 552.0625pt x 33
+<../plots_tables_images/smoothcomp-eps-converted-to.pdf, id=46, 552.0625pt x 33
 8.26375pt>
 File: ../plots_tables_images/smoothcomp-eps-converted-to.pdf Graphic file (type
  pdf)
@@ -568,7 +568,7 @@ fid-eps-converted-to.pdf ../plots_tables_images/morefid.eps>
 (epstopdf)             \includegraphics on input line 70.
 Package epstopdf Info: Output file is already uptodate.
 
-<../plots_tables_images/morefid-eps-converted-to.pdf, id=44, 552.0625pt x 338.2
+<../plots_tables_images/morefid-eps-converted-to.pdf, id=49, 552.0625pt x 338.2
 6375pt>
 File: ../plots_tables_images/morefid-eps-converted-to.pdf Graphic file (type pd
 f)
@@ -588,7 +588,7 @@ fid-eps-converted-to.pdf ../plots_tables_images/lessfid.eps>
 (epstopdf)             \includegraphics on input line 76.
 Package epstopdf Info: Output file is already uptodate.
 
-<../plots_tables_images/lessfid-eps-converted-to.pdf, id=45, 552.0625pt x 338.2
+<../plots_tables_images/lessfid-eps-converted-to.pdf, id=50, 552.0625pt x 338.2
 6375pt>
 File: ../plots_tables_images/lessfid-eps-converted-to.pdf Graphic file (type pd
 f)
@@ -622,7 +622,7 @@ ted-eps-converted-to.pdf ../plots_tables_images/gfitted.eps>
 (epstopdf)             \includegraphics on input line 94.
 Package epstopdf Info: Output file is already uptodate.
 
-<../plots_tables_images/gfitted-eps-converted-to.pdf, id=70, 552.0625pt x 338.2
+<../plots_tables_images/gfitted-eps-converted-to.pdf, id=75, 552.0625pt x 338.2
 6375pt>
 File: ../plots_tables_images/gfitted-eps-converted-to.pdf Graphic file (type pd
 f)
@@ -642,7 +642,7 @@ sfitcomp-eps-converted-to.pdf ../plots_tables_images/gaussfitcomp.eps>
 (epstopdf)             \includegraphics on input line 100.
 Package epstopdf Info: Output file is already uptodate.
 
-<../plots_tables_images/gaussfitcomp-eps-converted-to.pdf, id=71, 433.62pt x 50
+<../plots_tables_images/gaussfitcomp-eps-converted-to.pdf, id=76, 433.62pt x 50
 5.89pt>
 File: ../plots_tables_images/gaussfitcomp-eps-converted-to.pdf Graphic file (ty
 pe pdf)
@@ -662,7 +662,7 @@ ms-eps-converted-to.pdf ../plots_tables_images/1dsums.eps>
 (epstopdf)             \includegraphics on input line 140.
 Package epstopdf Info: Output file is already uptodate.
 
-<../plots_tables_images/1dsums-eps-converted-to.pdf, id=75, 552.0625pt x 338.26
+<../plots_tables_images/1dsums-eps-converted-to.pdf, id=80, 552.0625pt x 338.26
 375pt>
 File: ../plots_tables_images/1dsums-eps-converted-to.pdf Graphic file (type pdf
 )
@@ -688,7 +688,7 @@ crop_0_0-eps-converted-to.pdf ../plots_tables_images/1d1dcrop_0_0.eps>
 (epstopdf)             \includegraphics on input line 149.
 Package epstopdf Info: Output file is already uptodate.
 
-<../plots_tables_images/1d1dcrop_0_0-eps-converted-to.pdf, id=76, 552.0625pt x 
+<../plots_tables_images/1d1dcrop_0_0-eps-converted-to.pdf, id=81, 552.0625pt x 
 338.26375pt>
 File: ../plots_tables_images/1d1dcrop_0_0-eps-converted-to.pdf Graphic file (ty
 pe pdf)
@@ -713,7 +713,7 @@ crop_0_1-eps-converted-to.pdf ../plots_tables_images/1d1dcrop_0_1.eps>
 (epstopdf)             \includegraphics on input line 154.
 Package epstopdf Info: Output file is already uptodate.
 
-<../plots_tables_images/1d1dcrop_0_1-eps-converted-to.pdf, id=77, 552.0625pt x 
+<../plots_tables_images/1d1dcrop_0_1-eps-converted-to.pdf, id=82, 552.0625pt x 
 338.26375pt>
 File: ../plots_tables_images/1d1dcrop_0_1-eps-converted-to.pdf Graphic file (ty
 pe pdf)
@@ -738,7 +738,7 @@ crop_0_4-eps-converted-to.pdf ../plots_tables_images/1d1dcrop_0_4.eps>
 (epstopdf)             \includegraphics on input line 160.
 Package epstopdf Info: Output file is already uptodate.
 
-<../plots_tables_images/1d1dcrop_0_4-eps-converted-to.pdf, id=78, 552.0625pt x 
+<../plots_tables_images/1d1dcrop_0_4-eps-converted-to.pdf, id=83, 552.0625pt x 
 338.26375pt>
 File: ../plots_tables_images/1d1dcrop_0_4-eps-converted-to.pdf Graphic file (ty
 pe pdf)
@@ -763,7 +763,7 @@ crop_0_8-eps-converted-to.pdf ../plots_tables_images/1d1dcrop_0_8.eps>
 (epstopdf)             \includegraphics on input line 166.
 Package epstopdf Info: Output file is already uptodate.
 
-<../plots_tables_images/1d1dcrop_0_8-eps-converted-to.pdf, id=79, 552.0625pt x 
+<../plots_tables_images/1d1dcrop_0_8-eps-converted-to.pdf, id=84, 552.0625pt x 
 338.26375pt>
 File: ../plots_tables_images/1d1dcrop_0_8-eps-converted-to.pdf Graphic file (ty
 pe pdf)
@@ -788,7 +788,7 @@ crop_0_9-eps-converted-to.pdf ../plots_tables_images/1d1dcrop_0_9.eps>
 (epstopdf)             \includegraphics on input line 171.
 Package epstopdf Info: Output file is already uptodate.
 
-<../plots_tables_images/1d1dcrop_0_9-eps-converted-to.pdf, id=80, 552.0625pt x 
+<../plots_tables_images/1d1dcrop_0_9-eps-converted-to.pdf, id=85, 552.0625pt x 
 338.26375pt>
 File: ../plots_tables_images/1d1dcrop_0_9-eps-converted-to.pdf Graphic file (ty
 pe pdf)
@@ -813,7 +813,7 @@ crop_1_0-eps-converted-to.pdf ../plots_tables_images/1d1dcrop_1_0.eps>
 (epstopdf)             \includegraphics on input line 177.
 Package epstopdf Info: Output file is already uptodate.
 
-<../plots_tables_images/1d1dcrop_1_0-eps-converted-to.pdf, id=81, 552.0625pt x 
+<../plots_tables_images/1d1dcrop_1_0-eps-converted-to.pdf, id=86, 552.0625pt x 
 338.26375pt>
 File: ../plots_tables_images/1d1dcrop_1_0-eps-converted-to.pdf Graphic file (ty
 pe pdf)
@@ -838,7 +838,7 @@ crop_1_1-eps-converted-to.pdf ../plots_tables_images/1d1dcrop_1_1.eps>
 (epstopdf)             \includegraphics on input line 184.
 Package epstopdf Info: Output file is already uptodate.
 
-<../plots_tables_images/1d1dcrop_1_1-eps-converted-to.pdf, id=82, 552.0625pt x 
+<../plots_tables_images/1d1dcrop_1_1-eps-converted-to.pdf, id=87, 552.0625pt x 
 338.26375pt>
 File: ../plots_tables_images/1d1dcrop_1_1-eps-converted-to.pdf Graphic file (ty
 pe pdf)
@@ -863,7 +863,7 @@ crop_1_9-eps-converted-to.pdf ../plots_tables_images/1d1dcrop_1_9.eps>
 (epstopdf)             \includegraphics on input line 189.
 Package epstopdf Info: Output file is already uptodate.
 
-<../plots_tables_images/1d1dcrop_1_9-eps-converted-to.pdf, id=83, 552.0625pt x 
+<../plots_tables_images/1d1dcrop_1_9-eps-converted-to.pdf, id=88, 552.0625pt x 
 338.26375pt>
 File: ../plots_tables_images/1d1dcrop_1_9-eps-converted-to.pdf Graphic file (ty
 pe pdf)
@@ -888,7 +888,7 @@ crop_2_0-eps-converted-to.pdf ../plots_tables_images/1d1dcrop_2_0.eps>
 (epstopdf)             \includegraphics on input line 195.
 Package epstopdf Info: Output file is already uptodate.
 
-<../plots_tables_images/1d1dcrop_2_0-eps-converted-to.pdf, id=84, 552.0625pt x 
+<../plots_tables_images/1d1dcrop_2_0-eps-converted-to.pdf, id=89, 552.0625pt x 
 338.26375pt>
 File: ../plots_tables_images/1d1dcrop_2_0-eps-converted-to.pdf Graphic file (ty
 pe pdf)
@@ -913,7 +913,7 @@ crop_2_5-eps-converted-to.pdf ../plots_tables_images/1d1dcrop_2_5.eps>
 (epstopdf)             \includegraphics on input line 202.
 Package epstopdf Info: Output file is already uptodate.
 
-<../plots_tables_images/1d1dcrop_2_5-eps-converted-to.pdf, id=85, 552.0625pt x 
+<../plots_tables_images/1d1dcrop_2_5-eps-converted-to.pdf, id=90, 552.0625pt x 
 338.26375pt>
 File: ../plots_tables_images/1d1dcrop_2_5-eps-converted-to.pdf Graphic file (ty
 pe pdf)
@@ -938,7 +938,7 @@ crop_2_9-eps-converted-to.pdf ../plots_tables_images/1d1dcrop_2_9.eps>
 (epstopdf)             \includegraphics on input line 207.
 Package epstopdf Info: Output file is already uptodate.
 
-<../plots_tables_images/1d1dcrop_2_9-eps-converted-to.pdf, id=86, 552.0625pt x 
+<../plots_tables_images/1d1dcrop_2_9-eps-converted-to.pdf, id=91, 552.0625pt x 
 338.26375pt>
 File: ../plots_tables_images/1d1dcrop_2_9-eps-converted-to.pdf Graphic file (ty
 pe pdf)
@@ -963,7 +963,7 @@ crop_3_0-eps-converted-to.pdf ../plots_tables_images/1d1dcrop_3_0.eps>
 (epstopdf)             \includegraphics on input line 213.
 Package epstopdf Info: Output file is already uptodate.
 
-<../plots_tables_images/1d1dcrop_3_0-eps-converted-to.pdf, id=87, 552.0625pt x 
+<../plots_tables_images/1d1dcrop_3_0-eps-converted-to.pdf, id=92, 552.0625pt x 
 338.26375pt>
 File: ../plots_tables_images/1d1dcrop_3_0-eps-converted-to.pdf Graphic file (ty
 pe pdf)
@@ -988,7 +988,7 @@ crop_3_2-eps-converted-to.pdf ../plots_tables_images/1d1dcrop_3_2.eps>
 (epstopdf)             \includegraphics on input line 220.
 Package epstopdf Info: Output file is already uptodate.
 
-<../plots_tables_images/1d1dcrop_3_2-eps-converted-to.pdf, id=88, 552.0625pt x 
+<../plots_tables_images/1d1dcrop_3_2-eps-converted-to.pdf, id=93, 552.0625pt x 
 338.26375pt>
 File: ../plots_tables_images/1d1dcrop_3_2-eps-converted-to.pdf Graphic file (ty
 pe pdf)
@@ -1013,7 +1013,7 @@ crop_4_0-eps-converted-to.pdf ../plots_tables_images/1d1dcrop_4_0.eps>
 (epstopdf)             \includegraphics on input line 225.
 Package epstopdf Info: Output file is already uptodate.
 
-<../plots_tables_images/1d1dcrop_4_0-eps-converted-to.pdf, id=89, 552.0625pt x 
+<../plots_tables_images/1d1dcrop_4_0-eps-converted-to.pdf, id=94, 552.0625pt x 
 338.26375pt>
 File: ../plots_tables_images/1d1dcrop_4_0-eps-converted-to.pdf Graphic file (ty
 pe pdf)
@@ -1038,7 +1038,7 @@ crop_4_9-eps-converted-to.pdf ../plots_tables_images/1d1dcrop_4_9.eps>
 (epstopdf)             \includegraphics on input line 231.
 Package epstopdf Info: Output file is already uptodate.
 
-<../plots_tables_images/1d1dcrop_4_9-eps-converted-to.pdf, id=90, 552.0625pt x 
+<../plots_tables_images/1d1dcrop_4_9-eps-converted-to.pdf, id=95, 552.0625pt x 
 338.26375pt>
 File: ../plots_tables_images/1d1dcrop_4_9-eps-converted-to.pdf Graphic file (ty
 pe pdf)
@@ -1063,7 +1063,7 @@ crop_5_0-eps-converted-to.pdf ../plots_tables_images/1d1dcrop_5_0.eps>
 (epstopdf)             \includegraphics on input line 238.
 Package epstopdf Info: Output file is already uptodate.
 
-<../plots_tables_images/1d1dcrop_5_0-eps-converted-to.pdf, id=91, 552.0625pt x 
+<../plots_tables_images/1d1dcrop_5_0-eps-converted-to.pdf, id=96, 552.0625pt x 
 338.26375pt>
 File: ../plots_tables_images/1d1dcrop_5_0-eps-converted-to.pdf Graphic file (ty
 pe pdf)
@@ -1088,7 +1088,7 @@ crop_5_6-eps-converted-to.pdf ../plots_tables_images/1d1dcrop_5_6.eps>
 (epstopdf)             \includegraphics on input line 243.
 Package epstopdf Info: Output file is already uptodate.
 
-<../plots_tables_images/1d1dcrop_5_6-eps-converted-to.pdf, id=92, 552.0625pt x 
+<../plots_tables_images/1d1dcrop_5_6-eps-converted-to.pdf, id=97, 552.0625pt x 
 338.26375pt>
 File: ../plots_tables_images/1d1dcrop_5_6-eps-converted-to.pdf Graphic file (ty
 pe pdf)
@@ -1113,7 +1113,7 @@ crop_5_9-eps-converted-to.pdf ../plots_tables_images/1d1dcrop_5_9.eps>
 (epstopdf)             \includegraphics on input line 249.
 Package epstopdf Info: Output file is already uptodate.
 
-<../plots_tables_images/1d1dcrop_5_9-eps-converted-to.pdf, id=93, 552.0625pt x 
+<../plots_tables_images/1d1dcrop_5_9-eps-converted-to.pdf, id=98, 552.0625pt x 
 338.26375pt>
 File: ../plots_tables_images/1d1dcrop_5_9-eps-converted-to.pdf Graphic file (ty
 pe pdf)
@@ -1138,7 +1138,7 @@ crop_6_0-eps-converted-to.pdf ../plots_tables_images/1d1dcrop_6_0.eps>
 (epstopdf)             \includegraphics on input line 256.
 Package epstopdf Info: Output file is already uptodate.
 
-<../plots_tables_images/1d1dcrop_6_0-eps-converted-to.pdf, id=94, 552.0625pt x 
+<../plots_tables_images/1d1dcrop_6_0-eps-converted-to.pdf, id=99, 552.0625pt x 
 338.26375pt>
 File: ../plots_tables_images/1d1dcrop_6_0-eps-converted-to.pdf Graphic file (ty
 pe pdf)
@@ -1163,8 +1163,8 @@ crop_6_3-eps-converted-to.pdf ../plots_tables_images/1d1dcrop_6_3.eps>
 (epstopdf)             \includegraphics on input line 262.
 Package epstopdf Info: Output file is already uptodate.
 
-<../plots_tables_images/1d1dcrop_6_3-eps-converted-to.pdf, id=95, 552.0625pt x 
-338.26375pt>
+<../plots_tables_images/1d1dcrop_6_3-eps-converted-to.pdf, id=100, 552.0625pt x
+ 338.26375pt>
 File: ../plots_tables_images/1d1dcrop_6_3-eps-converted-to.pdf Graphic file (ty
 pe pdf)
  <use ../plots_tables_images/1d1dcrop_6_3-eps-converted-to.pdf>
@@ -1188,8 +1188,8 @@ crop_6_9-eps-converted-to.pdf ../plots_tables_images/1d1dcrop_6_9.eps>
 (epstopdf)             \includegraphics on input line 267.
 Package epstopdf Info: Output file is already uptodate.
 
-<../plots_tables_images/1d1dcrop_6_9-eps-converted-to.pdf, id=96, 552.0625pt x 
-338.26375pt>
+<../plots_tables_images/1d1dcrop_6_9-eps-converted-to.pdf, id=101, 552.0625pt x
+ 338.26375pt>
 File: ../plots_tables_images/1d1dcrop_6_9-eps-converted-to.pdf Graphic file (ty
 pe pdf)
  <use ../plots_tables_images/1d1dcrop_6_9-eps-converted-to.pdf>
@@ -1205,432 +1205,433 @@ Overfull \hbox (27.17793pt too wide) in paragraph at lines 267--269
 LaTeX Warning: Float too large for page by 33.32281pt on input line 272.
 
 Package epstopdf Info: Source file: <../plots_tables_images/1d1dsums_0_0.eps>
-(epstopdf)                    date: 2013-06-10 17:36:50
-(epstopdf)                    size: 10106 bytes
+(epstopdf)                    date: 2013-06-10 17:41:25
+(epstopdf)                    size: 10110 bytes
 (epstopdf)             Output file: <../plots_tables_images/1d1dsums_0_0-eps-co
 nverted-to.pdf>
-(epstopdf)                    date: 2013-06-10 17:38:12
-(epstopdf)                    size: 7736 bytes
+(epstopdf)                    date: 2013-06-10 17:41:41
+(epstopdf)                    size: 7741 bytes
 (epstopdf)             Command: <epstopdf --outfile=../plots_tables_images/1d1d
 sums_0_0-eps-converted-to.pdf ../plots_tables_images/1d1dsums_0_0.eps>
-(epstopdf)             \includegraphics on input line 280.
+(epstopdf)             \includegraphics on input line 279.
 Package epstopdf Info: Output file is already uptodate.
 
-<../plots_tables_images/1d1dsums_0_0-eps-converted-to.pdf, id=97, 552.0625pt x 
-338.26375pt>
+<../plots_tables_images/1d1dsums_0_0-eps-converted-to.pdf, id=102, 552.0625pt x
+ 338.26375pt>
 File: ../plots_tables_images/1d1dsums_0_0-eps-converted-to.pdf Graphic file (ty
 pe pdf)
  <use ../plots_tables_images/1d1dsums_0_0-eps-converted-to.pdf>
 Package pdftex.def Info: ../plots_tables_images/1d1dsums_0_0-eps-converted-to.p
-df used on input line 280.
+df used on input line 279.
 (pdftex.def)             Requested size: 135.89175pt x 83.26503pt.
 Package epstopdf Info: Source file: <../plots_tables_images/1d1dsums_0_1.eps>
-(epstopdf)                    date: 2013-06-10 17:36:50
-(epstopdf)                    size: 13215 bytes
+(epstopdf)                    date: 2013-06-10 17:41:25
+(epstopdf)                    size: 13219 bytes
 (epstopdf)             Output file: <../plots_tables_images/1d1dsums_0_1-eps-co
 nverted-to.pdf>
-(epstopdf)                    date: 2013-06-10 17:38:13
-(epstopdf)                    size: 8464 bytes
+(epstopdf)                    date: 2013-06-10 17:41:41
+(epstopdf)                    size: 8476 bytes
 (epstopdf)             Command: <epstopdf --outfile=../plots_tables_images/1d1d
 sums_0_1-eps-converted-to.pdf ../plots_tables_images/1d1dsums_0_1.eps>
-(epstopdf)             \includegraphics on input line 285.
+(epstopdf)             \includegraphics on input line 284.
 Package epstopdf Info: Output file is already uptodate.
 
-<../plots_tables_images/1d1dsums_0_1-eps-converted-to.pdf, id=98, 552.0625pt x 
-338.26375pt>
+<../plots_tables_images/1d1dsums_0_1-eps-converted-to.pdf, id=103, 552.0625pt x
+ 338.26375pt>
 File: ../plots_tables_images/1d1dsums_0_1-eps-converted-to.pdf Graphic file (ty
 pe pdf)
  <use ../plots_tables_images/1d1dsums_0_1-eps-converted-to.pdf>
 Package pdftex.def Info: ../plots_tables_images/1d1dsums_0_1-eps-converted-to.p
-df used on input line 285.
+df used on input line 284.
 (pdftex.def)             Requested size: 135.89175pt x 83.26503pt.
 Package epstopdf Info: Source file: <../plots_tables_images/1d1dsums_0_4.eps>
-(epstopdf)                    date: 2013-06-10 17:36:50
-(epstopdf)                    size: 11108 bytes
+(epstopdf)                    date: 2013-06-10 17:41:25
+(epstopdf)                    size: 11112 bytes
 (epstopdf)             Output file: <../plots_tables_images/1d1dsums_0_4-eps-co
 nverted-to.pdf>
-(epstopdf)                    date: 2013-06-10 17:38:13
-(epstopdf)                    size: 7744 bytes
+(epstopdf)                    date: 2013-06-10 17:41:41
+(epstopdf)                    size: 7749 bytes
 (epstopdf)             Command: <epstopdf --outfile=../plots_tables_images/1d1d
 sums_0_4-eps-converted-to.pdf ../plots_tables_images/1d1dsums_0_4.eps>
-(epstopdf)             \includegraphics on input line 291.
+(epstopdf)             \includegraphics on input line 290.
 Package epstopdf Info: Output file is already uptodate.
 
-<../plots_tables_images/1d1dsums_0_4-eps-converted-to.pdf, id=99, 552.0625pt x 
-338.26375pt>
+<../plots_tables_images/1d1dsums_0_4-eps-converted-to.pdf, id=104, 552.0625pt x
+ 338.26375pt>
 File: ../plots_tables_images/1d1dsums_0_4-eps-converted-to.pdf Graphic file (ty
 pe pdf)
  <use ../plots_tables_images/1d1dsums_0_4-eps-converted-to.pdf>
 Package pdftex.def Info: ../plots_tables_images/1d1dsums_0_4-eps-converted-to.p
-df used on input line 291.
+df used on input line 290.
 (pdftex.def)             Requested size: 135.89175pt x 83.26503pt.
 Package epstopdf Info: Source file: <../plots_tables_images/1d1dsums_0_8.eps>
-(epstopdf)                    date: 2013-06-10 17:36:50
-(epstopdf)                    size: 13216 bytes
+(epstopdf)                    date: 2013-06-10 17:41:25
+(epstopdf)                    size: 13220 bytes
 (epstopdf)             Output file: <../plots_tables_images/1d1dsums_0_8-eps-co
 nverted-to.pdf>
-(epstopdf)                    date: 2013-06-10 17:38:13
-(epstopdf)                    size: 8374 bytes
+(epstopdf)                    date: 2013-06-10 17:41:41
+(epstopdf)                    size: 8381 bytes
 (epstopdf)             Command: <epstopdf --outfile=../plots_tables_images/1d1d
 sums_0_8-eps-converted-to.pdf ../plots_tables_images/1d1dsums_0_8.eps>
-(epstopdf)             \includegraphics on input line 298.
+(epstopdf)             \includegraphics on input line 297.
 Package epstopdf Info: Output file is already uptodate.
 
-<../plots_tables_images/1d1dsums_0_8-eps-converted-to.pdf, id=100, 552.0625pt x
+<../plots_tables_images/1d1dsums_0_8-eps-converted-to.pdf, id=105, 552.0625pt x
  338.26375pt>
 File: ../plots_tables_images/1d1dsums_0_8-eps-converted-to.pdf Graphic file (ty
 pe pdf)
  <use ../plots_tables_images/1d1dsums_0_8-eps-converted-to.pdf>
 Package pdftex.def Info: ../plots_tables_images/1d1dsums_0_8-eps-converted-to.p
-df used on input line 298.
+df used on input line 297.
 (pdftex.def)             Requested size: 135.89175pt x 83.26503pt.
 Package epstopdf Info: Source file: <../plots_tables_images/1d1dsums_0_9.eps>
-(epstopdf)                    date: 2013-06-10 17:36:50
-(epstopdf)                    size: 9218 bytes
+(epstopdf)                    date: 2013-06-10 17:41:25
+(epstopdf)                    size: 9222 bytes
 (epstopdf)             Output file: <../plots_tables_images/1d1dsums_0_9-eps-co
 nverted-to.pdf>
-(epstopdf)                    date: 2013-06-10 17:38:13
-(epstopdf)                    size: 7223 bytes
+(epstopdf)                    date: 2013-06-10 17:41:41
+(epstopdf)                    size: 7233 bytes
 (epstopdf)             Command: <epstopdf --outfile=../plots_tables_images/1d1d
 sums_0_9-eps-converted-to.pdf ../plots_tables_images/1d1dsums_0_9.eps>
-(epstopdf)             \includegraphics on input line 303.
+(epstopdf)             \includegraphics on input line 302.
 Package epstopdf Info: Output file is already uptodate.
 
-<../plots_tables_images/1d1dsums_0_9-eps-converted-to.pdf, id=101, 552.0625pt x
+<../plots_tables_images/1d1dsums_0_9-eps-converted-to.pdf, id=106, 552.0625pt x
  338.26375pt>
 File: ../plots_tables_images/1d1dsums_0_9-eps-converted-to.pdf Graphic file (ty
 pe pdf)
  <use ../plots_tables_images/1d1dsums_0_9-eps-converted-to.pdf>
 Package pdftex.def Info: ../plots_tables_images/1d1dsums_0_9-eps-converted-to.p
-df used on input line 303.
+df used on input line 302.
 (pdftex.def)             Requested size: 135.89175pt x 83.26503pt.
 Package epstopdf Info: Source file: <../plots_tables_images/1d1dsums_1_0.eps>
-(epstopdf)                    date: 2013-06-10 17:36:50
-(epstopdf)                    size: 9361 bytes
+(epstopdf)                    date: 2013-06-10 17:41:25
+(epstopdf)                    size: 9365 bytes
 (epstopdf)             Output file: <../plots_tables_images/1d1dsums_1_0-eps-co
 nverted-to.pdf>
-(epstopdf)                    date: 2013-06-10 17:38:13
-(epstopdf)                    size: 7325 bytes
+(epstopdf)                    date: 2013-06-10 17:41:42
+(epstopdf)                    size: 7338 bytes
 (epstopdf)             Command: <epstopdf --outfile=../plots_tables_images/1d1d
 sums_1_0-eps-converted-to.pdf ../plots_tables_images/1d1dsums_1_0.eps>
-(epstopdf)             \includegraphics on input line 309.
+(epstopdf)             \includegraphics on input line 308.
 Package epstopdf Info: Output file is already uptodate.
 
-<../plots_tables_images/1d1dsums_1_0-eps-converted-to.pdf, id=102, 552.0625pt x
+<../plots_tables_images/1d1dsums_1_0-eps-converted-to.pdf, id=107, 552.0625pt x
  338.26375pt>
 File: ../plots_tables_images/1d1dsums_1_0-eps-converted-to.pdf Graphic file (ty
 pe pdf)
  <use ../plots_tables_images/1d1dsums_1_0-eps-converted-to.pdf>
 Package pdftex.def Info: ../plots_tables_images/1d1dsums_1_0-eps-converted-to.p
-df used on input line 309.
+df used on input line 308.
 (pdftex.def)             Requested size: 135.89175pt x 83.26503pt.
 Package epstopdf Info: Source file: <../plots_tables_images/1d1dsums_1_1.eps>
-(epstopdf)                    date: 2013-06-10 17:36:50
-(epstopdf)                    size: 9251 bytes
+(epstopdf)                    date: 2013-06-10 17:41:25
+(epstopdf)                    size: 9255 bytes
 (epstopdf)             Output file: <../plots_tables_images/1d1dsums_1_1-eps-co
 nverted-to.pdf>
-(epstopdf)                    date: 2013-06-10 17:38:13
-(epstopdf)                    size: 7266 bytes
+(epstopdf)                    date: 2013-06-10 17:41:42
+(epstopdf)                    size: 7277 bytes
 (epstopdf)             Command: <epstopdf --outfile=../plots_tables_images/1d1d
 sums_1_1-eps-converted-to.pdf ../plots_tables_images/1d1dsums_1_1.eps>
-(epstopdf)             \includegraphics on input line 316.
+(epstopdf)             \includegraphics on input line 315.
 Package epstopdf Info: Output file is already uptodate.
 
-<../plots_tables_images/1d1dsums_1_1-eps-converted-to.pdf, id=103, 552.0625pt x
+<../plots_tables_images/1d1dsums_1_1-eps-converted-to.pdf, id=108, 552.0625pt x
  338.26375pt>
 File: ../plots_tables_images/1d1dsums_1_1-eps-converted-to.pdf Graphic file (ty
 pe pdf)
  <use ../plots_tables_images/1d1dsums_1_1-eps-converted-to.pdf>
 Package pdftex.def Info: ../plots_tables_images/1d1dsums_1_1-eps-converted-to.p
-df used on input line 316.
+df used on input line 315.
 (pdftex.def)             Requested size: 135.89175pt x 83.26503pt.
 Package epstopdf Info: Source file: <../plots_tables_images/1d1dsums_1_9.eps>
-(epstopdf)                    date: 2013-06-10 17:36:50
-(epstopdf)                    size: 10437 bytes
+(epstopdf)                    date: 2013-06-10 17:41:25
+(epstopdf)                    size: 10441 bytes
 (epstopdf)             Output file: <../plots_tables_images/1d1dsums_1_9-eps-co
 nverted-to.pdf>
-(epstopdf)                    date: 2013-06-10 17:38:14
-(epstopdf)                    size: 7538 bytes
+(epstopdf)                    date: 2013-06-10 17:41:42
+(epstopdf)                    size: 7546 bytes
 (epstopdf)             Command: <epstopdf --outfile=../plots_tables_images/1d1d
 sums_1_9-eps-converted-to.pdf ../plots_tables_images/1d1dsums_1_9.eps>
-(epstopdf)             \includegraphics on input line 321.
+(epstopdf)             \includegraphics on input line 320.
 Package epstopdf Info: Output file is already uptodate.
 
-<../plots_tables_images/1d1dsums_1_9-eps-converted-to.pdf, id=104, 552.0625pt x
+<../plots_tables_images/1d1dsums_1_9-eps-converted-to.pdf, id=109, 552.0625pt x
  338.26375pt>
 File: ../plots_tables_images/1d1dsums_1_9-eps-converted-to.pdf Graphic file (ty
 pe pdf)
  <use ../plots_tables_images/1d1dsums_1_9-eps-converted-to.pdf>
 Package pdftex.def Info: ../plots_tables_images/1d1dsums_1_9-eps-converted-to.p
-df used on input line 321.
+df used on input line 320.
 (pdftex.def)             Requested size: 135.89175pt x 83.26503pt.
 Package epstopdf Info: Source file: <../plots_tables_images/1d1dsums_2_0.eps>
-(epstopdf)                    date: 2013-06-10 17:36:50
-(epstopdf)                    size: 13217 bytes
+(epstopdf)                    date: 2013-06-10 17:41:25
+(epstopdf)                    size: 13221 bytes
 (epstopdf)             Output file: <../plots_tables_images/1d1dsums_2_0-eps-co
 nverted-to.pdf>
-(epstopdf)                    date: 2013-06-10 17:38:14
-(epstopdf)                    size: 8389 bytes
+(epstopdf)                    date: 2013-06-10 17:41:42
+(epstopdf)                    size: 8397 bytes
 (epstopdf)             Command: <epstopdf --outfile=../plots_tables_images/1d1d
 sums_2_0-eps-converted-to.pdf ../plots_tables_images/1d1dsums_2_0.eps>
-(epstopdf)             \includegraphics on input line 327.
+(epstopdf)             \includegraphics on input line 326.
 Package epstopdf Info: Output file is already uptodate.
 
-<../plots_tables_images/1d1dsums_2_0-eps-converted-to.pdf, id=105, 552.0625pt x
+<../plots_tables_images/1d1dsums_2_0-eps-converted-to.pdf, id=110, 552.0625pt x
  338.26375pt>
 File: ../plots_tables_images/1d1dsums_2_0-eps-converted-to.pdf Graphic file (ty
 pe pdf)
  <use ../plots_tables_images/1d1dsums_2_0-eps-converted-to.pdf>
 Package pdftex.def Info: ../plots_tables_images/1d1dsums_2_0-eps-converted-to.p
-df used on input line 327.
+df used on input line 326.
 (pdftex.def)             Requested size: 135.89175pt x 83.26503pt.
 Package epstopdf Info: Source file: <../plots_tables_images/1d1dsums_2_5.eps>
-(epstopdf)                    date: 2013-06-10 17:36:50
-(epstopdf)                    size: 11108 bytes
+(epstopdf)                    date: 2013-06-10 17:41:25
+(epstopdf)                    size: 11112 bytes
 (epstopdf)             Output file: <../plots_tables_images/1d1dsums_2_5-eps-co
 nverted-to.pdf>
-(epstopdf)                    date: 2013-06-10 17:38:14
-(epstopdf)                    size: 7740 bytes
+(epstopdf)                    date: 2013-06-10 17:41:42
+(epstopdf)                    size: 7744 bytes
 (epstopdf)             Command: <epstopdf --outfile=../plots_tables_images/1d1d
 sums_2_5-eps-converted-to.pdf ../plots_tables_images/1d1dsums_2_5.eps>
-(epstopdf)             \includegraphics on input line 334.
+(epstopdf)             \includegraphics on input line 333.
 Package epstopdf Info: Output file is already uptodate.
 
-<../plots_tables_images/1d1dsums_2_5-eps-converted-to.pdf, id=106, 552.0625pt x
+<../plots_tables_images/1d1dsums_2_5-eps-converted-to.pdf, id=111, 552.0625pt x
  338.26375pt>
 File: ../plots_tables_images/1d1dsums_2_5-eps-converted-to.pdf Graphic file (ty
 pe pdf)
  <use ../plots_tables_images/1d1dsums_2_5-eps-converted-to.pdf>
 Package pdftex.def Info: ../plots_tables_images/1d1dsums_2_5-eps-converted-to.p
-df used on input line 334.
+df used on input line 333.
 (pdftex.def)             Requested size: 135.89175pt x 83.26503pt.
 Package epstopdf Info: Source file: <../plots_tables_images/1d1dsums_2_9.eps>
-(epstopdf)                    date: 2013-06-10 17:36:50
-(epstopdf)                    size: 10499 bytes
+(epstopdf)                    date: 2013-06-10 17:41:25
+(epstopdf)                    size: 10503 bytes
 (epstopdf)             Output file: <../plots_tables_images/1d1dsums_2_9-eps-co
 nverted-to.pdf>
-(epstopdf)                    date: 2013-06-10 17:38:14
-(epstopdf)                    size: 7552 bytes
+(epstopdf)                    date: 2013-06-10 17:41:42
+(epstopdf)                    size: 7559 bytes
 (epstopdf)             Command: <epstopdf --outfile=../plots_tables_images/1d1d
 sums_2_9-eps-converted-to.pdf ../plots_tables_images/1d1dsums_2_9.eps>
-(epstopdf)             \includegraphics on input line 339.
+(epstopdf)             \includegraphics on input line 338.
 Package epstopdf Info: Output file is already uptodate.
 
-<../plots_tables_images/1d1dsums_2_9-eps-converted-to.pdf, id=107, 552.0625pt x
+<../plots_tables_images/1d1dsums_2_9-eps-converted-to.pdf, id=112, 552.0625pt x
  338.26375pt>
 File: ../plots_tables_images/1d1dsums_2_9-eps-converted-to.pdf Graphic file (ty
 pe pdf)
  <use ../plots_tables_images/1d1dsums_2_9-eps-converted-to.pdf>
 Package pdftex.def Info: ../plots_tables_images/1d1dsums_2_9-eps-converted-to.p
-df used on input line 339.
+df used on input line 338.
 (pdftex.def)             Requested size: 135.89175pt x 83.26503pt.
 Package epstopdf Info: Source file: <../plots_tables_images/1d1dsums_3_0.eps>
-(epstopdf)                    date: 2013-06-10 17:36:50
-(epstopdf)                    size: 10497 bytes
+(epstopdf)                    date: 2013-06-10 17:41:25
+(epstopdf)                    size: 10501 bytes
 (epstopdf)             Output file: <../plots_tables_images/1d1dsums_3_0-eps-co
 nverted-to.pdf>
-(epstopdf)                    date: 2013-06-10 17:38:14
-(epstopdf)                    size: 7564 bytes
+(epstopdf)                    date: 2013-06-10 17:41:43
+(epstopdf)                    size: 7571 bytes
 (epstopdf)             Command: <epstopdf --outfile=../plots_tables_images/1d1d
 sums_3_0-eps-converted-to.pdf ../plots_tables_images/1d1dsums_3_0.eps>
-(epstopdf)             \includegraphics on input line 345.
+(epstopdf)             \includegraphics on input line 344.
 Package epstopdf Info: Output file is already uptodate.
 
-<../plots_tables_images/1d1dsums_3_0-eps-converted-to.pdf, id=108, 552.0625pt x
+<../plots_tables_images/1d1dsums_3_0-eps-converted-to.pdf, id=113, 552.0625pt x
  338.26375pt>
 File: ../plots_tables_images/1d1dsums_3_0-eps-converted-to.pdf Graphic file (ty
 pe pdf)
  <use ../plots_tables_images/1d1dsums_3_0-eps-converted-to.pdf>
 Package pdftex.def Info: ../plots_tables_images/1d1dsums_3_0-eps-converted-to.p
-df used on input line 345.
+df used on input line 344.
 (pdftex.def)             Requested size: 135.89175pt x 83.26503pt.
 Package epstopdf Info: Source file: <../plots_tables_images/1d1dsums_3_2.eps>
-(epstopdf)                    date: 2013-06-10 17:36:50
-(epstopdf)                    size: 11111 bytes
+(epstopdf)                    date: 2013-06-10 17:41:25
+(epstopdf)                    size: 11115 bytes
 (epstopdf)             Output file: <../plots_tables_images/1d1dsums_3_2-eps-co
 nverted-to.pdf>
-(epstopdf)                    date: 2013-06-10 17:38:14
-(epstopdf)                    size: 7736 bytes
+(epstopdf)                    date: 2013-06-10 17:41:43
+(epstopdf)                    size: 7741 bytes
 (epstopdf)             Command: <epstopdf --outfile=../plots_tables_images/1d1d
 sums_3_2-eps-converted-to.pdf ../plots_tables_images/1d1dsums_3_2.eps>
-(epstopdf)             \includegraphics on input line 352.
+(epstopdf)             \includegraphics on input line 351.
 Package epstopdf Info: Output file is already uptodate.
 
-<../plots_tables_images/1d1dsums_3_2-eps-converted-to.pdf, id=109, 552.0625pt x
+<../plots_tables_images/1d1dsums_3_2-eps-converted-to.pdf, id=114, 552.0625pt x
  338.26375pt>
 File: ../plots_tables_images/1d1dsums_3_2-eps-converted-to.pdf Graphic file (ty
 pe pdf)
  <use ../plots_tables_images/1d1dsums_3_2-eps-converted-to.pdf>
 Package pdftex.def Info: ../plots_tables_images/1d1dsums_3_2-eps-converted-to.p
-df used on input line 352.
+df used on input line 351.
 (pdftex.def)             Requested size: 135.89175pt x 83.26503pt.
 Package epstopdf Info: Source file: <../plots_tables_images/1d1dsums_4_0.eps>
-(epstopdf)                    date: 2013-06-10 17:36:50
-(epstopdf)                    size: 13761 bytes
+(epstopdf)                    date: 2013-06-10 17:41:25
+(epstopdf)                    size: 13765 bytes
 (epstopdf)             Output file: <../plots_tables_images/1d1dsums_4_0-eps-co
 nverted-to.pdf>
-(epstopdf)                    date: 2013-06-10 17:38:14
-(epstopdf)                    size: 8535 bytes
+(epstopdf)                    date: 2013-06-10 17:41:43
+(epstopdf)                    size: 8544 bytes
 (epstopdf)             Command: <epstopdf --outfile=../plots_tables_images/1d1d
 sums_4_0-eps-converted-to.pdf ../plots_tables_images/1d1dsums_4_0.eps>
-(epstopdf)             \includegraphics on input line 357.
+(epstopdf)             \includegraphics on input line 356.
 Package epstopdf Info: Output file is already uptodate.
 
-<../plots_tables_images/1d1dsums_4_0-eps-converted-to.pdf, id=110, 552.0625pt x
+<../plots_tables_images/1d1dsums_4_0-eps-converted-to.pdf, id=115, 552.0625pt x
  338.26375pt>
 File: ../plots_tables_images/1d1dsums_4_0-eps-converted-to.pdf Graphic file (ty
 pe pdf)
  <use ../plots_tables_images/1d1dsums_4_0-eps-converted-to.pdf>
 Package pdftex.def Info: ../plots_tables_images/1d1dsums_4_0-eps-converted-to.p
-df used on input line 357.
+df used on input line 356.
 (pdftex.def)             Requested size: 135.89175pt x 83.26503pt.
 Package epstopdf Info: Source file: <../plots_tables_images/1d1dsums_4_9.eps>
-(epstopdf)                    date: 2013-06-10 17:36:50
-(epstopdf)                    size: 9247 bytes
+(epstopdf)                    date: 2013-06-10 17:41:25
+(epstopdf)                    size: 9251 bytes
 (epstopdf)             Output file: <../plots_tables_images/1d1dsums_4_9-eps-co
 nverted-to.pdf>
-(epstopdf)                    date: 2013-06-10 17:38:15
-(epstopdf)                    size: 7265 bytes
+(epstopdf)                    date: 2013-06-10 17:41:43
+(epstopdf)                    size: 7274 bytes
 (epstopdf)             Command: <epstopdf --outfile=../plots_tables_images/1d1d
 sums_4_9-eps-converted-to.pdf ../plots_tables_images/1d1dsums_4_9.eps>
-(epstopdf)             \includegraphics on input line 363.
+(epstopdf)             \includegraphics on input line 362.
 Package epstopdf Info: Output file is already uptodate.
 
-<../plots_tables_images/1d1dsums_4_9-eps-converted-to.pdf, id=111, 552.0625pt x
+<../plots_tables_images/1d1dsums_4_9-eps-converted-to.pdf, id=116, 552.0625pt x
  338.26375pt>
 File: ../plots_tables_images/1d1dsums_4_9-eps-converted-to.pdf Graphic file (ty
 pe pdf)
  <use ../plots_tables_images/1d1dsums_4_9-eps-converted-to.pdf>
 Package pdftex.def Info: ../plots_tables_images/1d1dsums_4_9-eps-converted-to.p
-df used on input line 363.
+df used on input line 362.
 (pdftex.def)             Requested size: 135.89175pt x 83.26503pt.
 Package epstopdf Info: Source file: <../plots_tables_images/1d1dsums_5_0.eps>
-(epstopdf)                    date: 2013-06-10 17:36:50
-(epstopdf)                    size: 12681 bytes
+(epstopdf)                    date: 2013-06-10 17:41:25
+(epstopdf)                    size: 12685 bytes
 (epstopdf)             Output file: <../plots_tables_images/1d1dsums_5_0-eps-co
 nverted-to.pdf>
-(epstopdf)                    date: 2013-06-10 17:38:15
-(epstopdf)                    size: 8182 bytes
+(epstopdf)                    date: 2013-06-10 17:41:43
+(epstopdf)                    size: 8186 bytes
 (epstopdf)             Command: <epstopdf --outfile=../plots_tables_images/1d1d
 sums_5_0-eps-converted-to.pdf ../plots_tables_images/1d1dsums_5_0.eps>
-(epstopdf)             \includegraphics on input line 370.
+(epstopdf)             \includegraphics on input line 369.
 Package epstopdf Info: Output file is already uptodate.
 
-<../plots_tables_images/1d1dsums_5_0-eps-converted-to.pdf, id=112, 552.0625pt x
+<../plots_tables_images/1d1dsums_5_0-eps-converted-to.pdf, id=117, 552.0625pt x
  338.26375pt>
 File: ../plots_tables_images/1d1dsums_5_0-eps-converted-to.pdf Graphic file (ty
 pe pdf)
  <use ../plots_tables_images/1d1dsums_5_0-eps-converted-to.pdf>
 Package pdftex.def Info: ../plots_tables_images/1d1dsums_5_0-eps-converted-to.p
-df used on input line 370.
+df used on input line 369.
 (pdftex.def)             Requested size: 135.89175pt x 83.26503pt.
 Package epstopdf Info: Source file: <../plots_tables_images/1d1dsums_5_6.eps>
-(epstopdf)                    date: 2013-06-10 17:36:50
-(epstopdf)                    size: 12197 bytes
+(epstopdf)                    date: 2013-06-10 17:41:25
+(epstopdf)                    size: 12201 bytes
 (epstopdf)             Output file: <../plots_tables_images/1d1dsums_5_6-eps-co
 nverted-to.pdf>
-(epstopdf)                    date: 2013-06-10 17:38:15
-(epstopdf)                    size: 8043 bytes
+(epstopdf)                    date: 2013-06-10 17:41:43
+(epstopdf)                    size: 8049 bytes
 (epstopdf)             Command: <epstopdf --outfile=../plots_tables_images/1d1d
 sums_5_6-eps-converted-to.pdf ../plots_tables_images/1d1dsums_5_6.eps>
-(epstopdf)             \includegraphics on input line 375.
+(epstopdf)             \includegraphics on input line 374.
 Package epstopdf Info: Output file is already uptodate.
 
-<../plots_tables_images/1d1dsums_5_6-eps-converted-to.pdf, id=113, 552.0625pt x
+<../plots_tables_images/1d1dsums_5_6-eps-converted-to.pdf, id=118, 552.0625pt x
  338.26375pt>
 File: ../plots_tables_images/1d1dsums_5_6-eps-converted-to.pdf Graphic file (ty
 pe pdf)
  <use ../plots_tables_images/1d1dsums_5_6-eps-converted-to.pdf>
 Package pdftex.def Info: ../plots_tables_images/1d1dsums_5_6-eps-converted-to.p
-df used on input line 375.
+df used on input line 374.
 (pdftex.def)             Requested size: 135.89175pt x 83.26503pt.
 Package epstopdf Info: Source file: <../plots_tables_images/1d1dsums_5_9.eps>
-(epstopdf)                    date: 2013-06-10 17:36:50
-(epstopdf)                    size: 10754 bytes
+(epstopdf)                    date: 2013-06-10 17:41:25
+(epstopdf)                    size: 10758 bytes
 (epstopdf)             Output file: <../plots_tables_images/1d1dsums_5_9-eps-co
 nverted-to.pdf>
-(epstopdf)                    date: 2013-06-10 17:38:15
-(epstopdf)                    size: 7763 bytes
+(epstopdf)                    date: 2013-06-10 17:41:44
+(epstopdf)                    size: 7764 bytes
 (epstopdf)             Command: <epstopdf --outfile=../plots_tables_images/1d1d
 sums_5_9-eps-converted-to.pdf ../plots_tables_images/1d1dsums_5_9.eps>
-(epstopdf)             \includegraphics on input line 381.
+(epstopdf)             \includegraphics on input line 380.
 Package epstopdf Info: Output file is already uptodate.
 
-<../plots_tables_images/1d1dsums_5_9-eps-converted-to.pdf, id=114, 552.0625pt x
+<../plots_tables_images/1d1dsums_5_9-eps-converted-to.pdf, id=119, 552.0625pt x
  338.26375pt>
 File: ../plots_tables_images/1d1dsums_5_9-eps-converted-to.pdf Graphic file (ty
 pe pdf)
  <use ../plots_tables_images/1d1dsums_5_9-eps-converted-to.pdf>
 Package pdftex.def Info: ../plots_tables_images/1d1dsums_5_9-eps-converted-to.p
-df used on input line 381.
+df used on input line 380.
 (pdftex.def)             Requested size: 135.89175pt x 83.26503pt.
 Package epstopdf Info: Source file: <../plots_tables_images/1d1dsums_6_0.eps>
-(epstopdf)                    date: 2013-06-10 17:36:50
-(epstopdf)                    size: 9502 bytes
+(epstopdf)                    date: 2013-06-10 17:41:25
+(epstopdf)                    size: 9506 bytes
 (epstopdf)             Output file: <../plots_tables_images/1d1dsums_6_0-eps-co
 nverted-to.pdf>
-(epstopdf)                    date: 2013-06-10 17:38:15
-(epstopdf)                    size: 7284 bytes
+(epstopdf)                    date: 2013-06-10 17:41:44
+(epstopdf)                    size: 7293 bytes
 (epstopdf)             Command: <epstopdf --outfile=../plots_tables_images/1d1d
 sums_6_0-eps-converted-to.pdf ../plots_tables_images/1d1dsums_6_0.eps>
-(epstopdf)             \includegraphics on input line 388.
+(epstopdf)             \includegraphics on input line 387.
 Package epstopdf Info: Output file is already uptodate.
 
-<../plots_tables_images/1d1dsums_6_0-eps-converted-to.pdf, id=115, 552.0625pt x
+<../plots_tables_images/1d1dsums_6_0-eps-converted-to.pdf, id=120, 552.0625pt x
  338.26375pt>
 File: ../plots_tables_images/1d1dsums_6_0-eps-converted-to.pdf Graphic file (ty
 pe pdf)
  <use ../plots_tables_images/1d1dsums_6_0-eps-converted-to.pdf>
 Package pdftex.def Info: ../plots_tables_images/1d1dsums_6_0-eps-converted-to.p
-df used on input line 388.
+df used on input line 387.
 (pdftex.def)             Requested size: 135.89175pt x 83.26503pt.
 Package epstopdf Info: Source file: <../plots_tables_images/1d1dsums_6_3.eps>
-(epstopdf)                    date: 2013-06-10 17:36:50
-(epstopdf)                    size: 11106 bytes
+(epstopdf)                    date: 2013-06-10 17:41:25
+(epstopdf)                    size: 11110 bytes
 (epstopdf)             Output file: <../plots_tables_images/1d1dsums_6_3-eps-co
 nverted-to.pdf>
-(epstopdf)                    date: 2013-06-10 17:38:15
-(epstopdf)                    size: 7754 bytes
+(epstopdf)                    date: 2013-06-10 17:41:44
+(epstopdf)                    size: 7759 bytes
 (epstopdf)             Command: <epstopdf --outfile=../plots_tables_images/1d1d
 sums_6_3-eps-converted-to.pdf ../plots_tables_images/1d1dsums_6_3.eps>
-(epstopdf)             \includegraphics on input line 394.
+(epstopdf)             \includegraphics on input line 393.
 Package epstopdf Info: Output file is already uptodate.
 
-<../plots_tables_images/1d1dsums_6_3-eps-converted-to.pdf, id=116, 552.0625pt x
+<../plots_tables_images/1d1dsums_6_3-eps-converted-to.pdf, id=121, 552.0625pt x
  338.26375pt>
 File: ../plots_tables_images/1d1dsums_6_3-eps-converted-to.pdf Graphic file (ty
 pe pdf)
  <use ../plots_tables_images/1d1dsums_6_3-eps-converted-to.pdf>
 Package pdftex.def Info: ../plots_tables_images/1d1dsums_6_3-eps-converted-to.p
-df used on input line 394.
+df used on input line 393.
 (pdftex.def)             Requested size: 135.89175pt x 83.26503pt.
 Package epstopdf Info: Source file: <../plots_tables_images/1d1dsums_6_9.eps>
-(epstopdf)                    date: 2013-06-10 17:36:50
-(epstopdf)                    size: 10750 bytes
+(epstopdf)                    date: 2013-06-10 17:41:25
+(epstopdf)                    size: 10754 bytes
 (epstopdf)             Output file: <../plots_tables_images/1d1dsums_6_9-eps-co
 nverted-to.pdf>
-(epstopdf)                    date: 2013-06-10 17:38:16
-(epstopdf)                    size: 7614 bytes
+(epstopdf)                    date: 2013-06-10 17:41:44
+(epstopdf)                    size: 7622 bytes
 (epstopdf)             Command: <epstopdf --outfile=../plots_tables_images/1d1d
 sums_6_9-eps-converted-to.pdf ../plots_tables_images/1d1dsums_6_9.eps>
-(epstopdf)             \includegraphics on input line 399.
+(epstopdf)             \includegraphics on input line 398.
 Package epstopdf Info: Output file is already uptodate.
 
-<../plots_tables_images/1d1dsums_6_9-eps-converted-to.pdf, id=117, 552.0625pt x
+<../plots_tables_images/1d1dsums_6_9-eps-converted-to.pdf, id=122, 552.0625pt x
  338.26375pt>
 File: ../plots_tables_images/1d1dsums_6_9-eps-converted-to.pdf Graphic file (ty
 pe pdf)
  <use ../plots_tables_images/1d1dsums_6_9-eps-converted-to.pdf>
 Package pdftex.def Info: ../plots_tables_images/1d1dsums_6_9-eps-converted-to.p
-df used on input line 399.
+df used on input line 398.
 (pdftex.def)             Requested size: 135.89175pt x 83.26503pt.
 
 
-LaTeX Warning: Float too large for page by 15.48883pt on input line 404.
+LaTeX Warning: Float too large for page by 15.48883pt on input line 403.
 
+Table 1 has been set to width 416.35788pt
 [2 <../plots_tables_images/gfitted-eps-converted-to.pdf>] [3 <../plots_tables_i
 mages/gaussfitcomp-eps-converted-to.pdf>]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 419.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 467.
  [4 <../plots_tables_images/1dsums-eps-converted-to.pdf>] [5 <../plots_tables_i
 mages/1d1dcrop_0_0-eps-converted-to.pdf> <../plots_tables_images/1d1dcrop_0_1-e
 ps-converted-to.pdf> <../plots_tables_images/1d1dcrop_0_4-eps-converted-to.pdf>
@@ -1664,39 +1665,40 @@ ges/1d1dsums_4_0-eps-converted-to.pdf> <../plots_tables_images/1d1dsums_4_9-eps
 es/1d1dsums_5_9-eps-converted-to.pdf> <../plots_tables_images/1d1dsums_6_0-eps-
 converted-to.pdf> <../plots_tables_images/1d1dsums_6_3-eps-converted-to.pdf> <.
 ./plots_tables_images/1d1dsums_6_9-eps-converted-to.pdf>]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 419.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 467.
 
 (./sum_to_find_fids.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 419.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 419.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 467.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 467.
 Package rerunfilecheck Info: File `sum_to_find_fids.out' has not changed.
-(rerunfilecheck)             Checksum: F5920C32DFA0C198A204C7BCB9AADAA2;289.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 419.
+(rerunfilecheck)             Checksum: A29773DF785ECB68E75107140757CB60;362.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 467.
  ) 
 Here is how much of TeX's memory you used:
- 9637 strings out of 493481
- 157044 string characters out of 3140966
- 257193 words of memory out of 3000000
- 12752 multiletter control sequences out of 15000+200000
- 13330 words of font info for 37 fonts, out of 3000000 for 9000
+ 9646 strings out of 493481
+ 157182 string characters out of 3140966
+ 261342 words of memory out of 3000000
+ 12758 multiletter control sequences out of 15000+200000
+ 14098 words of font info for 38 fonts, out of 3000000 for 9000
  957 hyphenation exceptions out of 8191
- 48i,8n,52p,606b,489s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 48i,9n,52p,606b,489s stack positions out of 5000i,500n,10000p,200000b,50000s
 {/usr/local/texlive/2012/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc}
 </usr/local/texlive/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb><
 /usr/local/texlive/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></u
 sr/local/texlive/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/
-local/texlive/2012/texmf-dist/fonts/type1/public/cm-super/sfrm0900.pfb></usr/lo
-cal/texlive/2012/texmf-dist/fonts/type1/public/cm-super/sfrm1000.pfb></usr/loca
-l/texlive/2012/texmf-dist/fonts/type1/public/cm-super/sfrm1440.pfb></usr/local/
-texlive/2012/texmf-dist/fonts/type1/public/cm-super/sfsx1000.pfb></usr/local/te
-xlive/2012/texmf-dist/fonts/type1/public/cm-super/sfsx1200.pfb></usr/local/texl
-ive/2012/texmf-dist/fonts/type1/public/cm-super/sfsx1440.pfb></usr/local/texliv
-e/2012/texmf-dist/fonts/type1/public/cm-super/sfsx2074.pfb></usr/local/texlive/
-2012/texmf-dist/fonts/type1/public/cm-super/sftt1000.pfb>
-Output written on sum_to_find_fids.pdf (7 pages, 480699 bytes).
+local/texlive/2012/texmf-dist/fonts/type1/public/cm-super/sfrm0700.pfb></usr/lo
+cal/texlive/2012/texmf-dist/fonts/type1/public/cm-super/sfrm0900.pfb></usr/loca
+l/texlive/2012/texmf-dist/fonts/type1/public/cm-super/sfrm1000.pfb></usr/local/
+texlive/2012/texmf-dist/fonts/type1/public/cm-super/sfrm1440.pfb></usr/local/te
+xlive/2012/texmf-dist/fonts/type1/public/cm-super/sfsx1000.pfb></usr/local/texl
+ive/2012/texmf-dist/fonts/type1/public/cm-super/sfsx1200.pfb></usr/local/texliv
+e/2012/texmf-dist/fonts/type1/public/cm-super/sfsx1440.pfb></usr/local/texlive/
+2012/texmf-dist/fonts/type1/public/cm-super/sfsx2074.pfb></usr/local/texlive/20
+12/texmf-dist/fonts/type1/public/cm-super/sftt1000.pfb>
+Output written on sum_to_find_fids.pdf (7 pages, 509105 bytes).
 PDF statistics:
- 380 PDF objects out of 1000 (max. 8388607)
- 279 compressed objects within 3 object streams
- 21 named destinations out of 1000 (max. 500000)
- 286 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 390 PDF objects out of 1000 (max. 8388607)
+ 288 compressed objects within 3 object streams
+ 23 named destinations out of 1000 (max. 500000)
+ 294 words of extra memory for PDF output out of 10000 (max. 10000000)
 

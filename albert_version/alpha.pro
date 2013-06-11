@@ -167,6 +167,22 @@ tic
 a = fid_locate(startimage,limbfittedcentroids)
 toc
 
+print, 674.6796 - (limbfittedcentroids[0].limbxpos - !param.crop_box)
+print, 966 - 151.0038 - (limbfittedcentroids[0].limbypos - !param.crop_box)
+print, 796.3074 - (limbfittedcentroids[0].limbxpos - !param.crop_box)
+print, 966 - 195.0324 - (limbfittedcentroids[0].limbypos - !param.crop_box)
+print, 740.4443 - (limbfittedcentroids[0].limbxpos - !param.crop_box)
+print, 966 - 210.6342 - (limbfittedcentroids[0].limbypos - !param.crop_box)
+print, 690.2598 - (limbfittedcentroids[0].limbxpos - !param.crop_box)
+print, 966 - 226.1973 - (limbfittedcentroids[0].limbypos - !param.crop_box)
+print, 643.4235 - (limbfittedcentroids[0].limbxpos - !param.crop_box)
+print, 966 - 241.8869 - (limbfittedcentroids[0].limbypos - !param.crop_box)
+print, 755.8672 - (limbfittedcentroids[0].limbxpos - !param.crop_box)
+print, 966 - 279.6622 - (limbfittedcentroids[0].limbypos - !param.crop_box)
+print, 706.0065 - (limbfittedcentroids[0].limbxpos - !param.crop_box)
+print, 966 - 295.3022 - (limbfittedcentroids[0].limbypos - !param.crop_box)
+
+
 ; stop
 ; print,'Main sun x pos:',limbfittedcentroids[0].limbxpos
 ; print,'Main sun y pos:',limbfittedcentroids[0].limbypos
