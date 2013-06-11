@@ -27,6 +27,7 @@ arr = DERIV(SMOOTH(a, !param.n_smooth, /edge_truncate))
 ; .05 to run to here
 ; Now takes .0075
 
+; Eliminate the peak on the right end of the array
 arr = arr[0:-10000]
 
 if nsuns gt 1 then begin
@@ -41,11 +42,7 @@ endif else begin
     peakarr = MEAN(WHERE(a[0:-10000] eq MAX(a[0:-10000])))
 endelse
 ; .06 to run to here
+; Now .008
 
-; plot,sorted
-; vline,peakarr
-; stop
-
-
-RETURN,{peakarr:peakarr,sorted:sorted};xsort:xsort,ysort:ysort}
+RETURN,{peakarr:peakarr,sorted:sorted}
 end

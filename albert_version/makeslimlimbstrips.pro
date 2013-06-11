@@ -24,11 +24,9 @@ for jj = 0,N_ELEMENTS(inputstruct)-1 do begin
 
         IF row_where[0] NE -1 THEN BEGIN
             ; startpoints is the cut down strip with length = ministrip_length and contains
-            ; the indices from row_where[0] +/- ministrip_side_buffer
+            ; the indices from row_where[0] +/- limbwidth
             
-            ; The problem is that the array is super granulated
             a[jj].limbxstrips[i].startpoints  = $
-            ; If chord is too long, it tries to crop from outside of image file
                 (a[jj].xstrips[i].array)[row_where[0] - limbwidth:row_where[0]+1]   
             ; begindex is the index of the strip where it begins. 
             ; e.g., the array is 5 long, starts from index 9 and is centered around index 11

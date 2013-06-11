@@ -167,8 +167,6 @@ ztmp[706.0065,966-295.3022] = 255
 ; a = fid_locate(startimage,limbfittedcentroids)
 ; toc
 
-l = .9144*tan(.5*asin(1.22*600e-9/2e-2))
-
 ; stop
 ; print,'Main sun x pos:',limbfittedcentroids[0].limbxpos
 ; print,'Main sun y pos:',limbfittedcentroids[0].limbypos
@@ -176,7 +174,7 @@ l = .9144*tan(.5*asin(1.22*600e-9/2e-2))
 ; print,'50% sun y pos: ',limbfittedcentroids[1].limbypos
 ; print,'25% sun x pos: ',limbfittedcentroids[2].limbxpos
 ; print,'25% sun y pos: ',limbfittedcentroids[2].limbypos
-
+help,limbfittedcentroids
 stop
 
 end
