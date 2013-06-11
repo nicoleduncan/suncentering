@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.4-1.40.13 (TeX Live 2012) (format=pdflatex 2013.4.9)  10 JUN 2013 16:43
+This is pdfTeX, Version 3.1415926-2.4-1.40.13 (TeX Live 2012) (format=pdflatex 2013.4.9)  10 JUN 2013 17:38
 entering extended mode
  \write18 enabled.
  %&-line parsing enabled.
@@ -1205,12 +1205,12 @@ Overfull \hbox (27.17793pt too wide) in paragraph at lines 267--269
 LaTeX Warning: Float too large for page by 33.32281pt on input line 272.
 
 Package epstopdf Info: Source file: <../plots_tables_images/1d1dsums_0_0.eps>
-(epstopdf)                    date: 2013-06-10 12:52:47
-(epstopdf)                    size: 10999 bytes
+(epstopdf)                    date: 2013-06-10 17:36:50
+(epstopdf)                    size: 10106 bytes
 (epstopdf)             Output file: <../plots_tables_images/1d1dsums_0_0-eps-co
 nverted-to.pdf>
-(epstopdf)                    date: 2013-06-10 12:53:40
-(epstopdf)                    size: 7771 bytes
+(epstopdf)                    date: 2013-06-10 17:38:12
+(epstopdf)                    size: 7736 bytes
 (epstopdf)             Command: <epstopdf --outfile=../plots_tables_images/1d1d
 sums_0_0-eps-converted-to.pdf ../plots_tables_images/1d1dsums_0_0.eps>
 (epstopdf)             \includegraphics on input line 280.
@@ -1225,12 +1225,12 @@ Package pdftex.def Info: ../plots_tables_images/1d1dsums_0_0-eps-converted-to.p
 df used on input line 280.
 (pdftex.def)             Requested size: 135.89175pt x 83.26503pt.
 Package epstopdf Info: Source file: <../plots_tables_images/1d1dsums_0_1.eps>
-(epstopdf)                    date: 2013-06-10 12:52:47
-(epstopdf)                    size: 11796 bytes
+(epstopdf)                    date: 2013-06-10 17:36:50
+(epstopdf)                    size: 13215 bytes
 (epstopdf)             Output file: <../plots_tables_images/1d1dsums_0_1-eps-co
 nverted-to.pdf>
-(epstopdf)                    date: 2013-06-10 12:53:40
-(epstopdf)                    size: 8114 bytes
+(epstopdf)                    date: 2013-06-10 17:38:13
+(epstopdf)                    size: 8464 bytes
 (epstopdf)             Command: <epstopdf --outfile=../plots_tables_images/1d1d
 sums_0_1-eps-converted-to.pdf ../plots_tables_images/1d1dsums_0_1.eps>
 (epstopdf)             \includegraphics on input line 285.
@@ -1245,12 +1245,12 @@ Package pdftex.def Info: ../plots_tables_images/1d1dsums_0_1-eps-converted-to.p
 df used on input line 285.
 (pdftex.def)             Requested size: 135.89175pt x 83.26503pt.
 Package epstopdf Info: Source file: <../plots_tables_images/1d1dsums_0_4.eps>
-(epstopdf)                    date: 2013-06-10 12:52:47
-(epstopdf)                    size: 11672 bytes
+(epstopdf)                    date: 2013-06-10 17:36:50
+(epstopdf)                    size: 11108 bytes
 (epstopdf)             Output file: <../plots_tables_images/1d1dsums_0_4-eps-co
 nverted-to.pdf>
-(epstopdf)                    date: 2013-06-10 12:53:40
-(epstopdf)                    size: 7950 bytes
+(epstopdf)                    date: 2013-06-10 17:38:13
+(epstopdf)                    size: 7744 bytes
 (epstopdf)             Command: <epstopdf --outfile=../plots_tables_images/1d1d
 sums_0_4-eps-converted-to.pdf ../plots_tables_images/1d1dsums_0_4.eps>
 (epstopdf)             \includegraphics on input line 291.
@@ -1265,12 +1265,12 @@ Package pdftex.def Info: ../plots_tables_images/1d1dsums_0_4-eps-converted-to.p
 df used on input line 291.
 (pdftex.def)             Requested size: 135.89175pt x 83.26503pt.
 Package epstopdf Info: Source file: <../plots_tables_images/1d1dsums_0_8.eps>
-(epstopdf)                    date: 2013-06-10 12:52:47
-(epstopdf)                    size: 11343 bytes
+(epstopdf)                    date: 2013-06-10 17:36:50
+(epstopdf)                    size: 13216 bytes
 (epstopdf)             Output file: <../plots_tables_images/1d1dsums_0_8-eps-co
 nverted-to.pdf>
-(epstopdf)                    date: 2013-06-10 12:53:40
-(epstopdf)                    size: 8032 bytes
+(epstopdf)                    date: 2013-06-10 17:38:13
+(epstopdf)                    size: 8374 bytes
 (epstopdf)             Command: <epstopdf --outfile=../plots_tables_images/1d1d
 sums_0_8-eps-converted-to.pdf ../plots_tables_images/1d1dsums_0_8.eps>
 (epstopdf)             \includegraphics on input line 298.
@@ -1285,12 +1285,12 @@ Package pdftex.def Info: ../plots_tables_images/1d1dsums_0_8-eps-converted-to.p
 df used on input line 298.
 (pdftex.def)             Requested size: 135.89175pt x 83.26503pt.
 Package epstopdf Info: Source file: <../plots_tables_images/1d1dsums_0_9.eps>
-(epstopdf)                    date: 2013-06-10 12:52:47
-(epstopdf)                    size: 9862 bytes
+(epstopdf)                    date: 2013-06-10 17:36:50
+(epstopdf)                    size: 9218 bytes
 (epstopdf)             Output file: <../plots_tables_images/1d1dsums_0_9-eps-co
 nverted-to.pdf>
-(epstopdf)                    date: 2013-06-10 12:53:41
-(epstopdf)                    size: 7472 bytes
+(epstopdf)                    date: 2013-06-10 17:38:13
+(epstopdf)                    size: 7223 bytes
 (epstopdf)             Command: <epstopdf --outfile=../plots_tables_images/1d1d
 sums_0_9-eps-converted-to.pdf ../plots_tables_images/1d1dsums_0_9.eps>
 (epstopdf)             \includegraphics on input line 303.
@@ -1305,12 +1305,12 @@ Package pdftex.def Info: ../plots_tables_images/1d1dsums_0_9-eps-converted-to.p
 df used on input line 303.
 (pdftex.def)             Requested size: 135.89175pt x 83.26503pt.
 Package epstopdf Info: Source file: <../plots_tables_images/1d1dsums_1_0.eps>
-(epstopdf)                    date: 2013-06-10 12:52:47
-(epstopdf)                    size: 9914 bytes
+(epstopdf)                    date: 2013-06-10 17:36:50
+(epstopdf)                    size: 9361 bytes
 (epstopdf)             Output file: <../plots_tables_images/1d1dsums_1_0-eps-co
 nverted-to.pdf>
-(epstopdf)                    date: 2013-06-10 12:53:41
-(epstopdf)                    size: 7646 bytes
+(epstopdf)                    date: 2013-06-10 17:38:13
+(epstopdf)                    size: 7325 bytes
 (epstopdf)             Command: <epstopdf --outfile=../plots_tables_images/1d1d
 sums_1_0-eps-converted-to.pdf ../plots_tables_images/1d1dsums_1_0.eps>
 (epstopdf)             \includegraphics on input line 309.
@@ -1325,12 +1325,12 @@ Package pdftex.def Info: ../plots_tables_images/1d1dsums_1_0-eps-converted-to.p
 df used on input line 309.
 (pdftex.def)             Requested size: 135.89175pt x 83.26503pt.
 Package epstopdf Info: Source file: <../plots_tables_images/1d1dsums_1_1.eps>
-(epstopdf)                    date: 2013-06-10 12:52:47
-(epstopdf)                    size: 10715 bytes
+(epstopdf)                    date: 2013-06-10 17:36:50
+(epstopdf)                    size: 9251 bytes
 (epstopdf)             Output file: <../plots_tables_images/1d1dsums_1_1-eps-co
 nverted-to.pdf>
-(epstopdf)                    date: 2013-06-10 12:53:41
-(epstopdf)                    size: 7774 bytes
+(epstopdf)                    date: 2013-06-10 17:38:13
+(epstopdf)                    size: 7266 bytes
 (epstopdf)             Command: <epstopdf --outfile=../plots_tables_images/1d1d
 sums_1_1-eps-converted-to.pdf ../plots_tables_images/1d1dsums_1_1.eps>
 (epstopdf)             \includegraphics on input line 316.
@@ -1345,12 +1345,12 @@ Package pdftex.def Info: ../plots_tables_images/1d1dsums_1_1-eps-converted-to.p
 df used on input line 316.
 (pdftex.def)             Requested size: 135.89175pt x 83.26503pt.
 Package epstopdf Info: Source file: <../plots_tables_images/1d1dsums_1_9.eps>
-(epstopdf)                    date: 2013-06-10 12:52:47
-(epstopdf)                    size: 11024 bytes
+(epstopdf)                    date: 2013-06-10 17:36:50
+(epstopdf)                    size: 10437 bytes
 (epstopdf)             Output file: <../plots_tables_images/1d1dsums_1_9-eps-co
 nverted-to.pdf>
-(epstopdf)                    date: 2013-06-10 12:53:41
-(epstopdf)                    size: 7845 bytes
+(epstopdf)                    date: 2013-06-10 17:38:14
+(epstopdf)                    size: 7538 bytes
 (epstopdf)             Command: <epstopdf --outfile=../plots_tables_images/1d1d
 sums_1_9-eps-converted-to.pdf ../plots_tables_images/1d1dsums_1_9.eps>
 (epstopdf)             \includegraphics on input line 321.
@@ -1365,12 +1365,12 @@ Package pdftex.def Info: ../plots_tables_images/1d1dsums_1_9-eps-converted-to.p
 df used on input line 321.
 (pdftex.def)             Requested size: 135.89175pt x 83.26503pt.
 Package epstopdf Info: Source file: <../plots_tables_images/1d1dsums_2_0.eps>
-(epstopdf)                    date: 2013-06-10 12:52:47
-(epstopdf)                    size: 11344 bytes
+(epstopdf)                    date: 2013-06-10 17:36:50
+(epstopdf)                    size: 13217 bytes
 (epstopdf)             Output file: <../plots_tables_images/1d1dsums_2_0-eps-co
 nverted-to.pdf>
-(epstopdf)                    date: 2013-06-10 12:53:41
-(epstopdf)                    size: 7913 bytes
+(epstopdf)                    date: 2013-06-10 17:38:14
+(epstopdf)                    size: 8389 bytes
 (epstopdf)             Command: <epstopdf --outfile=../plots_tables_images/1d1d
 sums_2_0-eps-converted-to.pdf ../plots_tables_images/1d1dsums_2_0.eps>
 (epstopdf)             \includegraphics on input line 327.
@@ -1385,12 +1385,12 @@ Package pdftex.def Info: ../plots_tables_images/1d1dsums_2_0-eps-converted-to.p
 df used on input line 327.
 (pdftex.def)             Requested size: 135.89175pt x 83.26503pt.
 Package epstopdf Info: Source file: <../plots_tables_images/1d1dsums_2_5.eps>
-(epstopdf)                    date: 2013-06-10 12:52:47
-(epstopdf)                    size: 11662 bytes
+(epstopdf)                    date: 2013-06-10 17:36:50
+(epstopdf)                    size: 11108 bytes
 (epstopdf)             Output file: <../plots_tables_images/1d1dsums_2_5-eps-co
 nverted-to.pdf>
-(epstopdf)                    date: 2013-06-10 12:53:41
-(epstopdf)                    size: 7946 bytes
+(epstopdf)                    date: 2013-06-10 17:38:14
+(epstopdf)                    size: 7740 bytes
 (epstopdf)             Command: <epstopdf --outfile=../plots_tables_images/1d1d
 sums_2_5-eps-converted-to.pdf ../plots_tables_images/1d1dsums_2_5.eps>
 (epstopdf)             \includegraphics on input line 334.
@@ -1405,12 +1405,12 @@ Package pdftex.def Info: ../plots_tables_images/1d1dsums_2_5-eps-converted-to.p
 df used on input line 334.
 (pdftex.def)             Requested size: 135.89175pt x 83.26503pt.
 Package epstopdf Info: Source file: <../plots_tables_images/1d1dsums_2_9.eps>
-(epstopdf)                    date: 2013-06-10 12:52:47
-(epstopdf)                    size: 9136 bytes
+(epstopdf)                    date: 2013-06-10 17:36:50
+(epstopdf)                    size: 10499 bytes
 (epstopdf)             Output file: <../plots_tables_images/1d1dsums_2_9-eps-co
 nverted-to.pdf>
-(epstopdf)                    date: 2013-06-10 12:53:41
-(epstopdf)                    size: 7347 bytes
+(epstopdf)                    date: 2013-06-10 17:38:14
+(epstopdf)                    size: 7552 bytes
 (epstopdf)             Command: <epstopdf --outfile=../plots_tables_images/1d1d
 sums_2_9-eps-converted-to.pdf ../plots_tables_images/1d1dsums_2_9.eps>
 (epstopdf)             \includegraphics on input line 339.
@@ -1425,12 +1425,12 @@ Package pdftex.def Info: ../plots_tables_images/1d1dsums_2_9-eps-converted-to.p
 df used on input line 339.
 (pdftex.def)             Requested size: 135.89175pt x 83.26503pt.
 Package epstopdf Info: Source file: <../plots_tables_images/1d1dsums_3_0.eps>
-(epstopdf)                    date: 2013-06-10 12:52:47
-(epstopdf)                    size: 9111 bytes
+(epstopdf)                    date: 2013-06-10 17:36:50
+(epstopdf)                    size: 10497 bytes
 (epstopdf)             Output file: <../plots_tables_images/1d1dsums_3_0-eps-co
 nverted-to.pdf>
-(epstopdf)                    date: 2013-06-10 12:53:42
-(epstopdf)                    size: 7349 bytes
+(epstopdf)                    date: 2013-06-10 17:38:14
+(epstopdf)                    size: 7564 bytes
 (epstopdf)             Command: <epstopdf --outfile=../plots_tables_images/1d1d
 sums_3_0-eps-converted-to.pdf ../plots_tables_images/1d1dsums_3_0.eps>
 (epstopdf)             \includegraphics on input line 345.
@@ -1445,12 +1445,12 @@ Package pdftex.def Info: ../plots_tables_images/1d1dsums_3_0-eps-converted-to.p
 df used on input line 345.
 (pdftex.def)             Requested size: 135.89175pt x 83.26503pt.
 Package epstopdf Info: Source file: <../plots_tables_images/1d1dsums_3_2.eps>
-(epstopdf)                    date: 2013-06-10 12:52:47
-(epstopdf)                    size: 12199 bytes
+(epstopdf)                    date: 2013-06-10 17:36:50
+(epstopdf)                    size: 11111 bytes
 (epstopdf)             Output file: <../plots_tables_images/1d1dsums_3_2-eps-co
 nverted-to.pdf>
-(epstopdf)                    date: 2013-06-10 12:53:42
-(epstopdf)                    size: 8128 bytes
+(epstopdf)                    date: 2013-06-10 17:38:14
+(epstopdf)                    size: 7736 bytes
 (epstopdf)             Command: <epstopdf --outfile=../plots_tables_images/1d1d
 sums_3_2-eps-converted-to.pdf ../plots_tables_images/1d1dsums_3_2.eps>
 (epstopdf)             \includegraphics on input line 352.
@@ -1465,12 +1465,12 @@ Package pdftex.def Info: ../plots_tables_images/1d1dsums_3_2-eps-converted-to.p
 df used on input line 352.
 (pdftex.def)             Requested size: 135.89175pt x 83.26503pt.
 Package epstopdf Info: Source file: <../plots_tables_images/1d1dsums_4_0.eps>
-(epstopdf)                    date: 2013-06-10 12:52:47
-(epstopdf)                    size: 11866 bytes
+(epstopdf)                    date: 2013-06-10 17:36:50
+(epstopdf)                    size: 13761 bytes
 (epstopdf)             Output file: <../plots_tables_images/1d1dsums_4_0-eps-co
 nverted-to.pdf>
-(epstopdf)                    date: 2013-06-10 12:53:42
-(epstopdf)                    size: 8170 bytes
+(epstopdf)                    date: 2013-06-10 17:38:14
+(epstopdf)                    size: 8535 bytes
 (epstopdf)             Command: <epstopdf --outfile=../plots_tables_images/1d1d
 sums_4_0-eps-converted-to.pdf ../plots_tables_images/1d1dsums_4_0.eps>
 (epstopdf)             \includegraphics on input line 357.
@@ -1485,12 +1485,12 @@ Package pdftex.def Info: ../plots_tables_images/1d1dsums_4_0-eps-converted-to.p
 df used on input line 357.
 (pdftex.def)             Requested size: 135.89175pt x 83.26503pt.
 Package epstopdf Info: Source file: <../plots_tables_images/1d1dsums_4_9.eps>
-(epstopdf)                    date: 2013-06-10 12:52:47
-(epstopdf)                    size: 9077 bytes
+(epstopdf)                    date: 2013-06-10 17:36:50
+(epstopdf)                    size: 9247 bytes
 (epstopdf)             Output file: <../plots_tables_images/1d1dsums_4_9-eps-co
 nverted-to.pdf>
-(epstopdf)                    date: 2013-06-10 12:53:42
-(epstopdf)                    size: 7329 bytes
+(epstopdf)                    date: 2013-06-10 17:38:15
+(epstopdf)                    size: 7265 bytes
 (epstopdf)             Command: <epstopdf --outfile=../plots_tables_images/1d1d
 sums_4_9-eps-converted-to.pdf ../plots_tables_images/1d1dsums_4_9.eps>
 (epstopdf)             \includegraphics on input line 363.
@@ -1505,12 +1505,12 @@ Package pdftex.def Info: ../plots_tables_images/1d1dsums_4_9-eps-converted-to.p
 df used on input line 363.
 (pdftex.def)             Requested size: 135.89175pt x 83.26503pt.
 Package epstopdf Info: Source file: <../plots_tables_images/1d1dsums_5_0.eps>
-(epstopdf)                    date: 2013-06-10 12:52:47
-(epstopdf)                    size: 10776 bytes
+(epstopdf)                    date: 2013-06-10 17:36:50
+(epstopdf)                    size: 12681 bytes
 (epstopdf)             Output file: <../plots_tables_images/1d1dsums_5_0-eps-co
 nverted-to.pdf>
-(epstopdf)                    date: 2013-06-10 12:53:42
-(epstopdf)                    size: 7857 bytes
+(epstopdf)                    date: 2013-06-10 17:38:15
+(epstopdf)                    size: 8182 bytes
 (epstopdf)             Command: <epstopdf --outfile=../plots_tables_images/1d1d
 sums_5_0-eps-converted-to.pdf ../plots_tables_images/1d1dsums_5_0.eps>
 (epstopdf)             \includegraphics on input line 370.
@@ -1525,12 +1525,12 @@ Package pdftex.def Info: ../plots_tables_images/1d1dsums_5_0-eps-converted-to.p
 df used on input line 370.
 (pdftex.def)             Requested size: 135.89175pt x 83.26503pt.
 Package epstopdf Info: Source file: <../plots_tables_images/1d1dsums_5_6.eps>
-(epstopdf)                    date: 2013-06-10 12:52:47
-(epstopdf)                    size: 12212 bytes
+(epstopdf)                    date: 2013-06-10 17:36:50
+(epstopdf)                    size: 12197 bytes
 (epstopdf)             Output file: <../plots_tables_images/1d1dsums_5_6-eps-co
 nverted-to.pdf>
-(epstopdf)                    date: 2013-06-10 12:53:42
-(epstopdf)                    size: 8104 bytes
+(epstopdf)                    date: 2013-06-10 17:38:15
+(epstopdf)                    size: 8043 bytes
 (epstopdf)             Command: <epstopdf --outfile=../plots_tables_images/1d1d
 sums_5_6-eps-converted-to.pdf ../plots_tables_images/1d1dsums_5_6.eps>
 (epstopdf)             \includegraphics on input line 375.
@@ -1545,12 +1545,12 @@ Package pdftex.def Info: ../plots_tables_images/1d1dsums_5_6-eps-converted-to.p
 df used on input line 375.
 (pdftex.def)             Requested size: 135.89175pt x 83.26503pt.
 Package epstopdf Info: Source file: <../plots_tables_images/1d1dsums_5_9.eps>
-(epstopdf)                    date: 2013-06-10 12:52:47
-(epstopdf)                    size: 9131 bytes
+(epstopdf)                    date: 2013-06-10 17:36:50
+(epstopdf)                    size: 10754 bytes
 (epstopdf)             Output file: <../plots_tables_images/1d1dsums_5_9-eps-co
 nverted-to.pdf>
-(epstopdf)                    date: 2013-06-10 12:53:43
-(epstopdf)                    size: 7353 bytes
+(epstopdf)                    date: 2013-06-10 17:38:15
+(epstopdf)                    size: 7763 bytes
 (epstopdf)             Command: <epstopdf --outfile=../plots_tables_images/1d1d
 sums_5_9-eps-converted-to.pdf ../plots_tables_images/1d1dsums_5_9.eps>
 (epstopdf)             \includegraphics on input line 381.
@@ -1565,12 +1565,12 @@ Package pdftex.def Info: ../plots_tables_images/1d1dsums_5_9-eps-converted-to.p
 df used on input line 381.
 (pdftex.def)             Requested size: 135.89175pt x 83.26503pt.
 Package epstopdf Info: Source file: <../plots_tables_images/1d1dsums_6_0.eps>
-(epstopdf)                    date: 2013-06-10 12:52:47
-(epstopdf)                    size: 9339 bytes
+(epstopdf)                    date: 2013-06-10 17:36:50
+(epstopdf)                    size: 9502 bytes
 (epstopdf)             Output file: <../plots_tables_images/1d1dsums_6_0-eps-co
 nverted-to.pdf>
-(epstopdf)                    date: 2013-06-10 12:53:43
-(epstopdf)                    size: 7390 bytes
+(epstopdf)                    date: 2013-06-10 17:38:15
+(epstopdf)                    size: 7284 bytes
 (epstopdf)             Command: <epstopdf --outfile=../plots_tables_images/1d1d
 sums_6_0-eps-converted-to.pdf ../plots_tables_images/1d1dsums_6_0.eps>
 (epstopdf)             \includegraphics on input line 388.
@@ -1585,12 +1585,12 @@ Package pdftex.def Info: ../plots_tables_images/1d1dsums_6_0-eps-converted-to.p
 df used on input line 388.
 (pdftex.def)             Requested size: 135.89175pt x 83.26503pt.
 Package epstopdf Info: Source file: <../plots_tables_images/1d1dsums_6_3.eps>
-(epstopdf)                    date: 2013-06-10 12:52:47
-(epstopdf)                    size: 10001 bytes
+(epstopdf)                    date: 2013-06-10 17:36:50
+(epstopdf)                    size: 11106 bytes
 (epstopdf)             Output file: <../plots_tables_images/1d1dsums_6_3-eps-co
 nverted-to.pdf>
-(epstopdf)                    date: 2013-06-10 12:53:43
-(epstopdf)                    size: 7514 bytes
+(epstopdf)                    date: 2013-06-10 17:38:15
+(epstopdf)                    size: 7754 bytes
 (epstopdf)             Command: <epstopdf --outfile=../plots_tables_images/1d1d
 sums_6_3-eps-converted-to.pdf ../plots_tables_images/1d1dsums_6_3.eps>
 (epstopdf)             \includegraphics on input line 394.
@@ -1605,12 +1605,12 @@ Package pdftex.def Info: ../plots_tables_images/1d1dsums_6_3-eps-converted-to.p
 df used on input line 394.
 (pdftex.def)             Requested size: 135.89175pt x 83.26503pt.
 Package epstopdf Info: Source file: <../plots_tables_images/1d1dsums_6_9.eps>
-(epstopdf)                    date: 2013-06-10 12:52:47
-(epstopdf)                    size: 10781 bytes
+(epstopdf)                    date: 2013-06-10 17:36:50
+(epstopdf)                    size: 10750 bytes
 (epstopdf)             Output file: <../plots_tables_images/1d1dsums_6_9-eps-co
 nverted-to.pdf>
-(epstopdf)                    date: 2013-06-10 12:53:43
-(epstopdf)                    size: 7710 bytes
+(epstopdf)                    date: 2013-06-10 17:38:16
+(epstopdf)                    size: 7614 bytes
 (epstopdf)             Command: <epstopdf --outfile=../plots_tables_images/1d1d
 sums_6_9-eps-converted-to.pdf ../plots_tables_images/1d1dsums_6_9.eps>
 (epstopdf)             \includegraphics on input line 399.
@@ -1630,7 +1630,7 @@ LaTeX Warning: Float too large for page by 15.48883pt on input line 404.
 
 [2 <../plots_tables_images/gfitted-eps-converted-to.pdf>] [3 <../plots_tables_i
 mages/gaussfitcomp-eps-converted-to.pdf>]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 416.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 419.
  [4 <../plots_tables_images/1dsums-eps-converted-to.pdf>] [5 <../plots_tables_i
 mages/1d1dcrop_0_0-eps-converted-to.pdf> <../plots_tables_images/1d1dcrop_0_1-e
 ps-converted-to.pdf> <../plots_tables_images/1d1dcrop_0_4-eps-converted-to.pdf>
@@ -1664,14 +1664,14 @@ ges/1d1dsums_4_0-eps-converted-to.pdf> <../plots_tables_images/1d1dsums_4_9-eps
 es/1d1dsums_5_9-eps-converted-to.pdf> <../plots_tables_images/1d1dsums_6_0-eps-
 converted-to.pdf> <../plots_tables_images/1d1dsums_6_3-eps-converted-to.pdf> <.
 ./plots_tables_images/1d1dsums_6_9-eps-converted-to.pdf>]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 416.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 419.
 
 (./sum_to_find_fids.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 416.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 416.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 419.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 419.
 Package rerunfilecheck Info: File `sum_to_find_fids.out' has not changed.
 (rerunfilecheck)             Checksum: F5920C32DFA0C198A204C7BCB9AADAA2;289.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 416.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 419.
  ) 
 Here is how much of TeX's memory you used:
  9637 strings out of 493481
@@ -1680,7 +1680,7 @@ Here is how much of TeX's memory you used:
  12752 multiletter control sequences out of 15000+200000
  13330 words of font info for 37 fonts, out of 3000000 for 9000
  957 hyphenation exceptions out of 8191
- 48i,8n,52p,872b,489s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 48i,8n,52p,606b,489s stack positions out of 5000i,500n,10000p,200000b,50000s
 {/usr/local/texlive/2012/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc}
 </usr/local/texlive/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb><
 /usr/local/texlive/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></u
@@ -1693,7 +1693,7 @@ xlive/2012/texmf-dist/fonts/type1/public/cm-super/sfsx1200.pfb></usr/local/texl
 ive/2012/texmf-dist/fonts/type1/public/cm-super/sfsx1440.pfb></usr/local/texliv
 e/2012/texmf-dist/fonts/type1/public/cm-super/sfsx2074.pfb></usr/local/texlive/
 2012/texmf-dist/fonts/type1/public/cm-super/sftt1000.pfb>
-Output written on sum_to_find_fids.pdf (7 pages, 480306 bytes).
+Output written on sum_to_find_fids.pdf (7 pages, 480699 bytes).
 PDF statistics:
  380 PDF objects out of 1000 (max. 8388607)
  279 compressed objects within 3 object streams

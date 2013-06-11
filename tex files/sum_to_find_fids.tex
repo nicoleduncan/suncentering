@@ -272,7 +272,6 @@ We're walking a fine line here; instead of minimizing our $\chi^2/N$, we're maxi
 \end{figure}
 
 
-
 \begin{figure}[!ht]
     \vspace{-0.5in}
     \begin{subfigure}[b]{.3\linewidth}
@@ -405,7 +404,8 @@ We're walking a fine line here; instead of minimizing our $\chi^2/N$, we're maxi
 
 \subsection{Sub-Pixel Fitting} % (fold)
 \label{sub:sub_pixel_fitting}
-Once I know where the peaks are in the arrays of Figure \ref{lotsofplot}, I perform a quick parabolic fit to the 3 pixels encompassing the peak maximum. This method is on the order of 1 magnitude faster to find the sub-pixel peak than the gaussian peak-fitting method. However, there is a problem when trying to fit sub-pixel positions of the 1D sums. Some of the arrays in Figure \ref{lotsofplot} reveal that some fiducials on the edge of the sun have defined peaks corresponding to fiducials but the peaks are not considered the maxima of the array. The problem is not fitting a parabola to the peak, but identifying the peak in the first place. Gaussian fitting excels in this scenario because it robustly identifies the fiducial peak regardless of what shape the array is. 
+Once I know where the peaks are in the arrays of Figure \ref{lotsofplot}, I perform a quick parabolic fit to the 3 pixels encompassing the peak maximum. This method is at least 1 order of magnitude faster to find the sub-pixel peak than the gaussian peak-fitting method. 
+
 % subsection sub_pixel_fitting (end)
 
 

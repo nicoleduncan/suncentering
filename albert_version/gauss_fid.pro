@@ -5,7 +5,7 @@ FUNCTION gauss_fid, inputimage, inputstruct
 ; 10x faster than fid_faster if using parapeak
 ; .001 to execute if using parapeak
 
-somethresh=80
+somethresh=100
 k=0
 length = 31
 z=fltarr(3,3,/nozero)
@@ -56,7 +56,9 @@ for i = 0,N_ELEMENTS(xx)-1 do begin
             colsum=TOTAL(aa,2)
             xsum=SMOOTH(colsum,10)-colsum
             dw = WHERE(xsum gt somethresh,n_dw)
-             
+        
+
+
             if n_bw ne 0 and n_dw ne 0 then begin
                     fidpos[k].x=xx[i]
                     fidpos[k].y=yy[j]
@@ -67,7 +69,6 @@ for i = 0,N_ELEMENTS(xx)-1 do begin
                     ; [1] is the center term
                     ; fidpos[k].subx = xcoeff[1] + xx[i]-15
                     ; fidpos[k].suby = ycoeff[1] + yy[j]-15
-
 
 
 
@@ -86,8 +87,8 @@ for i = 0,N_ELEMENTS(xx)-1 do begin
                     
                     result = parapeak(z)
                     
-                    subx = maxx + result[0] + xx[i] - 15
-                    suby = maxy + result[1] + yy[j] - 15
+                    fidpos[k].subx = maxx + result[0] + xx[i] - 15
+                    fidpos[k].suby = maxy + result[1] + yy[j] - 15
 
                     ; print,xcoeff[1] + xx[i]-15
                     ; print,subx
@@ -101,7 +102,6 @@ for i = 0,N_ELEMENTS(xx)-1 do begin
     endfor
 endfor
 
-; 7 fiducials
 
 
 
