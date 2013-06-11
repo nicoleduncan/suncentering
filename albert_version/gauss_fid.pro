@@ -1,11 +1,14 @@
 FUNCTION gauss_fid, inputimage, inputstruct
 ; 3x faster than fid_faster
-; .005 to execute
+; .005 to execute if using gaussfit
 
-somethresh=100
+; 10x faster than fid_faster if using parapeak
+; .001 to execute if using parapeak
+
+somethresh=80
 k=0
 length = 31
-
+z=fltarr(3,3,/nozero)
 ; cropped-down image of sun
 crop = FLOAT(inputimage[inputstruct.limbxpos - !param.crop_box:inputstruct.limbxpos + !param.crop_box,inputstruct.limbypos - !param.crop_box:inputstruct.limbypos + !param.crop_box])
 
@@ -53,18 +56,43 @@ for i = 0,N_ELEMENTS(xx)-1 do begin
             colsum=TOTAL(aa,2)
             xsum=SMOOTH(colsum,10)-colsum
             dw = WHERE(xsum gt somethresh,n_dw)
-            print,xx[i]
-            print,yy[j]
+             
             if n_bw ne 0 and n_dw ne 0 then begin
                     fidpos[k].x=xx[i]
                     fidpos[k].y=yy[j]
 
-                    ygauss = GAUSSFIT(FINDGEN(length),rowsum,ycoeff,nterms=5)
-                    xgauss = GAUSSFIT(FINDGEN(length),colsum,xcoeff,nterms=5)
+                    ; xgauss = GAUSSFIT(FINDGEN(length),colsum,xcoeff,nterms=5)
+                    ; ygauss = GAUSSFIT(FINDGEN(length),rowsum,ycoeff,nterms=5)
                     
                     ; [1] is the center term
-                    fidpos[k].subx = ycoeff[1] + xx[i]-15
-                    fidpos[k].suby = xcoeff[1] + yy[j]-15
+                    ; fidpos[k].subx = xcoeff[1] + xx[i]-15
+                    ; fidpos[k].suby = ycoeff[1] + yy[j]-15
+
+
+
+
+
+
+
+
+                    maxx = where(xsum eq max(xsum))
+                    maxy = where(ysum eq max(ysum))
+                    xarr = xsum[maxx-1:maxx+1]
+                    yarr = ysum[maxy-1:maxy+1]
+
+                    z[0:2] = xarr * yarr[2]
+                    z[3:5] = xarr * yarr[1]
+                    z[6:8] = xarr * yarr[0]
+                    
+                    result = parapeak(z)
+                    
+                    subx = maxx + result[0] + xx[i] - 15
+                    suby = maxy + result[1] + yy[j] - 15
+
+                    ; print,xcoeff[1] + xx[i]-15
+                    ; print,subx
+                    ; print,ycoeff[1] + yy[j]-15
+                    ; print,suby
 
                     k++
                     if k eq N_ELEMENTS(xx)>N_ELEMENTS(yy) then break
@@ -73,6 +101,7 @@ for i = 0,N_ELEMENTS(xx)-1 do begin
     endfor
 endfor
 
+; 7 fiducials
 
 
 
@@ -80,7 +109,9 @@ endfor
 
 
 
-; 20 possible fiducial candidates, how many have duplciates indices? 14? don't think so.
+
+
+; 20 possible fiducial candidates, how many have duplciates indices? 13? don't think so.
 
 
 
