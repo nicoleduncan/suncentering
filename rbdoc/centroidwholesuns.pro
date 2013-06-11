@@ -18,7 +18,8 @@ ON_ERROR,1
 
 wholesunstruct = inputstruct[where(inputstruct.partial ne 1)]
 
-centers = limbfit(wholesunstruct,inputimage)
+; centers = limbfit(wholesunstruct,inputimage)
+centers = twopixfit(wholesunstruct,inputimage)
 
 ; only usable with 3, this is going to be a fair amount of work so I'll leave it here
 ; theta = !radeg*atan((center3.ypos - center2.ypos)/(center3.xpos - center2.xpos))

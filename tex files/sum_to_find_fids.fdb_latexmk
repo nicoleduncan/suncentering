@@ -1,5 +1,5 @@
 # Fdb version 3
-["pdflatex"] 1370914659 "/Users/jerensuzuki/Documents/suncentering/tex files/sum_to_find_fids.tex" "sum_to_find_fids.pdf" "sum_to_find_fids" 1370914659
+["pdflatex"] 1370914659 "/Users/jerensuzuki/Documents/suncentering/tex files/sum_to_find_fids.tex" "sum_to_find_fids.pdf" "sum_to_find_fids" 1370976461
   "../plots_tables_images/1d1dcrop_0_0-eps-converted-to.pdf" 1370893475 3297 7c8d846eb954e44ec21ec5b2c3f6e610 ""
   "../plots_tables_images/1d1dcrop_0_0.eps" 1370893087 5235 de31406e61435da50d02d9abadf9eaf8 ""
   "../plots_tables_images/1d1dcrop_0_1-eps-converted-to.pdf" 1370893476 3571 4a60d8138dfb52e93aa3cee07ce54a0e ""
@@ -98,7 +98,7 @@
   "../plots_tables_images/smooth_expl.eps" 1370391827 9258 a0cf07db374e77c35eebe827cf4ac9cb ""
   "../plots_tables_images/smoothcomp-eps-converted-to.pdf" 1370547634 14058 fe47f7b622594bc846005cfab65124f2 ""
   "../plots_tables_images/smoothcomp.eps" 1370391827 19837 a2f052e239c8ffa9995f8fe65eeb3736 ""
-  "/Users/jerensuzuki/Documents/suncentering/tex files/sum_to_find_fids.tex" 1370914658 17179 eef9beb0001a49897cd8338fd8d5fb90 ""
+  "/Users/jerensuzuki/Documents/suncentering/tex files/sum_to_find_fids.tex" 1370976396 17179 eef9beb0001a49897cd8338fd8d5fb90 ""
   "/usr/local/texlive/2012/../texmf-local/tex/latex/local/deluxetable.sty" 1366832326 11321 35b2c46627b671e19bd036ff4dbf9e85 ""
   "/usr/local/texlive/2012/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc" 1136849721 2971 def0b6c1f0b107b3b936def894055589 ""
   "/usr/local/texlive/2012/texmf-dist/fonts/map/fontname/texfonts.map" 1272929888 3287 e6b82fe08f5336d4d5ebc73fb1152e87 ""
@@ -198,11 +198,11 @@
   "/usr/local/texlive/2012/texmf/web2c/texmf.cnf" 1336865692 31299 729e216d9b945005c0d4b079c0500bc9 ""
   "sum_to_find_fids.aux" 1370914659 4547 2019edc9fce772437b2e8ac2effd9227 ""
   "sum_to_find_fids.out" 1370914659 362 a29773df785ecb68e75107140757cb60 ""
-  "sum_to_find_fids.tex" 1370914658 17179 eef9beb0001a49897cd8338fd8d5fb90 ""
+  "sum_to_find_fids.tex" 1370976396 17179 eef9beb0001a49897cd8338fd8d5fb90 ""
   "sum_to_find_fids.toc" 1370914659 470 01103d094ad7219284bbaac83827909d ""
   (generated)
   "sum_to_find_fids.toc"
-  "sum_to_find_fids.aux"
   "sum_to_find_fids.out"
+  "sum_to_find_fids.aux"
   "sum_to_find_fids.log"
   "sum_to_find_fids.pdf"

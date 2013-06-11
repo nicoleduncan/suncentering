@@ -13,26 +13,6 @@ PRO beta
 ;-
 COMPILE_OPT idl2
 ON_ERROR,1
-start=SYSTIME(1,/s)
-
-
-; DEATH TO THE COMMON BLOCK (or not)
-COMMON vblock, w1_w2_p3
-file = 'dimsun1.fits'
-readcol,'pblock.txt',var,num,format='A,F',delimiter=' '
-    for i=0,N_ELEMENTS(var)-1 do (SCOPE_VARFETCH(var[i],/enter,level=0))=num[i]
-
-c = CREATE_STRUCT(var[0],num[0])
-
-;This takes, like, no time.
-for i=1,N_ELEMENTS(var)-1 do begin
-    c = CREATE_STRUCT(c,var[i],num[i])
-endfor
-
-c = CREATE_STRUCT(c,'file','dimsun1.fits')
-
-; Load parameters from a txt file and make then system variables
-defsysv,'!param',c
 
 ; Centers of dottedimage.fits
 ; wholeimage[200,300] = 255
@@ -51,25 +31,29 @@ defsysv,'!param',c
 ; 25% sun y pos:        235.11536
 
 ; Our list of images to take centers of
-wholeimage = mrdfits('dottedimage.fits',/sil)
-w1_w2_p3 = mrdfits('partial3rd.fits',/sil)
-w1_p2_p3 = mrdfits('2partials.fits',/sil)
-reg12 = mrdfits('1_2.fits',/sil)
-reg13 = mrdfits('1_3.fits',/sil)
-reg23 = mrdfits('2_3.fits',/sil)
-w2_p3 = mrdfits('w2_p3.fits',/sil)
-p1_w2_w3 = mrdfits('p1_w2_w3.fits',/sil)
-p1_w2_p3 = mrdfits('p1_w2_p3.fits',/sil)
-p1_p2_w3 = mrdfits('p1_p2_w3.fits',/sil)
-w1_p2_w3 = mrdfits('w1_p2_w3.fits',/sil)
-p1_w3 = mrdfits('p1_w3.fits',/sil)
-p1_w2 = mrdfits('p1_w2.fits',/sil)
-w1_p3 = mrdfits('w1_p3.fits',/sil)
+wholeimage = mrdfits('fits_files/dottedimage.fits',/sil)
+w1_w2_p3 = mrdfits('fits_files/partial3rd.fits',/sil)
+w1_p2_p3 = mrdfits('fits_files/2partials.fits',/sil)
+reg12 = mrdfits('fits_files/1_2.fits',/sil)
+reg13 = mrdfits('fits_files/1_3.fits',/sil)
+reg23 = mrdfits('fits_files/2_3.fits',/sil)
+w2_p3 = mrdfits('fits_files/w2_p3.fits',/sil)
+p1_w2_w3 = mrdfits('fits_files/p1_w2_w3.fits',/sil)
+p1_w2_p3 = mrdfits('fits_files/p1_w2_p3.fits',/sil)
+p1_p2_w3 = mrdfits('fits_files/p1_p2_w3.fits',/sil)
+w1_p2_w3 = mrdfits('fits_files/w1_p2_w3.fits',/sil)
+p1_w3 = mrdfits('fits_files/p1_w3.fits',/sil)
+p1_w2 = mrdfits('fits_files/p1_w2.fits',/sil)
+w1_p3 = mrdfits('fits_files/w1_p3.fits',/sil)
+albsun = mrdfits('fits_files/albsun.fits',/sil)
+corner = mrdfits('fits_files/corner.fits',/sil)
+corner2 = mrdfits('fits_files/corner2.fits',/sil)
+corner3 = mrdfits('fits_files/corner3.fits',/sil)
 
 ; Take your pick of which to center
 
 ; startimage=wholeimage
-startimage=w1_w2_p3
+; startimage=w1_w2_p3
 ; startimage=w1_p2_p3
 ; startimage=reg12
 ; startimage=reg23
@@ -82,9 +66,16 @@ startimage=w1_w2_p3
 ; startimage=p1_w3
 ; startimage=p1_w2
 ; startimage=w1_p3
+startimage = albsun
 
+; a = partialcenter(corner)
+
+; profiler
+; profiler,/system
 ; takes ~.07 s to run everything up to fid_locate
 tic
+
+defparams
 
 defsysvarthresh,startimage
 
@@ -95,12 +86,24 @@ fuji = picksun(startimage, grannysmith)
 limbfittedcentroids=centroidwholesuns(fuji,startimage)
 
 tmpimage = startimage
-for i =0,n_elements(limbfittedcentroids)-1 do begin
-    tmpimage[limbfittedcentroids[i].limbxpos,*] = 255
-    tmpimage[*,limbfittedcentroids[i].limbypos] = 255
-endfor
+
+if n_elements(limbfittedcentroids) gt 1 then begin
+    for i =0,n_elements(limbfittedcentroids)-1 do begin
+        tmpimage[limbfittedcentroids[i].limbxpos,*] = 255
+        tmpimage[*,limbfittedcentroids[i].limbypos] = 255
+    endfor
+endif else begin
+    tmpimage[limbfittedcentroids[0].limbxpos,*] = 255
+    tmpimage[limbfittedcentroids[0].limbxpos-1,*] = 255
+    tmpimage[*,limbfittedcentroids[0].limbypos] = 255
+endelse
+
 a = fid_locate(startimage,limbfittedcentroids)
 toc
+; profiler,/report,data=data
+; profiler,/reset,/clear
+; print,data[sort(-data.time)],format='(A-20, I7, F12.5, F10.5, I9)'
+
 cgimage,tmpimage,/k
 
 atmp = startimage
@@ -111,14 +114,14 @@ for i = 0,n_elements(a)-1 do begin
     atmp[a[i].x + limbfittedcentroids[0].limbxpos - !param.soldiskr,a[i].y + limbfittedcentroids[0].limbypos - !param.soldiskr]=255
 endfor
 
+cgimage,atmp[limbfittedcentroids.limbxpos-120:limbfittedcentroids.limbxpos+120,limbfittedcentroids.limbypos-120:limbfittedcentroids.limbypos+120],/k
 ; acrop = atmp[limbfittedcentroids[0].limbxpos - !param.soldiskr : $
 ; limbfittedcentroids[0].limbxpos + !param.soldiskr,$
 ; limbfittedcentroids[0].limbypos - !param.soldiskr : limbfittedcentroids[0].limbypos + !param.soldiskr]
 ; acrop = acrop[0:-5,0:-4]
 ; cgimage,acrop,/k,output='notsubpix.png'
 
-; a = corr_fid(startimage,limbfittedcentroids)
-; a = crosstest(startimage,limbfittedcentroids)
+
 stop
 print,'Main sun x pos:',limbfittedcentroids[0].limbxpos
 print,'Main sun y pos:',limbfittedcentroids[0].limbypos

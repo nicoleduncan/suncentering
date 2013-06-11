@@ -10,3 +10,8 @@ partial_perc .05
 sunpixnum 3000
 border_pad 50
 triangle_size .25
+fid_smooth_thresh -150
+onedsumthresh 100
+disk_brightness 15
+fid_crop_box 15
+fid_smooth_candidates 15

@@ -18,6 +18,13 @@ libdata[libdataItem++] = new Array("obsolete_code/alpha.html", "alpha.pro", '.pr
   
   
 
+libdata[libdataItem++] = new Array("albert_version/alpha.html", "alpha.pro", '.pro file in <a href="albert_version/dir-overview.html">albert_version/ directory</a>', "alpha.pro", "", "", "", "", "          -1", "");
+  
+  
+  libdata[libdataItem++] = new Array("albert_version/alpha.html#alpha", "alpha", 'routine in <a href="albert_version/alpha.html">alpha.pro</a>', "alpha.pro", "", "alpha", "      Finds the center of N whole suns and M partial suns using limb-fitting for the whole suns and simple centroiding for the partial suns   ", "", "          -1", "       NONE, BRAH   idldoc,root='/Users/jerensuzuki/Documents/suncentering', output='rbdoc',format_style='rst',/user,/quiet,markup_style='rst'  ");
+  
+  
+
 libdata[libdataItem++] = new Array("obsolete_code/barkbark.html", "barkbark.pro", '.pro file in <a href="obsolete_code/dir-overview.html">obsolete_code/ directory</a>', "barkbark.pro", "", "", "", "", "          -1", "");
   
   
@@ -169,10 +176,24 @@ libdata[libdataItem++] = new Array("obsolete_code/centroidtest.html", "centroidt
   
   
 
-libdata[libdataItem++] = new Array("obsolete_code/centroidwholesuns.html", "centroidwholesuns.pro", '.pro file in <a href="obsolete_code/dir-overview.html">obsolete_code/ directory</a>', "centroidwholesuns.pro", "", "", "", "", "          -1", "");
+libdata[libdataItem++] = new Array("albert_version/centroidwholesuns.html", "centroidwholesuns.pro", '.pro file in <a href="albert_version/dir-overview.html">albert_version/ directory</a>', "centroidwholesuns.pro", "", "", "", "", "          -1", "");
   
   
-  libdata[libdataItem++] = new Array("obsolete_code/centroidwholesuns.html#centroidwholesuns", "centroidwholesuns", 'routine in <a href="obsolete_code/centroidwholesuns.html">centroidwholesuns.pro</a>', "centroidwholesuns.pro", "", "centroidwholesuns", "       Finds the centers of a triple-sun image and loads all relevant information        including offsets and angles into a new structure.   ", "inputstruct           Structure containing the centers and cropped images of all 3 suns   inputimage           Image that we start out with   ", "          -1", "");
+  libdata[libdataItem++] = new Array("albert_version/centroidwholesuns.html#centroidwholesuns", "centroidwholesuns", 'routine in <a href="albert_version/centroidwholesuns.html">centroidwholesuns.pro</a>', "centroidwholesuns.pro", "", "centroidwholesuns", "       Finds the centers of a triple-sun image and loads all relevant information        including offsets and angles into a new structure.   ", "inputstruct           Structure containing the centers and cropped images of all 3 suns   inputimage           Image that we start out with   ", "          -1", "");
+  
+  
+
+libdata[libdataItem++] = new Array("./centroidwholesuns.html", "centroidwholesuns.pro", '.pro file in <a href="./dir-overview.html">./ directory</a>', "centroidwholesuns.pro", "", "", "", "", "          -1", "");
+  
+  
+  libdata[libdataItem++] = new Array("./centroidwholesuns.html#centroidwholesuns", "centroidwholesuns", 'routine in <a href="./centroidwholesuns.html">centroidwholesuns.pro</a>', "centroidwholesuns.pro", "", "centroidwholesuns", "       Finds the centers of a triple-sun image and loads all relevant information        including offsets and angles into a new structure.   ", "inputstruct           Structure containing the centers and cropped images of all 3 suns   inputimage           Image that we start out with   ", "          -1", "");
+  
+  
+
+libdata[libdataItem++] = new Array("albert_version/obsolete_files/checkimage.html", "checkimage.pro", '.pro file in <a href="albert_version/obsolete_files/dir-overview.html">albert_version/obsolete_files/ directory</a>', "checkimage.pro", "", "", "", "", "          -1", "");
+  
+  
+  libdata[libdataItem++] = new Array("albert_version/obsolete_files/checkimage.html#checkimage", "checkimage", 'routine in <a href="albert_version/obsolete_files/checkimage.html">checkimage.pro</a>', "checkimage.pro", "", "checkimage", "       Checks image   ", "input", "          -1", "");
   
   
 
@@ -246,6 +267,13 @@ libdata[libdataItem++] = new Array("obsolete_code/curr.html", "curr.pro", '.pro 
   
   
 
+libdata[libdataItem++] = new Array("albert_version/obsolete_files/cutofftest.html", "cutofftest.pro", '.pro file in <a href="albert_version/obsolete_files/dir-overview.html">albert_version/obsolete_files/ directory</a>', "cutofftest.pro", "", "", "", "", "          -1", "");
+  
+  
+  libdata[libdataItem++] = new Array("albert_version/obsolete_files/cutofftest.html#cutofftest", "cutofftest", 'routine in <a href="albert_version/obsolete_files/cutofftest.html">cutofftest.pro</a>', "cutofftest.pro", "", "cutofftest", "", "inputimageinputstructfidstruct", "          -1", "");
+  
+  
+
 libdata[libdataItem++] = new Array("obsolete_code/data__center.html", "data__center.pro", '.pro file in <a href="obsolete_code/dir-overview.html">obsolete_code/ directory</a>', "data__center.pro", "", "", "", "", "          -1", "");
   
   
@@ -289,6 +317,27 @@ libdata[libdataItem++] = new Array("obsolete_code/data__minicrop.html", "data__m
   
   
 
+libdata[libdataItem++] = new Array("./defparams.html", "defparams.pro", '.pro file in <a href="./dir-overview.html">./ directory</a>', "defparams.pro", "", "", "", "", "          -1", "");
+  
+  
+  libdata[libdataItem++] = new Array("./defparams.html#defparams", "defparams", 'routine in <a href="./defparams.html">defparams.pro</a>', "defparams.pro", "", "defparams", "", "", "          -1", "");
+  
+  
+
+libdata[libdataItem++] = new Array("albert_version/defparams.html", "defparams.pro", '.pro file in <a href="albert_version/dir-overview.html">albert_version/ directory</a>', "defparams.pro", "", "", "", "", "          -1", "");
+  
+  
+  libdata[libdataItem++] = new Array("albert_version/defparams.html#defparams", "defparams", 'routine in <a href="albert_version/defparams.html">defparams.pro</a>', "defparams.pro", "", "defparams", "", "", "          -1", "");
+  
+  
+
+libdata[libdataItem++] = new Array("albert_version/defsysvarthresh.html", "defsysvarthresh.pro", '.pro file in <a href="albert_version/dir-overview.html">albert_version/ directory</a>', "defsysvarthresh.pro", "", "", "", "", "          -1", "");
+  
+  
+  libdata[libdataItem++] = new Array("albert_version/defsysvarthresh.html#defsysvarthresh", "defsysvarthresh", 'routine in <a href="albert_version/defsysvarthresh.html">defsysvarthresh.pro</a>', "defsysvarthresh.pro", "", "defsysvarthresh", "       Defines solar thresholds   ", "input           Starting input image   ", "          -1", "");
+  
+  
+
 libdata[libdataItem++] = new Array("./defsysvarthresh.html", "defsysvarthresh.pro", '.pro file in <a href="./dir-overview.html">./ directory</a>', "defsysvarthresh.pro", "", "", "", "", "          -1", "");
   
   
@@ -324,6 +373,13 @@ libdata[libdataItem++] = new Array("./everysun.html", "everysun.pro", '.pro file
   
   
 
+libdata[libdataItem++] = new Array("albert_version/everysun.html", "everysun.pro", '.pro file in <a href="albert_version/dir-overview.html">albert_version/ directory</a>', "everysun.pro", "", "", "", "", "          -1", "");
+  
+  
+  libdata[libdataItem++] = new Array("albert_version/everysun.html#everysun", "everysun", 'routine in <a href="albert_version/everysun.html">everysun.pro</a>', "everysun.pro", "", "everysun", "       Finds the rough centroiding centers of any and all suns   ", "input           The raw input image   ", "          -1", "");
+  
+  
+
 libdata[libdataItem++] = new Array("obsolete_code/fastcenter.html", "fastcenter.pro", '.pro file in <a href="obsolete_code/dir-overview.html">obsolete_code/ directory</a>', "fastcenter.pro", "", "", "", "", "          -1", "");
   
   
@@ -347,10 +403,24 @@ libdata[libdataItem++] = new Array("obsolete_code/ff.html", "ff.pro", '.pro file
   
   
 
+libdata[libdataItem++] = new Array("albert_version/obsolete_files/fid_faster.html", "fid_faster.pro", '.pro file in <a href="albert_version/obsolete_files/dir-overview.html">albert_version/obsolete_files/ directory</a>', "fid_faster.pro", "", "", "", "", "          -1", "");
+  
+  
+  libdata[libdataItem++] = new Array("albert_version/obsolete_files/fid_faster.html#fid_faster", "fid_faster", 'routine in <a href="albert_version/obsolete_files/fid_faster.html">fid_faster.pro</a>', "fid_faster.pro", "", "fid_faster", "", "inputimageinputstruct", "          -1", "");
+  
+  
+
 libdata[libdataItem++] = new Array("./fid_locate.html", "fid_locate.pro", '.pro file in <a href="./dir-overview.html">./ directory</a>', "fid_locate.pro", "", "", "", "", "          -1", "");
   
   
   libdata[libdataItem++] = new Array("./fid_locate.html#fid_locate", "fid_locate", 'routine in <a href="./fid_locate.html">fid_locate.pro</a>', "fid_locate.pro", "", "fid_locate", "       Locates the whole and sub-pixel positions of fiducials in a cropped solar image   ", "mcenter           Finds the center of the local maxima using a binary mask instead of parabolic peak fitting.   inputimage           The raw input image   inputstruct           Structure containing all the solar information   ", "          -1", "");
+  
+  
+
+libdata[libdataItem++] = new Array("albert_version/obsolete_files/fid_locate.html", "fid_locate.pro", '.pro file in <a href="albert_version/obsolete_files/dir-overview.html">albert_version/obsolete_files/ directory</a>', "fid_locate.pro", "", "", "", "", "          -1", "");
+  
+  
+  libdata[libdataItem++] = new Array("albert_version/obsolete_files/fid_locate.html#fid_locate", "fid_locate", 'routine in <a href="albert_version/obsolete_files/fid_locate.html">fid_locate.pro</a>', "fid_locate.pro", "", "fid_locate", "       Locates the whole and sub-pixel positions of fiducials in a cropped solar image   ", "mcenter           Finds the center of the local maxima using a binary mask instead of parabolic peak fitting.   inputimage           The raw input image   inputstruct           Structure containing all the solar information   ", "          -1", "");
   
   
 
@@ -364,6 +434,13 @@ libdata[libdataItem++] = new Array("obsolete_code/galapagos.html", "galapagos.pr
   
   
   libdata[libdataItem++] = new Array("obsolete_code/galapagos.html#galapagos", "galapagos", 'routine in <a href="obsolete_code/galapagos.html">galapagos.pro</a>', "galapagos.pro", "", "galapagos", "", "inputthresh", "          -1", "");
+  
+  
+
+libdata[libdataItem++] = new Array("albert_version/obsolete_files/gauss_fid.html", "gauss_fid.pro", '.pro file in <a href="albert_version/obsolete_files/dir-overview.html">albert_version/obsolete_files/ directory</a>', "gauss_fid.pro", "", "", "", "", "          -1", "");
+  
+  
+  libdata[libdataItem++] = new Array("albert_version/obsolete_files/gauss_fid.html#gauss_fid", "gauss_fid", 'routine in <a href="albert_version/obsolete_files/gauss_fid.html">gauss_fid.pro</a>', "gauss_fid.pro", "", "gauss_fid", "", "inputimageinputstruct", "          -1", "");
   
   
 
@@ -381,6 +458,13 @@ libdata[libdataItem++] = new Array("obsolete_code/getstruct.html", "getstruct.pr
   
   
 
+libdata[libdataItem++] = new Array("albert_version/obsolete_files/gord_fid.html", "gord_fid.pro", '.pro file in <a href="albert_version/obsolete_files/dir-overview.html">albert_version/obsolete_files/ directory</a>', "gord_fid.pro", "", "", "", "", "          -1", "");
+  
+  
+  libdata[libdataItem++] = new Array("albert_version/obsolete_files/gord_fid.html#gord_fid", "gord_fid", 'routine in <a href="albert_version/obsolete_files/gord_fid.html">gord_fid.pro</a>', "gord_fid.pro", "", "gord_fid", "", "inputimageinputstruct", "          -1", "");
+  
+  
+
 libdata[libdataItem++] = new Array("obsolete_code/histosmoothed.html", "histosmoothed.pro", '.pro file in <a href="obsolete_code/dir-overview.html">obsolete_code/ directory</a>', "histosmoothed.pro", "", "", "", "", "          -1", "");
   
   
@@ -389,6 +473,13 @@ libdata[libdataItem++] = new Array("obsolete_code/histosmoothed.html", "histosmo
   
 
 libdata[libdataItem++] = new Array("obsolete_code/horiz.html", "horiz.pro", '.pro file in <a href="obsolete_code/dir-overview.html">obsolete_code/ directory</a>', "horiz.pro", "", "", "", "", "          -1", "");
+  
+
+libdata[libdataItem++] = new Array("albert_version/idsuns.html", "idsuns.pro", '.pro file in <a href="albert_version/dir-overview.html">albert_version/ directory</a>', "idsuns.pro", "", "", "", "", "          -1", "");
+  
+  
+  libdata[libdataItem++] = new Array("albert_version/idsuns.html#idsuns", "idsuns", 'routine in <a href="albert_version/idsuns.html">idsuns.pro</a>', "idsuns.pro", "", "idsuns", "       Defines solar regions   ", "input           Starting input image   ", "          -1", "");
+  
   
 
 libdata[libdataItem++] = new Array("./idsuns.html", "idsuns.pro", '.pro file in <a href="./dir-overview.html">./ directory</a>', "idsuns.pro", "", "", "", "", "          -1", "");
@@ -525,6 +616,13 @@ libdata[libdataItem++] = new Array("./limbfit.html", "limbfit.pro", '.pro file i
   
   
 
+libdata[libdataItem++] = new Array("albert_version/limbfit.html", "limbfit.pro", '.pro file in <a href="albert_version/dir-overview.html">albert_version/ directory</a>', "limbfit.pro", "", "", "", "", "          -1", "");
+  
+  
+  libdata[libdataItem++] = new Array("albert_version/limbfit.html#limbfit", "limbfit", 'routine in <a href="albert_version/limbfit.html">limbfit.pro</a>', "limbfit.pro", "", "limbfit", "       Fits 2nd order polynomial to limb strips   ", "inputstruct           Structure containing all the solar information   inputimage           Starting input image   ", "          -1", "");
+  
+  
+
 libdata[libdataItem++] = new Array("obsolete_code/limbfit.html", "limbfit.pro", '.pro file in <a href="obsolete_code/dir-overview.html">obsolete_code/ directory</a>', "limbfit.pro", "", "", "", "", "          -1", "");
   
   
@@ -532,10 +630,10 @@ libdata[libdataItem++] = new Array("obsolete_code/limbfit.html", "limbfit.pro", 
   
   
 
-libdata[libdataItem++] = new Array("./makelimbstrips.html", "makelimbstrips.pro", '.pro file in <a href="./dir-overview.html">./ directory</a>', "makelimbstrips.pro", "", "", "", "", "          -1", "");
+libdata[libdataItem++] = new Array("albert_version/obsolete_files/localmax.html", "localmax.pro", '.pro file in <a href="albert_version/obsolete_files/dir-overview.html">albert_version/obsolete_files/ directory</a>', "localmax.pro", "", "", "", "", "          -1", "");
   
   
-  libdata[libdataItem++] = new Array("./makelimbstrips.html#makelimbstrips", "makelimbstrips", 'routine in <a href="./makelimbstrips.html">makelimbstrips.pro</a>', "makelimbstrips.pro", "", "makelimbstrips", "       Makes limb strips from whole strips   ", "inputstruct           Structure containing all the solar information   inputimage           The raw input image   ", "          -1", "");
+  libdata[libdataItem++] = new Array("albert_version/obsolete_files/localmax.html#localmax", "localmax", 'routine in <a href="albert_version/obsolete_files/localmax.html">localmax.pro</a>', "localmax.pro", "", "localmax", "", "imgfloorceiling", "          -1", "");
   
   
 
@@ -546,10 +644,45 @@ libdata[libdataItem++] = new Array("obsolete_code/makelimbstrips.html", "makelim
   
   
 
-libdata[libdataItem++] = new Array("obsolete_code/makestrips.html", "makestrips.pro", '.pro file in <a href="obsolete_code/dir-overview.html">obsolete_code/ directory</a>', "makestrips.pro", "", "", "", "", "          -1", "");
+libdata[libdataItem++] = new Array("albert_version/makelimbstrips.html", "makelimbstrips.pro", '.pro file in <a href="albert_version/dir-overview.html">albert_version/ directory</a>', "makelimbstrips.pro", "", "", "", "", "          -1", "");
   
   
-  libdata[libdataItem++] = new Array("obsolete_code/makestrips.html#makestrips", "makestrips", 'routine in <a href="obsolete_code/makestrips.html">makestrips.pro</a>', "makestrips.pro", "", "makestrips", "		Only saves 5 strips centered around the solar diameter to reduce the amount of limb-        	darkened pixels and to make the polynomial-fitted limbs more-or-less look similar.   ", "nstripsregiontimethreshxstripsystripsfilescan_widthsigmavaluesundiam", "          -1", "");
+  libdata[libdataItem++] = new Array("albert_version/makelimbstrips.html#makelimbstrips", "makelimbstrips", 'routine in <a href="albert_version/makelimbstrips.html">makelimbstrips.pro</a>', "makelimbstrips.pro", "", "makelimbstrips", "       Makes limb strips from whole strips   ", "inputstruct           Structure containing all the solar information   inputimage           The raw input image   ", "          -1", "");
+  
+  
+
+libdata[libdataItem++] = new Array("./makelimbstrips.html", "makelimbstrips.pro", '.pro file in <a href="./dir-overview.html">./ directory</a>', "makelimbstrips.pro", "", "", "", "", "          -1", "");
+  
+  
+  libdata[libdataItem++] = new Array("./makelimbstrips.html#makelimbstrips", "makelimbstrips", 'routine in <a href="./makelimbstrips.html">makelimbstrips.pro</a>', "makelimbstrips.pro", "", "makelimbstrips", "       Makes limb strips from whole strips   ", "inputstruct           Structure containing all the solar information   inputimage           The raw input image   ", "          -1", "");
+  
+  
+
+libdata[libdataItem++] = new Array("albert_version/obsolete_files/makeskinnylimbstrips.html", "makeskinnylimbstrips.pro", '.pro file in <a href="albert_version/obsolete_files/dir-overview.html">albert_version/obsolete_files/ directory</a>', "makeskinnylimbstrips.pro", "", "", "", "", "          -1", "");
+  
+  
+  libdata[libdataItem++] = new Array("albert_version/obsolete_files/makeskinnylimbstrips.html#makeskinnylimbstrips", "makeskinnylimbstrips", 'routine in <a href="albert_version/obsolete_files/makeskinnylimbstrips.html">makeskinnylimbstrips.pro</a>', "makeskinnylimbstrips.pro", "", "makeskinnylimbstrips", "       Makes limb strips from whole strips   ", "inputstruct           Structure containing all the solar information   inputimage           The raw input image   ", "          -1", "");
+  
+  
+
+libdata[libdataItem++] = new Array("./makeskinnylimbstrips.html", "makeskinnylimbstrips.pro", '.pro file in <a href="./dir-overview.html">./ directory</a>', "makeskinnylimbstrips.pro", "", "", "", "", "          -1", "");
+  
+  
+  libdata[libdataItem++] = new Array("./makeskinnylimbstrips.html#makeskinnylimbstrips", "makeskinnylimbstrips", 'routine in <a href="./makeskinnylimbstrips.html">makeskinnylimbstrips.pro</a>', "makeskinnylimbstrips.pro", "", "makeskinnylimbstrips", "       Makes limb strips from whole strips   ", "inputstruct           Structure containing all the solar information   inputimage           The raw input image   ", "          -1", "");
+  
+  
+
+libdata[libdataItem++] = new Array("./makeslimlimbstrips.html", "makeslimlimbstrips.pro", '.pro file in <a href="./dir-overview.html">./ directory</a>', "makeslimlimbstrips.pro", "", "", "", "", "          -1", "");
+  
+  
+  libdata[libdataItem++] = new Array("./makeslimlimbstrips.html#makeslimlimbstrips", "makeslimlimbstrips", 'routine in <a href="./makeslimlimbstrips.html">makeslimlimbstrips.pro</a>', "makeslimlimbstrips.pro", "", "makeslimlimbstrips", "       Makes limb strips from whole strips   ", "inputstruct           Structure containing all the solar information   inputimage           The raw input image   ", "          -1", "");
+  
+  
+
+libdata[libdataItem++] = new Array("albert_version/makeslimlimbstrips.html", "makeslimlimbstrips.pro", '.pro file in <a href="albert_version/dir-overview.html">albert_version/ directory</a>', "makeslimlimbstrips.pro", "", "", "", "", "          -1", "");
+  
+  
+  libdata[libdataItem++] = new Array("albert_version/makeslimlimbstrips.html#makeslimlimbstrips", "makeslimlimbstrips", 'routine in <a href="albert_version/makeslimlimbstrips.html">makeslimlimbstrips.pro</a>', "makeslimlimbstrips.pro", "", "makeslimlimbstrips", "       Makes limb strips from whole strips   ", "inputstruct           Structure containing all the solar information   inputimage           The raw input image   ", "          -1", "");
   
   
 
@@ -557,6 +690,20 @@ libdata[libdataItem++] = new Array("./makestrips.html", "makestrips.pro", '.pro 
   
   
   libdata[libdataItem++] = new Array("./makestrips.html#makestrips", "makestrips", 'routine in <a href="./makestrips.html">makestrips.pro</a>', "makestrips.pro", "", "makestrips", "       Makes strips using approx centroiding method to make cropped areas   ", "inputstruct           Structure containing all the solar information   inputimage           The raw input image   ", "          -1", "");
+  
+  
+
+libdata[libdataItem++] = new Array("albert_version/makestrips.html", "makestrips.pro", '.pro file in <a href="albert_version/dir-overview.html">albert_version/ directory</a>', "makestrips.pro", "", "", "", "", "          -1", "");
+  
+  
+  libdata[libdataItem++] = new Array("albert_version/makestrips.html#makestrips", "makestrips", 'routine in <a href="albert_version/makestrips.html">makestrips.pro</a>', "makestrips.pro", "", "makestrips", "       Makes strips using approx centroiding method to make cropped areas   ", "inputstruct           Structure containing all the solar information   inputimage           The raw input image   ", "          -1", "");
+  
+  
+
+libdata[libdataItem++] = new Array("obsolete_code/makestrips.html", "makestrips.pro", '.pro file in <a href="obsolete_code/dir-overview.html">obsolete_code/ directory</a>', "makestrips.pro", "", "", "", "", "          -1", "");
+  
+  
+  libdata[libdataItem++] = new Array("obsolete_code/makestrips.html#makestrips", "makestrips", 'routine in <a href="obsolete_code/makestrips.html">makestrips.pro</a>', "makestrips.pro", "", "makestrips", "		Only saves 5 strips centered around the solar diameter to reduce the amount of limb-        	darkened pixels and to make the polynomial-fitted limbs more-or-less look similar.   ", "nstripsregiontimethreshxstripsystripsfilescan_widthsigmavaluesundiam", "          -1", "");
   
   
 
@@ -684,10 +831,31 @@ libdata[libdataItem++] = new Array("obsolete_code/nutricenter.html", "nutricente
   
   
 
+libdata[libdataItem++] = new Array("albert_version/para_fid.html", "para_fid.pro", '.pro file in <a href="albert_version/dir-overview.html">albert_version/ directory</a>', "para_fid.pro", "", "", "", "", "          -1", "");
+  
+  
+  libdata[libdataItem++] = new Array("albert_version/para_fid.html#para_fid", "para_fid", 'routine in <a href="albert_version/para_fid.html">para_fid.pro</a>', "para_fid.pro", "", "para_fid", "", "inputimageinputstruct", "          -1", "");
+  
+  
+
 libdata[libdataItem++] = new Array("./paradip.html", "paradip.pro", '.pro file in <a href="./dir-overview.html">./ directory</a>', "paradip.pro", "", "", " PROJECT:        HESSI  NAME:    PARADIP   PURPOSE:    Given a 3x3 array, does parabolic fits to determine position and value of dip. Different from PARAPEAK in that this computes the fit of the dip and not a peak. I don't like having to normalie my data so I'd rather do it this way.   CATEGORY:    IMAGE   CALLING SEQUENCE:    Result = paradip (z, err_msg=err_msg)   INPUTS:    z - (3,3) array of image values.  Middle value should be highest, corners lowest.   OUTPUT KEYWORDS:    err_msg - '' if no error, otherwise contains error message   OUTPUT:    Returns a 3-element vector containing the x,y coordinates of the peak (relative to the middle      of the central pixel) in units of pixel size and the value at the inferred peak.   PROCEDURE:    Given a 3x3 array in which the corner values are lower than any intermediate value,    PARADIP assumes that these correspond to the top of a 2-D circular gaussian; does    a pair of 1-D parabolic fits and returns the 2-D peak location and value.    The 3x3 array supposedly represents the function z at x=0,1,2 and y=0,1,2     Note that there is considerable redundancy in the data which has not been exploited.    An alternate technique would be to use just the 5 values in the '+' shaped configuration.   COMMON BLOCKS:    None.  ", "", "          -1", "");
   
   
   libdata[libdataItem++] = new Array("./paradip.html#paradip", "paradip", 'routine in <a href="./paradip.html">paradip.pro</a>', "paradip.pro", "", "paradip", "", "err_msgz", "          -1", "");
+  
+  
+
+libdata[libdataItem++] = new Array("./partialcenter.html", "partialcenter.pro", '.pro file in <a href="./dir-overview.html">./ directory</a>', "partialcenter.pro", "", "", "", "", "          -1", "");
+  
+  
+  libdata[libdataItem++] = new Array("./partialcenter.html#partialcenter", "partialcenter", 'routine in <a href="./partialcenter.html">partialcenter.pro</a>', "partialcenter.pro", "", "partialcenter", "", "inputimage", "          -1", "");
+  
+  
+
+libdata[libdataItem++] = new Array("albert_version/obsolete_files/partialcenter.html", "partialcenter.pro", '.pro file in <a href="albert_version/obsolete_files/dir-overview.html">albert_version/obsolete_files/ directory</a>', "partialcenter.pro", "", "", "", "", "          -1", "");
+  
+  
+  libdata[libdataItem++] = new Array("albert_version/obsolete_files/partialcenter.html#partialcenter", "partialcenter", 'routine in <a href="albert_version/obsolete_files/partialcenter.html">partialcenter.pro</a>', "partialcenter.pro", "", "partialcenter", "", "inputimage", "          -1", "");
   
   
 
@@ -704,10 +872,17 @@ libdata[libdataItem++] = new Array("obsolete_code/pb_lines_intersection.html", "
   
   
 
+libdata[libdataItem++] = new Array("albert_version/picksun.html", "picksun.pro", '.pro file in <a href="albert_version/dir-overview.html">albert_version/ directory</a>', "picksun.pro", "", "", "", "", "          -1", "");
+  
+  
+  libdata[libdataItem++] = new Array("albert_version/picksun.html#picksun", "picksun", 'routine in <a href="albert_version/picksun.html">picksun.pro</a>', "picksun.pro", "", "picksun", "       Decides which suns to ignore. Looks along the border pixels of the image and if 6 consecutive pixels are seen, it finds the closest sun (which will be a partial sun) and marks it as no good   ", "inputimage           The raw input image   inputstruct           Structure containing all the solar information   ", "          -1", "");
+  
+  
+
 libdata[libdataItem++] = new Array("./picksun.html", "picksun.pro", '.pro file in <a href="./dir-overview.html">./ directory</a>', "picksun.pro", "", "", "", "", "          -1", "");
   
   
-  libdata[libdataItem++] = new Array("./picksun.html#picksun", "picksun", 'routine in <a href="./picksun.html">picksun.pro</a>', "picksun.pro", "", "picksun", "       Decides which suns to ignore. Looks along the border pixels of the image and if 6 consecutive pixels are seen, it finds the closest sun (which will be a partial sun) and marks it as no good   ", "inputimage           The raw input image   inputsuns           Structure containing all the solar information   ", "          -1", "");
+  libdata[libdataItem++] = new Array("./picksun.html#picksun", "picksun", 'routine in <a href="./picksun.html">picksun.pro</a>', "picksun.pro", "", "picksun", "       Decides which suns to ignore. Looks along the border pixels of the image and if 6 consecutive pixels are seen, it finds the closest sun (which will be a partial sun) and marks it as no good   ", "inputimage           The raw input image   inputstruct           Structure containing all the solar information   ", "          -1", "");
   
   
 
@@ -729,6 +904,13 @@ libdata[libdataItem++] = new Array("./quickmask.html", "quickmask.pro", '.pro fi
   
   
   libdata[libdataItem++] = new Array("./quickmask.html#quickmask", "quickmask", 'routine in <a href="./quickmask.html">quickmask.pro</a>', "quickmask.pro", "", "quickmask", "       Finds center of mask where pixels are above a given threshold   ", "input_image           2D array of pixels to mask with threshold  thresh           Threshold used to select pixels  ", "          -1", "");
+  
+  
+
+libdata[libdataItem++] = new Array("albert_version/quickmask.html", "quickmask.pro", '.pro file in <a href="albert_version/dir-overview.html">albert_version/ directory</a>', "quickmask.pro", "", "", "", "", "          -1", "");
+  
+  
+  libdata[libdataItem++] = new Array("albert_version/quickmask.html#quickmask", "quickmask", 'routine in <a href="albert_version/quickmask.html">quickmask.pro</a>', "quickmask.pro", "", "quickmask", "       Finds center of mask where pixels are above a given threshold   ", "input_image           2D array of pixels to mask with threshold  thresh           Threshold used to select pixels  ", "          -1", "");
   
   
 
@@ -788,7 +970,14 @@ libdata[libdataItem++] = new Array("plots_tables_images/scrib.html", "scrib.pro"
 libdata[libdataItem++] = new Array("./setbetterpeak.html", "setbetterpeak.pro", '.pro file in <a href="./dir-overview.html">./ directory</a>', "setbetterpeak.pro", "", "", "", "", "          -1", "");
   
   
-  libdata[libdataItem++] = new Array("./setbetterpeak.html#setbetterpeak", "setbetterpeak", 'routine in <a href="./setbetterpeak.html">setbetterpeak.pro</a>', "setbetterpeak.pro", "", "setbetterpeak", "       Makes strips using approx centroiding method to make cropped areas   ", "input           Starting input image   n_suns           Number of suns   ", "          -1", "");
+  libdata[libdataItem++] = new Array("./setbetterpeak.html#setbetterpeak", "setbetterpeak", 'routine in <a href="./setbetterpeak.html">setbetterpeak.pro</a>', "setbetterpeak.pro", "", "setbetterpeak", "       Returns peaks of 2nd deriv of sorted array to set thresholds for image   ", "input           Starting input image   n_suns           Number of suns   ", "          -1", "");
+  
+  
+
+libdata[libdataItem++] = new Array("albert_version/setbetterpeak.html", "setbetterpeak.pro", '.pro file in <a href="albert_version/dir-overview.html">albert_version/ directory</a>', "setbetterpeak.pro", "", "", "", "", "          -1", "");
+  
+  
+  libdata[libdataItem++] = new Array("albert_version/setbetterpeak.html#setbetterpeak", "setbetterpeak", 'routine in <a href="albert_version/setbetterpeak.html">setbetterpeak.pro</a>', "setbetterpeak.pro", "", "setbetterpeak", "       Returns peaks of 2nd deriv of sorted array to set thresholds for image   ", "input           Starting input image   nsuns           Number of suns   ", "          -1", "");
   
   
 
@@ -847,6 +1036,20 @@ libdata[libdataItem++] = new Array("obsolete_code/trimask.html", "trimask.pro", 
   
   
   libdata[libdataItem++] = new Array("obsolete_code/trimask.html#trimask", "trimask", 'routine in <a href="obsolete_code/trimask.html">trimask.pro</a>', "trimask.pro", "", "trimask", "       Had to make a new version of comp3 because the old one called scanbox() by default   ", "region           Which sun out of the three to find the center of. Defaults to the brightest sun  time           Print the elapsed time  file           What file to load in  xpos           Computed X position of center  ypos           Computed Y position of center  scan_width           How apart the scans are for minicrop().  sigmavalue          Sets the threshold to be: <span class= code-output >max(image) - sigmavalue*stddev(image)</span>  sundiam           Approximate diameter of sun in pixels. (Based on bmp image)  thresh           Threshold used in finding center   ", "          -1", "");
+  
+  
+
+libdata[libdataItem++] = new Array("./twopixfit.html", "twopixfit.pro", '.pro file in <a href="./dir-overview.html">./ directory</a>', "twopixfit.pro", "", "", "", "", "          -1", "");
+  
+  
+  libdata[libdataItem++] = new Array("./twopixfit.html#twopixfit", "twopixfit", 'routine in <a href="./twopixfit.html">twopixfit.pro</a>', "twopixfit.pro", "", "twopixfit", "       Fits 2nd order polynomial to limb strips   ", "inputstruct           Structure containing all the solar information   inputimage           Starting input image   ", "          -1", "");
+  
+  
+
+libdata[libdataItem++] = new Array("albert_version/twopixfit.html", "twopixfit.pro", '.pro file in <a href="albert_version/dir-overview.html">albert_version/ directory</a>', "twopixfit.pro", "", "", "", "", "          -1", "");
+  
+  
+  libdata[libdataItem++] = new Array("albert_version/twopixfit.html#twopixfit", "twopixfit", 'routine in <a href="albert_version/twopixfit.html">twopixfit.pro</a>', "twopixfit.pro", "", "twopixfit", "       Linear fit to limb strips   ", "inputstruct           Structure containing all the solar information   inputimage           Starting input image   ", "          -1", "");
   
   
 

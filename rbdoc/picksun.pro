@@ -1,4 +1,4 @@
-FUNCTION picksun, inputimage, inputsuns
+FUNCTION picksun, inputimage, inputstruct
 ;+
 ;   :Description:
 ;       Decides which suns to ignore. Looks along the border pixels of the image and if 6 consecutive pixels are seen, it finds the closest sun (which will be a partial sun) and marks it as no good
@@ -7,7 +7,7 @@ FUNCTION picksun, inputimage, inputsuns
 ;       inputimage: in, required
 ;           The raw input image
 ;
-;       inputsuns: in, required
+;       inputstruct: in, required
 ;           Structure containing all the solar information
 ;
 ;   :Keywords:
@@ -27,7 +27,7 @@ if WHERE(names eq 'REG2') ne -1 then a[1] = !thresh.reg2
 if WHERE(names eq 'REG3') ne -1 then a[2] = !thresh.reg3
 
 ; scan in bottom,right,top,left
-threshmask = inputimage gt MIN(a)
+threshmask = inputimage gt MIN(a[where(a ne 0)])
 bottom = threshmask[*,0]
 top = threshmask[*,-1]
 left = REFORM(threshmask[0,*])
@@ -51,13 +51,13 @@ if TOTAL(borderarr) gt 6 then begin
         xcenter = MEAN(xarr[vec])
         ycenter = MEAN(yarr[vec])
         ; Pick closest center
-        sundist = SQRT((inputsuns.xpos-xcenter)^2 + (inputsuns.ypos-ycenter)^2)
-        closest_sun = (inputsuns.reg)[WHERE(sundist eq MIN(sundist))]
-        borderarr[vec[0]:vec[0]+70]=0
+        sundist = SQRT((inputstruct.xpos-xcenter)^2 + (inputstruct.ypos-ycenter)^2)
+        closest_sun = (inputstruct.reg)[WHERE(sundist eq MIN(sundist))]
+        borderarr[vec[0]:vec[0] + !param.sundiam]=0
     endif
     
     ; Set the closest sun to the xcenter,ycenter of the consecutive 6 pixels to nearest center
-    inputsuns[WHERE(inputsuns.reg eq closest_sun[0])].partial=1
+    inputstruct[WHERE(inputstruct.reg eq closest_sun[0])].partial=1
 
 
     ; We have 3 suns so I'm making 1 nested if loop
@@ -72,14 +72,24 @@ if TOTAL(borderarr) gt 6 then begin
             ycenter = MEAN(yarr[vec])
 
             ; pick closest center
-            sundist = SQRT((inputsuns.xpos-xcenter)^2 + (inputsuns.ypos-ycenter)^2)
-            closest_sun = (inputsuns.reg)[WHERE(sundist eq MIN(sundist))]
-            borderarr[vec[0]:vec[0]+70]=0
+            sundist = SQRT((inputstruct.xpos-xcenter)^2 + (inputstruct.ypos-ycenter)^2)
+            closest_sun = (inputstruct.reg)[WHERE(sundist eq MIN(sundist))]
+            borderarr[vec[0]:vec[0] + !param.sundiam]=0
         endif
 
-        inputsuns[WHERE(inputsuns.reg eq closest_sun[0])].partial=1
+        inputstruct[WHERE(inputstruct.reg eq closest_sun[0])].partial=1
     endif
 endif
 
-RETURN,inputsuns
+
+; Trying a new method instead of the consecutive 6 pixels check
+if N_ELEMENTS(inputstruct) eq 1 then begin
+    if inputstruct[0].npix lt !param.sunpixnum * !param.partial_perc then inputstruct[0].partial = 1
+endif else begin
+    for i = 0,N_ELEMENTS(inputstruct)-1 do begin
+        if inputstruct[i].npix lt !param.sunpixnum * !param.partial_perc then inputstruct[i].partial = 1
+    endfor
+endelse
+
+RETURN,inputstruct
 end

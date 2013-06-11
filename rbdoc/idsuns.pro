@@ -9,8 +9,8 @@ FUNCTION idsuns, input
 ;
 ;-
 
-; Well, we don't know anything about thresholds but we know they can't be any lower than 20, right? *awkward laugh*
-bimask = input gt 20
+; Well, we don't know anything about thresholds but we know they can't be any lower than 30, right? *awkward laugh*
+bimask = input gt 30
 
 s = SIZE(bimask, /DIMENSIONS)
 labelme = BYTARR(s + 2)
@@ -26,7 +26,7 @@ whichregion = FLTARR(nsuns)
 for i = 0,nsuns-1 do begin
 	ind = WHERE(h ne 1)
 	somesun = ri[ri[ind[i]]:ri[ind[i]+1]-1]
-	skimmed = (input[somesun])[bsort(input[somesun])]
+	skimmed = (input[somesun])[SORT(input[somesun])]
 	regmax[i] = MAX(skimmed[0:(1-!param.elim_perc/100)*N_ELEMENTS(skimmed)])
 	; Shoudld be a way to do this quickly with logical operators but that requires thinking
 	; This way is iffy...... iffy...

@@ -103,6 +103,6 @@ endif else begin
         fidpos[k].subpy = fidpos[k].y + result[1]
     endfor
 endelse
-
+; stop
 RETURN,fidpos
 END
