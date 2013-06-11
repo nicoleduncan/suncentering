@@ -1,4 +1,4 @@
-FUNCTION twopixfit, inputstruct, inputimage
+FUNCTION fourpixfit, inputstruct, inputimage
 ;+
 ;   :Description:
 ;       Linear fit to limb strips 

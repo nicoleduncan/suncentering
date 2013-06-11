@@ -13,6 +13,7 @@ PRO defsysvarthresh, input
 idedsuns = idsuns(input)
 n_suns = N_ELEMENTS(idedsuns)
 
+; Identify peaks in sorted image array so that we can get thresholds
 peaks = setbetterpeak(input,n_suns)
 thresharr = REPLICATE({reg:0,thresh:0.},n_suns)
 
