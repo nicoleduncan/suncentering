@@ -25,7 +25,7 @@ h = HISTOGRAM(fixedoutput, MIN=1, REVERSE_INDICES=ri, BINSIZE=1)
 noth = WHERE(h ne 1)
 nsuns = N_ELEMENTS(noth)
 whichregion = FLTARR(nsuns)
-stop
+
 for i = 0, nsuns-1 do begin
 	somesun = ri[ri[noth[i]]:ri[noth[i]+1]-1]
 	skimmed = (input[somesun])[SORT(input[somesun])]

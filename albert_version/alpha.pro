@@ -70,7 +70,12 @@ tritest = mrdfits('tritest.fits',/sil)
 ; startimage=w1_p3
 startimage = albsun
 startimage = somesun
-; startimage = tritest
+startimage = tritest
+
+; alright gay shit, if I'm using tritest I have to use different parameters
+; !param.disk_brightness -> 110
+; !param.onedsumthresh -> 150
+; secondary smoothing parameter -> 15
 ; a = partialcenter(corner)
 
 ; profiler
@@ -125,13 +130,6 @@ bbb = para_fid(startimage,limbfittedcentroids)
 
 atmp = startimage
 
-for i = 0,n_elements(a)-1 do begin
-    atmp[a[i].subpx + limbfittedcentroids[0].limbxpos - !param.crop_box,a[i].subpy + limbfittedcentroids[0].limbypos - !param.crop_box]=255
-endfor
-subsol = atmp[limbfittedcentroids[0].limbxpos-120:limbfittedcentroids[0].limbxpos+120,limbfittedcentroids[0].limbypos-120:limbfittedcentroids[0].limbypos+120]
-; window,1
-; cgimage,subsol,/k
-
 ; albert's numbers
 ztmp = startimage
 ztmp[674.6796,966-151.0038] = 255
@@ -143,16 +141,6 @@ ztmp[755.8672,966-279.6622] = 255
 ztmp[706.0065,966-295.3022] = 255   
 
 ; cgimage,ztmp[limbfittedcentroids.limbxpos-120:limbfittedcentroids.limbxpos+120,limbfittedcentroids.limbypos-120:limbfittedcentroids.limbypos+120],/k
-
-
-; acrop = atmp[limbfittedcentroids[0].limbxpos - !param.soldiskr : $
-; limbfittedcentroids[0].limbxpos + !param.soldiskr,$
-; limbfittedcentroids[0].limbypos - !param.soldiskr : limbfittedcentroids[0].limbypos + !param.soldiskr]
-; acrop = acrop[0:-5,0:-4]
-; cgimage,acrop,/k,output='notsubpix.png'
-
-; gg = startimage[limbfittedcentroids[0].limbxpos-120:limbfittedcentroids[0].limbxpos+120,limbfittedcentroids[0].limbypos-120:limbfittedcentroids[0].limbypos+120]
-; cgimage,gg*(gg gt !thresh.reg3),/k
 
 ; print,'para_fid'
 ; tic
@@ -167,14 +155,26 @@ ztmp[706.0065,966-295.3022] = 255
 ; a = fid_locate(startimage,limbfittedcentroids)
 ; toc
 
-; stop
-; print,'Main sun x pos:',limbfittedcentroids[0].limbxpos
-; print,'Main sun y pos:',limbfittedcentroids[0].limbypos
-; print,'50% sun x pos: ',limbfittedcentroids[1].limbxpos
-; print,'50% sun y pos: ',limbfittedcentroids[1].limbypos
-; print,'25% sun x pos: ',limbfittedcentroids[2].limbxpos
-; print,'25% sun y pos: ',limbfittedcentroids[2].limbypos
-help,limbfittedcentroids
+
+; So I have to highlight fiducials
+
+for i = 0,n_elements(bbb)-1 do begin
+    for j = 0,n_elements((*(bbb[i])).fidarr)-1 do begin
+        atmp[((*(bbb[i])).fidarr)[j].subx + limbfittedcentroids[i].limbxpos - !param.crop_box -1:((*(bbb[i])).fidarr)[j].subx + limbfittedcentroids[i].limbxpos - !param.crop_box+1,((*(bbb[i])).fidarr)[j].suby + limbfittedcentroids[i].limbypos - !param.crop_box-1:((*(bbb[i])).fidarr)[j].suby + limbfittedcentroids[i].limbypos - !param.crop_box+1]=255
+        
+    endfor
+endfor
+
+
+
+
+print,'Main sun x pos:',limbfittedcentroids[0].limbxpos
+print,'Main sun y pos:',limbfittedcentroids[0].limbypos
+print,'50% sun x pos: ',limbfittedcentroids[1].limbxpos
+print,'50% sun y pos: ',limbfittedcentroids[1].limbypos
+print,'25% sun x pos: ',limbfittedcentroids[2].limbxpos
+print,'25% sun y pos: ',limbfittedcentroids[2].limbypos
+; help,limbfittedcentroids
 stop
 
 end
