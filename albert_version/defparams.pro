@@ -1,4 +1,4 @@
-pro defparams
+pro defparams, input
 
 readcol,'pblock.txt',var,num,format='A,F',delimiter=' '
     for i=0,N_ELEMENTS(var)-1 do (SCOPE_VARFETCH(var[i],/enter,level=0))=num[i]

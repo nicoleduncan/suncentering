@@ -85,9 +85,9 @@ startimage = somesun
 ; .08 for picksun
 ; .06 for defsysvarthresh
 tic
-defparams
+defparams, startimage
 ; .02 to here
-defsysvarthresh,startimage
+defsysvarthresh, startimage
 ; .08 to here
 grannysmith = everysun(startimage)
 ; .1 to here

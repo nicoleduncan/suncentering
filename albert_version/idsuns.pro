@@ -9,10 +9,12 @@ FUNCTION idsuns, input
 ;
 ;-
 
-; Well, we don't know anything about thresholds but we know they can't be any lower than 30, right? *awkward laugh*
+; Well, we don't know anything about thresholds but we know they can't be any lower than 15, right? *awkward laugh*
 bimask = input gt 15
-bimask = morph_open(bimask,replicate(1,3,3))
-; stop
+; bimask = morph_open(bimask,replicate(1,3,3))
+; dilate is 3x faster
+bimask = dilate(bimask,replicate(1,3,3))
+
 s = SIZE(bimask, /DIMENSIONS)
 labelme = BYTARR(s + 2)
 ; Need this because label_region assumes pixels at edge to be 0
@@ -23,7 +25,7 @@ h = HISTOGRAM(fixedoutput, MIN=1, REVERSE_INDICES=ri, BINSIZE=1)
 noth = WHERE(h ne 1)
 nsuns = N_ELEMENTS(noth)
 whichregion = FLTARR(nsuns)
-
+stop
 for i = 0, nsuns-1 do begin
 	somesun = ri[ri[noth[i]]:ri[noth[i]+1]-1]
 	skimmed = (input[somesun])[SORT(input[somesun])]

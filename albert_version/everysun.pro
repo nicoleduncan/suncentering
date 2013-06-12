@@ -15,11 +15,9 @@ temparr = input
 s = SIZE(temparr,/d)
 n_col = s[0]
 n_row = s[1]
+; don't want to run this again...
 idedsuns = idsuns(temparr)
 n_suns = N_ELEMENTS(idedsuns)
-
-; xstrips = REPLICATE({wholexstrips,rowindex:0, array:BYTARR(n_col)}, !param.nstrips)
-; ystrips = REPLICATE({wholeystrips,colindex:0, array:BYTARR(n_row)}, !param.nstrips)
 
 ; Making as much of our structure in one place as possible, the one parameter we can't include here are the number of fiducials we find. Well, at leat in the current iteration. Future versions may have a preallocated szze of, say, 10 fiducials and we only fill up however many we actually need.
 
@@ -28,27 +26,12 @@ xstrips = REPLICATE({wholexstrips,rowindex:0, array:BYTARR(2* !param.crop_box + 
 ystrips = REPLICATE({wholeystrips,colindex:0, array:BYTARR(2* !param.crop_box + 1)}, !param.nstrips)
 
 ; There is a pair of strips, the start points as well as the end points, for each strip above.
-; limbxstrips = REPLICATE({limbxstrips, rowindex:0, begindex:0, endindex:0, $
-;         startpoints:BYTARR( !param.ministrip_length), $
-;         endpoints:BYTARR( !param.ministrip_length)}, !param.nstrips)
-; limbystrips = REPLICATE({limbystrips, colindex:0, begindex:0, endindex:0, $
-;         startpoints:BYTARR( !param.ministrip_length), $
-;         endpoints:BYTARR( !param.ministrip_length)}, !param.nstrips)
-
-limbxstrips = REPLICATE({limbxstrips, rowindex:0, begindex:0, endindex:0, $
-        startpoints:BYTARR( !param.ministrip_length), endpoints:BYTARR( !param.ministrip_length)}, !param.nstrips)
-limbystrips = REPLICATE({limbystrips, colindex:0, begindex:0, endindex:0, $
-        startpoints:BYTARR( !param.ministrip_length), endpoints:BYTARR( !param.ministrip_length)}, !param.nstrips)
-
-
-; limbxstrips = REPLICATE({limbxstrips, rowindex:0, begindex:0, endindex:0, $
-;         startpoints:BYTARR(2), endpoints:BYTARR(2)}, !param.nstrips)
-; limbystrips = REPLICATE({limbystrips, colindex:0, begindex:0, endindex:0, $
-;         startpoints:BYTARR( 2), endpoints:BYTARR( 2)}, !param.nstrips)
+limbxstrips = REPLICATE({limbxstrips, rowindex:0, begindex:0, endindex:0, startpoints:BYTARR( !param.ministrip_length), endpoints:BYTARR( !param.ministrip_length)}, !param.nstrips)
+limbystrips = REPLICATE({limbystrips, colindex:0, begindex:0, endindex:0, startpoints:BYTARR( !param.ministrip_length), endpoints:BYTARR( !param.ministrip_length)}, !param.nstrips)
 
 
 ; Doesn't matter what we call it, but this is the more-or-less complete structure we fill
-asun = REPLICATE({xpos:0.,ypos:0.,reg:0,thresh:0.,partial:0.,xstrips:xstrips,ystrips:ystrips,limbxstrips:limbxstrips,limbystrips:limbystrips,limbxpos:0.,limbypos:0.,npix:0.,fidlocations:{blank:0.}},n_suns)
+asun = REPLICATE({xpos:0.,ypos:0.,reg:0,thresh:0.,partial:0.,xstrips:xstrips,ystrips:ystrips,limbxstrips:limbxstrips,limbystrips:limbystrips,limbxpos:0.,limbypos:0.,npix:0.},n_suns)
 
 for i = 0,n_suns-1 do BEGIN
     asun[i].reg = idedsuns[WHERE(idedsuns eq MIN(idedsuns))]
