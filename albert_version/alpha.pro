@@ -91,17 +91,22 @@ startimage = tritest
 ; .06 for defsysvarthresh
 tic
 defparams, startimage
-; .02 to here
+toc
+; .0004 to here
 defsysvarthresh, startimage
-; .08 to here
+toc
+; .037 to here
 grannysmith = everysun(startimage)
-; .1 to here
+toc
+; .085 to here
 fuji = picksun(startimage, grannysmith)
-; .18 to here
+toc
+; .138 to here
 limbfittedcentroids=centroidwholesuns(fuji,startimage)
-; .18 to here
+toc
+; .140 to here
 bbb = para_fid(startimage,limbfittedcentroids)
-; .183 to here
+; .146 to here
 toc
 tmpimage = startimage
 

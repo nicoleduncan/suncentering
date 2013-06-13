@@ -50,7 +50,7 @@ for rr = 0,N_ELEMENTS(inputstruct)-1 do begin
     ; Breaks if indices aren't exactly consecutive... need to work on that
 
     fidpos = REPLICATE({fidpos,x:0.,y:0.,subx:0.,suby:0.},N_ELEMENTS(xx)>N_ELEMENTS(yy))
-    tmp = crop
+    ; tmp = crop
     ; Loop through each x and y position combination 
     for i = 0,N_ELEMENTS(xx)-1 do begin
         for j = 0,N_ELEMENTS(yy)-1 do begin
@@ -72,7 +72,7 @@ for rr = 0,N_ELEMENTS(inputstruct)-1 do begin
                 
                 ; if there are any array values above a threshold, it's definitely a fiducial
                 if n_bw ne 0 and n_dw ne 0 then begin
-                        tmp[xx[i]-1:xx[i]+1,yy[j]-1:yy[j]+1]=255
+                        ; tmp[xx[i]-1:xx[i]+1,yy[j]-1:yy[j]+1]=255
                         fidpos[k].x=xx[i]
                         fidpos[k].y=yy[j]
 
@@ -92,16 +92,14 @@ for rr = 0,N_ELEMENTS(inputstruct)-1 do begin
                         
                         fidpos[k].subx = maxx + result[0] + xx[i] - !param.fid_crop_box
                         fidpos[k].suby = maxy + result[1] + yy[j] - !param.fid_crop_box
-
-                        ; tmp[xx[i]-1:fidpos[k].subx+1,fidpos[k].suby-1:fidpos[k].suby+1]=255
                         k++
                 endif
                 if k eq N_ELEMENTS(xx)>N_ELEMENTS(yy) then break                
             endif
         endfor
     endfor
-    window,inputstruct[rr].reg
-    cgimage,tmp,/k
+    ; window,inputstruct[rr].reg
+    ; cgimage,tmp,/k
     *(fidarr[rr])=CREATE_STRUCT('reg',inputstruct[rr].reg,'fidarr',fidpos)  
 endfor
 
