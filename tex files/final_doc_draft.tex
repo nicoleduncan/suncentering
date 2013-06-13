@@ -54,7 +54,7 @@ escapeinside={\%*}{*)}          % if you want to add a comment within your code
 
 \section{Introduction} % (fold)
 \label{sec:introduction}
-Starting with an image of at most three suns on a fiducial grid, we find the centers of the suns and their relative position to the fiducials (which provide a physical distance calibration). The program deems suns too close to the edge or suns partially cut off as unfit for centering. 
+Starting with an image of at most three suns on a fiducial grid, we find their centers and relative position to fiducials (which provide a physical distance calibration). With a 1296 x 966 image with three suns, the program from start to finish takes approximately .15 seconds.
 % section introduction (end)
 
 \section{Introduction cont.} % (fold)
@@ -68,25 +68,23 @@ Starting with an image of at most three suns on a fiducial grid, we find the cen
 %
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+Code steps:
 
 \begin{enumerate}
     \item Load Image
-    \item Read parameters from pblock.txt
+    \item Load parameters from pblock.txt
     \item Sort image and cut off top .1\% of pixels (top 1\% was actually too much)
-    \item Smooth, take deriv, smooth again, take deriv again of sorted array, find peaks that correspond to difference solar regions and their thresholds
-    \item Mask image above thresholds to find centers of every shape, regardless of partial or not
-    \item If center of shape is within a certain distance to edge of image, mark as partial and cease further analysis
+    \item Smooth, take deriv, smooth again, take deriv again of sorted array, find peaks that correspond to where the values of different solar regions change. These peaks are used to threshold different solar regions.
+    \item Mask image above thresholds to find centers of every shape (sometimes it's not a circle)
+    \item If the centroid of the shape is within a certain distance to the image edge, mark as partial and cease further analysis
     \item Crop remaining whole suns
-    \item Extract 5 strips centered around cropped solar center for both X and Y direction
-    \item Extract a pair of limb strips for each long strip
-    \item Applt linear fit to limb profile
-    \item Mark position where fit crosses threshold 
-    \item Use new threshold-crossing position to calculate chord lengths
+    \item Extract 5 strips around centroid for both X and Y direction
+    \item Extract a pair of limb strips for each whole strip
+    \item Applt linear fit to limb strips
+    \item Use new threshold-crossing positions of fit to calculate chord lengths
     \item Average midpoints of chords to find limb-fitted centers
-    % \item Recrop image and calculate row/column sums 
-    % \item Subtract smoothed sums from original sum array to return fiducial row/column positions
     \item Analyze the cropped image for fiducials
-    \item Using the fiducial positions, we compare the solar positions we calculated to a position defined by the physical setup.
+    \item Using the fiducial positions, compare solar positions to a position defined by the physical setup.
 \end{enumerate}
 
 
@@ -202,7 +200,6 @@ ministrip_length 4          ; Length of limb profile to linear fit
 crop_box 120                ; Half-width of box used to find fiducials in
 elim_perc 1                 ; Percentage of highest pixels to eliminate when finding threshold
 n_smooth 900                ; Elements to smooth by when finding threshold 
-soldiskr 60                 ; Deprecated
 border_pad 50               ; If solar center is within this value of border, marked as a partial sun
 triangle_size .25           ; Percentage of image height to use for triangle sides for making clipped-bottom-corner mask
 fid_smooth_thresh -150      ; Threshold to determine row/column positions of fiducials
@@ -212,7 +209,7 @@ fid_crop_box 15             ; Half-width of box used to analyze fiducials
 fid_smooth_candidates 15    ; Smoothing paramater for 1D sums of fiducial candidates 
 \end{lstlisting}
 
-In Figure \ref{sortedarray} we dynamically set thresholds for our image. Using these thresholds, we mask our image and identify solar regions by their brightness. We can't simply order them by brightness because we may have a 100\% and 50\% brightness sun in the same image and in order to determine the difference between a 100\%/50\% sun combo and a 50\%/25\% sun combo we must look at the actual threshold values.
+In Figure \ref{sortedarray} we dynamically set thresholds for our image. Each bump in the top-most plot corresponds to a certain sun in a multi-sun image. By figuring out where the bumps change, we can threshold multiple suns for identification. We can't simply order them by brightness because we may have a 100\% and 50\% brightness sun in the same image and in order to determine the difference between a 100\%/50\% sun combo and a 50\%/25\% sun combo we must look at the actual threshold values.
 
 \begin{figure}[!ht]
     \centering
@@ -223,14 +220,14 @@ In Figure \ref{sortedarray} we dynamically set thresholds for our image. Using t
 
 \subsection{Possibility for Error} % (fold)
 \label{sub:possibility_for_error}
-Herein lies the problem of determining solar regions based on brightness and threshold values. We don't have a clear way of determining whether or not a sun is being obscured pre-imaging and in result, becoming dimmer. If this happens, an image with a 100\% and 50\% sun may appear to be a 50\% and 25\% sun. We could do something with the time of day and make sure if the sun is obscured by anything we can predict, we account for it in our code. 
+Herein lies the problem of determining solar regions based on brightness and threshold values. We don't have a clear way of determining whether an image is dimmed before we even take a picture. If this happens, an image with a 100\% and 50\% sun may appear to be a 50\% and 25\% sun. There is no way to tell in our code, but hopefully we'll know enough about the time of day and pointing direction to account for this situation.
 % subsection possibility_for_error (end)
 
 % section setting_up_parameters (end)
 
 \section{Prepare Image for Limb Fitting} % (fold)
 \label{sec:prepare_image_for_limb_fitting}
-After we set our threshold and parameters, we iteratively find and crop suns in our image. To determine if the sun is partially cut off, we create a zone around the edge of our (usable) part of the image that if the center is within, it is counted as a fiducial. I emphasize \emph{usable} because the image has two triangles cut out of the bottom corners, reducing the usable part of the image. Figure \ref{cuttingcorners} gives and example of what our mask might look like. The gradient is unimportant, it's purpose is only to emphasize the shape of the mask.
+After we set our threshold and parameters, we iteratively find and crop suns in the image. To determine if the sun is partially cut off, we create a border around the edge of our (usable) image. If the center is within the border, it is counted as a partial sun and excluded from further analysis. I emphasize \emph{usable} because the image's bottom two corners are cutoff, reducing the usable part of the image. Figure \ref{cuttingcorners} gives and example of what our mask might look like. The gradient is unimportant, it's purpose is only to emphasize the shape of the mask.
 
 \begin{figure}[!ht]
     \centering
@@ -248,7 +245,7 @@ After we set our threshold and parameters, we iteratively find and crop suns in 
         \caption{A proposed mask that looks within a certain distance form the border.}
         \label{aborder}
     \end{subfigure}
-    \caption{The bottom corners will never see any data; the border mask must take into account the distance from the hypotenuse of the bottom corners still.}
+    \caption{The bottom corners will never see any data; the border mask takes into account the distance from the hypotenuse of the bottom corners}
     \label{cuttingcorners}
 \end{figure}
 
@@ -256,6 +253,29 @@ After we set our threshold and parameters, we iteratively find and crop suns in 
 
 \section{Fitting Limb Strips} % (fold)
 \label{sec:fitting_limb_strips}
+
+In order to fit limb strips, we first identify chords of the sun to take strips of. First, we look at the center of the sun and at regular intervals, choose rows/columns centered around the X/Y center position. The result are chords as seen in Figure \ref{chords}.\\
+Now looking at each chord, we select 4 pixels around where the chord crosses a threshold; 2 pixels below the threshold and 2 pixels above. See Figure \ref{limbs}. One caveat is that if a fiducial is on the limb, our results may be skewed. This has been a persistent issue that we have not addressed fully yet.
+
+\begin{figure}[!ht]
+    \centering
+    \hspace{-1.0in}
+    \begin{subfigure}[b]{.45\linewidth}
+        \centering
+        \includegraphics[width=1.3\textwidth]{../plots_tables_images/5chords.eps}
+        \caption{The middle chord passes through the center of the sun}
+        \label{chords}
+    \end{subfigure}
+    \hspace{.5in}
+    \begin{subfigure}[b]{.45\linewidth}
+        \centering
+        \includegraphics[width=1.3\textwidth]{../plots_tables_images/redlimbs.eps}
+        \caption{The indices in red are the pixels we apply a linear fit to see where it crosses the threshold (which is the horizontal line).}
+        \label{limbs}
+    \end{subfigure}
+    \caption{}
+    \label{sup}
+\end{figure}
 
 % section fitting_limb_strips (end)
 
@@ -267,6 +287,7 @@ After we set our threshold and parameters, we iteratively find and crop suns in 
         \centering
         \includegraphics[width=\linewidth]{../plots_tables_images/smooth_expl.eps}
         \caption{This is the 1D sum of a solar image. Small dips are seen in the profile corresponding to fiducials. The line in red is the sum smoothed by 10 pixels.}
+        \label{doublelines}
     \end{subfigure}
     \begin{subfigure}[b]{.5\linewidth}
         \centering
@@ -278,8 +299,9 @@ After we set our threshold and parameters, we iteratively find and crop suns in 
     \label{smoothed}
 \end{figure}
 
+Once we have a limb-fitted center, we crop a box around the center so that the sun sits comfortable inside without being clipped at the edges. We then find the sum of the image in 1D; i.e., summing the rows/columns. Certain rows/columns will have a dip in their sum (see black line in Figure \ref{doublelines}) from a fiducial. We smooth the sum (see red line in Figure \ref{doublelines}) and then subtract the two so that we have peaks at rows/columns of fiducials. (See Figure \ref{threshed}) Since we don't know which pairs of coordinates go with each other, we look at all possibilities. \\
 
-For each position below a certain threshold (see Figure \ref{threshed}) a row/column  is returned. Once we have an array of possible fiducial row and column positions, they are matched against each other using a method that iteratively checks to see if a pair of coordinates is a fiducial. Figure \ref{lotsofcrop} is what each fiducial candidate looks like for a certain sun. The position of plots in Figure \ref{lotsofplot} corresponds to the same regions in Figure \ref{lotsofcrop}. 
+For each position below a certain threshold (see Figure \ref{threshed}) a row/column  is returned. Once we have an array of possible fiducial row and column positions, we look at each pair of coordinates to check if it is a fiducial. Our first check is to make sure the pixel value at the fiducial candidate is sufficiently dim. Many pairs end up on the solar disk but not on a fiducial. Then, we look at the 1D sum of a cropped region around a fiducial candidate. If there is a clear, whole fiducial in the cropped region, there should be dips in the 1D sum. We smooth the 1D sum and subtract it from itself to find peaks. If these peaks are above a certain threshold (100 in Figure \ref{lotsofplot}) in each axis, then the fiducial candidate is considered a \emph{real} fiducial. Figure \ref{lotsofcrop} illustrates what each fiducial candidate looks like for a certain sun. 
 
 \begin{figure}[!ht]
     \vspace{-0.5in}
@@ -537,7 +559,7 @@ For each position below a certain threshold (see Figure \ref{threshed}) a row/co
         \includegraphics[width=1.0\linewidth]{../plots_tables_images/1d1dsums_6_9.eps}
         % \caption{}
     \end{subfigure}
-    \caption{The horizontal line is at 100; if there are any elements of the array above 100 for both a column 1D sum and a row 1D sum, then the cropped area is identified to have a fiducial in it. A parabolic fit is applied to 3 consecutive pixels with the center pixel at the peak of the array.}
+    \caption{The position of plots in Figure \ref{lotsofplot} corresponds to the same regions in Figure \ref{lotsofcrop}. The horizontal line is at 100; if there are any elements of the array above 100 for both a column 1D sum and a row 1D sum, then the cropped area is considered to have a fiducial in it. A parabolic fit is applied to 3 consecutive pixels with the center pixel at the peak of the array.}
     \label{lotsofplot}
 \end{figure}
 

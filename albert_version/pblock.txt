@@ -5,7 +5,6 @@ ministrip_length 4
 crop_box 120
 elim_perc 1
 n_smooth 900
-soldiskr 60
 border_pad 50
 triangle_size .25
 fid_smooth_thresh -150
