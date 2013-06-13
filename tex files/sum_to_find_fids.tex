@@ -12,6 +12,28 @@
 \usepackage{subcaption}
 \usepackage{deluxetable}
 \usepackage{verbatim}
+\usepackage{fancyvrb}
+\usepackage{listings}
+
+\lstset{%
+language=C++,                   % choose the language of the code
+basicstyle=\footnotesize\sffamily,%\ttfamily\footnotesize,       % the size of the fonts that are used for the code
+numbers=left,                   % where to put the line-numbers
+numberstyle=\footnotesize,      % the size of the fonts that are used for the line-numbers
+stepnumber=1,                   % the step between two line-numbers. If it is 1 each line will be numbered
+numbersep=5pt,                  % how far the line-numbers are from the code
+showspaces=false,               % show spaces adding particular underscores
+showstringspaces=false,         % underline spaces within strings
+showtabs=false,                 % show tabs within strings adding particular underscores
+% frame=single,                   % adds a frame around the code
+backgroundcolor=\color{Light},
+columns=fullflexible,
+tabsize=2,                      % sets default tabsize to 2 spaces
+captionpos=b,                   % sets the caption-position to bottom
+breaklines=true,                % sets automatic line breaking
+breakatwhitespace=false,        % sets if automatic breaks should only happen at whitespace
+escapeinside={\%*}{*)}          % if you want to add a comment within your code
+}
 
 
 \definecolor{Light}{gray}{.90}
@@ -462,6 +484,18 @@ Table \ref{fidcomp} compares the Gaussian and parabolic-peak fitting results to 
 \label{fidcomp}
 \end{deluxetable}
 
+\begin{lstlisting}
+>> help,*(bbb[0])
+** Structure <260a348>, 2 tags, length=180, data length=178, refs=1:
+   REG             INT              1
+   FIDARR          STRUCT    -> FIDPOS Array[11]
+>> help,(*(bbb[0])).fidarr,/str
+** Structure FIDPOS, 4 tags, length=16, data length=16:
+   X               FLOAT           50.0000
+   Y               FLOAT           132.000
+   SUBX            FLOAT           50.8438
+   SUBY            FLOAT           133.291
+\end{lstlisting}
 % section comparison_of_fiducial_finding_methods (end)
 
 \end{document}
