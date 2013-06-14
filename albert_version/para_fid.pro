@@ -22,15 +22,26 @@ for rr = 0,N_ELEMENTS(inputstruct)-1 do begin
     xsums = xt - SMOOTH(xt, !param.fid_smooth_candidates)
 
     ; Identify where it looks like a fiducial
-    ; yfids = WHERE(ysums le !param.fid_smooth_thresh) ;try little less
-    ; xfids = WHERE(xsums le !param.fid_smooth_thresh)
-
-    case inputstruct[rr].reg of
-       1 : athresh = -500
-       2 : athresh = -250
-       3 : athresh = -125
-     endcase
+    if !param.rough1dsum_thresh eq 1 then begin
+        case inputstruct[rr].reg of
+           1 : athresh = -500
+           2 : athresh = -250
+           3 : athresh = -125
+        endcase
+    endif else begin
+        case inputstruct[rr].reg of
+           1 : athresh = -500
+           2 : athresh = -250
+           3 : athresh = -125
+        endcase            
+    endelse
      
+
+
+    ; Starting to feel like we can't use sums here
+
+
+    
     yfids = WHERE(ysums le athresh) ;try little less
     xfids = WHERE(xsums le athresh)
 
@@ -55,24 +66,24 @@ for rr = 0,N_ELEMENTS(inputstruct)-1 do begin
     for i = 0,N_ELEMENTS(xx)-1 do begin
         for j = 0,N_ELEMENTS(yy)-1 do begin
             ; To eliminate coords that are just solar pixels and not fiducials (on disk)
-            ; if crop[xx[i],yy[j]] lt !param.disk_brightness then begin
-            if crop[xx[i],yy[j]] lt 110 then begin
+            if crop[xx[i],yy[j]] lt !param.disk_brightness then begin
             
                 aa = crop[xx[i] - !param.fid_crop_box:xx[i] + !param.fid_crop_box,yy[j] - !param.fid_crop_box:yy[j] + !param.fid_crop_box]
 
                 rowsum=TOTAL(aa,1) ; Summing rows to get a y position profile
                 ysum=SMOOTH(rowsum,10)-rowsum   ;The array we're thresholding
-                bw = WHERE(ysum gt 150,n_bw)
+                bw = WHERE(ysum gt !param.onedsumthresh,n_bw)
 
                 colsum=TOTAL(aa,2)
                 xsum=SMOOTH(colsum,10)-colsum
-                dw = WHERE(xsum gt 150,n_dw)
+                dw = WHERE(xsum gt !param.onedsumthresh,n_dw)
 
                 ; I get outliers no matter how much I smooth by
                 
                 ; if there are any array values above a threshold, it's definitely a fiducial
                 if n_bw ne 0 and n_dw ne 0 then begin
                         ; tmp[xx[i]-1:xx[i]+1,yy[j]-1:yy[j]+1]=255
+                        stop
                         fidpos[k].x=xx[i]
                         fidpos[k].y=yy[j]
 

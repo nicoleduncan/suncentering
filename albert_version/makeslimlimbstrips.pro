@@ -50,7 +50,6 @@ for jj = 0,N_ELEMENTS(inputstruct)-1 do begin
             a[jj].limbxstrips[i].endpoints  = (a[jj].xstrips[i].array)[row_where[-1] - limbwidth+1:row_where[-1] + 2]   
             a[jj].limbxstrips[i].endindex   = FIX(row_where[-1] - limbwidth)
         ENDIF
-
         IF col_where[0] NE -1 THEN BEGIN
             a[jj].limbystrips[i].startpoints  = (a[jj].ystrips[i].array)[col_where[0] - limbwidth:col_where[0] + 1]   
             a[jj].limbystrips[i].begindex     = FIX(col_where[0] - limbwidth)

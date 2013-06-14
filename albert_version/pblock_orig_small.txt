@@ -1,0 +1,15 @@
+scan_width 10
+sundiam 70
+nstrips 5
+ministrip_length 4
+crop_box 60
+elim_perc 1
+n_smooth 200
+border_pad 50
+triangle_size .25
+onedsumthresh 80
+disk_brightness 15
+fid_crop_box 15
+fid_smooth_candidates 15
+peakfind_buff 200
+rough1dsum_thresh 2

@@ -1,6 +1,6 @@
-pro defparams, input
+pro defparams, file
 
-readcol,'pblock.txt',var,num,format='A,F',delimiter=' '
+readcol,file,var,num,format='A,F',delimiter=' '
     for i=0,N_ELEMENTS(var)-1 do (SCOPE_VARFETCH(var[i],/enter,level=0))=num[i]
 
 c = CREATE_STRUCT(var[0],num[0])

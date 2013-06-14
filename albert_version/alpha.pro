@@ -54,7 +54,7 @@ tritest = mrdfits('tritest.fits',/sil)
 
 ; Take your pick of which to center
 
-; startimage=wholeimage
+startimage=wholeimage
 ; startimage=w1_w2_p3
 ; startimage=w1_p2_p3
 ; startimage=reg12
@@ -68,9 +68,9 @@ tritest = mrdfits('tritest.fits',/sil)
 ; startimage=p1_w3
 ; startimage=p1_w2
 ; startimage=w1_p3
-startimage = albsun
-startimage = somesun
-startimage = tritest
+; startimage = albsun
+; startimage = somesun
+; startimage = tritest
 
 ; alright gay shit, if I'm using tritest I have to use different parameters
 ; !param.disk_brightness -> 110
@@ -78,19 +78,17 @@ startimage = tritest
 ; secondary smoothing parameter -> 15
 ; a = partialcenter(corner)
 
+; how to set params based on startimage?
 ; profiler
 ; profiler,/system
 
-; takes ~.07 s to run everything up to fid_locate
-; takes ~.2 s to run albert's image
+; takes ~.15 s to run albert's image
 
 
-; .18 seconds to go from here
-
-; .08 for picksun
-; .06 for defsysvarthresh
 tic
-defparams, startimage
+; defparams, 'pblock_alb3sun.txt'
+; defparams, 'pblock_albdimsun.txt'
+defparams, 'pblock_orig_small.txt'
 toc
 ; .0004 to here
 defsysvarthresh, startimage
@@ -116,70 +114,40 @@ if n_elements(limbfittedcentroids) gt 1 then begin
         tmpimage[*,limbfittedcentroids[i].limbypos-1:limbfittedcentroids[i].limbypos+1] = 255
     endfor
 endif else begin
-; stop
     tmpimage[limbfittedcentroids[0].limbxpos-1:limbfittedcentroids[0].limbxpos+1,*] = 255
     tmpimage[*,limbfittedcentroids[0].limbypos-1:limbfittedcentroids[0].limbypos+1] = 255
 endelse
 
-
-bbb = para_fid(startimage,limbfittedcentroids)
-
-; a = fid_locate(startimage,limbfittedcentroids)
+; so the rough center is a bit off. Gasp!
 
 ; profiler,/report,data=data
 ; profiler,/reset,/clear
 ; print,data[sort(-data.time)],format='(A-20, I7, F12.5, F10.5, I9)'
 
-; window,0
-; cgimage,tmpimage,/k
-
 atmp = startimage
-
-; albert's numbers
-ztmp = startimage
-ztmp[674.6796,966-151.0038] = 255
-ztmp[796.3074,966-195.0324] = 255                                                  
-ztmp[740.4443,966-210.6342] = 255                                                  
-ztmp[690.2598,966-226.1973] = 255                                                  
-ztmp[643.4235,966-241.8869] = 255                                                  
-ztmp[755.8672,966-279.6622] = 255                                                  
-ztmp[706.0065,966-295.3022] = 255   
-
-; cgimage,ztmp[limbfittedcentroids.limbxpos-120:limbfittedcentroids.limbxpos+120,limbfittedcentroids.limbypos-120:limbfittedcentroids.limbypos+120],/k
-
-; print,'para_fid'
-; tic
-; aaa = para_fid(startimage,limbfittedcentroids)
-; toc
-; print,'fid_faster'
-; tic
-; bbb = fid_faster(startimage,limbfittedcentroids)
-; toc
-; print,'fid_locate'
-; tic
-; a = fid_locate(startimage,limbfittedcentroids)
-; toc
-
 
 ; So I have to highlight fiducials
 
 for i = 0,n_elements(bbb)-1 do begin
     for j = 0,n_elements((*(bbb[i])).fidarr)-1 do begin
+
+        if ((*(bbb[i])).fidarr)[j].subx ne 0 or ((*(bbb[i])).fidarr)[j].suby ne 0 then begin
         atmp[((*(bbb[i])).fidarr)[j].subx + limbfittedcentroids[i].limbxpos - !param.crop_box -1:((*(bbb[i])).fidarr)[j].subx + limbfittedcentroids[i].limbxpos - !param.crop_box+1,((*(bbb[i])).fidarr)[j].suby + limbfittedcentroids[i].limbypos - !param.crop_box-1:((*(bbb[i])).fidarr)[j].suby + limbfittedcentroids[i].limbypos - !param.crop_box+1]=255
-        
+        endif
     endfor
 endfor
 
+; print,'Main sun x pos:',limbfittedcentroids[0].limbxpos
+; print,'Main sun y pos:',limbfittedcentroids[0].limbypos
+; print,'50% sun x pos: ',limbfittedcentroids[1].limbxpos
+; print,'50% sun y pos: ',limbfittedcentroids[1].limbypos
+; print,'25% sun x pos: ',limbfittedcentroids[2].limbxpos
+; print,'25% sun y pos: ',limbfittedcentroids[2].limbypos
 
-
-
-print,'Main sun x pos:',limbfittedcentroids[0].limbxpos
-print,'Main sun y pos:',limbfittedcentroids[0].limbypos
-print,'50% sun x pos: ',limbfittedcentroids[1].limbxpos
-print,'50% sun y pos: ',limbfittedcentroids[1].limbypos
-print,'25% sun x pos: ',limbfittedcentroids[2].limbxpos
-print,'25% sun y pos: ',limbfittedcentroids[2].limbypos
-; help,limbfittedcentroids
+window,0
+cgimage,tmpimage,/k
+window,1
+cgimage,atmp,/k
 stop
 
 end
