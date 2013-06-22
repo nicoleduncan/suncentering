@@ -9,10 +9,14 @@ FUNCTION idsuns, input
 ;
 ;-
 
-; Well, we don't know anything about thresholds but we know they can't be any lower than 30, right? *awkward laugh*
-bimask = input gt 15
-bimask = morph_open(bimask,replicate(1,3,3))
-; stop
+; Well, we don't know anything about thresholds but we know they can't be any lower than 15, right? *awkward laugh*
+
+; 15 for albert's images, 30 for old ones
+bimask = input gt 30
+; bimask = morph_open(bimask,replicate(1,3,3))
+; dilate is 3x faster
+; bimask = dilate(bimask,replicate(1,3,3))
+
 s = SIZE(bimask, /DIMENSIONS)
 labelme = BYTARR(s + 2)
 ; Need this because label_region assumes pixels at edge to be 0

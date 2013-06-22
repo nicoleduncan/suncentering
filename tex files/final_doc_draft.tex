@@ -559,11 +559,52 @@ For each position below a certain threshold (see Figure \ref{threshed}) a row/co
         \includegraphics[width=1.0\linewidth]{../plots_tables_images/1d1dsums_6_9.eps}
         % \caption{}
     \end{subfigure}
-    \caption{The position of plots in Figure \ref{lotsofplot} corresponds to the same regions in Figure \ref{lotsofcrop}. The horizontal line is at 100; if there are any elements of the array above 100 for both a column 1D sum and a row 1D sum, then the cropped area is considered to have a fiducial in it. A parabolic fit is applied to 3 consecutive pixels with the center pixel at the peak of the array.}
+    \caption{The position of the plots above corresponds to the same regions in Figure \ref{lotsofcrop}. The horizontal line is at 100; if there are any elements of the array above 100 for both a column 1D sum and a row 1D sum, then the cropped area is considered to have a fiducial in it. A parabolic fit is applied to 3 consecutive pixels with the center pixel at the peak of the array.}
     \label{lotsofplot}
 \end{figure}
 
+\subsection{How Robust is Fiducial Finding?} % (fold)
+\label{sub:how_robust_is_fiducial_finding_}
+    We wanted to see how our program fared when working on our smaller (449x320) original image.With the same approach, we wanted to see if the 1D sum method would return enough fiducials to accurately orient our image. For reference, the original starting image is shown in Figure \ref{orig}. 
 
+\begin{figure}[!ht]
+    \begin{subfigure}[b]{.5\linewidth}
+        \centering
+        \includegraphics[width=\linewidth]{../plots_tables_images/orig_sun.jpg}
+        \caption{}
+        \label{orig}
+    \end{subfigure}
+    \begin{subfigure}[b]{.5\linewidth}
+        \centering
+        \includegraphics[width=\linewidth]{../plots_tables_images/smooth_fid_test.eps}
+        \caption{Fiducial positions returned by 1D sum method on smaller, blurrier image. Ignore the bright pixel next to the bottom left fiducial.}
+        \label{smoothed_fid_test}
+    \end{subfigure}
+    \caption{}
+\end{figure}
+
+
+There was a problem with the lack of pixels which resulted in the \hl{\texttt{array - smooth(array,n\_smooth)}} plot to have peaks in the wrong places. To address this, we set an arbitrary threshold at 1000 and only smoothed pixels with higher values. Illustrated in Figure \ref{fix_small}, this method has the potential to ignore fiducials on the very limbs of the sun, but if that is the case, then the first set of 1D sums across the entire sun would likely not pick up the faint dip in the 1D sum and would thus not even think to look there. \\
+\indent Figure \ref{smoothed_fid_test} shows how our code fares when finding the fiducials of an image that is significantly smaller than our Albert-approved image.
+
+\begin{figure}[!ht]
+    \begin{subfigure}[b]{.5\linewidth}
+        \centering
+        \includegraphics[width=\linewidth]{../plots_tables_images/small_image.eps}
+        \caption{In the top set of plots, the solid line is the 1D sum, the dotted line is the 1D sum smoothed by 5 pixels. In the bottom set of plots, the difference of the 1D sum and the smoothed 1D sum is shown. Notice the small dip at index 10 which is dominated by the smoothing artifact of the limb at indices 0 to 5.}
+        \label{small_image}
+    \end{subfigure}
+    \begin{subfigure}[b]{.5\linewidth}
+        \centering
+        \includegraphics[width=\linewidth]{../plots_tables_images/small_image_fixed.eps}
+        \caption{The 1D sum is thresholded to be only above 1000 and the process is repeated, this time the difference in the two arrays returns a clear peak.}
+        \label{small_image_fixed}
+    \end{subfigure}
+    \caption{}
+    \label{fix_small}
+\end{figure}
+
+% subsection how_robust_is_fiducial_finding_ (end)
 
 
 % section finding_fiducials (end)

@@ -24,27 +24,38 @@ for jj = 0,N_ELEMENTS(inputstruct)-1 do begin
 
         IF row_where[0] NE -1 THEN BEGIN
             ; startpoints is the cut down strip with length = ministrip_length and contains
-            ; the indices from row_where[0] +/- ministrip_side_buffer
+            ; the indices from row_where[0] +/- limbwidth
             
-            ; The problem is that the array is super granulated
             a[jj].limbxstrips[i].startpoints  = $
-            ; If chord is too long, it tries to crop from outside of image file
                 (a[jj].xstrips[i].array)[row_where[0] - limbwidth:row_where[0]+1]   
             ; begindex is the index of the strip where it begins. 
             ; e.g., the array is 5 long, starts from index 9 and is centered around index 11
             a[jj].limbxstrips[i].begindex   = FIX(row_where[0] - limbwidth)
+
+            ; tarr = (a[jj].xstrips[i].array)
+            ; limb = replicate(!values.f_nan,241)
+
+            ; limb[row_where[0]-limbwidth:row_where[0]+1] = (a[jj].xstrips[i].array)[row_where[0] - limbwidth:row_where[0]+1]
+
+            ; limb[row_where[-1]-limbwidth+1:row_where[-1]+2] = (a[jj].xstrips[i].array)[row_where[-1] - limbwidth+1:row_where[-1] + 2]
+            ; ps_start,filename='redlimbs.eps',/encap,/color
+            ; plot,tarr,/ys,title='Chord profile over entire sun'
+            ; hline,a[jj].thresh
+            ; loadct,2
+            ; oplot,limb,thick=6,psym=-4,color=100
+            ; ps_end
+            ; stop
         ENDIF
         IF row_where[-1] NE -1 THEN BEGIN
-            a[jj].limbxstrips[i].endpoints  = (a[jj].xstrips[i].array)[row_where[-1] - limbwidth:row_where[-1] + 1]   
+            a[jj].limbxstrips[i].endpoints  = (a[jj].xstrips[i].array)[row_where[-1] - limbwidth+1:row_where[-1] + 2]   
             a[jj].limbxstrips[i].endindex   = FIX(row_where[-1] - limbwidth)
         ENDIF
-
         IF col_where[0] NE -1 THEN BEGIN
             a[jj].limbystrips[i].startpoints  = (a[jj].ystrips[i].array)[col_where[0] - limbwidth:col_where[0] + 1]   
             a[jj].limbystrips[i].begindex     = FIX(col_where[0] - limbwidth)
         ENDIF
         IF col_where[-1] NE -1 THEN BEGIN
-            a[jj].limbystrips[i].endpoints  = (a[jj].ystrips[i].array)[col_where[-1] - limbwidth:col_where[-1] + 1]   
+            a[jj].limbystrips[i].endpoints  = (a[jj].ystrips[i].array)[col_where[-1] - limbwidth +1:col_where[-1] + 2]   
             a[jj].limbystrips[i].endindex     = FIX(col_where[-1] - limbwidth)
         ENDIF
     ENDFOR

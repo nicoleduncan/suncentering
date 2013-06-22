@@ -54,7 +54,7 @@ tritest = mrdfits('tritest.fits',/sil)
 
 ; Take your pick of which to center
 
-; startimage=wholeimage
+startimage=wholeimage
 ; startimage=w1_w2_p3
 ; startimage=w1_p2_p3
 ; startimage=reg12
@@ -68,35 +68,43 @@ tritest = mrdfits('tritest.fits',/sil)
 ; startimage=p1_w3
 ; startimage=p1_w2
 ; startimage=w1_p3
-startimage = albsun
-startimage = somesun
+; startimage = albsun
+; startimage = somesun
 ; startimage = tritest
+
+; alright gay shit, if I'm using tritest I have to use different parameters
+; !param.disk_brightness -> 110
+; !param.onedsumthresh -> 150
+; secondary smoothing parameter -> 15
 ; a = partialcenter(corner)
 
+; how to set params based on startimage?
 ; profiler
 ; profiler,/system
 
-; takes ~.07 s to run everything up to fid_locate
-; takes ~.2 s to run albert's image
+; takes ~.15 s to run albert's image
 
 
-; .18 seconds to go from here
-
-; .08 for picksun
-; .06 for defsysvarthresh
 tic
-defparams
-; .02 to here
-defsysvarthresh,startimage
-; .08 to here
+; defparams, 'pblock_alb3sun.txt'
+; defparams, 'pblock_albdimsun.txt'
+defparams, 'pblock_orig_small.txt'
+toc
+; .0004 to here
+defsysvarthresh, startimage
+toc
+; .037 to here
 grannysmith = everysun(startimage)
-; .1 to here
+toc
+; .085 to here
 fuji = picksun(startimage, grannysmith)
-; .18 to here
+toc
+; .138 to here
 limbfittedcentroids=centroidwholesuns(fuji,startimage)
-; .18 to here
+toc
+; .140 to here
 bbb = para_fid(startimage,limbfittedcentroids)
-; .183 to here
+; .146 to here
 toc
 tmpimage = startimage
 
@@ -106,70 +114,29 @@ if n_elements(limbfittedcentroids) gt 1 then begin
         tmpimage[*,limbfittedcentroids[i].limbypos-1:limbfittedcentroids[i].limbypos+1] = 255
     endfor
 endif else begin
-; stop
     tmpimage[limbfittedcentroids[0].limbxpos-1:limbfittedcentroids[0].limbxpos+1,*] = 255
     tmpimage[*,limbfittedcentroids[0].limbypos-1:limbfittedcentroids[0].limbypos+1] = 255
 endelse
 
-
-bbb = para_fid(startimage,limbfittedcentroids)
-
-; a = fid_locate(startimage,limbfittedcentroids)
+; so the rough center is a bit off. Gasp!
 
 ; profiler,/report,data=data
 ; profiler,/reset,/clear
 ; print,data[sort(-data.time)],format='(A-20, I7, F12.5, F10.5, I9)'
 
-; window,0
-; cgimage,tmpimage,/k
-
 atmp = startimage
 
-for i = 0,n_elements(a)-1 do begin
-    atmp[a[i].subpx + limbfittedcentroids[0].limbxpos - !param.crop_box,a[i].subpy + limbfittedcentroids[0].limbypos - !param.crop_box]=255
+; So I have to highlight fiducials
+
+for i = 0,n_elements(bbb)-1 do begin
+    for j = 0,n_elements((*(bbb[i])).fidarr)-1 do begin
+
+        if ((*(bbb[i])).fidarr)[j].subx ne 0 or ((*(bbb[i])).fidarr)[j].suby ne 0 then begin
+        atmp[((*(bbb[i])).fidarr)[j].subx + limbfittedcentroids[i].limbxpos - !param.crop_box -1:((*(bbb[i])).fidarr)[j].subx + limbfittedcentroids[i].limbxpos - !param.crop_box+1,((*(bbb[i])).fidarr)[j].suby + limbfittedcentroids[i].limbypos - !param.crop_box-1:((*(bbb[i])).fidarr)[j].suby + limbfittedcentroids[i].limbypos - !param.crop_box+1]=255
+        endif
+    endfor
 endfor
-subsol = atmp[limbfittedcentroids[0].limbxpos-120:limbfittedcentroids[0].limbxpos+120,limbfittedcentroids[0].limbypos-120:limbfittedcentroids[0].limbypos+120]
-; window,1
-; cgimage,subsol,/k
 
-; albert's numbers
-ztmp = startimage
-ztmp[674.6796,966-151.0038] = 255
-ztmp[796.3074,966-195.0324] = 255                                                  
-ztmp[740.4443,966-210.6342] = 255                                                  
-ztmp[690.2598,966-226.1973] = 255                                                  
-ztmp[643.4235,966-241.8869] = 255                                                  
-ztmp[755.8672,966-279.6622] = 255                                                  
-ztmp[706.0065,966-295.3022] = 255   
-
-; cgimage,ztmp[limbfittedcentroids.limbxpos-120:limbfittedcentroids.limbxpos+120,limbfittedcentroids.limbypos-120:limbfittedcentroids.limbypos+120],/k
-
-
-; acrop = atmp[limbfittedcentroids[0].limbxpos - !param.soldiskr : $
-; limbfittedcentroids[0].limbxpos + !param.soldiskr,$
-; limbfittedcentroids[0].limbypos - !param.soldiskr : limbfittedcentroids[0].limbypos + !param.soldiskr]
-; acrop = acrop[0:-5,0:-4]
-; cgimage,acrop,/k,output='notsubpix.png'
-
-; gg = startimage[limbfittedcentroids[0].limbxpos-120:limbfittedcentroids[0].limbxpos+120,limbfittedcentroids[0].limbypos-120:limbfittedcentroids[0].limbypos+120]
-; cgimage,gg*(gg gt !thresh.reg3),/k
-
-; print,'para_fid'
-; tic
-; aaa = para_fid(startimage,limbfittedcentroids)
-; toc
-; print,'fid_faster'
-; tic
-; bbb = fid_faster(startimage,limbfittedcentroids)
-; toc
-; print,'fid_locate'
-; tic
-; a = fid_locate(startimage,limbfittedcentroids)
-; toc
-
-l = .9144*tan(.5*asin(1.22*600e-9/2e-2))
-
-; stop
 ; print,'Main sun x pos:',limbfittedcentroids[0].limbxpos
 ; print,'Main sun y pos:',limbfittedcentroids[0].limbypos
 ; print,'50% sun x pos: ',limbfittedcentroids[1].limbxpos
@@ -177,6 +144,10 @@ l = .9144*tan(.5*asin(1.22*600e-9/2e-2))
 ; print,'25% sun x pos: ',limbfittedcentroids[2].limbxpos
 ; print,'25% sun y pos: ',limbfittedcentroids[2].limbypos
 
+window,0
+cgimage,tmpimage,/k
+window,1
+cgimage,atmp,/k
 stop
 
 end

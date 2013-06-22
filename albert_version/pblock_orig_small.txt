@@ -7,9 +7,10 @@ elim_perc 1
 n_smooth 200
 border_pad 50
 triangle_size .25
-onedsumthresh 80
-disk_brightness 15
-fid_crop_box 15
-fid_smooth_candidates 15
+onedsumthresh 60
+disk_brightness 200
+fid_crop_box 10
+fid_smooth_candidates 5
 peakfind_buff 200
 rough1dsum_thresh 2
+fidcand_smooth 5
