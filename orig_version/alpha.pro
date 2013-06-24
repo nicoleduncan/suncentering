@@ -69,7 +69,7 @@ startimage=wholeimage
 ; startimage=p1_w2
 ; startimage=w1_p3
 ; startimage = albsun
-startimage = somesun
+; startimage = somesun
 ; startimage = tritest
 
 ; alright gay shit, if I'm using tritest I have to use different parameters
@@ -87,8 +87,8 @@ startimage = somesun
 
 tic
 ; defparams, 'pblock_alb3sun.txt'
-defparams, 'pblock_albdimsun.txt'
-; defparams, 'pblock_orig_small.txt'
+; defparams, 'pblock_albdimsun.txt'
+defparams, 'pblock_orig_small.txt'
 toc
 ; .0004 to here
 defsysvarthresh, startimage
@@ -110,12 +110,12 @@ tmpimage = startimage
 
 if n_elements(limbfittedcentroids) gt 1 then begin
     for i =0,n_elements(limbfittedcentroids)-1 do begin
-        tmpimage[limbfittedcentroids[i].limbxpos-1:limbfittedcentroids[i].limbxpos+1,*] = 255
-        tmpimage[*,limbfittedcentroids[i].limbypos-1:limbfittedcentroids[i].limbypos+1] = 255
+        tmpimage[limbfittedcentroids[i].limbxpos:limbfittedcentroids[i].limbxpos,*] = 255
+        tmpimage[*,limbfittedcentroids[i].limbypos:limbfittedcentroids[i].limbypos] = 255
     endfor
 endif else begin
-    tmpimage[limbfittedcentroids[0].limbxpos-1:limbfittedcentroids[0].limbxpos+1,*] = 255
-    tmpimage[*,limbfittedcentroids[0].limbypos-1:limbfittedcentroids[0].limbypos+1] = 255
+    tmpimage[limbfittedcentroids[0].limbxpos:limbfittedcentroids[0].limbxpos,*] = 255
+    tmpimage[*,limbfittedcentroids[0].limbypos:limbfittedcentroids[0].limbypos] = 255
 endelse
 
 ; so the rough center is a bit off. Gasp!

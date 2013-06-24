@@ -11,9 +11,9 @@ for rr = 0,N_ELEMENTS(inputstruct)-1 do begin
     z=FLTARR(3,3,/nozero)
     
     ; cropped-down image of sun
-    crop = FLOAT(inputimage[inputstruct[rr].limbxpos - !param.crop_box:inputstruct[rr].limbxpos + !param.crop_box,inputstruct[rr].limbypos - !param.crop_box:inputstruct[rr].limbypos + !param.crop_box])
+    ; crop = FLOAT(inputimage[inputstruct[rr].limbxpos - !param.crop_box:inputstruct[rr].limbxpos + !param.crop_box,inputstruct[rr].limbypos - !param.crop_box:inputstruct[rr].limbypos + !param.crop_box])
 
-    ; crop = FLOAT(inputimage[inputstruct[rr].limbxpos - 40:inputstruct[rr].limbxpos + 40,inputstruct[rr].limbypos - 40:inputstruct[rr].limbypos + 40])
+    crop = FLOAT(inputimage[inputstruct[rr].limbxpos - 40:inputstruct[rr].limbxpos + 40,inputstruct[rr].limbypos - 40:inputstruct[rr].limbypos + 40])
 
 
 
@@ -55,14 +55,17 @@ for rr = 0,N_ELEMENTS(inputstruct)-1 do begin
            1 : begin
                athresh = -100
                fidcand_thresh = 1000
+               atat = 30
            end
            2 : begin 
-               athresh = -100
-               fidcand_thresh = 1000
+               athresh = -50
+               fidcand_thresh = 600
+               atat = 15
            end
            3 : begin
                athresh = -20
                fidcand_thresh = 400
+               atat= 5
            end
         endcase   
 
@@ -96,15 +99,16 @@ for rr = 0,N_ELEMENTS(inputstruct)-1 do begin
 
     ; Breaks if indices aren't exactly consecutive... need to work on that
 
-    fidpos = REPLICATE({fidpos,x:0.,y:0.,subx:0.,suby:0.},N_ELEMENTS(xx)>N_ELEMENTS(yy))
-    ; tmp = crop
+    fidpos = REPLICATE({fidpos,x:0.,y:0.,subx:0.,suby:0.},FACTORIAL(N_ELEMENTS(xx)>N_ELEMENTS(yy)))
+    tmp = crop
     ; Loop through each x and y position combination 
+    
     for i = 0,N_ELEMENTS(xx)-1 do begin
         for j = 0,N_ELEMENTS(yy)-1 do begin
 
             ; To eliminate coords that are just solar pixels and not fiducials (on disk)
             if crop[xx[i],yy[j]] lt !param.disk_brightness then begin
-            
+                
                 aa = crop[xx[i] - !param.fid_crop_box:xx[i] + !param.fid_crop_box,yy[j] - !param.fid_crop_box:yy[j] + !param.fid_crop_box]
 
                 rowsum=TOTAL(aa,1) ; Summing rows to get a y position profile
@@ -121,14 +125,18 @@ for rr = 0,N_ELEMENTS(inputstruct)-1 do begin
                 endif
 
                 ysum=SMOOTH(rowsum, !param.fidcand_smooth)-rowsum   ;The array we're thresholding
-                bw = WHERE(ysum gt !param.onedsumthresh,n_bw)
+                
+                
+                
+                bw = WHERE(ysum gt atat,n_bw)
+                ; atat = 30 if looking at reg 2
 
                 xsum=SMOOTH(colsum, !param.fidcand_smooth)-colsum
-                dw = WHERE(xsum gt !param.onedsumthresh,n_dw)
-
+                dw = WHERE(xsum gt atat,n_dw)
+; if rr eq 1 then stop
                 if n_bw ne 0 and n_dw ne 0 then begin
                         ; tmp[xx[i]-1:xx[i]+1,yy[j]-1:yy[j]+1]=255
-                        ; tmp[xx[i],yy[j]]=255
+                        
                         ; window,0
                         ; cgimage,aa,/k
 
@@ -172,22 +180,23 @@ for rr = 0,N_ELEMENTS(inputstruct)-1 do begin
                         
                         result = parapeak(z)
                         
+                        print,
                         ; Offset the subpixel location correctly
                         fidpos[k].subx = maxx + result[0] + xx[i] - !param.fid_crop_box
                         fidpos[k].suby = maxy + result[1] + yy[j] - !param.fid_crop_box
-                        
+                        tmp[fidpos[k].subx,fidpos[k].suby]=255
                         k++
                 endif
-                if k eq N_ELEMENTS(xx)>N_ELEMENTS(yy) then break                
-                ; if k eq FACTORIAL(N_ELEMENTS(xx)>N_ELEMENTS(yy)) then break
+                ; if k eq N_ELEMENTS(xx)>N_ELEMENTS(yy) then break                
+                if k eq FACTORIAL(N_ELEMENTS(xx)>N_ELEMENTS(yy)) then break
             endif
         endfor
     endfor
     ; stop
-    ; window,inputstruct[rr].reg
-    ; cgimage,tmp,/k
+    window,inputstruct[rr].reg
+    cgimage,tmp,/k
     *(fidarr[rr])=CREATE_STRUCT('reg',inputstruct[rr].reg,'fidarr',fidpos)  
 endfor
-
+stop
 RETURN,fidarr
 end
