@@ -45,11 +45,11 @@ w1_p2_w3 = mrdfits('../fits_files/w1_p2_w3.fits',/sil)
 p1_w3 = mrdfits('../fits_files/p1_w3.fits',/sil)
 p1_w2 = mrdfits('../fits_files/p1_w2.fits',/sil)
 w1_p3 = mrdfits('../fits_files/w1_p3.fits',/sil)
-albsun = mrdfits('../fits_files/albsun.fits',/sil)
+brightsun = mrdfits('../fits_files/albsun.fits',/sil)
 corner = mrdfits('../fits_files/corner.fits',/sil)
 corner2 = mrdfits('../fits_files/corner2.fits',/sil)
 corner3 = mrdfits('../fits_files/corner3.fits',/sil)
-somesun = mrdfits('sun2.fits',/sil)
+dimsun = mrdfits('sun2.fits',/sil)
 tritest = mrdfits('tritest.fits',/sil)
 
 ; Take your pick of which to center
@@ -68,17 +68,10 @@ startimage=wholeimage
 ; startimage=p1_w3
 ; startimage=p1_w2
 ; startimage=w1_p3
-; startimage = albsun
-startimage = somesun
+; startimage = brightsun   ;no param list for this one
+startimage = dimsun
 ; startimage = tritest
 
-; alright gay shit, if I'm using tritest I have to use different parameters
-; !param.disk_brightness -> 110
-; !param.onedsumthresh -> 150
-; secondary smoothing parameter -> 15
-; a = partialcenter(corner)
-
-; how to set params based on startimage?
 ; profiler
 ; profiler,/system
 
@@ -86,7 +79,7 @@ startimage = somesun
 
 
 tic
-; defparams, 'pblock_alb3sun.txt'
+; defparams, 'pblock_albtritest.txt'
 defparams, 'pblock_albdimsun.txt'
 ; defparams, 'pblock_orig_small.txt'
 toc

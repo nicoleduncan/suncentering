@@ -32,7 +32,6 @@ arr = DERIV(SMOOTH(a, !param.n_smooth, /edge_truncate))
 
 if !param.peakfind_buff eq 13000 then arr = arr[0:-10000]
 
-
 if nsuns gt 1 then begin
     for i = 0,nsuns-1 do begin
         peakarr[i] = MEAN(WHERE(arr eq MAX(arr)))

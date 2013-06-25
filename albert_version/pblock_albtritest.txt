@@ -12,5 +12,5 @@ disk_brightness 110
 fid_crop_box 15
 fid_smooth_candidates 15
 peakfind_buff 13000
-rough1dsum_thresh 1
 fidcand_smooth 10
+rough1dsum_thresh 1

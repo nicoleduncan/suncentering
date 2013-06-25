@@ -6,6 +6,7 @@ FUNCTION para_fid, inputimage, inputstruct
 ; .001 to execute if using parapeak
 
 fidarr = PTRARR(N_ELEMENTS(inputstruct),/allocate_heap)
+
 for rr = 0,N_ELEMENTS(inputstruct)-1 do begin
     k=0
     z=FLTARR(3,3,/nozero)
@@ -13,26 +14,13 @@ for rr = 0,N_ELEMENTS(inputstruct)-1 do begin
     ; cropped-down image of sun
     crop = FLOAT(inputimage[inputstruct[rr].limbxpos - !param.crop_box:inputstruct[rr].limbxpos + !param.crop_box,inputstruct[rr].limbypos - !param.crop_box:inputstruct[rr].limbypos + !param.crop_box])
 
-    ; crop = FLOAT(inputimage[inputstruct[rr].limbxpos - 40:inputstruct[rr].limbxpos + 40,inputstruct[rr].limbypos - 40:inputstruct[rr].limbypos + 40])
-
-
-
-
-
-
-
-    ; Do something where the bright pixel is exempt
+    ; So that the brightest peak will be the average of the adjacent 4 pixels
     a = [where(crop eq max(crop))]
 
     xa = a mod (size(crop,/dim))[0]
     xy = a / (size(crop,/dim))[0]
 
     crop[xa,xy]=mean([crop[xa,xy-1],crop[xa,xy+1],crop[xa-1,xy],crop[xa+1,xy]])
-
-
-
-
-
 
 
     ; plots of x and y totals to identify rows/columns of fiducials
@@ -42,6 +30,9 @@ for rr = 0,N_ELEMENTS(inputstruct)-1 do begin
     ; array of differences between sum profile and smoothed sum profile
     ysums = yt - SMOOTH(yt, !param.fid_smooth_candidates)
     xsums = xt - SMOOTH(xt, !param.fid_smooth_candidates)
+
+
+    ; Stupid thing just for switching between albert's and our image
 
     ; Identify where it looks like a fiducial
     if !param.rough1dsum_thresh eq 1 then begin
@@ -115,7 +106,7 @@ for rr = 0,N_ELEMENTS(inputstruct)-1 do begin
                 ; !p.multi=0
                 ; if rr eq 2 then stop
 
-                if !param.rough1dsum_thresh eq 2 then begin
+                if !param.rough1dsum_thresh ne 1 then begin
                     colsum = colsum[where(colsum gt fidcand_thresh)]
                     rowsum = rowsum[where(rowsum gt fidcand_thresh)]
                 endif
@@ -153,7 +144,7 @@ for rr = 0,N_ELEMENTS(inputstruct)-1 do begin
                         ; using col/rowsum above 1k is iffy
                         ; using dif threshold is iffy
                         ; As long as we have 3 though, we should be ok?
-; stop
+
                         fidpos[k].x=xx[i]
                         fidpos[k].y=yy[j]
 
