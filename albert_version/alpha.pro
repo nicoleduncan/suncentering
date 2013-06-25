@@ -70,7 +70,7 @@ startimage=wholeimage
 ; startimage=w1_p3
 ; startimage = brightsun   ;no param list for this one
 startimage = dimsun
-; startimage = tritest
+startimage = tritest
 
 ; profiler
 ; profiler,/system
@@ -79,8 +79,8 @@ startimage = dimsun
 
 
 tic
-; defparams, 'pblock_albtritest.txt'
-defparams, 'pblock_albdimsun.txt'
+defparams, 'pblock_albtritest.txt'
+; defparams, 'pblock_albdimsun.txt'
 ; defparams, 'pblock_orig_small.txt'
 toc
 ; .0004 to here
@@ -141,6 +141,15 @@ window,0
 cgimage,tmpimage,/k
 window,1
 cgimage,atmp,/k
+
+
+
+
+
+; cgimage,startimage[limbfittedcentroids[0].limbxpos- !param.crop_box:limbfittedcentroids[0].limbxpos+ !param.crop_box,limbfittedcentroids[0].limbypos- !param.crop_box:limbfittedcentroids[0].limbypos+ !param.crop_box],output='tritest_reg1.eps',/k
+; cgimage,startimage[limbfittedcentroids[1].limbxpos- !param.crop_box:limbfittedcentroids[1].limbxpos+ !param.crop_box,limbfittedcentroids[1].limbypos- !param.crop_box:limbfittedcentroids[1].limbypos+ !param.crop_box],output='tritest_reg2.eps',/k
+; cgimage,startimage[limbfittedcentroids[2].limbxpos- !param.crop_box:limbfittedcentroids[2].limbxpos+ !param.crop_box,limbfittedcentroids[2].limbypos- !param.crop_box:limbfittedcentroids[2].limbypos+ !param.crop_box],output='tritest_reg3.eps',/k
+
 stop
 
 end
