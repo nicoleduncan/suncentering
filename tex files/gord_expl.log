@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013) (format=pdflatex 2013.6.20)  25 JUN 2013 00:19
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013) (format=pdflatex 2013.6.20)  25 JUN 2013 00:49
 entering extended mode
  \write18 enabled.
  %&-line parsing enabled.
@@ -395,7 +395,7 @@ Package caption Info: hyperref package is loaded.
 \c@subfigure=\count116
 \c@subtable=\count117
 )
-(/usr/local/texlive/2013/../texmf-local/tex/latex/deluxetable/deluxetable.sty
+(/usr/local/texlive/2013/../texmf-local/tex/latex/local/deluxetable.sty
 Package: deluxetable 
 \pt@box=\box29
 \pt@width=\dimen137
@@ -558,11 +558,11 @@ Package pdftex.def Info: ../plots_tables_images/tritest.jpg used on input line
 
  <../plots_tables_images/tritest.jpg>]
 Package epstopdf Info: Source file: <../plots_tables_images/sortedarray.eps>
-(epstopdf)                    date: 2013-06-15 23:26:00
+(epstopdf)                    date: 2013-06-13 11:59:27
 (epstopdf)                    size: 405862 bytes
 (epstopdf)             Output file: <../plots_tables_images/sortedarray-eps-con
 verted-to.pdf>
-(epstopdf)                    date: 2013-06-15 23:26:00
+(epstopdf)                    date: 2013-06-13 11:59:47
 (epstopdf)                    size: 66928 bytes
 (epstopdf)             Command: <epstopdf --outfile=../plots_tables_images/sort
 edarray-eps-converted-to.pdf ../plots_tables_images/sortedarray.eps>
@@ -578,11 +578,11 @@ Package pdftex.def Info: ../plots_tables_images/sortedarray-eps-converted-to.pd
 f used on input line 102.
 (pdftex.def)             Requested size: 407.6684pt x 249.80026pt.
 Package epstopdf Info: Source file: <../plots_tables_images/tritest_reg1.eps>
-(epstopdf)                    date: 2013-06-24 23:48:11
+(epstopdf)                    date: 2013-06-25 00:48:53
 (epstopdf)                    size: 71679 bytes
 (epstopdf)             Output file: <../plots_tables_images/tritest_reg1-eps-co
 nverted-to.pdf>
-(epstopdf)                    date: 2013-06-25 00:00:27
+(epstopdf)                    date: 2013-06-25 00:48:53
 (epstopdf)                    size: 19763 bytes
 (epstopdf)             Command: <epstopdf --outfile=../plots_tables_images/trit
 est_reg1-eps-converted-to.pdf ../plots_tables_images/tritest_reg1.eps>
@@ -608,11 +608,11 @@ Underfull \hbox (badness 10000) in paragraph at lines 113--113
  []
 
 Package epstopdf Info: Source file: <../plots_tables_images/tritest_reg2.eps>
-(epstopdf)                    date: 2013-06-24 23:48:11
+(epstopdf)                    date: 2013-06-25 00:48:53
 (epstopdf)                    size: 61721 bytes
 (epstopdf)             Output file: <../plots_tables_images/tritest_reg2-eps-co
 nverted-to.pdf>
-(epstopdf)                    date: 2013-06-25 00:00:27
+(epstopdf)                    date: 2013-06-25 00:48:53
 (epstopdf)                    size: 15077 bytes
 (epstopdf)             Command: <epstopdf --outfile=../plots_tables_images/trit
 est_reg2-eps-converted-to.pdf ../plots_tables_images/tritest_reg2.eps>
@@ -633,11 +633,11 @@ Overfull \hbox (40.76793pt too wide) in paragraph at lines 117--118
  []
 
 Package epstopdf Info: Source file: <../plots_tables_images/tritest_reg3.eps>
-(epstopdf)                    date: 2013-06-24 23:48:11
+(epstopdf)                    date: 2013-06-25 00:48:53
 (epstopdf)                    size: 60111 bytes
 (epstopdf)             Output file: <../plots_tables_images/tritest_reg3-eps-co
 nverted-to.pdf>
-(epstopdf)                    date: 2013-06-25 00:00:27
+(epstopdf)                    date: 2013-06-25 00:48:53
 (epstopdf)                    size: 11258 bytes
 (epstopdf)             Command: <epstopdf --outfile=../plots_tables_images/trit
 est_reg3-eps-converted-to.pdf ../plots_tables_images/tritest_reg3.eps>
@@ -666,11 +666,11 @@ _images/tritest_reg1-eps-converted-to.pdf> <../plots_tables_images/tritest_reg2
 -eps-converted-to.pdf> <../plots_tables_images/tritest_reg3-eps-converted-to.pd
 f>]
 Package epstopdf Info: Source file: <../plots_tables_images/cutcorner.eps>
-(epstopdf)                    date: 2013-06-05 12:17:08
+(epstopdf)                    date: 2013-05-31 13:52:09
 (epstopdf)                    size: 1474800 bytes
 (epstopdf)             Output file: <../plots_tables_images/cutcorner-eps-conve
 rted-to.pdf>
-(epstopdf)                    date: 2013-06-05 12:17:08
+(epstopdf)                    date: 2013-05-31 13:53:22
 (epstopdf)                    size: 13201 bytes
 (epstopdf)             Command: <epstopdf --outfile=../plots_tables_images/cutc
 orner-eps-converted-to.pdf ../plots_tables_images/cutcorner.eps>
@@ -692,11 +692,11 @@ Overfull \hbox (61.15088pt too wide) in paragraph at lines 148--149
 
 Package epstopdf Info: Source file: <../plots_tables_images/cutcornerwborder.ep
 s>
-(epstopdf)                    date: 2013-06-05 12:17:08
+(epstopdf)                    date: 2013-05-31 13:52:09
 (epstopdf)                    size: 1368703 bytes
 (epstopdf)             Output file: <../plots_tables_images/cutcornerwborder-ep
 s-converted-to.pdf>
-(epstopdf)                    date: 2013-06-05 12:17:08
+(epstopdf)                    date: 2013-05-31 13:53:22
 (epstopdf)                    size: 14468 bytes
 (epstopdf)             Command: <epstopdf --outfile=../plots_tables_images/cutc
 ornerwborder-eps-converted-to.pdf ../plots_tables_images/cutcornerwborder.eps>
@@ -730,12 +730,12 @@ Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 181.
  ) 
 Here is how much of TeX's memory you used:
  11197 strings out of 493315
- 172502 string characters out of 6137904
+ 172484 string characters out of 6137904
  396167 words of memory out of 5000000
  14440 multiletter control sequences out of 15000+600000
  19453 words of font info for 53 fonts, out of 8000000 for 9000
  957 hyphenation exceptions out of 8191
- 48i,8n,52p,892b,1754s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 48i,8n,52p,975b,1754s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/local/texlive/2013/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc}
 </usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></
 usr/local/texlive/2013/texmf-dist/fonts/type1/public/cm-super/sfrm0800.pfb></us
@@ -750,7 +750,7 @@ e/2013/texmf-dist/fonts/type1/public/cm-super/sfsx1440.pfb></usr/local/texlive/
 2013/texmf-dist/fonts/type1/public/cm-super/sfsx2074.pfb></usr/local/texlive/20
 13/texmf-dist/fonts/type1/public/cm-super/sfti1000.pfb></usr/local/texlive/2013
 /texmf-dist/fonts/type1/public/cm-super/sftt1000.pfb>
-Output written on gord_expl.pdf (4 pages, 465407 bytes).
+Output written on gord_expl.pdf (4 pages, 465456 bytes).
 PDF statistics:
  176 PDF objects out of 1000 (max. 8388607)
  142 compressed objects within 2 object streams

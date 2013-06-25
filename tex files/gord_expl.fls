@@ -101,8 +101,8 @@ INPUT /usr/local/texlive/2013/texmf-dist/tex/latex/caption/caption.sty
 INPUT /usr/local/texlive/2013/texmf-dist/tex/latex/caption/caption.sty
 INPUT /usr/local/texlive/2013/texmf-dist/tex/latex/caption/caption3.sty
 INPUT /usr/local/texlive/2013/texmf-dist/tex/latex/caption/caption3.sty
-INPUT /usr/local/texlive/2013/../texmf-local/tex/latex/deluxetable/deluxetable.sty
-INPUT /usr/local/texlive/2013/../texmf-local/tex/latex/deluxetable/deluxetable.sty
+INPUT /usr/local/texlive/2013/../texmf-local/tex/latex/local/deluxetable.sty
+INPUT /usr/local/texlive/2013/../texmf-local/tex/latex/local/deluxetable.sty
 INPUT /usr/local/texlive/2013/texmf-dist/tex/latex/tools/verbatim.sty
 INPUT /usr/local/texlive/2013/texmf-dist/tex/latex/tools/verbatim.sty
 INPUT /usr/local/texlive/2013/texmf-dist/tex/latex/fancyvrb/fancyvrb.sty
