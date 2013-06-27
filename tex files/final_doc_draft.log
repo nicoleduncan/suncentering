@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013) (format=pdflatex 2013.6.20)  21 JUN 2013 16:31
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013) (format=pdflatex 2013.6.20)  25 JUN 2013 10:19
 entering extended mode
  \write18 enabled.
  %&-line parsing enabled.
@@ -395,7 +395,7 @@ Package caption Info: hyperref package is loaded.
 \c@subfigure=\count116
 \c@subtable=\count117
 )
-(/usr/local/texlive/2013/../texmf-local/tex/latex/local/deluxetable.sty
+(/usr/local/texlive/2013/../texmf-local/tex/latex/deluxetable/deluxetable.sty
 Package: deluxetable 
 \pt@box=\box29
 \pt@width=\dimen137
@@ -662,30 +662,25 @@ Overfull \hbox (61.15088pt too wide) in paragraph at lines 244--245
 
 [3]
 Package epstopdf Info: Source file: <../plots_tables_images/5chords.eps>
-(epstopdf)                    date: 2013-06-13 14:01:34
-(epstopdf)                    size: 72434 bytes
+(epstopdf)                    date: 2013-06-25 10:17:49
+(epstopdf)                    size: 71604 bytes
 (epstopdf)             Output file: <../plots_tables_images/5chords-eps-convert
 ed-to.pdf>
-(epstopdf)                    date: 2013-06-13 14:25:58
-(epstopdf)                    size: 20981 bytes
+(epstopdf)                    date: 2013-06-25 10:18:13
+(epstopdf)                    size: 20890 bytes
 (epstopdf)             Command: <epstopdf --outfile=../plots_tables_images/5cho
 rds-eps-converted-to.pdf ../plots_tables_images/5chords.eps>
 (epstopdf)             \includegraphics on input line 265.
 Package epstopdf Info: Output file is already uptodate.
 
-<../plots_tables_images/5chords-eps-converted-to.pdf, id=147, 552.0625pt x 338.
-26375pt>
+<../plots_tables_images/5chords-eps-converted-to.pdf, id=147, 552.0625pt x 552.
+0625pt>
 File: ../plots_tables_images/5chords-eps-converted-to.pdf Graphic file (type pd
 f)
  <use ../plots_tables_images/5chords-eps-converted-to.pdf>
 Package pdftex.def Info: ../plots_tables_images/5chords-eps-converted-to.pdf us
 ed on input line 265.
-(pdftex.def)             Requested size: 264.98508pt x 162.3699pt.
-
-Overfull \hbox (61.15088pt too wide) in paragraph at lines 265--266
- [][] 
- []
-
+(pdftex.def)             Requested size: 183.44952pt x 183.45317pt.
 Package epstopdf Info: Source file: <../plots_tables_images/redlimbs.eps>
 (epstopdf)                    date: 2013-06-13 14:20:06
 (epstopdf)                    size: 8046 bytes
@@ -1855,7 +1850,7 @@ Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 613.
  ) 
 Here is how much of TeX's memory you used:
  11511 strings out of 493315
- 185728 string characters out of 6137904
+ 185746 string characters out of 6137904
  385167 words of memory out of 5000000
  14678 multiletter control sequences out of 15000+600000
  20221 words of font info for 54 fonts, out of 8000000 for 9000
@@ -1876,7 +1871,7 @@ e/2013/texmf-dist/fonts/type1/public/cm-super/sfsx1200.pfb></usr/local/texlive/
 13/texmf-dist/fonts/type1/public/cm-super/sfsx2074.pfb></usr/local/texlive/2013
 /texmf-dist/fonts/type1/public/cm-super/sfti1000.pfb></usr/local/texlive/2013/t
 exmf-dist/fonts/type1/public/cm-super/sftt1000.pfb>
-Output written on final_doc_draft.pdf (10 pages, 654596 bytes).
+Output written on final_doc_draft.pdf (10 pages, 654750 bytes).
 PDF statistics:
  520 PDF objects out of 1000 (max. 8388607)
  391 compressed objects within 4 object streams

@@ -8,11 +8,19 @@
 \usepackage{enumerate}
 \usepackage{graphicx}
 \usepackage[colorlinks=true,urlcolor=blue]{hyperref}
+\usepackage{caption}
 \usepackage{subcaption}
+\usepackage{floatrow}
 \usepackage{deluxetable}
 \usepackage{verbatim}
 \usepackage{fancyvrb}
 \usepackage{listings}
+\usepackage{calc}
+
+\floatsetup{ 
+  heightadjust=object,
+  valign=t
+}
 
 \definecolor{Light}{gray}{.90}
 \sethlcolor{Light}
@@ -46,10 +54,11 @@ escapeinside={\%*}{*)}          % if you want to add a comment within your code
 \maketitle
 \pagenumbering{Roman}
 \tableofcontents
+\addcontentsline{toc}{section}{Introduction}
 \clearpage
 \pagenumbering{arabic}
 
-\section{Introduction} % (fold)
+\section*{Introduction} % (fold)
 \label{sec:introduction}
 This pdf is meant to illustrate what each step of the code is doing. The code is split up into four major parts. Preparing parameters, thresholding image to find suns, limb-fitting whole suns, and finding fiducials. 
 % section introduction (end)
@@ -107,24 +116,39 @@ After we read in the necessary parameters, we turn our attention to thresholding
 Using these three thresholds, we create separate masks, one for each sun. 
 
 \begin{figure}[!ht]
-    \begin{subfigure}[b]{.3\linewidth}
-        \centering
-        \includegraphics[width=1.3\textwidth]{../plots_tables_images/tritest_reg1}
-        \caption{100\% brightness region, henceforth Region 1}
-    \end{subfigure}
-    \begin{subfigure}[b]{.3\linewidth}
-        \centering
-        \includegraphics[width=1.3\textwidth]{../plots_tables_images/tritest_reg2}
-        \caption{50\% brightness region, henceforth Region 2}
-    \end{subfigure}
-    \begin{subfigure}[b]{.3\linewidth}
-        \centering
-        \includegraphics[width=1.3\textwidth]{../plots_tables_images/tritest_reg3}
-        \caption{25\% brightness region, henceforth Region 3}
-    \end{subfigure}
-    \caption{}
-    \label{triplecrop}
+\ffigbox{
+    \begin{subfloatrow}
+        \ffigbox[.6\FBwidth]% Width of subfloat
+        {
+        \includegraphics[width=\linewidth]{../plots_tables_images/tritest_reg1}
+        }
+        {
+        \subcaption{100\% brightness region, henceforth Region 1}
+        }
+    \end{subfloatrow}
+    \begin{subfloatrow}
+        \ffigbox[.6\FBwidth]% Width of subfloat
+        {
+        \includegraphics[width=\linewidth]{../plots_tables_images/tritest_reg2}
+        }
+        {
+        \subcaption{50\% brightness region, henceforth Region 2}
+        }
+    \end{subfloatrow}
+        \begin{subfloatrow}
+        \ffigbox[.6\FBwidth]% Width of subfloat
+        {
+        \includegraphics[width=\linewidth]{../plots_tables_images/tritest_reg3}
+        }
+        {
+        \subcaption{25\% brightness region, henceforth Region 3}
+        }
+    \end{subfloatrow}
+}
+{\caption{}
+\label{triplecrop}}
 \end{figure}
+
 % section thresholding_image (end)
 
 \subsection{Quick mask centering} % (fold)
@@ -139,26 +163,34 @@ Using these three thresholds, we create separate masks, one for each sun.
 
 	We find the centers of each cropped region in Figure \ref{triplecrop} using a simple masking method. With the centroid determined by a simple masking method, we have to make sure that the center is from a whole sun. The process so far has not taken into account any spatial information so the next step is to look at a border region of the mask. 
 
-
 \begin{figure}[!ht]
-    \centering
-    \hspace{-1.0in}
-    \begin{subfigure}[b]{.45\linewidth}
-        \centering
-        \includegraphics[width=1.3\textwidth]{../plots_tables_images/cutcorner.eps}
-        \caption{What our mask should look like - side of black triangle is 1/4 of image width}
+\ffigbox{
+    \begin{subfloatrow}
+        \ffigbox[\FBwidth]% Width of subfloat
+        {
+        \includegraphics[width=.9\linewidth]{../plots_tables_images/cutcorner.eps}
+        }
+        {
+        \subcaption{What our mask should look like - side of black triangle is 1/4 of image width}
         \label{noborder}
-    \end{subfigure}
-    \hspace{.5in}
-    \begin{subfigure}[b]{.45\linewidth}
-        \centering
-        \includegraphics[width=1.3\textwidth]{../plots_tables_images/cutcornerwborder.eps}
-        \caption{A proposed mask that looks within a certain distance form the border.}
+        }
+    \end{subfloatrow}
+    \begin{subfloatrow}
+        \ffigbox[\FBwidth]% Width of subfloat
+        {
+        \includegraphics[width=.9\linewidth]{../plots_tables_images/cutcornerwborder.eps}
+        }
+        {
+        \subcaption{A proposed mask that looks within a certain distance form the border.}
         \label{aborder}
-    \end{subfigure}
-    \caption{The bottom corners will never see any data; the border mask takes into account the distance from the hypotenuse of the bottom corners}
-    \label{cuttingcorners}
+        }
+    \end{subfloatrow}
+}
+{\caption{The bottom corners will never see any data; the border mask takes into account the distance from the hypotenuse of the bottom corners}
+\label{cuttingcorners}
+}
 \end{figure}
+
 
 If the center we computed with the mask method is within a certain distance to the edge of the image (as shown in Figure \ref{aborder}), we mark that solar region as ``\emph{partial}'' and cease further analysis for that particular brightness sun. \\
 \indent Once we have our list of whole suns along with their masked centers, we proceed to fitting the solar limbs to find a more accurate center.
@@ -167,15 +199,331 @@ If the center we computed with the mask method is within a certain distance to t
 \section{Limb Fitting} % (fold)
 \label{sec:limb_fitting}
 
+We cut 5 chords centered around the masked center position in both axes (See Figure \ref{chords}). With the same threshold found in \S \ref{sec:thresholding_image}, we look at where the chord profile crosses the threshold (See Figure \ref{limbs}). We use a four-pixel limb profile with 2 pixels above the threshold and 2 pixels below the threshold. We then do a linear fit on these four pixels to see where it crosses the threshold. With a pair of limb-fitted threshold crossing points, we create a chord and find it's center. Doing this 5 times, we average the positions of the chord centers to be the limb-fitted center position. 
+
+\begin{figure}[!ht]
+\ffigbox{
+    \begin{subfloatrow}
+        \ffigbox[\FBwidth-2.0cm]% Width of subfloat
+        {
+        \includegraphics[width=.9\linewidth]{../plots_tables_images/5chords.eps}
+        }
+        {
+        \subcaption{The middle chord passes through the center of the sun}
+        \label{chords}
+        }
+    \end{subfloatrow}
+    \begin{subfloatrow}
+        \ffigbox[\FBwidth+2.0cm]% Width of subfloat
+        {
+        \includegraphics[width=.9\linewidth]{../plots_tables_images/redlimbs.eps}
+        }
+        {
+        \subcaption{The indices in red are the pixels we apply a linear fit to see where it crosses the threshold (which is the horizontal line).}
+        \label{limbs}
+        }
+    \end{subfloatrow}
+}
+{\caption{}
+\label{sup}}
+\end{figure}
 
 % section limb_fitting (end)
 
-\section{Finding Ficuials} % (fold)
-\label{sec:finding_ficuials}
+\section{Finding Fiduials} % (fold)
+\label{sec:finding_fiduials}
 
+Now with limb-fitted centers, we re-crop the image to work with (It shouldn't look much different than Figure \ref{triplecrop} if we masked the centers correctly).
+
+\subsection{First 1D Sum} % (fold)
+\label{sub:first_1d_sum}
+
+To find fiducials, we calculate a 1D sum in one direction and look for dips in the array corresponding to fiducials. 
+
+\begin{figure}[!ht]
+\ffigbox{
+    \begin{subfloatrow}
+        \ffigbox[\FBwidth]% Width of subfloat
+        {
+        \includegraphics[width=.9\linewidth]{../plots_tables_images/smooth_expl.eps}
+        }
+        {
+        \subcaption{This is the 1D sum of a solar image. The line in red is the sum smoothed by 10 pixels.}
+        \label{doublelines}
+        }
+    \end{subfloatrow}
+    \begin{subfloatrow}
+        \ffigbox[\FBwidth]% Width of subfloat
+        {
+        \includegraphics[width=.9\linewidth]{../plots_tables_images/smoothcomp.eps}
+        }
+        {
+        \subcaption{We subtract the smoothed profile from the raw data to emphasize dips. Comparisons of the smooth amount change the width and number of the dips, although not really the depth. It says ``Red'' in the title, but it's really blue. Typo.}
+        \label{threshed}
+        }   
+    \end{subfloatrow}
+}
+{
+\caption{}
+\label{smoothed}
+}
+\end{figure}
+
+After thresholding the difference of the 1D sum from it's smoothed counterpart, we identify the column/row positions of fiducials. 
+% subsection first_1d_sum (end)
+
+\subsection{Ruling Out False Fiducial} % (fold)
+\label{sub:ruling_out_false_fiducial}
+
+With a bunch of x and y locations of fiducials, we have to determine which pairs of coordinates are actually fiducials. The first step is to look at each possible pair and eliminate those that are too bright. This affects candidates which are located on the solar disk but do not lie on fiducials. See Figure \ref{rulingout}.
+
+
+\begin{figure}[!ht]
+\ffigbox{
+    \begin{subfloatrow}
+        \ffigbox[\FBwidth]% Width of subfloat
+        {
+        \includegraphics[width=.9\linewidth]{../plots_tables_images/allfid.eps}
+        }
+        {
+        \subcaption{All possible positions of fiducials according to first 1D sum and matching up column/row positions.}
+        }
+    \end{subfloatrow}
+    \begin{subfloatrow}
+        \ffigbox[\FBwidth]% Width of subfloat
+        {
+        \includegraphics[width=.9\linewidth]{../plots_tables_images/dimenough.eps}
+        }
+        {
+        \subcaption{Ruling out values above a certain threshold}
+        }
+    \end{subfloatrow}
+}
+{
+\caption{}
+\label{rulingout}
+}
+\end{figure}
+
+
+Next, for the remaining candidates, we look at the 1D row and column sums to see if there are any obvious dips. Figure \ref{goodfid} is a fiducial candidate with obvious dips in the row/column arrays. Figure \ref{badfid} on the other hand, has a distinctive shape for 1D sums and does not have any obvious dips. Using another thresholding technique, we smooth the 1D sum and look for peaks in the difference of the smoothed 1D sum minus the 1D sum. If there are any pixels above this secondary 1D sum threshold, then the fiducial candidate is considered a bona-fide fiducial.  
+
+\begin{figure}[!ht]
+\ffigbox{
+    \begin{subfloatrow}
+        \ffigbox[\FBwidth]% Width of subfloat
+        {
+        \includegraphics[width=.9\linewidth]{../plots_tables_images/fidcand_test.eps}
+        }
+        {
+        \subcaption{Cropped region of a fidcuail candidate}
+        }
+    \end{subfloatrow}
+    \begin{subfloatrow}
+        \ffigbox[\FBwidth]% Width of subfloat
+        {
+        \includegraphics[width=.9\linewidth]{../plots_tables_images/fidcand_sums.eps}
+        }
+        {
+        \subcaption{1D sums of cropped region}
+        }
+    \end{subfloatrow}
+}
+{
+\caption{}
+\label{goodfid}
+}
+\end{figure}
+
+\begin{figure}[!ht]
+\ffigbox{
+    \begin{subfloatrow}
+        \ffigbox[\FBwidth]% Width of subfloat
+        {
+        \includegraphics[width=.9\linewidth]{../plots_tables_images/badfid.eps}
+        }
+        {
+        \subcaption{Cropped region of a fidcuail candidate}
+        }
+    \end{subfloatrow}
+    \begin{subfloatrow}
+        \ffigbox[\FBwidth]% Width of subfloat
+        {
+        \includegraphics[width=.9\linewidth]{../plots_tables_images/fidcand_sums_falsepos.eps}
+        }
+        {
+        \subcaption{1D sums of cropped region}
+        }
+    \end{subfloatrow}
+}
+{
+\caption{}
+\label{badfid}
+}
+\end{figure}
+% subsection ruling_out_false_fiducial (end)
+
+\subsection{Sub-pixel Fiducial Positions} % (fold)
+\label{sub:sub_pixel_fiducial_positions}
+
+Now that we have a column/row position of a fiducial, we look to find a sub-pixel location of the fiducial. Now, this technique has proven to be more efficient in past iterations of the program and is still under construction.\\
+\indent In earlier versions of the program, we used a 2D convolution filter with a kernel that looks like a fiducial. Areas on the image that look like fiducials have high correlation values and thus peak in the 2D convolved array. Once we had computed the local maxima (which gave us rough fiducial positions), we used 2 1D parabolic fitting procedures to the peak of the local maxima. The location where the two parabolas intersect (since they're perpendicular to each other) is the sub-pixel parabolic fit for the fiducial position.\\
+\indent In this version of the code, we don't have any natural peaks in the 2D image so we have to look for peaks elsewhere. Thankfully, we have peaks in the 1D sums. Instead of using a parabolic fit to the 2D convolution of the image, we fit a parabola to the peak of the 1D sum. Same deal, we look where the two parabolas intersect. I'm honestly not sure if I can do this but for now this is how we're doing it.\\
+\indent After thresholding the peak of the fiducial candidate's 1D sum, we end up with Figure \ref{fiddone}.
+
+\begin{figure}[!ht]
+    \centering
+    \includegraphics[width=.9\textwidth]{../plots_tables_images/fiddone.eps}
+    \caption{Final set of fiducials}
+    \label{fiddone}
+\end{figure}
+
+% subsection sub_pixel_fiducial_positions (end)
 % section finding_ficuials (end)
 
+\section{Final Words} % (fold)
+\label{sec:final_words}
 
+Table \ref{structtable} is an example of how the final data structure is kept. Since the number of fiducials cannot be predetermined and I don't know how to append structure elements within a nested structure, the fiducial positions are kept in a separate pointer structure which takes the form of Table \ref{fidtable}. The structure of the \hl{\texttt{FIDARR}} array is shown in Table \ref{fidposarr}. 
+
+\begin{deluxetable}{clll}
+    \tablecaption{Final data structure of solar region}
+    \tablecolumns{4}
+    \tabletypesize{\scriptsize}
+    \tablewidth{0pt}
+    \tablehead{ 
+      \colhead{Name} %
+    & \colhead{Type} %
+    & \colhead{Value} %
+    & \colhead{Notes}
+    }
+    \startdata
+    XPOS
+    & FLOAT
+    & 875.802
+    & Rough calculation using a simple masking method\\
+    %
+    YPOS
+    & FLOAT
+    & 544.078
+    & ''\\
+    %
+    REG
+    & INT
+    & 1
+    & Region ID \#: 1 is 100\%, 2 is 50\%, 3 is 25\%\\
+    %
+    THRESH
+    & FLOAT
+    & 106.000
+    & Threshold calculated from sorting array and taking derivatives.\\ & & & Used in both finding rough X-Y center as well as the\\ & & & threshold for limb-fitting.\\
+    %
+    PARTIAL
+    & FLOAT
+    & 0.
+    & Flag that determines if the solar region is cut off on the edge or not.\\ & & & 0 means that it is not cut off \\
+    %
+    XSTRIPS
+    & STRUCTURE
+    & -> WHOLEXSTRIPS Array[5]
+    & Strucutre containing the strips of whole solar data\\ & & & bound by a cropped region chosen by XPOS and YPOS\\
+    %
+    YSTRIPS
+    & STRUCTURE
+    & -> WHOLEYSTRIPS Array[5]
+    & ''\\
+    %
+    LIMBXSTRIPS
+    & STRUCTURE
+    & -> LIMBXSTRIPS Array[5]
+    & LIMBSTRIPS contains a pair of arrays, ENDPOINTS and \\ & & & STARTPOINTS that mark the limbs of each strip of data from \\ & & & X/YSTRIPS\\
+    %
+    LIMBYSTRIPS
+    & STRUCTURE
+    & -> LIMBYSTRIPS Array[5]
+    & ''\\
+    %
+    LIMBXPOS
+    & FLOAT
+    & 898.586
+    & Center calculated from LIMBXSTRIPS\\
+    %
+    LIMBYPOS
+    & FLOAT
+    & 541.795
+    & ''\\
+    %
+    NPIX
+    & FLOAT
+    & 26680.0
+    & Number of pixels above threshold. Used to determine if the sun\\
+    & & &was a partial, deprecated.
+    \enddata
+\label{structtable}
+\end{deluxetable}
+
+\begin{deluxetable}{clll}
+    \tablecaption{Structure of pointer containing fiducial positions}
+    \tablecolumns{4}
+    \tabletypesize{\scriptsize}
+    \tablewidth{0pt}
+    \tablehead{ 
+      \colhead{Name} %
+    & \colhead{Type} %
+    & \colhead{Value} %
+    & \colhead{Notes}
+    }
+    \startdata
+    REG
+    & INT
+    & 1
+    & Region ID \#: 1 is 100\%, 2 is 50\%, 3 is 25\%\\
+    %
+    FIDARR
+    & STRUCT
+    & -> FIDPOS Array[11]
+    & Structure containing the fiducial positions and sub-pixel positions
+    \enddata
+\label{fidtable}
+\end{deluxetable}
+
+
+\begin{deluxetable}{clll}
+    \tablecaption{Structure of \hl{\texttt{FIDARR}} structure}
+    \tablecolumns{4}
+    \tabletypesize{\scriptsize}
+    \tablewidth{0pt}
+    \tablehead{ 
+      \colhead{Name} %
+    & \colhead{Type} %
+    & \colhead{Value} %
+    & \colhead{Notes}
+    }
+    \startdata
+    X
+    & FLOAT
+    & 51.0000
+    & X position found through first set of 1D sums\\
+    %
+    Y
+    & FLOAT
+    & 133.000
+    & ''\\
+    %
+    SUBX
+    & FLOAT
+    & 51.8438
+    & X position found with parabolic peak-fitting of second 1D sum\\
+    %
+    SUBY
+    & FLOAT
+    & 134.291
+    & ''
+    \enddata
+\label{fidposarr}
+\end{deluxetable}
+
+% section final_words (end)
 
 
 \end{document}

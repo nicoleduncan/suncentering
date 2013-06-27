@@ -14,3 +14,4 @@ fid_smooth_candidates 15
 peakfind_buff 13000
 fidcand_smooth 10
 rough1dsum_thresh 1
+chord_thickness 5

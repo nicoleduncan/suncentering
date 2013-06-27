@@ -89,12 +89,15 @@ for rr = 0,N_ELEMENTS(inputstruct)-1 do begin
 
     fidpos = REPLICATE({fidpos,x:0.,y:0.,subx:0.,suby:0.},N_ELEMENTS(xx)>N_ELEMENTS(yy))
     ; tmp = crop
+    ; all = crop
+    ; dim = crop
     ; Loop through each x and y position combination 
     for i = 0,N_ELEMENTS(xx)-1 do begin
         for j = 0,N_ELEMENTS(yy)-1 do begin
-
+            ; all[xx[i]-1:xx[i]+1,yy[j]-1:yy[j]+1]=255
             ; To eliminate coords that are just solar pixels and not fiducials (on disk)
             if crop[xx[i],yy[j]] lt !param.disk_brightness then begin
+                ; dim[xx[i]-1:xx[i]+1,yy[j]-1:yy[j]+1]=255
             
                 aa = crop[xx[i] - !param.fid_crop_box:xx[i] + !param.fid_crop_box,yy[j] - !param.fid_crop_box:yy[j] + !param.fid_crop_box]
 
@@ -116,7 +119,13 @@ for rr = 0,N_ELEMENTS(inputstruct)-1 do begin
 
                 xsum=SMOOTH(colsum, !param.fidcand_smooth)-colsum
                 dw = WHERE(xsum gt !param.onedsumthresh,n_dw)
-
+                ; cgimage,aa,/k
+                ; !p.multi=[0,1,2]
+                ; ps_start,filename='fidcand_sums.eps',/encap,xsize=8,ysize=8,/inches
+                ; plot,rowsum,title='Row Sums',charsize=1.1
+                ; plot,colsum,title='Column Sums',charsize=1.1
+                ; ps_end
+                ; !p.multi=0
                 if n_bw ne 0 and n_dw ne 0 then begin
                         ; tmp[xx[i]-1:xx[i]+1,yy[j]-1:yy[j]+1]=255
                         ; tmp[xx[i],yy[j]]=255
@@ -166,7 +175,7 @@ for rr = 0,N_ELEMENTS(inputstruct)-1 do begin
                         ; Offset the subpixel location correctly
                         fidpos[k].subx = maxx + result[0] + xx[i] - !param.fid_crop_box
                         fidpos[k].suby = maxy + result[1] + yy[j] - !param.fid_crop_box
-                        
+                        ; tmp[(fidpos[k].subx)-1:(fidpos[k].subx)+1,(fidpos[k].suby)-1:(fidpos[k].suby)+1]=255
                         k++
                 endif
                 if k eq N_ELEMENTS(xx)>N_ELEMENTS(yy) then break                
@@ -174,9 +183,8 @@ for rr = 0,N_ELEMENTS(inputstruct)-1 do begin
             endif
         endfor
     endfor
-    ; stop
-    ; window,inputstruct[rr].reg
     ; cgimage,tmp,/k
+    ; stop
     *(fidarr[rr])=CREATE_STRUCT('reg',inputstruct[rr].reg,'fidarr',fidpos)  
 endfor
 

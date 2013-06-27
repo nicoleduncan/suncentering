@@ -68,6 +68,14 @@ for rr = 0,N_ELEMENTS(inputstruct)-1 do begin
                atat= 5
            end
         endcase   
+; ps_start,filename='eee.eps',/encap,/color
+        ; a=plot(xt,title='Black is 1D sum, red is smoothed by 5')
+        ; a=plot(SMOOTH(xt, !param.fid_smooth_candidates),/overplot,color='red')
+        ; a.save,'eee.eps'
+
+        ; a=plot(xsums,title='Difference of 1D sum and smoothed 1D sum')
+        ; a.save,'fff.eps'        
+        ; ps_end
 
         ; Have to rule out the side peaks, good thing they're always the 2 lowest peaks
         wmin = where(xsums eq min(xsums)) 
@@ -118,7 +126,6 @@ for rr = 0,N_ELEMENTS(inputstruct)-1 do begin
                 ; plot,colsum
                 ; !p.multi=0
                 ; if rr eq 2 then stop
-
                 if !param.rough1dsum_thresh eq 2 then begin
                     colsum = colsum[where(colsum gt fidcand_thresh)]
                     rowsum = rowsum[where(rowsum gt fidcand_thresh)]
@@ -133,8 +140,10 @@ for rr = 0,N_ELEMENTS(inputstruct)-1 do begin
 
                 xsum=SMOOTH(colsum, !param.fidcand_smooth)-colsum
                 dw = WHERE(xsum gt atat,n_dw)
+; stop
 ; if rr eq 1 then stop
                 if n_bw ne 0 and n_dw ne 0 then begin
+
                         ; tmp[xx[i]-1:xx[i]+1,yy[j]-1:yy[j]+1]=255
                         
                         ; window,0
@@ -180,7 +189,6 @@ for rr = 0,N_ELEMENTS(inputstruct)-1 do begin
                         
                         result = parapeak(z)
                         
-                        print,
                         ; Offset the subpixel location correctly
                         fidpos[k].subx = maxx + result[0] + xx[i] - !param.fid_crop_box
                         fidpos[k].suby = maxy + result[1] + yy[j] - !param.fid_crop_box
@@ -193,10 +201,10 @@ for rr = 0,N_ELEMENTS(inputstruct)-1 do begin
         endfor
     endfor
     ; stop
-    window,inputstruct[rr].reg
-    cgimage,tmp,/k
+    ; window,inputstruct[rr].reg
+    ; cgimage,tmp,/k
     *(fidarr[rr])=CREATE_STRUCT('reg',inputstruct[rr].reg,'fidarr',fidpos)  
 endfor
-stop
+; stop
 RETURN,fidarr
 end

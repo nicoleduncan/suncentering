@@ -146,9 +146,20 @@ cgimage,atmp,/k
 
 
 
-; cgimage,startimage[limbfittedcentroids[0].limbxpos- !param.crop_box:limbfittedcentroids[0].limbxpos+ !param.crop_box,limbfittedcentroids[0].limbypos- !param.crop_box:limbfittedcentroids[0].limbypos+ !param.crop_box],output='tritest_reg1.eps',/k
-; cgimage,startimage[limbfittedcentroids[1].limbxpos- !param.crop_box:limbfittedcentroids[1].limbxpos+ !param.crop_box,limbfittedcentroids[1].limbypos- !param.crop_box:limbfittedcentroids[1].limbypos+ !param.crop_box],output='tritest_reg2.eps',/k
-; cgimage,startimage[limbfittedcentroids[2].limbxpos- !param.crop_box:limbfittedcentroids[2].limbxpos+ !param.crop_box,limbfittedcentroids[2].limbypos- !param.crop_box:limbfittedcentroids[2].limbypos+ !param.crop_box],output='tritest_reg3.eps',/k
+; cgimage,startimage[limbfittedcentroids[0].limbxpos- !param.crop_box:limbfittedcentroids[0].limbxpos+ !param.crop_box,limbfittedcentroids[0].limbypos- !param.crop_box:limbfittedcentroids[0].limbypos+ !param.crop_box],output='tritest_reg1.eps',/k,/display
+; cgimage,startimage[limbfittedcentroids[1].limbxpos- !param.crop_box:limbfittedcentroids[1].limbxpos+ !param.crop_box,limbfittedcentroids[1].limbypos- !param.crop_box:limbfittedcentroids[1].limbypos+ !param.crop_box],output='tritest_reg2.eps',/k,/display
+; cgimage,startimage[limbfittedcentroids[2].limbxpos- !param.crop_box:limbfittedcentroids[2].limbxpos+ !param.crop_box,limbfittedcentroids[2].limbypos- !param.crop_box:limbfittedcentroids[2].limbypos+ !param.crop_box],output='tritest_reg3.eps',/k,/display
+
+; aa = startimage
+
+; aa[*,limbfittedcentroids[0].limbypos -20]=255
+; aa[*,limbfittedcentroids[0].limbypos -10]=255
+; aa[*,limbfittedcentroids[0].limbypos]=255
+; aa[*,limbfittedcentroids[0].limbypos +10]=255
+; aa[*,limbfittedcentroids[0].limbypos +20]=255
+
+; aa = aa[limbfittedcentroids[0].limbxpos- !param.crop_box:limbfittedcentroids[0].limbxpos+ !param.crop_box,limbfittedcentroids[0].limbypos- !param.crop_box:limbfittedcentroids[0].limbypos+ !param.crop_box]
+; cgimage,aa,/k,/display,output='5chords.eps'
 
 stop
 

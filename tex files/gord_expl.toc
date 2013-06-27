@@ -1,8 +1,12 @@
-\contentsline {section}{\numberline {1}Introduction}{1}{section.1}
-\contentsline {section}{\numberline {2}Preparing Parameters}{1}{section.2}
-\contentsline {subsection}{\numberline {2.1}Loading Image}{1}{subsection.2.1}
-\contentsline {subsection}{\numberline {2.2}Reading In Parameter Block}{1}{subsection.2.2}
-\contentsline {section}{\numberline {3}Thresholding Image}{2}{section.3}
-\contentsline {subsection}{\numberline {3.1}Quick mask centering}{3}{subsection.3.1}
-\contentsline {section}{\numberline {4}Limb Fitting}{3}{section.4}
-\contentsline {section}{\numberline {5}Finding Ficuials}{3}{section.5}
+\contentsline {section}{Introduction}{I}{section*.1}
+\contentsline {section}{\numberline {1}Preparing Parameters}{1}{section.1}
+\contentsline {subsection}{\numberline {1.1}Loading Image}{1}{subsection.1.1}
+\contentsline {subsection}{\numberline {1.2}Reading In Parameter Block}{1}{subsection.1.2}
+\contentsline {section}{\numberline {2}Thresholding Image}{2}{section.2}
+\contentsline {subsection}{\numberline {2.1}Quick mask centering}{2}{subsection.2.1}
+\contentsline {section}{\numberline {3}Limb Fitting}{3}{section.3}
+\contentsline {section}{\numberline {4}Finding Fiduials}{3}{section.4}
+\contentsline {subsection}{\numberline {4.1}First 1D Sum}{4}{subsection.4.1}
+\contentsline {subsection}{\numberline {4.2}Ruling Out False Fiducial}{4}{subsection.4.2}
+\contentsline {subsection}{\numberline {4.3}Sub-pixel Fiducial Positions}{5}{subsection.4.3}
+\contentsline {section}{\numberline {5}Final Words}{6}{section.5}
