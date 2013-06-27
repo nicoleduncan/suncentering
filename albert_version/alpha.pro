@@ -75,7 +75,7 @@ startimage = tritest
 ; profiler
 ; profiler,/system
 
-; takes ~.15 s to run albert's image
+; takes ~.07 s to run albert's triple sun image
 
 
 tic
@@ -83,21 +83,21 @@ defparams, 'pblock_albtritest.txt'
 ; defparams, 'pblock_albdimsun.txt'
 ; defparams, 'pblock_orig_small.txt'
 toc
-; .0004 to here
+; .0005 to here
 defsysvarthresh, startimage
 toc
-; .037 to here
+; .03 to here
 grannysmith = everysun(startimage)
 toc
-; .085 to here
-fuji = picksun(startimage, grannysmith)
+; .065 to here
+fuji = picksun_rot(startimage, grannysmith)
 toc
-; .138 to here
+; .065 to here
 limbfittedcentroids=centroidwholesuns(fuji,startimage)
 toc
-; .140 to here
+; .068 to here
 bbb = para_fid(startimage,limbfittedcentroids)
-; .146 to here
+; .07 to here
 toc
 tmpimage = startimage
 
