@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013) (format=pdflatex 2013.6.30)  1 JUL 2013 21:41
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013) (format=pdflatex 2013.6.30)  2 JUL 2013 14:40
 entering extended mode
  \write18 enabled.
  %&-line parsing enabled.
@@ -371,8 +371,8 @@ Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 2
 )
 \Hy@SectionHShift=\skip56
 )
-(/usr/local/texlive/2013/texmf-dist/tex/latex/caption/caption.sty
-Package: caption 2013/05/02 v3.3-89 Customizing captions (AR)
+(/usr/local/texlive/2013/texmf-dist/tex/latex/floatrow/floatrow.sty
+Package: floatrow 2008/08/02 v0.3b floatrow: float package extension
 
 (/usr/local/texlive/2013/texmf-dist/tex/latex/caption/caption3.sty
 Package: caption3 2013/05/02 v1.6-88 caption3 kernel (AR)
@@ -385,18 +385,7 @@ Package caption3 Info: TeX engine: e-TeX on input line 57.
 \caption@parindent=\dimen135
 \caption@hangindent=\dimen136
 )
-Package caption Info: KOMA-Script document class.
-\c@ContinuedFloat=\count115
-Package caption Info: hyperref package is loaded.
-)
-(/usr/local/texlive/2013/texmf-dist/tex/latex/caption/subcaption.sty
-Package: subcaption 2013/02/03 v1.1-62 Sub-captions (AR)
-\c@subfigure=\count116
-\c@subtable=\count117
-)
-(/usr/local/texlive/2013/texmf-dist/tex/latex/floatrow/floatrow.sty
-Package: floatrow 2008/08/02 v0.3b floatrow: float package extension
-\c@float@type=\count118
+\c@float@type=\count115
 \float@exts=\toks26
 \float@box=\box29
 \@floatcapt=\box30
@@ -414,18 +403,18 @@ Package floatrow Info: Modified rotfloat package code loaded on input line 473.
 \FBo@max=\skip60
 \FBc@max=\skip61
 \FBf@max=\skip62
-\c@FBl@b=\count119
-\floatbox@depth=\count120
-\c@FRobj=\count121
-\c@FRsobj=\count122
+\c@FBl@b=\count116
+\floatbox@depth=\count117
+\c@FRobj=\count118
+\c@FRsobj=\count119
 \Xhsize=\skip63
 \sXhsize=\skip64
 \Zhsize=\skip65
 \sZhsize=\skip66
 \flrow@rowbox=\box31
 \FR@Zunitlength=\dimen140
-\c@FBcnt=\count123
-\FPOScnt=\count124
+\c@FBcnt=\count120
+\FPOScnt=\count121
 \LTleft=\skip67
 \LTright=\skip68
 \LTleft=\skip69
@@ -436,11 +425,11 @@ Package floatrow Info: Modified rotfloat package code loaded on input line 473.
 Package: deluxetable 
 \pt@box=\box32
 \pt@width=\dimen141
-\pt@line=\count125
-\pt@column=\count126
-\pt@nlines=\count127
-\pt@ncol=\count128
-\pt@page=\count129
+\pt@line=\count122
+\pt@column=\count123
+\pt@nlines=\count124
+\pt@ncol=\count125
+\pt@page=\count126
 \pt@tmpcapwidth=\dimen142
 )
 (/usr/local/texlive/2013/texmf-dist/tex/latex/tools/verbatim.sty
@@ -454,31 +443,31 @@ Package: fancyvrb 2008/02/07
 
 Style option: `fancyvrb' v2.7a, with DG/SPQR fixes, and firstline=lastline fix 
 <2008/02/07> (tvz)
-\FV@CodeLineNo=\count130
+\FV@CodeLineNo=\count127
 \FV@InFile=\read2
 \FV@TabBox=\box33
-\c@FancyVerbLine=\count131
-\FV@StepNumber=\count132
+\c@FancyVerbLine=\count128
+\FV@StepNumber=\count129
 \FV@OutFile=\write3
 )
 (/usr/local/texlive/2013/texmf-dist/tex/latex/listings/listings.sty
-\lst@mode=\count133
+\lst@mode=\count130
 \lst@gtempboxa=\box34
 \lst@token=\toks31
-\lst@length=\count134
+\lst@length=\count131
 \lst@currlwidth=\dimen143
-\lst@column=\count135
-\lst@pos=\count136
+\lst@column=\count132
+\lst@pos=\count133
 \lst@lostspace=\dimen144
 \lst@width=\dimen145
-\lst@newlines=\count137
-\lst@lineno=\count138
+\lst@newlines=\count134
+\lst@lineno=\count135
 \lst@maxwidth=\dimen146
 
 (/usr/local/texlive/2013/texmf-dist/tex/latex/listings/lstmisc.sty
 File: lstmisc.sty 2007/02/22 1.4 (Carsten Heinz)
-\c@lstnumber=\count139
-\lst@skipnumbers=\count140
+\c@lstnumber=\count136
+\lst@skipnumbers=\count137
 \lst@framebox=\box35
 )
 (/usr/local/texlive/2013/texmf-dist/tex/latex/listings/listings.cfg
@@ -486,6 +475,20 @@ File: listings.cfg 2007/02/22 1.4 listings configuration
 ))
 Package: listings 2007/02/22 1.4 (Carsten Heinz)
 
+(/usr/local/texlive/2013/texmf-dist/tex/latex/caption/caption.sty
+Package: caption 2013/05/02 v3.3-89 Customizing captions (AR)
+Package caption Info: KOMA-Script document class.
+\c@ContinuedFloat=\count138
+Package caption Info: float package is loaded.
+Package caption Info: floatrow package is loaded.
+Package caption Info: hyperref package is loaded.
+Package caption Info: listings package is loaded.
+)
+(/usr/local/texlive/2013/texmf-dist/tex/latex/caption/subcaption.sty
+Package: subcaption 2013/02/03 v1.1-62 Sub-captions (AR)
+\c@subfigure=\count139
+\c@subtable=\count140
+)
 (/usr/local/texlive/2013/texmf-dist/tex/latex/listings/lstlang1.sty
 File: lstlang1.sty 2004/09/05 1.3 listings language file
 )
@@ -559,9 +562,6 @@ LaTeX Info: Redefining \nameref on input line 52.
 
 Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: floatrow package is loaded.
-Package caption Info: float package is loaded.
-Package caption Info: floatrow package is loaded.
-Package caption Info: listings package is loaded.
 Package caption Info: End \AtBeginDocument code.
 \c@lstlisting=\count148
 LaTeX Font Info:    Try loading font information for T1+cmss on input line 55.
@@ -609,7 +609,7 @@ edarray-eps-converted-to.pdf ../plots_tables_images/sortedarray.eps>
 (epstopdf)             \includegraphics on input line 113.
 Package epstopdf Info: Output file is already uptodate.
 
-<../plots_tables_images/sortedarray-eps-converted-to.pdf, id=82, 552.0625pt x 3
+<../plots_tables_images/sortedarray-eps-converted-to.pdf, id=83, 552.0625pt x 3
 38.26375pt>
 File: ../plots_tables_images/sortedarray-eps-converted-to.pdf Graphic file (typ
 e pdf)
@@ -629,7 +629,7 @@ est_reg1-eps-converted-to.pdf ../plots_tables_images/tritest_reg1.eps>
 (epstopdf)             \includegraphics on input line 151.
 Package epstopdf Info: Output file is already uptodate.
 
-<../plots_tables_images/tritest_reg1-eps-converted-to.pdf, id=83, 552.0625pt x 
+<../plots_tables_images/tritest_reg1-eps-converted-to.pdf, id=84, 552.0625pt x 
 552.0625pt>
 File: ../plots_tables_images/tritest_reg1-eps-converted-to.pdf Graphic file (ty
 pe pdf)
@@ -655,11 +655,6 @@ pe pdf)
 Package pdftex.def Info: ../plots_tables_images/tritest_reg1-eps-converted-to.p
 df used on input line 151.
 (pdftex.def)             Requested size: 140.88986pt x 140.88779pt.
-
-Underfull \hbox (badness 7433) in paragraph at lines 151--151
-\T1/cmr/m/n/10 (a) 100% bright-ness re-gion,
- []
-
 Package epstopdf Info: Source file: <../plots_tables_images/tritest_reg1.eps>
 (epstopdf)                    date: 2013-06-25 09:58:42
 (epstopdf)                    size: 71596 bytes
@@ -673,15 +668,11 @@ est_reg1-eps-converted-to.pdf ../plots_tables_images/tritest_reg1.eps>
 Package epstopdf Info: Output file is already uptodate.
 File: ../plots_tables_images/tritest_reg1-eps-converted-to.pdf Graphic file (ty
 pe pdf)
+
 <use ../plots_tables_images/tritest_reg1-eps-converted-to.pdf>
 Package pdftex.def Info: ../plots_tables_images/tritest_reg1-eps-converted-to.p
 df used on input line 151.
 (pdftex.def)             Requested size: 140.88986pt x 140.88779pt.
-
-Underfull \hbox (badness 7433) in paragraph at lines 151--151
-\T1/cmr/m/n/10 (a) 100% bright-ness re-gion,
- []
-
 Package epstopdf Info: Source file: <../plots_tables_images/tritest_reg2.eps>
 (epstopdf)                    date: 2013-06-25 09:58:42
 (epstopdf)                    size: 61638 bytes
@@ -694,7 +685,7 @@ est_reg2-eps-converted-to.pdf ../plots_tables_images/tritest_reg2.eps>
 (epstopdf)             \includegraphics on input line 151.
 Package epstopdf Info: Output file is already uptodate.
 
-<../plots_tables_images/tritest_reg2-eps-converted-to.pdf, id=84, 552.0625pt x 
+<../plots_tables_images/tritest_reg2-eps-converted-to.pdf, id=85, 552.0625pt x 
 552.0625pt>
 File: ../plots_tables_images/tritest_reg2-eps-converted-to.pdf Graphic file (ty
 pe pdf)
@@ -721,8 +712,8 @@ Package pdftex.def Info: ../plots_tables_images/tritest_reg2-eps-converted-to.p
 df used on input line 151.
 (pdftex.def)             Requested size: 140.88986pt x 140.88779pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 151--151
-\T1/cmr/m/n/10 (a) 50% bright-ness re-gion,
+Underfull \hbox (badness 1237) in paragraph at lines 151--151
+[][]|\T1/cmr/m/n/7 50% bright-ness re-gion, hence-forth
  []
 
 Package epstopdf Info: Source file: <../plots_tables_images/tritest_reg2.eps>
@@ -743,8 +734,8 @@ Package pdftex.def Info: ../plots_tables_images/tritest_reg2-eps-converted-to.p
 df used on input line 151.
 (pdftex.def)             Requested size: 140.88986pt x 140.88779pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 151--151
-\T1/cmr/m/n/10 (a) 50% bright-ness re-gion,
+Underfull \hbox (badness 1237) in paragraph at lines 151--151
+[][]|\T1/cmr/m/n/7 50% bright-ness re-gion, hence-forth
  []
 
 Package epstopdf Info: Source file: <../plots_tables_images/tritest_reg3.eps>
@@ -759,7 +750,7 @@ est_reg3-eps-converted-to.pdf ../plots_tables_images/tritest_reg3.eps>
 (epstopdf)             \includegraphics on input line 151.
 Package epstopdf Info: Output file is already uptodate.
 
-<../plots_tables_images/tritest_reg3-eps-converted-to.pdf, id=85, 552.0625pt x 
+<../plots_tables_images/tritest_reg3-eps-converted-to.pdf, id=86, 552.0625pt x 
 552.0625pt>
 File: ../plots_tables_images/tritest_reg3-eps-converted-to.pdf Graphic file (ty
 pe pdf)
@@ -786,8 +777,8 @@ Package pdftex.def Info: ../plots_tables_images/tritest_reg3-eps-converted-to.p
 df used on input line 151.
 (pdftex.def)             Requested size: 140.88986pt x 140.88779pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 151--151
-\T1/cmr/m/n/10 (a) 25% bright-ness re-gion,
+Underfull \hbox (badness 1237) in paragraph at lines 151--151
+[][]|\T1/cmr/m/n/7 25% bright-ness re-gion, hence-forth
  []
 
 Package epstopdf Info: Source file: <../plots_tables_images/tritest_reg3.eps>
@@ -808,8 +799,8 @@ Package pdftex.def Info: ../plots_tables_images/tritest_reg3-eps-converted-to.p
 df used on input line 151.
 (pdftex.def)             Requested size: 140.88986pt x 140.88779pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 151--151
-\T1/cmr/m/n/10 (a) 25% bright-ness re-gion,
+Underfull \hbox (badness 1237) in paragraph at lines 151--151
+[][]|\T1/cmr/m/n/7 25% bright-ness re-gion, hence-forth
  []
 
 Package epstopdf Info: Source file: <../plots_tables_images/tritest_reg1.eps>
@@ -847,11 +838,6 @@ pe pdf)
 Package pdftex.def Info: ../plots_tables_images/tritest_reg1-eps-converted-to.p
 df used on input line 151.
 (pdftex.def)             Requested size: 140.88986pt x 140.88779pt.
-
-Underfull \hbox (badness 7433) in paragraph at lines 151--151
-\T1/cmr/m/n/10 (a) 100% bright-ness re-gion,
- []
-
 Package epstopdf Info: Source file: <../plots_tables_images/tritest_reg1.eps>
 (epstopdf)                    date: 2013-06-25 09:58:42
 (epstopdf)                    size: 71596 bytes
@@ -865,15 +851,11 @@ est_reg1-eps-converted-to.pdf ../plots_tables_images/tritest_reg1.eps>
 Package epstopdf Info: Output file is already uptodate.
 File: ../plots_tables_images/tritest_reg1-eps-converted-to.pdf Graphic file (ty
 pe pdf)
+
 <use ../plots_tables_images/tritest_reg1-eps-converted-to.pdf>
 Package pdftex.def Info: ../plots_tables_images/tritest_reg1-eps-converted-to.p
 df used on input line 151.
 (pdftex.def)             Requested size: 140.88986pt x 140.88779pt.
-
-Underfull \hbox (badness 7433) in paragraph at lines 151--151
-\T1/cmr/m/n/10 (a) 100% bright-ness re-gion,
- []
-
 Package epstopdf Info: Source file: <../plots_tables_images/tritest_reg2.eps>
 (epstopdf)                    date: 2013-06-25 09:58:42
 (epstopdf)                    size: 61638 bytes
@@ -887,6 +869,7 @@ est_reg2-eps-converted-to.pdf ../plots_tables_images/tritest_reg2.eps>
 Package epstopdf Info: Output file is already uptodate.
 File: ../plots_tables_images/tritest_reg2-eps-converted-to.pdf Graphic file (ty
 pe pdf)
+
 <use ../plots_tables_images/tritest_reg2-eps-converted-to.pdf>
 Package pdftex.def Info: ../plots_tables_images/tritest_reg2-eps-converted-to.p
 df used on input line 151.
@@ -910,8 +893,8 @@ Package pdftex.def Info: ../plots_tables_images/tritest_reg2-eps-converted-to.p
 df used on input line 151.
 (pdftex.def)             Requested size: 140.88986pt x 140.88779pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 151--151
-\T1/cmr/m/n/10 (b) 50% bright-ness re-gion,
+Underfull \hbox (badness 1077) in paragraph at lines 151--151
+[][]|\T1/cmr/m/n/7 50% bright-ness re-gion, hence-forth
  []
 
 Package epstopdf Info: Source file: <../plots_tables_images/tritest_reg2.eps>
@@ -932,8 +915,8 @@ Package pdftex.def Info: ../plots_tables_images/tritest_reg2-eps-converted-to.p
 df used on input line 151.
 (pdftex.def)             Requested size: 140.88986pt x 140.88779pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 151--151
-\T1/cmr/m/n/10 (b) 50% bright-ness re-gion,
+Underfull \hbox (badness 1077) in paragraph at lines 151--151
+[][]|\T1/cmr/m/n/7 50% bright-ness re-gion, hence-forth
  []
 
 Package epstopdf Info: Source file: <../plots_tables_images/tritest_reg3.eps>
@@ -972,8 +955,8 @@ Package pdftex.def Info: ../plots_tables_images/tritest_reg3-eps-converted-to.p
 df used on input line 151.
 (pdftex.def)             Requested size: 140.88986pt x 140.88779pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 151--151
-\T1/cmr/m/n/10 (c) 25% bright-ness re-gion,
+Underfull \hbox (badness 1406) in paragraph at lines 151--151
+[][]|\T1/cmr/m/n/7 25% bright-ness re-gion, hence-forth
  []
 
 Package epstopdf Info: Source file: <../plots_tables_images/tritest_reg3.eps>
@@ -994,8 +977,8 @@ Package pdftex.def Info: ../plots_tables_images/tritest_reg3-eps-converted-to.p
 df used on input line 151.
 (pdftex.def)             Requested size: 140.88986pt x 140.88779pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 151--151
-\T1/cmr/m/n/10 (c) 25% bright-ness re-gion,
+Underfull \hbox (badness 1406) in paragraph at lines 151--151
+[][]|\T1/cmr/m/n/7 25% bright-ness re-gion, hence-forth
  []
 
 LaTeX Font Info:    Try loading font information for T1+cmtt on input line 159.
@@ -1012,228 +995,240 @@ rted-to.pdf>
 (epstopdf)                    size: 13201 bytes
 (epstopdf)             Command: <epstopdf --outfile=../plots_tables_images/cutc
 orner-eps-converted-to.pdf ../plots_tables_images/cutcorner.eps>
-(epstopdf)             \includegraphics on input line 193.
+(epstopdf)             \includegraphics on input line 203.
 Package epstopdf Info: Output file is already uptodate.
 
-<../plots_tables_images/cutcorner-eps-converted-to.pdf, id=118, 552.0625pt x 33
+<../plots_tables_images/cutcorner-eps-converted-to.pdf, id=119, 552.0625pt x 33
 8.26375pt>
 File: ../plots_tables_images/cutcorner-eps-converted-to.pdf Graphic file (type 
 pdf)
  <use ../plots_tables_images/cutcorner-eps-converted-to.pdf>
 Package pdftex.def Info: ../plots_tables_images/cutcorner-eps-converted-to.pdf 
-used on input line 193.
-(pdftex.def)             Requested size: 199.33423pt x 122.13615pt.
-Package epstopdf Info: Source file: <../plots_tables_images/cutcorner.eps>
-(epstopdf)                    date: 2013-05-31 13:52:09
-(epstopdf)                    size: 1474800 bytes
-(epstopdf)             Output file: <../plots_tables_images/cutcorner-eps-conve
-rted-to.pdf>
-(epstopdf)                    date: 2013-05-31 13:53:22
-(epstopdf)                    size: 13201 bytes
-(epstopdf)             Command: <epstopdf --outfile=../plots_tables_images/cutc
-orner-eps-converted-to.pdf ../plots_tables_images/cutcorner.eps>
-(epstopdf)             \includegraphics on input line 193.
-Package epstopdf Info: Output file is already uptodate.
-File: ../plots_tables_images/cutcorner-eps-converted-to.pdf Graphic file (type 
-pdf)
-
-<use ../plots_tables_images/cutcorner-eps-converted-to.pdf>
-Package pdftex.def Info: ../plots_tables_images/cutcorner-eps-converted-to.pdf 
-used on input line 193.
-(pdftex.def)             Requested size: 194.39581pt x 119.11153pt.
-Package epstopdf Info: Source file: <../plots_tables_images/cutcorner.eps>
-(epstopdf)                    date: 2013-05-31 13:52:09
-(epstopdf)                    size: 1474800 bytes
-(epstopdf)             Output file: <../plots_tables_images/cutcorner-eps-conve
-rted-to.pdf>
-(epstopdf)                    date: 2013-05-31 13:53:22
-(epstopdf)                    size: 13201 bytes
-(epstopdf)             Command: <epstopdf --outfile=../plots_tables_images/cutc
-orner-eps-converted-to.pdf ../plots_tables_images/cutcorner.eps>
-(epstopdf)             \includegraphics on input line 193.
-Package epstopdf Info: Output file is already uptodate.
-File: ../plots_tables_images/cutcorner-eps-converted-to.pdf Graphic file (type 
-pdf)
-
-<use ../plots_tables_images/cutcorner-eps-converted-to.pdf>
-Package pdftex.def Info: ../plots_tables_images/cutcorner-eps-converted-to.pdf 
-used on input line 193.
-(pdftex.def)             Requested size: 194.39581pt x 119.11153pt.
-Package epstopdf Info: Source file: <../plots_tables_images/cutcornerwborder.ep
-s>
-(epstopdf)                    date: 2013-05-31 13:52:09
-(epstopdf)                    size: 1368703 bytes
-(epstopdf)             Output file: <../plots_tables_images/cutcornerwborder-ep
-s-converted-to.pdf>
-(epstopdf)                    date: 2013-05-31 13:53:22
-(epstopdf)                    size: 14468 bytes
-(epstopdf)             Command: <epstopdf --outfile=../plots_tables_images/cutc
-ornerwborder-eps-converted-to.pdf ../plots_tables_images/cutcornerwborder.eps>
-(epstopdf)             \includegraphics on input line 193.
-Package epstopdf Info: Output file is already uptodate.
-
-<../plots_tables_images/cutcornerwborder-eps-converted-to.pdf, id=119, 552.0625
-pt x 338.26375pt>
-File: ../plots_tables_images/cutcornerwborder-eps-converted-to.pdf Graphic file
- (type pdf)
-
-<use ../plots_tables_images/cutcornerwborder-eps-converted-to.pdf>
-Package pdftex.def Info: ../plots_tables_images/cutcornerwborder-eps-converted-
-to.pdf used on input line 193.
-(pdftex.def)             Requested size: 199.33423pt x 122.13615pt.
-Package epstopdf Info: Source file: <../plots_tables_images/cutcornerwborder.ep
-s>
-(epstopdf)                    date: 2013-05-31 13:52:09
-(epstopdf)                    size: 1368703 bytes
-(epstopdf)             Output file: <../plots_tables_images/cutcornerwborder-ep
-s-converted-to.pdf>
-(epstopdf)                    date: 2013-05-31 13:53:22
-(epstopdf)                    size: 14468 bytes
-(epstopdf)             Command: <epstopdf --outfile=../plots_tables_images/cutc
-ornerwborder-eps-converted-to.pdf ../plots_tables_images/cutcornerwborder.eps>
-(epstopdf)             \includegraphics on input line 193.
-Package epstopdf Info: Output file is already uptodate.
-File: ../plots_tables_images/cutcornerwborder-eps-converted-to.pdf Graphic file
- (type pdf)
-
-<use ../plots_tables_images/cutcornerwborder-eps-converted-to.pdf>
-Package pdftex.def Info: ../plots_tables_images/cutcornerwborder-eps-converted-
-to.pdf used on input line 193.
-(pdftex.def)             Requested size: 194.39581pt x 119.11153pt.
-Package epstopdf Info: Source file: <../plots_tables_images/cutcornerwborder.ep
-s>
-(epstopdf)                    date: 2013-05-31 13:52:09
-(epstopdf)                    size: 1368703 bytes
-(epstopdf)             Output file: <../plots_tables_images/cutcornerwborder-ep
-s-converted-to.pdf>
-(epstopdf)                    date: 2013-05-31 13:53:22
-(epstopdf)                    size: 14468 bytes
-(epstopdf)             Command: <epstopdf --outfile=../plots_tables_images/cutc
-ornerwborder-eps-converted-to.pdf ../plots_tables_images/cutcornerwborder.eps>
-(epstopdf)             \includegraphics on input line 193.
-Package epstopdf Info: Output file is already uptodate.
-File: ../plots_tables_images/cutcornerwborder-eps-converted-to.pdf Graphic file
- (type pdf)
-
-<use ../plots_tables_images/cutcornerwborder-eps-converted-to.pdf>
-Package pdftex.def Info: ../plots_tables_images/cutcornerwborder-eps-converted-
-to.pdf used on input line 193.
-(pdftex.def)             Requested size: 194.39581pt x 119.11153pt.
-Package epstopdf Info: Source file: <../plots_tables_images/cutcorner.eps>
-(epstopdf)                    date: 2013-05-31 13:52:09
-(epstopdf)                    size: 1474800 bytes
-(epstopdf)             Output file: <../plots_tables_images/cutcorner-eps-conve
-rted-to.pdf>
-(epstopdf)                    date: 2013-05-31 13:53:22
-(epstopdf)                    size: 13201 bytes
-(epstopdf)             Command: <epstopdf --outfile=../plots_tables_images/cutc
-orner-eps-converted-to.pdf ../plots_tables_images/cutcorner.eps>
-(epstopdf)             \includegraphics on input line 193.
-Package epstopdf Info: Output file is already uptodate.
-File: ../plots_tables_images/cutcorner-eps-converted-to.pdf Graphic file (type 
-pdf)
-
-<use ../plots_tables_images/cutcorner-eps-converted-to.pdf>
-Package pdftex.def Info: ../plots_tables_images/cutcorner-eps-converted-to.pdf 
-used on input line 193.
-(pdftex.def)             Requested size: 199.33423pt x 122.13615pt.
-Package epstopdf Info: Source file: <../plots_tables_images/cutcorner.eps>
-(epstopdf)                    date: 2013-05-31 13:52:09
-(epstopdf)                    size: 1474800 bytes
-(epstopdf)             Output file: <../plots_tables_images/cutcorner-eps-conve
-rted-to.pdf>
-(epstopdf)                    date: 2013-05-31 13:53:22
-(epstopdf)                    size: 13201 bytes
-(epstopdf)             Command: <epstopdf --outfile=../plots_tables_images/cutc
-orner-eps-converted-to.pdf ../plots_tables_images/cutcorner.eps>
-(epstopdf)             \includegraphics on input line 193.
-Package epstopdf Info: Output file is already uptodate.
-File: ../plots_tables_images/cutcorner-eps-converted-to.pdf Graphic file (type 
-pdf)
-
-<use ../plots_tables_images/cutcorner-eps-converted-to.pdf>
-Package pdftex.def Info: ../plots_tables_images/cutcorner-eps-converted-to.pdf 
-used on input line 193.
-(pdftex.def)             Requested size: 194.39581pt x 119.11153pt.
-Package epstopdf Info: Source file: <../plots_tables_images/cutcorner.eps>
-(epstopdf)                    date: 2013-05-31 13:52:09
-(epstopdf)                    size: 1474800 bytes
-(epstopdf)             Output file: <../plots_tables_images/cutcorner-eps-conve
-rted-to.pdf>
-(epstopdf)                    date: 2013-05-31 13:53:22
-(epstopdf)                    size: 13201 bytes
-(epstopdf)             Command: <epstopdf --outfile=../plots_tables_images/cutc
-orner-eps-converted-to.pdf ../plots_tables_images/cutcorner.eps>
-(epstopdf)             \includegraphics on input line 193.
-Package epstopdf Info: Output file is already uptodate.
-File: ../plots_tables_images/cutcorner-eps-converted-to.pdf Graphic file (type 
-pdf)
-
-<use ../plots_tables_images/cutcorner-eps-converted-to.pdf>
-Package pdftex.def Info: ../plots_tables_images/cutcorner-eps-converted-to.pdf 
-used on input line 193.
-(pdftex.def)             Requested size: 194.39581pt x 119.11153pt.
-Package epstopdf Info: Source file: <../plots_tables_images/cutcornerwborder.ep
-s>
-(epstopdf)                    date: 2013-05-31 13:52:09
-(epstopdf)                    size: 1368703 bytes
-(epstopdf)             Output file: <../plots_tables_images/cutcornerwborder-ep
-s-converted-to.pdf>
-(epstopdf)                    date: 2013-05-31 13:53:22
-(epstopdf)                    size: 14468 bytes
-(epstopdf)             Command: <epstopdf --outfile=../plots_tables_images/cutc
-ornerwborder-eps-converted-to.pdf ../plots_tables_images/cutcornerwborder.eps>
-(epstopdf)             \includegraphics on input line 193.
-Package epstopdf Info: Output file is already uptodate.
-File: ../plots_tables_images/cutcornerwborder-eps-converted-to.pdf Graphic file
- (type pdf)
-
-<use ../plots_tables_images/cutcornerwborder-eps-converted-to.pdf>
-Package pdftex.def Info: ../plots_tables_images/cutcornerwborder-eps-converted-
-to.pdf used on input line 193.
-(pdftex.def)             Requested size: 199.33423pt x 122.13615pt.
-Package epstopdf Info: Source file: <../plots_tables_images/cutcornerwborder.ep
-s>
-(epstopdf)                    date: 2013-05-31 13:52:09
-(epstopdf)                    size: 1368703 bytes
-(epstopdf)             Output file: <../plots_tables_images/cutcornerwborder-ep
-s-converted-to.pdf>
-(epstopdf)                    date: 2013-05-31 13:53:22
-(epstopdf)                    size: 14468 bytes
-(epstopdf)             Command: <epstopdf --outfile=../plots_tables_images/cutc
-ornerwborder-eps-converted-to.pdf ../plots_tables_images/cutcornerwborder.eps>
-(epstopdf)             \includegraphics on input line 193.
-Package epstopdf Info: Output file is already uptodate.
-File: ../plots_tables_images/cutcornerwborder-eps-converted-to.pdf Graphic file
- (type pdf)
-
-<use ../plots_tables_images/cutcornerwborder-eps-converted-to.pdf>
-Package pdftex.def Info: ../plots_tables_images/cutcornerwborder-eps-converted-
-to.pdf used on input line 193.
-(pdftex.def)             Requested size: 194.39581pt x 119.11153pt.
-Package epstopdf Info: Source file: <../plots_tables_images/cutcornerwborder.ep
-s>
-(epstopdf)                    date: 2013-05-31 13:52:09
-(epstopdf)                    size: 1368703 bytes
-(epstopdf)             Output file: <../plots_tables_images/cutcornerwborder-ep
-s-converted-to.pdf>
-(epstopdf)                    date: 2013-05-31 13:53:22
-(epstopdf)                    size: 14468 bytes
-(epstopdf)             Command: <epstopdf --outfile=../plots_tables_images/cutc
-ornerwborder-eps-converted-to.pdf ../plots_tables_images/cutcornerwborder.eps>
-(epstopdf)             \includegraphics on input line 193.
-Package epstopdf Info: Output file is already uptodate.
-File: ../plots_tables_images/cutcornerwborder-eps-converted-to.pdf Graphic file
- (type pdf)
-
-<use ../plots_tables_images/cutcornerwborder-eps-converted-to.pdf>
-Package pdftex.def Info: ../plots_tables_images/cutcornerwborder-eps-converted-
-to.pdf used on input line 193.
-(pdftex.def)             Requested size: 194.39581pt x 119.11153pt.
+used on input line 203.
+(pdftex.def)             Requested size: 407.6684pt x 249.80026pt.
  [3 <../plots_tables_images/tritest_reg1-eps-converted-to.pdf> <../plots_tables
 _images/tritest_reg2-eps-converted-to.pdf> <../plots_tables_images/tritest_reg3
--eps-converted-to.pdf> <../plots_tables_images/cutcorner-eps-converted-to.pdf> 
-<../plots_tables_images/cutcornerwborder-eps-converted-to.pdf>]
+-eps-converted-to.pdf> <../plots_tables_images/cutcorner-eps-converted-to.pdf>]
+Package epstopdf Info: Source file: <../plots_tables_images/firstcheck.eps>
+(epstopdf)                    date: 2013-06-27 14:27:19
+(epstopdf)                    size: 36798 bytes
+(epstopdf)             Output file: <../plots_tables_images/firstcheck-eps-conv
+erted-to.pdf>
+(epstopdf)                    date: 2013-07-02 14:22:32
+(epstopdf)                    size: 4267 bytes
+(epstopdf)             Command: <epstopdf --outfile=../plots_tables_images/firs
+tcheck-eps-converted-to.pdf ../plots_tables_images/firstcheck.eps>
+(epstopdf)             \includegraphics on input line 235.
+Package epstopdf Info: Output file is already uptodate.
+
+<../plots_tables_images/firstcheck-eps-converted-to.pdf, id=140, 552.0625pt x 5
+52.0625pt>
+File: ../plots_tables_images/firstcheck-eps-converted-to.pdf Graphic file (type
+ pdf)
+ <use ../plots_tables_images/firstcheck-eps-converted-to.pdf>
+Package pdftex.def Info: ../plots_tables_images/firstcheck-eps-converted-to.pdf
+ used on input line 235.
+(pdftex.def)             Requested size: 199.33423pt x 199.332pt.
+Package epstopdf Info: Source file: <../plots_tables_images/firstcheck.eps>
+(epstopdf)                    date: 2013-06-27 14:27:19
+(epstopdf)                    size: 36798 bytes
+(epstopdf)             Output file: <../plots_tables_images/firstcheck-eps-conv
+erted-to.pdf>
+(epstopdf)                    date: 2013-07-02 14:22:32
+(epstopdf)                    size: 4267 bytes
+(epstopdf)             Command: <epstopdf --outfile=../plots_tables_images/firs
+tcheck-eps-converted-to.pdf ../plots_tables_images/firstcheck.eps>
+(epstopdf)             \includegraphics on input line 235.
+Package epstopdf Info: Output file is already uptodate.
+File: ../plots_tables_images/firstcheck-eps-converted-to.pdf Graphic file (type
+ pdf)
+
+<use ../plots_tables_images/firstcheck-eps-converted-to.pdf>
+Package pdftex.def Info: ../plots_tables_images/firstcheck-eps-converted-to.pdf
+ used on input line 235.
+(pdftex.def)             Requested size: 194.39581pt x 194.39566pt.
+Package epstopdf Info: Source file: <../plots_tables_images/firstcheck.eps>
+(epstopdf)                    date: 2013-06-27 14:27:19
+(epstopdf)                    size: 36798 bytes
+(epstopdf)             Output file: <../plots_tables_images/firstcheck-eps-conv
+erted-to.pdf>
+(epstopdf)                    date: 2013-07-02 14:22:32
+(epstopdf)                    size: 4267 bytes
+(epstopdf)             Command: <epstopdf --outfile=../plots_tables_images/firs
+tcheck-eps-converted-to.pdf ../plots_tables_images/firstcheck.eps>
+(epstopdf)             \includegraphics on input line 235.
+Package epstopdf Info: Output file is already uptodate.
+File: ../plots_tables_images/firstcheck-eps-converted-to.pdf Graphic file (type
+ pdf)
+
+<use ../plots_tables_images/firstcheck-eps-converted-to.pdf>
+Package pdftex.def Info: ../plots_tables_images/firstcheck-eps-converted-to.pdf
+ used on input line 235.
+(pdftex.def)             Requested size: 194.39581pt x 194.39566pt.
+Package epstopdf Info: Source file: <../plots_tables_images/seccheck.eps>
+(epstopdf)                    date: 2013-06-27 14:27:19
+(epstopdf)                    size: 42187 bytes
+(epstopdf)             Output file: <../plots_tables_images/seccheck-eps-conver
+ted-to.pdf>
+(epstopdf)                    date: 2013-07-02 14:22:54
+(epstopdf)                    size: 5988 bytes
+(epstopdf)             Command: <epstopdf --outfile=../plots_tables_images/secc
+heck-eps-converted-to.pdf ../plots_tables_images/seccheck.eps>
+(epstopdf)             \includegraphics on input line 235.
+Package epstopdf Info: Output file is already uptodate.
+
+<../plots_tables_images/seccheck-eps-converted-to.pdf, id=141, 552.0625pt x 552
+.0625pt>
+File: ../plots_tables_images/seccheck-eps-converted-to.pdf Graphic file (type p
+df)
+ <use ../plots_tables_images/seccheck-eps-converted-to.pdf>
+Package pdftex.def Info: ../plots_tables_images/seccheck-eps-converted-to.pdf u
+sed on input line 235.
+(pdftex.def)             Requested size: 199.33423pt x 199.332pt.
+Package epstopdf Info: Source file: <../plots_tables_images/seccheck.eps>
+(epstopdf)                    date: 2013-06-27 14:27:19
+(epstopdf)                    size: 42187 bytes
+(epstopdf)             Output file: <../plots_tables_images/seccheck-eps-conver
+ted-to.pdf>
+(epstopdf)                    date: 2013-07-02 14:22:54
+(epstopdf)                    size: 5988 bytes
+(epstopdf)             Command: <epstopdf --outfile=../plots_tables_images/secc
+heck-eps-converted-to.pdf ../plots_tables_images/seccheck.eps>
+(epstopdf)             \includegraphics on input line 235.
+Package epstopdf Info: Output file is already uptodate.
+File: ../plots_tables_images/seccheck-eps-converted-to.pdf Graphic file (type p
+df)
+
+<use ../plots_tables_images/seccheck-eps-converted-to.pdf>
+Package pdftex.def Info: ../plots_tables_images/seccheck-eps-converted-to.pdf u
+sed on input line 235.
+(pdftex.def)             Requested size: 194.39581pt x 194.39566pt.
+Package epstopdf Info: Source file: <../plots_tables_images/seccheck.eps>
+(epstopdf)                    date: 2013-06-27 14:27:19
+(epstopdf)                    size: 42187 bytes
+(epstopdf)             Output file: <../plots_tables_images/seccheck-eps-conver
+ted-to.pdf>
+(epstopdf)                    date: 2013-07-02 14:22:54
+(epstopdf)                    size: 5988 bytes
+(epstopdf)             Command: <epstopdf --outfile=../plots_tables_images/secc
+heck-eps-converted-to.pdf ../plots_tables_images/seccheck.eps>
+(epstopdf)             \includegraphics on input line 235.
+Package epstopdf Info: Output file is already uptodate.
+File: ../plots_tables_images/seccheck-eps-converted-to.pdf Graphic file (type p
+df)
+
+<use ../plots_tables_images/seccheck-eps-converted-to.pdf>
+Package pdftex.def Info: ../plots_tables_images/seccheck-eps-converted-to.pdf u
+sed on input line 235.
+(pdftex.def)             Requested size: 194.39581pt x 194.39566pt.
+Package epstopdf Info: Source file: <../plots_tables_images/firstcheck.eps>
+(epstopdf)                    date: 2013-06-27 14:27:19
+(epstopdf)                    size: 36798 bytes
+(epstopdf)             Output file: <../plots_tables_images/firstcheck-eps-conv
+erted-to.pdf>
+(epstopdf)                    date: 2013-07-02 14:22:32
+(epstopdf)                    size: 4267 bytes
+(epstopdf)             Command: <epstopdf --outfile=../plots_tables_images/firs
+tcheck-eps-converted-to.pdf ../plots_tables_images/firstcheck.eps>
+(epstopdf)             \includegraphics on input line 235.
+Package epstopdf Info: Output file is already uptodate.
+File: ../plots_tables_images/firstcheck-eps-converted-to.pdf Graphic file (type
+ pdf)
+
+<use ../plots_tables_images/firstcheck-eps-converted-to.pdf>
+Package pdftex.def Info: ../plots_tables_images/firstcheck-eps-converted-to.pdf
+ used on input line 235.
+(pdftex.def)             Requested size: 199.33423pt x 199.332pt.
+Package epstopdf Info: Source file: <../plots_tables_images/firstcheck.eps>
+(epstopdf)                    date: 2013-06-27 14:27:19
+(epstopdf)                    size: 36798 bytes
+(epstopdf)             Output file: <../plots_tables_images/firstcheck-eps-conv
+erted-to.pdf>
+(epstopdf)                    date: 2013-07-02 14:22:32
+(epstopdf)                    size: 4267 bytes
+(epstopdf)             Command: <epstopdf --outfile=../plots_tables_images/firs
+tcheck-eps-converted-to.pdf ../plots_tables_images/firstcheck.eps>
+(epstopdf)             \includegraphics on input line 235.
+Package epstopdf Info: Output file is already uptodate.
+File: ../plots_tables_images/firstcheck-eps-converted-to.pdf Graphic file (type
+ pdf)
+
+<use ../plots_tables_images/firstcheck-eps-converted-to.pdf>
+Package pdftex.def Info: ../plots_tables_images/firstcheck-eps-converted-to.pdf
+ used on input line 235.
+(pdftex.def)             Requested size: 194.39581pt x 194.39566pt.
+Package epstopdf Info: Source file: <../plots_tables_images/firstcheck.eps>
+(epstopdf)                    date: 2013-06-27 14:27:19
+(epstopdf)                    size: 36798 bytes
+(epstopdf)             Output file: <../plots_tables_images/firstcheck-eps-conv
+erted-to.pdf>
+(epstopdf)                    date: 2013-07-02 14:22:32
+(epstopdf)                    size: 4267 bytes
+(epstopdf)             Command: <epstopdf --outfile=../plots_tables_images/firs
+tcheck-eps-converted-to.pdf ../plots_tables_images/firstcheck.eps>
+(epstopdf)             \includegraphics on input line 235.
+Package epstopdf Info: Output file is already uptodate.
+File: ../plots_tables_images/firstcheck-eps-converted-to.pdf Graphic file (type
+ pdf)
+
+<use ../plots_tables_images/firstcheck-eps-converted-to.pdf>
+Package pdftex.def Info: ../plots_tables_images/firstcheck-eps-converted-to.pdf
+ used on input line 235.
+(pdftex.def)             Requested size: 194.39581pt x 194.39566pt.
+Package epstopdf Info: Source file: <../plots_tables_images/seccheck.eps>
+(epstopdf)                    date: 2013-06-27 14:27:19
+(epstopdf)                    size: 42187 bytes
+(epstopdf)             Output file: <../plots_tables_images/seccheck-eps-conver
+ted-to.pdf>
+(epstopdf)                    date: 2013-07-02 14:22:54
+(epstopdf)                    size: 5988 bytes
+(epstopdf)             Command: <epstopdf --outfile=../plots_tables_images/secc
+heck-eps-converted-to.pdf ../plots_tables_images/seccheck.eps>
+(epstopdf)             \includegraphics on input line 235.
+Package epstopdf Info: Output file is already uptodate.
+File: ../plots_tables_images/seccheck-eps-converted-to.pdf Graphic file (type p
+df)
+
+<use ../plots_tables_images/seccheck-eps-converted-to.pdf>
+Package pdftex.def Info: ../plots_tables_images/seccheck-eps-converted-to.pdf u
+sed on input line 235.
+(pdftex.def)             Requested size: 199.33423pt x 199.332pt.
+Package epstopdf Info: Source file: <../plots_tables_images/seccheck.eps>
+(epstopdf)                    date: 2013-06-27 14:27:19
+(epstopdf)                    size: 42187 bytes
+(epstopdf)             Output file: <../plots_tables_images/seccheck-eps-conver
+ted-to.pdf>
+(epstopdf)                    date: 2013-07-02 14:22:54
+(epstopdf)                    size: 5988 bytes
+(epstopdf)             Command: <epstopdf --outfile=../plots_tables_images/secc
+heck-eps-converted-to.pdf ../plots_tables_images/seccheck.eps>
+(epstopdf)             \includegraphics on input line 235.
+Package epstopdf Info: Output file is already uptodate.
+File: ../plots_tables_images/seccheck-eps-converted-to.pdf Graphic file (type p
+df)
+
+<use ../plots_tables_images/seccheck-eps-converted-to.pdf>
+Package pdftex.def Info: ../plots_tables_images/seccheck-eps-converted-to.pdf u
+sed on input line 235.
+(pdftex.def)             Requested size: 194.39581pt x 194.39566pt.
+Package epstopdf Info: Source file: <../plots_tables_images/seccheck.eps>
+(epstopdf)                    date: 2013-06-27 14:27:19
+(epstopdf)                    size: 42187 bytes
+(epstopdf)             Output file: <../plots_tables_images/seccheck-eps-conver
+ted-to.pdf>
+(epstopdf)                    date: 2013-07-02 14:22:54
+(epstopdf)                    size: 5988 bytes
+(epstopdf)             Command: <epstopdf --outfile=../plots_tables_images/secc
+heck-eps-converted-to.pdf ../plots_tables_images/seccheck.eps>
+(epstopdf)             \includegraphics on input line 235.
+Package epstopdf Info: Output file is already uptodate.
+File: ../plots_tables_images/seccheck-eps-converted-to.pdf Graphic file (type p
+df)
+
+<use ../plots_tables_images/seccheck-eps-converted-to.pdf>
+Package pdftex.def Info: ../plots_tables_images/seccheck-eps-converted-to.pdf u
+sed on input line 235.
+(pdftex.def)             Requested size: 194.39581pt x 194.39566pt.
 Package epstopdf Info: Source file: <../plots_tables_images/5chords.eps>
 (epstopdf)                    date: 2013-06-25 10:17:49
 (epstopdf)                    size: 71604 bytes
@@ -1243,16 +1238,16 @@ ed-to.pdf>
 (epstopdf)                    size: 20890 bytes
 (epstopdf)             Command: <epstopdf --outfile=../plots_tables_images/5cho
 rds-eps-converted-to.pdf ../plots_tables_images/5chords.eps>
-(epstopdf)             \includegraphics on input line 230.
+(epstopdf)             \includegraphics on input line 268.
 Package epstopdf Info: Output file is already uptodate.
 
-<../plots_tables_images/5chords-eps-converted-to.pdf, id=146, 552.0625pt x 552.
+<../plots_tables_images/5chords-eps-converted-to.pdf, id=157, 552.0625pt x 552.
 0625pt>
 File: ../plots_tables_images/5chords-eps-converted-to.pdf Graphic file (type pd
 f)
  <use ../plots_tables_images/5chords-eps-converted-to.pdf>
 Package pdftex.def Info: ../plots_tables_images/5chords-eps-converted-to.pdf us
-ed on input line 230.
+ed on input line 268.
 (pdftex.def)             Requested size: 199.33423pt x 199.332pt.
 Package epstopdf Info: Source file: <../plots_tables_images/5chords.eps>
 (epstopdf)                    date: 2013-06-25 10:17:49
@@ -1263,14 +1258,14 @@ ed-to.pdf>
 (epstopdf)                    size: 20890 bytes
 (epstopdf)             Command: <epstopdf --outfile=../plots_tables_images/5cho
 rds-eps-converted-to.pdf ../plots_tables_images/5chords.eps>
-(epstopdf)             \includegraphics on input line 230.
+(epstopdf)             \includegraphics on input line 268.
 Package epstopdf Info: Output file is already uptodate.
 File: ../plots_tables_images/5chords-eps-converted-to.pdf Graphic file (type pd
 f)
 
 <use ../plots_tables_images/5chords-eps-converted-to.pdf>
 Package pdftex.def Info: ../plots_tables_images/5chords-eps-converted-to.pdf us
-ed on input line 230.
+ed on input line 268.
 (pdftex.def)             Requested size: 143.18121pt x 143.17906pt.
 Package epstopdf Info: Source file: <../plots_tables_images/5chords.eps>
 (epstopdf)                    date: 2013-06-25 10:17:49
@@ -1281,14 +1276,14 @@ ed-to.pdf>
 (epstopdf)                    size: 20890 bytes
 (epstopdf)             Command: <epstopdf --outfile=../plots_tables_images/5cho
 rds-eps-converted-to.pdf ../plots_tables_images/5chords.eps>
-(epstopdf)             \includegraphics on input line 230.
+(epstopdf)             \includegraphics on input line 268.
 Package epstopdf Info: Output file is already uptodate.
 File: ../plots_tables_images/5chords-eps-converted-to.pdf Graphic file (type pd
 f)
 
 <use ../plots_tables_images/5chords-eps-converted-to.pdf>
 Package pdftex.def Info: ../plots_tables_images/5chords-eps-converted-to.pdf us
-ed on input line 230.
+ed on input line 268.
 (pdftex.def)             Requested size: 143.18121pt x 143.17906pt.
 Package epstopdf Info: Source file: <../plots_tables_images/redlimbs.eps>
 (epstopdf)                    date: 2013-06-13 14:20:06
@@ -1299,16 +1294,16 @@ ted-to.pdf>
 (epstopdf)                    size: 7897 bytes
 (epstopdf)             Command: <epstopdf --outfile=../plots_tables_images/redl
 imbs-eps-converted-to.pdf ../plots_tables_images/redlimbs.eps>
-(epstopdf)             \includegraphics on input line 230.
+(epstopdf)             \includegraphics on input line 268.
 Package epstopdf Info: Output file is already uptodate.
 
-<../plots_tables_images/redlimbs-eps-converted-to.pdf, id=147, 552.0625pt x 338
+<../plots_tables_images/redlimbs-eps-converted-to.pdf, id=158, 552.0625pt x 338
 .26375pt>
 File: ../plots_tables_images/redlimbs-eps-converted-to.pdf Graphic file (type p
 df)
  <use ../plots_tables_images/redlimbs-eps-converted-to.pdf>
 Package pdftex.def Info: ../plots_tables_images/redlimbs-eps-converted-to.pdf u
-sed on input line 230.
+sed on input line 268.
 (pdftex.def)             Requested size: 199.33423pt x 122.13615pt.
 Package epstopdf Info: Source file: <../plots_tables_images/redlimbs.eps>
 (epstopdf)                    date: 2013-06-13 14:20:06
@@ -1319,14 +1314,14 @@ ted-to.pdf>
 (epstopdf)                    size: 7897 bytes
 (epstopdf)             Command: <epstopdf --outfile=../plots_tables_images/redl
 imbs-eps-converted-to.pdf ../plots_tables_images/redlimbs.eps>
-(epstopdf)             \includegraphics on input line 230.
+(epstopdf)             \includegraphics on input line 268.
 Package epstopdf Info: Output file is already uptodate.
 File: ../plots_tables_images/redlimbs-eps-converted-to.pdf Graphic file (type p
 df)
 
 <use ../plots_tables_images/redlimbs-eps-converted-to.pdf>
 Package pdftex.def Info: ../plots_tables_images/redlimbs-eps-converted-to.pdf u
-sed on input line 230.
+sed on input line 268.
 (pdftex.def)             Requested size: 245.61043pt x 150.49333pt.
 Package epstopdf Info: Source file: <../plots_tables_images/redlimbs.eps>
 (epstopdf)                    date: 2013-06-13 14:20:06
@@ -1337,14 +1332,14 @@ ted-to.pdf>
 (epstopdf)                    size: 7897 bytes
 (epstopdf)             Command: <epstopdf --outfile=../plots_tables_images/redl
 imbs-eps-converted-to.pdf ../plots_tables_images/redlimbs.eps>
-(epstopdf)             \includegraphics on input line 230.
+(epstopdf)             \includegraphics on input line 268.
 Package epstopdf Info: Output file is already uptodate.
 File: ../plots_tables_images/redlimbs-eps-converted-to.pdf Graphic file (type p
 df)
 
 <use ../plots_tables_images/redlimbs-eps-converted-to.pdf>
 Package pdftex.def Info: ../plots_tables_images/redlimbs-eps-converted-to.pdf u
-sed on input line 230.
+sed on input line 268.
 (pdftex.def)             Requested size: 245.61043pt x 150.49333pt.
 Package epstopdf Info: Source file: <../plots_tables_images/5chords.eps>
 (epstopdf)                    date: 2013-06-25 10:17:49
@@ -1355,14 +1350,14 @@ ed-to.pdf>
 (epstopdf)                    size: 20890 bytes
 (epstopdf)             Command: <epstopdf --outfile=../plots_tables_images/5cho
 rds-eps-converted-to.pdf ../plots_tables_images/5chords.eps>
-(epstopdf)             \includegraphics on input line 230.
+(epstopdf)             \includegraphics on input line 268.
 Package epstopdf Info: Output file is already uptodate.
 File: ../plots_tables_images/5chords-eps-converted-to.pdf Graphic file (type pd
 f)
 
 <use ../plots_tables_images/5chords-eps-converted-to.pdf>
 Package pdftex.def Info: ../plots_tables_images/5chords-eps-converted-to.pdf us
-ed on input line 230.
+ed on input line 268.
 (pdftex.def)             Requested size: 199.33423pt x 199.332pt.
 Package epstopdf Info: Source file: <../plots_tables_images/5chords.eps>
 (epstopdf)                    date: 2013-06-25 10:17:49
@@ -1373,14 +1368,14 @@ ed-to.pdf>
 (epstopdf)                    size: 20890 bytes
 (epstopdf)             Command: <epstopdf --outfile=../plots_tables_images/5cho
 rds-eps-converted-to.pdf ../plots_tables_images/5chords.eps>
-(epstopdf)             \includegraphics on input line 230.
+(epstopdf)             \includegraphics on input line 268.
 Package epstopdf Info: Output file is already uptodate.
 File: ../plots_tables_images/5chords-eps-converted-to.pdf Graphic file (type pd
 f)
 
 <use ../plots_tables_images/5chords-eps-converted-to.pdf>
 Package pdftex.def Info: ../plots_tables_images/5chords-eps-converted-to.pdf us
-ed on input line 230.
+ed on input line 268.
 (pdftex.def)             Requested size: 143.18121pt x 143.17906pt.
 Package epstopdf Info: Source file: <../plots_tables_images/5chords.eps>
 (epstopdf)                    date: 2013-06-25 10:17:49
@@ -1391,14 +1386,14 @@ ed-to.pdf>
 (epstopdf)                    size: 20890 bytes
 (epstopdf)             Command: <epstopdf --outfile=../plots_tables_images/5cho
 rds-eps-converted-to.pdf ../plots_tables_images/5chords.eps>
-(epstopdf)             \includegraphics on input line 230.
+(epstopdf)             \includegraphics on input line 268.
 Package epstopdf Info: Output file is already uptodate.
 File: ../plots_tables_images/5chords-eps-converted-to.pdf Graphic file (type pd
 f)
 
 <use ../plots_tables_images/5chords-eps-converted-to.pdf>
 Package pdftex.def Info: ../plots_tables_images/5chords-eps-converted-to.pdf us
-ed on input line 230.
+ed on input line 268.
 (pdftex.def)             Requested size: 143.18121pt x 143.17906pt.
 Package epstopdf Info: Source file: <../plots_tables_images/redlimbs.eps>
 (epstopdf)                    date: 2013-06-13 14:20:06
@@ -1409,14 +1404,14 @@ ted-to.pdf>
 (epstopdf)                    size: 7897 bytes
 (epstopdf)             Command: <epstopdf --outfile=../plots_tables_images/redl
 imbs-eps-converted-to.pdf ../plots_tables_images/redlimbs.eps>
-(epstopdf)             \includegraphics on input line 230.
+(epstopdf)             \includegraphics on input line 268.
 Package epstopdf Info: Output file is already uptodate.
 File: ../plots_tables_images/redlimbs-eps-converted-to.pdf Graphic file (type p
 df)
 
 <use ../plots_tables_images/redlimbs-eps-converted-to.pdf>
 Package pdftex.def Info: ../plots_tables_images/redlimbs-eps-converted-to.pdf u
-sed on input line 230.
+sed on input line 268.
 (pdftex.def)             Requested size: 199.33423pt x 122.13615pt.
 Package epstopdf Info: Source file: <../plots_tables_images/redlimbs.eps>
 (epstopdf)                    date: 2013-06-13 14:20:06
@@ -1427,14 +1422,14 @@ ted-to.pdf>
 (epstopdf)                    size: 7897 bytes
 (epstopdf)             Command: <epstopdf --outfile=../plots_tables_images/redl
 imbs-eps-converted-to.pdf ../plots_tables_images/redlimbs.eps>
-(epstopdf)             \includegraphics on input line 230.
+(epstopdf)             \includegraphics on input line 268.
 Package epstopdf Info: Output file is already uptodate.
 File: ../plots_tables_images/redlimbs-eps-converted-to.pdf Graphic file (type p
 df)
 
 <use ../plots_tables_images/redlimbs-eps-converted-to.pdf>
 Package pdftex.def Info: ../plots_tables_images/redlimbs-eps-converted-to.pdf u
-sed on input line 230.
+sed on input line 268.
 (pdftex.def)             Requested size: 245.61043pt x 150.49333pt.
 Package epstopdf Info: Source file: <../plots_tables_images/redlimbs.eps>
 (epstopdf)                    date: 2013-06-13 14:20:06
@@ -1445,14 +1440,14 @@ ted-to.pdf>
 (epstopdf)                    size: 7897 bytes
 (epstopdf)             Command: <epstopdf --outfile=../plots_tables_images/redl
 imbs-eps-converted-to.pdf ../plots_tables_images/redlimbs.eps>
-(epstopdf)             \includegraphics on input line 230.
+(epstopdf)             \includegraphics on input line 268.
 Package epstopdf Info: Output file is already uptodate.
 File: ../plots_tables_images/redlimbs-eps-converted-to.pdf Graphic file (type p
 df)
 
 <use ../plots_tables_images/redlimbs-eps-converted-to.pdf>
 Package pdftex.def Info: ../plots_tables_images/redlimbs-eps-converted-to.pdf u
-sed on input line 230.
+sed on input line 268.
 (pdftex.def)             Requested size: 245.61043pt x 150.49333pt.
 Package epstopdf Info: Source file: <../plots_tables_images/smooth_expl.eps>
 (epstopdf)                    date: 2013-06-04 17:23:47
@@ -1463,16 +1458,16 @@ verted-to.pdf>
 (epstopdf)                    size: 8326 bytes
 (epstopdf)             Command: <epstopdf --outfile=../plots_tables_images/smoo
 th_expl-eps-converted-to.pdf ../plots_tables_images/smooth_expl.eps>
-(epstopdf)             \includegraphics on input line 271.
+(epstopdf)             \includegraphics on input line 309.
 Package epstopdf Info: Output file is already uptodate.
 
-<../plots_tables_images/smooth_expl-eps-converted-to.pdf, id=149, 552.0625pt x 
+<../plots_tables_images/smooth_expl-eps-converted-to.pdf, id=160, 552.0625pt x 
 338.26375pt>
 File: ../plots_tables_images/smooth_expl-eps-converted-to.pdf Graphic file (typ
 e pdf)
  <use ../plots_tables_images/smooth_expl-eps-converted-to.pdf>
 Package pdftex.def Info: ../plots_tables_images/smooth_expl-eps-converted-to.pd
-f used on input line 271.
+f used on input line 309.
 (pdftex.def)             Requested size: 199.33423pt x 122.13615pt.
 Package epstopdf Info: Source file: <../plots_tables_images/smooth_expl.eps>
 (epstopdf)                    date: 2013-06-04 17:23:47
@@ -1483,14 +1478,14 @@ verted-to.pdf>
 (epstopdf)                    size: 8326 bytes
 (epstopdf)             Command: <epstopdf --outfile=../plots_tables_images/smoo
 th_expl-eps-converted-to.pdf ../plots_tables_images/smooth_expl.eps>
-(epstopdf)             \includegraphics on input line 271.
+(epstopdf)             \includegraphics on input line 309.
 Package epstopdf Info: Output file is already uptodate.
 File: ../plots_tables_images/smooth_expl-eps-converted-to.pdf Graphic file (typ
 e pdf)
 
 <use ../plots_tables_images/smooth_expl-eps-converted-to.pdf>
 Package pdftex.def Info: ../plots_tables_images/smooth_expl-eps-converted-to.pd
-f used on input line 271.
+f used on input line 309.
 (pdftex.def)             Requested size: 194.39581pt x 119.11153pt.
 Package epstopdf Info: Source file: <../plots_tables_images/smooth_expl.eps>
 (epstopdf)                    date: 2013-06-04 17:23:47
@@ -1501,14 +1496,14 @@ verted-to.pdf>
 (epstopdf)                    size: 8326 bytes
 (epstopdf)             Command: <epstopdf --outfile=../plots_tables_images/smoo
 th_expl-eps-converted-to.pdf ../plots_tables_images/smooth_expl.eps>
-(epstopdf)             \includegraphics on input line 271.
+(epstopdf)             \includegraphics on input line 309.
 Package epstopdf Info: Output file is already uptodate.
 File: ../plots_tables_images/smooth_expl-eps-converted-to.pdf Graphic file (typ
 e pdf)
 
 <use ../plots_tables_images/smooth_expl-eps-converted-to.pdf>
 Package pdftex.def Info: ../plots_tables_images/smooth_expl-eps-converted-to.pd
-f used on input line 271.
+f used on input line 309.
 (pdftex.def)             Requested size: 194.39581pt x 119.11153pt.
 Package epstopdf Info: Source file: <../plots_tables_images/smoothcomp.eps>
 (epstopdf)                    date: 2013-06-04 17:23:47
@@ -1519,16 +1514,16 @@ erted-to.pdf>
 (epstopdf)                    size: 14058 bytes
 (epstopdf)             Command: <epstopdf --outfile=../plots_tables_images/smoo
 thcomp-eps-converted-to.pdf ../plots_tables_images/smoothcomp.eps>
-(epstopdf)             \includegraphics on input line 271.
+(epstopdf)             \includegraphics on input line 309.
 Package epstopdf Info: Output file is already uptodate.
 
-<../plots_tables_images/smoothcomp-eps-converted-to.pdf, id=150, 552.0625pt x 3
+<../plots_tables_images/smoothcomp-eps-converted-to.pdf, id=161, 552.0625pt x 3
 38.26375pt>
 File: ../plots_tables_images/smoothcomp-eps-converted-to.pdf Graphic file (type
  pdf)
  <use ../plots_tables_images/smoothcomp-eps-converted-to.pdf>
 Package pdftex.def Info: ../plots_tables_images/smoothcomp-eps-converted-to.pdf
- used on input line 271.
+ used on input line 309.
 (pdftex.def)             Requested size: 199.33423pt x 122.13615pt.
 Package epstopdf Info: Source file: <../plots_tables_images/smoothcomp.eps>
 (epstopdf)                    date: 2013-06-04 17:23:47
@@ -1539,14 +1534,14 @@ erted-to.pdf>
 (epstopdf)                    size: 14058 bytes
 (epstopdf)             Command: <epstopdf --outfile=../plots_tables_images/smoo
 thcomp-eps-converted-to.pdf ../plots_tables_images/smoothcomp.eps>
-(epstopdf)             \includegraphics on input line 271.
+(epstopdf)             \includegraphics on input line 309.
 Package epstopdf Info: Output file is already uptodate.
 File: ../plots_tables_images/smoothcomp-eps-converted-to.pdf Graphic file (type
  pdf)
 
 <use ../plots_tables_images/smoothcomp-eps-converted-to.pdf>
 Package pdftex.def Info: ../plots_tables_images/smoothcomp-eps-converted-to.pdf
- used on input line 271.
+ used on input line 309.
 (pdftex.def)             Requested size: 194.39581pt x 119.11153pt.
 Package epstopdf Info: Source file: <../plots_tables_images/smoothcomp.eps>
 (epstopdf)                    date: 2013-06-04 17:23:47
@@ -1557,14 +1552,14 @@ erted-to.pdf>
 (epstopdf)                    size: 14058 bytes
 (epstopdf)             Command: <epstopdf --outfile=../plots_tables_images/smoo
 thcomp-eps-converted-to.pdf ../plots_tables_images/smoothcomp.eps>
-(epstopdf)             \includegraphics on input line 271.
+(epstopdf)             \includegraphics on input line 309.
 Package epstopdf Info: Output file is already uptodate.
 File: ../plots_tables_images/smoothcomp-eps-converted-to.pdf Graphic file (type
  pdf)
 
 <use ../plots_tables_images/smoothcomp-eps-converted-to.pdf>
 Package pdftex.def Info: ../plots_tables_images/smoothcomp-eps-converted-to.pdf
- used on input line 271.
+ used on input line 309.
 (pdftex.def)             Requested size: 194.39581pt x 119.11153pt.
 Package epstopdf Info: Source file: <../plots_tables_images/smooth_expl.eps>
 (epstopdf)                    date: 2013-06-04 17:23:47
@@ -1575,14 +1570,14 @@ verted-to.pdf>
 (epstopdf)                    size: 8326 bytes
 (epstopdf)             Command: <epstopdf --outfile=../plots_tables_images/smoo
 th_expl-eps-converted-to.pdf ../plots_tables_images/smooth_expl.eps>
-(epstopdf)             \includegraphics on input line 271.
+(epstopdf)             \includegraphics on input line 309.
 Package epstopdf Info: Output file is already uptodate.
 File: ../plots_tables_images/smooth_expl-eps-converted-to.pdf Graphic file (typ
 e pdf)
 
 <use ../plots_tables_images/smooth_expl-eps-converted-to.pdf>
 Package pdftex.def Info: ../plots_tables_images/smooth_expl-eps-converted-to.pd
-f used on input line 271.
+f used on input line 309.
 (pdftex.def)             Requested size: 199.33423pt x 122.13615pt.
 Package epstopdf Info: Source file: <../plots_tables_images/smooth_expl.eps>
 (epstopdf)                    date: 2013-06-04 17:23:47
@@ -1593,14 +1588,14 @@ verted-to.pdf>
 (epstopdf)                    size: 8326 bytes
 (epstopdf)             Command: <epstopdf --outfile=../plots_tables_images/smoo
 th_expl-eps-converted-to.pdf ../plots_tables_images/smooth_expl.eps>
-(epstopdf)             \includegraphics on input line 271.
+(epstopdf)             \includegraphics on input line 309.
 Package epstopdf Info: Output file is already uptodate.
 File: ../plots_tables_images/smooth_expl-eps-converted-to.pdf Graphic file (typ
 e pdf)
 
 <use ../plots_tables_images/smooth_expl-eps-converted-to.pdf>
 Package pdftex.def Info: ../plots_tables_images/smooth_expl-eps-converted-to.pd
-f used on input line 271.
+f used on input line 309.
 (pdftex.def)             Requested size: 194.39581pt x 119.11153pt.
 Package epstopdf Info: Source file: <../plots_tables_images/smooth_expl.eps>
 (epstopdf)                    date: 2013-06-04 17:23:47
@@ -1611,14 +1606,14 @@ verted-to.pdf>
 (epstopdf)                    size: 8326 bytes
 (epstopdf)             Command: <epstopdf --outfile=../plots_tables_images/smoo
 th_expl-eps-converted-to.pdf ../plots_tables_images/smooth_expl.eps>
-(epstopdf)             \includegraphics on input line 271.
+(epstopdf)             \includegraphics on input line 309.
 Package epstopdf Info: Output file is already uptodate.
 File: ../plots_tables_images/smooth_expl-eps-converted-to.pdf Graphic file (typ
 e pdf)
 
 <use ../plots_tables_images/smooth_expl-eps-converted-to.pdf>
 Package pdftex.def Info: ../plots_tables_images/smooth_expl-eps-converted-to.pd
-f used on input line 271.
+f used on input line 309.
 (pdftex.def)             Requested size: 194.39581pt x 119.11153pt.
 Package epstopdf Info: Source file: <../plots_tables_images/smoothcomp.eps>
 (epstopdf)                    date: 2013-06-04 17:23:47
@@ -1629,14 +1624,14 @@ erted-to.pdf>
 (epstopdf)                    size: 14058 bytes
 (epstopdf)             Command: <epstopdf --outfile=../plots_tables_images/smoo
 thcomp-eps-converted-to.pdf ../plots_tables_images/smoothcomp.eps>
-(epstopdf)             \includegraphics on input line 271.
+(epstopdf)             \includegraphics on input line 309.
 Package epstopdf Info: Output file is already uptodate.
 File: ../plots_tables_images/smoothcomp-eps-converted-to.pdf Graphic file (type
  pdf)
 
 <use ../plots_tables_images/smoothcomp-eps-converted-to.pdf>
 Package pdftex.def Info: ../plots_tables_images/smoothcomp-eps-converted-to.pdf
- used on input line 271.
+ used on input line 309.
 (pdftex.def)             Requested size: 199.33423pt x 122.13615pt.
 Package epstopdf Info: Source file: <../plots_tables_images/smoothcomp.eps>
 (epstopdf)                    date: 2013-06-04 17:23:47
@@ -1647,14 +1642,14 @@ erted-to.pdf>
 (epstopdf)                    size: 14058 bytes
 (epstopdf)             Command: <epstopdf --outfile=../plots_tables_images/smoo
 thcomp-eps-converted-to.pdf ../plots_tables_images/smoothcomp.eps>
-(epstopdf)             \includegraphics on input line 271.
+(epstopdf)             \includegraphics on input line 309.
 Package epstopdf Info: Output file is already uptodate.
 File: ../plots_tables_images/smoothcomp-eps-converted-to.pdf Graphic file (type
  pdf)
 
 <use ../plots_tables_images/smoothcomp-eps-converted-to.pdf>
 Package pdftex.def Info: ../plots_tables_images/smoothcomp-eps-converted-to.pdf
- used on input line 271.
+ used on input line 309.
 (pdftex.def)             Requested size: 194.39581pt x 119.11153pt.
 Package epstopdf Info: Source file: <../plots_tables_images/smoothcomp.eps>
 (epstopdf)                    date: 2013-06-04 17:23:47
@@ -1665,14 +1660,14 @@ erted-to.pdf>
 (epstopdf)                    size: 14058 bytes
 (epstopdf)             Command: <epstopdf --outfile=../plots_tables_images/smoo
 thcomp-eps-converted-to.pdf ../plots_tables_images/smoothcomp.eps>
-(epstopdf)             \includegraphics on input line 271.
+(epstopdf)             \includegraphics on input line 309.
 Package epstopdf Info: Output file is already uptodate.
 File: ../plots_tables_images/smoothcomp-eps-converted-to.pdf Graphic file (type
  pdf)
 
 <use ../plots_tables_images/smoothcomp-eps-converted-to.pdf>
 Package pdftex.def Info: ../plots_tables_images/smoothcomp-eps-converted-to.pdf
- used on input line 271.
+ used on input line 309.
 (pdftex.def)             Requested size: 194.39581pt x 119.11153pt.
 Package epstopdf Info: Source file: <../plots_tables_images/allfid.eps>
 (epstopdf)                    date: 2013-06-25 10:28:32
@@ -1683,16 +1678,16 @@ d-to.pdf>
 (epstopdf)                    size: 23358 bytes
 (epstopdf)             Command: <epstopdf --outfile=../plots_tables_images/allf
 id-eps-converted-to.pdf ../plots_tables_images/allfid.eps>
-(epstopdf)             \includegraphics on input line 307.
+(epstopdf)             \includegraphics on input line 345.
 Package epstopdf Info: Output file is already uptodate.
 
-<../plots_tables_images/allfid-eps-converted-to.pdf, id=152, 552.0625pt x 552.0
+<../plots_tables_images/allfid-eps-converted-to.pdf, id=163, 552.0625pt x 552.0
 625pt>
 File: ../plots_tables_images/allfid-eps-converted-to.pdf Graphic file (type pdf
 )
  <use ../plots_tables_images/allfid-eps-converted-to.pdf>
 Package pdftex.def Info: ../plots_tables_images/allfid-eps-converted-to.pdf use
-d on input line 307.
+d on input line 345.
 (pdftex.def)             Requested size: 199.33423pt x 199.332pt.
 Package epstopdf Info: Source file: <../plots_tables_images/allfid.eps>
 (epstopdf)                    date: 2013-06-25 10:28:32
@@ -1703,14 +1698,14 @@ d-to.pdf>
 (epstopdf)                    size: 23358 bytes
 (epstopdf)             Command: <epstopdf --outfile=../plots_tables_images/allf
 id-eps-converted-to.pdf ../plots_tables_images/allfid.eps>
-(epstopdf)             \includegraphics on input line 307.
+(epstopdf)             \includegraphics on input line 345.
 Package epstopdf Info: Output file is already uptodate.
 File: ../plots_tables_images/allfid-eps-converted-to.pdf Graphic file (type pdf
 )
 
 <use ../plots_tables_images/allfid-eps-converted-to.pdf>
 Package pdftex.def Info: ../plots_tables_images/allfid-eps-converted-to.pdf use
-d on input line 307.
+d on input line 345.
 (pdftex.def)             Requested size: 191.39658pt x 191.3968pt.
 Package epstopdf Info: Source file: <../plots_tables_images/allfid.eps>
 (epstopdf)                    date: 2013-06-25 10:28:32
@@ -1721,14 +1716,14 @@ d-to.pdf>
 (epstopdf)                    size: 23358 bytes
 (epstopdf)             Command: <epstopdf --outfile=../plots_tables_images/allf
 id-eps-converted-to.pdf ../plots_tables_images/allfid.eps>
-(epstopdf)             \includegraphics on input line 307.
+(epstopdf)             \includegraphics on input line 345.
 Package epstopdf Info: Output file is already uptodate.
 File: ../plots_tables_images/allfid-eps-converted-to.pdf Graphic file (type pdf
 )
 
 <use ../plots_tables_images/allfid-eps-converted-to.pdf>
 Package pdftex.def Info: ../plots_tables_images/allfid-eps-converted-to.pdf use
-d on input line 307.
+d on input line 345.
 (pdftex.def)             Requested size: 191.39658pt x 191.3968pt.
 Package epstopdf Info: Source file: <../plots_tables_images/dimenough.eps>
 (epstopdf)                    date: 2013-06-25 10:28:23
@@ -1739,16 +1734,16 @@ rted-to.pdf>
 (epstopdf)                    size: 22558 bytes
 (epstopdf)             Command: <epstopdf --outfile=../plots_tables_images/dime
 nough-eps-converted-to.pdf ../plots_tables_images/dimenough.eps>
-(epstopdf)             \includegraphics on input line 307.
+(epstopdf)             \includegraphics on input line 345.
 Package epstopdf Info: Output file is already uptodate.
 
-<../plots_tables_images/dimenough-eps-converted-to.pdf, id=153, 552.0625pt x 55
+<../plots_tables_images/dimenough-eps-converted-to.pdf, id=164, 552.0625pt x 55
 2.0625pt>
 File: ../plots_tables_images/dimenough-eps-converted-to.pdf Graphic file (type 
 pdf)
  <use ../plots_tables_images/dimenough-eps-converted-to.pdf>
 Package pdftex.def Info: ../plots_tables_images/dimenough-eps-converted-to.pdf 
-used on input line 307.
+used on input line 345.
 (pdftex.def)             Requested size: 199.33423pt x 199.332pt.
 Package epstopdf Info: Source file: <../plots_tables_images/dimenough.eps>
 (epstopdf)                    date: 2013-06-25 10:28:23
@@ -1759,14 +1754,14 @@ rted-to.pdf>
 (epstopdf)                    size: 22558 bytes
 (epstopdf)             Command: <epstopdf --outfile=../plots_tables_images/dime
 nough-eps-converted-to.pdf ../plots_tables_images/dimenough.eps>
-(epstopdf)             \includegraphics on input line 307.
+(epstopdf)             \includegraphics on input line 345.
 Package epstopdf Info: Output file is already uptodate.
 File: ../plots_tables_images/dimenough-eps-converted-to.pdf Graphic file (type 
 pdf)
 
 <use ../plots_tables_images/dimenough-eps-converted-to.pdf>
 Package pdftex.def Info: ../plots_tables_images/dimenough-eps-converted-to.pdf 
-used on input line 307.
+used on input line 345.
 (pdftex.def)             Requested size: 191.39658pt x 191.3968pt.
 Package epstopdf Info: Source file: <../plots_tables_images/dimenough.eps>
 (epstopdf)                    date: 2013-06-25 10:28:23
@@ -1777,14 +1772,14 @@ rted-to.pdf>
 (epstopdf)                    size: 22558 bytes
 (epstopdf)             Command: <epstopdf --outfile=../plots_tables_images/dime
 nough-eps-converted-to.pdf ../plots_tables_images/dimenough.eps>
-(epstopdf)             \includegraphics on input line 307.
+(epstopdf)             \includegraphics on input line 345.
 Package epstopdf Info: Output file is already uptodate.
 File: ../plots_tables_images/dimenough-eps-converted-to.pdf Graphic file (type 
 pdf)
 
 <use ../plots_tables_images/dimenough-eps-converted-to.pdf>
 Package pdftex.def Info: ../plots_tables_images/dimenough-eps-converted-to.pdf 
-used on input line 307.
+used on input line 345.
 (pdftex.def)             Requested size: 191.39658pt x 191.3968pt.
 Package epstopdf Info: Source file: <../plots_tables_images/allfid.eps>
 (epstopdf)                    date: 2013-06-25 10:28:32
@@ -1795,14 +1790,14 @@ d-to.pdf>
 (epstopdf)                    size: 23358 bytes
 (epstopdf)             Command: <epstopdf --outfile=../plots_tables_images/allf
 id-eps-converted-to.pdf ../plots_tables_images/allfid.eps>
-(epstopdf)             \includegraphics on input line 307.
+(epstopdf)             \includegraphics on input line 345.
 Package epstopdf Info: Output file is already uptodate.
 File: ../plots_tables_images/allfid-eps-converted-to.pdf Graphic file (type pdf
 )
 
 <use ../plots_tables_images/allfid-eps-converted-to.pdf>
 Package pdftex.def Info: ../plots_tables_images/allfid-eps-converted-to.pdf use
-d on input line 307.
+d on input line 345.
 (pdftex.def)             Requested size: 199.33423pt x 199.332pt.
 Package epstopdf Info: Source file: <../plots_tables_images/allfid.eps>
 (epstopdf)                    date: 2013-06-25 10:28:32
@@ -1813,14 +1808,14 @@ d-to.pdf>
 (epstopdf)                    size: 23358 bytes
 (epstopdf)             Command: <epstopdf --outfile=../plots_tables_images/allf
 id-eps-converted-to.pdf ../plots_tables_images/allfid.eps>
-(epstopdf)             \includegraphics on input line 307.
+(epstopdf)             \includegraphics on input line 345.
 Package epstopdf Info: Output file is already uptodate.
 File: ../plots_tables_images/allfid-eps-converted-to.pdf Graphic file (type pdf
 )
 
 <use ../plots_tables_images/allfid-eps-converted-to.pdf>
 Package pdftex.def Info: ../plots_tables_images/allfid-eps-converted-to.pdf use
-d on input line 307.
+d on input line 345.
 (pdftex.def)             Requested size: 191.39658pt x 191.3968pt.
 Package epstopdf Info: Source file: <../plots_tables_images/allfid.eps>
 (epstopdf)                    date: 2013-06-25 10:28:32
@@ -1831,14 +1826,14 @@ d-to.pdf>
 (epstopdf)                    size: 23358 bytes
 (epstopdf)             Command: <epstopdf --outfile=../plots_tables_images/allf
 id-eps-converted-to.pdf ../plots_tables_images/allfid.eps>
-(epstopdf)             \includegraphics on input line 307.
+(epstopdf)             \includegraphics on input line 345.
 Package epstopdf Info: Output file is already uptodate.
 File: ../plots_tables_images/allfid-eps-converted-to.pdf Graphic file (type pdf
 )
 
 <use ../plots_tables_images/allfid-eps-converted-to.pdf>
 Package pdftex.def Info: ../plots_tables_images/allfid-eps-converted-to.pdf use
-d on input line 307.
+d on input line 345.
 (pdftex.def)             Requested size: 191.39658pt x 191.3968pt.
 Package epstopdf Info: Source file: <../plots_tables_images/dimenough.eps>
 (epstopdf)                    date: 2013-06-25 10:28:23
@@ -1849,14 +1844,14 @@ rted-to.pdf>
 (epstopdf)                    size: 22558 bytes
 (epstopdf)             Command: <epstopdf --outfile=../plots_tables_images/dime
 nough-eps-converted-to.pdf ../plots_tables_images/dimenough.eps>
-(epstopdf)             \includegraphics on input line 307.
+(epstopdf)             \includegraphics on input line 345.
 Package epstopdf Info: Output file is already uptodate.
 File: ../plots_tables_images/dimenough-eps-converted-to.pdf Graphic file (type 
 pdf)
 
 <use ../plots_tables_images/dimenough-eps-converted-to.pdf>
 Package pdftex.def Info: ../plots_tables_images/dimenough-eps-converted-to.pdf 
-used on input line 307.
+used on input line 345.
 (pdftex.def)             Requested size: 199.33423pt x 199.332pt.
 Package epstopdf Info: Source file: <../plots_tables_images/dimenough.eps>
 (epstopdf)                    date: 2013-06-25 10:28:23
@@ -1867,14 +1862,14 @@ rted-to.pdf>
 (epstopdf)                    size: 22558 bytes
 (epstopdf)             Command: <epstopdf --outfile=../plots_tables_images/dime
 nough-eps-converted-to.pdf ../plots_tables_images/dimenough.eps>
-(epstopdf)             \includegraphics on input line 307.
+(epstopdf)             \includegraphics on input line 345.
 Package epstopdf Info: Output file is already uptodate.
 File: ../plots_tables_images/dimenough-eps-converted-to.pdf Graphic file (type 
 pdf)
 
 <use ../plots_tables_images/dimenough-eps-converted-to.pdf>
 Package pdftex.def Info: ../plots_tables_images/dimenough-eps-converted-to.pdf 
-used on input line 307.
+used on input line 345.
 (pdftex.def)             Requested size: 191.39658pt x 191.3968pt.
 Package epstopdf Info: Source file: <../plots_tables_images/dimenough.eps>
 (epstopdf)                    date: 2013-06-25 10:28:23
@@ -1885,15 +1880,17 @@ rted-to.pdf>
 (epstopdf)                    size: 22558 bytes
 (epstopdf)             Command: <epstopdf --outfile=../plots_tables_images/dime
 nough-eps-converted-to.pdf ../plots_tables_images/dimenough.eps>
-(epstopdf)             \includegraphics on input line 307.
+(epstopdf)             \includegraphics on input line 345.
 Package epstopdf Info: Output file is already uptodate.
 File: ../plots_tables_images/dimenough-eps-converted-to.pdf Graphic file (type 
 pdf)
 
 <use ../plots_tables_images/dimenough-eps-converted-to.pdf>
 Package pdftex.def Info: ../plots_tables_images/dimenough-eps-converted-to.pdf 
-used on input line 307.
+used on input line 345.
 (pdftex.def)             Requested size: 191.39658pt x 191.3968pt.
+ [4 <../plots_tables_images/firstcheck-eps-converted-to.pdf> <../plots_tables_i
+mages/seccheck-eps-converted-to.pdf>]
 Package epstopdf Info: Source file: <../plots_tables_images/fidcand_test.eps>
 (epstopdf)                    date: 2013-06-25 10:59:42
 (epstopdf)                    size: 5232 bytes
@@ -1903,16 +1900,16 @@ nverted-to.pdf>
 (epstopdf)                    size: 4325 bytes
 (epstopdf)             Command: <epstopdf --outfile=../plots_tables_images/fidc
 and_test-eps-converted-to.pdf ../plots_tables_images/fidcand_test.eps>
-(epstopdf)             \includegraphics on input line 337.
+(epstopdf)             \includegraphics on input line 375.
 Package epstopdf Info: Output file is already uptodate.
 
-<../plots_tables_images/fidcand_test-eps-converted-to.pdf, id=156, 552.0625pt x
+<../plots_tables_images/fidcand_test-eps-converted-to.pdf, id=181, 552.0625pt x
  552.0625pt>
 File: ../plots_tables_images/fidcand_test-eps-converted-to.pdf Graphic file (ty
 pe pdf)
  <use ../plots_tables_images/fidcand_test-eps-converted-to.pdf>
 Package pdftex.def Info: ../plots_tables_images/fidcand_test-eps-converted-to.p
-df used on input line 337.
+df used on input line 375.
 (pdftex.def)             Requested size: 199.33423pt x 199.332pt.
 Package epstopdf Info: Source file: <../plots_tables_images/fidcand_test.eps>
 (epstopdf)                    date: 2013-06-25 10:59:42
@@ -1923,14 +1920,14 @@ nverted-to.pdf>
 (epstopdf)                    size: 4325 bytes
 (epstopdf)             Command: <epstopdf --outfile=../plots_tables_images/fidc
 and_test-eps-converted-to.pdf ../plots_tables_images/fidcand_test.eps>
-(epstopdf)             \includegraphics on input line 337.
+(epstopdf)             \includegraphics on input line 375.
 Package epstopdf Info: Output file is already uptodate.
 File: ../plots_tables_images/fidcand_test-eps-converted-to.pdf Graphic file (ty
 pe pdf)
 
 <use ../plots_tables_images/fidcand_test-eps-converted-to.pdf>
 Package pdftex.def Info: ../plots_tables_images/fidcand_test-eps-converted-to.p
-df used on input line 337.
+df used on input line 375.
 (pdftex.def)             Requested size: 191.39658pt x 191.3968pt.
 Package epstopdf Info: Source file: <../plots_tables_images/fidcand_test.eps>
 (epstopdf)                    date: 2013-06-25 10:59:42
@@ -1941,14 +1938,14 @@ nverted-to.pdf>
 (epstopdf)                    size: 4325 bytes
 (epstopdf)             Command: <epstopdf --outfile=../plots_tables_images/fidc
 and_test-eps-converted-to.pdf ../plots_tables_images/fidcand_test.eps>
-(epstopdf)             \includegraphics on input line 337.
+(epstopdf)             \includegraphics on input line 375.
 Package epstopdf Info: Output file is already uptodate.
 File: ../plots_tables_images/fidcand_test-eps-converted-to.pdf Graphic file (ty
 pe pdf)
 
 <use ../plots_tables_images/fidcand_test-eps-converted-to.pdf>
 Package pdftex.def Info: ../plots_tables_images/fidcand_test-eps-converted-to.p
-df used on input line 337.
+df used on input line 375.
 (pdftex.def)             Requested size: 191.39658pt x 191.3968pt.
 Package epstopdf Info: Source file: <../plots_tables_images/fidcand_sums.eps>
 (epstopdf)                    date: 2013-06-25 11:02:32
@@ -1959,16 +1956,16 @@ nverted-to.pdf>
 (epstopdf)                    size: 8045 bytes
 (epstopdf)             Command: <epstopdf --outfile=../plots_tables_images/fidc
 and_sums-eps-converted-to.pdf ../plots_tables_images/fidcand_sums.eps>
-(epstopdf)             \includegraphics on input line 337.
+(epstopdf)             \includegraphics on input line 375.
 Package epstopdf Info: Output file is already uptodate.
 
-<../plots_tables_images/fidcand_sums-eps-converted-to.pdf, id=157, 578.16pt x 5
+<../plots_tables_images/fidcand_sums-eps-converted-to.pdf, id=182, 578.16pt x 5
 78.16pt>
 File: ../plots_tables_images/fidcand_sums-eps-converted-to.pdf Graphic file (ty
 pe pdf)
  <use ../plots_tables_images/fidcand_sums-eps-converted-to.pdf>
 Package pdftex.def Info: ../plots_tables_images/fidcand_sums-eps-converted-to.p
-df used on input line 337.
+df used on input line 375.
 (pdftex.def)             Requested size: 199.33423pt x 199.33308pt.
 Package epstopdf Info: Source file: <../plots_tables_images/fidcand_sums.eps>
 (epstopdf)                    date: 2013-06-25 11:02:32
@@ -1979,14 +1976,14 @@ nverted-to.pdf>
 (epstopdf)                    size: 8045 bytes
 (epstopdf)             Command: <epstopdf --outfile=../plots_tables_images/fidc
 and_sums-eps-converted-to.pdf ../plots_tables_images/fidcand_sums.eps>
-(epstopdf)             \includegraphics on input line 337.
+(epstopdf)             \includegraphics on input line 375.
 Package epstopdf Info: Output file is already uptodate.
 File: ../plots_tables_images/fidcand_sums-eps-converted-to.pdf Graphic file (ty
 pe pdf)
 
 <use ../plots_tables_images/fidcand_sums-eps-converted-to.pdf>
 Package pdftex.def Info: ../plots_tables_images/fidcand_sums-eps-converted-to.p
-df used on input line 337.
+df used on input line 375.
 (pdftex.def)             Requested size: 191.39658pt x 191.39328pt.
 Package epstopdf Info: Source file: <../plots_tables_images/fidcand_sums.eps>
 (epstopdf)                    date: 2013-06-25 11:02:32
@@ -1997,14 +1994,14 @@ nverted-to.pdf>
 (epstopdf)                    size: 8045 bytes
 (epstopdf)             Command: <epstopdf --outfile=../plots_tables_images/fidc
 and_sums-eps-converted-to.pdf ../plots_tables_images/fidcand_sums.eps>
-(epstopdf)             \includegraphics on input line 337.
+(epstopdf)             \includegraphics on input line 375.
 Package epstopdf Info: Output file is already uptodate.
 File: ../plots_tables_images/fidcand_sums-eps-converted-to.pdf Graphic file (ty
 pe pdf)
 
 <use ../plots_tables_images/fidcand_sums-eps-converted-to.pdf>
 Package pdftex.def Info: ../plots_tables_images/fidcand_sums-eps-converted-to.p
-df used on input line 337.
+df used on input line 375.
 (pdftex.def)             Requested size: 191.39658pt x 191.39328pt.
 Package epstopdf Info: Source file: <../plots_tables_images/fidcand_test.eps>
 (epstopdf)                    date: 2013-06-25 10:59:42
@@ -2015,14 +2012,14 @@ nverted-to.pdf>
 (epstopdf)                    size: 4325 bytes
 (epstopdf)             Command: <epstopdf --outfile=../plots_tables_images/fidc
 and_test-eps-converted-to.pdf ../plots_tables_images/fidcand_test.eps>
-(epstopdf)             \includegraphics on input line 337.
+(epstopdf)             \includegraphics on input line 375.
 Package epstopdf Info: Output file is already uptodate.
 File: ../plots_tables_images/fidcand_test-eps-converted-to.pdf Graphic file (ty
 pe pdf)
 
 <use ../plots_tables_images/fidcand_test-eps-converted-to.pdf>
 Package pdftex.def Info: ../plots_tables_images/fidcand_test-eps-converted-to.p
-df used on input line 337.
+df used on input line 375.
 (pdftex.def)             Requested size: 199.33423pt x 199.332pt.
 Package epstopdf Info: Source file: <../plots_tables_images/fidcand_test.eps>
 (epstopdf)                    date: 2013-06-25 10:59:42
@@ -2033,14 +2030,14 @@ nverted-to.pdf>
 (epstopdf)                    size: 4325 bytes
 (epstopdf)             Command: <epstopdf --outfile=../plots_tables_images/fidc
 and_test-eps-converted-to.pdf ../plots_tables_images/fidcand_test.eps>
-(epstopdf)             \includegraphics on input line 337.
+(epstopdf)             \includegraphics on input line 375.
 Package epstopdf Info: Output file is already uptodate.
 File: ../plots_tables_images/fidcand_test-eps-converted-to.pdf Graphic file (ty
 pe pdf)
 
 <use ../plots_tables_images/fidcand_test-eps-converted-to.pdf>
 Package pdftex.def Info: ../plots_tables_images/fidcand_test-eps-converted-to.p
-df used on input line 337.
+df used on input line 375.
 (pdftex.def)             Requested size: 191.39658pt x 191.3968pt.
 Package epstopdf Info: Source file: <../plots_tables_images/fidcand_test.eps>
 (epstopdf)                    date: 2013-06-25 10:59:42
@@ -2051,14 +2048,14 @@ nverted-to.pdf>
 (epstopdf)                    size: 4325 bytes
 (epstopdf)             Command: <epstopdf --outfile=../plots_tables_images/fidc
 and_test-eps-converted-to.pdf ../plots_tables_images/fidcand_test.eps>
-(epstopdf)             \includegraphics on input line 337.
+(epstopdf)             \includegraphics on input line 375.
 Package epstopdf Info: Output file is already uptodate.
 File: ../plots_tables_images/fidcand_test-eps-converted-to.pdf Graphic file (ty
 pe pdf)
 
 <use ../plots_tables_images/fidcand_test-eps-converted-to.pdf>
 Package pdftex.def Info: ../plots_tables_images/fidcand_test-eps-converted-to.p
-df used on input line 337.
+df used on input line 375.
 (pdftex.def)             Requested size: 191.39658pt x 191.3968pt.
 Package epstopdf Info: Source file: <../plots_tables_images/fidcand_sums.eps>
 (epstopdf)                    date: 2013-06-25 11:02:32
@@ -2069,14 +2066,14 @@ nverted-to.pdf>
 (epstopdf)                    size: 8045 bytes
 (epstopdf)             Command: <epstopdf --outfile=../plots_tables_images/fidc
 and_sums-eps-converted-to.pdf ../plots_tables_images/fidcand_sums.eps>
-(epstopdf)             \includegraphics on input line 337.
+(epstopdf)             \includegraphics on input line 375.
 Package epstopdf Info: Output file is already uptodate.
 File: ../plots_tables_images/fidcand_sums-eps-converted-to.pdf Graphic file (ty
 pe pdf)
 
 <use ../plots_tables_images/fidcand_sums-eps-converted-to.pdf>
 Package pdftex.def Info: ../plots_tables_images/fidcand_sums-eps-converted-to.p
-df used on input line 337.
+df used on input line 375.
 (pdftex.def)             Requested size: 199.33423pt x 199.33308pt.
 Package epstopdf Info: Source file: <../plots_tables_images/fidcand_sums.eps>
 (epstopdf)                    date: 2013-06-25 11:02:32
@@ -2087,14 +2084,14 @@ nverted-to.pdf>
 (epstopdf)                    size: 8045 bytes
 (epstopdf)             Command: <epstopdf --outfile=../plots_tables_images/fidc
 and_sums-eps-converted-to.pdf ../plots_tables_images/fidcand_sums.eps>
-(epstopdf)             \includegraphics on input line 337.
+(epstopdf)             \includegraphics on input line 375.
 Package epstopdf Info: Output file is already uptodate.
 File: ../plots_tables_images/fidcand_sums-eps-converted-to.pdf Graphic file (ty
 pe pdf)
 
 <use ../plots_tables_images/fidcand_sums-eps-converted-to.pdf>
 Package pdftex.def Info: ../plots_tables_images/fidcand_sums-eps-converted-to.p
-df used on input line 337.
+df used on input line 375.
 (pdftex.def)             Requested size: 191.39658pt x 191.39328pt.
 Package epstopdf Info: Source file: <../plots_tables_images/fidcand_sums.eps>
 (epstopdf)                    date: 2013-06-25 11:02:32
@@ -2105,14 +2102,14 @@ nverted-to.pdf>
 (epstopdf)                    size: 8045 bytes
 (epstopdf)             Command: <epstopdf --outfile=../plots_tables_images/fidc
 and_sums-eps-converted-to.pdf ../plots_tables_images/fidcand_sums.eps>
-(epstopdf)             \includegraphics on input line 337.
+(epstopdf)             \includegraphics on input line 375.
 Package epstopdf Info: Output file is already uptodate.
 File: ../plots_tables_images/fidcand_sums-eps-converted-to.pdf Graphic file (ty
 pe pdf)
 
 <use ../plots_tables_images/fidcand_sums-eps-converted-to.pdf>
 Package pdftex.def Info: ../plots_tables_images/fidcand_sums-eps-converted-to.p
-df used on input line 337.
+df used on input line 375.
 (pdftex.def)             Requested size: 191.39658pt x 191.39328pt.
 Package epstopdf Info: Source file: <../plots_tables_images/badfid.eps>
 (epstopdf)                    date: 2013-06-25 11:04:15
@@ -2123,16 +2120,16 @@ d-to.pdf>
 (epstopdf)                    size: 3722 bytes
 (epstopdf)             Command: <epstopdf --outfile=../plots_tables_images/badf
 id-eps-converted-to.pdf ../plots_tables_images/badfid.eps>
-(epstopdf)             \includegraphics on input line 364.
+(epstopdf)             \includegraphics on input line 402.
 Package epstopdf Info: Output file is already uptodate.
 
-<../plots_tables_images/badfid-eps-converted-to.pdf, id=158, 552.0625pt x 552.0
+<../plots_tables_images/badfid-eps-converted-to.pdf, id=183, 552.0625pt x 552.0
 625pt>
 File: ../plots_tables_images/badfid-eps-converted-to.pdf Graphic file (type pdf
 )
  <use ../plots_tables_images/badfid-eps-converted-to.pdf>
 Package pdftex.def Info: ../plots_tables_images/badfid-eps-converted-to.pdf use
-d on input line 364.
+d on input line 402.
 (pdftex.def)             Requested size: 199.33423pt x 199.332pt.
 Package epstopdf Info: Source file: <../plots_tables_images/badfid.eps>
 (epstopdf)                    date: 2013-06-25 11:04:15
@@ -2143,14 +2140,14 @@ d-to.pdf>
 (epstopdf)                    size: 3722 bytes
 (epstopdf)             Command: <epstopdf --outfile=../plots_tables_images/badf
 id-eps-converted-to.pdf ../plots_tables_images/badfid.eps>
-(epstopdf)             \includegraphics on input line 364.
+(epstopdf)             \includegraphics on input line 402.
 Package epstopdf Info: Output file is already uptodate.
 File: ../plots_tables_images/badfid-eps-converted-to.pdf Graphic file (type pdf
 )
 
 <use ../plots_tables_images/badfid-eps-converted-to.pdf>
 Package pdftex.def Info: ../plots_tables_images/badfid-eps-converted-to.pdf use
-d on input line 364.
+d on input line 402.
 (pdftex.def)             Requested size: 191.39658pt x 191.3968pt.
 Package epstopdf Info: Source file: <../plots_tables_images/badfid.eps>
 (epstopdf)                    date: 2013-06-25 11:04:15
@@ -2161,14 +2158,14 @@ d-to.pdf>
 (epstopdf)                    size: 3722 bytes
 (epstopdf)             Command: <epstopdf --outfile=../plots_tables_images/badf
 id-eps-converted-to.pdf ../plots_tables_images/badfid.eps>
-(epstopdf)             \includegraphics on input line 364.
+(epstopdf)             \includegraphics on input line 402.
 Package epstopdf Info: Output file is already uptodate.
 File: ../plots_tables_images/badfid-eps-converted-to.pdf Graphic file (type pdf
 )
 
 <use ../plots_tables_images/badfid-eps-converted-to.pdf>
 Package pdftex.def Info: ../plots_tables_images/badfid-eps-converted-to.pdf use
-d on input line 364.
+d on input line 402.
 (pdftex.def)             Requested size: 191.39658pt x 191.3968pt.
 Package epstopdf Info: Source file: <../plots_tables_images/fidcand_sums_falsep
 os.eps>
@@ -2181,17 +2178,17 @@ os-eps-converted-to.pdf>
 (epstopdf)             Command: <epstopdf --outfile=../plots_tables_images/fidc
 and_sums_falsepos-eps-converted-to.pdf ../plots_tables_images/fidcand_sums_fals
 epos.eps>
-(epstopdf)             \includegraphics on input line 364.
+(epstopdf)             \includegraphics on input line 402.
 Package epstopdf Info: Output file is already uptodate.
 
-<../plots_tables_images/fidcand_sums_falsepos-eps-converted-to.pdf, id=159, 578
+<../plots_tables_images/fidcand_sums_falsepos-eps-converted-to.pdf, id=184, 578
 .16pt x 578.16pt>
 File: ../plots_tables_images/fidcand_sums_falsepos-eps-converted-to.pdf Graphic
  file (type pdf)
 
 <use ../plots_tables_images/fidcand_sums_falsepos-eps-converted-to.pdf>
 Package pdftex.def Info: ../plots_tables_images/fidcand_sums_falsepos-eps-conve
-rted-to.pdf used on input line 364.
+rted-to.pdf used on input line 402.
 (pdftex.def)             Requested size: 199.33423pt x 199.33308pt.
 Package epstopdf Info: Source file: <../plots_tables_images/fidcand_sums_falsep
 os.eps>
@@ -2204,14 +2201,14 @@ os-eps-converted-to.pdf>
 (epstopdf)             Command: <epstopdf --outfile=../plots_tables_images/fidc
 and_sums_falsepos-eps-converted-to.pdf ../plots_tables_images/fidcand_sums_fals
 epos.eps>
-(epstopdf)             \includegraphics on input line 364.
+(epstopdf)             \includegraphics on input line 402.
 Package epstopdf Info: Output file is already uptodate.
 File: ../plots_tables_images/fidcand_sums_falsepos-eps-converted-to.pdf Graphic
  file (type pdf)
 
 <use ../plots_tables_images/fidcand_sums_falsepos-eps-converted-to.pdf>
 Package pdftex.def Info: ../plots_tables_images/fidcand_sums_falsepos-eps-conve
-rted-to.pdf used on input line 364.
+rted-to.pdf used on input line 402.
 (pdftex.def)             Requested size: 191.39658pt x 191.39328pt.
 Package epstopdf Info: Source file: <../plots_tables_images/fidcand_sums_falsep
 os.eps>
@@ -2224,14 +2221,14 @@ os-eps-converted-to.pdf>
 (epstopdf)             Command: <epstopdf --outfile=../plots_tables_images/fidc
 and_sums_falsepos-eps-converted-to.pdf ../plots_tables_images/fidcand_sums_fals
 epos.eps>
-(epstopdf)             \includegraphics on input line 364.
+(epstopdf)             \includegraphics on input line 402.
 Package epstopdf Info: Output file is already uptodate.
 File: ../plots_tables_images/fidcand_sums_falsepos-eps-converted-to.pdf Graphic
  file (type pdf)
 
 <use ../plots_tables_images/fidcand_sums_falsepos-eps-converted-to.pdf>
 Package pdftex.def Info: ../plots_tables_images/fidcand_sums_falsepos-eps-conve
-rted-to.pdf used on input line 364.
+rted-to.pdf used on input line 402.
 (pdftex.def)             Requested size: 191.39658pt x 191.39328pt.
 Package epstopdf Info: Source file: <../plots_tables_images/badfid.eps>
 (epstopdf)                    date: 2013-06-25 11:04:15
@@ -2242,14 +2239,14 @@ d-to.pdf>
 (epstopdf)                    size: 3722 bytes
 (epstopdf)             Command: <epstopdf --outfile=../plots_tables_images/badf
 id-eps-converted-to.pdf ../plots_tables_images/badfid.eps>
-(epstopdf)             \includegraphics on input line 364.
+(epstopdf)             \includegraphics on input line 402.
 Package epstopdf Info: Output file is already uptodate.
 File: ../plots_tables_images/badfid-eps-converted-to.pdf Graphic file (type pdf
 )
 
 <use ../plots_tables_images/badfid-eps-converted-to.pdf>
 Package pdftex.def Info: ../plots_tables_images/badfid-eps-converted-to.pdf use
-d on input line 364.
+d on input line 402.
 (pdftex.def)             Requested size: 199.33423pt x 199.332pt.
 Package epstopdf Info: Source file: <../plots_tables_images/badfid.eps>
 (epstopdf)                    date: 2013-06-25 11:04:15
@@ -2260,14 +2257,14 @@ d-to.pdf>
 (epstopdf)                    size: 3722 bytes
 (epstopdf)             Command: <epstopdf --outfile=../plots_tables_images/badf
 id-eps-converted-to.pdf ../plots_tables_images/badfid.eps>
-(epstopdf)             \includegraphics on input line 364.
+(epstopdf)             \includegraphics on input line 402.
 Package epstopdf Info: Output file is already uptodate.
 File: ../plots_tables_images/badfid-eps-converted-to.pdf Graphic file (type pdf
 )
 
 <use ../plots_tables_images/badfid-eps-converted-to.pdf>
 Package pdftex.def Info: ../plots_tables_images/badfid-eps-converted-to.pdf use
-d on input line 364.
+d on input line 402.
 (pdftex.def)             Requested size: 191.39658pt x 191.3968pt.
 Package epstopdf Info: Source file: <../plots_tables_images/badfid.eps>
 (epstopdf)                    date: 2013-06-25 11:04:15
@@ -2278,14 +2275,14 @@ d-to.pdf>
 (epstopdf)                    size: 3722 bytes
 (epstopdf)             Command: <epstopdf --outfile=../plots_tables_images/badf
 id-eps-converted-to.pdf ../plots_tables_images/badfid.eps>
-(epstopdf)             \includegraphics on input line 364.
+(epstopdf)             \includegraphics on input line 402.
 Package epstopdf Info: Output file is already uptodate.
 File: ../plots_tables_images/badfid-eps-converted-to.pdf Graphic file (type pdf
 )
 
 <use ../plots_tables_images/badfid-eps-converted-to.pdf>
 Package pdftex.def Info: ../plots_tables_images/badfid-eps-converted-to.pdf use
-d on input line 364.
+d on input line 402.
 (pdftex.def)             Requested size: 191.39658pt x 191.3968pt.
 Package epstopdf Info: Source file: <../plots_tables_images/fidcand_sums_falsep
 os.eps>
@@ -2298,14 +2295,14 @@ os-eps-converted-to.pdf>
 (epstopdf)             Command: <epstopdf --outfile=../plots_tables_images/fidc
 and_sums_falsepos-eps-converted-to.pdf ../plots_tables_images/fidcand_sums_fals
 epos.eps>
-(epstopdf)             \includegraphics on input line 364.
+(epstopdf)             \includegraphics on input line 402.
 Package epstopdf Info: Output file is already uptodate.
 File: ../plots_tables_images/fidcand_sums_falsepos-eps-converted-to.pdf Graphic
  file (type pdf)
 
 <use ../plots_tables_images/fidcand_sums_falsepos-eps-converted-to.pdf>
 Package pdftex.def Info: ../plots_tables_images/fidcand_sums_falsepos-eps-conve
-rted-to.pdf used on input line 364.
+rted-to.pdf used on input line 402.
 (pdftex.def)             Requested size: 199.33423pt x 199.33308pt.
 Package epstopdf Info: Source file: <../plots_tables_images/fidcand_sums_falsep
 os.eps>
@@ -2318,14 +2315,14 @@ os-eps-converted-to.pdf>
 (epstopdf)             Command: <epstopdf --outfile=../plots_tables_images/fidc
 and_sums_falsepos-eps-converted-to.pdf ../plots_tables_images/fidcand_sums_fals
 epos.eps>
-(epstopdf)             \includegraphics on input line 364.
+(epstopdf)             \includegraphics on input line 402.
 Package epstopdf Info: Output file is already uptodate.
 File: ../plots_tables_images/fidcand_sums_falsepos-eps-converted-to.pdf Graphic
  file (type pdf)
 
 <use ../plots_tables_images/fidcand_sums_falsepos-eps-converted-to.pdf>
 Package pdftex.def Info: ../plots_tables_images/fidcand_sums_falsepos-eps-conve
-rted-to.pdf used on input line 364.
+rted-to.pdf used on input line 402.
 (pdftex.def)             Requested size: 191.39658pt x 191.39328pt.
 Package epstopdf Info: Source file: <../plots_tables_images/fidcand_sums_falsep
 os.eps>
@@ -2338,21 +2335,19 @@ os-eps-converted-to.pdf>
 (epstopdf)             Command: <epstopdf --outfile=../plots_tables_images/fidc
 and_sums_falsepos-eps-converted-to.pdf ../plots_tables_images/fidcand_sums_fals
 epos.eps>
-(epstopdf)             \includegraphics on input line 364.
+(epstopdf)             \includegraphics on input line 402.
 Package epstopdf Info: Output file is already uptodate.
 File: ../plots_tables_images/fidcand_sums_falsepos-eps-converted-to.pdf Graphic
  file (type pdf)
 
 <use ../plots_tables_images/fidcand_sums_falsepos-eps-converted-to.pdf>
 Package pdftex.def Info: ../plots_tables_images/fidcand_sums_falsepos-eps-conve
-rted-to.pdf used on input line 364.
+rted-to.pdf used on input line 402.
 (pdftex.def)             Requested size: 191.39658pt x 191.39328pt.
 
-[4 <../plots_tables_images/5chords-eps-converted-to.pdf> <../plots_tables_image
-s/redlimbs-eps-converted-to.pdf>] [5 <../plots_tables_images/smooth_expl-eps-co
-nverted-to.pdf> <../plots_tables_images/smoothcomp-eps-converted-to.pdf> <../pl
-ots_tables_images/allfid-eps-converted-to.pdf> <../plots_tables_images/dimenoug
-h-eps-converted-to.pdf>]
+[5 <../plots_tables_images/5chords-eps-converted-to.pdf> <../plots_tables_image
+s/redlimbs-eps-converted-to.pdf> <../plots_tables_images/smooth_expl-eps-conver
+ted-to.pdf> <../plots_tables_images/smoothcomp-eps-converted-to.pdf>]
 Package epstopdf Info: Source file: <../plots_tables_images/fiddone.eps>
 (epstopdf)                    date: 2013-06-25 12:34:33
 (epstopdf)                    size: 71596 bytes
@@ -2362,65 +2357,68 @@ ed-to.pdf>
 (epstopdf)                    size: 19842 bytes
 (epstopdf)             Command: <epstopdf --outfile=../plots_tables_images/fidd
 one-eps-converted-to.pdf ../plots_tables_images/fiddone.eps>
-(epstopdf)             \includegraphics on input line 378.
+(epstopdf)             \includegraphics on input line 416.
 Package epstopdf Info: Output file is already uptodate.
 
-<../plots_tables_images/fiddone-eps-converted-to.pdf, id=200, 552.0625pt x 552.
+<../plots_tables_images/fiddone-eps-converted-to.pdf, id=213, 552.0625pt x 552.
 0625pt>
 File: ../plots_tables_images/fiddone-eps-converted-to.pdf Graphic file (type pd
 f)
  <use ../plots_tables_images/fiddone-eps-converted-to.pdf>
 Package pdftex.def Info: ../plots_tables_images/fiddone-eps-converted-to.pdf us
-ed on input line 378.
+ed on input line 416.
 (pdftex.def)             Requested size: 407.6684pt x 407.6859pt.
- [6 <../plots_tables_images/fidcand_test-eps-converted-to.pdf> <../plots_tables
-_images/fidcand_sums-eps-converted-to.pdf> <../plots_tables_images/badfid-eps-c
-onverted-to.pdf> <../plots_tables_images/fidcand_sums_falsepos-eps-converted-to
-.pdf>]
+
 Table 1 has been set to width 501.33101pt
 
-Overfull \hbox (48.36305pt too wide) in paragraph at lines 402--465
+Overfull \hbox (48.36305pt too wide) in paragraph at lines 440--503
  [][][] 
  []
 
 Table 2 has been set to width 419.84674pt
 Table 3 has been set to width 342.592pt
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 531.
-[7 <../plots_tables_images/fiddone-eps-converted-to.pdf>] [8]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 531.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 569.
+[6 <../plots_tables_images/allfid-eps-converted-to.pdf> <../plots_tables_images
+/dimenough-eps-converted-to.pdf> <../plots_tables_images/fidcand_test-eps-conve
+rted-to.pdf> <../plots_tables_images/fidcand_sums-eps-converted-to.pdf>]
+[7] [8 <../plots_tables_images/badfid-eps-converted-to.pdf> <../plots_tables_im
+ages/fidcand_sums_falsepos-eps-converted-to.pdf>] [9 <../plots_tables_images/fi
+ddone-eps-converted-to.pdf>]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 569.
  (./gord_expl.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 531.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 531.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 569.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 569.
 Package rerunfilecheck Info: File `gord_expl.out' has not changed.
 (rerunfilecheck)             Checksum: 3736331F6551FB12819094C7D717DC25;721.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 531.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 569.
  ) 
 Here is how much of TeX's memory you used:
- 11828 strings out of 493315
- 183584 string characters out of 6137904
- 416055 words of memory out of 5000000
- 15038 multiletter control sequences out of 15000+600000
- 19456 words of font info for 53 fonts, out of 8000000 for 9000
+ 11847 strings out of 493315
+ 183929 string characters out of 6137904
+ 416704 words of memory out of 5000000
+ 15050 multiletter control sequences out of 15000+600000
+ 21080 words of font info for 59 fonts, out of 8000000 for 9000
  957 hyphenation exceptions out of 8191
- 40i,14n,46p,975b,1075s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 41i,14n,58p,975b,1075s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/local/texlive/2013/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc}
-</usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></
-usr/local/texlive/2013/texmf-dist/fonts/type1/public/cm-super/sfrm0700.pfb></us
-r/local/texlive/2013/texmf-dist/fonts/type1/public/cm-super/sfrm0800.pfb></usr/
-local/texlive/2013/texmf-dist/fonts/type1/public/cm-super/sfrm1000.pfb></usr/lo
-cal/texlive/2013/texmf-dist/fonts/type1/public/cm-super/sfrm1440.pfb></usr/loca
-l/texlive/2013/texmf-dist/fonts/type1/public/cm-super/sfsi0800.pfb></usr/local/
-texlive/2013/texmf-dist/fonts/type1/public/cm-super/sfss0800.pfb></usr/local/te
-xlive/2013/texmf-dist/fonts/type1/public/cm-super/sfsx1000.pfb></usr/local/texl
-ive/2013/texmf-dist/fonts/type1/public/cm-super/sfsx1200.pfb></usr/local/texliv
-e/2013/texmf-dist/fonts/type1/public/cm-super/sfsx1440.pfb></usr/local/texlive/
-2013/texmf-dist/fonts/type1/public/cm-super/sfsx2074.pfb></usr/local/texlive/20
-13/texmf-dist/fonts/type1/public/cm-super/sfti1000.pfb></usr/local/texlive/2013
-/texmf-dist/fonts/type1/public/cm-super/sftt1000.pfb>
-Output written on gord_expl.pdf (9 pages, 604597 bytes).
+</usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></
+usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></us
+r/local/texlive/2013/texmf-dist/fonts/type1/public/cm-super/sfrm0700.pfb></usr/
+local/texlive/2013/texmf-dist/fonts/type1/public/cm-super/sfrm0800.pfb></usr/lo
+cal/texlive/2013/texmf-dist/fonts/type1/public/cm-super/sfrm0900.pfb></usr/loca
+l/texlive/2013/texmf-dist/fonts/type1/public/cm-super/sfrm1000.pfb></usr/local/
+texlive/2013/texmf-dist/fonts/type1/public/cm-super/sfrm1440.pfb></usr/local/te
+xlive/2013/texmf-dist/fonts/type1/public/cm-super/sfsi0800.pfb></usr/local/texl
+ive/2013/texmf-dist/fonts/type1/public/cm-super/sfss0800.pfb></usr/local/texliv
+e/2013/texmf-dist/fonts/type1/public/cm-super/sfsx1000.pfb></usr/local/texlive/
+2013/texmf-dist/fonts/type1/public/cm-super/sfsx1200.pfb></usr/local/texlive/20
+13/texmf-dist/fonts/type1/public/cm-super/sfsx1440.pfb></usr/local/texlive/2013
+/texmf-dist/fonts/type1/public/cm-super/sfsx2074.pfb></usr/local/texlive/2013/t
+exmf-dist/fonts/type1/public/cm-super/sftt1000.pfb>
+Output written on gord_expl.pdf (10 pages, 616904 bytes).
 PDF statistics:
- 297 PDF objects out of 1000 (max. 8388607)
- 237 compressed objects within 3 object streams
- 51 named destinations out of 1000 (max. 500000)
- 187 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 322 PDF objects out of 1000 (max. 8388607)
+ 247 compressed objects within 3 object streams
+ 53 named destinations out of 1000 (max. 500000)
+ 192 words of extra memory for PDF output out of 10000 (max. 10000000)
 

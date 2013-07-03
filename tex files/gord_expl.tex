@@ -8,14 +8,14 @@
 \usepackage{enumerate}
 \usepackage{graphicx}
 \usepackage[colorlinks=true,urlcolor=blue]{hyperref}
-\usepackage{caption}
-\usepackage{subcaption}
 \usepackage{floatrow}
 \usepackage{deluxetable}
 \usepackage{verbatim}
 \usepackage{fancyvrb}
 \usepackage{listings}
 \usepackage{calc}
+\usepackage[font=small]{caption}
+\usepackage[font=scriptsize]{subcaption}
 
 \floatsetup{ 
   heightadjust=object,
@@ -165,37 +165,75 @@ Using these three thresholds, we create separate masks, one for each sun.
 
 	We find the centers of each cropped region in Figure \ref{triplecrop} using a simple masking method. With the centroid determined by a simple masking method, we have to make sure that the center is from a whole sun. The process so far has not taken into account any spatial information so the next step is to look at a border region of the mask. 
 
+% \begin{figure}[!ht]
+% \ffigbox{
+%     \begin{subfloatrow}
+%         \ffigbox[\FBwidth]% Width of subfloat
+%         {
+%         \includegraphics[width=.9\linewidth]{../plots_tables_images/cutcorner.eps}
+%         }
+%         {
+%         \subcaption{What our mask should look like - side of black triangle is 1/4 of image width}
+%         \label{noborder}
+%         }
+%     \end{subfloatrow}
+%     \begin{subfloatrow}
+%         \ffigbox[\FBwidth]% Width of subfloat
+%         {
+%         \includegraphics[width=.9\linewidth]{../plots_tables_images/cutcornerwborder.eps}
+%         }
+%         {
+%         \subcaption{A proposed mask that looks within a certain distance form the border.}
+%         \label{aborder}
+%         }
+%     \end{subfloatrow}
+% }
+% {\caption{The bottom corners will never see any data; the border mask takes into account the distance from the hypotenuse of the bottom corners}
+% \label{cuttingcorners}
+% }
+% \end{figure}
+
+
+% If the center we computed with the mask method is within a certain distance to the edge of the image (as shown in Figure \ref{aborder}), we mark that solar region as ``\emph{partial}'' and cease further analysis for that particular brightness sun. \\
+% \indent Once we have our list of whole suns along with their masked centers, we proceed to fitting the solar limbs to find a more accurate center.
+
+
+\begin{figure}[!ht]
+    \centering
+    \includegraphics[width=.9\textwidth]{../plots_tables_images/cutcorner.eps}    
+    \caption{What our mask should look like - side of black triangle is 1/4 of image width}
+    \label{dogeared}
+\end{figure}
+
+To check if the sun is a partial sun, we calculate the distance of the measured center to the edges of the image. If the center of the sun is too close to the edge, then there must be a part of the sun that is cut off in the image. This method works simply for a rectangular mask but our mask is not so simple. The bottom corners of our mask are cut off, essentially making it so that that part of the mask will never see any rays of light. See Figure \ref{dogeared}. To deal with the distance from the edges of the bottom corners, we rotate the coordinates of the center by 45 degrees. 
+
 \begin{figure}[!ht]
 \ffigbox{
     \begin{subfloatrow}
         \ffigbox[\FBwidth]% Width of subfloat
         {
-        \includegraphics[width=.9\linewidth]{../plots_tables_images/cutcorner.eps}
+        \includegraphics[width=.9\linewidth]{../plots_tables_images/firstcheck.eps}
         }
         {
-        \subcaption{What our mask should look like - side of black triangle is 1/4 of image width}
+        \subcaption{The black lines represent 10\% of the width/height and the hypothetical solar center is the black dot in the lower lefthand corner. As you can see, by this simple check's standards, the center is OK (but it's actually in the corner which is bad).}
         \label{noborder}
         }
     \end{subfloatrow}
     \begin{subfloatrow}
         \ffigbox[\FBwidth]% Width of subfloat
         {
-        \includegraphics[width=.9\linewidth]{../plots_tables_images/cutcornerwborder.eps}
+        \includegraphics[width=.9\linewidth]{../plots_tables_images/seccheck.eps}
         }
         {
-        \subcaption{A proposed mask that looks within a certain distance form the border.}
+        \subcaption{The green lines outline the shape of the box in Figure \ref{noborder} while the red lines outline the shape of the box 10\% from the edges. By rotating the black dot (or in this case, the gray square) and checking if it is within 10\% of the edge, we can essentially check the distance from the diagonal corner borders.}
         \label{aborder}
         }
     \end{subfloatrow}
 }
-{\caption{The bottom corners will never see any data; the border mask takes into account the distance from the hypotenuse of the bottom corners}
+{\caption{By combining two edge checks, one with 45$^\circ$ rotated coordinates, we can quickly calculate the distance from the edge of the mask.}
 \label{cuttingcorners}
 }
 \end{figure}
-
-
-If the center we computed with the mask method is within a certain distance to the edge of the image (as shown in Figure \ref{aborder}), we mark that solar region as ``\emph{partial}'' and cease further analysis for that particular brightness sun. \\
-\indent Once we have our list of whole suns along with their masked centers, we proceed to fitting the solar limbs to find a more accurate center.
 % subsection quick_mask_centering (end)
 
 \section{Limb Fitting} % (fold)
@@ -318,7 +356,7 @@ Next, for the remaining candidates, we look at the 1D row and column sums to see
         \includegraphics[width=.9\linewidth]{../plots_tables_images/fidcand_test.eps}
         }
         {
-        \subcaption{Cropped region of a fidcuail candidate}
+        \subcaption{Cropped region of a fiducial candidate}
         }
     \end{subfloatrow}
     \begin{subfloatrow}
