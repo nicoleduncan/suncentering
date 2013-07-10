@@ -26,6 +26,8 @@ function idfids, fidstruct
 
 ; After enough iterations, we deduce beta (which holds no meaning) is fiducial D on the grid. Done.
 
+
+; Assuming that the list is a list of fid chords
 a=posscomb(4)
 
 ; fidstruct[0].fidarr[0].x,fidstruct[0].fidarr[0].y = 1 fid coord
@@ -45,6 +47,9 @@ y = (dy - tdy)^2
 d = sqrt(x + y) * mask
 
 print,d
+
+
+; Assuming that the is a list of fid coords:
 
 
 
