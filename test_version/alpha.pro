@@ -135,9 +135,9 @@ endfor
 ; print,'25% sun y pos: ',limbfittedcentroids[2].limbypos
 
 window,0
-cgimage,tmpimage,/k
+cgimage,tmpimage,/k;,/display,output='centered.eps'
 window,1
-cgimage,atmp,/k
+cgimage,atmp,/k;,/display,output='withfiducials.eps'
 
 ztmp = startimage
 
@@ -162,7 +162,7 @@ for i = 0,n_elements(best4)-1 do begin
     endfor
 endfor
 window,2
-cgimage,ztmp,/k
+cgimage,ztmp,/k;,/display,output='best4fiducials.eps'
 
 
 
