@@ -1,0 +1,25 @@
+Notes on making mock fiducial plane:
+
+f = 25e-3
+pix_size = 3.75e-6 * (.914-f)/f
+; print,pix_size*1000
+
+; .26mm for 2 pixels thick
+
+; how long?
+; 3: .399 mm
+; 7: .933
+; 9: 1.2
+; 11: 1.46
+; 15: 2
+
+; how many pixels in our image editing program?
+
+; @ 300 pix/cm
+; 3: 12
+; 7: 28
+; 9: 36
+; 11: 43.8
+; 15: 60
+
+; so we want our fiducials to be, say, .26x.4mm 
