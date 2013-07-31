@@ -35,16 +35,14 @@ for i = 0, N_ELEMENTS(inputstruct)-1 do begin
         
         for j = 0, !param.nstrips - 1 do begin
             inputstruct[i].xstrips[j].rowindex = j
-            ; inputstruct[i].xstrips[j].array = REFORM(crop[*,( !param.crop_box)+(j - !param.nstrips/2) * !param.scan_width])
-            
             ; Using an average of chords now~
 
-            inputstruct[i].xstrips[j].array = REFORM(MEAN(crop[*,( !param.crop_box)+(j - !param.nstrips/2) * !param.scan_width:( !param.crop_box)+(j - !param.nstrips/2) * !param.scan_width + !param.chord_thickness],dim=2))
+            inputstruct[i].xstrips[j].array = REFORM(MEAN(crop[*,( !param.crop_box)+(j - !param.nstrips/2) * !param.scan_width: !param.crop_box + (j - !param.nstrips/2) * !param.scan_width + !param.chord_thickness],dim=2))
+            
             inputstruct[i].ystrips[j].colindex = j
-            ; inputstruct[i].ystrips[j].array = REFORM(crop[( !param.crop_box)+(j - !param.nstrips/2) * !param.scan_width,*])
-            inputstruct[i].ystrips[j].array = REFORM(MEAN(crop[( !param.crop_box)+(j - !param.nstrips/2) * !param.scan_width: !param.crop_box +(j - !param.nstrips/2) * !param.scan_width + !param.chord_thickness,*],dim=1))
+            inputstruct[i].ystrips[j].array = REFORM(MEAN(crop[( !param.crop_box)+(j - !param.nstrips/2) * !param.scan_width: !param.crop_box + (j - !param.nstrips/2) * !param.scan_width + !param.chord_thickness,*],dim=1))
         endfor
     endelse
 endfor
 RETURN,inputstruct
-END
+end

@@ -15,3 +15,4 @@ peakfind_buff 13000
 fidcand_smooth 10
 rough1dsum_thresh 1
 chord_thickness 5
+bordercheck_perc 10

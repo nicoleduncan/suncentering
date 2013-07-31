@@ -27,7 +27,7 @@ a = DERIV(SMOOTH(FLOAT(sorted), !param.n_smooth, /edge_truncate))
 arr = DERIV(SMOOTH(a, !param.n_smooth, /edge_truncate))
 ; .05 to run to here
 ; Now takes .0075
-; stop
+
 ; Eliminate the peak on the right end of the array, only needed for Albert's images
 
 if !param.peakfind_buff eq 13000 then arr = arr[0:-10000]

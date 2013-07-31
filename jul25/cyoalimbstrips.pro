@@ -18,10 +18,10 @@ a = makestrips(inputstruct,inputimage)
 limbwidth = BYTE( !param.ministrip_length)/2
 
 for jj = 0,N_ELEMENTS(inputstruct)-1 do begin
-    FOR i = 0, !param.nstrips - 1 DO BEGIN
+    for i = 0, !param.nstrips - 1 do begin
         ; Where our full-length chord is greater than the threshold
-        col_where = WHERE((a[jj].ystrips)[i].ARRAY GT a[jj].thresh)
-        row_where = WHERE((a[jj].xstrips)[i].ARRAY GT a[jj].thresh)
+        col_where = WHERE((a[jj].ystrips)[i].ARRAY gt a[jj].thresh)
+        row_where = WHERE((a[jj].xstrips)[i].ARRAY gt a[jj].thresh)
 
         a[jj].limbxstrips[i].rowindex = a[jj].xstrips[i].rowindex
         a[jj].limbystrips[i].colindex = a[jj].ystrips[i].colindex
@@ -53,8 +53,8 @@ for jj = 0,N_ELEMENTS(inputstruct)-1 do begin
             a[jj].limbystrips[i].begindex     = FIX(col_where[0] - limbwidth)
             a[jj].limbystrips[i].endpoints  = (a[jj].ystrips[i].array)[col_where[-1] - limbwidth + 1:col_where[-1] + limbwidth]   
             a[jj].limbystrips[i].endindex     = FIX(col_where[-1] - limbwidth)
-    ENDFOR
+    endfor
 endfor
 
 RETURN,a
-END
+end
