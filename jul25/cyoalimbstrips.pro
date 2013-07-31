@@ -14,17 +14,18 @@ FUNCTION cyoalimbstrips, inputstruct, inputimage
 ;-
 
 a = makestrips(inputstruct,inputimage)
+; How many pixels above/below the threhsold we count
 limbwidth = BYTE( !param.ministrip_length)/2
 
 for jj = 0,N_ELEMENTS(inputstruct)-1 do begin
     FOR i = 0, !param.nstrips - 1 DO BEGIN
+        ; Where our full-length chord is greater than the threshold
         col_where = WHERE((a[jj].ystrips)[i].ARRAY GT a[jj].thresh)
         row_where = WHERE((a[jj].xstrips)[i].ARRAY GT a[jj].thresh)
 
         a[jj].limbxstrips[i].rowindex = a[jj].xstrips[i].rowindex
         a[jj].limbystrips[i].colindex = a[jj].ystrips[i].colindex
 
-        IF row_where[0] NE -1 THEN BEGIN
             ; startpoints is the cut down strip with length = ministrip_length and contains
             ; the indices from row_where[0] +/- limbwidth
             
@@ -48,13 +49,10 @@ for jj = 0,N_ELEMENTS(inputstruct)-1 do begin
             ; stop
             a[jj].limbxstrips[i].endpoints  = (a[jj].xstrips[i].array)[row_where[-1] - limbwidth+ 1:row_where[-1] + limbwidth]   
             a[jj].limbxstrips[i].endindex   = FIX(row_where[-1] - limbwidth)
-        ENDIF
-        IF col_where[0] NE -1 THEN BEGIN
             a[jj].limbystrips[i].startpoints  = (a[jj].ystrips[i].array)[col_where[0] - limbwidth:col_where[0] + limbwidth - 1]   
             a[jj].limbystrips[i].begindex     = FIX(col_where[0] - limbwidth)
             a[jj].limbystrips[i].endpoints  = (a[jj].ystrips[i].array)[col_where[-1] - limbwidth + 1:col_where[-1] + limbwidth]   
             a[jj].limbystrips[i].endindex     = FIX(col_where[-1] - limbwidth)
-        ENDIF
     ENDFOR
 endfor
 
