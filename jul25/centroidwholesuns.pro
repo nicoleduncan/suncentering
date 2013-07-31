@@ -20,8 +20,11 @@ wholesunstruct = inputstruct[where(inputstruct.partial ne 1)]
 
 ;If we wanted to use a 13 pixel limb fit instead of a 4 pixel limb fit
 ; centers = limbfit(wholesunstruct,inputimage)
-centers = fourpixfit(wholesunstruct,inputimage)
+; else we use
+centers = npixfit(wholesunstruct,inputimage)
 
+
+; An artifact of before I got in over my head:
 ; only usable with 3, this is going to be a fair amount of work so I'll leave it here
 ; theta = !radeg*atan((center3.ypos - center2.ypos)/(center3.xpos - center2.xpos))
 ; hypot = sqrt((center3.ypos - center2.ypos)^2 + (center3.xpos - center2.xpos)^2)

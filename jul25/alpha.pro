@@ -36,7 +36,7 @@ corner3     = MRDFITS('../fits_files/corner3.fits',/sil)
 dimsun      = MRDFITS('../fits_files/sun2.fits',/sil)
 tritest     = MRDFITS('../fits_files/tritest.fits',/sil)
 
-; Take your pick of which to center
+; Toggling which image is going to be analyzed
 
 startimage=wholeimage
 ; startimage=w1_w2_p3
@@ -52,7 +52,7 @@ startimage=wholeimage
 ; startimage=p1_w3
 ; startimage=p1_w2
 ; startimage=w1_p3
-; startimage = brightsun   ;no param list for this one
+; startimage=brightsun   ;no param list for this one
 startimage = dimsun
 startimage = tritest
 
@@ -95,7 +95,7 @@ endif else begin
     tmpimage[*,limbfittedcentroids[0].limbypos-1:limbfittedcentroids[0].limbypos+1] = 255
 endelse
 
-; so the rough center is a bit off. Gasp!
+; so the rough center is a bit off. Gasp! Why though?
 
 ; profiler,/report,data=data
 ; profiler,/reset,/clear
@@ -130,16 +130,7 @@ ztmp = startimage
 
 best4 = best4(limbfittedcentroids,bbb)
 
-; ztmp[limbfittedcentroids[0].limbxpos-1:limbfittedcentroids[0].limbxpos+1,limbfittedcentroids[0].limbypos-1:limbfittedcentroids[0].limbypos+1]=!red
-
-; a=ztmp[limbfittedcentroids[0].limbxpos- !param.crop_box:limbfittedcentroids[0].limbxpos + !param.crop_box, limbfittedcentroids[0].limbypos - !param.crop_box : limbfittedcentroids[0].limbypos + !param.crop_box]
-
-; for j = 0,n_elements(best4[0].fidarr)-1 do begin
-;         a[best4[0].fidarr[j].subx -1:best4[0].fidarr[j].subx +1, best4[0].fidarr[j].suby-1:best4[0].fidarr[j].suby+1]=255
-; endfor
-
-; cgimage,a,/k
-
+; Highlight the best 4 fiducials for each sun 
 for i = 0,n_elements(best4)-1 do begin
     for j = 0,n_elements(best4[i].fidarr)-1 do begin
         ztmp[best4[i].fidarr[j].subx + limbfittedcentroids[i].limbxpos - !param.crop_box -1:best4[i].fidarr[j].subx + limbfittedcentroids[i].limbxpos - !param.crop_box+1,$
@@ -153,6 +144,10 @@ cgimage,ztmp,/k
 
 
 idedfids = idfids(best4)
+
+
+
+; What's going on here?
 
 ; cgimage,startimage[limbfittedcentroids[0].limbxpos- !param.crop_box:limbfittedcentroids[0].limbxpos+ !param.crop_box,limbfittedcentroids[0].limbypos- !param.crop_box:limbfittedcentroids[0].limbypos+ !param.crop_box],output='tritest_reg1.eps',/k,/display
 ; cgimage,startimage[limbfittedcentroids[1].limbxpos- !param.crop_box:limbfittedcentroids[1].limbxpos+ !param.crop_box,limbfittedcentroids[1].limbypos- !param.crop_box:limbfittedcentroids[1].limbypos+ !param.crop_box],output='tritest_reg2.eps',/k,/display
