@@ -1,8 +1,9 @@
 ; PRO bundle
 
-READ_JPEG, 'plots_tables_images/Bundles/DSC02928.jpg', wim
-
-im = reform(wim[0,*,*])
+READ_JPEG, 'plots_tables_images/Bundles/DSC02928.jpg', jim
+wim = READ_TIFF('plots_tables_images/Bundles/DSC02928.tiff')
+im = rotate(reform(wim[0,*,*]),7)
+jim = reform(jim[0,*,*])
 
 ; bc = ((a[1000:2600,1300:1700]) lt 10)
 ; c = (a[1000:2600,1300:1700])*bc
