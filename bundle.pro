@@ -77,14 +77,27 @@ endfor
 for i = 0,(size(begp,/dim))[0]-1 do begin
     line = linfit(findgen((size(begp,/dim))[1]),begp[i,*],yfit=begyfit)
     line = linfit(findgen((size(begp,/dim))[1]),endp[i,*],yfit=endyfit)
-    ; must map yfit back to 2D image
-    ; plot,begp[i,*]
-    ; oplot,findgen((size(begp,/dim))[1]) * line[1] + line[0],color=!red
 
-ps_start,filename='edgefit1.eps',/encap
-plot,begp[1,*],xs=3,ys=3
-oplot,begyfit,color=!red
-ps_end
+; ps_start,filename='edgefit0.eps',/encap
+; plot,begp[0,*],xs=3,ys=3,title='Distance of edge of slat from edge of image',yr=[24,38]
+; oplot,begyfit,color=!red
+; legend,['Slat Edge Position','Fitted Edge'],linestyle=[0,0],color=[!black,!red],/bottom,/right
+; ps_end
+
+; line = linfit(findgen((size(begp,/dim))[1]),begp[1,*],yfit=begyfit)
+
+; ps_start,filename='edgefit1.eps',/encap
+; plot,begp[1,*],xs=3,ys=3,title='Another slat',yr=[72,85]
+; oplot,begyfit,color=!red
+; legend,['Slat Edge Position','Fitted Edge'],linestyle=[0,0],color=[!black,!red],/bottom,/right
+; ps_end
+
+; !p.multi=[0,1,2]
+; ps_start,filename='findedge.eps',/encap,xsize=18,ysize=6
+; plot,nit[0,*],xs=3
+; plot,nitmask[0,*],xs=3
+; ps_end
+; !p.multi=0
 stop
     for j =0,(size(nitmask,/dim))[0]-1 do begin
         nitmask[j,begyfit[j]]=!red

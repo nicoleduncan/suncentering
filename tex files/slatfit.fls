@@ -354,6 +354,17 @@ INPUT ../plots_tables_images/lines.eps
 INPUT ../plots_tables_images/lines-eps-converted-to.pdf
 INPUT ../plots_tables_images/lines-eps-converted-to.pdf
 INPUT ../plots_tables_images/lines-eps-converted-to.pdf
+INPUT ../plots_tables_images/findedge.eps
+INPUT ../plots_tables_images/findedge.eps
+INPUT ../plots_tables_images/findedge.eps
+INPUT ../plots_tables_images/findedge-eps-converted-to.pdf
+INPUT ../plots_tables_images/findedge-eps-converted-to.pdf
+INPUT ../plots_tables_images/findedge.eps
+INPUT ../plots_tables_images/findedge-eps-converted-to.pdf
+INPUT ../plots_tables_images/findedge-eps-converted-to.pdf
+INPUT ../plots_tables_images/findedge-eps-converted-to.pdf
+INPUT /usr/local/texlive/2013/texmf-dist/tex/latex/base/t1cmtt.fd
+INPUT /usr/local/texlive/2013/texmf-dist/tex/latex/base/t1cmtt.fd
 INPUT slatfit.aux
 INPUT ./slatfit.out
 INPUT ./slatfit.out
@@ -366,3 +377,4 @@ INPUT /usr/local/texlive/2013/texmf-dist/fonts/type1/public/cm-super/sfsx1000.pf
 INPUT /usr/local/texlive/2013/texmf-dist/fonts/type1/public/cm-super/sfsx1440.pfb
 INPUT /usr/local/texlive/2013/texmf-dist/fonts/type1/public/cm-super/sfsx2074.pfb
 INPUT /usr/local/texlive/2013/texmf-dist/fonts/type1/public/cm-super/sfti1000.pfb
+INPUT /usr/local/texlive/2013/texmf-dist/fonts/type1/public/cm-super/sftt1000.pfb

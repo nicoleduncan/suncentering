@@ -22,6 +22,8 @@
   valign=t
 }
 
+\definecolor{Light}{gray}{.90}
+\sethlcolor{Light}
 
 \title{Fitted Lines to Bundles}
 \author{Jeren Suzuki}
@@ -78,6 +80,7 @@ Before we threshold the image to isolate the darkened slats, we have to de-noise
         }
         {
         \subcaption{Cropped, then FFT'd}
+        \label{pickme}
         }
     \end{subfloatrow}
 }
@@ -131,6 +134,22 @@ With a filtered image, I set a threshold to find the edges of the slats. The pro
 
 % section fitted_lines (end)
 
+
+\section{Bundle Analysis Steps} % (fold)
+\label{sec:bundle_analysis_steps}
+
+To start off with, I use FFT filtering to get rid of the dust and high spatial noise in our image. Once I get Figure \ref{pickme}, I take vertical slices and threshold the slats below a certain value. In Figure \ref{findedge}, the top plot illustrates the slat structure while the bottom plot is thresholded to values lower than 20.
+
+\begin{figure}[!ht]
+    \centering
+    \includegraphics[width=.8\textwidth]{../plots_tables_images/findedge}
+    \caption{}
+    \label{findedge}
+\end{figure}
+
+With these edges, I find where values of \hl{\texttt{array - shift(array,1)}} equal 1 and where \hl{\texttt{array - shift(array,-1)}} equal -1, which correspond to the edges of each pillar structure. These positions are stuck into two 6xN length matrices, one for each edge of the slat. Now I move on to the next column, do a \hl{\texttt{shift()}} check and append the next 6 pairs into the 6xN arrays. Once finished, I fit each row of the 6xN array to a line and overplot the line position into the 2D starting image, as per Figure \ref{test}.
+
+% section bundle_analysis_steps (end)
 
 
 
