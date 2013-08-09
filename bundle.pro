@@ -61,7 +61,7 @@ nit = it[15:1585,15:385]
 
 
 
-nitmask = 200*(nit lt 20)
+nitmask = 200*(nit lt 5000) ;was 20 for jpeg, TIFF uses floats
 ; cgimage,nitmask,/k
 
 
@@ -99,7 +99,7 @@ for i = 0,(size(begp,/dim))[0]-1 do begin
 ; plot,nitmask[0,*],xs=3
 ; ps_end
 ; !p.multi=0
-stop
+; stop
     for j =0,(size(nitmask,/dim))[0]-1 do begin
         nitmask[j,begyfit[j]]=!red
         nitmask[j,endyfit[j]]=!green
