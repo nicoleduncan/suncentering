@@ -1,7 +1,7 @@
 ; PRO bundle
 
 ; READ_JPEG, 'plots_tables_images/Bundles/DSC02928.jpg', jim
-wim = READ_TIFF('plots_tables_images/Bundles/DSC02911.tiff')
+wim = READ_TIFF('plots_tables_images/Bundles/DSC02928.tiff')
 im = rotate(reform(wim[0,*,*]),7)
 
 ; jim = reform(jim[0,*,*])
@@ -34,8 +34,7 @@ im = rotate(reform(wim[0,*,*]),7)
 
 
 
-
-fftransform = FFT(im[800:2300,1400:1800],/center)
+fftransform = FFT(im[900:2600,1300:1700],/center)
 power = abs(fftransform)^2
 scaledpower = alog10(power)
 
@@ -52,15 +51,15 @@ it = real_part(FFT(maskedtransform,/inverse,/center))
 ; so doing an inverse FFT to filter out noise is awesome.
 
 ; so we get rid of weird artifacts at edges
-rim = (im[800:2300,1400:1800])[15:1485,15:385]
+rim = (im[900:2600,1300:1700])[15:1685,15:385]
 www = fltarr(size(rim,/dim))
-nit = it[15:1485,15:385]
+nit = it[15:1685,15:385]
 
 ; window,0
 ; cgimage,nit,/k
 
 
-nitmask = 200*(nit lt 4000) ;was 20 for jpeg, TIFF uses floats
+nitmask = 200*(nit lt 2e4) ;was 20 for jpeg, TIFF uses floats
 ; nitmask = nit*(nit lt 1.7e4) ;was 20 for jpeg, TIFF uses floats
 ; cgimage,nitmask,/k
 
@@ -70,6 +69,7 @@ endp = !null
 
 for i = 0,(size(nit,/dim))[0] -1 do begin
     a = where(nitmask[i,*] gt 100)
+    ; stop
     ; a = where(nitmask[i,*] gt 5e3)
         ;If dimensions don't match up, have to up the threshold
     begp = [ [begp], [a[where(a - shift(a,1) ne 1)]] ]
@@ -161,44 +161,18 @@ window,2
 plot,float(rim[1,*])-max(rim[1,*])/2,psym=-7           
 oplot,(shift_diff(rim,dir=1))[1,*],color=!green,psym=-4
 
-slatstart = !null
-slatend = !null
+
 window,3
-poo = fltarr(1e5)
-k=0
-; (size(rim,/dim))[0]-2
-for i = 1,1000 do begin
-    ; plot,float(rim[i,*])-max(rim[i,*])/2,psym=-7,xr=[20,100]        
-    ; oplot,(shift_diff(rim,dir=1))[i,*],color=!green,psym=-4
-    a = rim[i,*]
-    slats = where(a lt max(a)/2.)
-
-    something = slats[where(slats - shift(slats,1) ne 1)] - 5
-    curry = slats[where(slats - shift(slats,-1) ne -1)] + 5
-
-    for j=0,n_elements(something) -1 do begin
-        arr = findgen(n_elements(a[something[j]:curry[j]]))
-        hooray = gaussfit(arr,abs(float(a[something[j]:curry[j]]) - max(a[something[j]:curry[j]]) ),terms,nterms=3)
-        if abs(2*SQRT(2*ALOG(2))*terms[2]) lt 10 then begin
-        poo[k] = 2*SQRT(2*ALOG(2))*terms[2]
-        stop
-        k++
-        endif
-    endfor
-
-    ; slatstart = [ [slatstart], [slats[where(slats - shift(slats,1) ne 1)]] ]
-    ; slatend = [ [slatend], [slats[where(slats - shift(slats,-1) ne -1)]] ]
-    ; stop
-endfor
-poo = poo[0:k]
-; cghistoplot,poo,binsize=.02,xr=[0,10]
-
-
-
-
-
-
-
+; ps_start,filename='hbundle.eps',/encap
+!p.multi=[0,1,2]
+plot,rim[1,20:60],psym=-4,title='Sections of H Bundle'
+hline,3e4
+print,n_elements(where(rim[1,20:60] lt 3e4))*.044
+plot,rim[1,60:100],psym=-4
+hline,3e4
+print,n_elements(where(rim[1,60:100] lt 3e4))*.044
+!p.multi=0
+; ps_end
 
 
 
