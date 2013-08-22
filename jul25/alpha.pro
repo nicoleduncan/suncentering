@@ -127,9 +127,9 @@ window,1
 cgimage,atmp,/k
 
 ztmp = startimage
-
+tic
 best4 = best4(limbfittedcentroids,bbb)
-
+toc
 ; Highlight the best 4 fiducials for each sun 
 for i = 0,n_elements(best4)-1 do begin
     for j = 0,n_elements(best4[i].fidarr)-1 do begin
