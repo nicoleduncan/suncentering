@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013) (format=pdflatex 2013.7.23)  8 AUG 2013 15:04
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013) (format=pdflatex 2013.7.23)  22 AUG 2013 16:48
 entering extended mode
  \write18 enabled.
  %&-line parsing enabled.
@@ -475,10 +475,31 @@ File: listings.cfg 2013/08/05 1.5a listings configuration
 ))
 Package: listings 2013/08/05 1.5a (Carsten Heinz)
 
+(/usr/local/texlive/2013/texmf-dist/tex/latex/microtype/microtype.sty
+Package: microtype 2013/05/23 v2.5a Micro-typographical refinements (RS)
+\MT@toks=\toks32
+\MT@count=\count138
+LaTeX Info: Redefining \textls on input line 766.
+\MT@outer@kern=\dimen147
+LaTeX Info: Redefining \textmicrotypecontext on input line 1285.
+\MT@listname@count=\count139
+
+(/usr/local/texlive/2013/texmf-dist/tex/latex/microtype/microtype-pdftex.def
+File: microtype-pdftex.def 2013/05/23 v2.5a Definitions specific to pdftex (RS)
+
+LaTeX Info: Redefining \lsstyle on input line 915.
+LaTeX Info: Redefining \lslig on input line 915.
+\MT@outer@space=\skip71
+)
+Package microtype Info: Loading configuration file microtype.cfg.
+
+(/usr/local/texlive/2013/texmf-dist/tex/latex/microtype/microtype.cfg
+File: microtype.cfg 2013/05/23 v2.5a microtype main configuration file (RS)
+))
 (/usr/local/texlive/2013/texmf-dist/tex/latex/caption/caption.sty
 Package: caption 2013/05/02 v3.3-89 Customizing captions (AR)
 Package caption Info: KOMA-Script document class.
-\c@ContinuedFloat=\count138
+\c@ContinuedFloat=\count140
 Package caption Info: float package is loaded.
 Package caption Info: floatrow package is loaded.
 Package caption Info: hyperref package is loaded.
@@ -486,40 +507,40 @@ Package caption Info: listings package is loaded.
 )
 (/usr/local/texlive/2013/texmf-dist/tex/latex/caption/subcaption.sty
 Package: subcaption 2013/02/03 v1.1-62 Sub-captions (AR)
-\c@subfigure=\count139
-\c@subtable=\count140
+\c@subfigure=\count141
+\c@subtable=\count142
 )
 (./slatfit.aux)
 \openout1 = `slatfit.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 32.
-LaTeX Font Info:    ... okay on input line 32.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 32.
-LaTeX Font Info:    ... okay on input line 32.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 32.
-LaTeX Font Info:    ... okay on input line 32.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 32.
-LaTeX Font Info:    ... okay on input line 32.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 32.
-LaTeX Font Info:    ... okay on input line 32.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 32.
-LaTeX Font Info:    ... okay on input line 32.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 32.
-LaTeX Font Info:    ... okay on input line 32.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 33.
+LaTeX Font Info:    ... okay on input line 33.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 33.
+LaTeX Font Info:    ... okay on input line 33.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 33.
+LaTeX Font Info:    ... okay on input line 33.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 33.
+LaTeX Font Info:    ... okay on input line 33.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 33.
+LaTeX Font Info:    ... okay on input line 33.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 33.
+LaTeX Font Info:    ... okay on input line 33.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 33.
+LaTeX Font Info:    ... okay on input line 33.
 
 (/usr/local/texlive/2013/texmf-dist/tex/context/base/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count141
-\scratchdimen=\dimen147
+\scratchcounter=\count143
+\scratchdimen=\dimen148
 \scratchbox=\box36
-\nofMPsegments=\count142
-\nofMParguments=\count143
-\everyMPshowfont=\toks32
-\MPscratchCnt=\count144
-\MPscratchDim=\dimen148
-\MPnumerator=\count145
-\makeMPintoPDFobject=\count146
-\everyMPtoPDFconversion=\toks33
+\nofMPsegments=\count144
+\nofMParguments=\count145
+\everyMPshowfont=\toks33
+\MPscratchCnt=\count146
+\MPscratchDim=\dimen149
+\MPnumerator=\count147
+\makeMPintoPDFobject=\count148
+\everyMPtoPDFconversion=\toks34
 ) (/usr/local/texlive/2013/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
 Package: epstopdf-base 2010/02/09 v2.5 Base part for package epstopdf
 
@@ -536,7 +557,7 @@ File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
 e
 ))
 \AtBeginShipoutBox=\box37
-Package hyperref Info: Link coloring ON on input line 32.
+Package hyperref Info: Link coloring ON on input line 33.
 
 (/usr/local/texlive/2013/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2012/10/27 v2.43 Cross-referencing by name of section
@@ -544,11 +565,11 @@ Package: nameref 2012/10/27 v2.43 Cross-referencing by name of section
 (/usr/local/texlive/2013/texmf-dist/tex/generic/oberdiek/gettitlestring.sty
 Package: gettitlestring 2010/12/03 v1.4 Cleanup title references (HO)
 )
-\c@section@level=\count147
+\c@section@level=\count149
 )
-LaTeX Info: Redefining \ref on input line 32.
-LaTeX Info: Redefining \pageref on input line 32.
-LaTeX Info: Redefining \nameref on input line 32.
+LaTeX Info: Redefining \ref on input line 33.
+LaTeX Info: Redefining \pageref on input line 33.
+LaTeX Info: Redefining \nameref on input line 33.
 
 (./slatfit.out) (./slatfit.out)
 \@outlinefile=\write4
@@ -557,26 +578,55 @@ LaTeX Info: Redefining \nameref on input line 32.
 Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: floatrow package is loaded.
 Package caption Info: End \AtBeginDocument code.
-\c@lstlisting=\count148
-LaTeX Font Info:    Try loading font information for T1+cmss on input line 35.
+\c@lstlisting=\count150
+LaTeX Info: Redefining \microtypecontext on input line 33.
+Package microtype Info: Generating PDF output.
+Package microtype Info: Character protrusion enabled (level 2).
+Package microtype Info: Using default protrusion set `alltext'.
+Package microtype Info: Automatic font expansion enabled (level 2),
+(microtype)             stretch: 20, shrink: 20, step: 1, non-selected.
+Package microtype Info: Using default expansion set `basictext'.
+Package microtype Info: No adjustment of tracking.
+Package microtype Info: No adjustment of interword spacing.
+Package microtype Info: No adjustment of character kerning.
+
+(/usr/local/texlive/2013/texmf-dist/tex/latex/microtype/mt-cmr.cfg
+File: mt-cmr.cfg 2013/05/19 v2.2 microtype config. file: Computer Modern Roman 
+(RS)
+)
+LaTeX Font Info:    Try loading font information for T1+cmss on input line 36.
 
 (/usr/local/texlive/2013/texmf-dist/tex/latex/base/t1cmss.fd
 File: t1cmss.fd 1999/05/25 v2.5h Standard LaTeX font definitions
 )
-LaTeX Font Info:    Try loading font information for U+msa on input line 35.
+Package microtype Info: Loading generic settings for font family
+(microtype)             `cmss' (encoding: T1).
+(microtype)             For optimal results, create family-specific settings.
+(microtype)             See the microtype manual for details.
+LaTeX Font Info:    Try loading font information for U+msa on input line 36.
 
 (/usr/local/texlive/2013/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 35.
+(/usr/local/texlive/2013/texmf-dist/tex/latex/microtype/mt-msa.cfg
+File: mt-msa.cfg 2006/02/04 v1.1 microtype config. file: AMS symbols (a) (RS)
+)
+LaTeX Font Info:    Try loading font information for U+msb on input line 36.
 
 (/usr/local/texlive/2013/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
-) (./slatfit.toc)
+)
+(/usr/local/texlive/2013/texmf-dist/tex/latex/microtype/mt-msb.cfg
+File: mt-msb.cfg 2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
+)
+Package tocbasic Info: character protrusion at toc deactivated on input line 37
+.
+
+(./slatfit.toc)
 \tf@toc=\write5
 \openout5 = `slatfit.toc'.
 
-[1
+ [1
 
 
 {/usr/local/texlive/2013/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
@@ -585,7 +635,7 @@ File: ../plots_tables_images/wholebundle.png Graphic file (type png)
 
 <use ../plots_tables_images/wholebundle.png>
 Package pdftex.def Info: ../plots_tables_images/wholebundle.png used on input l
-ine 50.
+ine 51.
 (pdftex.def)             Requested size: 317.07619pt x 210.67415pt.
 Package epstopdf Info: Source file: <../plots_tables_images/anofilt.eps>
 (epstopdf)                    date: 2013-08-07 11:29:09
@@ -596,7 +646,7 @@ ed-to.pdf>
 (epstopdf)                    size: 132429 bytes
 (epstopdf)             Command: <epstopdf --outfile=../plots_tables_images/anof
 ilt-eps-converted-to.pdf ../plots_tables_images/anofilt.eps>
-(epstopdf)             \includegraphics on input line 88.
+(epstopdf)             \includegraphics on input line 89.
 Package epstopdf Info: Output file is already uptodate.
 
 <../plots_tables_images/anofilt-eps-converted-to.pdf, id=36, 552.0625pt x 137.5
@@ -605,7 +655,7 @@ File: ../plots_tables_images/anofilt-eps-converted-to.pdf Graphic file (type pd
 f)
  <use ../plots_tables_images/anofilt-eps-converted-to.pdf>
 Package pdftex.def Info: ../plots_tables_images/anofilt-eps-converted-to.pdf us
-ed on input line 88.
+ed on input line 89.
 (pdftex.def)             Requested size: 221.48398pt x 55.17029pt.
 Package epstopdf Info: Source file: <../plots_tables_images/anofilt.eps>
 (epstopdf)                    date: 2013-08-07 11:29:09
@@ -616,14 +666,14 @@ ed-to.pdf>
 (epstopdf)                    size: 132429 bytes
 (epstopdf)             Command: <epstopdf --outfile=../plots_tables_images/anof
 ilt-eps-converted-to.pdf ../plots_tables_images/anofilt.eps>
-(epstopdf)             \includegraphics on input line 88.
+(epstopdf)             \includegraphics on input line 89.
 Package epstopdf Info: Output file is already uptodate.
 File: ../plots_tables_images/anofilt-eps-converted-to.pdf Graphic file (type pd
 f)
 
 <use ../plots_tables_images/anofilt-eps-converted-to.pdf>
 Package pdftex.def Info: ../plots_tables_images/anofilt-eps-converted-to.pdf us
-ed on input line 88.
+ed on input line 89.
 (pdftex.def)             Requested size: 352.22108pt x 87.73781pt.
 Package epstopdf Info: Source file: <../plots_tables_images/anofilt.eps>
 (epstopdf)                    date: 2013-08-07 11:29:09
@@ -634,14 +684,14 @@ ed-to.pdf>
 (epstopdf)                    size: 132429 bytes
 (epstopdf)             Command: <epstopdf --outfile=../plots_tables_images/anof
 ilt-eps-converted-to.pdf ../plots_tables_images/anofilt.eps>
-(epstopdf)             \includegraphics on input line 88.
+(epstopdf)             \includegraphics on input line 89.
 Package epstopdf Info: Output file is already uptodate.
 File: ../plots_tables_images/anofilt-eps-converted-to.pdf Graphic file (type pd
 f)
 
 <use ../plots_tables_images/anofilt-eps-converted-to.pdf>
 Package pdftex.def Info: ../plots_tables_images/anofilt-eps-converted-to.pdf us
-ed on input line 88.
+ed on input line 89.
 (pdftex.def)             Requested size: 352.22108pt x 87.73781pt.
 
 <../plots_tables_images/wholefft.png, id=37, 744.7825pt x 186.6975pt>
@@ -649,19 +699,19 @@ File: ../plots_tables_images/wholefft.png Graphic file (type png)
 
 <use ../plots_tables_images/wholefft.png>
 Package pdftex.def Info: ../plots_tables_images/wholefft.png used on input line
- 88.
+ 89.
 (pdftex.def)             Requested size: 221.48398pt x 55.51968pt.
 File: ../plots_tables_images/wholefft.png Graphic file (type png)
 
 <use ../plots_tables_images/wholefft.png>
 Package pdftex.def Info: ../plots_tables_images/wholefft.png used on input line
- 88.
+ 89.
 (pdftex.def)             Requested size: 211.3312pt x 52.97574pt.
 File: ../plots_tables_images/wholefft.png Graphic file (type png)
 
 <use ../plots_tables_images/wholefft.png>
 Package pdftex.def Info: ../plots_tables_images/wholefft.png used on input line
- 88.
+ 89.
 (pdftex.def)             Requested size: 211.3312pt x 52.97574pt.
 
 <../plots_tables_images/cropfft.png, id=38, 744.7825pt x 186.6975pt>
@@ -669,19 +719,19 @@ File: ../plots_tables_images/cropfft.png Graphic file (type png)
 
 <use ../plots_tables_images/cropfft.png>
 Package pdftex.def Info: ../plots_tables_images/cropfft.png used on input line 
-88.
+89.
 (pdftex.def)             Requested size: 221.48398pt x 55.51968pt.
 File: ../plots_tables_images/cropfft.png Graphic file (type png)
 
 <use ../plots_tables_images/cropfft.png>
 Package pdftex.def Info: ../plots_tables_images/cropfft.png used on input line 
-88.
+89.
 (pdftex.def)             Requested size: 214.33046pt x 53.72781pt.
 File: ../plots_tables_images/cropfft.png Graphic file (type png)
 
 <use ../plots_tables_images/cropfft.png>
 Package pdftex.def Info: ../plots_tables_images/cropfft.png used on input line 
-88.
+89.
 (pdftex.def)             Requested size: 214.33046pt x 53.72781pt.
 Package epstopdf Info: Source file: <../plots_tables_images/anofilt.eps>
 (epstopdf)                    date: 2013-08-07 11:29:09
@@ -692,14 +742,14 @@ ed-to.pdf>
 (epstopdf)                    size: 132429 bytes
 (epstopdf)             Command: <epstopdf --outfile=../plots_tables_images/anof
 ilt-eps-converted-to.pdf ../plots_tables_images/anofilt.eps>
-(epstopdf)             \includegraphics on input line 88.
+(epstopdf)             \includegraphics on input line 89.
 Package epstopdf Info: Output file is already uptodate.
 File: ../plots_tables_images/anofilt-eps-converted-to.pdf Graphic file (type pd
 f)
 
 <use ../plots_tables_images/anofilt-eps-converted-to.pdf>
 Package pdftex.def Info: ../plots_tables_images/anofilt-eps-converted-to.pdf us
-ed on input line 88.
+ed on input line 89.
 (pdftex.def)             Requested size: 221.48398pt x 55.17029pt.
 Package epstopdf Info: Source file: <../plots_tables_images/anofilt.eps>
 (epstopdf)                    date: 2013-08-07 11:29:09
@@ -710,14 +760,14 @@ ed-to.pdf>
 (epstopdf)                    size: 132429 bytes
 (epstopdf)             Command: <epstopdf --outfile=../plots_tables_images/anof
 ilt-eps-converted-to.pdf ../plots_tables_images/anofilt.eps>
-(epstopdf)             \includegraphics on input line 88.
+(epstopdf)             \includegraphics on input line 89.
 Package epstopdf Info: Output file is already uptodate.
 File: ../plots_tables_images/anofilt-eps-converted-to.pdf Graphic file (type pd
 f)
 
 <use ../plots_tables_images/anofilt-eps-converted-to.pdf>
 Package pdftex.def Info: ../plots_tables_images/anofilt-eps-converted-to.pdf us
-ed on input line 88.
+ed on input line 89.
 (pdftex.def)             Requested size: 352.22108pt x 87.73781pt.
 Package epstopdf Info: Source file: <../plots_tables_images/anofilt.eps>
 (epstopdf)                    date: 2013-08-07 11:29:09
@@ -728,50 +778,50 @@ ed-to.pdf>
 (epstopdf)                    size: 132429 bytes
 (epstopdf)             Command: <epstopdf --outfile=../plots_tables_images/anof
 ilt-eps-converted-to.pdf ../plots_tables_images/anofilt.eps>
-(epstopdf)             \includegraphics on input line 88.
+(epstopdf)             \includegraphics on input line 89.
 Package epstopdf Info: Output file is already uptodate.
 File: ../plots_tables_images/anofilt-eps-converted-to.pdf Graphic file (type pd
 f)
 
 <use ../plots_tables_images/anofilt-eps-converted-to.pdf>
 Package pdftex.def Info: ../plots_tables_images/anofilt-eps-converted-to.pdf us
-ed on input line 88.
+ed on input line 89.
 (pdftex.def)             Requested size: 352.22108pt x 87.73781pt.
 File: ../plots_tables_images/wholefft.png Graphic file (type png)
 
 <use ../plots_tables_images/wholefft.png>
 Package pdftex.def Info: ../plots_tables_images/wholefft.png used on input line
- 88.
+ 89.
 (pdftex.def)             Requested size: 221.48398pt x 55.51968pt.
 File: ../plots_tables_images/wholefft.png Graphic file (type png)
 
 <use ../plots_tables_images/wholefft.png>
 Package pdftex.def Info: ../plots_tables_images/wholefft.png used on input line
- 88.
+ 89.
 (pdftex.def)             Requested size: 211.3312pt x 52.97574pt.
 File: ../plots_tables_images/wholefft.png Graphic file (type png)
 
 <use ../plots_tables_images/wholefft.png>
 Package pdftex.def Info: ../plots_tables_images/wholefft.png used on input line
- 88.
+ 89.
 (pdftex.def)             Requested size: 211.3312pt x 52.97574pt.
 File: ../plots_tables_images/cropfft.png Graphic file (type png)
 
 <use ../plots_tables_images/cropfft.png>
 Package pdftex.def Info: ../plots_tables_images/cropfft.png used on input line 
-88.
+89.
 (pdftex.def)             Requested size: 221.48398pt x 55.51968pt.
 File: ../plots_tables_images/cropfft.png Graphic file (type png)
 
 <use ../plots_tables_images/cropfft.png>
 Package pdftex.def Info: ../plots_tables_images/cropfft.png used on input line 
-88.
+89.
 (pdftex.def)             Requested size: 214.33046pt x 53.72781pt.
 File: ../plots_tables_images/cropfft.png Graphic file (type png)
 
 <use ../plots_tables_images/cropfft.png>
 Package pdftex.def Info: ../plots_tables_images/cropfft.png used on input line 
-88.
+89.
 (pdftex.def)             Requested size: 214.33046pt x 53.72781pt.
  [1
 
@@ -787,7 +837,7 @@ ted-to.pdf>
 (epstopdf)                    size: 18959 bytes
 (epstopdf)             Command: <epstopdf --outfile=../plots_tables_images/edge
 fit0-eps-converted-to.pdf ../plots_tables_images/edgefit0.eps>
-(epstopdf)             \includegraphics on input line 123.
+(epstopdf)             \includegraphics on input line 124.
 Package epstopdf Info: Output file is already uptodate.
 
 <../plots_tables_images/edgefit0-eps-converted-to.pdf, id=53, 552.0625pt x 338.
@@ -796,7 +846,7 @@ File: ../plots_tables_images/edgefit0-eps-converted-to.pdf Graphic file (type p
 df)
  <use ../plots_tables_images/edgefit0-eps-converted-to.pdf>
 Package pdftex.def Info: ../plots_tables_images/edgefit0-eps-converted-to.pdf u
-sed on input line 123.
+sed on input line 124.
 (pdftex.def)             Requested size: 221.48398pt x 135.71085pt.
 Package epstopdf Info: Source file: <../plots_tables_images/edgefit0.eps>
 (epstopdf)                    date: 2013-08-08 14:26:16
@@ -807,14 +857,14 @@ ted-to.pdf>
 (epstopdf)                    size: 18959 bytes
 (epstopdf)             Command: <epstopdf --outfile=../plots_tables_images/edge
 fit0-eps-converted-to.pdf ../plots_tables_images/edgefit0.eps>
-(epstopdf)             \includegraphics on input line 123.
+(epstopdf)             \includegraphics on input line 124.
 Package epstopdf Info: Output file is already uptodate.
 File: ../plots_tables_images/edgefit0-eps-converted-to.pdf Graphic file (type p
 df)
 
 <use ../plots_tables_images/edgefit0-eps-converted-to.pdf>
 Package pdftex.def Info: ../plots_tables_images/edgefit0-eps-converted-to.pdf u
-sed on input line 123.
+sed on input line 124.
 (pdftex.def)             Requested size: 214.33046pt x 131.32875pt.
 Package epstopdf Info: Source file: <../plots_tables_images/edgefit0.eps>
 (epstopdf)                    date: 2013-08-08 14:26:16
@@ -825,14 +875,14 @@ ted-to.pdf>
 (epstopdf)                    size: 18959 bytes
 (epstopdf)             Command: <epstopdf --outfile=../plots_tables_images/edge
 fit0-eps-converted-to.pdf ../plots_tables_images/edgefit0.eps>
-(epstopdf)             \includegraphics on input line 123.
+(epstopdf)             \includegraphics on input line 124.
 Package epstopdf Info: Output file is already uptodate.
 File: ../plots_tables_images/edgefit0-eps-converted-to.pdf Graphic file (type p
 df)
 
 <use ../plots_tables_images/edgefit0-eps-converted-to.pdf>
 Package pdftex.def Info: ../plots_tables_images/edgefit0-eps-converted-to.pdf u
-sed on input line 123.
+sed on input line 124.
 (pdftex.def)             Requested size: 214.33046pt x 131.32875pt.
 Package epstopdf Info: Source file: <../plots_tables_images/edgefit1.eps>
 (epstopdf)                    date: 2013-08-08 14:26:16
@@ -843,7 +893,7 @@ ted-to.pdf>
 (epstopdf)                    size: 18503 bytes
 (epstopdf)             Command: <epstopdf --outfile=../plots_tables_images/edge
 fit1-eps-converted-to.pdf ../plots_tables_images/edgefit1.eps>
-(epstopdf)             \includegraphics on input line 123.
+(epstopdf)             \includegraphics on input line 124.
 Package epstopdf Info: Output file is already uptodate.
 
 <../plots_tables_images/edgefit1-eps-converted-to.pdf, id=54, 552.0625pt x 338.
@@ -852,7 +902,7 @@ File: ../plots_tables_images/edgefit1-eps-converted-to.pdf Graphic file (type p
 df)
  <use ../plots_tables_images/edgefit1-eps-converted-to.pdf>
 Package pdftex.def Info: ../plots_tables_images/edgefit1-eps-converted-to.pdf u
-sed on input line 123.
+sed on input line 124.
 (pdftex.def)             Requested size: 221.48398pt x 135.71085pt.
 Package epstopdf Info: Source file: <../plots_tables_images/edgefit1.eps>
 (epstopdf)                    date: 2013-08-08 14:26:16
@@ -863,14 +913,14 @@ ted-to.pdf>
 (epstopdf)                    size: 18503 bytes
 (epstopdf)             Command: <epstopdf --outfile=../plots_tables_images/edge
 fit1-eps-converted-to.pdf ../plots_tables_images/edgefit1.eps>
-(epstopdf)             \includegraphics on input line 123.
+(epstopdf)             \includegraphics on input line 124.
 Package epstopdf Info: Output file is already uptodate.
 File: ../plots_tables_images/edgefit1-eps-converted-to.pdf Graphic file (type p
 df)
 
 <use ../plots_tables_images/edgefit1-eps-converted-to.pdf>
 Package pdftex.def Info: ../plots_tables_images/edgefit1-eps-converted-to.pdf u
-sed on input line 123.
+sed on input line 124.
 (pdftex.def)             Requested size: 211.3312pt x 129.49126pt.
 Package epstopdf Info: Source file: <../plots_tables_images/edgefit1.eps>
 (epstopdf)                    date: 2013-08-08 14:26:16
@@ -881,14 +931,14 @@ ted-to.pdf>
 (epstopdf)                    size: 18503 bytes
 (epstopdf)             Command: <epstopdf --outfile=../plots_tables_images/edge
 fit1-eps-converted-to.pdf ../plots_tables_images/edgefit1.eps>
-(epstopdf)             \includegraphics on input line 123.
+(epstopdf)             \includegraphics on input line 124.
 Package epstopdf Info: Output file is already uptodate.
 File: ../plots_tables_images/edgefit1-eps-converted-to.pdf Graphic file (type p
 df)
 
 <use ../plots_tables_images/edgefit1-eps-converted-to.pdf>
 Package pdftex.def Info: ../plots_tables_images/edgefit1-eps-converted-to.pdf u
-sed on input line 123.
+sed on input line 124.
 (pdftex.def)             Requested size: 211.3312pt x 129.49126pt.
 Package epstopdf Info: Source file: <../plots_tables_images/edgefit0.eps>
 (epstopdf)                    date: 2013-08-08 14:26:16
@@ -899,14 +949,14 @@ ted-to.pdf>
 (epstopdf)                    size: 18959 bytes
 (epstopdf)             Command: <epstopdf --outfile=../plots_tables_images/edge
 fit0-eps-converted-to.pdf ../plots_tables_images/edgefit0.eps>
-(epstopdf)             \includegraphics on input line 123.
+(epstopdf)             \includegraphics on input line 124.
 Package epstopdf Info: Output file is already uptodate.
 File: ../plots_tables_images/edgefit0-eps-converted-to.pdf Graphic file (type p
 df)
 
 <use ../plots_tables_images/edgefit0-eps-converted-to.pdf>
 Package pdftex.def Info: ../plots_tables_images/edgefit0-eps-converted-to.pdf u
-sed on input line 123.
+sed on input line 124.
 (pdftex.def)             Requested size: 221.48398pt x 135.71085pt.
 Package epstopdf Info: Source file: <../plots_tables_images/edgefit0.eps>
 (epstopdf)                    date: 2013-08-08 14:26:16
@@ -917,14 +967,14 @@ ted-to.pdf>
 (epstopdf)                    size: 18959 bytes
 (epstopdf)             Command: <epstopdf --outfile=../plots_tables_images/edge
 fit0-eps-converted-to.pdf ../plots_tables_images/edgefit0.eps>
-(epstopdf)             \includegraphics on input line 123.
+(epstopdf)             \includegraphics on input line 124.
 Package epstopdf Info: Output file is already uptodate.
 File: ../plots_tables_images/edgefit0-eps-converted-to.pdf Graphic file (type p
 df)
 
 <use ../plots_tables_images/edgefit0-eps-converted-to.pdf>
 Package pdftex.def Info: ../plots_tables_images/edgefit0-eps-converted-to.pdf u
-sed on input line 123.
+sed on input line 124.
 (pdftex.def)             Requested size: 214.33046pt x 131.32875pt.
 Package epstopdf Info: Source file: <../plots_tables_images/edgefit0.eps>
 (epstopdf)                    date: 2013-08-08 14:26:16
@@ -935,14 +985,14 @@ ted-to.pdf>
 (epstopdf)                    size: 18959 bytes
 (epstopdf)             Command: <epstopdf --outfile=../plots_tables_images/edge
 fit0-eps-converted-to.pdf ../plots_tables_images/edgefit0.eps>
-(epstopdf)             \includegraphics on input line 123.
+(epstopdf)             \includegraphics on input line 124.
 Package epstopdf Info: Output file is already uptodate.
 File: ../plots_tables_images/edgefit0-eps-converted-to.pdf Graphic file (type p
 df)
 
 <use ../plots_tables_images/edgefit0-eps-converted-to.pdf>
 Package pdftex.def Info: ../plots_tables_images/edgefit0-eps-converted-to.pdf u
-sed on input line 123.
+sed on input line 124.
 (pdftex.def)             Requested size: 214.33046pt x 131.32875pt.
 Package epstopdf Info: Source file: <../plots_tables_images/edgefit1.eps>
 (epstopdf)                    date: 2013-08-08 14:26:16
@@ -953,14 +1003,14 @@ ted-to.pdf>
 (epstopdf)                    size: 18503 bytes
 (epstopdf)             Command: <epstopdf --outfile=../plots_tables_images/edge
 fit1-eps-converted-to.pdf ../plots_tables_images/edgefit1.eps>
-(epstopdf)             \includegraphics on input line 123.
+(epstopdf)             \includegraphics on input line 124.
 Package epstopdf Info: Output file is already uptodate.
 File: ../plots_tables_images/edgefit1-eps-converted-to.pdf Graphic file (type p
 df)
 
 <use ../plots_tables_images/edgefit1-eps-converted-to.pdf>
 Package pdftex.def Info: ../plots_tables_images/edgefit1-eps-converted-to.pdf u
-sed on input line 123.
+sed on input line 124.
 (pdftex.def)             Requested size: 221.48398pt x 135.71085pt.
 Package epstopdf Info: Source file: <../plots_tables_images/edgefit1.eps>
 (epstopdf)                    date: 2013-08-08 14:26:16
@@ -971,14 +1021,14 @@ ted-to.pdf>
 (epstopdf)                    size: 18503 bytes
 (epstopdf)             Command: <epstopdf --outfile=../plots_tables_images/edge
 fit1-eps-converted-to.pdf ../plots_tables_images/edgefit1.eps>
-(epstopdf)             \includegraphics on input line 123.
+(epstopdf)             \includegraphics on input line 124.
 Package epstopdf Info: Output file is already uptodate.
 File: ../plots_tables_images/edgefit1-eps-converted-to.pdf Graphic file (type p
 df)
 
 <use ../plots_tables_images/edgefit1-eps-converted-to.pdf>
 Package pdftex.def Info: ../plots_tables_images/edgefit1-eps-converted-to.pdf u
-sed on input line 123.
+sed on input line 124.
 (pdftex.def)             Requested size: 211.3312pt x 129.49126pt.
 Package epstopdf Info: Source file: <../plots_tables_images/edgefit1.eps>
 (epstopdf)                    date: 2013-08-08 14:26:16
@@ -989,14 +1039,14 @@ ted-to.pdf>
 (epstopdf)                    size: 18503 bytes
 (epstopdf)             Command: <epstopdf --outfile=../plots_tables_images/edge
 fit1-eps-converted-to.pdf ../plots_tables_images/edgefit1.eps>
-(epstopdf)             \includegraphics on input line 123.
+(epstopdf)             \includegraphics on input line 124.
 Package epstopdf Info: Output file is already uptodate.
 File: ../plots_tables_images/edgefit1-eps-converted-to.pdf Graphic file (type p
 df)
 
 <use ../plots_tables_images/edgefit1-eps-converted-to.pdf>
 Package pdftex.def Info: ../plots_tables_images/edgefit1-eps-converted-to.pdf u
-sed on input line 123.
+sed on input line 124.
 (pdftex.def)             Requested size: 211.3312pt x 129.49126pt.
 Package epstopdf Info: Source file: <../plots_tables_images/lines.eps>
 (epstopdf)                    date: 2013-08-06 13:15:32
@@ -1007,7 +1057,7 @@ Package epstopdf Info: Source file: <../plots_tables_images/lines.eps>
 (epstopdf)                    size: 6648 bytes
 (epstopdf)             Command: <epstopdf --outfile=../plots_tables_images/line
 s-eps-converted-to.pdf ../plots_tables_images/lines.eps>
-(epstopdf)             \includegraphics on input line 129.
+(epstopdf)             \includegraphics on input line 130.
 Package epstopdf Info: Output file is already uptodate.
 
 <../plots_tables_images/lines-eps-converted-to.pdf, id=55, 552.0625pt x 129.483
@@ -1016,7 +1066,7 @@ File: ../plots_tables_images/lines-eps-converted-to.pdf Graphic file (type pdf)
 
  <use ../plots_tables_images/lines-eps-converted-to.pdf>
 Package pdftex.def Info: ../plots_tables_images/lines-eps-converted-to.pdf used
- on input line 129.
+ on input line 130.
 (pdftex.def)             Requested size: 452.96796pt x 106.24649pt.
 Package epstopdf Info: Source file: <../plots_tables_images/findedge.eps>
 (epstopdf)                    date: 2013-08-08 14:48:51
@@ -1027,7 +1077,7 @@ ted-to.pdf>
 (epstopdf)                    size: 9213 bytes
 (epstopdf)             Command: <epstopdf --outfile=../plots_tables_images/find
 edge-eps-converted-to.pdf ../plots_tables_images/findedge.eps>
-(epstopdf)             \includegraphics on input line 145.
+(epstopdf)             \includegraphics on input line 146.
 Package epstopdf Info: Output file is already uptodate.
 
 <../plots_tables_images/findedge-eps-converted-to.pdf, id=58, 1300.86pt x 433.6
@@ -1036,34 +1086,38 @@ File: ../plots_tables_images/findedge-eps-converted-to.pdf Graphic file (type p
 df)
  <use ../plots_tables_images/findedge-eps-converted-to.pdf>
 Package pdftex.def Info: ../plots_tables_images/findedge-eps-converted-to.pdf u
-sed on input line 145.
+sed on input line 146.
 (pdftex.def)             Requested size: 362.37573pt x 120.79082pt.
-LaTeX Font Info:    Try loading font information for T1+cmtt on input line 150.
+LaTeX Font Info:    Try loading font information for T1+cmtt on input line 151.
 
 
 (/usr/local/texlive/2013/texmf-dist/tex/latex/base/t1cmtt.fd
 File: t1cmtt.fd 1999/05/25 v2.5h Standard LaTeX font definitions
 )
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 157.
+Package microtype Info: Loading generic settings for font family
+(microtype)             `cmtt' (encoding: T1).
+(microtype)             For optimal results, create family-specific settings.
+(microtype)             See the microtype manual for details.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 158.
  [2 <../plots_tables_images/edgefit0-eps-converted-to.pdf> <../plots_tables_ima
 ges/edgefit1-eps-converted-to.pdf> <../plots_tables_images/lines-eps-converted-
 to.pdf>] [3 <../plots_tables_images/findedge-eps-converted-to.pdf>]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 157.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 158.
  (./slatfit.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 157.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 157.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 158.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 158.
 Package rerunfilecheck Info: File `slatfit.out' has not changed.
 (rerunfilecheck)             Checksum: 1E115370579367D1B589E5E55EDE5864;199.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 157.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 158.
  ) 
 Here is how much of TeX's memory you used:
- 11526 strings out of 493311
- 177282 string characters out of 6137850
- 293073 words of memory out of 5000000
- 14805 multiletter control sequences out of 15000+600000
- 13368 words of font info for 35 fonts, out of 8000000 for 9000
+ 13037 strings out of 493311
+ 205308 string characters out of 6137850
+ 349725 words of memory out of 5000000
+ 16260 multiletter control sequences out of 15000+600000
+ 14507 words of font info for 51 fonts, out of 8000000 for 9000
  957 hyphenation exceptions out of 8191
- 41i,14n,57p,737b,796s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 41i,14n,57p,737b,814s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/local/texlive/2013/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc}
 </usr/local/texlive/2013/texmf-dist/fonts/type1/public/cm-super/sfrm0700.pfb></
 usr/local/texlive/2013/texmf-dist/fonts/type1/public/cm-super/sfrm0900.pfb></us
@@ -1074,10 +1128,10 @@ l/texlive/2013/texmf-dist/fonts/type1/public/cm-super/sfsx1440.pfb></usr/local/
 texlive/2013/texmf-dist/fonts/type1/public/cm-super/sfsx2074.pfb></usr/local/te
 xlive/2013/texmf-dist/fonts/type1/public/cm-super/sfti1000.pfb></usr/local/texl
 ive/2013/texmf-dist/fonts/type1/public/cm-super/sftt1000.pfb>
-Output written on slatfit.pdf (4 pages, 613188 bytes).
+Output written on slatfit.pdf (4 pages, 612999 bytes).
 PDF statistics:
  127 PDF objects out of 1000 (max. 8388607)
  98 compressed objects within 1 object stream
  15 named destinations out of 1000 (max. 500000)
- 73 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 14409 words of extra memory for PDF output out of 17280 (max. 10000000)
 

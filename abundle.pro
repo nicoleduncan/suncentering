@@ -34,7 +34,6 @@ im = rotate(reform(wim[0,*,*]),7)
 
 
 
-
 fftransform = FFT(im[800:2300,1400:1800],/center)
 power = abs(fftransform)^2
 scaledpower = alog10(power)

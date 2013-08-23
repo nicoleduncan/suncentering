@@ -38,3 +38,10 @@ To-Do
 -------
 * Horizon sun sensor
 * Once 4 closest fiducials to solar centers are found, how to identify which one
+* Organize directory, needs to be more obvious what to run
+
+
+<!-- Analysis programs that fit polynomials to edges of slats in a mask iamge
+abundle.pro
+hbundle.pro
+bundle.pro -->
