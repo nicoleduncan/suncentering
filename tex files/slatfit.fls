@@ -4,6 +4,12 @@ INPUT /usr/local/texlive/2013/texmf-dist/web2c/texmf.cnf
 INPUT /usr/local/texlive/2013/texmf-var/web2c/pdftex/pdflatex.fmt
 INPUT /Users/jerensuzuki/Documents/suncentering/tex files/slatfit.tex
 OUTPUT slatfit.log
+INPUT /usr/local/texlive/2013/texmf-dist/tex/latex/nag/nag.sty
+INPUT /usr/local/texlive/2013/texmf-dist/tex/latex/nag/nag.sty
+INPUT /usr/local/texlive/2013/texmf-dist/tex/latex/nag/nag-l2tabu.cfg
+INPUT /usr/local/texlive/2013/texmf-dist/tex/latex/nag/nag-l2tabu.cfg
+INPUT /usr/local/texlive/2013/texmf-dist/tex/latex/nag/nag-orthodox.cfg
+INPUT /usr/local/texlive/2013/texmf-dist/tex/latex/nag/nag-orthodox.cfg
 INPUT /usr/local/texlive/2013/texmf-dist/tex/latex/koma-script/scrartcl.cls
 INPUT /usr/local/texlive/2013/texmf-dist/tex/latex/koma-script/scrartcl.cls
 INPUT /usr/local/texlive/2013/texmf-dist/tex/latex/koma-script/scrkbase.sty
@@ -112,6 +118,10 @@ INPUT /usr/local/texlive/2013/texmf-dist/tex/latex/listings/lstmisc.sty
 INPUT /usr/local/texlive/2013/texmf-dist/tex/latex/listings/lstmisc.sty
 INPUT /usr/local/texlive/2013/texmf-dist/tex/latex/listings/listings.cfg
 INPUT /usr/local/texlive/2013/texmf-dist/tex/latex/listings/listings.cfg
+INPUT /usr/local/texlive/2013/texmf-dist/tex/latex/caption/caption.sty
+INPUT /usr/local/texlive/2013/texmf-dist/tex/latex/caption/caption.sty
+INPUT /usr/local/texlive/2013/texmf-dist/tex/latex/caption/subcaption.sty
+INPUT /usr/local/texlive/2013/texmf-dist/tex/latex/caption/subcaption.sty
 INPUT /usr/local/texlive/2013/texmf-dist/tex/latex/microtype/microtype.sty
 INPUT /usr/local/texlive/2013/texmf-dist/tex/latex/microtype/microtype.sty
 INPUT /usr/local/texlive/2013/texmf-dist/tex/latex/microtype/microtype-pdftex.def
@@ -119,10 +129,6 @@ INPUT /usr/local/texlive/2013/texmf-dist/tex/latex/microtype/microtype-pdftex.de
 INPUT /usr/local/texlive/2013/texmf-dist/tex/latex/microtype/microtype.cfg
 INPUT /usr/local/texlive/2013/texmf-dist/tex/latex/microtype/microtype.cfg
 INPUT /usr/local/texlive/2013/texmf-dist/tex/latex/microtype/microtype.cfg
-INPUT /usr/local/texlive/2013/texmf-dist/tex/latex/caption/caption.sty
-INPUT /usr/local/texlive/2013/texmf-dist/tex/latex/caption/caption.sty
-INPUT /usr/local/texlive/2013/texmf-dist/tex/latex/caption/subcaption.sty
-INPUT /usr/local/texlive/2013/texmf-dist/tex/latex/caption/subcaption.sty
 INPUT slatfit.aux
 INPUT slatfit.aux
 OUTPUT slatfit.aux
