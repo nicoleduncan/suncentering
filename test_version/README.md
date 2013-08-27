@@ -1,0 +1,1 @@
+Working copy of code that finds fiducials on a test printed test image modeled after what we think the fiducial plane /should/ look like.

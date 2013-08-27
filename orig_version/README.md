@@ -1,0 +1,1 @@
+Incomplete software, finds fiducials of blurry original bmp image
