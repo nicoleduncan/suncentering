@@ -1,0 +1,290 @@
+\RequirePackage[l2tabu, orthodox]{nag}
+\documentclass[10pt]{scrartcl}
+% \documentclass[10pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath,amsfonts,amssymb}
+\usepackage{mathtools}
+\usepackage{color,soul}
+\usepackage{enumerate}
+\usepackage[margin=2cm]{geometry}
+\usepackage{graphicx}
+\usepackage[colorlinks=true,urlcolor=blue]{hyperref}
+\usepackage{floatrow}
+\usepackage{deluxetable}
+\usepackage{verbatim}
+\usepackage{fancyvrb}
+\usepackage{listings}
+\usepackage{calc}
+\usepackage[font=small]{caption}
+\usepackage[font=scriptsize]{subcaption}
+\usepackage[activate={true,nocompatibility},final,tracking=true,kerning=true,spacing=true,factor=1100,stretch=10,shrink=10]{microtype}
+\SetTracking{encoding={*}, shape=sc}{40}
+
+\floatsetup{ 
+  heightadjust=object,
+  valign=t
+}
+
+\definecolor{Light}{gray}{.90}
+\sethlcolor{Light}
+
+\title{I Don't Care How Many Suns There Are}
+\author{Jeren Suzuki}
+\date{Last Edited \today}
+
+\begin{document}
+
+\maketitle
+\pagenumbering{Roman}
+\tableofcontents
+\clearpage
+\pagenumbering{arabic}
+
+\section{Introdution} % (fold)
+\label{sec:introdution}
+    Now that we've got the \emph{basic} framework of finding the centers of 3 suns, let's make the code flexible enough to handle each scenario:\\
+\begin{center}
+    $\begin{matrix} 
+    1 & 2 & 3 \\ 
+    1 &   & 3 \\
+    1 & 2 &   \\
+      & 2 & 3 \\
+    1 &   &   \\
+      & 2 &   \\
+      &   & 3
+    \end{matrix}$
+\end{center}
+
+Where each row corresponds to a possibility of which regions will be in the image. This table already accounts for partial suns which we do not find centers of. 
+% section introdution (end)
+
+\section{Flexibilizing Our Code} % (fold)
+\label{sec:flexibilizing_our_code}
+
+The first step is to check if there are any partial suns, and if so, which. Once we have isolated which regions are center-friendly, we pass the region id(s) into the remainder of the program. For example, for our current setup, we'd pass reg1, reg2, and reg3 as parameters in our program. The way we identify regions is slightly worrisome to me; as of now we look at the pixel values of a region and split the image into three sections. If the max of a region is identified to fall within a specific section, it is assigned a region number accordingly. I'm not sure how robust this decision-making process is.
+
+% section flexibilizing_our_code (end)
+
+\section{Dealing with < 3 suns} % (fold)
+\label{sec:dealing_with_3_suns}
+How do you tell the difference between 2 suns where one is $\approx 50$\% lower in intensity than the other? It is either a pair of region 1 and 2 suns or a pair of region 2 and 3 suns. Furthermore, how does one tell the difference from a region 1 and 2 sun that is somehow obscured to 50\% brightness and a region 2 and 3 sun at normal brightness? Unless there is a way to know whether or not something is artificially making the suns dimmer, it's hard. However, if we know that and we know the approximate thresholding, we can make guesses on which region is which.
+
+For example, if we have 2 regions, 1 is 25\% the brightness of the other, we know that they are regions 1 and 3. If we only see 1 sun however, we must guess what the maximum should be and see at what percentage the max of the sun is (is it 25\%? 50\%?). This seems inefficient and should be improved. \\
+
+Nicole suggests instead of using a foreknown number of suns we find the maxima of the 2nd deriv of the sorted array until we find no well-defined peaks. The problem with this approach is that we must define a ``well defined peak''. Figure \ref{reg12peaks} features the peaks of an image with the 100\% and 50\% sun which we try to take maximum of. Figure \ref{scaled12peaks} show that if we set some arbitrary thresholds, we can get the results we want. Now, how will those threshold hold up in different scenarios?
+
+% \begin{figure}[!h]
+%     \begin{center}
+%     \begin{subfigure}[b]{.49\textwidth}
+%         \centering
+%         \includegraphics[width=1.\textwidth]{../plots_tables_images/reg12.eps}
+%         \caption{2nd deriv of sorted array of 100\% and 50\% suns}
+%         \label{reg12peaks}
+%     \end{subfigure}
+%     \begin{subfigure}[b]{.49\textwidth}
+%         \centering
+%         \includegraphics[width=1.\textwidth]{../plots_tables_images/scaledreg12.eps}
+%         \caption{Scaled positive values of 2nd deriv from 0 to 1, then thresholded to above .2}
+%         \label{scaled12peaks}
+%     \end{subfigure}
+
+%    \begin{subfigure}[b]{.49\textwidth}
+%         \centering
+%         \includegraphics[width=1.\textwidth]{../plots_tables_images/reg23.eps}
+%         \caption{Now looking at the 50\% and 25\% sun}
+%         \label{reg23peaks}
+%     \end{subfigure}
+%     \begin{subfigure}[b]{.49\textwidth}
+%         \centering
+%         \includegraphics[width=1.\textwidth]{../plots_tables_images/scaledreg23.eps}
+%         \caption{}
+%         \label{scaled23peaks}
+%     \end{subfigure}
+%     \caption{}
+%     \end{center}
+% \end{figure}
+
+\begin{figure}[!ht]
+    \ffigbox[][\FBheight]{%
+    \begin{subfloatrow}[2]%
+        \ffigbox[\FBwidth]%
+       {%
+       \includegraphics[width=.5\textwidth]{../plots_tables_images/reg12.eps}%
+       }%
+       {%
+       \caption{2nd deriv of sorted array of 100\% and 50\% suns}%
+       \label{reg12peaks}%
+       }%
+        \ffigbox[\Xhsize]%
+       {%
+       \includegraphics[width=.5\textwidth]{../plots_tables_images/scaledreg12.eps}%
+       }%
+       {%
+       \caption{Scaled positive values of 2nd deriv from 0 to 1, then thresholded to above .2}%
+       \label{scaled12peaks}%
+       }
+    \end{subfloatrow}}
+
+    \ffigbox[][\FBheight]{%
+    \begin{subfloatrow}[2]%
+        \ffigbox[\FBwidth]%
+       {%
+       \includegraphics[width=.5\textwidth]{../plots_tables_images/reg23.eps}%
+       }%
+       {%
+       \caption{Now looking at the 50\% and 25\% sun}%
+       \label{reg23peaks}%
+       }%
+        \ffigbox[\Xhsize]%
+       {%
+       \includegraphics[width=.5\textwidth]{../plots_tables_images/scaledreg23.eps}%
+       }%
+       {%
+       \caption{same as above}%
+       \label{scaled23peaks}%
+       }
+    \end{subfloatrow}}{\caption{}}%
+\end{figure}
+
+If we look at the 50\% and 25\% brightness sun, we see in Figure \ref{scaled23peaks} that the same threshold which worked quite well in the first set of plots doesn't quite work well for others. The main problem is that we can find the maxima over and over, but we need to know when to stop. We can use \hl{\texttt{countsuns()}} to return the number of suns we have. Now the problem is that we don't know which peaks are for which suns. We cannot assume the highest peak is always the 100\% sun because there may be a case where only the 50\% and 25\% suns are available for centering. \\
+
+Still working on this part. 
+
+% section dealing_with_3_suns (end)
+
+\section{Partial Suns} % (fold)
+\label{sec:partial_suns}
+Another big problem with identifying suns is how to deal with partial suns. We want to be able to take an image with 2 whole suns and 1 partial sun, eliminate the partial sun, and take the centers of the remaining regions. We accomplish this by:
+
+\begin{enumerate}
+    \item Reading in our image
+    \item Scanning the border a certain length in to check for suns
+    \item If any pixels are found, identify the partial sun as a mask and find the center of it
+    \item Using the center position, zero-out a box of a certain length
+    \item Return the fixed image with the partial sun removed
+\end{enumerate}
+
+Figure \ref{fixtheregion} shows the starting and ending product of the process to fix an image. The benefit of this approach (zero out) is the simplicity and speed. The other options were to operate on the starting image but ignore the partial area or to recrop the rest of the image.
+
+% \begin{figure}[!ht]
+%     \centering
+%    \begin{subfigure}{.49\textwidth}
+%         \centering
+%         \includegraphics[width=1.\textwidth]{../plots_tables_images/inputimage.eps}
+%         \caption{Original image}
+%         \label{og_image}
+%     \end{subfigure}
+%     \begin{subfigure}{.49\textwidth}
+%         \centering
+%         \includegraphics[width=1.\textwidth]{../plots_tables_images/beforezero.eps}
+%         \caption{Border mask that looks for suns too close to the edge}
+%     \end{subfigure}
+%     \begin{subfigure}{.49\textwidth}
+%         \centering
+%         \includegraphics[width=1.\textwidth]{../plots_tables_images/whatbordersees.eps}
+%         \caption{Pixels above a threshold in the border mask}
+%     \end{subfigure}
+%     \begin{subfigure}{.49\textwidth}
+%         \centering
+%         \includegraphics[width=1.\textwidth]{../plots_tables_images/afterzero.eps}
+%         \caption{Cropped out the partial sun}
+%     \end{subfigure}
+%     \begin{subfigure}{.49\textwidth}
+%         \centering
+%         \includegraphics[width=1.\textwidth]{../plots_tables_images/fixedimage.eps}
+%         \caption{Whole image with the partial sun cropped out}
+%         \label{fixed_image}
+%     \end{subfigure}
+%     \caption{The process we use to remove partial suns and only identify the whole suns}
+%     \label{fixtheregion}
+% \end{figure}
+
+\begin{figure}[!ht]
+    \ffigbox[][\FBheight]{%
+    \begin{subfloatrow}[2]%
+        \ffigbox[\FBwidth]%
+       {%
+       \includegraphics[width=.5\textwidth]{../plots_tables_images/inputimage.eps}%
+       }%
+       {%
+       \caption{Original image}%
+       \label{og_image}%
+       }%
+        \ffigbox[\Xhsize]%
+       {%
+       \includegraphics[width=.5\textwidth]{../plots_tables_images/beforezero.eps}%
+       }%
+       {%
+       \caption{Border mask that looks for suns too close to the edge}%
+       }%
+    \end{subfloatrow}}
+    
+    \ffigbox[][\FBheight]{%
+    \begin{subfloatrow}[2]%
+        \ffigbox[\FBwidth]%
+       {%
+       \includegraphics[width=.5\textwidth]{../plots_tables_images/whatbordersees.eps}%
+       }%
+       {%
+       \caption{Pixels above a threshold in the border mask}%
+       }%
+        \ffigbox[\Xhsize]%
+       {%
+       \includegraphics[width=.5\textwidth]{../plots_tables_images/afterzero.eps}%
+       }%
+       {%
+       \caption{Cropped out the partial sun}%
+       }%
+    \end{subfloatrow}}
+    
+    \ffigbox[][\FBheight]{%
+    \begin{subfloatrow}%
+        \ffigbox[\FBwidth]%
+       {%
+       \includegraphics[width=.5\textwidth]{../plots_tables_images/fixedimage.eps}%
+       }%
+       {%
+       \caption{Whole image with the partial sun cropped out}%
+       \label{fixed_image}%
+       }%
+    \end{subfloatrow}}
+    {\caption{The process we use to remove partial suns and only identify the whole suns}\label{fixtheregion}}%
+\end{figure}
+
+
+This workflow has been tested and works with the following configurations:
+\begin{enumerate}
+    \item R1 \& R2
+    \item R2 \& R3
+    \item R1 \& R3
+    \item R1 \& R2 \& R3
+    \item R1 \& partial R2
+    \item R1 \& partial R3
+    \item R1 \& partial R2 \& partial R3
+    \item partial R1 \& R2
+    \item partial R1 \& R3
+    \item R1 \& partial R2 \& R3
+    \item partial R1 \& partial R2 \& R3
+    \item partial R1 \& R2 \& partial R3
+    \item partial R1 \& R2 \& R3
+    \item R2 \& partial R3
+\end{enumerate}
+
+
+
+Perhaps it's a good idea to get an idea of what kind of situations can arise on the craft. Will all of these occur?
+
+
+% section partial_suns (end)
+
+\end{document}
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,113 @@
+\RequirePackage[l2tabu, orthodox]{nag}
+\documentclass[10pt]{scrartcl}
+% \documentclass[10pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath,amsfonts,amssymb}
+\usepackage{mathtools}
+\usepackage{color,soul}
+\usepackage{fullpage}
+\usepackage{enumerate}
+\usepackage{graphicx}
+\usepackage[colorlinks=true,urlcolor=blue]{hyperref}
+\usepackage{floatrow}
+\usepackage{deluxetable}
+\usepackage{verbatim}
+\usepackage{fancyvrb}
+\usepackage{listings}
+\usepackage{calc}
+\usepackage[font=small]{caption}
+\usepackage[font=scriptsize]{subcaption}
+\usepackage[activate={true,nocompatibility},final,tracking=true,kerning=true,spacing=true,factor=1100,stretch=10,shrink=10]{microtype}
+
+\floatsetup{ 
+  heightadjust=object,
+  valign=t
+}
+
+\definecolor{Light}{gray}{.90}
+\sethlcolor{Light}
+
+\lstset{%
+language=IDL,                   % choose the language of the code
+basicstyle=\footnotesize\sffamily,%\ttfamily\footnotesize,       % the size of the fonts that are used for the code
+numbers=left,                   % where to put the line-numbers
+numberstyle=\footnotesize,      % the size of the fonts that are used for the line-numbers
+stepnumber=1,                   % the step between two line-numbers. If it is 1 each line will be numbered
+numbersep=5pt,                  % how far the line-numbers are from the code
+showspaces=false,               % show spaces adding particular underscores
+showstringspaces=false,         % underline spaces within strings
+showtabs=false,                 % show tabs within strings adding particular underscores
+% frame=single,                   % adds a frame around the code
+backgroundcolor=\color{Light},
+columns=flexible,
+tabsize=2,                      % sets default tabsize to 2 spaces
+captionpos=b,                   % sets the caption-position to bottom
+breaklines=true,                % sets automatic line breaking
+breakatwhitespace=false,        % sets if automatic breaks should only happen at whitespace
+escapeinside={\%*}{*)}          % if you want to add a comment within your code
+}
+
+\title{Images used in aspect code}
+\author{Jeren Suzuki}
+\date{Last Edited \today}
+
+\begin{document}
+
+\maketitle
+\pagenumbering{Roman}
+\tableofcontents
+% \addcontentsline{toc}{section}{Introduction}
+\clearpage
+\pagenumbering{arabic}
+
+\section{Images} % (fold)
+\label{sec:images}
+
+
+\begin{figure}[!ht]
+    \centering
+    \includegraphics[width=.9\textwidth]{../plots_tables_images/000.png}    
+    \caption{Orig size: 449x321}
+    % \label{sortedarray}
+\end{figure}
+
+\begin{figure}[!ht]
+    \centering
+    \includegraphics[width=.9\textwidth]{../plots_tables_images/dimsun3.png}    
+    \caption{Orig size: 449x321}
+    % \label{sortedarray}
+\end{figure}
+
+\begin{figure}[!ht]
+    \centering
+    \includegraphics[width=.9\textwidth]{../plots_tables_images/albsun.jpg}    
+    \caption{Orig size: 1296x966}
+    % \label{sortedarray}
+\end{figure}
+
+\begin{figure}[!ht]
+    \centering
+    \includegraphics[width=.9\textwidth]{../plots_tables_images/tritest.jpg}    
+    \caption{Orig size: 1296x966}
+    % \label{sortedarray}
+\end{figure}
+
+\begin{figure}[!ht]
+    \centering
+    \includegraphics[width=.9\textwidth]{../plots_tables_images/image_130421_153900_50149.png}    
+    \caption{Orig size: 1296x966}
+    % \label{sortedarray}
+\end{figure}
+
+\begin{figure}[!ht]
+    \centering
+    \includegraphics[width=.9\textwidth]{../plots_tables_images/image_130421_151500_37249.png}    
+    \caption{Orig size: 1296x966}
+    % \label{sortedarray}
+\end{figure}
+
+
+% section images (end)
+
+
+\end{document}

@@ -1,0 +1,9 @@
+\contentsline {section}{Introduction}{I}{section*.1}
+\contentsline {section}{\numberline {1}Data Acquisition}{1}{section.1}
+\contentsline {section}{\numberline {2}Handling 2D Image}{1}{section.2}
+\contentsline {section}{\numberline {3}Skimming the Top Off}{1}{section.3}
+\contentsline {section}{\numberline {4}Deciding Whether or Not to Use Image}{1}{section.4}
+\contentsline {section}{\numberline {5}Finding Centers of Sun(s)}{1}{section.5}
+\contentsline {subsection}{\numberline {5.1}Thresholds}{1}{subsection.5.1}
+\contentsline {section}{\numberline {6}Finding Fiducial Positions}{1}{section.6}
+\contentsline {section}{\numberline {7}Miscellaneous}{1}{section.7}

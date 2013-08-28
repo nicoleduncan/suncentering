@@ -1,0 +1,96 @@
+\RequirePackage[l2tabu, orthodox]{nag}
+\documentclass[10pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath,amsfonts,amssymb}
+\usepackage{mathtools}
+\usepackage{color,soul}
+\usepackage{fullpage}
+\usepackage{enumerate}
+\usepackage{graphicx}
+\usepackage[colorlinks=true,urlcolor=blue]{hyperref}
+\usepackage{subcaption}
+\usepackage[activate={true,nocompatibility},final,tracking=true,kerning=true,spacing=true,factor=1100,stretch=10,shrink=10]{microtype}
+
+\definecolor{Light}{gray}{.90}
+\sethlcolor{Light}
+
+\title{Rough List of Programs}
+\author{Jeren Suzuki}
+\date{Last Edited \today}
+
+\begin{document}
+
+\maketitle
+\pagenumbering{Roman}
+\tableofcontents
+\addcontentsline{toc}{section}{Introduction}
+\clearpage
+\pagenumbering{arabic}
+
+\section*{Introduction} % (fold)
+\label{sec:introduction}
+I always get confused which programs are which so I'm just putting them all here
+% section introduction (end)
+
+\section{List of Programs} % (fold)
+\label{sec:list_of_programs}
+
+\begin{enumerate}
+	\item \hl{\texttt{barkbark}}\\
+		makes some plots comparing the attempts of finding a threshold for our image
+	\item \hl{\texttt{bordercheck}}\\
+		Makes a binary mask 1 pixel thick on the border, checks if there are any pixels that are above the mode of the image. If so, returns a 0. If okay, 1.
+	\item \hl{\texttt{circscancrop}}\\
+		Using the position of the center sun, scans in a circle at a specified radius until it picks up the auxiliarry suns and crops appropriately.
+	\item \hl{\texttt{cropme}}\\
+		Crops a certain pixel legth off the border
+	\item \hl{\texttt{edgefidcheck}}\\
+		Incomplete: Checks the bordering 6 pixels of an image for fiducials. If it finds one, it does something.
+	\item \hl{\texttt{fastcenter}}\\
+		Uses the sorted image to return very rough center positions of the suns. Fast.
+	\item \hl{\texttt{galapagos}}\\
+		Earlier version of barkbark I think
+	\item \hl{\texttt{getstruct}}\\
+		Makes 3 structures, 1 for each sun. Each structure holds the center position as well as the threshold used to find it
+	\item \hl{\texttt{histosmoothed}}\\
+		Tries looking at the histogram of the 2D image instead of the sorted array, doesn't work well.
+	\item \hl{\texttt{kahuna}}\\
+		Calls getstruct and is more or less a calling program that loads the parameter table
+	\item \hl{\texttt{last6pixels}}\\
+		Makes some plots of what the bordering 6 pixels of a fiducial look like as you crop it off the edge of the iamge
+	\item \hl{\texttt{limbfit}}\\
+		Finds the center of a sun using chords
+	\item \hl{\texttt{makelimbstrips}}\\
+		Makes 5 limb-only arrays fron the 5 chord arrays
+	\item \hl{\texttt{makestrips}}\\
+		Makes 5 chord arrays centered on the specific sun
+	\item \hl{\texttt{morescratch}}\\
+		Messing with convol() and stuff to find the threshold, obsolete
+	\item \hl{\texttt{quickfidmask}}\\
+		Used to find a quick CoM of a shape below a threshold
+	\item \hl{\texttt{quickmask}}\\
+		Used to find a quick CoM of a shape above a threshold
+	\item \hl{\texttt{scratch}}\\
+		Another thing to find the threshold
+	\item \hl{\texttt{setpeak}}\\
+		Find the boundaries of the humps in the sorted image 
+	\item \hl{\texttt{setthresh}}\\
+		Finds the thresh of the 1D array at the hump intersection point. Very barebones, actually.
+	\item \hl{\texttt{whichcropmethod}}\\
+		Decides whether or not to use quickmask or circscancrop when finding the center of the suns
+\end{enumerate}
+
+
+% section list_of_programs (end)
+
+\end{document}
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,8 @@
+\contentsline {section}{\numberline {1}Goals}{1}{section.1}
+\contentsline {section}{\numberline {2}Assumptions}{1}{section.2}
+\contentsline {section}{\numberline {3}Starting Image}{1}{section.3}
+\contentsline {section}{\numberline {4}Image Processing}{2}{section.4}
+\contentsline {subsection}{\numberline {4.1}``Pitch''}{2}{subsection.4.1}
+\contentsline {subsection}{\numberline {4.2}``Roll''}{3}{subsection.4.2}
+\contentsline {section}{\numberline {5}Counting Pixels}{4}{section.5}
+\contentsline {section}{\numberline {6}Caveats}{4}{section.6}

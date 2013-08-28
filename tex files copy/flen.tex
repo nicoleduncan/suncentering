@@ -1,0 +1,28 @@
+\RequirePackage[l2tabu, orthodox]{nag}
+\documentclass[10pt]{scrartcl}
+% \documentclass[10pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath,amsfonts,amssymb}
+\usepackage{mathtools}
+\usepackage{color,soul}
+\usepackage{fullpage}
+\usepackage{enumerate}
+\usepackage{graphicx}
+\usepackage[colorlinks=true,urlcolor=blue]{hyperref}
+\usepackage[activate={true,nocompatibility},final,tracking=true,kerning=true,spacing=true,factor=1100,stretch=10,shrink=10]{microtype}
+
+\definecolor{Light}{gray}{.90}
+\sethlcolor{Light}
+
+\begin{document}
+
+Okay, I think I was misunderstanding the problem. If the size of a pixel in the camera is 3.75 $\cdot 10^{-6}$ m, then if the screen is 3 feet away we get a pixel-equivalent size on the plane of:
+
+\begin{equation}
+    \frac{3.75 \cdot 10^{-6}}{f} = \frac{x}{.914-f}
+\end{equation}
+
+where $f$ is the focal length of the camera and x is the size of the image on the plane. I looked up some lenses online and found \href{https://www.google.com/url?sa=t&rct=j&q=&esrc=s&source=web&cd=1&ved=0CC0QFjAA&url=http%3A%2F%2Fwww.alliedvisiontec.com%2Ffileadmin%2Fcontent%2FPDF%2FSupport%2FApplication_Notes%2FAppNote_-_P-iris_Lenses_Supported_by_Prosilica_GT_Cameras.pdf&ei=hRLJUZm1HsXOigLD0IG4CQ&usg=AFQjCNF-aFAU2X5gxcTo2KmQX8LpryrS1w&sig2=fpd-xRjTL72Boc71IcL5VA&bvm=bv.48340889,d.cGE&cad=rja}{this} link with a list of lenses compatible with the GT1290. I'm not sure which lens is should be, but since they range from 2.8 to 35mm, the $x$ we should get should be between the range of .094 mm to 1.2 mm. If we wanted the camera to pick up 3 pixels on a fiducial then the fiducial should be between .28 mm and 3.6 mm.
+
+
+\end{document}

@@ -1,0 +1,86 @@
+\documentclass[10pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath,amsfonts,amssymb}
+\usepackage{mathtools}
+\usepackage{color,soul}
+\usepackage{fullpage}
+\usepackage{enumerate}
+\usepackage{graphicx}
+\usepackage[colorlinks=true,urlcolor=blue]{hyperref}
+\usepackage{subcaption}
+
+\definecolor{Light}{gray}{.90}
+\sethlcolor{Light}
+
+\title{Why We Do What We Do (WWDWWD)}
+\author{Jeren Suzuki}
+\date{Last Edited \today}
+
+\begin{document}
+
+\maketitle
+\pagenumbering{Roman}
+\tableofcontents
+\addcontentsline{toc}{section}{Introduction}
+\clearpage
+\pagenumbering{arabic}
+
+\section*{Introduction} % (fold)
+\label{sec:introduction}
+    This document is an attempt to organize the decision behind our methods in the grand scheme plan of extracting useful data from our image. I will try to organize it in parts so that it will be easier to follow.
+% section introduction (end)
+
+\section{Data Acquisition} % (fold)
+\label{sec:data_acquisition}
+Something about the camera
+% section data_acquisition (end)
+
+\section{Handling 2D Image} % (fold)
+\label{sec:handling_2d_image}
+% section handling_2d_image (end)
+
+\section{Skimming the Top Off} % (fold)
+\label{sec:skimming_the_top_off}
+We want to eliminate any outlier pixels that are way too bright so we sort our 2D image as a 1D array and mask out the top 1\% of the pixels for our threshold. Actually, I'm just lying now. We don't need to do this anymore.
+% section skimming_the_top_off (end)
+
+\section{Deciding Whether or Not to Use Image} % (fold)
+\label{sec:deciding_whether_or_not_to_use_image}
+% Include all the checks we do
+To make sure that we identify the appropriate centers of the sun, we make sure that we know how many are actually in the picture. First, we check if there are any pixels on the border of the image that are a significantly higher value than the mode of the image. If we see X pixels on the border, then one of the suns is cut off. If we see X and Y pixels on the border, then we take into account 2 cut-off suns. We must make sure that if we see no sun-pxiels on theborder that there isn't a chance that we missed a sun altogether and there are only 2 suns in the image. Still need to work on this.
+
+% section deciding_whether_or_not_to_use_image (end)
+
+\section{Finding Centers of Sun(s)} % (fold)
+\label{sec:finding_centers_of_sun}
+Process of center finding
+\subsection{Thresholds} % (fold)
+\label{sub:thresholds}
+We want a robust threshold so instead of using an arbitrary parameter multiplied by the max of the image, we sort the 2D image into a 1D array and return the postiion of the boundaries of the regions which are seen as humps.
+
+To find the boundaries, we look at the \hl{\texttt{deriv(smooth(deriv(sortedarray)))}} and find the 3 maximum peaks, corresponding to the boundaries of the aforementioned humps. We chose this way because thresholding the peaks requires paramaterization and needs to be changed dynamically. 
+% subsection thresholds (end)
+% section finding_centers_of_sun (end)
+
+\section{Finding Fiducial Positions} % (fold)
+\label{sec:finding_fiducial_positions}
+Process of fiducial finding
+% section finding_fiducial_positions (end)
+
+\section{Miscellaneous} % (fold)
+\label{sec:miscellaneous}
+Extra
+% section miscellaneous (end)
+
+
+\end{document}
+
+
+
+
+
+
+
+
+
+
