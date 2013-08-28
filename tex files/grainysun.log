@@ -1,43 +1,47 @@
-This is pdfTeX, Version 3.1415926-2.4-1.40.13 (TeX Live 2012) (format=pdflatex 2013.4.9)  31 MAY 2013 15:05
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013) (format=pdflatex 2013.8.23)  28 AUG 2013 13:21
 entering extended mode
  \write18 enabled.
  %&-line parsing enabled.
-**"/Users/jerensuzuki/Documents/suncentering/tex files/grainysun.tex"
-(/Users/jerensuzuki/Documents/suncentering/tex files/grainysun.tex
+**"/Users/jerensuzuki/Documents/suncentering/tex files copy/grainysun.tex"
+(/Users/jerensuzuki/Documents/suncentering/tex files copy/grainysun.tex
 LaTeX2e <2011/06/27>
-Babel <v3.8m> and hyphenation patterns for english, dumylang, nohyphenation, ge
-rman-x-2012-05-30, ngerman-x-2012-05-30, afrikaans, ancientgreek, ibycus, arabi
-c, armenian, basque, bulgarian, catalan, pinyin, coptic, croatian, czech, danis
-h, dutch, ukenglish, usenglishmax, esperanto, estonian, ethiopic, farsi, finnis
-h, french, friulan, galician, german, ngerman, swissgerman, monogreek, greek, h
-ungarian, icelandic, assamese, bengali, gujarati, hindi, kannada, malayalam, ma
-rathi, oriya, panjabi, tamil, telugu, indonesian, interlingua, irish, italian, 
-kurmanji, latin, latvian, lithuanian, mongolian, mongolianlmc, bokmal, nynorsk,
- piedmontese, polish, portuguese, romanian, romansh, russian, sanskrit, serbian
-, serbianc, slovak, slovenian, spanish, swedish, turkish, turkmen, ukrainian, u
-ppersorbian, welsh, loaded.
-(/usr/local/texlive/2012/texmf-dist/tex/latex/koma-script/scrartcl.cls
+Babel <3.9f> and hyphenation patterns for 78 languages loaded.
+(/usr/local/texlive/2013/texmf-dist/tex/latex/nag/nag.sty
+Package: nag 2011/11/25 0.7 warning about old commands (ulmi)
+\c@nag@c=\count79
+\c@nag@sins=\count80
+Package nag Info: Loaded nag-l2tabu.cfg  on input line 552.
+
+(/usr/local/texlive/2013/texmf-dist/tex/latex/nag/nag-l2tabu.cfg
+File: nag-l2tabu.cfg 2010/05/17 v2.11 l2tabu rules for nag.sty (ulmi)
+)
+Package nag Info: Loaded nag-orthodox.cfg  on input line 552.
+
+(/usr/local/texlive/2013/texmf-dist/tex/latex/nag/nag-orthodox.cfg
+File: nag-orthodox.cfg 2006/04/19 v1.8 strict rules for nag.sty (ulmi)
+))
+(/usr/local/texlive/2013/texmf-dist/tex/latex/koma-script/scrartcl.cls
 Document Class: scrartcl 2012/07/29 v3.11b KOMA-Script document class (article)
 
-(/usr/local/texlive/2012/texmf-dist/tex/latex/koma-script/scrkbase.sty
+(/usr/local/texlive/2013/texmf-dist/tex/latex/koma-script/scrkbase.sty
 Package: scrkbase 2012/07/29 v3.11b KOMA-Script package (KOMA-Script-dependent 
 basics and keyval usage)
 
-(/usr/local/texlive/2012/texmf-dist/tex/latex/koma-script/scrbase.sty
+(/usr/local/texlive/2013/texmf-dist/tex/latex/koma-script/scrbase.sty
 Package: scrbase 2012/07/29 v3.11b KOMA-Script package (KOMA-Script-independent
  basics and keyval usage)
 
-(/usr/local/texlive/2012/texmf-dist/tex/latex/graphics/keyval.sty
+(/usr/local/texlive/2013/texmf-dist/tex/latex/graphics/keyval.sty
 Package: keyval 1999/03/16 v1.13 key=value parser (DPC)
 \KV@toks@=\toks14
 )
-(/usr/local/texlive/2012/texmf-dist/tex/latex/koma-script/scrlfile.sty
+(/usr/local/texlive/2013/texmf-dist/tex/latex/koma-script/scrlfile.sty
 Package: scrlfile 2012/06/15 v3.12 KOMA-Script package (loading files)
 
 Package scrlfile, 2012/06/15 v3.12 KOMA-Script package (loading files)
                   Copyright (C) Markus Kohm
 
-))) (/usr/local/texlive/2012/texmf-dist/tex/latex/koma-script/tocbasic.sty
+))) (/usr/local/texlive/2013/texmf-dist/tex/latex/koma-script/tocbasic.sty
 Package: tocbasic 2012/04/04 v3.10b KOMA-Script package (handling toc-files)
 )
 Package tocbasic Info: omitting babel extension for `toc'
@@ -57,11 +61,11 @@ Package scrartcl Info: You've used obsolete option `10pt'.
 Class scrartcl Info: File `scrsize10pt.clo' used to setup font sizes on input l
 ine 1267.
 
-(/usr/local/texlive/2012/texmf-dist/tex/latex/koma-script/scrsize10pt.clo
+(/usr/local/texlive/2013/texmf-dist/tex/latex/koma-script/scrsize10pt.clo
 File: scrsize10pt.clo 2012/07/29 v3.11b KOMA-Script font size class option (10p
 t)
 )
-(/usr/local/texlive/2012/texmf-dist/tex/latex/koma-script/typearea.sty
+(/usr/local/texlive/2013/texmf-dist/tex/latex/koma-script/typearea.sty
 Package: typearea 2012/07/29 v3.11b KOMA-Script package (type area)
 
 Package typearea, 2012/07/29 v3.11b KOMA-Script package (type area)
@@ -69,7 +73,7 @@ Package typearea, 2012/07/29 v3.11b KOMA-Script package (type area)
                   Copyright (C) Markus Kohm, 1994-
 
 \ta@bcor=\skip41
-\ta@div=\count79
+\ta@div=\count81
 \ta@hblk=\skip42
 \ta@vblk=\skip43
 \ta@temp=\skip44
@@ -91,52 +95,52 @@ Package typearea Info: These are the values describing the layout:
 (typearea)              \baselineskip   = 12.0pt
 (typearea)              on input line 1213.
 )
-\c@part=\count80
-\c@section=\count81
-\c@subsection=\count82
-\c@subsubsection=\count83
-\c@paragraph=\count84
-\c@subparagraph=\count85
+\c@part=\count82
+\c@section=\count83
+\c@subsection=\count84
+\c@subsubsection=\count85
+\c@paragraph=\count86
+\c@subparagraph=\count87
 \abovecaptionskip=\skip45
 \belowcaptionskip=\skip46
 \c@pti@nb@sid@b@x=\box26
-\c@figure=\count86
-\c@table=\count87
+\c@figure=\count88
+\c@table=\count89
 \bibindent=\dimen102
-) (/usr/local/texlive/2012/texmf-dist/tex/latex/base/fontenc.sty
+) (/usr/local/texlive/2013/texmf-dist/tex/latex/base/fontenc.sty
 Package: fontenc 2005/09/27 v1.99g Standard LaTeX package
 
-(/usr/local/texlive/2012/texmf-dist/tex/latex/base/t1enc.def
+(/usr/local/texlive/2013/texmf-dist/tex/latex/base/t1enc.def
 File: t1enc.def 2005/09/27 v1.99g Standard LaTeX file
 LaTeX Font Info:    Redeclaring font encoding T1 on input line 43.
 ))
-(/usr/local/texlive/2012/texmf-dist/tex/latex/amsmath/amsmath.sty
+(/usr/local/texlive/2013/texmf-dist/tex/latex/amsmath/amsmath.sty
 Package: amsmath 2013/01/14 v2.14 AMS math features
 \@mathmargin=\skip47
 
 For additional information on amsmath, use the `?' option.
-(/usr/local/texlive/2012/texmf-dist/tex/latex/amsmath/amstext.sty
+(/usr/local/texlive/2013/texmf-dist/tex/latex/amsmath/amstext.sty
 Package: amstext 2000/06/29 v2.01
 
-(/usr/local/texlive/2012/texmf-dist/tex/latex/amsmath/amsgen.sty
+(/usr/local/texlive/2013/texmf-dist/tex/latex/amsmath/amsgen.sty
 File: amsgen.sty 1999/11/30 v2.0
 \@emptytoks=\toks15
 \ex@=\dimen103
 ))
-(/usr/local/texlive/2012/texmf-dist/tex/latex/amsmath/amsbsy.sty
+(/usr/local/texlive/2013/texmf-dist/tex/latex/amsmath/amsbsy.sty
 Package: amsbsy 1999/11/29 v1.2d
 \pmbraise@=\dimen104
 )
-(/usr/local/texlive/2012/texmf-dist/tex/latex/amsmath/amsopn.sty
+(/usr/local/texlive/2013/texmf-dist/tex/latex/amsmath/amsopn.sty
 Package: amsopn 1999/12/14 v2.01 operator names
 )
-\inf@bad=\count88
+\inf@bad=\count90
 LaTeX Info: Redefining \frac on input line 210.
-\uproot@=\count89
-\leftroot@=\count90
+\uproot@=\count91
+\leftroot@=\count92
 LaTeX Info: Redefining \overline on input line 306.
-\classnum@=\count91
-\DOTSCASE@=\count92
+\classnum@=\count93
+\DOTSCASE@=\count94
 LaTeX Info: Redefining \ldots on input line 378.
 LaTeX Info: Redefining \dots on input line 381.
 LaTeX Info: Redefining \cdots on input line 466.
@@ -145,15 +149,15 @@ LaTeX Info: Redefining \cdots on input line 466.
 \big@size=\dimen105
 LaTeX Font Info:    Redeclaring font encoding OML on input line 566.
 LaTeX Font Info:    Redeclaring font encoding OMS on input line 567.
-\macc@depth=\count93
-\c@MaxMatrixCols=\count94
+\macc@depth=\count95
+\c@MaxMatrixCols=\count96
 \dotsspace@=\muskip10
-\c@parentequation=\count95
-\dspbrk@lvl=\count96
+\c@parentequation=\count97
+\dspbrk@lvl=\count98
 \tag@help=\toks16
-\row@=\count97
-\column@=\count98
-\maxfields@=\count99
+\row@=\count99
+\column@=\count100
+\maxfields@=\count101
 \andhelp@=\toks17
 \eqnshift@=\dimen106
 \alignsep@=\dimen107
@@ -168,38 +172,38 @@ LaTeX Font Info:    Redeclaring font encoding OMS on input line 567.
 LaTeX Info: Redefining \[ on input line 2665.
 LaTeX Info: Redefining \] on input line 2666.
 )
-(/usr/local/texlive/2012/texmf-dist/tex/latex/amsfonts/amsfonts.sty
+(/usr/local/texlive/2013/texmf-dist/tex/latex/amsfonts/amsfonts.sty
 Package: amsfonts 2013/01/14 v3.01 Basic AMSFonts support
 \symAMSa=\mathgroup4
 \symAMSb=\mathgroup5
 LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
 (Font)                  U/euf/m/n --> U/euf/b/n on input line 106.
 )
-(/usr/local/texlive/2012/texmf-dist/tex/latex/amsfonts/amssymb.sty
+(/usr/local/texlive/2013/texmf-dist/tex/latex/amsfonts/amssymb.sty
 Package: amssymb 2013/01/14 v3.01 AMS font symbols
 )
-(/usr/local/texlive/2012/texmf-dist/tex/latex/mh/mathtools.sty
+(/usr/local/texlive/2013/texmf-dist/tex/latex/mh/mathtools.sty
 Package: mathtools 2013/02/12 v1.13 mathematical typesetting tools
 
-(/usr/local/texlive/2012/texmf-dist/tex/latex/tools/calc.sty
+(/usr/local/texlive/2013/texmf-dist/tex/latex/tools/calc.sty
 Package: calc 2007/08/22 v4.3 Infix arithmetic (KKT,FJ)
-\calc@Acount=\count100
-\calc@Bcount=\count101
+\calc@Acount=\count102
+\calc@Bcount=\count103
 \calc@Adimen=\dimen112
 \calc@Bdimen=\dimen113
 \calc@Askip=\skip50
 \calc@Bskip=\skip51
 LaTeX Info: Redefining \setlength on input line 76.
 LaTeX Info: Redefining \addtolength on input line 77.
-\calc@Ccount=\count102
+\calc@Ccount=\count104
 \calc@Cskip=\skip52
 )
-(/usr/local/texlive/2012/texmf-dist/tex/latex/mh/mhsetup.sty
+(/usr/local/texlive/2013/texmf-dist/tex/latex/mh/mhsetup.sty
 Package: mhsetup 2010/01/21 v1.2a programming setup (MH)
 )
 LaTeX Info: Thecontrolsequence`\['isalreadyrobust on input line 129.
 LaTeX Info: Thecontrolsequence`\]'isalreadyrobust on input line 129.
-\g_MT_multlinerow_int=\count103
+\g_MT_multlinerow_int=\count105
 \l_MT_multwidth_dim=\dimen114
 \origjot=\skip53
 \l_MT_shortvdotswithinadjustabove_dim=\dimen115
@@ -209,26 +213,26 @@ LaTeX Info: Thecontrolsequence`\]'isalreadyrobust on input line 129.
 \l_MT_above_shortintertext_sep=\dimen119
 \l_MT_below_shortintertext_sep=\dimen120
 )
-(/usr/local/texlive/2012/texmf-dist/tex/latex/graphics/color.sty
+(/usr/local/texlive/2013/texmf-dist/tex/latex/graphics/color.sty
 Package: color 2005/11/14 v1.0j Standard LaTeX Color (DPC)
 
-(/usr/local/texlive/2012/texmf-dist/tex/latex/latexconfig/color.cfg
+(/usr/local/texlive/2013/texmf-dist/tex/latex/latexconfig/color.cfg
 File: color.cfg 2007/01/18 v1.5 color configuration of teTeX/TeXLive
 )
 Package color Info: Driver file: pdftex.def on input line 130.
 
-(/usr/local/texlive/2012/texmf-dist/tex/latex/pdftex-def/pdftex.def
+(/usr/local/texlive/2013/texmf-dist/tex/latex/pdftex-def/pdftex.def
 File: pdftex.def 2011/05/27 v0.06d Graphics/color for pdfTeX
 
-(/usr/local/texlive/2012/texmf-dist/tex/generic/oberdiek/infwarerr.sty
+(/usr/local/texlive/2013/texmf-dist/tex/generic/oberdiek/infwarerr.sty
 Package: infwarerr 2010/04/08 v1.3 Providing info/warning/error messages (HO)
 )
-(/usr/local/texlive/2012/texmf-dist/tex/generic/oberdiek/ltxcmds.sty
+(/usr/local/texlive/2013/texmf-dist/tex/generic/oberdiek/ltxcmds.sty
 Package: ltxcmds 2011/11/09 v1.22 LaTeX kernel commands for general use (HO)
 )
-\Gread@gobject=\count104
+\Gread@gobject=\count106
 ))
-(/usr/local/texlive/2012/texmf-dist/tex/latex/soul/soul.sty
+(/usr/local/texlive/2013/texmf-dist/tex/latex/soul/soul.sty
 Package: soul 2003/11/17 v2.4 letterspacing/underlining (mf)
 \SOUL@word=\toks20
 \SOUL@lasttoken=\toks21
@@ -240,50 +244,71 @@ Package: soul 2003/11/17 v2.4 letterspacing/underlining (mf)
 \SOUL@uldp=\dimen122
 \SOUL@ulht=\dimen123
 )
-(/usr/local/texlive/2012/texmf-dist/tex/latex/preprint/fullpage.sty
-Package: fullpage 1999/02/23 1.1 (PWD)
-\FP@margin=\skip55
+(/usr/local/texlive/2013/texmf-dist/tex/latex/geometry/geometry.sty
+Package: geometry 2010/09/12 v5.6 Page Geometry
+
+(/usr/local/texlive/2013/texmf-dist/tex/generic/oberdiek/ifpdf.sty
+Package: ifpdf 2011/01/30 v2.3 Provides the ifpdf switch (HO)
+Package ifpdf Info: pdfTeX in PDF mode is detected.
 )
-(/usr/local/texlive/2012/texmf-dist/tex/latex/tools/enumerate.sty
+(/usr/local/texlive/2013/texmf-dist/tex/generic/oberdiek/ifvtex.sty
+Package: ifvtex 2010/03/01 v1.5 Detect VTeX and its facilities (HO)
+Package ifvtex Info: VTeX not detected.
+)
+(/usr/local/texlive/2013/texmf-dist/tex/generic/ifxetex/ifxetex.sty
+Package: ifxetex 2010/09/12 v0.6 Provides ifxetex conditional
+)
+\Gm@cnth=\count107
+\Gm@cntv=\count108
+\c@Gm@tempcnt=\count109
+\Gm@bindingoffset=\dimen124
+\Gm@wd@mp=\dimen125
+\Gm@odd@mp=\dimen126
+\Gm@even@mp=\dimen127
+\Gm@layoutwidth=\dimen128
+\Gm@layoutheight=\dimen129
+\Gm@layouthoffset=\dimen130
+\Gm@layoutvoffset=\dimen131
+\Gm@dimlist=\toks25
+)
+(/usr/local/texlive/2013/texmf-dist/tex/latex/tools/enumerate.sty
 Package: enumerate 1999/03/05 v3.00 enumerate extensions (DPC)
-\@enLab=\toks25
+\@enLab=\toks26
 )
-(/usr/local/texlive/2012/texmf-dist/tex/latex/graphics/graphicx.sty
+(/usr/local/texlive/2013/texmf-dist/tex/latex/graphics/graphicx.sty
 Package: graphicx 1999/02/16 v1.0f Enhanced LaTeX Graphics (DPC,SPQR)
 
-(/usr/local/texlive/2012/texmf-dist/tex/latex/graphics/graphics.sty
+(/usr/local/texlive/2013/texmf-dist/tex/latex/graphics/graphics.sty
 Package: graphics 2009/02/05 v1.0o Standard LaTeX Graphics (DPC,SPQR)
 
-(/usr/local/texlive/2012/texmf-dist/tex/latex/graphics/trig.sty
+(/usr/local/texlive/2013/texmf-dist/tex/latex/graphics/trig.sty
 Package: trig 1999/03/16 v1.09 sin cos tan (DPC)
 )
-(/usr/local/texlive/2012/texmf-dist/tex/latex/latexconfig/graphics.cfg
+(/usr/local/texlive/2013/texmf-dist/tex/latex/latexconfig/graphics.cfg
 File: graphics.cfg 2010/04/23 v1.9 graphics configuration of TeX Live
 )
 Package graphics Info: Driver file: pdftex.def on input line 91.
 )
-\Gin@req@height=\dimen124
-\Gin@req@width=\dimen125
+\Gin@req@height=\dimen132
+\Gin@req@width=\dimen133
 )
-(/usr/local/texlive/2012/texmf-dist/tex/latex/hyperref/hyperref.sty
+(/usr/local/texlive/2013/texmf-dist/tex/latex/hyperref/hyperref.sty
 Package: hyperref 2012/11/06 v6.83m Hypertext links for LaTeX
 
-(/usr/local/texlive/2012/texmf-dist/tex/generic/oberdiek/hobsub-hyperref.sty
+(/usr/local/texlive/2013/texmf-dist/tex/generic/oberdiek/hobsub-hyperref.sty
 Package: hobsub-hyperref 2012/05/28 v1.13 Bundle oberdiek, subset hyperref (HO)
 
 
-(/usr/local/texlive/2012/texmf-dist/tex/generic/oberdiek/hobsub-generic.sty
+(/usr/local/texlive/2013/texmf-dist/tex/generic/oberdiek/hobsub-generic.sty
 Package: hobsub-generic 2012/05/28 v1.13 Bundle oberdiek, subset generic (HO)
 Package: hobsub 2012/05/28 v1.13 Construct package bundles (HO)
 Package hobsub Info: Skipping package `infwarerr' (already loaded).
 Package hobsub Info: Skipping package `ltxcmds' (already loaded).
 Package: ifluatex 2010/03/01 v1.3 Provides the ifluatex switch (HO)
 Package ifluatex Info: LuaTeX not detected.
-Package: ifvtex 2010/03/01 v1.5 Detect VTeX and its facilities (HO)
-Package ifvtex Info: VTeX not detected.
+Package hobsub Info: Skipping package `ifvtex' (already loaded).
 Package: intcalc 2007/09/27 v1.1 Expandable calculations with integers (HO)
-Package: ifpdf 2011/01/30 v2.3 Provides the ifpdf switch (HO)
-Package ifpdf Info: pdfTeX in PDF mode is detected.
+Package hobsub Info: Skipping package `ifpdf' (already loaded).
 Package: etexcmds 2011/02/16 v1.5 Avoid name clashes with e-TeX commands (HO)
 Package etexcmds Info: Could not find \expanded.
 (etexcmds)             That can mean that you are not using pdfTeX 1.50 or
@@ -313,25 +338,22 @@ Package: atbegshi 2011/10/05 v1.16 At begin shipout hook (HO)
 Package: refcount 2011/10/16 v3.4 Data extraction from label references (HO)
 Package: hycolor 2011/01/30 v1.7 Color options for hyperref/bookmark (HO)
 )
-(/usr/local/texlive/2012/texmf-dist/tex/generic/ifxetex/ifxetex.sty
-Package: ifxetex 2010/09/12 v0.6 Provides ifxetex conditional
-)
-(/usr/local/texlive/2012/texmf-dist/tex/latex/oberdiek/auxhook.sty
+(/usr/local/texlive/2013/texmf-dist/tex/latex/oberdiek/auxhook.sty
 Package: auxhook 2011/03/04 v1.3 Hooks for auxiliary files (HO)
 )
-(/usr/local/texlive/2012/texmf-dist/tex/latex/oberdiek/kvoptions.sty
+(/usr/local/texlive/2013/texmf-dist/tex/latex/oberdiek/kvoptions.sty
 Package: kvoptions 2011/06/30 v3.11 Key value format for package options (HO)
 )
-\@linkdim=\dimen126
-\Hy@linkcounter=\count105
-\Hy@pagecounter=\count106
+\@linkdim=\dimen134
+\Hy@linkcounter=\count110
+\Hy@pagecounter=\count111
 
-(/usr/local/texlive/2012/texmf-dist/tex/latex/hyperref/pd1enc.def
+(/usr/local/texlive/2013/texmf-dist/tex/latex/hyperref/pd1enc.def
 File: pd1enc.def 2012/11/06 v6.83m Hyperref: PDFDocEncoding definition (HO)
 )
-\Hy@SavedSpaceFactor=\count107
+\Hy@SavedSpaceFactor=\count112
 
-(/usr/local/texlive/2012/texmf-dist/tex/latex/latexconfig/hyperref.cfg
+(/usr/local/texlive/2013/texmf-dist/tex/latex/latexconfig/hyperref.cfg
 File: hyperref.cfg 2002/06/06 v1.2 hyperref configuration of TeXLive
 )
 Package hyperref Info: Option `colorlinks' set `true' on input line 4319.
@@ -342,17 +364,17 @@ Package hyperref Info: Plain pages OFF on input line 4458.
 Package hyperref Info: Backreferencing OFF on input line 4463.
 Package hyperref Info: Implicit mode ON; LaTeX internals redefined.
 Package hyperref Info: Bookmarks ON on input line 4688.
-\c@Hy@tempcnt=\count108
+\c@Hy@tempcnt=\count113
 
-(/usr/local/texlive/2012/texmf-dist/tex/latex/url/url.sty
+(/usr/local/texlive/2013/texmf-dist/tex/latex/url/url.sty
 \Urlmuskip=\muskip11
 Package: url 2006/04/12  ver 3.3  Verb mode for urls, etc.
 )
 LaTeX Info: Redefining \url on input line 5041.
-\XeTeXLinkMargin=\dimen127
-\Fld@menulength=\count109
-\Field@Width=\dimen128
-\Fld@charsize=\dimen129
+\XeTeXLinkMargin=\dimen135
+\Fld@menulength=\count114
+\Field@Width=\dimen136
+\Fld@charsize=\dimen137
 Package hyperref Info: Hyper figures OFF on input line 6295.
 Package hyperref Info: Link nesting OFF on input line 6300.
 Package hyperref Info: Hyper index ON on input line 6303.
@@ -362,137 +384,172 @@ Package hyperref Info: Link coloring with OCG OFF on input line 6320.
 Package hyperref Info: PDF/A mode OFF on input line 6325.
 LaTeX Info: Redefining \ref on input line 6365.
 LaTeX Info: Redefining \pageref on input line 6369.
-\Hy@abspage=\count110
-\c@Item=\count111
-\c@Hfootnote=\count112
+\Hy@abspage=\count115
+\c@Item=\count116
+\c@Hfootnote=\count117
 )
 
 Package hyperref Message: Driver (autodetected): hpdftex.
 
-(/usr/local/texlive/2012/texmf-dist/tex/latex/hyperref/hpdftex.def
+(/usr/local/texlive/2013/texmf-dist/tex/latex/hyperref/hpdftex.def
 File: hpdftex.def 2012/11/06 v6.83m Hyperref driver for pdfTeX
-\Fld@listcount=\count113
-\c@bookmark@seq@number=\count114
+\Fld@listcount=\count118
+\c@bookmark@seq@number=\count119
 
-(/usr/local/texlive/2012/texmf-dist/tex/latex/oberdiek/rerunfilecheck.sty
+(/usr/local/texlive/2013/texmf-dist/tex/latex/oberdiek/rerunfilecheck.sty
 Package: rerunfilecheck 2011/04/15 v1.7 Rerun checks for auxiliary files (HO)
 Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 2
 82.
 )
-\Hy@SectionHShift=\skip56
+\Hy@SectionHShift=\skip55
 )
-(/usr/local/texlive/2012/texmf-dist/tex/latex/caption/caption.sty
-Package: caption 2013/02/03 v3.3-65 Customizing captions (AR)
+(/usr/local/texlive/2013/texmf-dist/tex/latex/floatrow/floatrow.sty
+Package: floatrow 2008/08/02 v0.3b floatrow: float package extension
 
-(/usr/local/texlive/2012/texmf-dist/tex/latex/caption/caption3.sty
-Package: caption3 2013/02/03 v1.5-62 caption3 kernel (AR)
-\captionmargin=\dimen130
-\captionmargin@=\dimen131
-\captionwidth=\dimen132
-\caption@tempdima=\dimen133
-\caption@indent=\dimen134
-\caption@parindent=\dimen135
-\caption@hangindent=\dimen136
+(/usr/local/texlive/2013/texmf-dist/tex/latex/caption/caption3.sty
+Package: caption3 2013/05/02 v1.6-88 caption3 kernel (AR)
+Package caption3 Info: TeX engine: e-TeX on input line 57.
+\captionmargin=\dimen138
+\captionmargin@=\dimen139
+\captionwidth=\dimen140
+\caption@tempdima=\dimen141
+\caption@indent=\dimen142
+\caption@parindent=\dimen143
+\caption@hangindent=\dimen144
 )
-Package caption Info: KOMA-Script document class.
-\c@ContinuedFloat=\count115
-Package caption Info: hyperref package is loaded.
+\c@float@type=\count120
+\float@exts=\toks27
+\float@box=\box29
+\@floatcapt=\box30
+Package floatrow Info: Modified float package code loaded on input line 455.
+Package floatrow Info: Modified rotfloat package code loaded on input line 473.
+
+\FR@everyfloat=\toks28
+\flrow@foot=\insert233
+\FB@wd=\dimen145
+\FBo@wd=\dimen146
+\FBc@wd=\dimen147
+\FBo@ht=\skip56
+\FBc@ht=\skip57
+\FBf@ht=\skip58
+\FBo@max=\skip59
+\FBc@max=\skip60
+\FBf@max=\skip61
+\c@FBl@b=\count121
+\floatbox@depth=\count122
+\c@FRobj=\count123
+\c@FRsobj=\count124
+\Xhsize=\skip62
+\sXhsize=\skip63
+\Zhsize=\skip64
+\sZhsize=\skip65
+\flrow@rowbox=\box31
+\FR@Zunitlength=\dimen148
+\c@FBcnt=\count125
+\FPOScnt=\count126
+\LTleft=\skip66
+\LTright=\skip67
+\LTleft=\skip68
+\LTright=\skip69
+\flrow@types=\toks29
 )
-(/usr/local/texlive/2012/texmf-dist/tex/latex/caption/subcaption.sty
-Package: subcaption 2013/02/03 v1.1-62 Sub-captions (AR)
-\c@subfigure=\count116
-\c@subtable=\count117
-)
-(/usr/local/texlive/2012/../texmf-local/tex/latex/local/deluxetable.sty
+(/usr/local/texlive/2013/../texmf-local/tex/latex/deluxetable/deluxetable.sty
 Package: deluxetable 
-\pt@box=\box29
-\pt@width=\dimen137
-\pt@line=\count118
-\pt@column=\count119
-\pt@nlines=\count120
-\pt@ncol=\count121
-\pt@page=\count122
-\pt@tmpcapwidth=\dimen138
+\pt@box=\box32
+\pt@width=\dimen149
+\pt@line=\count127
+\pt@column=\count128
+\pt@nlines=\count129
+\pt@ncol=\count130
+\pt@page=\count131
+\pt@tmpcapwidth=\dimen150
 )
-(/usr/local/texlive/2012/texmf-dist/tex/latex/tools/verbatim.sty
+(/usr/local/texlive/2013/texmf-dist/tex/latex/tools/verbatim.sty
 Package: verbatim 2003/08/22 v1.5q LaTeX2e package for verbatim enhancements
-\every@verbatim=\toks26
-\verbatim@line=\toks27
+\every@verbatim=\toks30
+\verbatim@line=\toks31
 \verbatim@in@stream=\read1
 )
-(/usr/local/texlive/2012/texmf-dist/tex/latex/fancyvrb/fancyvrb.sty
+(/usr/local/texlive/2013/texmf-dist/tex/latex/fancyvrb/fancyvrb.sty
 Package: fancyvrb 2008/02/07
 
 Style option: `fancyvrb' v2.7a, with DG/SPQR fixes, and firstline=lastline fix 
 <2008/02/07> (tvz)
-\FV@CodeLineNo=\count123
+\FV@CodeLineNo=\count132
 \FV@InFile=\read2
-\FV@TabBox=\box30
-\c@FancyVerbLine=\count124
-\FV@StepNumber=\count125
+\FV@TabBox=\box33
+\c@FancyVerbLine=\count133
+\FV@StepNumber=\count134
 \FV@OutFile=\write3
 )
-(/usr/local/texlive/2012/texmf-dist/tex/latex/listings/listings.sty
-\lst@mode=\count126
-\lst@gtempboxa=\box31
-\lst@token=\toks28
-\lst@length=\count127
-\lst@currlwidth=\dimen139
-\lst@column=\count128
-\lst@pos=\count129
-\lst@lostspace=\dimen140
-\lst@width=\dimen141
-\lst@newlines=\count130
-\lst@lineno=\count131
-\lst@maxwidth=\dimen142
+(/usr/local/texlive/2013/texmf-dist/tex/latex/listings/listings.sty
+\lst@mode=\count135
+\lst@gtempboxa=\box34
+\lst@token=\toks32
+\lst@length=\count136
+\lst@currlwidth=\dimen151
+\lst@column=\count137
+\lst@pos=\count138
+\lst@lostspace=\dimen152
+\lst@width=\dimen153
+\lst@newlines=\count139
+\lst@lineno=\count140
+\lst@maxwidth=\dimen154
 
-(/usr/local/texlive/2012/texmf-dist/tex/latex/listings/lstmisc.sty
-File: lstmisc.sty 2007/02/22 1.4 (Carsten Heinz)
-\c@lstnumber=\count132
-\lst@skipnumbers=\count133
-\lst@framebox=\box32
+(/usr/local/texlive/2013/texmf-dist/tex/latex/listings/lstmisc.sty
+File: lstmisc.sty 2013/08/05 1.5a (Carsten Heinz)
+\c@lstnumber=\count141
+\lst@skipnumbers=\count142
+\lst@framebox=\box35
 )
-(/usr/local/texlive/2012/texmf-dist/tex/latex/listings/listings.cfg
-File: listings.cfg 2007/02/22 1.4 listings configuration
+(/usr/local/texlive/2013/texmf-dist/tex/latex/listings/listings.cfg
+File: listings.cfg 2013/08/05 1.5a listings configuration
 ))
-Package: listings 2007/02/22 1.4 (Carsten Heinz)
+Package: listings 2013/08/05 1.5a (Carsten Heinz)
 
-(/usr/local/texlive/2012/texmf-dist/tex/latex/acronym/acronym.sty
-Package: acronym 2012/10/29 v1.38 Support for acronyms (Tobias Oetiker)
+(/usr/local/texlive/2013/texmf-dist/tex/latex/caption/caption.sty
+Package: caption 2013/05/02 v3.3-89 Customizing captions (AR)
+Package caption Info: KOMA-Script document class.
+\c@ContinuedFloat=\count143
+Package caption Info: float package is loaded.
+Package caption Info: floatrow package is loaded.
+Package caption Info: hyperref package is loaded.
+Package caption Info: listings package is loaded.
+)
+(/usr/local/texlive/2013/texmf-dist/tex/latex/caption/subcaption.sty
+Package: subcaption 2013/02/03 v1.1-62 Sub-captions (AR)
+\c@subfigure=\count144
+\c@subtable=\count145
+)
+(/usr/local/texlive/2013/texmf-dist/tex/latex/microtype/microtype.sty
+Package: microtype 2013/05/23 v2.5a Micro-typographical refinements (RS)
+\MT@toks=\toks33
+\MT@count=\count146
+LaTeX Info: Redefining \textls on input line 766.
+\MT@outer@kern=\dimen155
+LaTeX Info: Redefining \textmicrotypecontext on input line 1285.
+\MT@listname@count=\count147
 
-(/usr/local/texlive/2012/texmf-dist/tex/latex/bigfoot/suffix.sty
-Package: suffix 2006/07/15 1.5 Variant command support
+(/usr/local/texlive/2013/texmf-dist/tex/latex/microtype/microtype-pdftex.def
+File: microtype-pdftex.def 2013/05/23 v2.5a Definitions specific to pdftex (RS)
+
+LaTeX Info: Redefining \lsstyle on input line 915.
+LaTeX Info: Redefining \lslig on input line 915.
+\MT@outer@space=\skip70
 )
-(/usr/local/texlive/2012/texmf-dist/tex/generic/xstring/xstring.sty
-(/usr/local/texlive/2012/texmf-dist/tex/generic/xstring/xstring.tex
-\@xs@message=\write4
-\integerpart=\count134
-\decimalpart=\count135
+Package microtype Info: Loading configuration file microtype.cfg.
+
+(/usr/local/texlive/2013/texmf-dist/tex/latex/microtype/microtype.cfg
+File: microtype.cfg 2013/05/23 v2.5a microtype main configuration file (RS)
+))
+(/usr/local/texlive/2013/texmf-dist/tex/latex/listings/lstlang1.sty
+File: lstlang1.sty 2013/08/05 1.5a listings language file
 )
-Package: xstring 2013/2/28  v1.7a  String manipulations (C Tellechea)
+(/usr/local/texlive/2013/texmf-dist/tex/latex/listings/lstlang1.sty
+File: lstlang1.sty 2013/08/05 1.5a listings language file
 )
-\AC@clearlist=\toks29
-)
-(/usr/local/texlive/2012/texmf-dist/tex/latex/amscls/amsthm.sty
-Package: amsthm 2004/08/06 v2.20
-\thm@style=\toks30
-\thm@bodyfont=\toks31
-\thm@headfont=\toks32
-\thm@notefont=\toks33
-\thm@headpunct=\toks34
-\thm@preskip=\skip57
-\thm@postskip=\skip58
-\thm@headsep=\skip59
-\dth@everypar=\toks35
-)
-(/usr/local/texlive/2012/texmf-dist/tex/latex/listings/lstlang1.sty
-File: lstlang1.sty 2004/09/05 1.3 listings language file
-)
-(/usr/local/texlive/2012/texmf-dist/tex/latex/listings/lstlang1.sty
-File: lstlang1.sty 2004/09/05 1.3 listings language file
-)
-(/usr/local/texlive/2012/texmf-dist/tex/latex/listings/lstmisc.sty
-File: lstmisc.sty 2007/02/22 1.4 (Carsten Heinz)
+(/usr/local/texlive/2013/texmf-dist/tex/latex/listings/lstmisc.sty
+File: lstmisc.sty 2013/08/05 1.5a (Carsten Heinz)
 )
 (./grainysun.aux
 
@@ -507,37 +564,82 @@ LaTeX Warning: Label `cpos' multiply defined.
 )
 \openout1 = `grainysun.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 49.
-LaTeX Font Info:    ... okay on input line 49.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 49.
-LaTeX Font Info:    ... okay on input line 49.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 49.
-LaTeX Font Info:    ... okay on input line 49.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 49.
-LaTeX Font Info:    ... okay on input line 49.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 49.
-LaTeX Font Info:    ... okay on input line 49.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 49.
-LaTeX Font Info:    ... okay on input line 49.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 49.
-LaTeX Font Info:    ... okay on input line 49.
- (/usr/local/texlive/2012/texmf-dist/tex/context/base/supp-pdf.mkii
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 57.
+LaTeX Font Info:    ... okay on input line 57.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 57.
+LaTeX Font Info:    ... okay on input line 57.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 57.
+LaTeX Font Info:    ... okay on input line 57.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 57.
+LaTeX Font Info:    ... okay on input line 57.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 57.
+LaTeX Font Info:    ... okay on input line 57.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 57.
+LaTeX Font Info:    ... okay on input line 57.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 57.
+LaTeX Font Info:    ... okay on input line 57.
+Package nag Info: Command \frontmatter not defined, skipping amendment on input
+ line 57.
+Package nag Info: Command \mainmatter not defined, skipping amendment on input 
+line 57.
+Package nag Info: Command \backmatter not defined, skipping amendment on input 
+line 57.
+Package nag Info: Command \RaggedLeft not defined, skipping amendment on input 
+line 57.
+Package nag Info: Command \RaggedRight not defined, skipping amendment on input
+ line 57.
+ (/usr/local/texlive/2013/texmf-dist/tex/context/base/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count136
-\scratchdimen=\dimen143
-\scratchbox=\box33
-\nofMPsegments=\count137
-\nofMParguments=\count138
-\everyMPshowfont=\toks36
-\MPscratchCnt=\count139
-\MPscratchDim=\dimen144
-\MPnumerator=\count140
-\makeMPintoPDFobject=\count141
-\everyMPtoPDFconversion=\toks37
-) (/usr/local/texlive/2012/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
+\scratchcounter=\count148
+\scratchdimen=\dimen156
+\scratchbox=\box36
+\nofMPsegments=\count149
+\nofMParguments=\count150
+\everyMPshowfont=\toks34
+\MPscratchCnt=\count151
+\MPscratchDim=\dimen157
+\MPnumerator=\count152
+\makeMPintoPDFobject=\count153
+\everyMPtoPDFconversion=\toks35
+)
+*geometry* driver: auto-detecting
+*geometry* detected driver: pdftex
+*geometry* verbose mode - [ preamble ] result:
+* driver: pdftex
+* paper: <default>
+* layout: <same size as paper>
+* layoutoffset:(h,v)=(0.0pt,0.0pt)
+* modes: 
+* h-part:(L,W,R)=(56.9055pt, 483.69693pt, 56.9055pt)
+* v-part:(T,H,B)=(56.9055pt, 731.23593pt, 56.9055pt)
+* \paperwidth=597.50793pt
+* \paperheight=845.04694pt
+* \textwidth=483.69693pt
+* \textheight=731.23593pt
+* \oddsidemargin=-15.36449pt
+* \evensidemargin=-15.36449pt
+* \topmargin=-48.36449pt
+* \headheight=15.0pt
+* \headsep=18.0pt
+* \topskip=10.0pt
+* \footskip=42.0pt
+* \marginparwidth=74.68849pt
+* \marginparsep=12.8401pt
+* \columnsep=10.0pt
+* \skip\footins=9.0pt plus 4.0pt minus 2.0pt
+* \hoffset=0.0pt
+* \voffset=0.0pt
+* \mag=1000
+* \@twocolumnfalse
+* \@twosidefalse
+* \@mparswitchfalse
+* \@reversemarginfalse
+* (1in=72.27pt=25.4mm, 1cm=28.453pt)
+
+(/usr/local/texlive/2013/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
 Package: epstopdf-base 2010/02/09 v2.5 Base part for package epstopdf
 
-(/usr/local/texlive/2012/texmf-dist/tex/latex/oberdiek/grfext.sty
+(/usr/local/texlive/2013/texmf-dist/tex/latex/oberdiek/grfext.sty
 Package: grfext 2010/08/19 v1.1 Manage graphics extensions (HO)
 )
 Package grfext Info: Graphics extension search list:
@@ -545,70 +647,111 @@ Package grfext Info: Graphics extension search list:
 G,.JBIG2,.JB2,.eps]
 (grfext)             \AppendGraphicsExtensions on input line 452.
 
-(/usr/local/texlive/2012/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
+(/usr/local/texlive/2013/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
 e
 ))
-\AtBeginShipoutBox=\box34
-Package hyperref Info: Link coloring ON on input line 49.
+\AtBeginShipoutBox=\box37
+Package hyperref Info: Link coloring ON on input line 57.
 
-(/usr/local/texlive/2012/texmf-dist/tex/latex/hyperref/nameref.sty
+(/usr/local/texlive/2013/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2012/10/27 v2.43 Cross-referencing by name of section
 
-(/usr/local/texlive/2012/texmf-dist/tex/generic/oberdiek/gettitlestring.sty
+(/usr/local/texlive/2013/texmf-dist/tex/generic/oberdiek/gettitlestring.sty
 Package: gettitlestring 2010/12/03 v1.4 Cleanup title references (HO)
 )
-\c@section@level=\count142
+\c@section@level=\count154
 )
-LaTeX Info: Redefining \ref on input line 49.
-LaTeX Info: Redefining \pageref on input line 49.
-LaTeX Info: Redefining \nameref on input line 49.
+LaTeX Info: Redefining \ref on input line 57.
+LaTeX Info: Redefining \pageref on input line 57.
+LaTeX Info: Redefining \nameref on input line 57.
 
 (./grainysun.out) (./grainysun.out)
-\@outlinefile=\write5
-\openout5 = `grainysun.out'.
+\@outlinefile=\write4
+\openout4 = `grainysun.out'.
 
 Package caption Info: Begin \AtBeginDocument code.
-Package caption Info: listings package is loaded.
+Package caption Info: floatrow package is loaded.
 Package caption Info: End \AtBeginDocument code.
-\c@lstlisting=\count143
-LaTeX Font Info:    Try loading font information for T1+cmss on input line 52.
+\c@lstlisting=\count155
+LaTeX Info: Redefining \microtypecontext on input line 57.
+Package microtype Info: Generating PDF output.
+Package microtype Info: Character protrusion enabled (level 2),
+(microtype)             factor: 1100.
+Package microtype Info: Using default protrusion set `alltext'.
+Package microtype Info: Automatic font expansion enabled (level 2),
+(microtype)             stretch: 10, shrink: 10, step: 1, non-selected.
+Package microtype Info: Using default expansion set `basictext'.
+Package microtype Info: Tracking enabled.
+Package microtype Info: Using default tracking set `smallcaps'.
+Package microtype Info: Adjustment of interword spacing enabled.
+Package microtype Info: Using default spacing set `basictext'.
+Package microtype Info: Adjustment of character kerning enabled.
+Package microtype Info: Using default kerning set `alltext'.
 
-(/usr/local/texlive/2012/texmf-dist/tex/latex/base/t1cmss.fd
+(/usr/local/texlive/2013/texmf-dist/tex/latex/microtype/mt-cmr.cfg
+File: mt-cmr.cfg 2013/05/19 v2.2 microtype config. file: Computer Modern Roman 
+(RS)
+)
+
+Package microtype Warning: \nonfrenchspacing is active. Adjustment of
+(microtype)                interword spacing will disable it. You might want
+(microtype)                to add `\microtypecontext{spacing=nonfrench}'
+(microtype)                to your preamble.
+
+Package nag Info: Command \hc@caption not defined, skipping amendment on input 
+line 57.
+Package nag Info: Command \topcaption not defined, skipping amendment on input 
+line 57.
+LaTeX Font Info:    Try loading font information for T1+cmss on input line 60.
+(/usr/local/texlive/2013/texmf-dist/tex/latex/base/t1cmss.fd
 File: t1cmss.fd 1999/05/25 v2.5h Standard LaTeX font definitions
 )
-LaTeX Font Info:    Try loading font information for U+msa on input line 52.
+Package microtype Info: Loading generic settings for font family
+(microtype)             `cmss' (encoding: T1).
+(microtype)             For optimal results, create family-specific settings.
+(microtype)             See the microtype manual for details.
+LaTeX Font Info:    Try loading font information for U+msa on input line 60.
 
-(/usr/local/texlive/2012/texmf-dist/tex/latex/amsfonts/umsa.fd
+(/usr/local/texlive/2013/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 52.
+(/usr/local/texlive/2013/texmf-dist/tex/latex/microtype/mt-msa.cfg
+File: mt-msa.cfg 2006/02/04 v1.1 microtype config. file: AMS symbols (a) (RS)
+)
+LaTeX Font Info:    Try loading font information for U+msb on input line 60.
 
-(/usr/local/texlive/2012/texmf-dist/tex/latex/amsfonts/umsb.fd
+(/usr/local/texlive/2013/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
+(/usr/local/texlive/2013/texmf-dist/tex/latex/microtype/mt-msb.cfg
+File: mt-msb.cfg 2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
+)
+Package tocbasic Info: character protrusion at toc deactivated on input line 61
+.
+
 (./grainysun.toc)
-\tf@toc=\write6
-\openout6 = `grainysun.toc'.
+\tf@toc=\write5
+\openout5 = `grainysun.toc'.
 
  [1
 
 
-{/usr/local/texlive/2012/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
-Underfull \hbox (badness 10000) in paragraph at lines 58--59
+{/usr/local/texlive/2013/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
+Underfull \hbox (badness 10000) in paragraph at lines 66--67
 
  []
 
 Package epstopdf Info: Source file: <../plots_tables_images/grainysun.eps>
-(epstopdf)                    date: 2013-05-29 11:33:43
+(epstopdf)                    date: 2013-06-05 12:17:08
 (epstopdf)                    size: 464135 bytes
 (epstopdf)             Output file: <../plots_tables_images/grainysun-eps-conve
 rted-to.pdf>
-(epstopdf)                    date: 2013-05-29 11:35:11
+(epstopdf)                    date: 2013-06-05 12:17:08
 (epstopdf)                    size: 101878 bytes
 (epstopdf)             Command: <epstopdf --outfile=../plots_tables_images/grai
 nysun-eps-converted-to.pdf ../plots_tables_images/grainysun.eps>
-(epstopdf)             \includegraphics on input line 62.
+(epstopdf)             \includegraphics on input line 70.
 Package epstopdf Info: Output file is already uptodate.
 
 <../plots_tables_images/grainysun-eps-converted-to.pdf, id=50, 552.0625pt x 338
@@ -617,24 +760,41 @@ File: ../plots_tables_images/grainysun-eps-converted-to.pdf Graphic file (type
 pdf)
  <use ../plots_tables_images/grainysun-eps-converted-to.pdf>
 Package pdftex.def Info: ../plots_tables_images/grainysun-eps-converted-to.pdf 
-used on input line 62.
-(pdftex.def)             Requested size: 407.6684pt x 249.80026pt.
-LaTeX Font Info:    Try loading font information for T1+cmtt on input line 71.
+used on input line 70.
+(pdftex.def)             Requested size: 435.32428pt x 266.7454pt.
+LaTeX Font Info:    Try loading font information for T1+cmtt on input line 79.
 
-(/usr/local/texlive/2012/texmf-dist/tex/latex/base/t1cmtt.fd
+(/usr/local/texlive/2013/texmf-dist/tex/latex/base/t1cmtt.fd
 File: t1cmtt.fd 1999/05/25 v2.5h Standard LaTeX font definitions
 )
+Package microtype Info: Loading generic settings for font family
+(microtype)             `cmtt' (encoding: T1).
+(microtype)             For optimal results, create family-specific settings.
+(microtype)             See the microtype manual for details.
+
+
+Package nag Warning: `center' environment in table.
+(nag)                Maybe you want \centering instead on input line 92.
+
+
+Package nag Warning: `center' environment in table.
+(nag)                Maybe you want \centering instead on input line 92.
+
 Table 1 has been set to width 317.79262pt
+
+Package nag Warning: `center' environment in table.
+(nag)                Maybe you want \centering instead on input line 157.
+
 Package epstopdf Info: Source file: <../plots_tables_images/alpha_flow.eps>
-(epstopdf)                    date: 2013-05-29 11:48:41
+(epstopdf)                    date: 2013-06-05 12:17:08
 (epstopdf)                    size: 1488091 bytes
 (epstopdf)             Output file: <../plots_tables_images/alpha_flow-eps-conv
 erted-to.pdf>
-(epstopdf)                    date: 2013-05-29 11:48:48
+(epstopdf)                    date: 2013-06-05 12:17:08
 (epstopdf)                    size: 121468 bytes
 (epstopdf)             Command: <epstopdf --outfile=../plots_tables_images/alph
 a_flow-eps-converted-to.pdf ../plots_tables_images/alpha_flow.eps>
-(epstopdf)             \includegraphics on input line 156.
+(epstopdf)             \includegraphics on input line 166.
 Package epstopdf Info: Output file is already uptodate.
 
 <../plots_tables_images/alpha_flow-eps-converted-to.pdf, id=52, 504.88625pt x 6
@@ -643,182 +803,491 @@ File: ../plots_tables_images/alpha_flow-eps-converted-to.pdf Graphic file (type
  pdf)
  <use ../plots_tables_images/alpha_flow-eps-converted-to.pdf>
 Package pdftex.def Info: ../plots_tables_images/alpha_flow-eps-converted-to.pdf
- used on input line 156.
-(pdftex.def)             Requested size: 407.6684pt x 539.77654pt.
+ used on input line 166.
+(pdftex.def)             Requested size: 435.32428pt x 576.3961pt.
 
 [1
 
  <../plots_tables_images/grainysun-eps-converted-to.pdf>] [2] [3 <../plots_tabl
 es_images/alpha_flow-eps-converted-to.pdf>]
-LaTeX Font Info:    Try loading font information for OMS+cmss on input line 188
+LaTeX Font Info:    Try loading font information for OMS+cmss on input line 198
 .
-LaTeX Font Info:    No file OMScmss.fd. on input line 188.
+LaTeX Font Info:    No file OMScmss.fd. on input line 198.
 
 
 LaTeX Font Warning: Font shape `OMS/cmss/m/n' undefined
 (Font)              using `OMS/cmsy/m/n' instead
-(Font)              for symbol `textasteriskcentered' on input line 188.
+(Font)              for symbol `textasteriskcentered' on input line 198.
 
 [4
 
 ]
 Package epstopdf Info: Source file: <../plots_tables_images/myfid.eps>
-(epstopdf)                    date: 2013-05-29 15:01:06
+(epstopdf)                    date: 2013-06-05 12:17:08
 (epstopdf)                    size: 77213 bytes
 (epstopdf)             Output file: <../plots_tables_images/myfid-eps-converted
 -to.pdf>
-(epstopdf)                    date: 2013-05-29 15:03:30
+(epstopdf)                    date: 2013-06-05 12:17:08
 (epstopdf)                    size: 12032 bytes
 (epstopdf)             Command: <epstopdf --outfile=../plots_tables_images/myfi
 d-eps-converted-to.pdf ../plots_tables_images/myfid.eps>
-(epstopdf)             \includegraphics on input line 249.
+(epstopdf)             \includegraphics on input line 271.
 Package epstopdf Info: Output file is already uptodate.
 
-<../plots_tables_images/myfid-eps-converted-to.pdf, id=172, 552.0625pt x 338.26
+<../plots_tables_images/myfid-eps-converted-to.pdf, id=173, 552.0625pt x 338.26
 375pt>
 File: ../plots_tables_images/myfid-eps-converted-to.pdf Graphic file (type pdf)
 
  <use ../plots_tables_images/myfid-eps-converted-to.pdf>
 Package pdftex.def Info: ../plots_tables_images/myfid-eps-converted-to.pdf used
- on input line 249.
-(pdftex.def)             Requested size: 264.98508pt x 162.3699pt.
+ on input line 271.
+(pdftex.def)             Requested size: 241.84846pt x 148.18616pt.
+Package epstopdf Info: Source file: <../plots_tables_images/myfid.eps>
+(epstopdf)                    date: 2013-06-05 12:17:08
+(epstopdf)                    size: 77213 bytes
+(epstopdf)             Output file: <../plots_tables_images/myfid-eps-converted
+-to.pdf>
+(epstopdf)                    date: 2013-06-05 12:17:08
+(epstopdf)                    size: 12032 bytes
+(epstopdf)             Command: <epstopdf --outfile=../plots_tables_images/myfi
+d-eps-converted-to.pdf ../plots_tables_images/myfid.eps>
+(epstopdf)             \includegraphics on input line 271.
+Package epstopdf Info: Output file is already uptodate.
+File: ../plots_tables_images/myfid-eps-converted-to.pdf Graphic file (type pdf)
 
-Overfull \hbox (61.15088pt too wide) in paragraph at lines 249--250
- [][] 
- []
 
+<use ../plots_tables_images/myfid-eps-converted-to.pdf>
+Package pdftex.def Info: ../plots_tables_images/myfid-eps-converted-to.pdf used
+ on input line 271.
+(pdftex.def)             Requested size: 241.84846pt x 148.18616pt.
+Package epstopdf Info: Source file: <../plots_tables_images/myfid.eps>
+(epstopdf)                    date: 2013-06-05 12:17:08
+(epstopdf)                    size: 77213 bytes
+(epstopdf)             Output file: <../plots_tables_images/myfid-eps-converted
+-to.pdf>
+(epstopdf)                    date: 2013-06-05 12:17:08
+(epstopdf)                    size: 12032 bytes
+(epstopdf)             Command: <epstopdf --outfile=../plots_tables_images/myfi
+d-eps-converted-to.pdf ../plots_tables_images/myfid.eps>
+(epstopdf)             \includegraphics on input line 271.
+Package epstopdf Info: Output file is already uptodate.
+File: ../plots_tables_images/myfid-eps-converted-to.pdf Graphic file (type pdf)
+
+
+<use ../plots_tables_images/myfid-eps-converted-to.pdf>
+Package pdftex.def Info: ../plots_tables_images/myfid-eps-converted-to.pdf used
+ on input line 271.
+(pdftex.def)             Requested size: 241.84846pt x 148.18616pt.
 Package epstopdf Info: Source file: <../plots_tables_images/albfid.eps>
-(epstopdf)                    date: 2013-05-29 15:01:49
+(epstopdf)                    date: 2013-06-05 12:17:08
 (epstopdf)                    size: 77213 bytes
 (epstopdf)             Output file: <../plots_tables_images/albfid-eps-converte
 d-to.pdf>
-(epstopdf)                    date: 2013-05-29 15:03:31
+(epstopdf)                    date: 2013-06-05 12:17:08
 (epstopdf)                    size: 12078 bytes
 (epstopdf)             Command: <epstopdf --outfile=../plots_tables_images/albf
 id-eps-converted-to.pdf ../plots_tables_images/albfid.eps>
-(epstopdf)             \includegraphics on input line 255.
+(epstopdf)             \includegraphics on input line 271.
 Package epstopdf Info: Output file is already uptodate.
 
-<../plots_tables_images/albfid-eps-converted-to.pdf, id=173, 552.0625pt x 338.2
+<../plots_tables_images/albfid-eps-converted-to.pdf, id=174, 552.0625pt x 338.2
 6375pt>
 File: ../plots_tables_images/albfid-eps-converted-to.pdf Graphic file (type pdf
 )
  <use ../plots_tables_images/albfid-eps-converted-to.pdf>
 Package pdftex.def Info: ../plots_tables_images/albfid-eps-converted-to.pdf use
-d on input line 255.
-(pdftex.def)             Requested size: 264.98508pt x 162.3699pt.
+d on input line 271.
+(pdftex.def)             Requested size: 241.84846pt x 148.18616pt.
 
-Overfull \hbox (61.15088pt too wide) in paragraph at lines 255--256
+Overfull \hbox (10.0pt too wide) in paragraph at lines 271--271
  [][] 
  []
 
+Package epstopdf Info: Source file: <../plots_tables_images/albfid.eps>
+(epstopdf)                    date: 2013-06-05 12:17:08
+(epstopdf)                    size: 77213 bytes
+(epstopdf)             Output file: <../plots_tables_images/albfid-eps-converte
+d-to.pdf>
+(epstopdf)                    date: 2013-06-05 12:17:08
+(epstopdf)                    size: 12078 bytes
+(epstopdf)             Command: <epstopdf --outfile=../plots_tables_images/albf
+id-eps-converted-to.pdf ../plots_tables_images/albfid.eps>
+(epstopdf)             \includegraphics on input line 271.
+Package epstopdf Info: Output file is already uptodate.
+File: ../plots_tables_images/albfid-eps-converted-to.pdf Graphic file (type pdf
+)
+<use ../plots_tables_images/albfid-eps-converted-to.pdf>
+Package pdftex.def Info: ../plots_tables_images/albfid-eps-converted-to.pdf use
+d on input line 271.
+(pdftex.def)             Requested size: 241.84846pt x 148.18616pt.
+
+Overfull \hbox (10.0pt too wide) in paragraph at lines 271--271
+ [][] 
+ []
+
+Package epstopdf Info: Source file: <../plots_tables_images/myfid.eps>
+(epstopdf)                    date: 2013-06-05 12:17:08
+(epstopdf)                    size: 77213 bytes
+(epstopdf)             Output file: <../plots_tables_images/myfid-eps-converted
+-to.pdf>
+(epstopdf)                    date: 2013-06-05 12:17:08
+(epstopdf)                    size: 12032 bytes
+(epstopdf)             Command: <epstopdf --outfile=../plots_tables_images/myfi
+d-eps-converted-to.pdf ../plots_tables_images/myfid.eps>
+(epstopdf)             \includegraphics on input line 271.
+Package epstopdf Info: Output file is already uptodate.
+File: ../plots_tables_images/myfid-eps-converted-to.pdf Graphic file (type pdf)
+
+<use ../plots_tables_images/myfid-eps-converted-to.pdf>
+Package pdftex.def Info: ../plots_tables_images/myfid-eps-converted-to.pdf used
+ on input line 271.
+(pdftex.def)             Requested size: 241.84846pt x 148.18616pt.
+Package epstopdf Info: Source file: <../plots_tables_images/myfid.eps>
+(epstopdf)                    date: 2013-06-05 12:17:08
+(epstopdf)                    size: 77213 bytes
+(epstopdf)             Output file: <../plots_tables_images/myfid-eps-converted
+-to.pdf>
+(epstopdf)                    date: 2013-06-05 12:17:08
+(epstopdf)                    size: 12032 bytes
+(epstopdf)             Command: <epstopdf --outfile=../plots_tables_images/myfi
+d-eps-converted-to.pdf ../plots_tables_images/myfid.eps>
+(epstopdf)             \includegraphics on input line 271.
+Package epstopdf Info: Output file is already uptodate.
+File: ../plots_tables_images/myfid-eps-converted-to.pdf Graphic file (type pdf)
+
+
+<use ../plots_tables_images/myfid-eps-converted-to.pdf>
+Package pdftex.def Info: ../plots_tables_images/myfid-eps-converted-to.pdf used
+ on input line 271.
+(pdftex.def)             Requested size: 241.84846pt x 148.18616pt.
+Package epstopdf Info: Source file: <../plots_tables_images/myfid.eps>
+(epstopdf)                    date: 2013-06-05 12:17:08
+(epstopdf)                    size: 77213 bytes
+(epstopdf)             Output file: <../plots_tables_images/myfid-eps-converted
+-to.pdf>
+(epstopdf)                    date: 2013-06-05 12:17:08
+(epstopdf)                    size: 12032 bytes
+(epstopdf)             Command: <epstopdf --outfile=../plots_tables_images/myfi
+d-eps-converted-to.pdf ../plots_tables_images/myfid.eps>
+(epstopdf)             \includegraphics on input line 271.
+Package epstopdf Info: Output file is already uptodate.
+File: ../plots_tables_images/myfid-eps-converted-to.pdf Graphic file (type pdf)
+
+
+<use ../plots_tables_images/myfid-eps-converted-to.pdf>
+Package pdftex.def Info: ../plots_tables_images/myfid-eps-converted-to.pdf used
+ on input line 271.
+(pdftex.def)             Requested size: 241.84846pt x 148.18616pt.
+Package epstopdf Info: Source file: <../plots_tables_images/albfid.eps>
+(epstopdf)                    date: 2013-06-05 12:17:08
+(epstopdf)                    size: 77213 bytes
+(epstopdf)             Output file: <../plots_tables_images/albfid-eps-converte
+d-to.pdf>
+(epstopdf)                    date: 2013-06-05 12:17:08
+(epstopdf)                    size: 12078 bytes
+(epstopdf)             Command: <epstopdf --outfile=../plots_tables_images/albf
+id-eps-converted-to.pdf ../plots_tables_images/albfid.eps>
+(epstopdf)             \includegraphics on input line 271.
+Package epstopdf Info: Output file is already uptodate.
+File: ../plots_tables_images/albfid-eps-converted-to.pdf Graphic file (type pdf
+)
+
+<use ../plots_tables_images/albfid-eps-converted-to.pdf>
+Package pdftex.def Info: ../plots_tables_images/albfid-eps-converted-to.pdf use
+d on input line 271.
+(pdftex.def)             Requested size: 241.84846pt x 148.18616pt.
+
+Overfull \hbox (10.0pt too wide) in paragraph at lines 271--271
+ [][] 
+ []
+
+Package epstopdf Info: Source file: <../plots_tables_images/albfid.eps>
+(epstopdf)                    date: 2013-06-05 12:17:08
+(epstopdf)                    size: 77213 bytes
+(epstopdf)             Output file: <../plots_tables_images/albfid-eps-converte
+d-to.pdf>
+(epstopdf)                    date: 2013-06-05 12:17:08
+(epstopdf)                    size: 12078 bytes
+(epstopdf)             Command: <epstopdf --outfile=../plots_tables_images/albf
+id-eps-converted-to.pdf ../plots_tables_images/albfid.eps>
+(epstopdf)             \includegraphics on input line 271.
+Package epstopdf Info: Output file is already uptodate.
+File: ../plots_tables_images/albfid-eps-converted-to.pdf Graphic file (type pdf
+)
+<use ../plots_tables_images/albfid-eps-converted-to.pdf>
+Package pdftex.def Info: ../plots_tables_images/albfid-eps-converted-to.pdf use
+d on input line 271.
+(pdftex.def)             Requested size: 241.84846pt x 148.18616pt.
+
+Overfull \hbox (10.0pt too wide) in paragraph at lines 271--271
+ [][] 
+ []
+
+Package epstopdf Info: Source file: <../plots_tables_images/myfid.eps>
+(epstopdf)                    date: 2013-06-05 12:17:08
+(epstopdf)                    size: 77213 bytes
+(epstopdf)             Output file: <../plots_tables_images/myfid-eps-converted
+-to.pdf>
+(epstopdf)                    date: 2013-06-05 12:17:08
+(epstopdf)                    size: 12032 bytes
+(epstopdf)             Command: <epstopdf --outfile=../plots_tables_images/myfi
+d-eps-converted-to.pdf ../plots_tables_images/myfid.eps>
+(epstopdf)             \includegraphics on input line 271.
+Package epstopdf Info: Output file is already uptodate.
+File: ../plots_tables_images/myfid-eps-converted-to.pdf Graphic file (type pdf)
+
+<use ../plots_tables_images/myfid-eps-converted-to.pdf>
+Package pdftex.def Info: ../plots_tables_images/myfid-eps-converted-to.pdf used
+ on input line 271.
+(pdftex.def)             Requested size: 241.84846pt x 148.18616pt.
+Package epstopdf Info: Source file: <../plots_tables_images/myfid.eps>
+(epstopdf)                    date: 2013-06-05 12:17:08
+(epstopdf)                    size: 77213 bytes
+(epstopdf)             Output file: <../plots_tables_images/myfid-eps-converted
+-to.pdf>
+(epstopdf)                    date: 2013-06-05 12:17:08
+(epstopdf)                    size: 12032 bytes
+(epstopdf)             Command: <epstopdf --outfile=../plots_tables_images/myfi
+d-eps-converted-to.pdf ../plots_tables_images/myfid.eps>
+(epstopdf)             \includegraphics on input line 271.
+Package epstopdf Info: Output file is already uptodate.
+File: ../plots_tables_images/myfid-eps-converted-to.pdf Graphic file (type pdf)
+
+
+<use ../plots_tables_images/myfid-eps-converted-to.pdf>
+Package pdftex.def Info: ../plots_tables_images/myfid-eps-converted-to.pdf used
+ on input line 271.
+(pdftex.def)             Requested size: 241.84846pt x 148.18616pt.
+Package epstopdf Info: Source file: <../plots_tables_images/myfid.eps>
+(epstopdf)                    date: 2013-06-05 12:17:08
+(epstopdf)                    size: 77213 bytes
+(epstopdf)             Output file: <../plots_tables_images/myfid-eps-converted
+-to.pdf>
+(epstopdf)                    date: 2013-06-05 12:17:08
+(epstopdf)                    size: 12032 bytes
+(epstopdf)             Command: <epstopdf --outfile=../plots_tables_images/myfi
+d-eps-converted-to.pdf ../plots_tables_images/myfid.eps>
+(epstopdf)             \includegraphics on input line 271.
+Package epstopdf Info: Output file is already uptodate.
+File: ../plots_tables_images/myfid-eps-converted-to.pdf Graphic file (type pdf)
+
+
+<use ../plots_tables_images/myfid-eps-converted-to.pdf>
+Package pdftex.def Info: ../plots_tables_images/myfid-eps-converted-to.pdf used
+ on input line 271.
+(pdftex.def)             Requested size: 241.84846pt x 148.18616pt.
+Package epstopdf Info: Source file: <../plots_tables_images/albfid.eps>
+(epstopdf)                    date: 2013-06-05 12:17:08
+(epstopdf)                    size: 77213 bytes
+(epstopdf)             Output file: <../plots_tables_images/albfid-eps-converte
+d-to.pdf>
+(epstopdf)                    date: 2013-06-05 12:17:08
+(epstopdf)                    size: 12078 bytes
+(epstopdf)             Command: <epstopdf --outfile=../plots_tables_images/albf
+id-eps-converted-to.pdf ../plots_tables_images/albfid.eps>
+(epstopdf)             \includegraphics on input line 271.
+Package epstopdf Info: Output file is already uptodate.
+File: ../plots_tables_images/albfid-eps-converted-to.pdf Graphic file (type pdf
+)
+
+<use ../plots_tables_images/albfid-eps-converted-to.pdf>
+Package pdftex.def Info: ../plots_tables_images/albfid-eps-converted-to.pdf use
+d on input line 271.
+(pdftex.def)             Requested size: 241.84846pt x 148.18616pt.
+
+Overfull \hbox (10.0pt too wide) in paragraph at lines 271--271
+ [][] 
+ []
+
+Package epstopdf Info: Source file: <../plots_tables_images/albfid.eps>
+(epstopdf)                    date: 2013-06-05 12:17:08
+(epstopdf)                    size: 77213 bytes
+(epstopdf)             Output file: <../plots_tables_images/albfid-eps-converte
+d-to.pdf>
+(epstopdf)                    date: 2013-06-05 12:17:08
+(epstopdf)                    size: 12078 bytes
+(epstopdf)             Command: <epstopdf --outfile=../plots_tables_images/albf
+id-eps-converted-to.pdf ../plots_tables_images/albfid.eps>
+(epstopdf)             \includegraphics on input line 271.
+Package epstopdf Info: Output file is already uptodate.
+File: ../plots_tables_images/albfid-eps-converted-to.pdf Graphic file (type pdf
+)
+<use ../plots_tables_images/albfid-eps-converted-to.pdf>
+Package pdftex.def Info: ../plots_tables_images/albfid-eps-converted-to.pdf use
+d on input line 271.
+(pdftex.def)             Requested size: 241.84846pt x 148.18616pt.
+
+Overfull \hbox (10.0pt too wide) in paragraph at lines 271--271
+ [][] 
+ []
+
+
+Package nag Warning: `center' environment in table.
+(nag)                Maybe you want \centering instead on input line 303.
+
+
+Package nag Warning: `center' environment in table.
+(nag)                Maybe you want \centering instead on input line 303.
+
 Table 2 has been set to width 252.67104pt
 
-Underfull \hbox (badness 10000) in paragraph at lines 291--292
+Package nag Warning: `center' environment in table.
+(nag)                Maybe you want \centering instead on input line 313.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 321--322
 
  []
 
 Package epstopdf Info: Source file: <../plots_tables_images/cutofftestside.eps>
 
-(epstopdf)                    date: 2013-05-30 15:56:02
+(epstopdf)                    date: 2013-06-05 12:17:08
 (epstopdf)                    size: 473879 bytes
 (epstopdf)             Output file: <../plots_tables_images/cutofftestside-eps-
 converted-to.pdf>
-(epstopdf)                    date: 2013-05-30 16:01:05
+(epstopdf)                    date: 2013-06-05 12:17:08
 (epstopdf)                    size: 134315 bytes
 (epstopdf)             Command: <epstopdf --outfile=../plots_tables_images/cuto
 fftestside-eps-converted-to.pdf ../plots_tables_images/cutofftestside.eps>
-(epstopdf)             \includegraphics on input line 296.
+(epstopdf)             \includegraphics on input line 326.
 Package epstopdf Info: Output file is already uptodate.
 
-<../plots_tables_images/cutofftestside-eps-converted-to.pdf, id=177, 433.62pt x
+<../plots_tables_images/cutofftestside-eps-converted-to.pdf, id=178, 433.62pt x
  578.16pt>
 File: ../plots_tables_images/cutofftestside-eps-converted-to.pdf Graphic file (
 type pdf)
  <use ../plots_tables_images/cutofftestside-eps-converted-to.pdf>
 Package pdftex.def Info: ../plots_tables_images/cutofftestside-eps-converted-to
-.pdf used on input line 296.
-(pdftex.def)             Requested size: 407.6684pt x 543.58516pt.
+.pdf used on input line 326.
+(pdftex.def)             Requested size: 435.32428pt x 580.46112pt.
 Package epstopdf Info: Source file: <../plots_tables_images/cutofftestcorner.ep
 s>
-(epstopdf)                    date: 2013-05-30 15:56:02
+(epstopdf)                    date: 2013-06-05 12:17:08
 (epstopdf)                    size: 340234 bytes
 (epstopdf)             Output file: <../plots_tables_images/cutofftestcorner-ep
 s-converted-to.pdf>
-(epstopdf)                    date: 2013-05-30 16:01:05
+(epstopdf)                    date: 2013-06-05 12:17:08
 (epstopdf)                    size: 102642 bytes
 (epstopdf)             Command: <epstopdf --outfile=../plots_tables_images/cuto
 fftestcorner-eps-converted-to.pdf ../plots_tables_images/cutofftestcorner.eps>
-(epstopdf)             \includegraphics on input line 302.
+(epstopdf)             \includegraphics on input line 332.
 Package epstopdf Info: Output file is already uptodate.
 
-<../plots_tables_images/cutofftestcorner-eps-converted-to.pdf, id=178, 433.62pt
+<../plots_tables_images/cutofftestcorner-eps-converted-to.pdf, id=179, 433.62pt
  x 578.16pt>
 File: ../plots_tables_images/cutofftestcorner-eps-converted-to.pdf Graphic file
  (type pdf)
 
 <use ../plots_tables_images/cutofftestcorner-eps-converted-to.pdf>
 Package pdftex.def Info: ../plots_tables_images/cutofftestcorner-eps-converted-
-to.pdf used on input line 302.
-(pdftex.def)             Requested size: 407.6684pt x 543.58516pt.
+to.pdf used on input line 332.
+(pdftex.def)             Requested size: 435.32428pt x 580.46112pt.
+
+
+Package nag Warning: `center' environment in table.
+(nag)                Maybe you want \centering instead on input line 346.
+
+
+Package nag Warning: `center' environment in table.
+(nag)                Maybe you want \centering instead on input line 346.
 
 Table 3 has been set to width 290.40643pt
+
+Package nag Warning: `center' environment in table.
+(nag)                Maybe you want \centering instead on input line 358.
+
+
+Package nag Warning: `center' environment in table.
+(nag)                Maybe you want \centering instead on input line 369.
+
+
+Package nag Warning: `center' environment in table.
+(nag)                Maybe you want \centering instead on input line 369.
+
 Table 4 has been set to width 290.40643pt
+
+Package nag Warning: `center' environment in table.
+(nag)                Maybe you want \centering instead on input line 381.
+
 Package epstopdf Info: Source file: <../plots_tables_images/side5col.eps>
-(epstopdf)                    date: 2013-05-30 16:40:11
+(epstopdf)                    date: 2013-06-05 12:17:08
 (epstopdf)                    size: 366709 bytes
 (epstopdf)             Output file: <../plots_tables_images/side5col-eps-conver
 ted-to.pdf>
-(epstopdf)                    date: 2013-05-30 16:40:52
+(epstopdf)                    date: 2013-06-05 12:17:08
 (epstopdf)                    size: 104540 bytes
 (epstopdf)             Command: <epstopdf --outfile=../plots_tables_images/side
 5col-eps-converted-to.pdf ../plots_tables_images/side5col.eps>
-(epstopdf)             \includegraphics on input line 355.
+(epstopdf)             \includegraphics on input line 385.
 Package epstopdf Info: Output file is already uptodate.
 
-<../plots_tables_images/side5col-eps-converted-to.pdf, id=181, 433.62pt x 289.0
+<../plots_tables_images/side5col-eps-converted-to.pdf, id=182, 433.62pt x 289.0
 8pt>
 File: ../plots_tables_images/side5col-eps-converted-to.pdf Graphic file (type p
 df)
  <use ../plots_tables_images/side5col-eps-converted-to.pdf>
 Package pdftex.def Info: ../plots_tables_images/side5col-eps-converted-to.pdf u
-sed on input line 355.
-(pdftex.def)             Requested size: 407.6684pt x 271.79257pt.
+sed on input line 385.
+(pdftex.def)             Requested size: 435.32428pt x 290.23055pt.
 Package epstopdf Info: Source file: <../plots_tables_images/diag5col.eps>
-(epstopdf)                    date: 2013-05-30 16:40:11
+(epstopdf)                    date: 2013-06-05 12:17:08
 (epstopdf)                    size: 297737 bytes
 (epstopdf)             Output file: <../plots_tables_images/diag5col-eps-conver
 ted-to.pdf>
-(epstopdf)                    date: 2013-05-30 16:40:52
+(epstopdf)                    date: 2013-06-05 12:17:08
 (epstopdf)                    size: 91193 bytes
 (epstopdf)             Command: <epstopdf --outfile=../plots_tables_images/diag
 5col-eps-converted-to.pdf ../plots_tables_images/diag5col.eps>
-(epstopdf)             \includegraphics on input line 361.
+(epstopdf)             \includegraphics on input line 391.
 Package epstopdf Info: Output file is already uptodate.
 
-<../plots_tables_images/diag5col-eps-converted-to.pdf, id=182, 433.62pt x 289.0
+<../plots_tables_images/diag5col-eps-converted-to.pdf, id=183, 433.62pt x 289.0
 8pt>
 File: ../plots_tables_images/diag5col-eps-converted-to.pdf Graphic file (type p
 df)
  <use ../plots_tables_images/diag5col-eps-converted-to.pdf>
 Package pdftex.def Info: ../plots_tables_images/diag5col-eps-converted-to.pdf u
-sed on input line 361.
-(pdftex.def)             Requested size: 407.6684pt x 271.79257pt.
+sed on input line 391.
+(pdftex.def)             Requested size: 435.32428pt x 290.23055pt.
+
+
+Package nag Warning: `center' environment in table.
+(nag)                Maybe you want \centering instead on input line 407.
+
+
+Package nag Warning: `center' environment in table.
+(nag)                Maybe you want \centering instead on input line 407.
 
 Table 5 has been set to width 493.1388pt
 
-Overfull \hbox (40.17084pt too wide) in paragraph at lines 377--386
+Package nag Warning: `center' environment in table.
+(nag)                Maybe you want \centering instead on input line 416.
+
+
+Overfull \hbox (9.44186pt too wide) in paragraph at lines 407--416
  [][][] 
  []
+
+
+Package nag Warning: `center' environment in table.
+(nag)                Maybe you want \centering instead on input line 431.
+
+
+Package nag Warning: `center' environment in table.
+(nag)                Maybe you want \centering instead on input line 431.
 
 Table 6 has been set to width 493.1388pt
 
-Overfull \hbox (40.17084pt too wide) in paragraph at lines 401--410
+Package nag Warning: `center' environment in table.
+(nag)                Maybe you want \centering instead on input line 440.
+
+
+Overfull \hbox (9.44186pt too wide) in paragraph at lines 431--440
  [][][] 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 416--417
+Underfull \hbox (badness 10000) in paragraph at lines 446--447
 
  []
 
@@ -828,15 +1297,15 @@ Underfull \hbox (badness 10000) in paragraph at lines 416--417
 bfid-eps-converted-to.pdf>] [6] [7 <../plots_tables_images/cutofftestside-eps-c
 onverted-to.pdf>]
 Package epstopdf Info: Source file: <../plots_tables_images/cutcorner.eps>
-(epstopdf)                    date: 2013-05-31 13:52:09
+(epstopdf)                    date: 2013-06-05 12:17:08
 (epstopdf)                    size: 1474800 bytes
 (epstopdf)             Output file: <../plots_tables_images/cutcorner-eps-conve
 rted-to.pdf>
-(epstopdf)                    date: 2013-05-31 13:53:22
+(epstopdf)                    date: 2013-06-05 12:17:08
 (epstopdf)                    size: 13201 bytes
 (epstopdf)             Command: <epstopdf --outfile=../plots_tables_images/cutc
 orner-eps-converted-to.pdf ../plots_tables_images/cutcorner.eps>
-(epstopdf)             \includegraphics on input line 433.
+(epstopdf)             \includegraphics on input line 477.
 Package epstopdf Info: Output file is already uptodate.
 
 <../plots_tables_images/cutcorner-eps-converted-to.pdf, id=233, 552.0625pt x 33
@@ -845,24 +1314,55 @@ File: ../plots_tables_images/cutcorner-eps-converted-to.pdf Graphic file (type
 pdf)
  <use ../plots_tables_images/cutcorner-eps-converted-to.pdf>
 Package pdftex.def Info: ../plots_tables_images/cutcorner-eps-converted-to.pdf 
-used on input line 433.
-(pdftex.def)             Requested size: 264.98508pt x 162.3699pt.
+used on input line 477.
+(pdftex.def)             Requested size: 241.84846pt x 148.18616pt.
+Package epstopdf Info: Source file: <../plots_tables_images/cutcorner.eps>
+(epstopdf)                    date: 2013-06-05 12:17:08
+(epstopdf)                    size: 1474800 bytes
+(epstopdf)             Output file: <../plots_tables_images/cutcorner-eps-conve
+rted-to.pdf>
+(epstopdf)                    date: 2013-06-05 12:17:08
+(epstopdf)                    size: 13201 bytes
+(epstopdf)             Command: <epstopdf --outfile=../plots_tables_images/cutc
+orner-eps-converted-to.pdf ../plots_tables_images/cutcorner.eps>
+(epstopdf)             \includegraphics on input line 477.
+Package epstopdf Info: Output file is already uptodate.
+File: ../plots_tables_images/cutcorner-eps-converted-to.pdf Graphic file (type 
+pdf)
 
-Overfull \hbox (61.15088pt too wide) in paragraph at lines 433--434
- [][] 
- []
+<use ../plots_tables_images/cutcorner-eps-converted-to.pdf>
+Package pdftex.def Info: ../plots_tables_images/cutcorner-eps-converted-to.pdf 
+used on input line 477.
+(pdftex.def)             Requested size: 241.84846pt x 148.18616pt.
+Package epstopdf Info: Source file: <../plots_tables_images/cutcorner.eps>
+(epstopdf)                    date: 2013-06-05 12:17:08
+(epstopdf)                    size: 1474800 bytes
+(epstopdf)             Output file: <../plots_tables_images/cutcorner-eps-conve
+rted-to.pdf>
+(epstopdf)                    date: 2013-06-05 12:17:08
+(epstopdf)                    size: 13201 bytes
+(epstopdf)             Command: <epstopdf --outfile=../plots_tables_images/cutc
+orner-eps-converted-to.pdf ../plots_tables_images/cutcorner.eps>
+(epstopdf)             \includegraphics on input line 477.
+Package epstopdf Info: Output file is already uptodate.
+File: ../plots_tables_images/cutcorner-eps-converted-to.pdf Graphic file (type 
+pdf)
 
+<use ../plots_tables_images/cutcorner-eps-converted-to.pdf>
+Package pdftex.def Info: ../plots_tables_images/cutcorner-eps-converted-to.pdf 
+used on input line 477.
+(pdftex.def)             Requested size: 241.84846pt x 148.18616pt.
 Package epstopdf Info: Source file: <../plots_tables_images/cutcornerwborder.ep
 s>
-(epstopdf)                    date: 2013-05-31 13:52:09
+(epstopdf)                    date: 2013-06-05 12:17:08
 (epstopdf)                    size: 1368703 bytes
 (epstopdf)             Output file: <../plots_tables_images/cutcornerwborder-ep
 s-converted-to.pdf>
-(epstopdf)                    date: 2013-05-31 13:53:22
+(epstopdf)                    date: 2013-06-05 12:17:08
 (epstopdf)                    size: 14468 bytes
 (epstopdf)             Command: <epstopdf --outfile=../plots_tables_images/cutc
 ornerwborder-eps-converted-to.pdf ../plots_tables_images/cutcornerwborder.eps>
-(epstopdf)             \includegraphics on input line 440.
+(epstopdf)             \includegraphics on input line 477.
 Package epstopdf Info: Output file is already uptodate.
 
 <../plots_tables_images/cutcornerwborder-eps-converted-to.pdf, id=234, 552.0625
@@ -872,24 +1372,262 @@ File: ../plots_tables_images/cutcornerwborder-eps-converted-to.pdf Graphic file
 
 <use ../plots_tables_images/cutcornerwborder-eps-converted-to.pdf>
 Package pdftex.def Info: ../plots_tables_images/cutcornerwborder-eps-converted-
-to.pdf used on input line 440.
-(pdftex.def)             Requested size: 264.98508pt x 162.3699pt.
+to.pdf used on input line 477.
+(pdftex.def)             Requested size: 241.84846pt x 148.18616pt.
 
-Overfull \hbox (61.15088pt too wide) in paragraph at lines 440--441
+Overfull \hbox (10.0pt too wide) in paragraph at lines 477--477
  [][] 
  []
 
+Package epstopdf Info: Source file: <../plots_tables_images/cutcornerwborder.ep
+s>
+(epstopdf)                    date: 2013-06-05 12:17:08
+(epstopdf)                    size: 1368703 bytes
+(epstopdf)             Output file: <../plots_tables_images/cutcornerwborder-ep
+s-converted-to.pdf>
+(epstopdf)                    date: 2013-06-05 12:17:08
+(epstopdf)                    size: 14468 bytes
+(epstopdf)             Command: <epstopdf --outfile=../plots_tables_images/cutc
+ornerwborder-eps-converted-to.pdf ../plots_tables_images/cutcornerwborder.eps>
+(epstopdf)             \includegraphics on input line 477.
+Package epstopdf Info: Output file is already uptodate.
+File: ../plots_tables_images/cutcornerwborder-eps-converted-to.pdf Graphic file
+ (type pdf)
+<use ../plots_tables_images/cutcornerwborder-eps-converted-to.pdf>
+Package pdftex.def Info: ../plots_tables_images/cutcornerwborder-eps-converted-
+to.pdf used on input line 477.
+(pdftex.def)             Requested size: 241.84846pt x 148.18616pt.
+
+Overfull \hbox (10.0pt too wide) in paragraph at lines 477--477
+ [][] 
+ []
+
+Package epstopdf Info: Source file: <../plots_tables_images/cutcorner.eps>
+(epstopdf)                    date: 2013-06-05 12:17:08
+(epstopdf)                    size: 1474800 bytes
+(epstopdf)             Output file: <../plots_tables_images/cutcorner-eps-conve
+rted-to.pdf>
+(epstopdf)                    date: 2013-06-05 12:17:08
+(epstopdf)                    size: 13201 bytes
+(epstopdf)             Command: <epstopdf --outfile=../plots_tables_images/cutc
+orner-eps-converted-to.pdf ../plots_tables_images/cutcorner.eps>
+(epstopdf)             \includegraphics on input line 477.
+Package epstopdf Info: Output file is already uptodate.
+File: ../plots_tables_images/cutcorner-eps-converted-to.pdf Graphic file (type 
+pdf)
+<use ../plots_tables_images/cutcorner-eps-converted-to.pdf>
+Package pdftex.def Info: ../plots_tables_images/cutcorner-eps-converted-to.pdf 
+used on input line 477.
+(pdftex.def)             Requested size: 241.84846pt x 148.18616pt.
+Package epstopdf Info: Source file: <../plots_tables_images/cutcorner.eps>
+(epstopdf)                    date: 2013-06-05 12:17:08
+(epstopdf)                    size: 1474800 bytes
+(epstopdf)             Output file: <../plots_tables_images/cutcorner-eps-conve
+rted-to.pdf>
+(epstopdf)                    date: 2013-06-05 12:17:08
+(epstopdf)                    size: 13201 bytes
+(epstopdf)             Command: <epstopdf --outfile=../plots_tables_images/cutc
+orner-eps-converted-to.pdf ../plots_tables_images/cutcorner.eps>
+(epstopdf)             \includegraphics on input line 477.
+Package epstopdf Info: Output file is already uptodate.
+File: ../plots_tables_images/cutcorner-eps-converted-to.pdf Graphic file (type 
+pdf)
+
+<use ../plots_tables_images/cutcorner-eps-converted-to.pdf>
+Package pdftex.def Info: ../plots_tables_images/cutcorner-eps-converted-to.pdf 
+used on input line 477.
+(pdftex.def)             Requested size: 241.84846pt x 148.18616pt.
+Package epstopdf Info: Source file: <../plots_tables_images/cutcorner.eps>
+(epstopdf)                    date: 2013-06-05 12:17:08
+(epstopdf)                    size: 1474800 bytes
+(epstopdf)             Output file: <../plots_tables_images/cutcorner-eps-conve
+rted-to.pdf>
+(epstopdf)                    date: 2013-06-05 12:17:08
+(epstopdf)                    size: 13201 bytes
+(epstopdf)             Command: <epstopdf --outfile=../plots_tables_images/cutc
+orner-eps-converted-to.pdf ../plots_tables_images/cutcorner.eps>
+(epstopdf)             \includegraphics on input line 477.
+Package epstopdf Info: Output file is already uptodate.
+File: ../plots_tables_images/cutcorner-eps-converted-to.pdf Graphic file (type 
+pdf)
+
+<use ../plots_tables_images/cutcorner-eps-converted-to.pdf>
+Package pdftex.def Info: ../plots_tables_images/cutcorner-eps-converted-to.pdf 
+used on input line 477.
+(pdftex.def)             Requested size: 241.84846pt x 148.18616pt.
+Package epstopdf Info: Source file: <../plots_tables_images/cutcornerwborder.ep
+s>
+(epstopdf)                    date: 2013-06-05 12:17:08
+(epstopdf)                    size: 1368703 bytes
+(epstopdf)             Output file: <../plots_tables_images/cutcornerwborder-ep
+s-converted-to.pdf>
+(epstopdf)                    date: 2013-06-05 12:17:08
+(epstopdf)                    size: 14468 bytes
+(epstopdf)             Command: <epstopdf --outfile=../plots_tables_images/cutc
+ornerwborder-eps-converted-to.pdf ../plots_tables_images/cutcornerwborder.eps>
+(epstopdf)             \includegraphics on input line 477.
+Package epstopdf Info: Output file is already uptodate.
+File: ../plots_tables_images/cutcornerwborder-eps-converted-to.pdf Graphic file
+ (type pdf)
+
+<use ../plots_tables_images/cutcornerwborder-eps-converted-to.pdf>
+Package pdftex.def Info: ../plots_tables_images/cutcornerwborder-eps-converted-
+to.pdf used on input line 477.
+(pdftex.def)             Requested size: 241.84846pt x 148.18616pt.
+
+Overfull \hbox (10.0pt too wide) in paragraph at lines 477--477
+ [][] 
+ []
+
+Package epstopdf Info: Source file: <../plots_tables_images/cutcornerwborder.ep
+s>
+(epstopdf)                    date: 2013-06-05 12:17:08
+(epstopdf)                    size: 1368703 bytes
+(epstopdf)             Output file: <../plots_tables_images/cutcornerwborder-ep
+s-converted-to.pdf>
+(epstopdf)                    date: 2013-06-05 12:17:08
+(epstopdf)                    size: 14468 bytes
+(epstopdf)             Command: <epstopdf --outfile=../plots_tables_images/cutc
+ornerwborder-eps-converted-to.pdf ../plots_tables_images/cutcornerwborder.eps>
+(epstopdf)             \includegraphics on input line 477.
+Package epstopdf Info: Output file is already uptodate.
+File: ../plots_tables_images/cutcornerwborder-eps-converted-to.pdf Graphic file
+ (type pdf)
+<use ../plots_tables_images/cutcornerwborder-eps-converted-to.pdf>
+Package pdftex.def Info: ../plots_tables_images/cutcornerwborder-eps-converted-
+to.pdf used on input line 477.
+(pdftex.def)             Requested size: 241.84846pt x 148.18616pt.
+
+Overfull \hbox (10.0pt too wide) in paragraph at lines 477--477
+ [][] 
+ []
+
+Package epstopdf Info: Source file: <../plots_tables_images/cutcorner.eps>
+(epstopdf)                    date: 2013-06-05 12:17:08
+(epstopdf)                    size: 1474800 bytes
+(epstopdf)             Output file: <../plots_tables_images/cutcorner-eps-conve
+rted-to.pdf>
+(epstopdf)                    date: 2013-06-05 12:17:08
+(epstopdf)                    size: 13201 bytes
+(epstopdf)             Command: <epstopdf --outfile=../plots_tables_images/cutc
+orner-eps-converted-to.pdf ../plots_tables_images/cutcorner.eps>
+(epstopdf)             \includegraphics on input line 477.
+Package epstopdf Info: Output file is already uptodate.
+File: ../plots_tables_images/cutcorner-eps-converted-to.pdf Graphic file (type 
+pdf)
+<use ../plots_tables_images/cutcorner-eps-converted-to.pdf>
+Package pdftex.def Info: ../plots_tables_images/cutcorner-eps-converted-to.pdf 
+used on input line 477.
+(pdftex.def)             Requested size: 241.84846pt x 148.18616pt.
+Package epstopdf Info: Source file: <../plots_tables_images/cutcorner.eps>
+(epstopdf)                    date: 2013-06-05 12:17:08
+(epstopdf)                    size: 1474800 bytes
+(epstopdf)             Output file: <../plots_tables_images/cutcorner-eps-conve
+rted-to.pdf>
+(epstopdf)                    date: 2013-06-05 12:17:08
+(epstopdf)                    size: 13201 bytes
+(epstopdf)             Command: <epstopdf --outfile=../plots_tables_images/cutc
+orner-eps-converted-to.pdf ../plots_tables_images/cutcorner.eps>
+(epstopdf)             \includegraphics on input line 477.
+Package epstopdf Info: Output file is already uptodate.
+File: ../plots_tables_images/cutcorner-eps-converted-to.pdf Graphic file (type 
+pdf)
+
+<use ../plots_tables_images/cutcorner-eps-converted-to.pdf>
+Package pdftex.def Info: ../plots_tables_images/cutcorner-eps-converted-to.pdf 
+used on input line 477.
+(pdftex.def)             Requested size: 241.84846pt x 148.18616pt.
+Package epstopdf Info: Source file: <../plots_tables_images/cutcorner.eps>
+(epstopdf)                    date: 2013-06-05 12:17:08
+(epstopdf)                    size: 1474800 bytes
+(epstopdf)             Output file: <../plots_tables_images/cutcorner-eps-conve
+rted-to.pdf>
+(epstopdf)                    date: 2013-06-05 12:17:08
+(epstopdf)                    size: 13201 bytes
+(epstopdf)             Command: <epstopdf --outfile=../plots_tables_images/cutc
+orner-eps-converted-to.pdf ../plots_tables_images/cutcorner.eps>
+(epstopdf)             \includegraphics on input line 477.
+Package epstopdf Info: Output file is already uptodate.
+File: ../plots_tables_images/cutcorner-eps-converted-to.pdf Graphic file (type 
+pdf)
+
+<use ../plots_tables_images/cutcorner-eps-converted-to.pdf>
+Package pdftex.def Info: ../plots_tables_images/cutcorner-eps-converted-to.pdf 
+used on input line 477.
+(pdftex.def)             Requested size: 241.84846pt x 148.18616pt.
+Package epstopdf Info: Source file: <../plots_tables_images/cutcornerwborder.ep
+s>
+(epstopdf)                    date: 2013-06-05 12:17:08
+(epstopdf)                    size: 1368703 bytes
+(epstopdf)             Output file: <../plots_tables_images/cutcornerwborder-ep
+s-converted-to.pdf>
+(epstopdf)                    date: 2013-06-05 12:17:08
+(epstopdf)                    size: 14468 bytes
+(epstopdf)             Command: <epstopdf --outfile=../plots_tables_images/cutc
+ornerwborder-eps-converted-to.pdf ../plots_tables_images/cutcornerwborder.eps>
+(epstopdf)             \includegraphics on input line 477.
+Package epstopdf Info: Output file is already uptodate.
+File: ../plots_tables_images/cutcornerwborder-eps-converted-to.pdf Graphic file
+ (type pdf)
+
+<use ../plots_tables_images/cutcornerwborder-eps-converted-to.pdf>
+Package pdftex.def Info: ../plots_tables_images/cutcornerwborder-eps-converted-
+to.pdf used on input line 477.
+(pdftex.def)             Requested size: 241.84846pt x 148.18616pt.
+
+Overfull \hbox (10.0pt too wide) in paragraph at lines 477--477
+ [][] 
+ []
+
+Package epstopdf Info: Source file: <../plots_tables_images/cutcornerwborder.ep
+s>
+(epstopdf)                    date: 2013-06-05 12:17:08
+(epstopdf)                    size: 1368703 bytes
+(epstopdf)             Output file: <../plots_tables_images/cutcornerwborder-ep
+s-converted-to.pdf>
+(epstopdf)                    date: 2013-06-05 12:17:08
+(epstopdf)                    size: 14468 bytes
+(epstopdf)             Command: <epstopdf --outfile=../plots_tables_images/cutc
+ornerwborder-eps-converted-to.pdf ../plots_tables_images/cutcornerwborder.eps>
+(epstopdf)             \includegraphics on input line 477.
+Package epstopdf Info: Output file is already uptodate.
+File: ../plots_tables_images/cutcornerwborder-eps-converted-to.pdf Graphic file
+ (type pdf)
+<use ../plots_tables_images/cutcornerwborder-eps-converted-to.pdf>
+Package pdftex.def Info: ../plots_tables_images/cutcornerwborder-eps-converted-
+to.pdf used on input line 477.
+(pdftex.def)             Requested size: 241.84846pt x 148.18616pt.
+
+Overfull \hbox (10.0pt too wide) in paragraph at lines 477--477
+ [][] 
+ []
+
+
+Package nag Warning: `center' environment in table.
+(nag)                Maybe you want \centering instead on input line 511.
+
+
+Package nag Warning: `center' environment in table.
+(nag)                Maybe you want \centering instead on input line 511.
+
 Table 7 has been set to width 144.8998pt
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 469.
+
+Package nag Warning: `center' environment in table.
+(nag)                Maybe you want \centering instead on input line 516.
+
+
+Package nag Warning: 21 complaints in total.
+
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 521.
 [8 <../plots_tables_images/cutofftestcorner-eps-converted-to.pdf>] [9 <../plots
 _tables_images/side5col-eps-converted-to.pdf> <../plots_tables_images/diag5col-
 eps-converted-to.pdf>] [10 <../plots_tables_images/cutcorner-eps-converted-to.p
 df> <../plots_tables_images/cutcornerwborder-eps-converted-to.pdf>]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 469.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 521.
 
 (./grainysun.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 469.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 469.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 521.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 521.
 Package rerunfilecheck Info: File `grainysun.out' has not changed.
 (rerunfilecheck)             Checksum: C392530C0517AA1906EAF9019F5265BA;378.
 
@@ -899,38 +1637,39 @@ LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
 LaTeX Warning: There were multiply-defined labels.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 469.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 521.
  ) 
 Here is how much of TeX's memory you used:
- 11899 strings out of 493481
- 182669 string characters out of 3140966
- 476463 words of memory out of 3000000
- 14918 multiletter control sequences out of 15000+200000
- 20991 words of font info for 55 fonts, out of 3000000 for 9000
+ 14272 strings out of 493311
+ 225719 string characters out of 6137850
+ 556471 words of memory out of 5000000
+ 17360 multiletter control sequences out of 15000+600000
+ 23626 words of font info for 81 fonts, out of 8000000 for 9000
  957 hyphenation exceptions out of 8191
- 40i,13n,58p,469b,1256s stack positions out of 5000i,500n,10000p,200000b,50000s
-{/usr/local/texlive/2012/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc}
-</usr/local/texlive/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></
-usr/local/texlive/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></us
-r/local/texlive/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/
-local/texlive/2012/texmf-dist/fonts/type1/public/cm-super/sfrm0500.pfb></usr/lo
-cal/texlive/2012/texmf-dist/fonts/type1/public/cm-super/sfrm0700.pfb></usr/loca
-l/texlive/2012/texmf-dist/fonts/type1/public/cm-super/sfrm0800.pfb></usr/local/
-texlive/2012/texmf-dist/fonts/type1/public/cm-super/sfrm0900.pfb></usr/local/te
-xlive/2012/texmf-dist/fonts/type1/public/cm-super/sfrm1000.pfb></usr/local/texl
-ive/2012/texmf-dist/fonts/type1/public/cm-super/sfrm1440.pfb></usr/local/texliv
-e/2012/texmf-dist/fonts/type1/public/cm-super/sfsi0800.pfb></usr/local/texlive/
-2012/texmf-dist/fonts/type1/public/cm-super/sfss0800.pfb></usr/local/texlive/20
-12/texmf-dist/fonts/type1/public/cm-super/sfsx0800.pfb></usr/local/texlive/2012
-/texmf-dist/fonts/type1/public/cm-super/sfsx1000.pfb></usr/local/texlive/2012/t
-exmf-dist/fonts/type1/public/cm-super/sfsx1440.pfb></usr/local/texlive/2012/tex
-mf-dist/fonts/type1/public/cm-super/sfsx2074.pfb></usr/local/texlive/2012/texmf
--dist/fonts/type1/public/cm-super/sfti1000.pfb></usr/local/texlive/2012/texmf-d
-ist/fonts/type1/public/cm-super/sftt1000.pfb>
-Output written on grainysun.pdf (11 pages, 983300 bytes).
+ 41i,14n,59p,474b,1272s stack positions out of 5000i,500n,10000p,200000b,80000s
+{/usr/local/texlive/2013/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc}
+</usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></
+usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></us
+r/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/
+local/texlive/2013/texmf-dist/fonts/type1/public/cm-super/sfrm0500.pfb></usr/lo
+cal/texlive/2013/texmf-dist/fonts/type1/public/cm-super/sfrm0700.pfb></usr/loca
+l/texlive/2013/texmf-dist/fonts/type1/public/cm-super/sfrm0800.pfb></usr/local/
+texlive/2013/texmf-dist/fonts/type1/public/cm-super/sfrm0900.pfb></usr/local/te
+xlive/2013/texmf-dist/fonts/type1/public/cm-super/sfrm1000.pfb></usr/local/texl
+ive/2013/texmf-dist/fonts/type1/public/cm-super/sfrm1440.pfb></usr/local/texliv
+e/2013/texmf-dist/fonts/type1/public/cm-super/sfsi0800.pfb></usr/local/texlive/
+2013/texmf-dist/fonts/type1/public/cm-super/sfss0800.pfb></usr/local/texlive/20
+13/texmf-dist/fonts/type1/public/cm-super/sfsx0800.pfb></usr/local/texlive/2013
+/texmf-dist/fonts/type1/public/cm-super/sfsx1000.pfb></usr/local/texlive/2013/t
+exmf-dist/fonts/type1/public/cm-super/sfsx1440.pfb></usr/local/texlive/2013/tex
+mf-dist/fonts/type1/public/cm-super/sfsx2074.pfb></usr/local/texlive/2013/texmf
+-dist/fonts/type1/public/cm-super/sfti0900.pfb></usr/local/texlive/2013/texmf-d
+ist/fonts/type1/public/cm-super/sfti1000.pfb></usr/local/texlive/2013/texmf-dis
+t/fonts/type1/public/cm-super/sftt1000.pfb>
+Output written on grainysun.pdf (11 pages, 1003484 bytes).
 PDF statistics:
- 364 PDF objects out of 1000 (max. 8388607)
- 270 compressed objects within 3 object streams
+ 378 PDF objects out of 1000 (max. 8388607)
+ 273 compressed objects within 3 object streams
  102 named destinations out of 1000 (max. 500000)
- 107 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 26731 words of extra memory for PDF output out of 29859 (max. 10000000)
 

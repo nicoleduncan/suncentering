@@ -1,4 +1,0 @@
-\contentsline {section}{\numberline {1}Running 2 Edge-Detection Filters on an Image with Cut-off Fiducials}{1}{section.1}
-\contentsline {subsection}{\numberline {1.1}edge\_truncate}{1}{subsection.1.1}
-\contentsline {subsection}{\numberline {1.2}Another example of filters on an increasingly cropped image}{2}{subsection.1.2}
-\contentsline {subsection}{\numberline {1.3}Changing direction of edge filters}{2}{subsection.1.3}

@@ -16,7 +16,6 @@
 \gdef\HyperFirstAtBeginDocument#1{#1}
 \providecommand\HyField@AuxAddToFields[1]{}
 \providecommand\HyField@AuxAddToCoFields[2]{}
-\reset@newl@bel
 \@writefile{toc}{\contentsline {section}{\numberline {1}Introduction}{1}{section.1}}
 \@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces I have used a different color table here (Stern Special) because the black and white image was too dim. The fiducials are staggered and can be seen extending off the solar limbs.\relax }}{1}{figure.caption.2}}
 \providecommand*\caption@xref[2]{\@setref\relax\@undefined{#1}}
@@ -25,24 +24,25 @@
 \newlabel{sec:how_slow_is_slow}{{2}{1}{How Slow is Slow}{section.2}{}}
 \@writefile{toc}{\contentsline {section}{\numberline {3}Code Flow Chart}{1}{section.3}}
 \newlabel{sec:code_flow_chart}{{3}{1}{Code Flow Chart}{section.3}{}}
-\@writefile{lot}{\contentsline {table}{\numberline {1}{\ignorespaces Time (Total elapsed: 0.23658586 s)\relax }}{2}{table.caption.3}}
-\newlabel{slow}{{1}{2}{Time (Total elapsed: 0.23658586 s)\relax }{table.caption.3}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {1}{\ignorespaces Time (Total elapsed: 0.23712516 s)\relax }}{2}{table.caption.3}}
+\newlabel{slow}{{1}{2}{Time (Total elapsed: 0.23712516 s)\relax }{table.caption.3}{}}
 \@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces \relax }}{3}{figure.caption.4}}
 \newlabel{aflow}{{2}{3}{\relax }{figure.caption.4}{}}
 \@writefile{toc}{\contentsline {section}{\numberline {4}The Dreaded Nested For Loop}{4}{section.4}}
 \newlabel{sec:the_dreaded_nested_for_loop}{{4}{4}{The Dreaded Nested For Loop}{section.4}{}}
 \@writefile{lot}{\contentsline {table}{\numberline {2}{\ignorespaces Comparison of Fiducial Positions\relax }}{5}{table.caption.6}}
 \newlabel{fidpos}{{2}{5}{Comparison of Fiducial Positions\relax }{table.caption.6}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {3}{\ignorespaces Side Crop Test for Figure \ref  {crop9side}\relax }}{5}{table.caption.9}}
+\newlabel{cpos}{{3}{5}{Side Crop Test for Figure \ref {crop9side}\relax }{table.caption.9}{}}
 \@writefile{toc}{\contentsline {section}{\numberline {5}Comparison to Albert's Code}{5}{section.5}}
 \newlabel{sec:comparison_to_albert_s_code}{{5}{5}{Comparison to Albert's Code}{section.5}{}}
+\gdef\@@FBset@{\c@FBcnt5\def\FB@@boxmax{\FBo@ht148.18616pt\FBf@ht0.0pt}}
 \@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces My code can't pick up two fiducials due to one or many of the following factors: different kernel, different convolution method, different threshold.\relax }}{5}{figure.caption.5}}
 \newlabel{comp}{{3}{5}{My code can't pick up two fiducials due to one or many of the following factors: different kernel, different convolution method, different threshold.\relax }{figure.caption.5}{}}
 \@writefile{toc}{\contentsline {section}{\numberline {6}Partial Sun Checking}{5}{section.6}}
 \newlabel{sec:partial_sun_checking}{{6}{5}{Partial Sun Checking}{section.6}{}}
 \@writefile{toc}{\contentsline {section}{\numberline {7}Glaring Problems}{5}{section.7}}
 \newlabel{sec:glaring_problems}{{7}{5}{Glaring Problems}{section.7}{}}
-\@writefile{lot}{\contentsline {table}{\numberline {3}{\ignorespaces Side Crop Test for Figure \ref  {crop9side}\relax }}{6}{table.caption.9}}
-\newlabel{cpos}{{3}{6}{Side Crop Test for Figure \ref {crop9side}\relax }{table.caption.9}{}}
 \@writefile{lot}{\contentsline {table}{\numberline {4}{\ignorespaces Corner Crop Test for Figure \ref  {crop9corner}\relax }}{6}{table.caption.10}}
 \newlabel{ccpos}{{4}{6}{Corner Crop Test for Figure \ref {crop9corner}\relax }{table.caption.10}{}}
 \@writefile{lot}{\contentsline {table}{\numberline {5}{\ignorespaces Side Crop Test for Figure \ref  {croptestside}\relax }}{6}{table.caption.13}}
@@ -57,11 +57,12 @@
 \newlabel{croptestside}{{6}{9}{The sun is being cropped off 5 columns at a time, opposed to the earlier Figures' 10.\relax }{figure.caption.11}{}}
 \@writefile{lof}{\contentsline {figure}{\numberline {7}{\ignorespaces \relax }}{9}{figure.caption.12}}
 \newlabel{croptestcorner}{{7}{9}{\relax }{figure.caption.12}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {7}{\ignorespaces Comparison of Center Positions\relax }}{9}{table.caption.16}}
+\newlabel{cpos}{{7}{9}{Comparison of Center Positions\relax }{table.caption.16}{}}
 \newlabel{noborder}{{8a}{10}{What our mask should look like - side of black triangle is 1/4 of image width\relax }{figure.caption.15}{}}
 \newlabel{sub@noborder}{{a}{10}{What our mask should look like - side of black triangle is 1/4 of image width\relax }{figure.caption.15}{}}
 \newlabel{aborder}{{8b}{10}{A proposed mask that looks within a certain distance form the border.\relax }{figure.caption.15}{}}
 \newlabel{sub@aborder}{{b}{10}{A proposed mask that looks within a certain distance form the border.\relax }{figure.caption.15}{}}
+\gdef\@@FBset@i{\c@FBcnt10\def\FB@@boxmax{\FBo@ht148.18616pt\FBf@ht0.0pt}}
 \@writefile{lof}{\contentsline {figure}{\numberline {8}{\ignorespaces There \emph  {used} to be a problem with the mask in \ref  {aborder}; it used an erode function (\emph  {which takes an ungodly amount of time}) to shrink the mask used in \ref  {noborder}. Now I pad the image, shift it in all 4 directions, then multiply the masks together.\relax }}{10}{figure.caption.15}}
 \newlabel{cuttingcorners}{{8}{10}{There \emph {used} to be a problem with the mask in \ref {aborder}; it used an erode function (\emph {which takes an ungodly amount of time}) to shrink the mask used in \ref {noborder}. Now I pad the image, shift it in all 4 directions, then multiply the masks together.\relax }{figure.caption.15}{}}
-\@writefile{lot}{\contentsline {table}{\numberline {7}{\ignorespaces Comparison of Center Positions\relax }}{10}{table.caption.16}}
-\newlabel{cpos}{{7}{10}{Comparison of Center Positions\relax }{table.caption.16}{}}

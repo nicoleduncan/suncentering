@@ -1,8 +1,8 @@
-PWD /Users/jerensuzuki/Documents/suncentering/tex files
+PWD /Users/jerensuzuki/Documents/suncentering/tex files copy
 INPUT /usr/local/texlive/2013/texmf.cnf
 INPUT /usr/local/texlive/2013/texmf-dist/web2c/texmf.cnf
 INPUT /usr/local/texlive/2013/texmf-var/web2c/pdftex/pdflatex.fmt
-INPUT /Users/jerensuzuki/Documents/suncentering/tex files/gord_expl.tex
+INPUT /Users/jerensuzuki/Documents/suncentering/tex files copy/gord_expl.tex
 OUTPUT gord_expl.log
 INPUT /usr/local/texlive/2013/texmf-dist/tex/latex/nag/nag.sty
 INPUT /usr/local/texlive/2013/texmf-dist/tex/latex/nag/nag.sty
@@ -66,8 +66,14 @@ INPUT /usr/local/texlive/2013/texmf-dist/tex/generic/oberdiek/ltxcmds.sty
 INPUT /usr/local/texlive/2013/texmf-dist/tex/latex/soul/soul.sty
 INPUT /usr/local/texlive/2013/texmf-dist/tex/latex/soul/soul.sty
 INPUT /usr/local/texlive/2013/texmf-dist/fonts/tfm/jknappen/ec/ectt1000.tfm
-INPUT /usr/local/texlive/2013/texmf-dist/tex/latex/preprint/fullpage.sty
-INPUT /usr/local/texlive/2013/texmf-dist/tex/latex/preprint/fullpage.sty
+INPUT /usr/local/texlive/2013/texmf-dist/tex/latex/geometry/geometry.sty
+INPUT /usr/local/texlive/2013/texmf-dist/tex/latex/geometry/geometry.sty
+INPUT /usr/local/texlive/2013/texmf-dist/tex/generic/oberdiek/ifpdf.sty
+INPUT /usr/local/texlive/2013/texmf-dist/tex/generic/oberdiek/ifpdf.sty
+INPUT /usr/local/texlive/2013/texmf-dist/tex/generic/oberdiek/ifvtex.sty
+INPUT /usr/local/texlive/2013/texmf-dist/tex/generic/oberdiek/ifvtex.sty
+INPUT /usr/local/texlive/2013/texmf-dist/tex/generic/ifxetex/ifxetex.sty
+INPUT /usr/local/texlive/2013/texmf-dist/tex/generic/ifxetex/ifxetex.sty
 INPUT /usr/local/texlive/2013/texmf-dist/tex/latex/tools/enumerate.sty
 INPUT /usr/local/texlive/2013/texmf-dist/tex/latex/tools/enumerate.sty
 INPUT /usr/local/texlive/2013/texmf-dist/tex/latex/graphics/graphicx.sty
@@ -85,8 +91,6 @@ INPUT /usr/local/texlive/2013/texmf-dist/tex/generic/oberdiek/hobsub-hyperref.st
 INPUT /usr/local/texlive/2013/texmf-dist/tex/generic/oberdiek/hobsub-hyperref.sty
 INPUT /usr/local/texlive/2013/texmf-dist/tex/generic/oberdiek/hobsub-generic.sty
 INPUT /usr/local/texlive/2013/texmf-dist/tex/generic/oberdiek/hobsub-generic.sty
-INPUT /usr/local/texlive/2013/texmf-dist/tex/generic/ifxetex/ifxetex.sty
-INPUT /usr/local/texlive/2013/texmf-dist/tex/generic/ifxetex/ifxetex.sty
 INPUT /usr/local/texlive/2013/texmf-dist/tex/latex/oberdiek/auxhook.sty
 INPUT /usr/local/texlive/2013/texmf-dist/tex/latex/oberdiek/auxhook.sty
 INPUT /usr/local/texlive/2013/texmf-dist/tex/latex/oberdiek/kvoptions.sty
