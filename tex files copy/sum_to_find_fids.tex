@@ -1,21 +1,33 @@
 \RequirePackage[l2tabu, orthodox]{nag}
+
 \documentclass[10pt]{scrartcl}
 % \documentclass[10pt]{article}
 \usepackage[T1]{fontenc}
 \usepackage{amsmath,amsfonts,amssymb}
 \usepackage{mathtools}
 \usepackage{color,soul}
-\usepackage{fullpage}
+\usepackage[margin=2cm]{geometry}
 \usepackage{enumerate}
 \usepackage{graphicx}
 \usepackage[colorlinks=true,urlcolor=blue]{hyperref}
-% \usepackage[justification=center]{caption}
-\usepackage{subcaption}
+\usepackage{floatrow}
 \usepackage{deluxetable}
 \usepackage{verbatim}
 \usepackage{fancyvrb}
 \usepackage{listings}
+\usepackage{calc}
+\usepackage[font=small]{caption}
+\usepackage[font=scriptsize]{subcaption}
 \usepackage[activate={true,nocompatibility},final,tracking=true,kerning=true,spacing=true,factor=1100,stretch=10,shrink=10]{microtype}
+\SetTracking{encoding={*}, shape=sc}{40}
+
+\floatsetup{ 
+  heightadjust=object,
+  valign=t
+}
+
+\definecolor{Light}{gray}{.90}
+\sethlcolor{Light}
 
 \lstset{%
 language=C++,                   % choose the language of the code
@@ -37,11 +49,6 @@ breakatwhitespace=false,        % sets if automatic breaks should only happen at
 escapeinside={\%*}{*)}          % if you want to add a comment within your code
 }
 
-
-\definecolor{Light}{gray}{.90}
-\sethlcolor{Light}
-
-
 \title{Using 1D Sums to Find Fiducials}
 \author{Jeren Suzuki}
 \date{Last Edited \today}
@@ -60,20 +67,42 @@ Instead of using convolution filters, we look at 1D sums to identify fiducials.
 % section introduction (end)
 
 \begin{figure}[!ht]
-    \begin{subfigure}[b]{.5\linewidth}
-        \centering
-        \includegraphics[width=\linewidth]{../plots_tables_images/smooth_expl.eps}
-        \caption{This is the 1D sum of a solar image. Small dips are seen in the profile corresponding to fiducials. The line in red is the sum smoothed by 10 pixels.}
-    \end{subfigure}
-    \begin{subfigure}[b]{.5\linewidth}
-        \centering
-        \includegraphics[width=\linewidth]{../plots_tables_images/smoothcomp.eps}
-        \caption{We subtract the smoothed profile from the raw data to emphasize dips. Comparisons of the smooth amount change the width and number of the dips, although not really the depth.}
-        \label{threshed}
-    \end{subfigure}
-    \caption{}
-    \label{smoothed}
+    \ffigbox[][\FBheight]{%
+    \begin{subfloatrow}[2]%
+        \ffigbox[\FBwidth]%
+       {%
+       \includegraphics[width=.5\textwidth]{../plots_tables_images/smooth_expl.eps}%
+       }%
+       {%
+       \caption{This is the 1D sum of a solar image. Small dips are seen in the profile corresponding to fiducials. The line in red is the sum smoothed by 10 pixels.}%
+       }%
+        \ffigbox[\Xhsize]%
+       {%
+       \includegraphics[width=.5\textwidth]{../plots_tables_images/smoothcomp.eps}%
+       }%
+       {%
+       \caption{We subtract the smoothed profile from the raw data to emphasize dips. Comparisons of the smooth amount change the width and number of the dips, although not really the depth.}%
+       \label{threshed}%
+       }%
+    \end{subfloatrow}}{\caption{}\label{smoothed}}%
 \end{figure}
+
+
+% \begin{figure}[!ht]
+%     \begin{subfigure}[b]{.5\linewidth}
+%         \centering
+%         \includegraphics[width=\linewidth]{../plots_tables_images/smooth_expl.eps}
+%         \caption{This is the 1D sum of a solar image. Small dips are seen in the profile corresponding to fiducials. The line in red is the sum smoothed by 10 pixels.}
+%     \end{subfigure}
+%     \begin{subfigure}[b]{.5\linewidth}
+%         \centering
+%         \includegraphics[width=\linewidth]{../plots_tables_images/smoothcomp.eps}
+%         \caption{We subtract the smoothed profile from the raw data to emphasize dips. Comparisons of the smooth amount change the width and number of the dips, although not really the depth.}
+%         \label{threshed}
+%     \end{subfigure}
+%     \caption{}
+%     \label{smoothed}
+% \end{figure}
 
 \section{Finding Fiducials} % (fold)
 \label{sec:finding_fiducials}
@@ -88,21 +117,41 @@ For each position below a certain threshold (see Figure \ref{threshed}) a row/co
 % \end{figure}
 
 \begin{figure}[!ht]
-    \hspace{-1.0in}
-    \begin{subfigure}[b]{.75\linewidth}
-        \centering
-        \includegraphics[width=\linewidth]{../plots_tables_images/morefid.eps}
-        \caption{10 pixel smoothed sum}
-    \end{subfigure}
-    \hspace{-1.0in}
-    \begin{subfigure}[b]{.75\linewidth}
-        \centering
-        \includegraphics[width=\linewidth]{../plots_tables_images/lessfid.eps}
-        \caption{20 pixel smoothed sum}
-    \end{subfigure}
-    \caption{}
-    \label{smoothtest}
+    \ffigbox[][\FBheight]{%
+    \begin{subfloatrow}[2]%
+        \ffigbox[\FBwidth]%
+       {%
+       \includegraphics[width=.5\textwidth]{../plots_tables_images/morefid.eps}%
+       }%
+       {%
+       \caption{10 pixel smoothed sum}%
+       }%
+        \ffigbox[\Xhsize]%
+       {%
+       \includegraphics[width=.5\textwidth]{../plots_tables_images/lessfid.eps}%
+       }%
+       {%
+       \caption{20 pixel smoothed sum}%
+       }%
+    \end{subfloatrow}}{\caption{}\label{smoothtest}}%
 \end{figure}
+
+% \begin{figure}[!ht]
+%     \hspace{-1.0in}
+%     \begin{subfigure}[b]{.75\linewidth}
+%         \centering
+%         \includegraphics[width=\linewidth]{../plots_tables_images/morefid.eps}
+%         \caption{10 pixel smoothed sum}
+%     \end{subfigure}
+%     \hspace{-1.0in}
+%     \begin{subfigure}[b]{.75\linewidth}
+%         \centering
+%         \includegraphics[width=\linewidth]{../plots_tables_images/lessfid.eps}
+%         \caption{20 pixel smoothed sum}
+%     \end{subfigure}
+%     \caption{}
+%     \label{smoothtest}
+% \end{figure}
 
 
 There is a problem with the row/columns returned from thresholding the sum - smoothed sum; sometimes the number of indices don't match up. i.e., we ``see'' 7 fiducials in one axis but only 5 in another. How do we correctly rule out extra fiducials in one axis but not the other?

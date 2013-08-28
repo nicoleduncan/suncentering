@@ -500,6 +500,62 @@ In a nutshell, \hl{\tt{scrib.pro}} takes an image of the sun with fiducials and 
 
 In Figure \ref{6slices}, the vertical line represents the left edge of a fiducial that is cut off on the right side of our image. Anything that is to the left of the vertical line we do not directly care about since it is not a fiducial, but we still need it for derivatives and such. Anything to the right of the vertical line represents a portion of the fiducial that is cut off in our image. The reasoning is that we look at a set of decreasingly cut off fiducials and try to isolate a pattern. The order of decreasing cut off goes from left to right, top to bottom. In the top left we see 1 pixel of the fiducial in the image and in the bottom right we see 6 pixels of the fiducial in the image; the fiducial is not cut off. 
 
+\begin{figure}[!ht]
+    \ffigbox[][\FBheight]{%
+    \begin{subfloatrow}[2]%
+        \ffigbox[\FBwidth]%
+       {%
+       \includegraphics[width=.5\textwidth]{../plots_tables_images/slice1.eps}%
+       }%
+       {%
+       \caption{}%
+       }%
+        \ffigbox[\Xhsize]%
+       {%
+       \includegraphics[width=.5\textwidth]{../plots_tables_images/slice2.eps}%
+       }%
+       {%
+       \caption{}%
+       }
+    \end{subfloatrow}}
+
+    \ffigbox[][\FBheight]{%
+    \begin{subfloatrow}[2]%
+        \ffigbox[\FBwidth]%
+       {%
+       \includegraphics[width=.5\textwidth]{../plots_tables_images/slice3.eps}%
+       }%
+       {%
+       \caption{}%
+       }%
+        \ffigbox[\Xhsize]%
+       {%
+       \includegraphics[width=.5\textwidth]{../plots_tables_images/slice4.eps}%
+       }%
+       {%
+       \caption{}%
+       }
+    \end{subfloatrow}}%
+
+    \ffigbox[][\FBheight]{%
+    \begin{subfloatrow}[2]%
+        \ffigbox[\FBwidth]%
+       {%
+       \includegraphics[width=.5\textwidth]{../plots_tables_images/slice5.eps}%
+       }%
+       {%
+       \caption{}%
+       }%
+        \ffigbox[\Xhsize]%
+       {%
+       \includegraphics[width=.5\textwidth]{../plots_tables_images/slice6.eps}%
+       }%
+       {%
+       \caption{}%
+       }
+    \end{subfloatrow}}{\caption{Trying to find a pattern in the values of CFs.}\label{6slices}}%
+\end{figure}
+
 % \begin{figure}[!ht]
 %     \centering
 %     \subfloat{
@@ -532,6 +588,62 @@ After a cursory analysis at the plots we see that there is no obvious pattern fo
 
 After a second, third, and $N$th look, there exists a threshold to isolate fiducials. See Figure \ref{betterslice}.\\
 
+\begin{figure}[!ht]
+    \ffigbox[][\FBheight]{%
+    \begin{subfloatrow}[2]%
+        \ffigbox[\FBwidth]%
+       {%
+       \includegraphics[width=.5\textwidth]{../plots_tables_images/betterslice0.eps}%
+       }%
+       {%
+       \caption{}%
+       }%
+        \ffigbox[\Xhsize]%
+       {%
+       \includegraphics[width=.5\textwidth]{../plots_tables_images/betterslice1.eps}%
+       }%
+       {%
+       \caption{}%
+       }
+    \end{subfloatrow}}
+
+    \ffigbox[][\FBheight]{%
+    \begin{subfloatrow}[2]%
+        \ffigbox[\FBwidth]%
+       {%
+       \includegraphics[width=.5\textwidth]{../plots_tables_images/betterslice2.eps}%
+       }%
+       {%
+       \caption{}%
+       }%
+        \ffigbox[\Xhsize]%
+       {%
+       \includegraphics[width=.5\textwidth]{../plots_tables_images/betterslice3.eps}%
+       }%
+       {%
+       \caption{}%
+       }
+    \end{subfloatrow}}%
+
+    \ffigbox[][\FBheight]{%
+    \begin{subfloatrow}[2]%
+        \ffigbox[\FBwidth]%
+       {%
+       \includegraphics[width=.5\textwidth]{../plots_tables_images/betterslice4.eps}%
+       }%
+       {%
+       \caption{}%
+       }%
+        \ffigbox[\Xhsize]%
+       {%
+       \includegraphics[width=.5\textwidth]{../plots_tables_images/betterslice5.eps}%
+       }%
+       {%
+       \caption{}%
+       }
+    \end{subfloatrow}}{\caption{Pixels to the right of the vertical line are recogznied as a fiducial}\label{betterslice}}%
+\end{figure}
+
 % \begin{figure}[!ht]
 %     \centering
 %     \subfloat{
@@ -555,6 +667,63 @@ After a second, third, and $N$th look, there exists a threshold to isolate fiduc
 % \end{figure}
 
 If we use a threshold to count the number of pixels below (in this case) -20, we can count how many pixels are in a fiducial. For example, the top left image in Figure \ref{betterslice} only has 1 pixel below the threshold which corresponds to the number of pixels of the fiducial we see. In the 2nd from top image in the right-most column, we see that there are 4 pixels below the threshold of -20 which agrees with 4 pixels to the right of the vertical line. Using this method, we can accurately threshold pixels so that we can eliminate any that are cut off. The downside however is that the threshold varies from fiducial to fiducial. For example, in Figure \ref{anotherslice}, we see that the threshold is at -30.
+
+
+\begin{figure}[!ht]
+    \ffigbox[][\FBheight]{%
+    \begin{subfloatrow}[2]%
+        \ffigbox[\FBwidth]%
+       {%
+       \includegraphics[width=.5\textwidth]{../plots_tables_images/anotherslice1.eps}%
+       }%
+       {%
+       \caption{}%
+       }%
+        \ffigbox[\Xhsize]%
+       {%
+       \includegraphics[width=.5\textwidth]{../plots_tables_images/anotherslice2.eps}%
+       }%
+       {%
+       \caption{}%
+       }
+    \end{subfloatrow}}
+
+    \ffigbox[][\FBheight]{%
+    \begin{subfloatrow}[2]%
+        \ffigbox[\FBwidth]%
+       {%
+       \includegraphics[width=.5\textwidth]{../plots_tables_images/anotherslice3.eps}%
+       }%
+       {%
+       \caption{}%
+       }%
+        \ffigbox[\Xhsize]%
+       {%
+       \includegraphics[width=.5\textwidth]{../plots_tables_images/anotherslice4.eps}%
+       }%
+       {%
+       \caption{}%
+       }
+    \end{subfloatrow}}%
+
+    \ffigbox[][\FBheight]{%
+    \begin{subfloatrow}[2]%
+        \ffigbox[\FBwidth]%
+       {%
+       \includegraphics[width=.5\textwidth]{../plots_tables_images/anotherslice5.eps}%
+       }%
+       {%
+       \caption{}%
+       }%
+        \ffigbox[\Xhsize]%
+       {%
+       \includegraphics[width=.5\textwidth]{../plots_tables_images/anotherslice6.eps}%
+       }%
+       {%
+       \caption{}%
+       }
+    \end{subfloatrow}}{\caption{Pixels to the left of the vertical line are recogznied as a fiducial. Compared to Figure \ref{betterslice}, the threshold here is -30}}\label{anotherslice}}%
+\end{figure}
 
 % \begin{figure}[!ht]
 %     \centering

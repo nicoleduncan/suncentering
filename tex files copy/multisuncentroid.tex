@@ -1,18 +1,30 @@
 \RequirePackage[l2tabu, orthodox]{nag}
+
 \documentclass[10pt]{scrartcl}
 % \documentclass[10pt]{article}
 \usepackage[T1]{fontenc}
 \usepackage{amsmath,amsfonts,amssymb}
 \usepackage{mathtools}
 \usepackage{color,soul}
-\usepackage{fullpage}
+\usepackage[margin=2cm]{geometry}
 \usepackage{enumerate}
 \usepackage{graphicx}
 \usepackage[colorlinks=true,urlcolor=blue]{hyperref}
-\usepackage{caption}
-\usepackage{subcaption}
+\usepackage{floatrow}
 \usepackage{deluxetable}
+\usepackage{verbatim}
+\usepackage{fancyvrb}
+\usepackage{listings}
+\usepackage{calc}
+\usepackage[font=small]{caption}
+\usepackage[font=scriptsize]{subcaption}
 \usepackage[activate={true,nocompatibility},final,tracking=true,kerning=true,spacing=true,factor=1100,stretch=10,shrink=10]{microtype}
+\SetTracking{encoding={*}, shape=sc}{40}
+
+\floatsetup{ 
+  heightadjust=object,
+  valign=t
+}
 
 \definecolor{Light}{gray}{.90}
 \sethlcolor{Light}
@@ -159,60 +171,134 @@ The current method to find the centers of any solar image is the following:
 \label{sec:issues}
 The current method of finding thresholds in the image is robust, yet slow. The problem doesn't lie in the second derivative, but the smoothing of the data so the derivaties return unusable data. As of now, the best smoothing filter is also the slowest, \hl{\texttt{ts\_smooth()}}. Figure \ref{smoothtest} shows the difference that \hl{\texttt{ts\_smooth()}} makes. smoothedarr is the sorted array soothed with \hl{\texttt{ts\_smooth()}}. The arrays look a \emph{LOT} worse if we use \hl{\texttt{smooth(sortedarray)}} instead of \hl{\texttt{ts\_smooth(sortedarray)}} (See Figure \ref{badsmooth}). \\
 
+\begin{figure}[!ht]
+    \ffigbox[][\FBheight]{%
+    \begin{subfloatrow}[2]%
+        \ffigbox[\FBwidth]%
+       {%
+       \includegraphics[width=.5\textwidth]{../plots_tables_images/firstsmoothonly.eps}%
+       }%
+       {%
+       \caption{\hl{\texttt{deriv(deriv(smoothedarr))}}}%
+       }%
+        \ffigbox[\Xhsize]%
+       {%
+       \includegraphics[width=.5\textwidth]{../plots_tables_images/nowrap.eps}%
+       }%
+       {%
+       \caption{\hl{\texttt{deriv(smooth(deriv(smoothedarr)))}}}%
+       }%
+    \end{subfloatrow}}
 
-\begin{figure}[!h]
-    \begin{center}
-    \begin{subfigure}[b]{.49\textwidth}
-        \centering
-        \includegraphics[width=1.\textwidth]{../plots_tables_images/firstsmoothonly.eps}
-        \caption{\hl{\texttt{deriv(deriv(smoothedarr))}}}
-    \end{subfigure}
-    \begin{subfigure}[b]{.49\textwidth}
-        \centering
-        \includegraphics[width=1.\textwidth]{../plots_tables_images/nowrap.eps}
-        \caption{\hl{\texttt{deriv(smooth(deriv(smoothedarr)))}}}
-    \end{subfigure}
+    \ffigbox[][\FBheight]{%
+    \begin{subfloatrow}[2]%
+        \ffigbox[\FBwidth]%
+       {%
+       \includegraphics[width=.5\textwidth]{../plots_tables_images/justsmooth.eps}%
+       }%
+       {%
+       \caption{\hl{\texttt{deriv(smooth(deriv(smoothedarr),/edge\_wrap))}}}%
+       }%
+        \ffigbox[\Xhsize]%
+       {%
+       \includegraphics[width=.5\textwidth]{../plots_tables_images/doubletssmooth.eps}%
+       }%
+       {%
+       \caption{\hl{\texttt{deriv(ts\_smooth(deriv(smoothedarr)))}}}%
+       }%
+    \end{subfloatrow}}
 
-   \begin{subfigure}[b]{.49\textwidth}
-        \centering
-        \includegraphics[width=1.\textwidth]{../plots_tables_images/justsmooth.eps}
-        \caption{\hl{\texttt{deriv(smooth(deriv(smoothedarr),/edge\_wrap))}}}
-    \end{subfigure}
-    \begin{subfigure}[b]{.49\textwidth}
-        \centering
-        \includegraphics[width=1.\textwidth]{../plots_tables_images/doubletssmooth.eps}
-        \caption{\hl{\texttt{deriv(ts\_smooth(deriv(smoothedarr)))}}}
-    \end{subfigure}
-    \caption{}
-    \label{smoothtest}
+    \ffigbox[][\FBheight]{%
+    \begin{subfloatrow}[2]%
+        \ffigbox[\FBwidth]%
+       {%
+       \includegraphics[width=.5\textwidth]{../plots_tables_images/sm_firstsmoothonly.eps}%
+       }%
+       {%
+       \caption{\hl{\texttt{deriv(deriv(smooth(sortedarray)))}}}%
+       }%
+        \ffigbox[\Xhsize]%
+       {%
+       \includegraphics[width=.5\textwidth]{../plots_tables_images/sm_nowrap.eps}%
+       }%
+       {%
+       \caption{\hl{\texttt{deriv(smooth(deriv(smooth(sortedarray))))}}}%
+       }%
+    \end{subfloatrow}}
 
-    \begin{subfigure}[b]{.49\textwidth}
-        \centering
-        \includegraphics[width=1.\textwidth]{../plots_tables_images/sm_firstsmoothonly.eps}
-        \caption{\hl{\texttt{deriv(deriv(smooth(sortedarray)))}}}
-    \end{subfigure}
-    \begin{subfigure}[b]{.49\textwidth}
-        \centering
-        \includegraphics[width=1.\textwidth]{../plots_tables_images/sm_nowrap.eps}
-        \caption{\hl{\texttt{deriv(smooth(deriv(smooth(sortedarray))))}}}
-    \end{subfigure}
-
-   \begin{subfigure}[b]{.49\textwidth}
-        \centering
-        \includegraphics[width=1.\textwidth]{../plots_tables_images/sm_justsmooth.eps}
-        \caption{\hl{\texttt{deriv(smooth(\\
-        deriv(smooth(sortedarray)),/edge\_wrap))}}}
-    \end{subfigure}
-    \begin{subfigure}[b]{.49\textwidth}
-        \centering
-        \includegraphics[width=1.\textwidth]{../plots_tables_images/sm_doubletssmooth.eps}
-        \caption{\hl{\texttt{deriv(ts\_smooth(\\
-        deriv(smooth(sortedarray))))}}}
-    \end{subfigure}
-    \caption{}    
-    \label{badsmooth}
-    \end{center}
+        \ffigbox[][\FBheight]{%
+    \begin{subfloatrow}[2]%
+        \ffigbox[\FBwidth]%
+       {%
+       \includegraphics[width=.5\textwidth]{../plots_tables_images/sm_justsmooth.eps}%
+       }%
+       {%
+       \caption{\hl{\texttt{deriv(smooth(deriv(smooth(sortedarray)),/edge\_wrap))}}}%
+       }%
+        \ffigbox[\Xhsize]%
+       {%
+       \includegraphics[width=.5\textwidth]{../plots_tables_images/sm_doubletssmooth.eps}%
+       }%
+       {%
+       \caption{\hl{\texttt{deriv(ts\_smooth(deriv(smooth(sortedarray))))}}}%
+       }%
+    \end{subfloatrow}}
+    {\caption{}\label{badsmooth}}%
 \end{figure}
+
+% \begin{figure}[!h]
+%     \begin{center}
+%     \begin{subfigure}[b]{.49\textwidth}
+%         \centering
+%         \includegraphics[width=1.\textwidth]{../plots_tables_images/firstsmoothonly.eps}
+%         \caption{\hl{\texttt{deriv(deriv(smoothedarr))}}}
+%     \end{subfigure}
+%     \begin{subfigure}[b]{.49\textwidth}
+%         \centering
+%         \includegraphics[width=1.\textwidth]{../plots_tables_images/nowrap.eps}
+%         \caption{\hl{\texttt{deriv(smooth(deriv(smoothedarr)))}}}
+%     \end{subfigure}
+
+%    \begin{subfigure}[b]{.49\textwidth}
+%         \centering
+%         \includegraphics[width=1.\textwidth]{../plots_tables_images/justsmooth.eps}
+%         \caption{\hl{\texttt{deriv(smooth(deriv(smoothedarr),/edge\_wrap))}}}
+%     \end{subfigure}
+%     \begin{subfigure}[b]{.49\textwidth}
+%         \centering
+%         \includegraphics[width=1.\textwidth]{../plots_tables_images/doubletssmooth.eps}
+%         \caption{\hl{\texttt{deriv(ts\_smooth(deriv(smoothedarr)))}}}
+%     \end{subfigure}
+%     \caption{}
+%     \label{smoothtest}
+
+%     \begin{subfigure}[b]{.49\textwidth}
+%         \centering
+%         \includegraphics[width=1.\textwidth]{../plots_tables_images/sm_firstsmoothonly.eps}
+%         \caption{\hl{\texttt{deriv(deriv(smooth(sortedarray)))}}}
+%     \end{subfigure}
+%     \begin{subfigure}[b]{.49\textwidth}
+%         \centering
+%         \includegraphics[width=1.\textwidth]{../plots_tables_images/sm_nowrap.eps}
+%         \caption{\hl{\texttt{deriv(smooth(deriv(smooth(sortedarray))))}}}
+%     \end{subfigure}
+
+%    \begin{subfigure}[b]{.49\textwidth}
+%         \centering
+%         \includegraphics[width=1.\textwidth]{../plots_tables_images/sm_justsmooth.eps}
+%         \caption{\hl{\texttt{deriv(smooth(\\
+%         deriv(smooth(sortedarray)),/edge\_wrap))}}}
+%     \end{subfigure}
+%     \begin{subfigure}[b]{.49\textwidth}
+%         \centering
+%         \includegraphics[width=1.\textwidth]{../plots_tables_images/sm_doubletssmooth.eps}
+%         \caption{\hl{\texttt{deriv(ts\_smooth(\\
+%         deriv(smooth(sortedarray))))}}}
+%     \end{subfigure}
+%     \caption{}    
+%     \label{badsmooth}
+%     \end{center}
+% \end{figure}
 
 We need a faster way to find the peaks, either through an alternative smoothing method or a new peak-finding method.\\
 

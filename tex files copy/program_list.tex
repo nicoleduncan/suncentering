@@ -1,15 +1,30 @@
 \RequirePackage[l2tabu, orthodox]{nag}
-\documentclass[10pt]{article}
+
+\documentclass[10pt]{scrartcl}
+% \documentclass[10pt]{article}
 \usepackage[T1]{fontenc}
 \usepackage{amsmath,amsfonts,amssymb}
 \usepackage{mathtools}
 \usepackage{color,soul}
-\usepackage{fullpage}
+\usepackage[margin=2cm]{geometry}
 \usepackage{enumerate}
 \usepackage{graphicx}
 \usepackage[colorlinks=true,urlcolor=blue]{hyperref}
-\usepackage{subcaption}
+\usepackage{floatrow}
+\usepackage{deluxetable}
+\usepackage{verbatim}
+\usepackage{fancyvrb}
+\usepackage{listings}
+\usepackage{calc}
+\usepackage[font=small]{caption}
+\usepackage[font=scriptsize]{subcaption}
 \usepackage[activate={true,nocompatibility},final,tracking=true,kerning=true,spacing=true,factor=1100,stretch=10,shrink=10]{microtype}
+\SetTracking{encoding={*}, shape=sc}{40}
+
+\floatsetup{ 
+  heightadjust=object,
+  valign=t
+}
 
 \definecolor{Light}{gray}{.90}
 \sethlcolor{Light}

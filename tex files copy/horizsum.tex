@@ -1,17 +1,30 @@
 \RequirePackage[l2tabu, orthodox]{nag}
-\documentclass[10pt]{article}
-\usepackage{amsmath}
-\usepackage{amsfonts}
-\usepackage{amssymb}
+
+\documentclass[10pt]{scrartcl}
+% \documentclass[10pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath,amsfonts,amssymb}
 \usepackage{mathtools}
 \usepackage{color,soul}
-\usepackage{fullpage}
+\usepackage[margin=2cm]{geometry}
 \usepackage{enumerate}
 \usepackage{graphicx}
-\usepackage{caption}
-\usepackage{subcaption}
-\usepackage[colorlinks=true,urlcolor=blue,breaklinks]{hyperref}
+\usepackage[colorlinks=true,urlcolor=blue]{hyperref}
+\usepackage{floatrow}
+\usepackage{deluxetable}
+\usepackage{verbatim}
+\usepackage{fancyvrb}
+\usepackage{listings}
+\usepackage{calc}
+\usepackage[font=small]{caption}
+\usepackage[font=scriptsize]{subcaption}
 \usepackage[activate={true,nocompatibility},final,tracking=true,kerning=true,spacing=true,factor=1100,stretch=10,shrink=10]{microtype}
+\SetTracking{encoding={*}, shape=sc}{40}
+
+\floatsetup{ 
+  heightadjust=object,
+  valign=t
+}
 
 \definecolor{Light}{gray}{.90}
 \sethlcolor{Light}
@@ -68,23 +81,45 @@ A threshold is set to mask the Earth in the photo, as shown in Figure \ref{rmask
 
 This image is misleading however, since the top and bottom profiles of the Earth should be symmetric about the X axis. To find the ``pitch'' of the camera, we mask the portion of the image that is space and find it's center of mass. Since the mask is symmetric around the X axis, the center of mass will find the Y position of the mask relative to the image. 
 
-\begin{figure}[h]
-        \begin{minipage}{.45\textwidth}
-            % \begin{center}
-            \centering
-                \includegraphics[width=\linewidth]{../plots_tables_images/spacemask.eps}
-                \caption{Mask of pixels not above the Earth-brightness threshold}
-            % \end{center}
-        \end{minipage}
-        \hspace{.5in}
-        \begin{minipage}{.45\textwidth}
-            % \begin{center}
-            \centering
-                \includegraphics[width=\linewidth]{../plots_tables_images/spreadc.eps}
-                \caption{Center of mass of the space mask}
-            % \end{center}
-        \end{minipage}
-    \end{figure}
+\begin{figure}[!ht]
+    \ffigbox[][\FBheight]{%
+    \begin{subfloatrow}[2]%
+        \ffigbox[\FBwidth]%
+       {%
+       \includegraphics[width=.5\textwidth]{../plots_tables_images/spacemask.eps}%
+       }%
+       {%
+       \caption{Mask of pixels not above the Earth-brightness threshold}%
+       }%
+        \ffigbox[\Xhsize]%
+       {%
+       \includegraphics[width=.5\textwidth]{../plots_tables_images/spreadc.eps}%
+       }%
+       {%
+       \caption{Center of mass of the space mask}%
+       }%
+    \end{subfloatrow}}{\caption{}}%
+\end{figure}
+
+% \begin{figure}[h]
+%         \begin{minipage}{.45\textwidth}
+%             % \begin{center}
+%             \centering
+%                 \includegraphics[width=\linewidth]{../plots_tables_images/spacemask.eps}
+%                 \caption{Mask of pixels not above the Earth-brightness threshold}
+%             % \end{center}
+%         \end{minipage}
+%         \hspace{.5in}
+%         \begin{minipage}{.45\textwidth}
+%             % \begin{center}
+%             \centering
+%                 \includegraphics[width=\linewidth]{../plots_tables_images/spreadc.eps}
+%                 \caption{Center of mass of the space mask}
+%             % \end{center}
+%         \end{minipage}
+%     \end{figure}
+
+
 % subsection pitch (end)
 
 \subsection{``Roll''} % (fold)

@@ -1,18 +1,33 @@
 \RequirePackage[l2tabu, orthodox]{nag}
+
 \documentclass[10pt]{scrartcl}
 % \documentclass[10pt]{article}
 \usepackage[T1]{fontenc}
 \usepackage{amsmath,amsfonts,amssymb}
 \usepackage{mathtools}
 \usepackage{color,soul}
-\usepackage{fullpage}
+\usepackage[margin=2cm]{geometry}
 \usepackage{enumerate}
 \usepackage{graphicx}
 \usepackage[colorlinks=true,urlcolor=blue]{hyperref}
-% \usepackage[justification=center]{caption}
-\usepackage{subcaption}
+\usepackage{floatrow}
 \usepackage{deluxetable}
+\usepackage{verbatim}
+\usepackage{fancyvrb}
+\usepackage{listings}
+\usepackage{calc}
+\usepackage[font=small]{caption}
+\usepackage[font=scriptsize]{subcaption}
 \usepackage[activate={true,nocompatibility},final,tracking=true,kerning=true,spacing=true,factor=1100,stretch=10,shrink=10]{microtype}
+\SetTracking{encoding={*}, shape=sc}{40}
+
+\floatsetup{ 
+  heightadjust=object,
+  valign=t
+}
+
+\definecolor{Light}{gray}{.90}
+\sethlcolor{Light}
 
 \title{Pics of slats}
 \author{Jeren Suzuki}
@@ -54,40 +69,80 @@ The worst of the configuraions, front lighting offered the least contrast betwee
 We thought it a good idea to use some tissue paper to make the light more diffuse; it didn't provide any benefit. In fact, it added unwanted noise and dark splotches in the image. 
 
 \begin{figure}[!ht]
-    \centering
-    \hspace{-1.0in}
-    \begin{subfigure}[b]{.45\linewidth}
-        \centering
-        \includegraphics[width=1.3\textwidth]{../plots_tables_images/slats/IMAG0116.jpg}
-        \caption{}
-    \end{subfigure}
-    \hspace{.5in}
-    \begin{subfigure}[b]{.45\linewidth}
-        \centering
-        \includegraphics[width=1.3\textwidth]{../plots_tables_images/slats/IMAG0120.jpg}
-        \caption{}
-    \end{subfigure}
+    \ffigbox[][\FBheight]{%
+    \begin{subfloatrow}[2]%
+        \ffigbox[\FBwidth]%
+       {%
+       \includegraphics[width=.5\textwidth]{../plots_tables_images/slats/IMAG0116.jpg}%
+       }%
+       {%
+       \caption{}%
+       }%
+        \ffigbox[\Xhsize]%
+       {%
+       \includegraphics[width=.5\textwidth]{../plots_tables_images/slats/IMAG0120.jpg}%
+       }%
+       {%
+       \caption{}%
+       }%
+    \end{subfloatrow}}
 
-    \hspace{-1.0in}
-    \begin{subfigure}[b]{.45\linewidth}
-        \centering
-        \includegraphics[width=1.3\textwidth]{../plots_tables_images/slats/IMAG0124_BURST002_COVER.jpg}
-        \caption{}
-    \end{subfigure}
-    \hspace{.5in}
-    \begin{subfigure}[b]{.45\linewidth}
-        \centering
-        \includegraphics[width=1.3\textwidth]{../plots_tables_images/slats/IMAG0133_BURST003.jpg}
-        \caption{}
-    \end{subfigure}
-    \caption{Even though the images are small you can still zoom in a lot.}
+        \ffigbox[][\FBheight]{%
+    \begin{subfloatrow}[2]%
+        \ffigbox[\FBwidth]%
+       {%
+       \includegraphics[width=.5\textwidth]{../plots_tables_images/slats/IMAG0124_BURST002_COVER.jpg}%
+       }%
+       {%
+       \caption{}%
+       }%
+        \ffigbox[\Xhsize]%
+       {%
+       \includegraphics[width=.5\textwidth]{../plots_tables_images/slats/IMAG0133_BURST003.jpg}%
+       }%
+       {%
+       \caption{}%
+       }%
+    \end{subfloatrow}}
+    {\caption{Even though the images are small you can still zoom in a lot.}}%
 \end{figure}
+
+% \begin{figure}[!ht]
+%     \centering
+%     \hspace{-1.0in}
+%     \begin{subfigure}[b]{.45\linewidth}
+%         \centering
+%         \includegraphics[width=1.3\textwidth]{../plots_tables_images/slats/IMAG0116.jpg}
+%         \caption{}
+%     \end{subfigure}
+%     \hspace{.5in}
+%     \begin{subfigure}[b]{.45\linewidth}
+%         \centering
+%         \includegraphics[width=1.3\textwidth]{../plots_tables_images/slats/IMAG0120.jpg}
+%         \caption{}
+%     \end{subfigure}
+
+%     \hspace{-1.0in}
+%     \begin{subfigure}[b]{.45\linewidth}
+%         \centering
+%         \includegraphics[width=1.3\textwidth]{../plots_tables_images/slats/IMAG0124_BURST002_COVER.jpg}
+%         \caption{}
+%     \end{subfigure}
+%     \hspace{.5in}
+%     \begin{subfigure}[b]{.45\linewidth}
+%         \centering
+%         \includegraphics[width=1.3\textwidth]{../plots_tables_images/slats/IMAG0133_BURST003.jpg}
+%         \caption{}
+%     \end{subfigure}
+%     \caption{Even though the images are small you can still zoom in a lot.}
+% \end{figure}
 
 Some full-size photos:
 
 \begin{figure}[!ht]
     \centering
-    \includegraphics[width=\textwidth]{../plots_tables_images/slats/IMAG0137_BURST010.jpg}\caption{}
+    \includegraphics[width=\textwidth]{../plots_tables_images/slats/IMAG0137_BURST010.jpg}
+    \caption{}
 \end{figure}
 \begin{figure}[!ht]
     \centering

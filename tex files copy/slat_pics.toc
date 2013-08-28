@@ -1,5 +1,5 @@
 \contentsline {section}{\numberline {1}Introduction}{1}{section.1}
 \contentsline {section}{\numberline {2}Front light, without diffuse paper}{1}{section.2}
 \contentsline {section}{\numberline {3}Back light, with diffuse paper}{4}{section.3}
-\contentsline {section}{\numberline {4}Back light, No diffuse paper}{7}{section.4}
-\contentsline {section}{\numberline {5}Preferred way to take pictures}{7}{section.5}
+\contentsline {section}{\numberline {4}Back light, No diffuse paper}{6}{section.4}
+\contentsline {section}{\numberline {5}Preferred way to take pictures}{6}{section.5}

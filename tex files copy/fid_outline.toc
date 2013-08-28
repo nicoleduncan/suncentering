@@ -18,4 +18,4 @@
 \contentsline {section}{\numberline {9}Dealing With Fiducials on Edge}{7}{section.9}
 \contentsline {subsection}{\numberline {9.1}Images}{9}{subsection.9.1}
 \contentsline {section}{\numberline {10}Drawbacks}{10}{section.10}
-\contentsline {section}{\numberline {11}How to Break Code}{10}{section.11}
+\contentsline {section}{\numberline {11}How to Break Code}{12}{section.11}

@@ -1,17 +1,30 @@
 \RequirePackage[l2tabu, orthodox]{nag}
+
 \documentclass[10pt]{scrartcl}
 % \documentclass[10pt]{article}
 \usepackage[T1]{fontenc}
 \usepackage{amsmath,amsfonts,amssymb}
 \usepackage{mathtools}
 \usepackage{color,soul}
-\usepackage{fullpage}
+\usepackage[margin=2cm]{geometry}
 \usepackage{enumerate}
 \usepackage{graphicx}
 \usepackage[colorlinks=true,urlcolor=blue]{hyperref}
-\usepackage{subcaption}
+\usepackage{floatrow}
 \usepackage{deluxetable}
+\usepackage{verbatim}
+\usepackage{fancyvrb}
+\usepackage{listings}
+\usepackage{calc}
+\usepackage[font=small]{caption}
+\usepackage[font=scriptsize]{subcaption}
 \usepackage[activate={true,nocompatibility},final,tracking=true,kerning=true,spacing=true,factor=1100,stretch=10,shrink=10]{microtype}
+\SetTracking{encoding={*}, shape=sc}{40}
+
+\floatsetup{ 
+  heightadjust=object,
+  valign=t
+}
 
 \definecolor{Light}{gray}{.90}
 \sethlcolor{Light}
@@ -66,42 +79,99 @@ Starting from Figure \ref{raw}, we plotted the lowest 99\% of the pixels when or
 We see three distinct humps, indicative of our three suns in the 2D image. Now, to find the boundaries where one sun ends and the other begins, we look at the derivative of Figure \ref{sorted}. However, simply taking the derivative does not result in a usable result so we must smooth our data first. I use both \texttt{\hl{smooth()}} and \texttt{\hl{ts\_smooth()}} in Figure \ref{comps}.
 
 \begin{figure}[!ht]
-    \centering 
-    \hspace{-1.0in}
-    \begin{subfigure}[b]{.45\linewidth}
-        \centering
-        \includegraphics[width=1.3\textwidth]{../plots_tables_images/d_ts.eps}
-    \end{subfigure}
-    \hspace{.5in}
-    \begin{subfigure}[b]{.45\linewidth}
-        \centering
-        \includegraphics[width=1.3\textwidth]{../plots_tables_images/d_reg.eps}
-    \end{subfigure}
-   
-   \hspace{-1.0in}
-   \begin{subfigure}[b]{.45\linewidth}
-        \centering
-        \includegraphics[width=1.3\textwidth]{../plots_tables_images/d_ts_d_ts.eps}
-    \end{subfigure}
-    \hspace{.5in}
-    \begin{subfigure}[b]{.45\linewidth}
-        \centering
-        \includegraphics[width=1.3\textwidth]{../plots_tables_images/d_ts_d_reg.eps}
-    \end{subfigure}
+    \ffigbox[][\FBheight]{%
+    \begin{subfloatrow}[2]%
+        \ffigbox[\FBwidth]%
+       {%
+       \includegraphics[width=.5\textwidth]{../plots_tables_images/d_ts.eps}%
+       }%
+       {%
+       \caption{}%
+       }%
+        \ffigbox[\Xhsize]%
+       {%
+       \includegraphics[width=.5\textwidth]{../plots_tables_images/d_reg.eps}%
+       }%
+       {%
+       \caption{}%
+       }%
+    \end{subfloatrow}}
 
-    \hspace{-1.0in}
-    \begin{subfigure}[b]{.45\linewidth}
-        \centering
-        \includegraphics[width=1.3\textwidth]{../plots_tables_images/d_s_d_ts.eps}
-    \end{subfigure}
-    \hspace{.5in}
-    \begin{subfigure}[b]{.45\linewidth}
-        \centering
-        \includegraphics[width=1.3\textwidth]{../plots_tables_images/d_s_d_reg.eps}
-    \end{subfigure}
-    \caption{The vertical lines correspond to eyeballed boundaries of the sorted array. A large part of the left half of the array is cropped out to emphasize the shape of the humps and peaks. The derivative has been scaled to within the max/min of the starting master array. The width of the smoothing filter is 1000 wide.}
-    \label{comps}
+    \ffigbox[][\FBheight]{%
+    \begin{subfloatrow}[2]%
+        \ffigbox[\FBwidth]%
+       {%
+       \includegraphics[width=.5\textwidth]{../plots_tables_images/d_ts_d_ts.eps}%
+       }%
+       {%
+       \caption{}%
+       }%
+        \ffigbox[\Xhsize]%
+       {%
+       \includegraphics[width=.5\textwidth]{../plots_tables_images/d_ts_d_reg.eps}%
+       }%
+       {%
+       \caption{}%
+       }%
+    \end{subfloatrow}}
+
+        \ffigbox[][\FBheight]{%
+    \begin{subfloatrow}[2]%
+        \ffigbox[\FBwidth]%
+       {%
+       \includegraphics[width=.5\textwidth]{../plots_tables_images/d_s_d_ts.eps}%
+       }%
+       {%
+       \caption{}%
+       }%
+        \ffigbox[\Xhsize]%
+       {%
+       \includegraphics[width=.5\textwidth]{../plots_tables_images/d_s_d_reg.eps}%
+       }%
+       {%
+       \caption{}%
+       }%
+    \end{subfloatrow}}
+    {\caption{The vertical lines correspond to eyeballed boundaries of the sorted array. A large part of the left half of the array is cropped out to emphasize the shape of the humps and peaks. The derivative has been scaled to within the max/min of the starting master array. The width of the smoothing filter is 1000 wide.}\label{comps}}%
 \end{figure}
+
+% \begin{figure}[!ht]
+%     \centering 
+%     \hspace{-1.0in}
+%     \begin{subfigure}[b]{.45\linewidth}
+%         \centering
+%         \includegraphics[width=1.3\textwidth]{../plots_tables_images/d_ts.eps}
+%     \end{subfigure}
+%     \hspace{.5in}
+%     \begin{subfigure}[b]{.45\linewidth}
+%         \centering
+%         \includegraphics[width=1.3\textwidth]{../plots_tables_images/d_reg.eps}
+%     \end{subfigure}
+   
+%    \hspace{-1.0in}
+%    \begin{subfigure}[b]{.45\linewidth}
+%         \centering
+%         \includegraphics[width=1.3\textwidth]{../plots_tables_images/d_ts_d_ts.eps}
+%     \end{subfigure}
+%     \hspace{.5in}
+%     \begin{subfigure}[b]{.45\linewidth}
+%         \centering
+%         \includegraphics[width=1.3\textwidth]{../plots_tables_images/d_ts_d_reg.eps}
+%     \end{subfigure}
+
+%     \hspace{-1.0in}
+%     \begin{subfigure}[b]{.45\linewidth}
+%         \centering
+%         \includegraphics[width=1.3\textwidth]{../plots_tables_images/d_s_d_ts.eps}
+%     \end{subfigure}
+%     \hspace{.5in}
+%     \begin{subfigure}[b]{.45\linewidth}
+%         \centering
+%         \includegraphics[width=1.3\textwidth]{../plots_tables_images/d_s_d_reg.eps}
+%     \end{subfigure}
+%     \caption{The vertical lines correspond to eyeballed boundaries of the sorted array. A large part of the left half of the array is cropped out to emphasize the shape of the humps and peaks. The derivative has been scaled to within the max/min of the starting master array. The width of the smoothing filter is 1000 wide.}
+%     \label{comps}
+% \end{figure}
 
 It turns out that \texttt{\hl{ts\_smooth}} takes an incredibly long time to run when the order of the autoregressive model is greater than 10. As such, I chose an order of 3 so that it didn't take too long. Even then, running a simple \hl{\texttt{smooth()}} filter results in some pretty good plots. It's important to note that the derivative must be smoothed before I can take another another derivative; also, it doesn't seem to matter if I use \texttt{\hl{ts\_smooth}} or \hl{\texttt{smooth()}} when taking the second smooth.
 
