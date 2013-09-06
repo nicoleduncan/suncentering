@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013) (format=pdflatex 2013.9.3)  5 SEP 2013 17:31
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013) (format=pdflatex 2013.9.3)  6 SEP 2013 13:50
 entering extended mode
  \write18 enabled.
  %&-line parsing enabled.
@@ -846,14 +846,7 @@ File: lstlang1.sty 2013/08/26 1.5b listings language file
 (/usr/local/texlive/2013/texmf-dist/tex/latex/listings/lstlang2.sty
 File: lstlang2.sty 2013/08/26 1.5b listings language file
 )
-(./wwdwwd.aux
-
-LaTeX Warning: Label `cropcomp' multiply defined.
-
-
-LaTeX Warning: Label `cropcomp@cref' multiply defined.
-
-)
+(./wwdwwd.aux)
 \openout1 = `wwdwwd.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 60.
@@ -1951,25 +1944,12 @@ Overfull \hbox (10.0pt too wide) in paragraph at lines 217--217
 [3 <../plots_tables_images/cutcorner-eps-converted-to.pdf> <../plots_tables_ima
 ges/cutcornerwborder-eps-converted-to.pdf> <../plots_tables_images/firstcheck-e
 ps-converted-to.pdf> <../plots_tables_images/seccheck-eps-converted-to.pdf>]
-Package epstopdf Info: Source file: <../plots_tables_images/quickcenters.eps>
-(epstopdf)                    date: 2013-04-26 11:38:40
-(epstopdf)                    size: 5694480 bytes
-(epstopdf)             Output file: <../plots_tables_images/quickcenters-eps-co
-nverted-to.pdf>
-(epstopdf)                    date: 2013-04-26 11:40:23
-(epstopdf)                    size: 1849783 bytes
-(epstopdf)             Command: <epstopdf --outfile=../plots_tables_images/quic
-kcenters-eps-converted-to.pdf ../plots_tables_images/quickcenters.eps>
-(epstopdf)             \includegraphics on input line 232.
-Package epstopdf Info: Output file is already uptodate.
+<../plots_tables_images/quickcenters.png, id=137, 433.62pt x 505.89pt>
+File: ../plots_tables_images/quickcenters.png Graphic file (type png)
 
-<../plots_tables_images/quickcenters-eps-converted-to.pdf, id=137, 433.62pt x 5
-05.89pt>
-File: ../plots_tables_images/quickcenters-eps-converted-to.pdf Graphic file (ty
-pe pdf)
- <use ../plots_tables_images/quickcenters-eps-converted-to.pdf>
-Package pdftex.def Info: ../plots_tables_images/quickcenters-eps-converted-to.p
-df used on input line 232.
+<use ../plots_tables_images/quickcenters.png>
+Package pdftex.def Info: ../plots_tables_images/quickcenters.png used on input 
+line 232.
 (pdftex.def)             Requested size: 483.69693pt x 564.3389pt.
 Package epstopdf Info: Source file: <../plots_tables_images/sortedarray.eps>
 (epstopdf)                    date: 2013-06-13 11:59:27
@@ -1983,7 +1963,7 @@ edarray-eps-converted-to.pdf ../plots_tables_images/sortedarray.eps>
 (epstopdf)             \includegraphics on input line 245.
 Package epstopdf Info: Output file is already uptodate.
 
-<../plots_tables_images/sortedarray-eps-converted-to.pdf, id=138, 552.0625pt x 
+<../plots_tables_images/sortedarray-eps-converted-to.pdf, id=139, 552.0625pt x 
 338.26375pt>
 File: ../plots_tables_images/sortedarray-eps-converted-to.pdf Graphic file (typ
 e pdf)
@@ -1992,7 +1972,7 @@ Package pdftex.def Info: ../plots_tables_images/sortedarray-eps-converted-to.pd
 f used on input line 245.
 (pdftex.def)             Requested size: 362.77269pt x 222.28955pt.
 
-<../plots_tables_images/threshtesh_3.png, id=139, 2300.595pt x 1409.265pt>
+<../plots_tables_images/threshtesh_3.png, id=140, 2300.595pt x 1409.265pt>
 File: ../plots_tables_images/threshtesh_3.png Graphic file (type png)
 
 <use ../plots_tables_images/threshtesh_3.png>
@@ -2004,14 +1984,14 @@ Underfull \hbox (badness 10000) in paragraph at lines 283--284
 
  []
 
-[4] <../plots_tables_images/cropcomp3.png, id=149, 526.96875pt x 752.8125pt>
+[4] <../plots_tables_images/cropcomp3.png, id=150, 526.96875pt x 752.8125pt>
 File: ../plots_tables_images/cropcomp3.png Graphic file (type png)
 
 <use ../plots_tables_images/cropcomp3.png>
 Package pdftex.def Info: ../plots_tables_images/cropcomp3.png used on input lin
 e 288.
-(pdftex.def)             Requested size: 362.77269pt x 518.26952pt.
- [5 <../plots_tables_images/quickcenters-eps-converted-to.pdf>]
+(pdftex.def)             Requested size: 241.84846pt x 345.50534pt.
+ [5 <../plots_tables_images/quickcenters.png>]
 No complaints by nag.
 Package atveryend Info: Empty hook `BeforeClearDocument' on input line 302.
 [6 <../plots_tables_images/sortedarray-eps-converted-to.pdf> <../plots_tables_i
@@ -2023,17 +2003,13 @@ Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 302.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 302.
 Package rerunfilecheck Info: File `wwdwwd.out' has not changed.
 (rerunfilecheck)             Checksum: D93B331D89F3283B5D4507F60F5E82C6;725.
-
-
-LaTeX Warning: There were multiply-defined labels.
-
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 302.
  ) 
 Here is how much of TeX's memory you used:
- 21662 strings out of 493311
- 376536 string characters out of 6137851
+ 21664 strings out of 493311
+ 376493 string characters out of 6137851
  539931 words of memory out of 5000000
- 24710 multiletter control sequences out of 15000+600000
+ 24712 multiletter control sequences out of 15000+600000
  17662 words of font info for 68 fonts, out of 8000000 for 9000
  957 hyphenation exceptions out of 8191
  52i,19n,59p,1052b,851s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -2055,10 +2031,10 @@ ive/2013/texmf-dist/fonts/type1/public/cm-super/sfsx1440.pfb></usr/local/texliv
 e/2013/texmf-dist/fonts/type1/public/cm-super/sfsx2074.pfb></usr/local/texlive/
 2013/texmf-dist/fonts/type1/public/cm-super/sfti1000.pfb></usr/local/texlive/20
 13/texmf-dist/fonts/type1/public/cm-super/sftt1000.pfb>
-Output written on wwdwwd.pdf (8 pages, 2465887 bytes).
+Output written on wwdwwd.pdf (8 pages, 986715 bytes).
 PDF statistics:
- 245 PDF objects out of 1000 (max. 8388607)
- 199 compressed objects within 2 object streams
+ 241 PDF objects out of 1000 (max. 8388607)
+ 195 compressed objects within 2 object streams
  42 named destinations out of 1000 (max. 500000)
  16531 words of extra memory for PDF output out of 17280 (max. 10000000)
 

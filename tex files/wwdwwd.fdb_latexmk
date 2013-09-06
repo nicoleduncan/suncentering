@@ -1,5 +1,5 @@
 # Fdb version 3
-["pdflatex"] 1378427513 "/Users/jerensuzuki/Documents/suncentering/tex files/wwdwwd.tex" "wwdwwd.pdf" "wwdwwd" 1378427514
+["pdflatex"] 1378500611 "/Users/jerensuzuki/Documents/suncentering/tex files/wwdwwd.tex" "wwdwwd.pdf" "wwdwwd" 1378500612
   "../plots_tables_images/best4-eps-converted-to.pdf" 1378329575 90370 b32b19ebf34f8dbe5c64daf40310bdaa ""
   "../plots_tables_images/best4.eps" 1378329321 1552810 46f3688f58c61b7ae9f44dd9f3dc3c9b ""
   "../plots_tables_images/best4_actual-eps-converted-to.pdf" 1378329575 70801 1da2ea243d2e688df2de1ef5f98f2862 ""
@@ -11,14 +11,13 @@
   "../plots_tables_images/cutcornerwborder.eps" 1370033529 1368703 a24503ff573df988c71846256bd05f5c ""
   "../plots_tables_images/firstcheck-eps-converted-to.pdf" 1372800152 4267 98df97769cd4279e29ba9ce99473017b ""
   "../plots_tables_images/firstcheck.eps" 1372368439 36798 017953cc0d8c25ed81fce3d9469aefb0 ""
-  "../plots_tables_images/quickcenters-eps-converted-to.pdf" 1367001623 1849783 5aba7fd2edba7750523cd539e6ebb459 ""
-  "../plots_tables_images/quickcenters.eps" 1367001520 5694480 bbeebea70463a0e051a3c02fb17d43ce ""
+  "../plots_tables_images/quickcenters.png" 1378500293 420010 1b23911c59603a7ed5bde60b055cbb01 ""
   "../plots_tables_images/seccheck-eps-converted-to.pdf" 1372800174 5988 485941d6d746735fd1884c0357bed020 ""
   "../plots_tables_images/seccheck.eps" 1372368439 42187 75bc7e109f3c218b92ea6825c800d0eb ""
   "../plots_tables_images/sortedarray-eps-converted-to.pdf" 1371149987 66928 745fcf2756bc0e486a295efff6c9d6c8 ""
   "../plots_tables_images/sortedarray.eps" 1371149967 405862 f221904520f5f74ffa153c7475152c32 ""
   "../plots_tables_images/threshtesh_3.png" 1368468470 34873 899ff6ccd213b2d3580e86a54f497e99 ""
-  "/Users/jerensuzuki/Documents/suncentering/tex files/wwdwwd.tex" 1378427511 19564 afa1056a01c85003582639f3d4393725 ""
+  "/Users/jerensuzuki/Documents/suncentering/tex files/wwdwwd.tex" 1378500609 19556 28459fd549f99f341d9bce04423737e4 ""
   "/usr/local/texlive/2013/../texmf-local/tex/latex/deluxetable/deluxetable.sty" 1366832326 11321 35b2c46627b671e19bd036ff4dbf9e85 ""
   "/usr/local/texlive/2013/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc" 1136849721 2971 def0b6c1f0b107b3b936def894055589 ""
   "/usr/local/texlive/2013/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc" 1136849721 2900 1537cc8184ad1792082cd229ecc269f4 ""
@@ -176,10 +175,10 @@
   "/usr/local/texlive/2013/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1378416358 1102619 27bc8dbfb3ff4374035ffb99508229c8 ""
   "/usr/local/texlive/2013/texmf-var/web2c/pdftex/pdflatex.fmt" 1378227428 3827490 a3fe091db5b14063def8559b07855ced ""
   "/usr/local/texlive/2013/texmf.cnf" 1369923207 577 cbc827f6294276973a1952e86e8ad73a ""
-  "wwdwwd.aux" 1378427514 5640 4ce3f27c54d7bb24084e99fe3845110a ""
-  "wwdwwd.out" 1378427514 725 d93b331d89f3283b5d4507f60f5e82c6 ""
-  "wwdwwd.tex" 1378427511 19564 afa1056a01c85003582639f3d4393725 ""
-  "wwdwwd.toc" 1378427514 929 b8eb92fffd57cad45d114e4bfca59f8e ""
+  "wwdwwd.aux" 1378500612 5796 879f50078233965efcf44e079cf19a71 ""
+  "wwdwwd.out" 1378500612 725 d93b331d89f3283b5d4507f60f5e82c6 ""
+  "wwdwwd.tex" 1378500609 19556 28459fd549f99f341d9bce04423737e4 ""
+  "wwdwwd.toc" 1378500612 929 b8eb92fffd57cad45d114e4bfca59f8e ""
   (generated)
   "wwdwwd.toc"
   "wwdwwd.out"

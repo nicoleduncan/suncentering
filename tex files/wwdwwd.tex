@@ -229,7 +229,7 @@ There was another method we didn't get very far on, but it had the potential to 
 This method was tested because it reused the \hl{\texttt{sort()}} function from making the threshold and simply applied the sort indices to x and y positions instead of pixel values. The result was a fast and robust centering method. The problem was if the suns lied in either the x or y axes (which is most probably the case). As you can see from the figure, if any of the suns share the same x or y range, even a little bit, the centering will be off. A solution was to check both the x and y indices (because you can't overlap in both), but further development was stopped in favor of a more intuitive (and easier to code) approach. I think we could've made it work though.
 
 \begin{figure}[!ht]
-   \includegraphics[width=\textwidth]{../plots_tables_images/quickcenters.eps}%
+   \includegraphics[width=\textwidth]{../plots_tables_images/quickcenters.png}%
    \caption{The 2D array sorted by x or y positions}\label{sortsort}
 \end{figure}
 
@@ -285,7 +285,7 @@ One issue was that the method used involved returning only the x and y positions
 In addition to using edge detection filters to find fiducials, we also looked at a convolution/cross correlation filter. I mention cross correlation because it is the method Albert used in his image analysis code. Convolution and edge detection filters only differ by the shape and content of the kernel so it required many a tweaks to find one that emphasized the shape of the fiducial while suppressing foreign noise and shapes. What we ended up with was 
 
 \begin{figure}[!ht]
-   \includegraphics[width=.75\textwidth]{../plots_tables_images/cropcomp3.png}%
+   \includegraphics[width=.5\textwidth]{../plots_tables_images/cropcomp3.png}%
    \caption{w}\label{cropcomp}
 \end{figure}
 
@@ -300,20 +300,3 @@ Extra
 
 
 \end{document}
-
-he picked you up
-nice shirt
-so laugh
-so cool
-omg fun
-such hug
-hold me plz
-
-
-
-
-
-
-
-
-
