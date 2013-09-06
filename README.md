@@ -28,7 +28,7 @@ To give a sense of the speed, a 1290 by 960 image with 3 suns takes about .2 sec
 
 ### Code Overview
 
-*WARNING*. These functions may not be used in all versions of the code. for a complete listing, please see doc_lib/index.html
+**WARNING**. These functions may not be used in all versions of the code. for a complete listing, please see doc_lib/index.html
 
 * `alpha/beta/(some greek letter)` -- Loads the image, sets necessary variables, and prints out solar centers. The program that calls all others.
 * `defsysvarthresh` -- Defines thresholds to mask the solar regions. Dynamic.
@@ -43,7 +43,7 @@ To give a sense of the speed, a 1290 by 960 image with 3 suns takes about .2 sec
 * `picksun` -- Decides which suns to ignore. Utilizes two bottom corner masks as a "BAD" zone. 
 * `picksun_rot` -- An improvement on picksun, uses coordinate rotation instead of masking; much faster thanks to Gordon.
 * `para_fid` -- Fits two one-dimensional parabolas (one in each direction) to a fiducial and calculates the intersection for subpixel accuracy
-* `npixfit` -- Linear fit to limb strips with an arbitrary number of lmb pixels
+* `npixfit` -- Linear fit to limb strips with an arbitrary number of limb pixels
 * `idsuns` -- Defines solar regions, uses IDL's LABEL_REGION which must be eschewed.
 * `defparams` -- Defines global parameters from an external parameter file
 * `cyoalimbstrips` -- The most recent iteration of "make_limb_strips.pro"; makes trimmed-down limb strips of data from full-length strips provided from makestrips.
@@ -52,12 +52,24 @@ To give a sense of the speed, a 1290 by 960 image with 3 suns takes about .2 sec
 
 To-Do
 -------
-* Horizon sun sensor
 * Once 4 closest fiducials to solar centers are found, how to identify which one
 * Organize directory, needs to be more obvious what to run
 
+To Actually Run The Code
+-------
 
-<!-- Analysis programs that fit polynomials to edges of slats in a mask iamge
-abundle.pro
-hbundle.pro
-bundle.pro -->
+`cd` to a directory within suncentering, for example, jul25, then in idl enter
+
+`alpha`
+
+You should see three windows. In window 0 is the original image with the centers of each sun identified with two intersecting white lines. In window 2 the fiducials in each sun are identified with a white pixel. In window 3, only the 4 closest fiducials to the center of each sun is marked with a white pixel.
+
+Separate But Still Closely Related Software
+-------
+
+These analysis programs fit polynomials to edges of slats in a mask image. The goal is to accurately determine the edges of slats in a mask for calibration and testing purposes. Currently we are determining the best way to illuminate the bundles. The leading option is to use front, diffuse lighting with the facing edge of each slat to be sanded down. 
+
+* `abundle.pro`
+* `hbundle.pro`
+* `bundle.pro`
+

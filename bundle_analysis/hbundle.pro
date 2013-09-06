@@ -92,8 +92,8 @@ endfor
 ; endfor
 
 for i = 0,(size(begp,/dim))[0]-1 do begin
-    line = poly_fit(findgen((size(begp,/dim))[1]),begp[i,*],2,yfit=begyfit)
-    line = poly_fit(findgen((size(begp,/dim))[1]),endp[i,*],2,yfit=endyfit)
+    line = poly_fit(findgen((size(begp,/dim))[1]),begp[i,*],3,yfit=begyfit)
+    line = poly_fit(findgen((size(begp,/dim))[1]),endp[i,*],3,yfit=endyfit)
 
 ; ps_start,filename='edgefit0.eps',/encap
 ; plot,begp[0,*],xs=3,ys=3,title='Distance of edge of slat from edge of image',yr=[24,38]
@@ -132,7 +132,7 @@ endfor
 
 
 ; This isn't exactly on the edge because it's a fit
-cgimage,rim+www,/k
+; cgimage,rim+www,/k
 
 ; instead of thresh, use shift_diff?
 a = shift_diff(nit,dir=1)*(shift_diff(nit,dir=1) gt 500) + shift_diff(nit,dir=6)*(shift_diff(nit,dir=6) gt 500)
@@ -145,20 +145,34 @@ d = shift_diff(nit,dir=1)*(shift_diff(nit,dir=1) gt 2000) + shift_diff(nit,dir=6
 ; c = (shift_diff(nit,dir=1) gt 1000) + (shift_diff(nit,dir=6) gt 1000)
 ; d = (shift_diff(nit,dir=1) gt 2000) + (shift_diff(nit,dir=6) gt 2000)
 
-cgimage,a,/k
+; window,0
+; These are the 2nd order polynomial fits to the edge
+; s=size(www,/dim)
+; cgwindow,wxsize=s[0],wysize=s[1],/free
+; cgimage,rim+www,/k,title='2nd order polynomial fit overlayed on actual mask image',/axes,/window,background=0
+jimage,rim+www,title='2nd order polynomial fit overlayed on actual mask image'
 
-!p.multi=[0,1,3]
-plot,a[1,30:100],psym=-7,ys=3
-oplot,b[1,30:100],psym=-7,color=!red
-plot,a[1,30:100],psym=-7,ys=3
-oplot,c[1,30:100],psym=-7,color=!green 
-plot,a[1,30:100],psym=-7,ys=3
-oplot,d[1,30:100],psym=-7,color=!cyan
-!p.multi=0
+; window,1
+; this is the edge as determined by shift_diff
+; cgwindow,wxsize=(size(b,/dim))[0],wysize=(size(b,/dim))[1],/free
+; cgimage,b,/k,title='edges as determined by shift_diff',/window,/axes,background=10
+
+jimage,b,title='edges as determined by shift_diff'
+
+
+; wtf is below?
+; !p.multi=[0,1,3]
+; plot,a[1,30:100],psym=-7,ys=3
+; oplot,b[1,30:100],psym=-7,color=!red
+; plot,a[1,30:100],psym=-7,ys=3
+; oplot,c[1,30:100],psym=-7,color=!green 
+; plot,a[1,30:100],psym=-7,ys=3
+; oplot,d[1,30:100],psym=-7,color=!cyan
+; !p.multi=0
 
 
 window,2
-plot,float(rim[1,*])-max(rim[1,*])/2,psym=-7           
+plot,float(rim[1,*])-max(rim[1,*])/2,psym=-7,title='white = slat pixels, green = shift_diff of mask'
 oplot,(shift_diff(rim,dir=1))[1,*],color=!green,psym=-4
 
 

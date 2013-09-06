@@ -1,0 +1,12 @@
+\select@language {english}
+\select@language {english}
+\contentsline {section}{\numberline {1}Getting Started}{1}{section.1}
+\contentsline {subsection}{\numberline {1.1}Setting up the Proper Tools}{1}{subsection.1.1}
+\contentsline {section}{\numberline {2}Downloading Tools}{1}{section.2}
+\contentsline {section}{\numberline {3}Installing Tools}{1}{section.3}
+\contentsline {subsection}{\numberline {3.1}Compiling ListCameras for \S \ref {hto}}{2}{subsection.3.1}
+\contentsline {subsection}{\numberline {3.2}Compiling Other Executables}{2}{subsection.3.2}
+\contentsline {section}{\numberline {4}Networking}{2}{section.4}
+\contentsline {subsection}{\numberline {4.1}Steps to Connect to Camera}{2}{subsection.4.1}
+\contentsline {subsection}{\numberline {4.2}Connecting to Camera}{3}{subsection.4.2}
+\contentsline {subsection}{\numberline {4.3}MTU}{3}{subsection.4.3}

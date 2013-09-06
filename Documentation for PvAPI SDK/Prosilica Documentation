@@ -1,0 +1,52 @@
+Prosilica Documentation
+by Jeren Suzuki
+
+
+make it a pdf with typewriter parts for code
+
+
+A guide on how to install the Prosilica GigE PvAPI SDK
+
+You're running Ubuntu so download:
+http://www.alliedvisiontec.com/fileadmin/content/PDF/Software/Prosilica_software/Prosilica_SDK/AVT_GigE_SDK_Linux.tgz
+
+cd into the directory you downloaded it and untar it with:
+tar xvf AVT_GigE_SDK_Linux.tgz
+
+Next, download wxGTK >= 2.6 from:
+http://www.wxwidgets.org/downloads/
+
+cd into the directory you downloaded it and untar with:
+tar xvf wxGTK-2.8.12.tar.gz
+
+cd into the wxGTK-2.8.12 folder you untar'ed and enter in Terminal
+mkdir static
+cd static
+../configure --enable-shared=no --enable-shatic=yes --enable-unicode=yes --prefix=$PWD
+make
+
+cd out of the wxGTK and cd into the AVT GigE SDK directory
+
+cd examples
+nano ARCH
+
+change:
+CC = g++-{CVER}
+into
+CC = g++
+
+control+o to write, control+x to quit. 
+
+cd into the SampleViewer folder
+
+nano Makefile
+
+change the WX_DIR to the location of the static folder in wxGTK-2.8.12
+
+same deal, write and exit
+
+type 
+make sample 
+and it should make a working executable called SampleViewer. type
+make install
+and it should move the file into ../../bin-pc/x64 

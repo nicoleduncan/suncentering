@@ -1,0 +1,137 @@
+% I hope this turns out well. 
+\documentclass[10pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage[english]{isodate}
+\usepackage[parfill]{parskip}
+\usepackage{microtype}
+\usepackage[colorlinks=true,urlcolor=blue,breaklinks]{hyperref}
+\usepackage{enumerate}
+\usepackage{fullpage}
+
+
+% Enable the thing that allows line broken href's
+
+
+\title{Prosilica GiGE PvAPI SDK Documentation}
+\author{Jeren Suzuki}
+\date{Last Edited \today}
+
+\begin{document}
+
+\maketitle
+\pagenumbering{Roman}
+\tableofcontents
+\newpage
+\pagenumbering{arabic}
+
+
+\section{Getting Started}
+\subsection{Setting up the Proper Tools}
+
+Currently, Ubuntu is the primary supported Linux OS\footnote{http://www.alliedvisiontec.com/us/products/software/windows/avt-pvapi-sdk.html} and if possible, should be used. While this guide is centered around Ubuntu, similar commands can be used to get the SDK to work on other platforms. Furthermore, make sure that the GCC version is greater than 4.1. You will also need:
+
+\begin{enumerate}
+    \item GTK$+$ $\ge$ 2.0
+    \item glib-2.0 $\ge$ 2.12.0
+    \item atk $\ge$ 1.9.0
+    \item pango $\ge$ 1.12.0
+    \item cairo $\ge$ 1.2.0
+\end{enumerate}
+
+\section{Downloading Tools}
+Download:
+
+
+\href{http://www.alliedvisiontec.com/fileadmin/content/PDF/Software/
+Prosilica_software/Prosilica\_SDK/AVT_GigE\_SDK_Linux.tgz}{\texttt{http://www.alliedvisiontec.com/fileadmin/content/PDF/Software/\\ 
+Prosilica\_software/Prosilica\_SDK/AVT\_GigE\_SDK\_Linux.tgz}}
+
+
+and wxGTK with a version number of at least 2.6 from:
+
+\href{http://www.wxwidgets.org/downloads/}{\texttt{http://www.wxwidgets.org/downloads/}}\footnote{This is needed for the SampleViewer program later on. While this program is not necessary in order to use the camera, it does help to see what your pictures will look like so you can focus the lens appropriately and ensure that the camera is pointed in the right direction.}
+
+\section{Installing Tools}
+
+\texttt{cd} into the folder where you have downloaded the two previous files and untar them with:
+
+\texttt{tar xvf AVT\_GigE\_SDK\_Linux.tgz\\
+tar xvf wxGTK-2.8.12.tar.gz}\\
+
+
+\texttt{cd} into the wxGTK-2.8.12\footnote{The version number at the time of writing is 2.8.12, mileage may vary.} folder you untar'ed and enter in Terminal:
+
+\texttt{mkdir static \\
+cd static \\
+../configure --enable-shared=no --enable-static=yes --enable-unicode=yes --prefix=\$PWD\\
+make
+%make install?
+}
+
+\texttt{cd} out of the wxGTK-2.8.12 folder and \texttt{cd} into the AVT GigE SDK directory.
+
+\texttt{cd examples\\
+nano ARCH}\footnote{Or use whatever text editor you prefer, vi, emacs, gedit, etc.}\\
+
+\newpage
+
+Edit the following lines:\\
+\texttt{CC = g++-\{CVER\}}\\
+into\\
+\texttt{CC = g++}\\
+
+Save the file and \texttt{cd} into the SampleViewer folder\\
+\texttt{nano Makefile}
+
+Change the \texttt{WX\_DIR} to the location of the static folder in wxGTK-2.8.12
+
+e.g.,\\
+\texttt{WX\_DIR=/mydisks/home/jsuzuki/wxGTK-2.8.12/static}\\
+
+Once this has been changed,\\
+\texttt{make sample}\\
+and it should make a working executable called SampleViewer.\\
+\texttt{make install}\\
+to install the executable and it should move the file into \texttt{../../bin-pc/x64} if you are running on a 64-bit OS or  \texttt{../../bin-pc/x86} if you are running on a 32-bit OS.
+
+\subsection{Compiling ListCameras for \S\ref{hto}}
+Starting from the AVT GigE SDK folder, \texttt{cd} into examples/ListCameras and enter\\
+\texttt{make sample}\\
+\texttt{make install}\\
+
+This will be needed later.
+
+\subsection{Compiling Other Executables}
+Compiling any of the other executables is as easy as \texttt{cd}'ing into that directory and:\\
+\texttt{make sample}\\
+\texttt{make install}
+
+\section{Networking}
+Once you have the tools to access the camera, you'll need to find the camera on the network. The camera comes with it's own built-in IP that cannot be changed (As far as I know). You will have to change your network preferences to match that of the camera. 
+
+If you are interested in setting the camera up with the network, see \S\ref{jcon}.\\
+If you are interested in the steps leading up to connecting the camera, see \S\ref{hto}.
+
+
+\subsection{Steps to Connect to Camera}\label{hto}
+Compile \texttt{ListCameras} as per the instructions above and \texttt{cd} into a directory with a working \texttt{ListCameras} executable. Then:\\
+\begin{enumerate}
+\item \texttt{sudo ifconfig eth0 192.168.123.1 netmask 255.255.255.0}
+\item \texttt{sudo ifconfig tcpdump -n src port 3956 -i eth0}\footnote{Replace \texttt{eth0} with your network interface adapter name from \texttt{ifconfig -a}}
+\item \texttt{./ListCameras}
+\end{enumerate}
+
+You will be prompted for your password, enter it normally. Step 1 sets the computer to manually have an IP of 192.168.123.1 on the netmask 255.255.255.0. An important note is that the netmask and IP must correlate to each other\footnote{http://en.wikipedia.org/wiki/Subnetwork}. Step 2 monitors data on the network and sees where information is being used through which addresses. Step 3 is a program supplied by the PvAPI SDK and which looks on the network for any cameras. It basically pings each address on the subnet and sees if any cameras respond. After running Step 2, an IP should appear on the terminal line. e.g., 169.254.66.255
+
+\subsection{Connecting to Camera}\label{jcon}
+run:\\
+\texttt{sudo ifconfig eth0 169.254.66.99 netmask 255.255.0.0}\\
+
+This sets the eth0 interface to the above settings. The first three numbers of the IP address (169, 254, 66) must be the same for both the camera and the computer. The last number is just the identifier on the network and requires that no two numbers are being used simultaneously. 
+
+\subsection{MTU}
+The original PvAPI documentation recommends having an ethernet card capable of Jumbo Frames, which correspond to an MTU value of 9000 or higher. Typically 9000. While our ethernet card is incapable of having an MTU higher than 1500, we see no image quality degradation or loss of data with our current setup. While we may explore more frames/second in the future and run into problems with MTU throttling, that does not concern us at this time.
+
+
+\end{document}

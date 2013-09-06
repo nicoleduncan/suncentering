@@ -142,7 +142,7 @@ window,2
 cgimage,ztmp,/k
 
 
-
+stop
 idedfids = idfids(best4)
 
 

@@ -165,7 +165,7 @@ window,2
 cgimage,ztmp,/k;,/display,output='best4fiducials.eps'
 
 
-
+stop
 idedfids = idfids(best4,limbfittedcentroids)
 
 ; cgimage,startimage[limbfittedcentroids[0].limbxpos- !param.crop_box:limbfittedcentroids[0].limbxpos+ !param.crop_box,limbfittedcentroids[0].limbypos- !param.crop_box:limbfittedcentroids[0].limbypos+ !param.crop_box],output='tritest_reg1.eps',/k,/display
