@@ -1,12 +1,15 @@
 \BOOKMARK [1][-]{section*.1}{Introduction}{}% 1
 \BOOKMARK [1][-]{section.1}{Data Acquisition}{}% 2
 \BOOKMARK [2][-]{subsection.1.1}{Setting up image}{section.1}% 3
-\BOOKMARK [1][-]{section.2}{Handling 2D Image}{}% 4
+\BOOKMARK [1][-]{section.2}{Handling The 2D Image}{}% 4
 \BOOKMARK [2][-]{subsection.2.1}{File Formats}{section.2}% 5
 \BOOKMARK [3][-]{subsubsection.2.1.1}{Specific to Photos from a DLSR}{subsection.2.1}% 6
-\BOOKMARK [1][-]{section.3}{Skimming the Top Off}{}% 7
-\BOOKMARK [1][-]{section.4}{Deciding Whether or Not to Use Image}{}% 8
-\BOOKMARK [1][-]{section.5}{Finding Centers of Sun\(s\)}{}% 9
-\BOOKMARK [2][-]{subsection.5.1}{Thresholds}{section.5}% 10
-\BOOKMARK [1][-]{section.6}{Finding Fiducial Positions}{}% 11
-\BOOKMARK [1][-]{section.7}{Miscellaneous}{}% 12
+\BOOKMARK [2][-]{subsection.2.2}{Finding Region Number}{section.2}% 7
+\BOOKMARK [1][-]{section.3}{Skimming the Top Off}{}% 8
+\BOOKMARK [1][-]{section.4}{Deciding Whether or Not to Keep Image}{}% 9
+\BOOKMARK [1][-]{section.5}{Finding Centers of Sun\(s\)}{}% 10
+\BOOKMARK [2][-]{subsection.5.1}{Thresholds}{section.5}% 11
+\BOOKMARK [1][-]{section.6}{Finding Fiducial Positions}{}% 12
+\BOOKMARK [2][-]{subsection.6.1}{Subpixel Fiducial Positions}{section.6}% 13
+\BOOKMARK [1][-]{section.7}{Fiducial Identification}{}% 14
+\BOOKMARK [1][-]{section.8}{Miscellaneous}{}% 15

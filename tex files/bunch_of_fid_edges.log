@@ -1,12 +1,9 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013) (format=pdflatex 2013.8.23)  27 AUG 2013 17:19
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013) (format=pdflatex 2013.9.3)  11 SEP 2013 09:45
 entering extended mode
  \write18 enabled.
  %&-line parsing enabled.
-**"/Users/jerensuzuki/Documents/suncentering/tex files copy/bunch_of_fid_edges.
-tex"
-
-(/Users/jerensuzuki/Documents/suncentering/tex files copy/bunch_of_fid_edges.te
-x
+**"/Users/jerensuzuki/Documents/suncentering/tex files/bunch_of_fid_edges.tex"
+(/Users/jerensuzuki/Documents/suncentering/tex files/bunch_of_fid_edges.tex
 LaTeX2e <2011/06/27>
 Babel <3.9f> and hyphenation patterns for 78 languages loaded.
 (/usr/local/texlive/2013/texmf-dist/tex/latex/nag/nag.sty
@@ -500,15 +497,15 @@ Style option: `fancyvrb' v2.7a, with DG/SPQR fixes, and firstline=lastline fix
 \lst@maxwidth=\dimen154
 
 (/usr/local/texlive/2013/texmf-dist/tex/latex/listings/lstmisc.sty
-File: lstmisc.sty 2013/08/05 1.5a (Carsten Heinz)
+File: lstmisc.sty 2013/08/26 1.5b (Carsten Heinz)
 \c@lstnumber=\count141
 \lst@skipnumbers=\count142
 \lst@framebox=\box35
 )
 (/usr/local/texlive/2013/texmf-dist/tex/latex/listings/listings.cfg
-File: listings.cfg 2013/08/05 1.5a listings configuration
+File: listings.cfg 2013/08/26 1.5b listings configuration
 ))
-Package: listings 2013/08/05 1.5a (Carsten Heinz)
+Package: listings 2013/08/26 1.5b (Carsten Heinz)
 
 (/usr/local/texlive/2013/texmf-dist/tex/latex/caption/caption.sty
 Package: caption 2013/05/02 v3.3-89 Customizing captions (AR)
@@ -548,30 +545,30 @@ File: microtype.cfg 2013/05/23 v2.5a microtype main configuration file (RS)
 (./bunch_of_fid_edges.aux)
 \openout1 = `bunch_of_fid_edges.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 36.
-LaTeX Font Info:    ... okay on input line 36.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 36.
-LaTeX Font Info:    ... okay on input line 36.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 36.
-LaTeX Font Info:    ... okay on input line 36.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 36.
-LaTeX Font Info:    ... okay on input line 36.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 36.
-LaTeX Font Info:    ... okay on input line 36.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 36.
-LaTeX Font Info:    ... okay on input line 36.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 36.
-LaTeX Font Info:    ... okay on input line 36.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 35.
+LaTeX Font Info:    ... okay on input line 35.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 35.
+LaTeX Font Info:    ... okay on input line 35.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 35.
+LaTeX Font Info:    ... okay on input line 35.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 35.
+LaTeX Font Info:    ... okay on input line 35.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 35.
+LaTeX Font Info:    ... okay on input line 35.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 35.
+LaTeX Font Info:    ... okay on input line 35.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 35.
+LaTeX Font Info:    ... okay on input line 35.
 Package nag Info: Command \frontmatter not defined, skipping amendment on input
- line 36.
+ line 35.
 Package nag Info: Command \mainmatter not defined, skipping amendment on input 
-line 36.
+line 35.
 Package nag Info: Command \backmatter not defined, skipping amendment on input 
-line 36.
+line 35.
 Package nag Info: Command \RaggedLeft not defined, skipping amendment on input 
-line 36.
+line 35.
 Package nag Info: Command \RaggedRight not defined, skipping amendment on input
- line 36.
+ line 35.
 
 (/usr/local/texlive/2013/texmf-dist/tex/context/base/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
@@ -637,7 +634,7 @@ File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
 e
 ))
 \AtBeginShipoutBox=\box37
-Package hyperref Info: Link coloring ON on input line 36.
+Package hyperref Info: Link coloring ON on input line 35.
 
 (/usr/local/texlive/2013/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2012/10/27 v2.43 Cross-referencing by name of section
@@ -647,9 +644,9 @@ Package: gettitlestring 2010/12/03 v1.4 Cleanup title references (HO)
 )
 \c@section@level=\count154
 )
-LaTeX Info: Redefining \ref on input line 36.
-LaTeX Info: Redefining \pageref on input line 36.
-LaTeX Info: Redefining \nameref on input line 36.
+LaTeX Info: Redefining \ref on input line 35.
+LaTeX Info: Redefining \pageref on input line 35.
+LaTeX Info: Redefining \nameref on input line 35.
 
 (./bunch_of_fid_edges.out) (./bunch_of_fid_edges.out)
 \@outlinefile=\write4
@@ -659,7 +656,7 @@ Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: floatrow package is loaded.
 Package caption Info: End \AtBeginDocument code.
 \c@lstlisting=\count155
-LaTeX Info: Redefining \microtypecontext on input line 36.
+LaTeX Info: Redefining \microtypecontext on input line 35.
 Package microtype Info: Generating PDF output.
 Package microtype Info: Character protrusion enabled (level 2),
 (microtype)             factor: 1100.
@@ -685,10 +682,10 @@ Package microtype Warning: \nonfrenchspacing is active. Adjustment of
 (microtype)                to your preamble.
 
 Package nag Info: Command \hc@caption not defined, skipping amendment on input 
-line 36.
+line 35.
 Package nag Info: Command \topcaption not defined, skipping amendment on input 
-line 36.
-LaTeX Font Info:    Try loading font information for T1+cmss on input line 39.
+line 35.
+LaTeX Font Info:    Try loading font information for T1+cmss on input line 38.
 (/usr/local/texlive/2013/texmf-dist/tex/latex/base/t1cmss.fd
 File: t1cmss.fd 1999/05/25 v2.5h Standard LaTeX font definitions
 )
@@ -696,7 +693,7 @@ Package microtype Info: Loading generic settings for font family
 (microtype)             `cmss' (encoding: T1).
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
-LaTeX Font Info:    Try loading font information for U+msa on input line 39.
+LaTeX Font Info:    Try loading font information for U+msa on input line 38.
 
 (/usr/local/texlive/2013/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
@@ -704,7 +701,7 @@ File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 (/usr/local/texlive/2013/texmf-dist/tex/latex/microtype/mt-msa.cfg
 File: mt-msa.cfg 2006/02/04 v1.1 microtype config. file: AMS symbols (a) (RS)
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 39.
+LaTeX Font Info:    Try loading font information for U+msb on input line 38.
 
 (/usr/local/texlive/2013/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
@@ -712,7 +709,7 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 (/usr/local/texlive/2013/texmf-dist/tex/latex/microtype/mt-msb.cfg
 File: mt-msb.cfg 2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
 )
-Package tocbasic Info: character protrusion at toc deactivated on input line 40
+Package tocbasic Info: character protrusion at toc deactivated on input line 39
 .
 
 (./bunch_of_fid_edges.toc)
@@ -728,19 +725,19 @@ File: ../plots_tables_images/datcrop.png Graphic file (type png)
 
 <use ../plots_tables_images/datcrop.png>
 Package pdftex.def Info: ../plots_tables_images/datcrop.png used on input line 
-86.
+85.
 (pdftex.def)             Requested size: 241.84846pt x 148.30232pt.
 File: ../plots_tables_images/datcrop.png Graphic file (type png)
 
 <use ../plots_tables_images/datcrop.png>
 Package pdftex.def Info: ../plots_tables_images/datcrop.png used on input line 
-86.
+85.
 (pdftex.def)             Requested size: 241.84846pt x 148.30232pt.
 File: ../plots_tables_images/datcrop.png Graphic file (type png)
 
 <use ../plots_tables_images/datcrop.png>
 Package pdftex.def Info: ../plots_tables_images/datcrop.png used on input line 
-86.
+85.
 (pdftex.def)             Requested size: 241.84846pt x 148.30232pt.
 
 <../plots_tables_images/datcrop_color.png, id=36, 2300.595pt x 1409.265pt>
@@ -748,96 +745,96 @@ File: ../plots_tables_images/datcrop_color.png Graphic file (type png)
 
 <use ../plots_tables_images/datcrop_color.png>
 Package pdftex.def Info: ../plots_tables_images/datcrop_color.png used on input
- line 86.
+ line 85.
 (pdftex.def)             Requested size: 241.84846pt x 148.13847pt.
 
-Overfull \hbox (10.0pt too wide) in paragraph at lines 86--86
+Overfull \hbox (10.0pt too wide) in paragraph at lines 85--85
  [][] 
  []
 
 File: ../plots_tables_images/datcrop_color.png Graphic file (type png)
 <use ../plots_tables_images/datcrop_color.png>
 Package pdftex.def Info: ../plots_tables_images/datcrop_color.png used on input
- line 86.
+ line 85.
 (pdftex.def)             Requested size: 241.84846pt x 148.13847pt.
 
-Overfull \hbox (10.0pt too wide) in paragraph at lines 86--86
+Overfull \hbox (10.0pt too wide) in paragraph at lines 85--85
  [][] 
  []
 
 File: ../plots_tables_images/datcrop.png Graphic file (type png)
 <use ../plots_tables_images/datcrop.png>
 Package pdftex.def Info: ../plots_tables_images/datcrop.png used on input line 
-86.
+85.
 (pdftex.def)             Requested size: 241.84846pt x 148.30232pt.
 File: ../plots_tables_images/datcrop.png Graphic file (type png)
 
 <use ../plots_tables_images/datcrop.png>
 Package pdftex.def Info: ../plots_tables_images/datcrop.png used on input line 
-86.
+85.
 (pdftex.def)             Requested size: 241.84846pt x 148.30232pt.
 File: ../plots_tables_images/datcrop.png Graphic file (type png)
 
 <use ../plots_tables_images/datcrop.png>
 Package pdftex.def Info: ../plots_tables_images/datcrop.png used on input line 
-86.
+85.
 (pdftex.def)             Requested size: 241.84846pt x 148.30232pt.
 File: ../plots_tables_images/datcrop_color.png Graphic file (type png)
 
 <use ../plots_tables_images/datcrop_color.png>
 Package pdftex.def Info: ../plots_tables_images/datcrop_color.png used on input
- line 86.
+ line 85.
 (pdftex.def)             Requested size: 241.84846pt x 148.13847pt.
 
-Overfull \hbox (10.0pt too wide) in paragraph at lines 86--86
+Overfull \hbox (10.0pt too wide) in paragraph at lines 85--85
  [][] 
  []
 
 File: ../plots_tables_images/datcrop_color.png Graphic file (type png)
 <use ../plots_tables_images/datcrop_color.png>
 Package pdftex.def Info: ../plots_tables_images/datcrop_color.png used on input
- line 86.
+ line 85.
 (pdftex.def)             Requested size: 241.84846pt x 148.13847pt.
 
-Overfull \hbox (10.0pt too wide) in paragraph at lines 86--86
+Overfull \hbox (10.0pt too wide) in paragraph at lines 85--85
  [][] 
  []
 
 File: ../plots_tables_images/datcrop.png Graphic file (type png)
 <use ../plots_tables_images/datcrop.png>
 Package pdftex.def Info: ../plots_tables_images/datcrop.png used on input line 
-86.
+85.
 (pdftex.def)             Requested size: 241.84846pt x 148.30232pt.
 File: ../plots_tables_images/datcrop.png Graphic file (type png)
 
 <use ../plots_tables_images/datcrop.png>
 Package pdftex.def Info: ../plots_tables_images/datcrop.png used on input line 
-86.
+85.
 (pdftex.def)             Requested size: 241.84846pt x 148.30232pt.
 File: ../plots_tables_images/datcrop.png Graphic file (type png)
 
 <use ../plots_tables_images/datcrop.png>
 Package pdftex.def Info: ../plots_tables_images/datcrop.png used on input line 
-86.
+85.
 (pdftex.def)             Requested size: 241.84846pt x 148.30232pt.
 File: ../plots_tables_images/datcrop_color.png Graphic file (type png)
 
 <use ../plots_tables_images/datcrop_color.png>
 Package pdftex.def Info: ../plots_tables_images/datcrop_color.png used on input
- line 86.
+ line 85.
 (pdftex.def)             Requested size: 241.84846pt x 148.13847pt.
 
-Overfull \hbox (10.0pt too wide) in paragraph at lines 86--86
+Overfull \hbox (10.0pt too wide) in paragraph at lines 85--85
  [][] 
  []
 
 File: ../plots_tables_images/datcrop_color.png Graphic file (type png)
 <use ../plots_tables_images/datcrop_color.png>
 Package pdftex.def Info: ../plots_tables_images/datcrop_color.png used on input
- line 86.
+ line 85.
 (pdftex.def)             Requested size: 241.84846pt x 148.13847pt.
 
-Overfull \hbox (10.0pt too wide) in paragraph at lines 86--86
+Overfull \hbox (10.0pt too wide) in paragraph at lines 85--85
  [][] 
  []
 
@@ -850,7 +847,7 @@ ted-to.pdf>
 (epstopdf)                    size: 15426 bytes
 (epstopdf)             Command: <epstopdf --outfile=../plots_tables_images/botl
 eft0-eps-converted-to.pdf ../plots_tables_images/botleft0.eps>
-(epstopdf)             \includegraphics on input line 130.
+(epstopdf)             \includegraphics on input line 129.
 Package epstopdf Info: Output file is already uptodate.
 
 <../plots_tables_images/botleft0-eps-converted-to.pdf, id=49, 505.89pt x 867.24
@@ -859,7 +856,7 @@ File: ../plots_tables_images/botleft0-eps-converted-to.pdf Graphic file (type p
 df)
  <use ../plots_tables_images/botleft0-eps-converted-to.pdf>
 Package pdftex.def Info: ../plots_tables_images/botleft0-eps-converted-to.pdf u
-sed on input line 130.
+sed on input line 129.
 (pdftex.def)             Requested size: 241.84846pt x 414.60312pt.
 Package epstopdf Info: Source file: <../plots_tables_images/botleft0.eps>
 (epstopdf)                    date: 2013-04-17 15:30:20
@@ -870,14 +867,14 @@ ted-to.pdf>
 (epstopdf)                    size: 15426 bytes
 (epstopdf)             Command: <epstopdf --outfile=../plots_tables_images/botl
 eft0-eps-converted-to.pdf ../plots_tables_images/botleft0.eps>
-(epstopdf)             \includegraphics on input line 130.
+(epstopdf)             \includegraphics on input line 129.
 Package epstopdf Info: Output file is already uptodate.
 File: ../plots_tables_images/botleft0-eps-converted-to.pdf Graphic file (type p
 df)
 
 <use ../plots_tables_images/botleft0-eps-converted-to.pdf>
 Package pdftex.def Info: ../plots_tables_images/botleft0-eps-converted-to.pdf u
-sed on input line 130.
+sed on input line 129.
 (pdftex.def)             Requested size: 241.84846pt x 414.60312pt.
 Package epstopdf Info: Source file: <../plots_tables_images/botleft0.eps>
 (epstopdf)                    date: 2013-04-17 15:30:20
@@ -888,14 +885,14 @@ ted-to.pdf>
 (epstopdf)                    size: 15426 bytes
 (epstopdf)             Command: <epstopdf --outfile=../plots_tables_images/botl
 eft0-eps-converted-to.pdf ../plots_tables_images/botleft0.eps>
-(epstopdf)             \includegraphics on input line 130.
+(epstopdf)             \includegraphics on input line 129.
 Package epstopdf Info: Output file is already uptodate.
 File: ../plots_tables_images/botleft0-eps-converted-to.pdf Graphic file (type p
 df)
 
 <use ../plots_tables_images/botleft0-eps-converted-to.pdf>
 Package pdftex.def Info: ../plots_tables_images/botleft0-eps-converted-to.pdf u
-sed on input line 130.
+sed on input line 129.
 (pdftex.def)             Requested size: 241.84846pt x 414.60312pt.
 Package epstopdf Info: Source file: <../plots_tables_images/botleft1.eps>
 (epstopdf)                    date: 2013-04-17 15:30:20
@@ -906,7 +903,7 @@ ted-to.pdf>
 (epstopdf)                    size: 15588 bytes
 (epstopdf)             Command: <epstopdf --outfile=../plots_tables_images/botl
 eft1-eps-converted-to.pdf ../plots_tables_images/botleft1.eps>
-(epstopdf)             \includegraphics on input line 130.
+(epstopdf)             \includegraphics on input line 129.
 Package epstopdf Info: Output file is already uptodate.
 
 <../plots_tables_images/botleft1-eps-converted-to.pdf, id=50, 505.89pt x 867.24
@@ -915,10 +912,10 @@ File: ../plots_tables_images/botleft1-eps-converted-to.pdf Graphic file (type p
 df)
  <use ../plots_tables_images/botleft1-eps-converted-to.pdf>
 Package pdftex.def Info: ../plots_tables_images/botleft1-eps-converted-to.pdf u
-sed on input line 130.
+sed on input line 129.
 (pdftex.def)             Requested size: 241.84846pt x 414.60312pt.
 
-Overfull \hbox (10.0pt too wide) in paragraph at lines 130--130
+Overfull \hbox (10.0pt too wide) in paragraph at lines 129--129
  [][] 
  []
 
@@ -931,16 +928,16 @@ ted-to.pdf>
 (epstopdf)                    size: 15588 bytes
 (epstopdf)             Command: <epstopdf --outfile=../plots_tables_images/botl
 eft1-eps-converted-to.pdf ../plots_tables_images/botleft1.eps>
-(epstopdf)             \includegraphics on input line 130.
+(epstopdf)             \includegraphics on input line 129.
 Package epstopdf Info: Output file is already uptodate.
 File: ../plots_tables_images/botleft1-eps-converted-to.pdf Graphic file (type p
 df)
 <use ../plots_tables_images/botleft1-eps-converted-to.pdf>
 Package pdftex.def Info: ../plots_tables_images/botleft1-eps-converted-to.pdf u
-sed on input line 130.
+sed on input line 129.
 (pdftex.def)             Requested size: 241.84846pt x 414.60312pt.
 
-Overfull \hbox (10.0pt too wide) in paragraph at lines 130--130
+Overfull \hbox (10.0pt too wide) in paragraph at lines 129--129
  [][] 
  []
 
@@ -953,13 +950,13 @@ ted-to.pdf>
 (epstopdf)                    size: 15426 bytes
 (epstopdf)             Command: <epstopdf --outfile=../plots_tables_images/botl
 eft0-eps-converted-to.pdf ../plots_tables_images/botleft0.eps>
-(epstopdf)             \includegraphics on input line 130.
+(epstopdf)             \includegraphics on input line 129.
 Package epstopdf Info: Output file is already uptodate.
 File: ../plots_tables_images/botleft0-eps-converted-to.pdf Graphic file (type p
 df)
 <use ../plots_tables_images/botleft0-eps-converted-to.pdf>
 Package pdftex.def Info: ../plots_tables_images/botleft0-eps-converted-to.pdf u
-sed on input line 130.
+sed on input line 129.
 (pdftex.def)             Requested size: 241.84846pt x 414.60312pt.
 Package epstopdf Info: Source file: <../plots_tables_images/botleft0.eps>
 (epstopdf)                    date: 2013-04-17 15:30:20
@@ -970,14 +967,14 @@ ted-to.pdf>
 (epstopdf)                    size: 15426 bytes
 (epstopdf)             Command: <epstopdf --outfile=../plots_tables_images/botl
 eft0-eps-converted-to.pdf ../plots_tables_images/botleft0.eps>
-(epstopdf)             \includegraphics on input line 130.
+(epstopdf)             \includegraphics on input line 129.
 Package epstopdf Info: Output file is already uptodate.
 File: ../plots_tables_images/botleft0-eps-converted-to.pdf Graphic file (type p
 df)
 
 <use ../plots_tables_images/botleft0-eps-converted-to.pdf>
 Package pdftex.def Info: ../plots_tables_images/botleft0-eps-converted-to.pdf u
-sed on input line 130.
+sed on input line 129.
 (pdftex.def)             Requested size: 241.84846pt x 414.60312pt.
 Package epstopdf Info: Source file: <../plots_tables_images/botleft0.eps>
 (epstopdf)                    date: 2013-04-17 15:30:20
@@ -988,14 +985,14 @@ ted-to.pdf>
 (epstopdf)                    size: 15426 bytes
 (epstopdf)             Command: <epstopdf --outfile=../plots_tables_images/botl
 eft0-eps-converted-to.pdf ../plots_tables_images/botleft0.eps>
-(epstopdf)             \includegraphics on input line 130.
+(epstopdf)             \includegraphics on input line 129.
 Package epstopdf Info: Output file is already uptodate.
 File: ../plots_tables_images/botleft0-eps-converted-to.pdf Graphic file (type p
 df)
 
 <use ../plots_tables_images/botleft0-eps-converted-to.pdf>
 Package pdftex.def Info: ../plots_tables_images/botleft0-eps-converted-to.pdf u
-sed on input line 130.
+sed on input line 129.
 (pdftex.def)             Requested size: 241.84846pt x 414.60312pt.
 Package epstopdf Info: Source file: <../plots_tables_images/botleft1.eps>
 (epstopdf)                    date: 2013-04-17 15:30:20
@@ -1006,17 +1003,17 @@ ted-to.pdf>
 (epstopdf)                    size: 15588 bytes
 (epstopdf)             Command: <epstopdf --outfile=../plots_tables_images/botl
 eft1-eps-converted-to.pdf ../plots_tables_images/botleft1.eps>
-(epstopdf)             \includegraphics on input line 130.
+(epstopdf)             \includegraphics on input line 129.
 Package epstopdf Info: Output file is already uptodate.
 File: ../plots_tables_images/botleft1-eps-converted-to.pdf Graphic file (type p
 df)
 
 <use ../plots_tables_images/botleft1-eps-converted-to.pdf>
 Package pdftex.def Info: ../plots_tables_images/botleft1-eps-converted-to.pdf u
-sed on input line 130.
+sed on input line 129.
 (pdftex.def)             Requested size: 241.84846pt x 414.60312pt.
 
-Overfull \hbox (10.0pt too wide) in paragraph at lines 130--130
+Overfull \hbox (10.0pt too wide) in paragraph at lines 129--129
  [][] 
  []
 
@@ -1029,16 +1026,16 @@ ted-to.pdf>
 (epstopdf)                    size: 15588 bytes
 (epstopdf)             Command: <epstopdf --outfile=../plots_tables_images/botl
 eft1-eps-converted-to.pdf ../plots_tables_images/botleft1.eps>
-(epstopdf)             \includegraphics on input line 130.
+(epstopdf)             \includegraphics on input line 129.
 Package epstopdf Info: Output file is already uptodate.
 File: ../plots_tables_images/botleft1-eps-converted-to.pdf Graphic file (type p
 df)
 <use ../plots_tables_images/botleft1-eps-converted-to.pdf>
 Package pdftex.def Info: ../plots_tables_images/botleft1-eps-converted-to.pdf u
-sed on input line 130.
+sed on input line 129.
 (pdftex.def)             Requested size: 241.84846pt x 414.60312pt.
 
-Overfull \hbox (10.0pt too wide) in paragraph at lines 130--130
+Overfull \hbox (10.0pt too wide) in paragraph at lines 129--129
  [][] 
  []
 
@@ -1051,13 +1048,13 @@ ted-to.pdf>
 (epstopdf)                    size: 15426 bytes
 (epstopdf)             Command: <epstopdf --outfile=../plots_tables_images/botl
 eft0-eps-converted-to.pdf ../plots_tables_images/botleft0.eps>
-(epstopdf)             \includegraphics on input line 130.
+(epstopdf)             \includegraphics on input line 129.
 Package epstopdf Info: Output file is already uptodate.
 File: ../plots_tables_images/botleft0-eps-converted-to.pdf Graphic file (type p
 df)
 <use ../plots_tables_images/botleft0-eps-converted-to.pdf>
 Package pdftex.def Info: ../plots_tables_images/botleft0-eps-converted-to.pdf u
-sed on input line 130.
+sed on input line 129.
 (pdftex.def)             Requested size: 241.84846pt x 414.60312pt.
 Package epstopdf Info: Source file: <../plots_tables_images/botleft0.eps>
 (epstopdf)                    date: 2013-04-17 15:30:20
@@ -1068,14 +1065,14 @@ ted-to.pdf>
 (epstopdf)                    size: 15426 bytes
 (epstopdf)             Command: <epstopdf --outfile=../plots_tables_images/botl
 eft0-eps-converted-to.pdf ../plots_tables_images/botleft0.eps>
-(epstopdf)             \includegraphics on input line 130.
+(epstopdf)             \includegraphics on input line 129.
 Package epstopdf Info: Output file is already uptodate.
 File: ../plots_tables_images/botleft0-eps-converted-to.pdf Graphic file (type p
 df)
 
 <use ../plots_tables_images/botleft0-eps-converted-to.pdf>
 Package pdftex.def Info: ../plots_tables_images/botleft0-eps-converted-to.pdf u
-sed on input line 130.
+sed on input line 129.
 (pdftex.def)             Requested size: 241.84846pt x 414.60312pt.
 Package epstopdf Info: Source file: <../plots_tables_images/botleft0.eps>
 (epstopdf)                    date: 2013-04-17 15:30:20
@@ -1086,14 +1083,14 @@ ted-to.pdf>
 (epstopdf)                    size: 15426 bytes
 (epstopdf)             Command: <epstopdf --outfile=../plots_tables_images/botl
 eft0-eps-converted-to.pdf ../plots_tables_images/botleft0.eps>
-(epstopdf)             \includegraphics on input line 130.
+(epstopdf)             \includegraphics on input line 129.
 Package epstopdf Info: Output file is already uptodate.
 File: ../plots_tables_images/botleft0-eps-converted-to.pdf Graphic file (type p
 df)
 
 <use ../plots_tables_images/botleft0-eps-converted-to.pdf>
 Package pdftex.def Info: ../plots_tables_images/botleft0-eps-converted-to.pdf u
-sed on input line 130.
+sed on input line 129.
 (pdftex.def)             Requested size: 241.84846pt x 414.60312pt.
 Package epstopdf Info: Source file: <../plots_tables_images/botleft1.eps>
 (epstopdf)                    date: 2013-04-17 15:30:20
@@ -1104,17 +1101,17 @@ ted-to.pdf>
 (epstopdf)                    size: 15588 bytes
 (epstopdf)             Command: <epstopdf --outfile=../plots_tables_images/botl
 eft1-eps-converted-to.pdf ../plots_tables_images/botleft1.eps>
-(epstopdf)             \includegraphics on input line 130.
+(epstopdf)             \includegraphics on input line 129.
 Package epstopdf Info: Output file is already uptodate.
 File: ../plots_tables_images/botleft1-eps-converted-to.pdf Graphic file (type p
 df)
 
 <use ../plots_tables_images/botleft1-eps-converted-to.pdf>
 Package pdftex.def Info: ../plots_tables_images/botleft1-eps-converted-to.pdf u
-sed on input line 130.
+sed on input line 129.
 (pdftex.def)             Requested size: 241.84846pt x 414.60312pt.
 
-Overfull \hbox (10.0pt too wide) in paragraph at lines 130--130
+Overfull \hbox (10.0pt too wide) in paragraph at lines 129--129
  [][] 
  []
 
@@ -1127,16 +1124,16 @@ ted-to.pdf>
 (epstopdf)                    size: 15588 bytes
 (epstopdf)             Command: <epstopdf --outfile=../plots_tables_images/botl
 eft1-eps-converted-to.pdf ../plots_tables_images/botleft1.eps>
-(epstopdf)             \includegraphics on input line 130.
+(epstopdf)             \includegraphics on input line 129.
 Package epstopdf Info: Output file is already uptodate.
 File: ../plots_tables_images/botleft1-eps-converted-to.pdf Graphic file (type p
 df)
 <use ../plots_tables_images/botleft1-eps-converted-to.pdf>
 Package pdftex.def Info: ../plots_tables_images/botleft1-eps-converted-to.pdf u
-sed on input line 130.
+sed on input line 129.
 (pdftex.def)             Requested size: 241.84846pt x 414.60312pt.
 
-Overfull \hbox (10.0pt too wide) in paragraph at lines 130--130
+Overfull \hbox (10.0pt too wide) in paragraph at lines 129--129
  [][] 
  []
 
@@ -1149,7 +1146,7 @@ ted-to.pdf>
 (epstopdf)                    size: 17114 bytes
 (epstopdf)             Command: <epstopdf --outfile=../plots_tables_images/botl
 eft2-eps-converted-to.pdf ../plots_tables_images/botleft2.eps>
-(epstopdf)             \includegraphics on input line 171.
+(epstopdf)             \includegraphics on input line 170.
 Package epstopdf Info: Output file is already uptodate.
 
 <../plots_tables_images/botleft2-eps-converted-to.pdf, id=52, 505.89pt x 867.24
@@ -1158,7 +1155,7 @@ File: ../plots_tables_images/botleft2-eps-converted-to.pdf Graphic file (type p
 df)
  <use ../plots_tables_images/botleft2-eps-converted-to.pdf>
 Package pdftex.def Info: ../plots_tables_images/botleft2-eps-converted-to.pdf u
-sed on input line 171.
+sed on input line 170.
 (pdftex.def)             Requested size: 241.84846pt x 414.60312pt.
 Package epstopdf Info: Source file: <../plots_tables_images/botleft2.eps>
 (epstopdf)                    date: 2013-04-17 15:30:20
@@ -1169,14 +1166,14 @@ ted-to.pdf>
 (epstopdf)                    size: 17114 bytes
 (epstopdf)             Command: <epstopdf --outfile=../plots_tables_images/botl
 eft2-eps-converted-to.pdf ../plots_tables_images/botleft2.eps>
-(epstopdf)             \includegraphics on input line 171.
+(epstopdf)             \includegraphics on input line 170.
 Package epstopdf Info: Output file is already uptodate.
 File: ../plots_tables_images/botleft2-eps-converted-to.pdf Graphic file (type p
 df)
 
 <use ../plots_tables_images/botleft2-eps-converted-to.pdf>
 Package pdftex.def Info: ../plots_tables_images/botleft2-eps-converted-to.pdf u
-sed on input line 171.
+sed on input line 170.
 (pdftex.def)             Requested size: 241.84846pt x 414.60312pt.
 Package epstopdf Info: Source file: <../plots_tables_images/botleft2.eps>
 (epstopdf)                    date: 2013-04-17 15:30:20
@@ -1187,14 +1184,14 @@ ted-to.pdf>
 (epstopdf)                    size: 17114 bytes
 (epstopdf)             Command: <epstopdf --outfile=../plots_tables_images/botl
 eft2-eps-converted-to.pdf ../plots_tables_images/botleft2.eps>
-(epstopdf)             \includegraphics on input line 171.
+(epstopdf)             \includegraphics on input line 170.
 Package epstopdf Info: Output file is already uptodate.
 File: ../plots_tables_images/botleft2-eps-converted-to.pdf Graphic file (type p
 df)
 
 <use ../plots_tables_images/botleft2-eps-converted-to.pdf>
 Package pdftex.def Info: ../plots_tables_images/botleft2-eps-converted-to.pdf u
-sed on input line 171.
+sed on input line 170.
 (pdftex.def)             Requested size: 241.84846pt x 414.60312pt.
 Package epstopdf Info: Source file: <../plots_tables_images/botleft3.eps>
 (epstopdf)                    date: 2013-04-17 15:30:20
@@ -1205,7 +1202,7 @@ ted-to.pdf>
 (epstopdf)                    size: 15979 bytes
 (epstopdf)             Command: <epstopdf --outfile=../plots_tables_images/botl
 eft3-eps-converted-to.pdf ../plots_tables_images/botleft3.eps>
-(epstopdf)             \includegraphics on input line 171.
+(epstopdf)             \includegraphics on input line 170.
 Package epstopdf Info: Output file is already uptodate.
 
 <../plots_tables_images/botleft3-eps-converted-to.pdf, id=53, 505.89pt x 867.24
@@ -1214,10 +1211,10 @@ File: ../plots_tables_images/botleft3-eps-converted-to.pdf Graphic file (type p
 df)
  <use ../plots_tables_images/botleft3-eps-converted-to.pdf>
 Package pdftex.def Info: ../plots_tables_images/botleft3-eps-converted-to.pdf u
-sed on input line 171.
+sed on input line 170.
 (pdftex.def)             Requested size: 241.84846pt x 414.60312pt.
 
-Overfull \hbox (10.0pt too wide) in paragraph at lines 171--171
+Overfull \hbox (10.0pt too wide) in paragraph at lines 170--170
  [][] 
  []
 
@@ -1230,16 +1227,16 @@ ted-to.pdf>
 (epstopdf)                    size: 15979 bytes
 (epstopdf)             Command: <epstopdf --outfile=../plots_tables_images/botl
 eft3-eps-converted-to.pdf ../plots_tables_images/botleft3.eps>
-(epstopdf)             \includegraphics on input line 171.
+(epstopdf)             \includegraphics on input line 170.
 Package epstopdf Info: Output file is already uptodate.
 File: ../plots_tables_images/botleft3-eps-converted-to.pdf Graphic file (type p
 df)
 <use ../plots_tables_images/botleft3-eps-converted-to.pdf>
 Package pdftex.def Info: ../plots_tables_images/botleft3-eps-converted-to.pdf u
-sed on input line 171.
+sed on input line 170.
 (pdftex.def)             Requested size: 241.84846pt x 414.60312pt.
 
-Overfull \hbox (10.0pt too wide) in paragraph at lines 171--171
+Overfull \hbox (10.0pt too wide) in paragraph at lines 170--170
  [][] 
  []
 
@@ -1252,13 +1249,13 @@ ted-to.pdf>
 (epstopdf)                    size: 17114 bytes
 (epstopdf)             Command: <epstopdf --outfile=../plots_tables_images/botl
 eft2-eps-converted-to.pdf ../plots_tables_images/botleft2.eps>
-(epstopdf)             \includegraphics on input line 171.
+(epstopdf)             \includegraphics on input line 170.
 Package epstopdf Info: Output file is already uptodate.
 File: ../plots_tables_images/botleft2-eps-converted-to.pdf Graphic file (type p
 df)
 <use ../plots_tables_images/botleft2-eps-converted-to.pdf>
 Package pdftex.def Info: ../plots_tables_images/botleft2-eps-converted-to.pdf u
-sed on input line 171.
+sed on input line 170.
 (pdftex.def)             Requested size: 241.84846pt x 414.60312pt.
 Package epstopdf Info: Source file: <../plots_tables_images/botleft2.eps>
 (epstopdf)                    date: 2013-04-17 15:30:20
@@ -1269,14 +1266,14 @@ ted-to.pdf>
 (epstopdf)                    size: 17114 bytes
 (epstopdf)             Command: <epstopdf --outfile=../plots_tables_images/botl
 eft2-eps-converted-to.pdf ../plots_tables_images/botleft2.eps>
-(epstopdf)             \includegraphics on input line 171.
+(epstopdf)             \includegraphics on input line 170.
 Package epstopdf Info: Output file is already uptodate.
 File: ../plots_tables_images/botleft2-eps-converted-to.pdf Graphic file (type p
 df)
 
 <use ../plots_tables_images/botleft2-eps-converted-to.pdf>
 Package pdftex.def Info: ../plots_tables_images/botleft2-eps-converted-to.pdf u
-sed on input line 171.
+sed on input line 170.
 (pdftex.def)             Requested size: 241.84846pt x 414.60312pt.
 Package epstopdf Info: Source file: <../plots_tables_images/botleft2.eps>
 (epstopdf)                    date: 2013-04-17 15:30:20
@@ -1287,14 +1284,14 @@ ted-to.pdf>
 (epstopdf)                    size: 17114 bytes
 (epstopdf)             Command: <epstopdf --outfile=../plots_tables_images/botl
 eft2-eps-converted-to.pdf ../plots_tables_images/botleft2.eps>
-(epstopdf)             \includegraphics on input line 171.
+(epstopdf)             \includegraphics on input line 170.
 Package epstopdf Info: Output file is already uptodate.
 File: ../plots_tables_images/botleft2-eps-converted-to.pdf Graphic file (type p
 df)
 
 <use ../plots_tables_images/botleft2-eps-converted-to.pdf>
 Package pdftex.def Info: ../plots_tables_images/botleft2-eps-converted-to.pdf u
-sed on input line 171.
+sed on input line 170.
 (pdftex.def)             Requested size: 241.84846pt x 414.60312pt.
 Package epstopdf Info: Source file: <../plots_tables_images/botleft3.eps>
 (epstopdf)                    date: 2013-04-17 15:30:20
@@ -1305,17 +1302,17 @@ ted-to.pdf>
 (epstopdf)                    size: 15979 bytes
 (epstopdf)             Command: <epstopdf --outfile=../plots_tables_images/botl
 eft3-eps-converted-to.pdf ../plots_tables_images/botleft3.eps>
-(epstopdf)             \includegraphics on input line 171.
+(epstopdf)             \includegraphics on input line 170.
 Package epstopdf Info: Output file is already uptodate.
 File: ../plots_tables_images/botleft3-eps-converted-to.pdf Graphic file (type p
 df)
 
 <use ../plots_tables_images/botleft3-eps-converted-to.pdf>
 Package pdftex.def Info: ../plots_tables_images/botleft3-eps-converted-to.pdf u
-sed on input line 171.
+sed on input line 170.
 (pdftex.def)             Requested size: 241.84846pt x 414.60312pt.
 
-Overfull \hbox (10.0pt too wide) in paragraph at lines 171--171
+Overfull \hbox (10.0pt too wide) in paragraph at lines 170--170
  [][] 
  []
 
@@ -1328,16 +1325,16 @@ ted-to.pdf>
 (epstopdf)                    size: 15979 bytes
 (epstopdf)             Command: <epstopdf --outfile=../plots_tables_images/botl
 eft3-eps-converted-to.pdf ../plots_tables_images/botleft3.eps>
-(epstopdf)             \includegraphics on input line 171.
+(epstopdf)             \includegraphics on input line 170.
 Package epstopdf Info: Output file is already uptodate.
 File: ../plots_tables_images/botleft3-eps-converted-to.pdf Graphic file (type p
 df)
 <use ../plots_tables_images/botleft3-eps-converted-to.pdf>
 Package pdftex.def Info: ../plots_tables_images/botleft3-eps-converted-to.pdf u
-sed on input line 171.
+sed on input line 170.
 (pdftex.def)             Requested size: 241.84846pt x 414.60312pt.
 
-Overfull \hbox (10.0pt too wide) in paragraph at lines 171--171
+Overfull \hbox (10.0pt too wide) in paragraph at lines 170--170
  [][] 
  []
 
@@ -1350,13 +1347,13 @@ ted-to.pdf>
 (epstopdf)                    size: 17114 bytes
 (epstopdf)             Command: <epstopdf --outfile=../plots_tables_images/botl
 eft2-eps-converted-to.pdf ../plots_tables_images/botleft2.eps>
-(epstopdf)             \includegraphics on input line 171.
+(epstopdf)             \includegraphics on input line 170.
 Package epstopdf Info: Output file is already uptodate.
 File: ../plots_tables_images/botleft2-eps-converted-to.pdf Graphic file (type p
 df)
 <use ../plots_tables_images/botleft2-eps-converted-to.pdf>
 Package pdftex.def Info: ../plots_tables_images/botleft2-eps-converted-to.pdf u
-sed on input line 171.
+sed on input line 170.
 (pdftex.def)             Requested size: 241.84846pt x 414.60312pt.
 Package epstopdf Info: Source file: <../plots_tables_images/botleft2.eps>
 (epstopdf)                    date: 2013-04-17 15:30:20
@@ -1367,14 +1364,14 @@ ted-to.pdf>
 (epstopdf)                    size: 17114 bytes
 (epstopdf)             Command: <epstopdf --outfile=../plots_tables_images/botl
 eft2-eps-converted-to.pdf ../plots_tables_images/botleft2.eps>
-(epstopdf)             \includegraphics on input line 171.
+(epstopdf)             \includegraphics on input line 170.
 Package epstopdf Info: Output file is already uptodate.
 File: ../plots_tables_images/botleft2-eps-converted-to.pdf Graphic file (type p
 df)
 
 <use ../plots_tables_images/botleft2-eps-converted-to.pdf>
 Package pdftex.def Info: ../plots_tables_images/botleft2-eps-converted-to.pdf u
-sed on input line 171.
+sed on input line 170.
 (pdftex.def)             Requested size: 241.84846pt x 414.60312pt.
 Package epstopdf Info: Source file: <../plots_tables_images/botleft2.eps>
 (epstopdf)                    date: 2013-04-17 15:30:20
@@ -1385,14 +1382,14 @@ ted-to.pdf>
 (epstopdf)                    size: 17114 bytes
 (epstopdf)             Command: <epstopdf --outfile=../plots_tables_images/botl
 eft2-eps-converted-to.pdf ../plots_tables_images/botleft2.eps>
-(epstopdf)             \includegraphics on input line 171.
+(epstopdf)             \includegraphics on input line 170.
 Package epstopdf Info: Output file is already uptodate.
 File: ../plots_tables_images/botleft2-eps-converted-to.pdf Graphic file (type p
 df)
 
 <use ../plots_tables_images/botleft2-eps-converted-to.pdf>
 Package pdftex.def Info: ../plots_tables_images/botleft2-eps-converted-to.pdf u
-sed on input line 171.
+sed on input line 170.
 (pdftex.def)             Requested size: 241.84846pt x 414.60312pt.
 Package epstopdf Info: Source file: <../plots_tables_images/botleft3.eps>
 (epstopdf)                    date: 2013-04-17 15:30:20
@@ -1403,17 +1400,17 @@ ted-to.pdf>
 (epstopdf)                    size: 15979 bytes
 (epstopdf)             Command: <epstopdf --outfile=../plots_tables_images/botl
 eft3-eps-converted-to.pdf ../plots_tables_images/botleft3.eps>
-(epstopdf)             \includegraphics on input line 171.
+(epstopdf)             \includegraphics on input line 170.
 Package epstopdf Info: Output file is already uptodate.
 File: ../plots_tables_images/botleft3-eps-converted-to.pdf Graphic file (type p
 df)
 
 <use ../plots_tables_images/botleft3-eps-converted-to.pdf>
 Package pdftex.def Info: ../plots_tables_images/botleft3-eps-converted-to.pdf u
-sed on input line 171.
+sed on input line 170.
 (pdftex.def)             Requested size: 241.84846pt x 414.60312pt.
 
-Overfull \hbox (10.0pt too wide) in paragraph at lines 171--171
+Overfull \hbox (10.0pt too wide) in paragraph at lines 170--170
  [][] 
  []
 
@@ -1426,16 +1423,16 @@ ted-to.pdf>
 (epstopdf)                    size: 15979 bytes
 (epstopdf)             Command: <epstopdf --outfile=../plots_tables_images/botl
 eft3-eps-converted-to.pdf ../plots_tables_images/botleft3.eps>
-(epstopdf)             \includegraphics on input line 171.
+(epstopdf)             \includegraphics on input line 170.
 Package epstopdf Info: Output file is already uptodate.
 File: ../plots_tables_images/botleft3-eps-converted-to.pdf Graphic file (type p
 df)
 <use ../plots_tables_images/botleft3-eps-converted-to.pdf>
 Package pdftex.def Info: ../plots_tables_images/botleft3-eps-converted-to.pdf u
-sed on input line 171.
+sed on input line 170.
 (pdftex.def)             Requested size: 241.84846pt x 414.60312pt.
 
-Overfull \hbox (10.0pt too wide) in paragraph at lines 171--171
+Overfull \hbox (10.0pt too wide) in paragraph at lines 170--170
  [][] 
  []
 
@@ -1452,7 +1449,7 @@ rted-to.pdf>
 (epstopdf)                    size: 16524 bytes
 (epstopdf)             Command: <epstopdf --outfile=../plots_tables_images/botr
 ight0-eps-converted-to.pdf ../plots_tables_images/botright0.eps>
-(epstopdf)             \includegraphics on input line 200.
+(epstopdf)             \includegraphics on input line 199.
 Package epstopdf Info: Output file is already uptodate.
 
 <../plots_tables_images/botright0-eps-converted-to.pdf, id=97, 505.89pt x 867.2
@@ -1461,7 +1458,7 @@ File: ../plots_tables_images/botright0-eps-converted-to.pdf Graphic file (type
 pdf)
  <use ../plots_tables_images/botright0-eps-converted-to.pdf>
 Package pdftex.def Info: ../plots_tables_images/botright0-eps-converted-to.pdf 
-used on input line 200.
+used on input line 199.
 (pdftex.def)             Requested size: 241.84846pt x 414.60312pt.
 Package epstopdf Info: Source file: <../plots_tables_images/botright0.eps>
 (epstopdf)                    date: 2013-04-17 15:30:20
@@ -1472,14 +1469,14 @@ rted-to.pdf>
 (epstopdf)                    size: 16524 bytes
 (epstopdf)             Command: <epstopdf --outfile=../plots_tables_images/botr
 ight0-eps-converted-to.pdf ../plots_tables_images/botright0.eps>
-(epstopdf)             \includegraphics on input line 200.
+(epstopdf)             \includegraphics on input line 199.
 Package epstopdf Info: Output file is already uptodate.
 File: ../plots_tables_images/botright0-eps-converted-to.pdf Graphic file (type 
 pdf)
 
 <use ../plots_tables_images/botright0-eps-converted-to.pdf>
 Package pdftex.def Info: ../plots_tables_images/botright0-eps-converted-to.pdf 
-used on input line 200.
+used on input line 199.
 (pdftex.def)             Requested size: 241.84846pt x 414.60312pt.
 Package epstopdf Info: Source file: <../plots_tables_images/botright0.eps>
 (epstopdf)                    date: 2013-04-17 15:30:20
@@ -1490,14 +1487,14 @@ rted-to.pdf>
 (epstopdf)                    size: 16524 bytes
 (epstopdf)             Command: <epstopdf --outfile=../plots_tables_images/botr
 ight0-eps-converted-to.pdf ../plots_tables_images/botright0.eps>
-(epstopdf)             \includegraphics on input line 200.
+(epstopdf)             \includegraphics on input line 199.
 Package epstopdf Info: Output file is already uptodate.
 File: ../plots_tables_images/botright0-eps-converted-to.pdf Graphic file (type 
 pdf)
 
 <use ../plots_tables_images/botright0-eps-converted-to.pdf>
 Package pdftex.def Info: ../plots_tables_images/botright0-eps-converted-to.pdf 
-used on input line 200.
+used on input line 199.
 (pdftex.def)             Requested size: 241.84846pt x 414.60312pt.
 Package epstopdf Info: Source file: <../plots_tables_images/botright1.eps>
 (epstopdf)                    date: 2013-04-17 15:30:20
@@ -1508,7 +1505,7 @@ rted-to.pdf>
 (epstopdf)                    size: 16556 bytes
 (epstopdf)             Command: <epstopdf --outfile=../plots_tables_images/botr
 ight1-eps-converted-to.pdf ../plots_tables_images/botright1.eps>
-(epstopdf)             \includegraphics on input line 200.
+(epstopdf)             \includegraphics on input line 199.
 Package epstopdf Info: Output file is already uptodate.
 
 <../plots_tables_images/botright1-eps-converted-to.pdf, id=98, 505.89pt x 867.2
@@ -1517,10 +1514,10 @@ File: ../plots_tables_images/botright1-eps-converted-to.pdf Graphic file (type
 pdf)
  <use ../plots_tables_images/botright1-eps-converted-to.pdf>
 Package pdftex.def Info: ../plots_tables_images/botright1-eps-converted-to.pdf 
-used on input line 200.
+used on input line 199.
 (pdftex.def)             Requested size: 241.84846pt x 414.60312pt.
 
-Overfull \hbox (10.0pt too wide) in paragraph at lines 200--200
+Overfull \hbox (10.0pt too wide) in paragraph at lines 199--199
  [][] 
  []
 
@@ -1533,16 +1530,16 @@ rted-to.pdf>
 (epstopdf)                    size: 16556 bytes
 (epstopdf)             Command: <epstopdf --outfile=../plots_tables_images/botr
 ight1-eps-converted-to.pdf ../plots_tables_images/botright1.eps>
-(epstopdf)             \includegraphics on input line 200.
+(epstopdf)             \includegraphics on input line 199.
 Package epstopdf Info: Output file is already uptodate.
 File: ../plots_tables_images/botright1-eps-converted-to.pdf Graphic file (type 
 pdf)
 <use ../plots_tables_images/botright1-eps-converted-to.pdf>
 Package pdftex.def Info: ../plots_tables_images/botright1-eps-converted-to.pdf 
-used on input line 200.
+used on input line 199.
 (pdftex.def)             Requested size: 241.84846pt x 414.60312pt.
 
-Overfull \hbox (10.0pt too wide) in paragraph at lines 200--200
+Overfull \hbox (10.0pt too wide) in paragraph at lines 199--199
  [][] 
  []
 
@@ -1555,13 +1552,13 @@ rted-to.pdf>
 (epstopdf)                    size: 16524 bytes
 (epstopdf)             Command: <epstopdf --outfile=../plots_tables_images/botr
 ight0-eps-converted-to.pdf ../plots_tables_images/botright0.eps>
-(epstopdf)             \includegraphics on input line 200.
+(epstopdf)             \includegraphics on input line 199.
 Package epstopdf Info: Output file is already uptodate.
 File: ../plots_tables_images/botright0-eps-converted-to.pdf Graphic file (type 
 pdf)
 <use ../plots_tables_images/botright0-eps-converted-to.pdf>
 Package pdftex.def Info: ../plots_tables_images/botright0-eps-converted-to.pdf 
-used on input line 200.
+used on input line 199.
 (pdftex.def)             Requested size: 241.84846pt x 414.60312pt.
 Package epstopdf Info: Source file: <../plots_tables_images/botright0.eps>
 (epstopdf)                    date: 2013-04-17 15:30:20
@@ -1572,14 +1569,14 @@ rted-to.pdf>
 (epstopdf)                    size: 16524 bytes
 (epstopdf)             Command: <epstopdf --outfile=../plots_tables_images/botr
 ight0-eps-converted-to.pdf ../plots_tables_images/botright0.eps>
-(epstopdf)             \includegraphics on input line 200.
+(epstopdf)             \includegraphics on input line 199.
 Package epstopdf Info: Output file is already uptodate.
 File: ../plots_tables_images/botright0-eps-converted-to.pdf Graphic file (type 
 pdf)
 
 <use ../plots_tables_images/botright0-eps-converted-to.pdf>
 Package pdftex.def Info: ../plots_tables_images/botright0-eps-converted-to.pdf 
-used on input line 200.
+used on input line 199.
 (pdftex.def)             Requested size: 241.84846pt x 414.60312pt.
 Package epstopdf Info: Source file: <../plots_tables_images/botright0.eps>
 (epstopdf)                    date: 2013-04-17 15:30:20
@@ -1590,14 +1587,14 @@ rted-to.pdf>
 (epstopdf)                    size: 16524 bytes
 (epstopdf)             Command: <epstopdf --outfile=../plots_tables_images/botr
 ight0-eps-converted-to.pdf ../plots_tables_images/botright0.eps>
-(epstopdf)             \includegraphics on input line 200.
+(epstopdf)             \includegraphics on input line 199.
 Package epstopdf Info: Output file is already uptodate.
 File: ../plots_tables_images/botright0-eps-converted-to.pdf Graphic file (type 
 pdf)
 
 <use ../plots_tables_images/botright0-eps-converted-to.pdf>
 Package pdftex.def Info: ../plots_tables_images/botright0-eps-converted-to.pdf 
-used on input line 200.
+used on input line 199.
 (pdftex.def)             Requested size: 241.84846pt x 414.60312pt.
 Package epstopdf Info: Source file: <../plots_tables_images/botright1.eps>
 (epstopdf)                    date: 2013-04-17 15:30:20
@@ -1608,17 +1605,17 @@ rted-to.pdf>
 (epstopdf)                    size: 16556 bytes
 (epstopdf)             Command: <epstopdf --outfile=../plots_tables_images/botr
 ight1-eps-converted-to.pdf ../plots_tables_images/botright1.eps>
-(epstopdf)             \includegraphics on input line 200.
+(epstopdf)             \includegraphics on input line 199.
 Package epstopdf Info: Output file is already uptodate.
 File: ../plots_tables_images/botright1-eps-converted-to.pdf Graphic file (type 
 pdf)
 
 <use ../plots_tables_images/botright1-eps-converted-to.pdf>
 Package pdftex.def Info: ../plots_tables_images/botright1-eps-converted-to.pdf 
-used on input line 200.
+used on input line 199.
 (pdftex.def)             Requested size: 241.84846pt x 414.60312pt.
 
-Overfull \hbox (10.0pt too wide) in paragraph at lines 200--200
+Overfull \hbox (10.0pt too wide) in paragraph at lines 199--199
  [][] 
  []
 
@@ -1631,16 +1628,16 @@ rted-to.pdf>
 (epstopdf)                    size: 16556 bytes
 (epstopdf)             Command: <epstopdf --outfile=../plots_tables_images/botr
 ight1-eps-converted-to.pdf ../plots_tables_images/botright1.eps>
-(epstopdf)             \includegraphics on input line 200.
+(epstopdf)             \includegraphics on input line 199.
 Package epstopdf Info: Output file is already uptodate.
 File: ../plots_tables_images/botright1-eps-converted-to.pdf Graphic file (type 
 pdf)
 <use ../plots_tables_images/botright1-eps-converted-to.pdf>
 Package pdftex.def Info: ../plots_tables_images/botright1-eps-converted-to.pdf 
-used on input line 200.
+used on input line 199.
 (pdftex.def)             Requested size: 241.84846pt x 414.60312pt.
 
-Overfull \hbox (10.0pt too wide) in paragraph at lines 200--200
+Overfull \hbox (10.0pt too wide) in paragraph at lines 199--199
  [][] 
  []
 
@@ -1653,13 +1650,13 @@ rted-to.pdf>
 (epstopdf)                    size: 16524 bytes
 (epstopdf)             Command: <epstopdf --outfile=../plots_tables_images/botr
 ight0-eps-converted-to.pdf ../plots_tables_images/botright0.eps>
-(epstopdf)             \includegraphics on input line 200.
+(epstopdf)             \includegraphics on input line 199.
 Package epstopdf Info: Output file is already uptodate.
 File: ../plots_tables_images/botright0-eps-converted-to.pdf Graphic file (type 
 pdf)
 <use ../plots_tables_images/botright0-eps-converted-to.pdf>
 Package pdftex.def Info: ../plots_tables_images/botright0-eps-converted-to.pdf 
-used on input line 200.
+used on input line 199.
 (pdftex.def)             Requested size: 241.84846pt x 414.60312pt.
 Package epstopdf Info: Source file: <../plots_tables_images/botright0.eps>
 (epstopdf)                    date: 2013-04-17 15:30:20
@@ -1670,14 +1667,14 @@ rted-to.pdf>
 (epstopdf)                    size: 16524 bytes
 (epstopdf)             Command: <epstopdf --outfile=../plots_tables_images/botr
 ight0-eps-converted-to.pdf ../plots_tables_images/botright0.eps>
-(epstopdf)             \includegraphics on input line 200.
+(epstopdf)             \includegraphics on input line 199.
 Package epstopdf Info: Output file is already uptodate.
 File: ../plots_tables_images/botright0-eps-converted-to.pdf Graphic file (type 
 pdf)
 
 <use ../plots_tables_images/botright0-eps-converted-to.pdf>
 Package pdftex.def Info: ../plots_tables_images/botright0-eps-converted-to.pdf 
-used on input line 200.
+used on input line 199.
 (pdftex.def)             Requested size: 241.84846pt x 414.60312pt.
 Package epstopdf Info: Source file: <../plots_tables_images/botright0.eps>
 (epstopdf)                    date: 2013-04-17 15:30:20
@@ -1688,14 +1685,14 @@ rted-to.pdf>
 (epstopdf)                    size: 16524 bytes
 (epstopdf)             Command: <epstopdf --outfile=../plots_tables_images/botr
 ight0-eps-converted-to.pdf ../plots_tables_images/botright0.eps>
-(epstopdf)             \includegraphics on input line 200.
+(epstopdf)             \includegraphics on input line 199.
 Package epstopdf Info: Output file is already uptodate.
 File: ../plots_tables_images/botright0-eps-converted-to.pdf Graphic file (type 
 pdf)
 
 <use ../plots_tables_images/botright0-eps-converted-to.pdf>
 Package pdftex.def Info: ../plots_tables_images/botright0-eps-converted-to.pdf 
-used on input line 200.
+used on input line 199.
 (pdftex.def)             Requested size: 241.84846pt x 414.60312pt.
 Package epstopdf Info: Source file: <../plots_tables_images/botright1.eps>
 (epstopdf)                    date: 2013-04-17 15:30:20
@@ -1706,17 +1703,17 @@ rted-to.pdf>
 (epstopdf)                    size: 16556 bytes
 (epstopdf)             Command: <epstopdf --outfile=../plots_tables_images/botr
 ight1-eps-converted-to.pdf ../plots_tables_images/botright1.eps>
-(epstopdf)             \includegraphics on input line 200.
+(epstopdf)             \includegraphics on input line 199.
 Package epstopdf Info: Output file is already uptodate.
 File: ../plots_tables_images/botright1-eps-converted-to.pdf Graphic file (type 
 pdf)
 
 <use ../plots_tables_images/botright1-eps-converted-to.pdf>
 Package pdftex.def Info: ../plots_tables_images/botright1-eps-converted-to.pdf 
-used on input line 200.
+used on input line 199.
 (pdftex.def)             Requested size: 241.84846pt x 414.60312pt.
 
-Overfull \hbox (10.0pt too wide) in paragraph at lines 200--200
+Overfull \hbox (10.0pt too wide) in paragraph at lines 199--199
  [][] 
  []
 
@@ -1729,16 +1726,16 @@ rted-to.pdf>
 (epstopdf)                    size: 16556 bytes
 (epstopdf)             Command: <epstopdf --outfile=../plots_tables_images/botr
 ight1-eps-converted-to.pdf ../plots_tables_images/botright1.eps>
-(epstopdf)             \includegraphics on input line 200.
+(epstopdf)             \includegraphics on input line 199.
 Package epstopdf Info: Output file is already uptodate.
 File: ../plots_tables_images/botright1-eps-converted-to.pdf Graphic file (type 
 pdf)
 <use ../plots_tables_images/botright1-eps-converted-to.pdf>
 Package pdftex.def Info: ../plots_tables_images/botright1-eps-converted-to.pdf 
-used on input line 200.
+used on input line 199.
 (pdftex.def)             Requested size: 241.84846pt x 414.60312pt.
 
-Overfull \hbox (10.0pt too wide) in paragraph at lines 200--200
+Overfull \hbox (10.0pt too wide) in paragraph at lines 199--199
  [][] 
  []
 
@@ -1751,7 +1748,7 @@ rted-to.pdf>
 (epstopdf)                    size: 14606 bytes
 (epstopdf)             Command: <epstopdf --outfile=../plots_tables_images/botr
 ight2-eps-converted-to.pdf ../plots_tables_images/botright2.eps>
-(epstopdf)             \includegraphics on input line 220.
+(epstopdf)             \includegraphics on input line 219.
 Package epstopdf Info: Output file is already uptodate.
 
 <../plots_tables_images/botright2-eps-converted-to.pdf, id=99, 505.89pt x 867.2
@@ -1760,7 +1757,7 @@ File: ../plots_tables_images/botright2-eps-converted-to.pdf Graphic file (type
 pdf)
  <use ../plots_tables_images/botright2-eps-converted-to.pdf>
 Package pdftex.def Info: ../plots_tables_images/botright2-eps-converted-to.pdf 
-used on input line 220.
+used on input line 219.
 (pdftex.def)             Requested size: 241.84846pt x 414.60312pt.
 Package epstopdf Info: Source file: <../plots_tables_images/botright2.eps>
 (epstopdf)                    date: 2013-04-17 15:30:20
@@ -1771,14 +1768,14 @@ rted-to.pdf>
 (epstopdf)                    size: 14606 bytes
 (epstopdf)             Command: <epstopdf --outfile=../plots_tables_images/botr
 ight2-eps-converted-to.pdf ../plots_tables_images/botright2.eps>
-(epstopdf)             \includegraphics on input line 220.
+(epstopdf)             \includegraphics on input line 219.
 Package epstopdf Info: Output file is already uptodate.
 File: ../plots_tables_images/botright2-eps-converted-to.pdf Graphic file (type 
 pdf)
 
 <use ../plots_tables_images/botright2-eps-converted-to.pdf>
 Package pdftex.def Info: ../plots_tables_images/botright2-eps-converted-to.pdf 
-used on input line 220.
+used on input line 219.
 (pdftex.def)             Requested size: 241.84846pt x 414.60312pt.
 Package epstopdf Info: Source file: <../plots_tables_images/botright2.eps>
 (epstopdf)                    date: 2013-04-17 15:30:20
@@ -1789,14 +1786,14 @@ rted-to.pdf>
 (epstopdf)                    size: 14606 bytes
 (epstopdf)             Command: <epstopdf --outfile=../plots_tables_images/botr
 ight2-eps-converted-to.pdf ../plots_tables_images/botright2.eps>
-(epstopdf)             \includegraphics on input line 220.
+(epstopdf)             \includegraphics on input line 219.
 Package epstopdf Info: Output file is already uptodate.
 File: ../plots_tables_images/botright2-eps-converted-to.pdf Graphic file (type 
 pdf)
 
 <use ../plots_tables_images/botright2-eps-converted-to.pdf>
 Package pdftex.def Info: ../plots_tables_images/botright2-eps-converted-to.pdf 
-used on input line 220.
+used on input line 219.
 (pdftex.def)             Requested size: 241.84846pt x 414.60312pt.
 Package epstopdf Info: Source file: <../plots_tables_images/botright3.eps>
 (epstopdf)                    date: 2013-04-17 15:30:20
@@ -1807,7 +1804,7 @@ rted-to.pdf>
 (epstopdf)                    size: 16044 bytes
 (epstopdf)             Command: <epstopdf --outfile=../plots_tables_images/botr
 ight3-eps-converted-to.pdf ../plots_tables_images/botright3.eps>
-(epstopdf)             \includegraphics on input line 220.
+(epstopdf)             \includegraphics on input line 219.
 Package epstopdf Info: Output file is already uptodate.
 
 <../plots_tables_images/botright3-eps-converted-to.pdf, id=100, 505.89pt x 867.
@@ -1816,10 +1813,10 @@ File: ../plots_tables_images/botright3-eps-converted-to.pdf Graphic file (type
 pdf)
  <use ../plots_tables_images/botright3-eps-converted-to.pdf>
 Package pdftex.def Info: ../plots_tables_images/botright3-eps-converted-to.pdf 
-used on input line 220.
+used on input line 219.
 (pdftex.def)             Requested size: 241.84846pt x 414.60312pt.
 
-Overfull \hbox (10.0pt too wide) in paragraph at lines 220--220
+Overfull \hbox (10.0pt too wide) in paragraph at lines 219--219
  [][] 
  []
 
@@ -1832,16 +1829,16 @@ rted-to.pdf>
 (epstopdf)                    size: 16044 bytes
 (epstopdf)             Command: <epstopdf --outfile=../plots_tables_images/botr
 ight3-eps-converted-to.pdf ../plots_tables_images/botright3.eps>
-(epstopdf)             \includegraphics on input line 220.
+(epstopdf)             \includegraphics on input line 219.
 Package epstopdf Info: Output file is already uptodate.
 File: ../plots_tables_images/botright3-eps-converted-to.pdf Graphic file (type 
 pdf)
 <use ../plots_tables_images/botright3-eps-converted-to.pdf>
 Package pdftex.def Info: ../plots_tables_images/botright3-eps-converted-to.pdf 
-used on input line 220.
+used on input line 219.
 (pdftex.def)             Requested size: 241.84846pt x 414.60312pt.
 
-Overfull \hbox (10.0pt too wide) in paragraph at lines 220--220
+Overfull \hbox (10.0pt too wide) in paragraph at lines 219--219
  [][] 
  []
 
@@ -1854,13 +1851,13 @@ rted-to.pdf>
 (epstopdf)                    size: 14606 bytes
 (epstopdf)             Command: <epstopdf --outfile=../plots_tables_images/botr
 ight2-eps-converted-to.pdf ../plots_tables_images/botright2.eps>
-(epstopdf)             \includegraphics on input line 220.
+(epstopdf)             \includegraphics on input line 219.
 Package epstopdf Info: Output file is already uptodate.
 File: ../plots_tables_images/botright2-eps-converted-to.pdf Graphic file (type 
 pdf)
 <use ../plots_tables_images/botright2-eps-converted-to.pdf>
 Package pdftex.def Info: ../plots_tables_images/botright2-eps-converted-to.pdf 
-used on input line 220.
+used on input line 219.
 (pdftex.def)             Requested size: 241.84846pt x 414.60312pt.
 Package epstopdf Info: Source file: <../plots_tables_images/botright2.eps>
 (epstopdf)                    date: 2013-04-17 15:30:20
@@ -1871,14 +1868,14 @@ rted-to.pdf>
 (epstopdf)                    size: 14606 bytes
 (epstopdf)             Command: <epstopdf --outfile=../plots_tables_images/botr
 ight2-eps-converted-to.pdf ../plots_tables_images/botright2.eps>
-(epstopdf)             \includegraphics on input line 220.
+(epstopdf)             \includegraphics on input line 219.
 Package epstopdf Info: Output file is already uptodate.
 File: ../plots_tables_images/botright2-eps-converted-to.pdf Graphic file (type 
 pdf)
 
 <use ../plots_tables_images/botright2-eps-converted-to.pdf>
 Package pdftex.def Info: ../plots_tables_images/botright2-eps-converted-to.pdf 
-used on input line 220.
+used on input line 219.
 (pdftex.def)             Requested size: 241.84846pt x 414.60312pt.
 Package epstopdf Info: Source file: <../plots_tables_images/botright2.eps>
 (epstopdf)                    date: 2013-04-17 15:30:20
@@ -1889,14 +1886,14 @@ rted-to.pdf>
 (epstopdf)                    size: 14606 bytes
 (epstopdf)             Command: <epstopdf --outfile=../plots_tables_images/botr
 ight2-eps-converted-to.pdf ../plots_tables_images/botright2.eps>
-(epstopdf)             \includegraphics on input line 220.
+(epstopdf)             \includegraphics on input line 219.
 Package epstopdf Info: Output file is already uptodate.
 File: ../plots_tables_images/botright2-eps-converted-to.pdf Graphic file (type 
 pdf)
 
 <use ../plots_tables_images/botright2-eps-converted-to.pdf>
 Package pdftex.def Info: ../plots_tables_images/botright2-eps-converted-to.pdf 
-used on input line 220.
+used on input line 219.
 (pdftex.def)             Requested size: 241.84846pt x 414.60312pt.
 Package epstopdf Info: Source file: <../plots_tables_images/botright3.eps>
 (epstopdf)                    date: 2013-04-17 15:30:20
@@ -1907,17 +1904,17 @@ rted-to.pdf>
 (epstopdf)                    size: 16044 bytes
 (epstopdf)             Command: <epstopdf --outfile=../plots_tables_images/botr
 ight3-eps-converted-to.pdf ../plots_tables_images/botright3.eps>
-(epstopdf)             \includegraphics on input line 220.
+(epstopdf)             \includegraphics on input line 219.
 Package epstopdf Info: Output file is already uptodate.
 File: ../plots_tables_images/botright3-eps-converted-to.pdf Graphic file (type 
 pdf)
 
 <use ../plots_tables_images/botright3-eps-converted-to.pdf>
 Package pdftex.def Info: ../plots_tables_images/botright3-eps-converted-to.pdf 
-used on input line 220.
+used on input line 219.
 (pdftex.def)             Requested size: 241.84846pt x 414.60312pt.
 
-Overfull \hbox (10.0pt too wide) in paragraph at lines 220--220
+Overfull \hbox (10.0pt too wide) in paragraph at lines 219--219
  [][] 
  []
 
@@ -1930,16 +1927,16 @@ rted-to.pdf>
 (epstopdf)                    size: 16044 bytes
 (epstopdf)             Command: <epstopdf --outfile=../plots_tables_images/botr
 ight3-eps-converted-to.pdf ../plots_tables_images/botright3.eps>
-(epstopdf)             \includegraphics on input line 220.
+(epstopdf)             \includegraphics on input line 219.
 Package epstopdf Info: Output file is already uptodate.
 File: ../plots_tables_images/botright3-eps-converted-to.pdf Graphic file (type 
 pdf)
 <use ../plots_tables_images/botright3-eps-converted-to.pdf>
 Package pdftex.def Info: ../plots_tables_images/botright3-eps-converted-to.pdf 
-used on input line 220.
+used on input line 219.
 (pdftex.def)             Requested size: 241.84846pt x 414.60312pt.
 
-Overfull \hbox (10.0pt too wide) in paragraph at lines 220--220
+Overfull \hbox (10.0pt too wide) in paragraph at lines 219--219
  [][] 
  []
 
@@ -1952,13 +1949,13 @@ rted-to.pdf>
 (epstopdf)                    size: 14606 bytes
 (epstopdf)             Command: <epstopdf --outfile=../plots_tables_images/botr
 ight2-eps-converted-to.pdf ../plots_tables_images/botright2.eps>
-(epstopdf)             \includegraphics on input line 220.
+(epstopdf)             \includegraphics on input line 219.
 Package epstopdf Info: Output file is already uptodate.
 File: ../plots_tables_images/botright2-eps-converted-to.pdf Graphic file (type 
 pdf)
 <use ../plots_tables_images/botright2-eps-converted-to.pdf>
 Package pdftex.def Info: ../plots_tables_images/botright2-eps-converted-to.pdf 
-used on input line 220.
+used on input line 219.
 (pdftex.def)             Requested size: 241.84846pt x 414.60312pt.
 Package epstopdf Info: Source file: <../plots_tables_images/botright2.eps>
 (epstopdf)                    date: 2013-04-17 15:30:20
@@ -1969,14 +1966,14 @@ rted-to.pdf>
 (epstopdf)                    size: 14606 bytes
 (epstopdf)             Command: <epstopdf --outfile=../plots_tables_images/botr
 ight2-eps-converted-to.pdf ../plots_tables_images/botright2.eps>
-(epstopdf)             \includegraphics on input line 220.
+(epstopdf)             \includegraphics on input line 219.
 Package epstopdf Info: Output file is already uptodate.
 File: ../plots_tables_images/botright2-eps-converted-to.pdf Graphic file (type 
 pdf)
 
 <use ../plots_tables_images/botright2-eps-converted-to.pdf>
 Package pdftex.def Info: ../plots_tables_images/botright2-eps-converted-to.pdf 
-used on input line 220.
+used on input line 219.
 (pdftex.def)             Requested size: 241.84846pt x 414.60312pt.
 Package epstopdf Info: Source file: <../plots_tables_images/botright2.eps>
 (epstopdf)                    date: 2013-04-17 15:30:20
@@ -1987,14 +1984,14 @@ rted-to.pdf>
 (epstopdf)                    size: 14606 bytes
 (epstopdf)             Command: <epstopdf --outfile=../plots_tables_images/botr
 ight2-eps-converted-to.pdf ../plots_tables_images/botright2.eps>
-(epstopdf)             \includegraphics on input line 220.
+(epstopdf)             \includegraphics on input line 219.
 Package epstopdf Info: Output file is already uptodate.
 File: ../plots_tables_images/botright2-eps-converted-to.pdf Graphic file (type 
 pdf)
 
 <use ../plots_tables_images/botright2-eps-converted-to.pdf>
 Package pdftex.def Info: ../plots_tables_images/botright2-eps-converted-to.pdf 
-used on input line 220.
+used on input line 219.
 (pdftex.def)             Requested size: 241.84846pt x 414.60312pt.
 Package epstopdf Info: Source file: <../plots_tables_images/botright3.eps>
 (epstopdf)                    date: 2013-04-17 15:30:20
@@ -2005,17 +2002,17 @@ rted-to.pdf>
 (epstopdf)                    size: 16044 bytes
 (epstopdf)             Command: <epstopdf --outfile=../plots_tables_images/botr
 ight3-eps-converted-to.pdf ../plots_tables_images/botright3.eps>
-(epstopdf)             \includegraphics on input line 220.
+(epstopdf)             \includegraphics on input line 219.
 Package epstopdf Info: Output file is already uptodate.
 File: ../plots_tables_images/botright3-eps-converted-to.pdf Graphic file (type 
 pdf)
 
 <use ../plots_tables_images/botright3-eps-converted-to.pdf>
 Package pdftex.def Info: ../plots_tables_images/botright3-eps-converted-to.pdf 
-used on input line 220.
+used on input line 219.
 (pdftex.def)             Requested size: 241.84846pt x 414.60312pt.
 
-Overfull \hbox (10.0pt too wide) in paragraph at lines 220--220
+Overfull \hbox (10.0pt too wide) in paragraph at lines 219--219
  [][] 
  []
 
@@ -2028,16 +2025,16 @@ rted-to.pdf>
 (epstopdf)                    size: 16044 bytes
 (epstopdf)             Command: <epstopdf --outfile=../plots_tables_images/botr
 ight3-eps-converted-to.pdf ../plots_tables_images/botright3.eps>
-(epstopdf)             \includegraphics on input line 220.
+(epstopdf)             \includegraphics on input line 219.
 Package epstopdf Info: Output file is already uptodate.
 File: ../plots_tables_images/botright3-eps-converted-to.pdf Graphic file (type 
 pdf)
 <use ../plots_tables_images/botright3-eps-converted-to.pdf>
 Package pdftex.def Info: ../plots_tables_images/botright3-eps-converted-to.pdf 
-used on input line 220.
+used on input line 219.
 (pdftex.def)             Requested size: 241.84846pt x 414.60312pt.
 
-Overfull \hbox (10.0pt too wide) in paragraph at lines 220--220
+Overfull \hbox (10.0pt too wide) in paragraph at lines 219--219
  [][] 
  []
 
@@ -2050,7 +2047,7 @@ ted-to.pdf>
 (epstopdf)                    size: 16015 bytes
 (epstopdf)             Command: <epstopdf --outfile=../plots_tables_images/topl
 eft0-eps-converted-to.pdf ../plots_tables_images/topleft0.eps>
-(epstopdf)             \includegraphics on input line 240.
+(epstopdf)             \includegraphics on input line 239.
 Package epstopdf Info: Output file is already uptodate.
 
 <../plots_tables_images/topleft0-eps-converted-to.pdf, id=101, 505.89pt x 867.2
@@ -2059,7 +2056,7 @@ File: ../plots_tables_images/topleft0-eps-converted-to.pdf Graphic file (type p
 df)
  <use ../plots_tables_images/topleft0-eps-converted-to.pdf>
 Package pdftex.def Info: ../plots_tables_images/topleft0-eps-converted-to.pdf u
-sed on input line 240.
+sed on input line 239.
 (pdftex.def)             Requested size: 241.84846pt x 414.60312pt.
 Package epstopdf Info: Source file: <../plots_tables_images/topleft0.eps>
 (epstopdf)                    date: 2013-04-17 15:30:20
@@ -2070,14 +2067,14 @@ ted-to.pdf>
 (epstopdf)                    size: 16015 bytes
 (epstopdf)             Command: <epstopdf --outfile=../plots_tables_images/topl
 eft0-eps-converted-to.pdf ../plots_tables_images/topleft0.eps>
-(epstopdf)             \includegraphics on input line 240.
+(epstopdf)             \includegraphics on input line 239.
 Package epstopdf Info: Output file is already uptodate.
 File: ../plots_tables_images/topleft0-eps-converted-to.pdf Graphic file (type p
 df)
 
 <use ../plots_tables_images/topleft0-eps-converted-to.pdf>
 Package pdftex.def Info: ../plots_tables_images/topleft0-eps-converted-to.pdf u
-sed on input line 240.
+sed on input line 239.
 (pdftex.def)             Requested size: 241.84846pt x 414.60312pt.
 Package epstopdf Info: Source file: <../plots_tables_images/topleft0.eps>
 (epstopdf)                    date: 2013-04-17 15:30:20
@@ -2088,14 +2085,14 @@ ted-to.pdf>
 (epstopdf)                    size: 16015 bytes
 (epstopdf)             Command: <epstopdf --outfile=../plots_tables_images/topl
 eft0-eps-converted-to.pdf ../plots_tables_images/topleft0.eps>
-(epstopdf)             \includegraphics on input line 240.
+(epstopdf)             \includegraphics on input line 239.
 Package epstopdf Info: Output file is already uptodate.
 File: ../plots_tables_images/topleft0-eps-converted-to.pdf Graphic file (type p
 df)
 
 <use ../plots_tables_images/topleft0-eps-converted-to.pdf>
 Package pdftex.def Info: ../plots_tables_images/topleft0-eps-converted-to.pdf u
-sed on input line 240.
+sed on input line 239.
 (pdftex.def)             Requested size: 241.84846pt x 414.60312pt.
 Package epstopdf Info: Source file: <../plots_tables_images/topleft1.eps>
 (epstopdf)                    date: 2013-04-17 15:30:20
@@ -2106,7 +2103,7 @@ ted-to.pdf>
 (epstopdf)                    size: 15457 bytes
 (epstopdf)             Command: <epstopdf --outfile=../plots_tables_images/topl
 eft1-eps-converted-to.pdf ../plots_tables_images/topleft1.eps>
-(epstopdf)             \includegraphics on input line 240.
+(epstopdf)             \includegraphics on input line 239.
 Package epstopdf Info: Output file is already uptodate.
 
 <../plots_tables_images/topleft1-eps-converted-to.pdf, id=102, 505.89pt x 867.2
@@ -2115,10 +2112,10 @@ File: ../plots_tables_images/topleft1-eps-converted-to.pdf Graphic file (type p
 df)
  <use ../plots_tables_images/topleft1-eps-converted-to.pdf>
 Package pdftex.def Info: ../plots_tables_images/topleft1-eps-converted-to.pdf u
-sed on input line 240.
+sed on input line 239.
 (pdftex.def)             Requested size: 241.84846pt x 414.60312pt.
 
-Overfull \hbox (10.0pt too wide) in paragraph at lines 240--240
+Overfull \hbox (10.0pt too wide) in paragraph at lines 239--239
  [][] 
  []
 
@@ -2131,16 +2128,16 @@ ted-to.pdf>
 (epstopdf)                    size: 15457 bytes
 (epstopdf)             Command: <epstopdf --outfile=../plots_tables_images/topl
 eft1-eps-converted-to.pdf ../plots_tables_images/topleft1.eps>
-(epstopdf)             \includegraphics on input line 240.
+(epstopdf)             \includegraphics on input line 239.
 Package epstopdf Info: Output file is already uptodate.
 File: ../plots_tables_images/topleft1-eps-converted-to.pdf Graphic file (type p
 df)
 <use ../plots_tables_images/topleft1-eps-converted-to.pdf>
 Package pdftex.def Info: ../plots_tables_images/topleft1-eps-converted-to.pdf u
-sed on input line 240.
+sed on input line 239.
 (pdftex.def)             Requested size: 241.84846pt x 414.60312pt.
 
-Overfull \hbox (10.0pt too wide) in paragraph at lines 240--240
+Overfull \hbox (10.0pt too wide) in paragraph at lines 239--239
  [][] 
  []
 
@@ -2153,13 +2150,13 @@ ted-to.pdf>
 (epstopdf)                    size: 16015 bytes
 (epstopdf)             Command: <epstopdf --outfile=../plots_tables_images/topl
 eft0-eps-converted-to.pdf ../plots_tables_images/topleft0.eps>
-(epstopdf)             \includegraphics on input line 240.
+(epstopdf)             \includegraphics on input line 239.
 Package epstopdf Info: Output file is already uptodate.
 File: ../plots_tables_images/topleft0-eps-converted-to.pdf Graphic file (type p
 df)
 <use ../plots_tables_images/topleft0-eps-converted-to.pdf>
 Package pdftex.def Info: ../plots_tables_images/topleft0-eps-converted-to.pdf u
-sed on input line 240.
+sed on input line 239.
 (pdftex.def)             Requested size: 241.84846pt x 414.60312pt.
 Package epstopdf Info: Source file: <../plots_tables_images/topleft0.eps>
 (epstopdf)                    date: 2013-04-17 15:30:20
@@ -2170,14 +2167,14 @@ ted-to.pdf>
 (epstopdf)                    size: 16015 bytes
 (epstopdf)             Command: <epstopdf --outfile=../plots_tables_images/topl
 eft0-eps-converted-to.pdf ../plots_tables_images/topleft0.eps>
-(epstopdf)             \includegraphics on input line 240.
+(epstopdf)             \includegraphics on input line 239.
 Package epstopdf Info: Output file is already uptodate.
 File: ../plots_tables_images/topleft0-eps-converted-to.pdf Graphic file (type p
 df)
 
 <use ../plots_tables_images/topleft0-eps-converted-to.pdf>
 Package pdftex.def Info: ../plots_tables_images/topleft0-eps-converted-to.pdf u
-sed on input line 240.
+sed on input line 239.
 (pdftex.def)             Requested size: 241.84846pt x 414.60312pt.
 Package epstopdf Info: Source file: <../plots_tables_images/topleft0.eps>
 (epstopdf)                    date: 2013-04-17 15:30:20
@@ -2188,14 +2185,14 @@ ted-to.pdf>
 (epstopdf)                    size: 16015 bytes
 (epstopdf)             Command: <epstopdf --outfile=../plots_tables_images/topl
 eft0-eps-converted-to.pdf ../plots_tables_images/topleft0.eps>
-(epstopdf)             \includegraphics on input line 240.
+(epstopdf)             \includegraphics on input line 239.
 Package epstopdf Info: Output file is already uptodate.
 File: ../plots_tables_images/topleft0-eps-converted-to.pdf Graphic file (type p
 df)
 
 <use ../plots_tables_images/topleft0-eps-converted-to.pdf>
 Package pdftex.def Info: ../plots_tables_images/topleft0-eps-converted-to.pdf u
-sed on input line 240.
+sed on input line 239.
 (pdftex.def)             Requested size: 241.84846pt x 414.60312pt.
 Package epstopdf Info: Source file: <../plots_tables_images/topleft1.eps>
 (epstopdf)                    date: 2013-04-17 15:30:20
@@ -2206,17 +2203,17 @@ ted-to.pdf>
 (epstopdf)                    size: 15457 bytes
 (epstopdf)             Command: <epstopdf --outfile=../plots_tables_images/topl
 eft1-eps-converted-to.pdf ../plots_tables_images/topleft1.eps>
-(epstopdf)             \includegraphics on input line 240.
+(epstopdf)             \includegraphics on input line 239.
 Package epstopdf Info: Output file is already uptodate.
 File: ../plots_tables_images/topleft1-eps-converted-to.pdf Graphic file (type p
 df)
 
 <use ../plots_tables_images/topleft1-eps-converted-to.pdf>
 Package pdftex.def Info: ../plots_tables_images/topleft1-eps-converted-to.pdf u
-sed on input line 240.
+sed on input line 239.
 (pdftex.def)             Requested size: 241.84846pt x 414.60312pt.
 
-Overfull \hbox (10.0pt too wide) in paragraph at lines 240--240
+Overfull \hbox (10.0pt too wide) in paragraph at lines 239--239
  [][] 
  []
 
@@ -2229,16 +2226,16 @@ ted-to.pdf>
 (epstopdf)                    size: 15457 bytes
 (epstopdf)             Command: <epstopdf --outfile=../plots_tables_images/topl
 eft1-eps-converted-to.pdf ../plots_tables_images/topleft1.eps>
-(epstopdf)             \includegraphics on input line 240.
+(epstopdf)             \includegraphics on input line 239.
 Package epstopdf Info: Output file is already uptodate.
 File: ../plots_tables_images/topleft1-eps-converted-to.pdf Graphic file (type p
 df)
 <use ../plots_tables_images/topleft1-eps-converted-to.pdf>
 Package pdftex.def Info: ../plots_tables_images/topleft1-eps-converted-to.pdf u
-sed on input line 240.
+sed on input line 239.
 (pdftex.def)             Requested size: 241.84846pt x 414.60312pt.
 
-Overfull \hbox (10.0pt too wide) in paragraph at lines 240--240
+Overfull \hbox (10.0pt too wide) in paragraph at lines 239--239
  [][] 
  []
 
@@ -2251,13 +2248,13 @@ ted-to.pdf>
 (epstopdf)                    size: 16015 bytes
 (epstopdf)             Command: <epstopdf --outfile=../plots_tables_images/topl
 eft0-eps-converted-to.pdf ../plots_tables_images/topleft0.eps>
-(epstopdf)             \includegraphics on input line 240.
+(epstopdf)             \includegraphics on input line 239.
 Package epstopdf Info: Output file is already uptodate.
 File: ../plots_tables_images/topleft0-eps-converted-to.pdf Graphic file (type p
 df)
 <use ../plots_tables_images/topleft0-eps-converted-to.pdf>
 Package pdftex.def Info: ../plots_tables_images/topleft0-eps-converted-to.pdf u
-sed on input line 240.
+sed on input line 239.
 (pdftex.def)             Requested size: 241.84846pt x 414.60312pt.
 Package epstopdf Info: Source file: <../plots_tables_images/topleft0.eps>
 (epstopdf)                    date: 2013-04-17 15:30:20
@@ -2268,14 +2265,14 @@ ted-to.pdf>
 (epstopdf)                    size: 16015 bytes
 (epstopdf)             Command: <epstopdf --outfile=../plots_tables_images/topl
 eft0-eps-converted-to.pdf ../plots_tables_images/topleft0.eps>
-(epstopdf)             \includegraphics on input line 240.
+(epstopdf)             \includegraphics on input line 239.
 Package epstopdf Info: Output file is already uptodate.
 File: ../plots_tables_images/topleft0-eps-converted-to.pdf Graphic file (type p
 df)
 
 <use ../plots_tables_images/topleft0-eps-converted-to.pdf>
 Package pdftex.def Info: ../plots_tables_images/topleft0-eps-converted-to.pdf u
-sed on input line 240.
+sed on input line 239.
 (pdftex.def)             Requested size: 241.84846pt x 414.60312pt.
 Package epstopdf Info: Source file: <../plots_tables_images/topleft0.eps>
 (epstopdf)                    date: 2013-04-17 15:30:20
@@ -2286,14 +2283,14 @@ ted-to.pdf>
 (epstopdf)                    size: 16015 bytes
 (epstopdf)             Command: <epstopdf --outfile=../plots_tables_images/topl
 eft0-eps-converted-to.pdf ../plots_tables_images/topleft0.eps>
-(epstopdf)             \includegraphics on input line 240.
+(epstopdf)             \includegraphics on input line 239.
 Package epstopdf Info: Output file is already uptodate.
 File: ../plots_tables_images/topleft0-eps-converted-to.pdf Graphic file (type p
 df)
 
 <use ../plots_tables_images/topleft0-eps-converted-to.pdf>
 Package pdftex.def Info: ../plots_tables_images/topleft0-eps-converted-to.pdf u
-sed on input line 240.
+sed on input line 239.
 (pdftex.def)             Requested size: 241.84846pt x 414.60312pt.
 Package epstopdf Info: Source file: <../plots_tables_images/topleft1.eps>
 (epstopdf)                    date: 2013-04-17 15:30:20
@@ -2304,17 +2301,17 @@ ted-to.pdf>
 (epstopdf)                    size: 15457 bytes
 (epstopdf)             Command: <epstopdf --outfile=../plots_tables_images/topl
 eft1-eps-converted-to.pdf ../plots_tables_images/topleft1.eps>
-(epstopdf)             \includegraphics on input line 240.
+(epstopdf)             \includegraphics on input line 239.
 Package epstopdf Info: Output file is already uptodate.
 File: ../plots_tables_images/topleft1-eps-converted-to.pdf Graphic file (type p
 df)
 
 <use ../plots_tables_images/topleft1-eps-converted-to.pdf>
 Package pdftex.def Info: ../plots_tables_images/topleft1-eps-converted-to.pdf u
-sed on input line 240.
+sed on input line 239.
 (pdftex.def)             Requested size: 241.84846pt x 414.60312pt.
 
-Overfull \hbox (10.0pt too wide) in paragraph at lines 240--240
+Overfull \hbox (10.0pt too wide) in paragraph at lines 239--239
  [][] 
  []
 
@@ -2327,16 +2324,16 @@ ted-to.pdf>
 (epstopdf)                    size: 15457 bytes
 (epstopdf)             Command: <epstopdf --outfile=../plots_tables_images/topl
 eft1-eps-converted-to.pdf ../plots_tables_images/topleft1.eps>
-(epstopdf)             \includegraphics on input line 240.
+(epstopdf)             \includegraphics on input line 239.
 Package epstopdf Info: Output file is already uptodate.
 File: ../plots_tables_images/topleft1-eps-converted-to.pdf Graphic file (type p
 df)
 <use ../plots_tables_images/topleft1-eps-converted-to.pdf>
 Package pdftex.def Info: ../plots_tables_images/topleft1-eps-converted-to.pdf u
-sed on input line 240.
+sed on input line 239.
 (pdftex.def)             Requested size: 241.84846pt x 414.60312pt.
 
-Overfull \hbox (10.0pt too wide) in paragraph at lines 240--240
+Overfull \hbox (10.0pt too wide) in paragraph at lines 239--239
  [][] 
  []
 
@@ -2349,7 +2346,7 @@ ted-to.pdf>
 (epstopdf)                    size: 14740 bytes
 (epstopdf)             Command: <epstopdf --outfile=../plots_tables_images/topl
 eft2-eps-converted-to.pdf ../plots_tables_images/topleft2.eps>
-(epstopdf)             \includegraphics on input line 260.
+(epstopdf)             \includegraphics on input line 259.
 Package epstopdf Info: Output file is already uptodate.
 
 <../plots_tables_images/topleft2-eps-converted-to.pdf, id=103, 505.89pt x 867.2
@@ -2358,7 +2355,7 @@ File: ../plots_tables_images/topleft2-eps-converted-to.pdf Graphic file (type p
 df)
  <use ../plots_tables_images/topleft2-eps-converted-to.pdf>
 Package pdftex.def Info: ../plots_tables_images/topleft2-eps-converted-to.pdf u
-sed on input line 260.
+sed on input line 259.
 (pdftex.def)             Requested size: 241.84846pt x 414.60312pt.
 Package epstopdf Info: Source file: <../plots_tables_images/topleft2.eps>
 (epstopdf)                    date: 2013-04-17 15:30:20
@@ -2369,14 +2366,14 @@ ted-to.pdf>
 (epstopdf)                    size: 14740 bytes
 (epstopdf)             Command: <epstopdf --outfile=../plots_tables_images/topl
 eft2-eps-converted-to.pdf ../plots_tables_images/topleft2.eps>
-(epstopdf)             \includegraphics on input line 260.
+(epstopdf)             \includegraphics on input line 259.
 Package epstopdf Info: Output file is already uptodate.
 File: ../plots_tables_images/topleft2-eps-converted-to.pdf Graphic file (type p
 df)
 
 <use ../plots_tables_images/topleft2-eps-converted-to.pdf>
 Package pdftex.def Info: ../plots_tables_images/topleft2-eps-converted-to.pdf u
-sed on input line 260.
+sed on input line 259.
 (pdftex.def)             Requested size: 241.84846pt x 414.60312pt.
 Package epstopdf Info: Source file: <../plots_tables_images/topleft2.eps>
 (epstopdf)                    date: 2013-04-17 15:30:20
@@ -2387,14 +2384,14 @@ ted-to.pdf>
 (epstopdf)                    size: 14740 bytes
 (epstopdf)             Command: <epstopdf --outfile=../plots_tables_images/topl
 eft2-eps-converted-to.pdf ../plots_tables_images/topleft2.eps>
-(epstopdf)             \includegraphics on input line 260.
+(epstopdf)             \includegraphics on input line 259.
 Package epstopdf Info: Output file is already uptodate.
 File: ../plots_tables_images/topleft2-eps-converted-to.pdf Graphic file (type p
 df)
 
 <use ../plots_tables_images/topleft2-eps-converted-to.pdf>
 Package pdftex.def Info: ../plots_tables_images/topleft2-eps-converted-to.pdf u
-sed on input line 260.
+sed on input line 259.
 (pdftex.def)             Requested size: 241.84846pt x 414.60312pt.
 Package epstopdf Info: Source file: <../plots_tables_images/topleft3.eps>
 (epstopdf)                    date: 2013-04-17 15:30:20
@@ -2405,7 +2402,7 @@ ted-to.pdf>
 (epstopdf)                    size: 15775 bytes
 (epstopdf)             Command: <epstopdf --outfile=../plots_tables_images/topl
 eft3-eps-converted-to.pdf ../plots_tables_images/topleft3.eps>
-(epstopdf)             \includegraphics on input line 260.
+(epstopdf)             \includegraphics on input line 259.
 Package epstopdf Info: Output file is already uptodate.
 
 <../plots_tables_images/topleft3-eps-converted-to.pdf, id=104, 505.89pt x 867.2
@@ -2414,10 +2411,10 @@ File: ../plots_tables_images/topleft3-eps-converted-to.pdf Graphic file (type p
 df)
  <use ../plots_tables_images/topleft3-eps-converted-to.pdf>
 Package pdftex.def Info: ../plots_tables_images/topleft3-eps-converted-to.pdf u
-sed on input line 260.
+sed on input line 259.
 (pdftex.def)             Requested size: 241.84846pt x 414.60312pt.
 
-Overfull \hbox (10.0pt too wide) in paragraph at lines 260--260
+Overfull \hbox (10.0pt too wide) in paragraph at lines 259--259
  [][] 
  []
 
@@ -2430,16 +2427,16 @@ ted-to.pdf>
 (epstopdf)                    size: 15775 bytes
 (epstopdf)             Command: <epstopdf --outfile=../plots_tables_images/topl
 eft3-eps-converted-to.pdf ../plots_tables_images/topleft3.eps>
-(epstopdf)             \includegraphics on input line 260.
+(epstopdf)             \includegraphics on input line 259.
 Package epstopdf Info: Output file is already uptodate.
 File: ../plots_tables_images/topleft3-eps-converted-to.pdf Graphic file (type p
 df)
 <use ../plots_tables_images/topleft3-eps-converted-to.pdf>
 Package pdftex.def Info: ../plots_tables_images/topleft3-eps-converted-to.pdf u
-sed on input line 260.
+sed on input line 259.
 (pdftex.def)             Requested size: 241.84846pt x 414.60312pt.
 
-Overfull \hbox (10.0pt too wide) in paragraph at lines 260--260
+Overfull \hbox (10.0pt too wide) in paragraph at lines 259--259
  [][] 
  []
 
@@ -2452,13 +2449,13 @@ ted-to.pdf>
 (epstopdf)                    size: 14740 bytes
 (epstopdf)             Command: <epstopdf --outfile=../plots_tables_images/topl
 eft2-eps-converted-to.pdf ../plots_tables_images/topleft2.eps>
-(epstopdf)             \includegraphics on input line 260.
+(epstopdf)             \includegraphics on input line 259.
 Package epstopdf Info: Output file is already uptodate.
 File: ../plots_tables_images/topleft2-eps-converted-to.pdf Graphic file (type p
 df)
 <use ../plots_tables_images/topleft2-eps-converted-to.pdf>
 Package pdftex.def Info: ../plots_tables_images/topleft2-eps-converted-to.pdf u
-sed on input line 260.
+sed on input line 259.
 (pdftex.def)             Requested size: 241.84846pt x 414.60312pt.
 Package epstopdf Info: Source file: <../plots_tables_images/topleft2.eps>
 (epstopdf)                    date: 2013-04-17 15:30:20
@@ -2469,14 +2466,14 @@ ted-to.pdf>
 (epstopdf)                    size: 14740 bytes
 (epstopdf)             Command: <epstopdf --outfile=../plots_tables_images/topl
 eft2-eps-converted-to.pdf ../plots_tables_images/topleft2.eps>
-(epstopdf)             \includegraphics on input line 260.
+(epstopdf)             \includegraphics on input line 259.
 Package epstopdf Info: Output file is already uptodate.
 File: ../plots_tables_images/topleft2-eps-converted-to.pdf Graphic file (type p
 df)
 
 <use ../plots_tables_images/topleft2-eps-converted-to.pdf>
 Package pdftex.def Info: ../plots_tables_images/topleft2-eps-converted-to.pdf u
-sed on input line 260.
+sed on input line 259.
 (pdftex.def)             Requested size: 241.84846pt x 414.60312pt.
 Package epstopdf Info: Source file: <../plots_tables_images/topleft2.eps>
 (epstopdf)                    date: 2013-04-17 15:30:20
@@ -2487,14 +2484,14 @@ ted-to.pdf>
 (epstopdf)                    size: 14740 bytes
 (epstopdf)             Command: <epstopdf --outfile=../plots_tables_images/topl
 eft2-eps-converted-to.pdf ../plots_tables_images/topleft2.eps>
-(epstopdf)             \includegraphics on input line 260.
+(epstopdf)             \includegraphics on input line 259.
 Package epstopdf Info: Output file is already uptodate.
 File: ../plots_tables_images/topleft2-eps-converted-to.pdf Graphic file (type p
 df)
 
 <use ../plots_tables_images/topleft2-eps-converted-to.pdf>
 Package pdftex.def Info: ../plots_tables_images/topleft2-eps-converted-to.pdf u
-sed on input line 260.
+sed on input line 259.
 (pdftex.def)             Requested size: 241.84846pt x 414.60312pt.
 Package epstopdf Info: Source file: <../plots_tables_images/topleft3.eps>
 (epstopdf)                    date: 2013-04-17 15:30:20
@@ -2505,17 +2502,17 @@ ted-to.pdf>
 (epstopdf)                    size: 15775 bytes
 (epstopdf)             Command: <epstopdf --outfile=../plots_tables_images/topl
 eft3-eps-converted-to.pdf ../plots_tables_images/topleft3.eps>
-(epstopdf)             \includegraphics on input line 260.
+(epstopdf)             \includegraphics on input line 259.
 Package epstopdf Info: Output file is already uptodate.
 File: ../plots_tables_images/topleft3-eps-converted-to.pdf Graphic file (type p
 df)
 
 <use ../plots_tables_images/topleft3-eps-converted-to.pdf>
 Package pdftex.def Info: ../plots_tables_images/topleft3-eps-converted-to.pdf u
-sed on input line 260.
+sed on input line 259.
 (pdftex.def)             Requested size: 241.84846pt x 414.60312pt.
 
-Overfull \hbox (10.0pt too wide) in paragraph at lines 260--260
+Overfull \hbox (10.0pt too wide) in paragraph at lines 259--259
  [][] 
  []
 
@@ -2528,16 +2525,16 @@ ted-to.pdf>
 (epstopdf)                    size: 15775 bytes
 (epstopdf)             Command: <epstopdf --outfile=../plots_tables_images/topl
 eft3-eps-converted-to.pdf ../plots_tables_images/topleft3.eps>
-(epstopdf)             \includegraphics on input line 260.
+(epstopdf)             \includegraphics on input line 259.
 Package epstopdf Info: Output file is already uptodate.
 File: ../plots_tables_images/topleft3-eps-converted-to.pdf Graphic file (type p
 df)
 <use ../plots_tables_images/topleft3-eps-converted-to.pdf>
 Package pdftex.def Info: ../plots_tables_images/topleft3-eps-converted-to.pdf u
-sed on input line 260.
+sed on input line 259.
 (pdftex.def)             Requested size: 241.84846pt x 414.60312pt.
 
-Overfull \hbox (10.0pt too wide) in paragraph at lines 260--260
+Overfull \hbox (10.0pt too wide) in paragraph at lines 259--259
  [][] 
  []
 
@@ -2550,13 +2547,13 @@ ted-to.pdf>
 (epstopdf)                    size: 14740 bytes
 (epstopdf)             Command: <epstopdf --outfile=../plots_tables_images/topl
 eft2-eps-converted-to.pdf ../plots_tables_images/topleft2.eps>
-(epstopdf)             \includegraphics on input line 260.
+(epstopdf)             \includegraphics on input line 259.
 Package epstopdf Info: Output file is already uptodate.
 File: ../plots_tables_images/topleft2-eps-converted-to.pdf Graphic file (type p
 df)
 <use ../plots_tables_images/topleft2-eps-converted-to.pdf>
 Package pdftex.def Info: ../plots_tables_images/topleft2-eps-converted-to.pdf u
-sed on input line 260.
+sed on input line 259.
 (pdftex.def)             Requested size: 241.84846pt x 414.60312pt.
 Package epstopdf Info: Source file: <../plots_tables_images/topleft2.eps>
 (epstopdf)                    date: 2013-04-17 15:30:20
@@ -2567,14 +2564,14 @@ ted-to.pdf>
 (epstopdf)                    size: 14740 bytes
 (epstopdf)             Command: <epstopdf --outfile=../plots_tables_images/topl
 eft2-eps-converted-to.pdf ../plots_tables_images/topleft2.eps>
-(epstopdf)             \includegraphics on input line 260.
+(epstopdf)             \includegraphics on input line 259.
 Package epstopdf Info: Output file is already uptodate.
 File: ../plots_tables_images/topleft2-eps-converted-to.pdf Graphic file (type p
 df)
 
 <use ../plots_tables_images/topleft2-eps-converted-to.pdf>
 Package pdftex.def Info: ../plots_tables_images/topleft2-eps-converted-to.pdf u
-sed on input line 260.
+sed on input line 259.
 (pdftex.def)             Requested size: 241.84846pt x 414.60312pt.
 Package epstopdf Info: Source file: <../plots_tables_images/topleft2.eps>
 (epstopdf)                    date: 2013-04-17 15:30:20
@@ -2585,14 +2582,14 @@ ted-to.pdf>
 (epstopdf)                    size: 14740 bytes
 (epstopdf)             Command: <epstopdf --outfile=../plots_tables_images/topl
 eft2-eps-converted-to.pdf ../plots_tables_images/topleft2.eps>
-(epstopdf)             \includegraphics on input line 260.
+(epstopdf)             \includegraphics on input line 259.
 Package epstopdf Info: Output file is already uptodate.
 File: ../plots_tables_images/topleft2-eps-converted-to.pdf Graphic file (type p
 df)
 
 <use ../plots_tables_images/topleft2-eps-converted-to.pdf>
 Package pdftex.def Info: ../plots_tables_images/topleft2-eps-converted-to.pdf u
-sed on input line 260.
+sed on input line 259.
 (pdftex.def)             Requested size: 241.84846pt x 414.60312pt.
 Package epstopdf Info: Source file: <../plots_tables_images/topleft3.eps>
 (epstopdf)                    date: 2013-04-17 15:30:20
@@ -2603,17 +2600,17 @@ ted-to.pdf>
 (epstopdf)                    size: 15775 bytes
 (epstopdf)             Command: <epstopdf --outfile=../plots_tables_images/topl
 eft3-eps-converted-to.pdf ../plots_tables_images/topleft3.eps>
-(epstopdf)             \includegraphics on input line 260.
+(epstopdf)             \includegraphics on input line 259.
 Package epstopdf Info: Output file is already uptodate.
 File: ../plots_tables_images/topleft3-eps-converted-to.pdf Graphic file (type p
 df)
 
 <use ../plots_tables_images/topleft3-eps-converted-to.pdf>
 Package pdftex.def Info: ../plots_tables_images/topleft3-eps-converted-to.pdf u
-sed on input line 260.
+sed on input line 259.
 (pdftex.def)             Requested size: 241.84846pt x 414.60312pt.
 
-Overfull \hbox (10.0pt too wide) in paragraph at lines 260--260
+Overfull \hbox (10.0pt too wide) in paragraph at lines 259--259
  [][] 
  []
 
@@ -2626,16 +2623,16 @@ ted-to.pdf>
 (epstopdf)                    size: 15775 bytes
 (epstopdf)             Command: <epstopdf --outfile=../plots_tables_images/topl
 eft3-eps-converted-to.pdf ../plots_tables_images/topleft3.eps>
-(epstopdf)             \includegraphics on input line 260.
+(epstopdf)             \includegraphics on input line 259.
 Package epstopdf Info: Output file is already uptodate.
 File: ../plots_tables_images/topleft3-eps-converted-to.pdf Graphic file (type p
 df)
 <use ../plots_tables_images/topleft3-eps-converted-to.pdf>
 Package pdftex.def Info: ../plots_tables_images/topleft3-eps-converted-to.pdf u
-sed on input line 260.
+sed on input line 259.
 (pdftex.def)             Requested size: 241.84846pt x 414.60312pt.
 
-Overfull \hbox (10.0pt too wide) in paragraph at lines 260--260
+Overfull \hbox (10.0pt too wide) in paragraph at lines 259--259
  [][] 
  []
 
@@ -2648,7 +2645,7 @@ rted-to.pdf>
 (epstopdf)                    size: 14370 bytes
 (epstopdf)             Command: <epstopdf --outfile=../plots_tables_images/topr
 ight0-eps-converted-to.pdf ../plots_tables_images/topright0.eps>
-(epstopdf)             \includegraphics on input line 280.
+(epstopdf)             \includegraphics on input line 279.
 Package epstopdf Info: Output file is already uptodate.
 
 <../plots_tables_images/topright0-eps-converted-to.pdf, id=105, 505.89pt x 867.
@@ -2657,7 +2654,7 @@ File: ../plots_tables_images/topright0-eps-converted-to.pdf Graphic file (type
 pdf)
  <use ../plots_tables_images/topright0-eps-converted-to.pdf>
 Package pdftex.def Info: ../plots_tables_images/topright0-eps-converted-to.pdf 
-used on input line 280.
+used on input line 279.
 (pdftex.def)             Requested size: 241.84846pt x 414.60312pt.
 Package epstopdf Info: Source file: <../plots_tables_images/topright0.eps>
 (epstopdf)                    date: 2013-04-17 15:30:20
@@ -2668,14 +2665,14 @@ rted-to.pdf>
 (epstopdf)                    size: 14370 bytes
 (epstopdf)             Command: <epstopdf --outfile=../plots_tables_images/topr
 ight0-eps-converted-to.pdf ../plots_tables_images/topright0.eps>
-(epstopdf)             \includegraphics on input line 280.
+(epstopdf)             \includegraphics on input line 279.
 Package epstopdf Info: Output file is already uptodate.
 File: ../plots_tables_images/topright0-eps-converted-to.pdf Graphic file (type 
 pdf)
 
 <use ../plots_tables_images/topright0-eps-converted-to.pdf>
 Package pdftex.def Info: ../plots_tables_images/topright0-eps-converted-to.pdf 
-used on input line 280.
+used on input line 279.
 (pdftex.def)             Requested size: 241.84846pt x 414.60312pt.
 Package epstopdf Info: Source file: <../plots_tables_images/topright0.eps>
 (epstopdf)                    date: 2013-04-17 15:30:20
@@ -2686,14 +2683,14 @@ rted-to.pdf>
 (epstopdf)                    size: 14370 bytes
 (epstopdf)             Command: <epstopdf --outfile=../plots_tables_images/topr
 ight0-eps-converted-to.pdf ../plots_tables_images/topright0.eps>
-(epstopdf)             \includegraphics on input line 280.
+(epstopdf)             \includegraphics on input line 279.
 Package epstopdf Info: Output file is already uptodate.
 File: ../plots_tables_images/topright0-eps-converted-to.pdf Graphic file (type 
 pdf)
 
 <use ../plots_tables_images/topright0-eps-converted-to.pdf>
 Package pdftex.def Info: ../plots_tables_images/topright0-eps-converted-to.pdf 
-used on input line 280.
+used on input line 279.
 (pdftex.def)             Requested size: 241.84846pt x 414.60312pt.
 Package epstopdf Info: Source file: <../plots_tables_images/topright1.eps>
 (epstopdf)                    date: 2013-04-17 15:30:20
@@ -2704,7 +2701,7 @@ rted-to.pdf>
 (epstopdf)                    size: 15755 bytes
 (epstopdf)             Command: <epstopdf --outfile=../plots_tables_images/topr
 ight1-eps-converted-to.pdf ../plots_tables_images/topright1.eps>
-(epstopdf)             \includegraphics on input line 280.
+(epstopdf)             \includegraphics on input line 279.
 Package epstopdf Info: Output file is already uptodate.
 
 <../plots_tables_images/topright1-eps-converted-to.pdf, id=106, 505.89pt x 867.
@@ -2713,10 +2710,10 @@ File: ../plots_tables_images/topright1-eps-converted-to.pdf Graphic file (type
 pdf)
  <use ../plots_tables_images/topright1-eps-converted-to.pdf>
 Package pdftex.def Info: ../plots_tables_images/topright1-eps-converted-to.pdf 
-used on input line 280.
+used on input line 279.
 (pdftex.def)             Requested size: 241.84846pt x 414.60312pt.
 
-Overfull \hbox (10.0pt too wide) in paragraph at lines 280--280
+Overfull \hbox (10.0pt too wide) in paragraph at lines 279--279
  [][] 
  []
 
@@ -2729,16 +2726,16 @@ rted-to.pdf>
 (epstopdf)                    size: 15755 bytes
 (epstopdf)             Command: <epstopdf --outfile=../plots_tables_images/topr
 ight1-eps-converted-to.pdf ../plots_tables_images/topright1.eps>
-(epstopdf)             \includegraphics on input line 280.
+(epstopdf)             \includegraphics on input line 279.
 Package epstopdf Info: Output file is already uptodate.
 File: ../plots_tables_images/topright1-eps-converted-to.pdf Graphic file (type 
 pdf)
 <use ../plots_tables_images/topright1-eps-converted-to.pdf>
 Package pdftex.def Info: ../plots_tables_images/topright1-eps-converted-to.pdf 
-used on input line 280.
+used on input line 279.
 (pdftex.def)             Requested size: 241.84846pt x 414.60312pt.
 
-Overfull \hbox (10.0pt too wide) in paragraph at lines 280--280
+Overfull \hbox (10.0pt too wide) in paragraph at lines 279--279
  [][] 
  []
 
@@ -2751,13 +2748,13 @@ rted-to.pdf>
 (epstopdf)                    size: 14370 bytes
 (epstopdf)             Command: <epstopdf --outfile=../plots_tables_images/topr
 ight0-eps-converted-to.pdf ../plots_tables_images/topright0.eps>
-(epstopdf)             \includegraphics on input line 280.
+(epstopdf)             \includegraphics on input line 279.
 Package epstopdf Info: Output file is already uptodate.
 File: ../plots_tables_images/topright0-eps-converted-to.pdf Graphic file (type 
 pdf)
 <use ../plots_tables_images/topright0-eps-converted-to.pdf>
 Package pdftex.def Info: ../plots_tables_images/topright0-eps-converted-to.pdf 
-used on input line 280.
+used on input line 279.
 (pdftex.def)             Requested size: 241.84846pt x 414.60312pt.
 Package epstopdf Info: Source file: <../plots_tables_images/topright0.eps>
 (epstopdf)                    date: 2013-04-17 15:30:20
@@ -2768,14 +2765,14 @@ rted-to.pdf>
 (epstopdf)                    size: 14370 bytes
 (epstopdf)             Command: <epstopdf --outfile=../plots_tables_images/topr
 ight0-eps-converted-to.pdf ../plots_tables_images/topright0.eps>
-(epstopdf)             \includegraphics on input line 280.
+(epstopdf)             \includegraphics on input line 279.
 Package epstopdf Info: Output file is already uptodate.
 File: ../plots_tables_images/topright0-eps-converted-to.pdf Graphic file (type 
 pdf)
 
 <use ../plots_tables_images/topright0-eps-converted-to.pdf>
 Package pdftex.def Info: ../plots_tables_images/topright0-eps-converted-to.pdf 
-used on input line 280.
+used on input line 279.
 (pdftex.def)             Requested size: 241.84846pt x 414.60312pt.
 Package epstopdf Info: Source file: <../plots_tables_images/topright0.eps>
 (epstopdf)                    date: 2013-04-17 15:30:20
@@ -2786,14 +2783,14 @@ rted-to.pdf>
 (epstopdf)                    size: 14370 bytes
 (epstopdf)             Command: <epstopdf --outfile=../plots_tables_images/topr
 ight0-eps-converted-to.pdf ../plots_tables_images/topright0.eps>
-(epstopdf)             \includegraphics on input line 280.
+(epstopdf)             \includegraphics on input line 279.
 Package epstopdf Info: Output file is already uptodate.
 File: ../plots_tables_images/topright0-eps-converted-to.pdf Graphic file (type 
 pdf)
 
 <use ../plots_tables_images/topright0-eps-converted-to.pdf>
 Package pdftex.def Info: ../plots_tables_images/topright0-eps-converted-to.pdf 
-used on input line 280.
+used on input line 279.
 (pdftex.def)             Requested size: 241.84846pt x 414.60312pt.
 Package epstopdf Info: Source file: <../plots_tables_images/topright1.eps>
 (epstopdf)                    date: 2013-04-17 15:30:20
@@ -2804,17 +2801,17 @@ rted-to.pdf>
 (epstopdf)                    size: 15755 bytes
 (epstopdf)             Command: <epstopdf --outfile=../plots_tables_images/topr
 ight1-eps-converted-to.pdf ../plots_tables_images/topright1.eps>
-(epstopdf)             \includegraphics on input line 280.
+(epstopdf)             \includegraphics on input line 279.
 Package epstopdf Info: Output file is already uptodate.
 File: ../plots_tables_images/topright1-eps-converted-to.pdf Graphic file (type 
 pdf)
 
 <use ../plots_tables_images/topright1-eps-converted-to.pdf>
 Package pdftex.def Info: ../plots_tables_images/topright1-eps-converted-to.pdf 
-used on input line 280.
+used on input line 279.
 (pdftex.def)             Requested size: 241.84846pt x 414.60312pt.
 
-Overfull \hbox (10.0pt too wide) in paragraph at lines 280--280
+Overfull \hbox (10.0pt too wide) in paragraph at lines 279--279
  [][] 
  []
 
@@ -2827,16 +2824,16 @@ rted-to.pdf>
 (epstopdf)                    size: 15755 bytes
 (epstopdf)             Command: <epstopdf --outfile=../plots_tables_images/topr
 ight1-eps-converted-to.pdf ../plots_tables_images/topright1.eps>
-(epstopdf)             \includegraphics on input line 280.
+(epstopdf)             \includegraphics on input line 279.
 Package epstopdf Info: Output file is already uptodate.
 File: ../plots_tables_images/topright1-eps-converted-to.pdf Graphic file (type 
 pdf)
 <use ../plots_tables_images/topright1-eps-converted-to.pdf>
 Package pdftex.def Info: ../plots_tables_images/topright1-eps-converted-to.pdf 
-used on input line 280.
+used on input line 279.
 (pdftex.def)             Requested size: 241.84846pt x 414.60312pt.
 
-Overfull \hbox (10.0pt too wide) in paragraph at lines 280--280
+Overfull \hbox (10.0pt too wide) in paragraph at lines 279--279
  [][] 
  []
 
@@ -2849,13 +2846,13 @@ rted-to.pdf>
 (epstopdf)                    size: 14370 bytes
 (epstopdf)             Command: <epstopdf --outfile=../plots_tables_images/topr
 ight0-eps-converted-to.pdf ../plots_tables_images/topright0.eps>
-(epstopdf)             \includegraphics on input line 280.
+(epstopdf)             \includegraphics on input line 279.
 Package epstopdf Info: Output file is already uptodate.
 File: ../plots_tables_images/topright0-eps-converted-to.pdf Graphic file (type 
 pdf)
 <use ../plots_tables_images/topright0-eps-converted-to.pdf>
 Package pdftex.def Info: ../plots_tables_images/topright0-eps-converted-to.pdf 
-used on input line 280.
+used on input line 279.
 (pdftex.def)             Requested size: 241.84846pt x 414.60312pt.
 Package epstopdf Info: Source file: <../plots_tables_images/topright0.eps>
 (epstopdf)                    date: 2013-04-17 15:30:20
@@ -2866,14 +2863,14 @@ rted-to.pdf>
 (epstopdf)                    size: 14370 bytes
 (epstopdf)             Command: <epstopdf --outfile=../plots_tables_images/topr
 ight0-eps-converted-to.pdf ../plots_tables_images/topright0.eps>
-(epstopdf)             \includegraphics on input line 280.
+(epstopdf)             \includegraphics on input line 279.
 Package epstopdf Info: Output file is already uptodate.
 File: ../plots_tables_images/topright0-eps-converted-to.pdf Graphic file (type 
 pdf)
 
 <use ../plots_tables_images/topright0-eps-converted-to.pdf>
 Package pdftex.def Info: ../plots_tables_images/topright0-eps-converted-to.pdf 
-used on input line 280.
+used on input line 279.
 (pdftex.def)             Requested size: 241.84846pt x 414.60312pt.
 Package epstopdf Info: Source file: <../plots_tables_images/topright0.eps>
 (epstopdf)                    date: 2013-04-17 15:30:20
@@ -2884,14 +2881,14 @@ rted-to.pdf>
 (epstopdf)                    size: 14370 bytes
 (epstopdf)             Command: <epstopdf --outfile=../plots_tables_images/topr
 ight0-eps-converted-to.pdf ../plots_tables_images/topright0.eps>
-(epstopdf)             \includegraphics on input line 280.
+(epstopdf)             \includegraphics on input line 279.
 Package epstopdf Info: Output file is already uptodate.
 File: ../plots_tables_images/topright0-eps-converted-to.pdf Graphic file (type 
 pdf)
 
 <use ../plots_tables_images/topright0-eps-converted-to.pdf>
 Package pdftex.def Info: ../plots_tables_images/topright0-eps-converted-to.pdf 
-used on input line 280.
+used on input line 279.
 (pdftex.def)             Requested size: 241.84846pt x 414.60312pt.
 Package epstopdf Info: Source file: <../plots_tables_images/topright1.eps>
 (epstopdf)                    date: 2013-04-17 15:30:20
@@ -2902,17 +2899,17 @@ rted-to.pdf>
 (epstopdf)                    size: 15755 bytes
 (epstopdf)             Command: <epstopdf --outfile=../plots_tables_images/topr
 ight1-eps-converted-to.pdf ../plots_tables_images/topright1.eps>
-(epstopdf)             \includegraphics on input line 280.
+(epstopdf)             \includegraphics on input line 279.
 Package epstopdf Info: Output file is already uptodate.
 File: ../plots_tables_images/topright1-eps-converted-to.pdf Graphic file (type 
 pdf)
 
 <use ../plots_tables_images/topright1-eps-converted-to.pdf>
 Package pdftex.def Info: ../plots_tables_images/topright1-eps-converted-to.pdf 
-used on input line 280.
+used on input line 279.
 (pdftex.def)             Requested size: 241.84846pt x 414.60312pt.
 
-Overfull \hbox (10.0pt too wide) in paragraph at lines 280--280
+Overfull \hbox (10.0pt too wide) in paragraph at lines 279--279
  [][] 
  []
 
@@ -2925,16 +2922,16 @@ rted-to.pdf>
 (epstopdf)                    size: 15755 bytes
 (epstopdf)             Command: <epstopdf --outfile=../plots_tables_images/topr
 ight1-eps-converted-to.pdf ../plots_tables_images/topright1.eps>
-(epstopdf)             \includegraphics on input line 280.
+(epstopdf)             \includegraphics on input line 279.
 Package epstopdf Info: Output file is already uptodate.
 File: ../plots_tables_images/topright1-eps-converted-to.pdf Graphic file (type 
 pdf)
 <use ../plots_tables_images/topright1-eps-converted-to.pdf>
 Package pdftex.def Info: ../plots_tables_images/topright1-eps-converted-to.pdf 
-used on input line 280.
+used on input line 279.
 (pdftex.def)             Requested size: 241.84846pt x 414.60312pt.
 
-Overfull \hbox (10.0pt too wide) in paragraph at lines 280--280
+Overfull \hbox (10.0pt too wide) in paragraph at lines 279--279
  [][] 
  []
 
@@ -2947,7 +2944,7 @@ rted-to.pdf>
 (epstopdf)                    size: 15169 bytes
 (epstopdf)             Command: <epstopdf --outfile=../plots_tables_images/topr
 ight2-eps-converted-to.pdf ../plots_tables_images/topright2.eps>
-(epstopdf)             \includegraphics on input line 300.
+(epstopdf)             \includegraphics on input line 299.
 Package epstopdf Info: Output file is already uptodate.
 
 <../plots_tables_images/topright2-eps-converted-to.pdf, id=107, 505.89pt x 867.
@@ -2956,7 +2953,7 @@ File: ../plots_tables_images/topright2-eps-converted-to.pdf Graphic file (type
 pdf)
  <use ../plots_tables_images/topright2-eps-converted-to.pdf>
 Package pdftex.def Info: ../plots_tables_images/topright2-eps-converted-to.pdf 
-used on input line 300.
+used on input line 299.
 (pdftex.def)             Requested size: 241.84846pt x 414.60312pt.
 Package epstopdf Info: Source file: <../plots_tables_images/topright2.eps>
 (epstopdf)                    date: 2013-04-17 15:30:20
@@ -2967,14 +2964,14 @@ rted-to.pdf>
 (epstopdf)                    size: 15169 bytes
 (epstopdf)             Command: <epstopdf --outfile=../plots_tables_images/topr
 ight2-eps-converted-to.pdf ../plots_tables_images/topright2.eps>
-(epstopdf)             \includegraphics on input line 300.
+(epstopdf)             \includegraphics on input line 299.
 Package epstopdf Info: Output file is already uptodate.
 File: ../plots_tables_images/topright2-eps-converted-to.pdf Graphic file (type 
 pdf)
 
 <use ../plots_tables_images/topright2-eps-converted-to.pdf>
 Package pdftex.def Info: ../plots_tables_images/topright2-eps-converted-to.pdf 
-used on input line 300.
+used on input line 299.
 (pdftex.def)             Requested size: 241.84846pt x 414.60312pt.
 Package epstopdf Info: Source file: <../plots_tables_images/topright2.eps>
 (epstopdf)                    date: 2013-04-17 15:30:20
@@ -2985,14 +2982,14 @@ rted-to.pdf>
 (epstopdf)                    size: 15169 bytes
 (epstopdf)             Command: <epstopdf --outfile=../plots_tables_images/topr
 ight2-eps-converted-to.pdf ../plots_tables_images/topright2.eps>
-(epstopdf)             \includegraphics on input line 300.
+(epstopdf)             \includegraphics on input line 299.
 Package epstopdf Info: Output file is already uptodate.
 File: ../plots_tables_images/topright2-eps-converted-to.pdf Graphic file (type 
 pdf)
 
 <use ../plots_tables_images/topright2-eps-converted-to.pdf>
 Package pdftex.def Info: ../plots_tables_images/topright2-eps-converted-to.pdf 
-used on input line 300.
+used on input line 299.
 (pdftex.def)             Requested size: 241.84846pt x 414.60312pt.
 Package epstopdf Info: Source file: <../plots_tables_images/topright3.eps>
 (epstopdf)                    date: 2013-04-17 15:30:20
@@ -3003,7 +3000,7 @@ rted-to.pdf>
 (epstopdf)                    size: 16079 bytes
 (epstopdf)             Command: <epstopdf --outfile=../plots_tables_images/topr
 ight3-eps-converted-to.pdf ../plots_tables_images/topright3.eps>
-(epstopdf)             \includegraphics on input line 300.
+(epstopdf)             \includegraphics on input line 299.
 Package epstopdf Info: Output file is already uptodate.
 
 <../plots_tables_images/topright3-eps-converted-to.pdf, id=108, 505.89pt x 867.
@@ -3012,10 +3009,10 @@ File: ../plots_tables_images/topright3-eps-converted-to.pdf Graphic file (type
 pdf)
  <use ../plots_tables_images/topright3-eps-converted-to.pdf>
 Package pdftex.def Info: ../plots_tables_images/topright3-eps-converted-to.pdf 
-used on input line 300.
+used on input line 299.
 (pdftex.def)             Requested size: 241.84846pt x 414.60312pt.
 
-Overfull \hbox (10.0pt too wide) in paragraph at lines 300--300
+Overfull \hbox (10.0pt too wide) in paragraph at lines 299--299
  [][] 
  []
 
@@ -3028,16 +3025,16 @@ rted-to.pdf>
 (epstopdf)                    size: 16079 bytes
 (epstopdf)             Command: <epstopdf --outfile=../plots_tables_images/topr
 ight3-eps-converted-to.pdf ../plots_tables_images/topright3.eps>
-(epstopdf)             \includegraphics on input line 300.
+(epstopdf)             \includegraphics on input line 299.
 Package epstopdf Info: Output file is already uptodate.
 File: ../plots_tables_images/topright3-eps-converted-to.pdf Graphic file (type 
 pdf)
 <use ../plots_tables_images/topright3-eps-converted-to.pdf>
 Package pdftex.def Info: ../plots_tables_images/topright3-eps-converted-to.pdf 
-used on input line 300.
+used on input line 299.
 (pdftex.def)             Requested size: 241.84846pt x 414.60312pt.
 
-Overfull \hbox (10.0pt too wide) in paragraph at lines 300--300
+Overfull \hbox (10.0pt too wide) in paragraph at lines 299--299
  [][] 
  []
 
@@ -3050,13 +3047,13 @@ rted-to.pdf>
 (epstopdf)                    size: 15169 bytes
 (epstopdf)             Command: <epstopdf --outfile=../plots_tables_images/topr
 ight2-eps-converted-to.pdf ../plots_tables_images/topright2.eps>
-(epstopdf)             \includegraphics on input line 300.
+(epstopdf)             \includegraphics on input line 299.
 Package epstopdf Info: Output file is already uptodate.
 File: ../plots_tables_images/topright2-eps-converted-to.pdf Graphic file (type 
 pdf)
 <use ../plots_tables_images/topright2-eps-converted-to.pdf>
 Package pdftex.def Info: ../plots_tables_images/topright2-eps-converted-to.pdf 
-used on input line 300.
+used on input line 299.
 (pdftex.def)             Requested size: 241.84846pt x 414.60312pt.
 Package epstopdf Info: Source file: <../plots_tables_images/topright2.eps>
 (epstopdf)                    date: 2013-04-17 15:30:20
@@ -3067,14 +3064,14 @@ rted-to.pdf>
 (epstopdf)                    size: 15169 bytes
 (epstopdf)             Command: <epstopdf --outfile=../plots_tables_images/topr
 ight2-eps-converted-to.pdf ../plots_tables_images/topright2.eps>
-(epstopdf)             \includegraphics on input line 300.
+(epstopdf)             \includegraphics on input line 299.
 Package epstopdf Info: Output file is already uptodate.
 File: ../plots_tables_images/topright2-eps-converted-to.pdf Graphic file (type 
 pdf)
 
 <use ../plots_tables_images/topright2-eps-converted-to.pdf>
 Package pdftex.def Info: ../plots_tables_images/topright2-eps-converted-to.pdf 
-used on input line 300.
+used on input line 299.
 (pdftex.def)             Requested size: 241.84846pt x 414.60312pt.
 Package epstopdf Info: Source file: <../plots_tables_images/topright2.eps>
 (epstopdf)                    date: 2013-04-17 15:30:20
@@ -3085,14 +3082,14 @@ rted-to.pdf>
 (epstopdf)                    size: 15169 bytes
 (epstopdf)             Command: <epstopdf --outfile=../plots_tables_images/topr
 ight2-eps-converted-to.pdf ../plots_tables_images/topright2.eps>
-(epstopdf)             \includegraphics on input line 300.
+(epstopdf)             \includegraphics on input line 299.
 Package epstopdf Info: Output file is already uptodate.
 File: ../plots_tables_images/topright2-eps-converted-to.pdf Graphic file (type 
 pdf)
 
 <use ../plots_tables_images/topright2-eps-converted-to.pdf>
 Package pdftex.def Info: ../plots_tables_images/topright2-eps-converted-to.pdf 
-used on input line 300.
+used on input line 299.
 (pdftex.def)             Requested size: 241.84846pt x 414.60312pt.
 Package epstopdf Info: Source file: <../plots_tables_images/topright3.eps>
 (epstopdf)                    date: 2013-04-17 15:30:20
@@ -3103,17 +3100,17 @@ rted-to.pdf>
 (epstopdf)                    size: 16079 bytes
 (epstopdf)             Command: <epstopdf --outfile=../plots_tables_images/topr
 ight3-eps-converted-to.pdf ../plots_tables_images/topright3.eps>
-(epstopdf)             \includegraphics on input line 300.
+(epstopdf)             \includegraphics on input line 299.
 Package epstopdf Info: Output file is already uptodate.
 File: ../plots_tables_images/topright3-eps-converted-to.pdf Graphic file (type 
 pdf)
 
 <use ../plots_tables_images/topright3-eps-converted-to.pdf>
 Package pdftex.def Info: ../plots_tables_images/topright3-eps-converted-to.pdf 
-used on input line 300.
+used on input line 299.
 (pdftex.def)             Requested size: 241.84846pt x 414.60312pt.
 
-Overfull \hbox (10.0pt too wide) in paragraph at lines 300--300
+Overfull \hbox (10.0pt too wide) in paragraph at lines 299--299
  [][] 
  []
 
@@ -3126,16 +3123,16 @@ rted-to.pdf>
 (epstopdf)                    size: 16079 bytes
 (epstopdf)             Command: <epstopdf --outfile=../plots_tables_images/topr
 ight3-eps-converted-to.pdf ../plots_tables_images/topright3.eps>
-(epstopdf)             \includegraphics on input line 300.
+(epstopdf)             \includegraphics on input line 299.
 Package epstopdf Info: Output file is already uptodate.
 File: ../plots_tables_images/topright3-eps-converted-to.pdf Graphic file (type 
 pdf)
 <use ../plots_tables_images/topright3-eps-converted-to.pdf>
 Package pdftex.def Info: ../plots_tables_images/topright3-eps-converted-to.pdf 
-used on input line 300.
+used on input line 299.
 (pdftex.def)             Requested size: 241.84846pt x 414.60312pt.
 
-Overfull \hbox (10.0pt too wide) in paragraph at lines 300--300
+Overfull \hbox (10.0pt too wide) in paragraph at lines 299--299
  [][] 
  []
 
@@ -3148,13 +3145,13 @@ rted-to.pdf>
 (epstopdf)                    size: 15169 bytes
 (epstopdf)             Command: <epstopdf --outfile=../plots_tables_images/topr
 ight2-eps-converted-to.pdf ../plots_tables_images/topright2.eps>
-(epstopdf)             \includegraphics on input line 300.
+(epstopdf)             \includegraphics on input line 299.
 Package epstopdf Info: Output file is already uptodate.
 File: ../plots_tables_images/topright2-eps-converted-to.pdf Graphic file (type 
 pdf)
 <use ../plots_tables_images/topright2-eps-converted-to.pdf>
 Package pdftex.def Info: ../plots_tables_images/topright2-eps-converted-to.pdf 
-used on input line 300.
+used on input line 299.
 (pdftex.def)             Requested size: 241.84846pt x 414.60312pt.
 Package epstopdf Info: Source file: <../plots_tables_images/topright2.eps>
 (epstopdf)                    date: 2013-04-17 15:30:20
@@ -3165,14 +3162,14 @@ rted-to.pdf>
 (epstopdf)                    size: 15169 bytes
 (epstopdf)             Command: <epstopdf --outfile=../plots_tables_images/topr
 ight2-eps-converted-to.pdf ../plots_tables_images/topright2.eps>
-(epstopdf)             \includegraphics on input line 300.
+(epstopdf)             \includegraphics on input line 299.
 Package epstopdf Info: Output file is already uptodate.
 File: ../plots_tables_images/topright2-eps-converted-to.pdf Graphic file (type 
 pdf)
 
 <use ../plots_tables_images/topright2-eps-converted-to.pdf>
 Package pdftex.def Info: ../plots_tables_images/topright2-eps-converted-to.pdf 
-used on input line 300.
+used on input line 299.
 (pdftex.def)             Requested size: 241.84846pt x 414.60312pt.
 Package epstopdf Info: Source file: <../plots_tables_images/topright2.eps>
 (epstopdf)                    date: 2013-04-17 15:30:20
@@ -3183,14 +3180,14 @@ rted-to.pdf>
 (epstopdf)                    size: 15169 bytes
 (epstopdf)             Command: <epstopdf --outfile=../plots_tables_images/topr
 ight2-eps-converted-to.pdf ../plots_tables_images/topright2.eps>
-(epstopdf)             \includegraphics on input line 300.
+(epstopdf)             \includegraphics on input line 299.
 Package epstopdf Info: Output file is already uptodate.
 File: ../plots_tables_images/topright2-eps-converted-to.pdf Graphic file (type 
 pdf)
 
 <use ../plots_tables_images/topright2-eps-converted-to.pdf>
 Package pdftex.def Info: ../plots_tables_images/topright2-eps-converted-to.pdf 
-used on input line 300.
+used on input line 299.
 (pdftex.def)             Requested size: 241.84846pt x 414.60312pt.
 Package epstopdf Info: Source file: <../plots_tables_images/topright3.eps>
 (epstopdf)                    date: 2013-04-17 15:30:20
@@ -3201,17 +3198,17 @@ rted-to.pdf>
 (epstopdf)                    size: 16079 bytes
 (epstopdf)             Command: <epstopdf --outfile=../plots_tables_images/topr
 ight3-eps-converted-to.pdf ../plots_tables_images/topright3.eps>
-(epstopdf)             \includegraphics on input line 300.
+(epstopdf)             \includegraphics on input line 299.
 Package epstopdf Info: Output file is already uptodate.
 File: ../plots_tables_images/topright3-eps-converted-to.pdf Graphic file (type 
 pdf)
 
 <use ../plots_tables_images/topright3-eps-converted-to.pdf>
 Package pdftex.def Info: ../plots_tables_images/topright3-eps-converted-to.pdf 
-used on input line 300.
+used on input line 299.
 (pdftex.def)             Requested size: 241.84846pt x 414.60312pt.
 
-Overfull \hbox (10.0pt too wide) in paragraph at lines 300--300
+Overfull \hbox (10.0pt too wide) in paragraph at lines 299--299
  [][] 
  []
 
@@ -3224,16 +3221,16 @@ rted-to.pdf>
 (epstopdf)                    size: 16079 bytes
 (epstopdf)             Command: <epstopdf --outfile=../plots_tables_images/topr
 ight3-eps-converted-to.pdf ../plots_tables_images/topright3.eps>
-(epstopdf)             \includegraphics on input line 300.
+(epstopdf)             \includegraphics on input line 299.
 Package epstopdf Info: Output file is already uptodate.
 File: ../plots_tables_images/topright3-eps-converted-to.pdf Graphic file (type 
 pdf)
 <use ../plots_tables_images/topright3-eps-converted-to.pdf>
 Package pdftex.def Info: ../plots_tables_images/topright3-eps-converted-to.pdf 
-used on input line 300.
+used on input line 299.
 (pdftex.def)             Requested size: 241.84846pt x 414.60312pt.
 
-Overfull \hbox (10.0pt too wide) in paragraph at lines 300--300
+Overfull \hbox (10.0pt too wide) in paragraph at lines 299--299
  [][] 
  []
 
@@ -3248,7 +3245,7 @@ erted-to.pdf> <../plots_tables_images/topleft3-eps-converted-to.pdf>] [8 <../pl
 ots_tables_images/topright0-eps-converted-to.pdf> <../plots_tables_images/topri
 ght1-eps-converted-to.pdf>] [9 <../plots_tables_images/topright2-eps-converted-
 to.pdf> <../plots_tables_images/topright3-eps-converted-to.pdf>]
-LaTeX Font Info:    Try loading font information for T1+cmtt on input line 418.
+LaTeX Font Info:    Try loading font information for T1+cmtt on input line 417.
 
 
 (/usr/local/texlive/2013/texmf-dist/tex/latex/base/t1cmtt.fd
@@ -3260,26 +3257,26 @@ Package microtype Info: Loading generic settings for font family
 (microtype)             See the microtype manual for details.
 
 No complaints by nag.
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 423.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 422.
 [10
 
 ]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 423.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 422.
  (./bunch_of_fid_edges.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 423.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 423.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 422.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 422.
 Package rerunfilecheck Info: File `bunch_of_fid_edges.out' has not changed.
 (rerunfilecheck)             Checksum: A26BE73F676A84D603C0A6246F2B52FE;220.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 423.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 422.
  ) 
 Here is how much of TeX's memory you used:
  13885 strings out of 493311
- 221870 string characters out of 6137850
+ 221855 string characters out of 6137851
  381233 words of memory out of 5000000
  17095 multiletter control sequences out of 15000+600000
  13877 words of font info for 46 fonts, out of 8000000 for 9000
  957 hyphenation exceptions out of 8191
- 41i,14n,59p,656b,830s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 41i,14n,59p,651b,830s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/local/texlive/2013/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc}
 </usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></
 usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></u
@@ -3291,7 +3288,7 @@ al/texlive/2013/texmf-dist/fonts/type1/public/cm-super/sfrm1440.pfb></usr/local
 exlive/2013/texmf-dist/fonts/type1/public/cm-super/sfsx1440.pfb></usr/local/tex
 live/2013/texmf-dist/fonts/type1/public/cm-super/sfsx2074.pfb></usr/local/texli
 ve/2013/texmf-dist/fonts/type1/public/cm-super/sftt1000.pfb>
-Output written on bunch_of_fid_edges.pdf (11 pages, 436637 bytes).
+Output written on bunch_of_fid_edges.pdf (11 pages, 436526 bytes).
 PDF statistics:
  260 PDF objects out of 1000 (max. 8388607)
  190 compressed objects within 2 object streams

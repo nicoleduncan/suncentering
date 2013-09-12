@@ -1,8 +1,8 @@
-PWD /Users/jerensuzuki/Documents/suncentering/tex files copy
+PWD /Users/jerensuzuki/Documents/suncentering/tex files
 INPUT /usr/local/texlive/2013/texmf.cnf
 INPUT /usr/local/texlive/2013/texmf-dist/web2c/texmf.cnf
 INPUT /usr/local/texlive/2013/texmf-var/web2c/pdftex/pdflatex.fmt
-INPUT /Users/jerensuzuki/Documents/suncentering/tex files copy/bunch_of_fid_edges.tex
+INPUT /Users/jerensuzuki/Documents/suncentering/tex files/bunch_of_fid_edges.tex
 OUTPUT bunch_of_fid_edges.log
 INPUT /usr/local/texlive/2013/texmf-dist/tex/latex/nag/nag.sty
 INPUT /usr/local/texlive/2013/texmf-dist/tex/latex/nag/nag.sty
