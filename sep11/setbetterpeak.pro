@@ -4,10 +4,10 @@ FUNCTION setbetterpeak, input, nsuns
 ;       Returns peaks of 2nd deriv of sorted array to set thresholds for image
 ;
 ;   :Params:
-;       input: in, required
+;       input: in, required, type=byte(ndims,2)
 ;           Starting input image
 ;
-;       nsuns: in, required
+;       nsuns: in, required, type =float
 ;           Number of suns
 ;
 ;-

@@ -4,7 +4,7 @@ FUNCTION everysun, input
 ;       Finds the rough centroiding centers of any and all suns
 ;
 ;   :Params:
-;       input: in, required
+;       input: in, required,type=byte(ndims,2)
 ;           The raw input image
 ;
 ;   :Keywords:

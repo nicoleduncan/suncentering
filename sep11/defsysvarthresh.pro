@@ -4,7 +4,7 @@ PRO defsysvarthresh, input
 ;       Defines solar thresholds
 ;
 ;   :Params:
-;       input: in, required
+;       input: in, required,type=byte(ndims,2)
 ;           Starting input image
 ;
 ;-

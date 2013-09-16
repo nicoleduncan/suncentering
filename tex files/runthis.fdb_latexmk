@@ -1,12 +1,12 @@
 # Fdb version 3
-["pdflatex"] 1378940883 "/Users/jerensuzuki/Documents/suncentering/tex files/runthis.tex" "runthis.pdf" "runthis" 1378940884
+["pdflatex"] 1379105319 "/Users/jerensuzuki/Documents/suncentering/tex files/runthis.tex" "runthis.pdf" "runthis" 1379105320
   "../plots_tables_images/best4fiducials-eps-converted-to.pdf" 1378940742 70801 d31ecb54c877dd6ffd7b0e78d47b0cd9 ""
   "../plots_tables_images/best4fiducials.eps" 1378940664 536348 88b044cf26ef17dea674e34107c8044d ""
   "../plots_tables_images/fidpositions-eps-converted-to.pdf" 1378940742 71309 b9b044684a03710f26a3554786267840 ""
   "../plots_tables_images/fidpositions.eps" 1378940648 536348 e286587546d1a2dd42d7a7efe95eaddc ""
   "../plots_tables_images/linecenters-eps-converted-to.pdf" 1378940742 87117 25fc447cb441d07dcbc1803b14cb21ef ""
   "../plots_tables_images/linecenters.eps" 1378940625 554905 6e51d96eaabf73624bf5f8b68a686a73 ""
-  "/Users/jerensuzuki/Documents/suncentering/tex files/runthis.tex" 1378940882 12683 a7e83e838f4310b9fed7087cc693688b ""
+  "/Users/jerensuzuki/Documents/suncentering/tex files/runthis.tex" 1379105318 12775 2415603d5b58d1d466b2f2688a06643f ""
   "/usr/local/texlive/2013/../texmf-local/tex/latex/deluxetable/deluxetable.sty" 1366832326 11321 35b2c46627b671e19bd036ff4dbf9e85 ""
   "/usr/local/texlive/2013/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc" 1136849721 2971 def0b6c1f0b107b3b936def894055589 ""
   "/usr/local/texlive/2013/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc" 1136849721 2900 1537cc8184ad1792082cd229ecc269f4 ""
@@ -171,10 +171,10 @@
   "/usr/local/texlive/2013/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1378917189 1102619 27bc8dbfb3ff4374035ffb99508229c8 ""
   "/usr/local/texlive/2013/texmf-var/web2c/pdftex/pdflatex.fmt" 1378227428 3827490 a3fe091db5b14063def8559b07855ced ""
   "/usr/local/texlive/2013/texmf.cnf" 1369923207 577 cbc827f6294276973a1952e86e8ad73a ""
-  "runthis.aux" 1378940884 1546 1aa6d64a925ea735db2963b8b79e5e73 ""
-  "runthis.out" 1378940884 95 911cd518be6155c0622e57702117ba98 ""
-  "runthis.tex" 1378940882 12683 a7e83e838f4310b9fed7087cc693688b ""
-  "runthis.toc" 1378940884 119 c17900e260d8aa4dcccb7a02aff0c054 ""
+  "runthis.aux" 1379105320 1753 4b7455be1b9dd9d84f4a90eef1b687c1 ""
+  "runthis.out" 1379105320 143 f805cbd5f8805ecbdfd6cb6792ce695b ""
+  "runthis.tex" 1379105318 12775 2415603d5b58d1d466b2f2688a06643f ""
+  "runthis.toc" 1379105320 187 212ff6f79dc45ddc2d8fc2ef9c7811a0 ""
   (generated)
   "runthis.aux"
   "runthis.toc"

@@ -4,10 +4,10 @@ FUNCTION makestrips, inputstruct, inputimage
 ;       Makes strips using approx centroiding method to make cropped areas
 ;
 ;   :Params:
-;       inputstruct: in, required
+;       inputstruct: in, required,type=structure
 ;           Structure containing all the solar information
 ;
-;       inputimage: in, required
+;       inputimage: in, required,type=structure
 ;           The raw input image
 ;
 ;-

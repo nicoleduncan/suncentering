@@ -8,7 +8,7 @@ FUNCTION centroidwholesuns, inputstruct, inputimage
 ;       inputstruct : in, required, type=structure
 ;           Structure containing the centers and cropped images of all 3 suns
 ;
-;       inputimage : in, required, type=structure
+;       inputimage : in, required, type=byte(ndims,2)
 ;           Image that we start out with
 ;
 ;   :Keywords:

@@ -59,44 +59,50 @@
 \@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces \relax }}{4}{figure.caption.5}}
 \newlabel{cchecks}{{3}{4}{\relax }{figure.caption.5}{}}
 \newlabel{cchecks@cref}{{[figure][3][]3}{4}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {5.1}Thresholds}{4}{subsection.5.1}}
-\newlabel{sub:thresholds}{{5.1}{4}{Thresholds}{subsection.5.1}{}}
-\newlabel{sub:thresholds@cref}{{[subsection][1][5]5.1}{4}}
-\newlabel{sortsort}{{4a}{5}{The 2D array sorted by x or y positions\relax }{figure.caption.6}{}}
-\newlabel{sortsort@cref}{{[subfigure][1][4]4a}{5}}
-\newlabel{sub@sortsort}{{a}{5}{The 2D array sorted by x or y positions\relax }{figure.caption.6}{}}
-\newlabel{sub@sortsort@cref}{{[subfigure][1][4]4a}{5}}
-\newlabel{sortsortohno}{{4b}{5}{Here, the suns are lined horizontally so all the y positions overlap. If we zero out the y range a little before and after the pixels to the right of the rightmost vertical line in the `Y Positions' plot, we end up zeroing out the y range of the other suns too.\relax }{figure.caption.6}{}}
-\newlabel{sortsortohno@cref}{{[subfigure][2][4]4b}{5}}
-\newlabel{sub@sortsortohno}{{b}{5}{Here, the suns are lined horizontally so all the y positions overlap. If we zero out the y range a little before and after the pixels to the right of the rightmost vertical line in the `Y Positions' plot, we end up zeroing out the y range of the other suns too.\relax }{figure.caption.6}{}}
-\newlabel{sub@sortsortohno@cref}{{[subfigure][2][4]4b}{5}}
-\gdef\@@FBset@iii{\c@FBcnt5\def\FB@@boxmax{\FBo@ht291.94974pt\FBf@ht0.0pt}}
-\@writefile{lof}{\contentsline {figure}{\numberline {4}{\ignorespaces \relax }}{5}{figure.caption.6}}
-\@writefile{lof}{\contentsline {figure}{\numberline {5}{\ignorespaces This is the sorted array for a 3-sun image. The peaks don't look that large in the second derivative, but that's just because of the scaling to the first peak.\relax }}{5}{figure.caption.7}}
-\newlabel{peaks}{{5}{5}{This is the sorted array for a 3-sun image. The peaks don't look that large in the second derivative, but that's just because of the scaling to the first peak.\relax }{figure.caption.7}{}}
-\newlabel{peaks@cref}{{[figure][5][]5}{5}}
-\@writefile{toc}{\contentsline {section}{\numberline {6}Finding Fiducial Positions}{6}{section.6}}
-\newlabel{sec:finding_fiducial_positions}{{6}{6}{Finding Fiducial Positions}{section.6}{}}
-\newlabel{sec:finding_fiducial_positions@cref}{{[section][6][]6}{6}}
-\@writefile{lof}{\contentsline {figure}{\numberline {6}{\ignorespaces The pixels outlined correspond to values from the edge detection-filtered array\relax }}{6}{figure.caption.8}}
-\newlabel{edge_det}{{6}{6}{The pixels outlined correspond to values from the edge detection-filtered array\relax }{figure.caption.8}{}}
-\newlabel{edge_det@cref}{{[figure][6][]6}{6}}
-\newlabel{cropcomp}{{7a}{7}{Result of convolution filter designed to create a blurry minimum.\relax }{figure.caption.9}{}}
-\newlabel{cropcomp@cref}{{[subfigure][1][7]7a}{7}}
-\newlabel{sub@cropcomp}{{a}{7}{Result of convolution filter designed to create a blurry minimum.\relax }{figure.caption.9}{}}
-\newlabel{sub@cropcomp@cref}{{[subfigure][1][7]7a}{7}}
-\newlabel{sharpfid}{{7b}{7}{Using a kernel that emphasized a sharp peak instead of a smooth minimum.\relax }{figure.caption.9}{}}
-\newlabel{sharpfid@cref}{{[subfigure][2][7]7b}{7}}
-\newlabel{sub@sharpfid}{{b}{7}{Using a kernel that emphasized a sharp peak instead of a smooth minimum.\relax }{figure.caption.9}{}}
-\newlabel{sub@sharpfid@cref}{{[subfigure][2][7]7b}{7}}
-\gdef\@@FBset@iv{\c@FBcnt7\def\FB@@boxmax{\FBo@ht357.49776pt\FBf@ht0.0pt}}
-\@writefile{lof}{\contentsline {figure}{\numberline {7}{\ignorespaces \relax }}{7}{figure.caption.9}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {6.1}Subpixel Fiducial Positions}{8}{subsection.6.1}}
-\newlabel{sub:subpixel_fiducial_positions}{{6.1}{8}{Subpixel Fiducial Positions}{subsection.6.1}{}}
-\newlabel{sub:subpixel_fiducial_positions@cref}{{[subsection][1][6]6.1}{8}}
-\@writefile{toc}{\contentsline {section}{\numberline {7}Fiducial Identification}{8}{section.7}}
-\newlabel{sec:fiducial_identification}{{7}{8}{Fiducial Identification}{section.7}{}}
-\newlabel{sec:fiducial_identification@cref}{{[section][7][]7}{8}}
-\@writefile{toc}{\contentsline {section}{\numberline {8}Miscellaneous}{8}{section.8}}
-\newlabel{sec:miscellaneous}{{8}{8}{Miscellaneous}{section.8}{}}
-\newlabel{sec:miscellaneous@cref}{{[section][8][]8}{8}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.1}Failed Attempts to Find Center}{4}{subsection.5.1}}
+\newlabel{sub:failed_attempts_to_find_center}{{5.1}{4}{Failed Attempts to Find Center}{subsection.5.1}{}}
+\newlabel{sub:failed_attempts_to_find_center@cref}{{[subsection][1][5]5.1}{4}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4}{\ignorespaces This is an example of the image rotation technique used to make sure the solar centers do not lie within a certain distance to the edges of the usable image. The white lines trace out the original, unrotated boundary of the image. The blue lines mark the center of rotation (and also the center of the image). The red lines are the modified boundaries that equate to the bottom corners being the same size. As you can see, rotating a rectangle 45$^\circ $ and applying the original image boundaries leads to incorrectly-sized bottom corners.\relax }}{5}{figure.caption.6}}
+\newlabel{goodcorner}{{4}{5}{This is an example of the image rotation technique used to make sure the solar centers do not lie within a certain distance to the edges of the usable image. The white lines trace out the original, unrotated boundary of the image. The blue lines mark the center of rotation (and also the center of the image). The red lines are the modified boundaries that equate to the bottom corners being the same size. As you can see, rotating a rectangle 45$^\circ $ and applying the original image boundaries leads to incorrectly-sized bottom corners.\relax }{figure.caption.6}{}}
+\newlabel{goodcorner@cref}{{[figure][4][]4}{5}}
+\@writefile{toc}{\contentsline {section}{\numberline {6}Thresholds}{5}{section.6}}
+\newlabel{sec:thresholds}{{6}{5}{Thresholds}{section.6}{}}
+\newlabel{sec:thresholds@cref}{{[section][6][]6}{5}}
+\newlabel{sortsort}{{5a}{6}{The 2D array sorted by x or y positions\relax }{figure.caption.7}{}}
+\newlabel{sortsort@cref}{{[subfigure][1][5]5a}{6}}
+\newlabel{sub@sortsort}{{a}{6}{The 2D array sorted by x or y positions\relax }{figure.caption.7}{}}
+\newlabel{sub@sortsort@cref}{{[subfigure][1][5]5a}{6}}
+\newlabel{sortsortohno}{{5b}{6}{Here, the suns are lined horizontally so all the y positions overlap. If we zero out the y range a little before and after the pixels to the right of the rightmost vertical line in the `Y Positions' plot, we end up zeroing out the y range of the other suns too.\relax }{figure.caption.7}{}}
+\newlabel{sortsortohno@cref}{{[subfigure][2][5]5b}{6}}
+\newlabel{sub@sortsortohno}{{b}{6}{Here, the suns are lined horizontally so all the y positions overlap. If we zero out the y range a little before and after the pixels to the right of the rightmost vertical line in the `Y Positions' plot, we end up zeroing out the y range of the other suns too.\relax }{figure.caption.7}{}}
+\newlabel{sub@sortsortohno@cref}{{[subfigure][2][5]5b}{6}}
+\gdef\@@FBset@iii{\c@FBcnt6\def\FB@@boxmax{\FBo@ht291.94974pt\FBf@ht0.0pt}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5}{\ignorespaces \relax }}{6}{figure.caption.7}}
+\@writefile{lof}{\contentsline {figure}{\numberline {6}{\ignorespaces This is the sorted array for a 3-sun image. The peaks don't look that large in the second derivative, but that's just because of the scaling to the first peak.\relax }}{6}{figure.caption.8}}
+\newlabel{peaks}{{6}{6}{This is the sorted array for a 3-sun image. The peaks don't look that large in the second derivative, but that's just because of the scaling to the first peak.\relax }{figure.caption.8}{}}
+\newlabel{peaks@cref}{{[figure][6][]6}{6}}
+\@writefile{toc}{\contentsline {section}{\numberline {7}Finding Fiducial Positions}{7}{section.7}}
+\newlabel{sec:finding_fiducial_positions}{{7}{7}{Finding Fiducial Positions}{section.7}{}}
+\newlabel{sec:finding_fiducial_positions@cref}{{[section][7][]7}{7}}
+\@writefile{lof}{\contentsline {figure}{\numberline {7}{\ignorespaces The pixels outlined correspond to values from the edge detection-filtered array\relax }}{8}{figure.caption.9}}
+\newlabel{edge_det}{{7}{8}{The pixels outlined correspond to values from the edge detection-filtered array\relax }{figure.caption.9}{}}
+\newlabel{edge_det@cref}{{[figure][7][]7}{8}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {7.1}Subpixel Fiducial Positions}{8}{subsection.7.1}}
+\newlabel{sub:subpixel_fiducial_positions}{{7.1}{8}{Subpixel Fiducial Positions}{subsection.7.1}{}}
+\newlabel{sub:subpixel_fiducial_positions@cref}{{[subsection][1][7]7.1}{8}}
+\@writefile{toc}{\contentsline {section}{\numberline {8}Fiducial Identification}{8}{section.8}}
+\newlabel{sec:fiducial_identification}{{8}{8}{Fiducial Identification}{section.8}{}}
+\newlabel{sec:fiducial_identification@cref}{{[section][8][]8}{8}}
+\newlabel{cropcomp}{{8a}{9}{Result of convolution filter designed to create a blurry minimum.\relax }{figure.caption.10}{}}
+\newlabel{cropcomp@cref}{{[subfigure][1][8]8a}{9}}
+\newlabel{sub@cropcomp}{{a}{9}{Result of convolution filter designed to create a blurry minimum.\relax }{figure.caption.10}{}}
+\newlabel{sub@cropcomp@cref}{{[subfigure][1][8]8a}{9}}
+\newlabel{sharpfid}{{8b}{9}{Using a kernel that emphasized a sharp peak instead of a smooth minimum.\relax }{figure.caption.10}{}}
+\newlabel{sharpfid@cref}{{[subfigure][2][8]8b}{9}}
+\newlabel{sub@sharpfid}{{b}{9}{Using a kernel that emphasized a sharp peak instead of a smooth minimum.\relax }{figure.caption.10}{}}
+\newlabel{sub@sharpfid@cref}{{[subfigure][2][8]8b}{9}}
+\gdef\@@FBset@iv{\c@FBcnt9\def\FB@@boxmax{\FBo@ht357.49776pt\FBf@ht0.0pt}}
+\@writefile{lof}{\contentsline {figure}{\numberline {8}{\ignorespaces \relax }}{9}{figure.caption.10}}
+\@writefile{toc}{\contentsline {section}{\numberline {9}Miscellaneous}{10}{section.9}}
+\newlabel{sec:miscellaneous}{{9}{10}{Miscellaneous}{section.9}{}}
+\newlabel{sec:miscellaneous@cref}{{[section][9][]9}{10}}

@@ -4,10 +4,10 @@ FUNCTION npixfit, inputstruct, inputimage
 ;       Linear fit to limb strips with an arbitrary number of limb pixels
 ;
 ;   :Params:
-;       inputstruct: in, required
+;       inputstruct: in, required, type=structure
 ;           Structure containing all the solar information
 ;
-;       inputimage: in, required
+;       inputimage: in, required, type=byte(ndims,2)
 ;           Starting input image
 ;
 ;   :Keywords:

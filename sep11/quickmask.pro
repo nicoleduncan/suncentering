@@ -4,7 +4,7 @@ FUNCTION quickmask, input_image, thresh
 ;       Finds center of mask where pixels are above a given threshold
 ;
 ;   :Params:
-;       input_image : in, required, type=byte
+;       input_image : in, required, type=byte(ndims=2)
 ;           2D array of pixels to mask with threshold
 ;       thresh : in, required, type=float
 ;           Threshold used to select pixels

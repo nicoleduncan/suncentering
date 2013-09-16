@@ -9,7 +9,7 @@ PRO alpha
 ;   :TODO: 
 ;       NONE, BRAH
 ;
-; idldoc,root='../suncentering', output='rbdoc',format_style='rst',/user,/quiet,markup_style='rst'
+; idldoc,root='../suncentering', output='doc_lib',format_style='rst',/user,/quiet,markup_style='rst'
 ;-
 COMPILE_OPT idl2
 ON_ERROR,1
@@ -60,7 +60,6 @@ startimage = tritest
 ; profiler,/system
 
 ; takes ~.07 s to run albert's triple sun image
-
 
 tic
 defparams, 'pblock_albtritest.txt'

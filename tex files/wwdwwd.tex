@@ -53,7 +53,7 @@ breakatwhitespace=false,            % sets if automatic breaks should only happe
 escapeinside={\%*}{*)}              % if you want to add a comment within your code
 }
 
-\title{Why We Do What We Do (WWDWWD)}
+\title{Why We Do What We Do ($(\textrm{WWD})^2$)}
 \author{Jeren Suzuki}
 \date{Last Edited \today}
 
@@ -212,6 +212,12 @@ We ended up with a 2-part check that uses coordinate transformation. First, we c
     \end{subfloatrow}}{\caption{}\label{cchecks}}%
 \end{figure}
 
+\begin{figure}[!ht]
+  \includegraphics[width=\textwidth]{../plots_tables_images/goodcorners.eps}
+  \caption{This is an example of the image rotation technique used to make sure the solar centers do not lie within a certain distance to the edges of the usable image. The white lines trace out the original, unrotated boundary of the image. The blue lines mark the center of rotation (and also the center of the image). The red lines are the modified boundaries that equate to the bottom corners being the same size. As you can see, rotating a rectangle 45$^\circ$ and applying the original image boundaries leads to incorrectly-sized bottom corners.}
+  \label{goodcorner}
+\end{figure}
+
 % section deciding_whether_or_not_to_keep_image (end)
 
 \section{Finding Centers of Sun(s)} % (fold)
@@ -252,8 +258,14 @@ This method was tested because it reused the \hl{\texttt{sort()}} function when 
 
 Once we find the approximate centers, we crop a box around the sun and create arrays the entire length of the cropped box. Next, we isolate and limb fit the edges of the sun so that we can find more accurate center positions. At first we used a 3 order fit, then a linear fit (since that's what Albert used), then to a 2nd order fit (because we thought it wasn't good enough) then back to a linear fit (because the fit was good enough). 
 
-\subsection{Thresholds} % (fold)
-\label{sub:thresholds}
+\subsection{Failed Attempts to Find Center} % (fold)
+\label{sub:failed_attempts_to_find_center}
+We also looked at other ways to find the center; one method was to find the brightest sun in the image and since we know the approximate distance of the auxiliary suns from the brightest sun, we scan in a circle at a fixed radius to pick them up. While intuitive, it was slow and fraught with problems. Once we found a sun while scanning in two circles, we mark the positions where the scan picked up the rising and the falling edges of the sun. We would then pair the points and see where the perpendicular bisectors intersected. This centering method was designed so that we wouldn't have to deal with 2D masking or anything, but with all the calculations and iterations we had to do (scanning in a circle was a for-loop), the amount of time spent was more than what we considered acceptable. 
+% subsection failed_attempts_to_find_center (end)
+
+% section finding_centers_of_sun (end)
+\section{Thresholds} % (fold)
+\label{sec:thresholds}
 We want a robust threshold so instead of using an arbitrary parameter multiplied by the max of the image, we sort the 2D image into a 1D array and return the position of the boundaries of the regions which are seen as humps. See \cref{peaks}.
 
 To find the boundaries, we look at the 2nd derivative of the sorted array and find the 3 maximum peaks (in the case of 3 suns), corresponding to the boundaries of the aforementioned humps. We chose this way because thresholding the peaks requires parameterization that needs to be changed dynamically. 
@@ -271,15 +283,18 @@ Several factors affecting thresholding values:
     \item artifacts of smoothing
 \end{enumerate}
 
-To solve 1), we used the \hl{\texttt{edge\_truncate}} keyword because it gave us the least amount of weird edge artifacts in the 1D array. The other options were \hl{\texttt{edge\_zero}} and \hl{\texttt{edge\_mirror}} which yielded poor results.
+To solve 1), we used the \hl{\texttt{edge\_truncate}} keyword because it gave us the least amount of weird edge artifacts in the 1D array. The other options were \hl{\texttt{edge\_zero}} and \hl{\texttt{edge\_mirror}} which yielded poor results. 
+
+We had a \emph{HUGE} problem with figuring out why taking the second derivative of the sorted array was giving us weird results. We used \hl{\texttt{ts\_smooth}} for a while because it was the only smoothing program that gave us what we didn't see from regular \hl{\texttt{smooth}}. \hl{\texttt{ts\_smooth}} was ungodly slow however, and we ended up figuring out the problem was that taking derivatives of bytes led to weird rounding errors; we had to convert the bytes to floats and then \hl{\texttt{smooth}} performed like we expected.
 
 To solve 2), when we sorted the array by brightness, we left out the top .1\% of the pixels.
 
 To solve 3), we had to manually cut off the last 10,000 pixels. This part needs to be improved.
 
 Since we knew there were approximately $N$ pixels per sun, we looked into partitioning the 1D sorted array into chunks with $N$ pixels to calculate the threshold from. Not sure why we stopped this, but it was for a good reason.
-% subsection thresholds (end)
-% section finding_centers_of_sun (end)
+
+When taking the peaks of the 2nd derivative, we at first used \hl{\texttt{where}} functions and dynamic thresholds, but it proved to be too much trouble to have to define that every single time. We ended up using a \hl{\texttt{max}} function and zeroing out the peaks we find so that the next call to \hl{\texttt{max}} won't pick up the previous peak.
+% section thresholds (end)
 
 \section{Finding Fiducial Positions} % (fold)
 \label{sec:finding_fiducial_positions}

@@ -4,7 +4,7 @@ FUNCTION idsuns, input
 ;       Defines solar regions
 ;
 ;   :Params:
-;       input: in, required
+;       input: in, required,type=byte(ndims,2)
 ;           Starting input image
 ;
 ;-
@@ -15,6 +15,7 @@ FUNCTION idsuns, input
 bimask = input gt 15
 ; bimask = morph_open(bimask,replicate(1,3,3))
 
+; We have to do this because the thresholded region is grainy by nature so we have to smear it out a little bit so the pixels all touch
 ; dilate is 3x faster than morph_open
 bimask = dilate(bimask,replicate(1,3,3))
 

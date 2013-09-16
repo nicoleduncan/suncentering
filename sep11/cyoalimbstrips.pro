@@ -4,10 +4,10 @@ FUNCTION cyoalimbstrips, inputstruct, inputimage
 ;       Makes limb strips from whole strips
 ;
 ;   :Params:
-;       inputstruct: in, required
+;       inputstruct: in, required, type=structure
 ;           Structure containing all the solar information
 ;
-;       inputimage: in, required
+;       inputimage: in, required, type=byte(ndims,2)
 ;           The raw input image
 ;
 ;   Fun trivia, the name is an acronym for "Choose Your Own Adventure", meaning this program scales to whatever limb width you want.

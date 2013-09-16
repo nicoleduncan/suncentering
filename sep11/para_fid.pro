@@ -1,4 +1,19 @@
 FUNCTION para_fid, inputimage, inputstruct
+;+
+;   :Description:
+;       Fits 2 1D parabolas to the fiducial center and returns where they cross
+;
+;   :Params:
+;       inputimage: in, required, type=byte(ndims,2)
+;           The raw input image
+;
+;       inputstruct: in, required, type=structure
+;           Structure containing all the solar information
+;
+;   :Keywords:
+;
+;-
+
 ; 3x faster than fid_faster
 ; .005 to execute if using gaussfit
 
@@ -92,6 +107,22 @@ for rr = 0,N_ELEMENTS(inputstruct)-1 do begin
     ; all = crop
     ; dim = crop
     ; Loop through each x and y position combination 
+
+
+
+
+
+
+
+
+
+
+    ;=======================================================================================
+    ;=======================================================================================
+    ;=======================================================================================
+
+    stop
+    
     for i = 0,N_ELEMENTS(xx)-1 do begin
         for j = 0,N_ELEMENTS(yy)-1 do begin
             ; all[xx[i]-1:xx[i]+1,yy[j]-1:yy[j]+1]=255

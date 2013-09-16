@@ -17,9 +17,7 @@ High Priority
 * For each cropped-down fiducial we are looking at, recrop it down to a square so that the edge of the fiducial just barely extends past the cropped area. Will result in more accurate 1D sums to find fiducial center
 * Remove the top .1% pixels in everysun.pro
 * Fix para_fid, there is too much bloat in there 
-* Add quantifiable percentage check for rotated coordinates in picksun_rot (not sure what this means, but it was in my old to-do list)
 * Sync work with apollo/atropos
-* Make documentation that lists what we did and why we did it
 
 Low Priority
 -------

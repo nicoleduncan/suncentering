@@ -8,8 +8,9 @@
 \contentsline {section}{\numberline {3}Skimming the Top Off}{2}{section.3}
 \contentsline {section}{\numberline {4}Deciding Whether or Not to Keep Image}{3}{section.4}
 \contentsline {section}{\numberline {5}Finding Centers of Sun(s)}{3}{section.5}
-\contentsline {subsection}{\numberline {5.1}Thresholds}{4}{subsection.5.1}
-\contentsline {section}{\numberline {6}Finding Fiducial Positions}{6}{section.6}
-\contentsline {subsection}{\numberline {6.1}Subpixel Fiducial Positions}{8}{subsection.6.1}
-\contentsline {section}{\numberline {7}Fiducial Identification}{8}{section.7}
-\contentsline {section}{\numberline {8}Miscellaneous}{8}{section.8}
+\contentsline {subsection}{\numberline {5.1}Failed Attempts to Find Center}{4}{subsection.5.1}
+\contentsline {section}{\numberline {6}Thresholds}{5}{section.6}
+\contentsline {section}{\numberline {7}Finding Fiducial Positions}{7}{section.7}
+\contentsline {subsection}{\numberline {7.1}Subpixel Fiducial Positions}{8}{subsection.7.1}
+\contentsline {section}{\numberline {8}Fiducial Identification}{8}{section.8}
+\contentsline {section}{\numberline {9}Miscellaneous}{10}{section.9}
