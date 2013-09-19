@@ -21,6 +21,7 @@
 \usepackage[font=small]{caption}
 \usepackage[font=scriptsize]{subcaption}
 \usepackage[activate={true,nocompatibility},final,tracking=true,kerning=true,spacing=true,factor=1100,stretch=10,shrink=10]{microtype}
+% \usepackage[tocindentauto]{tocstyle}
 \SetTracking{encoding={*}, shape=sc}{40}
 
 \microtypecontext{spacing=nonfrench}
@@ -126,6 +127,8 @@ If we want the sun to be $N$ pixels wide (corresponding to $M$ cm), then open an
 % subsection setting_up_image (end)
 % section data_acquisition (end)
 
+\clearpage
+
 \section{Handling The 2D Image} % (fold)
 \label{sec:handling_the_2d_image}
 
@@ -152,6 +155,8 @@ One of \hl{\texttt{LABEL\_REGION}}'s strengths is that any adjacent pixels in a 
 
 % section handling_the_2d_image (end)
 
+\clearpage
+
 \section{Skimming the Top Off} % (fold)
 \label{sec:skimming_the_top_off}
 We want to eliminate any outlier pixels that are too bright so we sort our 2D image as a 1D array and remove the top 1\% (or .1\%, whatever) of the pixels for our threshold. Even though in the sample images provided by Albert there are no bright outlier pixels, eliminating the brightest pixels poses no detrimental affect to image processing. The reason why we do this is because having abnormally large values messes up the 2nd derivative for threshold-setting.
@@ -159,12 +164,32 @@ We want to eliminate any outlier pixels that are too bright so we sort our 2D im
 
 \section{Deciding Whether or Not to Keep Image} % (fold)
 \label{sec:deciding_whether_or_not_to_keep_image}
-The two methods we moved past:
+What we use currently is a 2-part check that uses coordinate transformation. First, we check if the solar center is within a certain distance to the edge. Next, we rotate the coordinates of the center by 45$^\circ$ and check how lose it is to the edge of the image (or whatever bounds we want). This essentially lets us quickly map out the bottom corners. See \cref{cchecks}. This method is not only much faster than our previous methods, it's also much easier to implement (once getting past the geometry calculations). The methods we moved past include: 
 
 \begin{enumerate}
     \item Check for bright pixels on image border, if number of continuous bright pixels exceeds a threshold, the general area is considered ``\emph{bad}''
     \item Count bright pixels on image border mask, if number exceeds a certain threshold, use further processing to determine where in the image the bad sun lies
 \end{enumerate}
+
+\begin{figure}[!ht]
+    \ffigbox[][\FBheight]{%
+    \begin{subfloatrow}[2]%
+        \ffigbox[\FBwidth]%
+       {%
+       \includegraphics[width=.5\textwidth]{../plots_tables_images/firstcheck.eps}%
+       }%
+       {%
+       \caption{The gray square simulates the solar image with 3 suns. The black dot is the center of a sun that would otherwise be considered ``good'' by the program since it doesn't take into account the bottom corners.}%
+       }%
+        \ffigbox[\Xhsize]%
+       {%
+       \includegraphics[width=.5\textwidth]{../plots_tables_images/seccheck.eps}%
+       }%
+       {%
+       \caption{With the image rotated 45$^\circ$ (but in reality, only the black dot is rotated. the entire array is rotated here to show the effect), the black dot now lies beyond the green line, which is the original border of the gray square. The left vertical and bottom horizontal green line mark the boundary regions for the bottom two corners. This method is fast.}%
+       }%
+    \end{subfloatrow}}{\caption{}\label{cchecks}}%
+\end{figure}
 
 To make sure that we identify the appropriate centers of the sun, we have to know how many are actually in the picture. First, we check if there are any pixels on the border of the image that are a significantly higher value than the mode of the image. If we see $N$ pixels on the border, then one of the suns is cut off. If we see $N$ and $Z$ pixels on the border, then we take into account 2 cut-off suns. We make sure that if we see no sun-pixels on the border that there isn't a chance that we missed a sun altogether and there are only 2 suns in the image. 
 
@@ -188,29 +213,7 @@ To make sure that we identify the appropriate centers of the sun, we have to kno
     \end{subfloatrow}}{\caption{}\label{corner}}%
 \end{figure}
 
-A border mask is easy to construct for a rectangle, but when you start throwing in angles, the amount of time it takes to construct the mask increases quickly. (To see what a border mask looks like, see \cref{corner}) To deal with the bottom two corners, which are areas which will never see any data, one method was to make triangular matrices with 0s and 1s and then append them to the bottom corners of a large rectangular matrix. Another method was to use \hl{\texttt{shift}} to move around the rectangular matrix within a larger matrix, multiply the shifted matrices together, and then crop the final matrix down to the original size. Both this method and the counting pixels method were slow, however. \\
-
-We ended up with a 2-part check that uses coordinate transformation. First, we check if the solar center is within a certain distance to the edge. Next, we rotate the coordinates of the center by 45$^\circ$ and check how lose it is to the edge of the image (or whatever bounds we want). This essentially lets us quickly map out the bottom corners. See \cref{cchecks}.
-
-\begin{figure}[!ht]
-    \ffigbox[][\FBheight]{%
-    \begin{subfloatrow}[2]%
-        \ffigbox[\FBwidth]%
-       {%
-       \includegraphics[width=.5\textwidth]{../plots_tables_images/firstcheck.eps}%
-       }%
-       {%
-       \caption{The gray square simulates the solar image with 3 suns. The black dot is the center of a sun that would otherwise be considered ``good'' by the program since it doesn't take into account the bottom corners.}%
-       }%
-        \ffigbox[\Xhsize]%
-       {%
-       \includegraphics[width=.5\textwidth]{../plots_tables_images/seccheck.eps}%
-       }%
-       {%
-       \caption{With the image rotated 45$^\circ$ (but in reality, only the black dot is rotated. the entire array is rotated here to show the effect), the black dot now lies beyond the green line, which is the original border of the gray square. The left vertical and bottom horizontal green line mark the boundary regions for the bottom two corners. This method is fast.}%
-       }%
-    \end{subfloatrow}}{\caption{}\label{cchecks}}%
-\end{figure}
+A border mask is easy to construct for a rectangle, but when you start throwing in angles, the amount of time it takes to construct the mask increases quickly. (To see what a border mask looks like, see \cref{corner}) To deal with the bottom two corners, which are areas which will never see any data, one method was to make triangular matrices with 0s and 1s and then append them to the bottom corners of a large rectangular matrix. Another method was to use \hl{\texttt{shift}} to move around the rectangular matrix within a larger matrix, multiply the shifted matrices together, and then crop the final matrix down to the original size. Both this method and the counting pixels method were slow, however.
 
 \begin{figure}[!ht]
   \includegraphics[width=\textwidth]{../plots_tables_images/goodcorners.eps}
@@ -219,6 +222,9 @@ We ended up with a 2-part check that uses coordinate transformation. First, we c
 \end{figure}
 
 % section deciding_whether_or_not_to_keep_image (end)
+
+\clearpage
+
 
 \section{Finding Centers of Sun(s)} % (fold)
 \label{sec:finding_centers_of_sun}
@@ -263,6 +269,9 @@ Once we find the approximate centers, we crop a box around the sun and create ar
 We also looked at other ways to find the center; one method was to find the brightest sun in the image and since we know the approximate distance of the auxiliary suns from the brightest sun, we scan in a circle at a fixed radius to pick them up. While intuitive, it was slow and fraught with problems. Once we found a sun while scanning in two circles, we mark the positions where the scan picked up the rising and the falling edges of the sun. We would then pair the points and see where the perpendicular bisectors intersected. This centering method was designed so that we wouldn't have to deal with 2D masking or anything, but with all the calculations and iterations we had to do (scanning in a circle was a for-loop), the amount of time spent was more than what we considered acceptable. 
 % subsection failed_attempts_to_find_center (end)
 
+\clearpage
+
+
 % section finding_centers_of_sun (end)
 \section{Thresholds} % (fold)
 \label{sec:thresholds}
@@ -296,10 +305,61 @@ Since we knew there were approximately $N$ pixels per sun, we looked into partit
 When taking the peaks of the 2nd derivative, we at first used \hl{\texttt{where}} functions and dynamic thresholds, but it proved to be too much trouble to have to define that every single time. We ended up using a \hl{\texttt{max}} function and zeroing out the peaks we find so that the next call to \hl{\texttt{max}} won't pick up the previous peak.
 % section thresholds (end)
 
+\clearpage
+
+
 \section{Finding Fiducial Positions} % (fold)
 \label{sec:finding_fiducial_positions}
 
-Now that we have a limb-fitted centroid, we analyze the sun for fiducials. They are characteristically dark, so we ended up looking at 1D sums in the row/column directions and looking for dips in brightness (where 1D sums line up with the entire length of the fiducial). Before this method, we looked at a few other options. They included:
+Now that we have a limb-fitted centroid, we analyze the sun for fiducials. They are characteristically dark, so we ended up looking at 1D sums in the row/column directions and looking for dips in brightness (where 1D sums line up with the entire length of the fiducial). \Cref{1dfid} illustrates the beginning of the 1D sum process to find fiducials.
+
+\begin{figure}[!ht]
+    \ffigbox[][\FBheight]{%
+    \begin{subfloatrow}[2]%
+        \ffigbox[\FBwidth]%
+       {%
+       \includegraphics[width=.5\textwidth]{../plots_tables_images/smooth_expl.eps}%
+       }%
+       {%
+       \caption{The black line is the 1D sum of a sun and the red line is a 10 pixel smoothed black line. The small dips in the black line correspond to fiducials.}%
+       \label{1dfid}%
+       }%
+        \ffigbox[\Xhsize]%
+       {%
+       \includegraphics[width=.5\textwidth]{../plots_tables_images/smoothcomp.eps}%
+       }%
+       {%
+       \caption{Comparison of different smoothing parameters and how it affected the \hl{\texttt{array - smooth(array)}} output parameter used to threshold possible fiducial positions.}%
+       \label{smoothcomp}%
+       }%
+    \end{subfloatrow}}{\caption{}}%
+\end{figure}
+
+Once we had a list of x and y positions of possible fiducial coordinates, we looked at each possibility and checked to see if it passed certain parameters. First, we checked to see if it was dark enough. If the fiducial coordinate was on the solar disk but not on a fiducial, it would be much brighter than what a fiducial could be, so it's ruled out. Second, we check to see if it's within a certain distance form the center of the sun. This is so that dark fiducials off the edge of the sun aren't counted. Once we narrowed down the possible locations for fiducials, we went and cropped a small box around the fiducial and looked at the 1D sums. If the fiducial candidate is indeed a fiducial, there will be a characteristic dip in brightness in both directions, as seen in \cref{fidcand_sums}. \Cref{fidcand_sums_falsepos} shows the 1D sum profiles of a fiducial candidate which is on a solar limb. 
+
+\begin{figure}[!ht]
+    \ffigbox[][\FBheight]{%
+    \begin{subfloatrow}[2]%
+        \ffigbox[\FBwidth]%
+       {%
+       \includegraphics[width=.5\textwidth]{../plots_tables_images/fidcand_sums.eps}%
+       }%
+       {%
+       \caption{The profiles of a real fiducial}%
+       \label{fidcand_sums}%
+       }%
+        \ffigbox[\Xhsize]%
+       {%
+       \includegraphics[width=.5\textwidth]{../plots_tables_images/fidcand_sums_falsepos.eps}%
+       }%
+       {%
+       \caption{The profiles of a fiducial candidate which has failed to meet the necessary requirements}%
+       \label{fidcand_sums_falsepos}%
+       }%
+    \end{subfloatrow}}{\caption{}}%
+\end{figure}
+
+Before this method, we looked at a few other options. They included:
 
 \begin{enumerate}
     \item Running edge detector filters to isolate the edge of the fiducials
@@ -356,7 +416,19 @@ Another problem related to fiducial finding is dealing with fiducials on the edg
 All the aforementioned methods deal with how to get fiducials positions to pixel-level accuracy. We could interpolate the 2D convolution filter output to achieve subpixel values but we'd be adding data instead of fitting to data we already have. A solution is using 2 1D parabolic fits. This method is applied on the 1D sums; once we find fiducials in our program, we crop a smaller box surrounding the fiducial and calculate the 1D sums in both directions. A characteristic dip forms, and we fit a 3 pixel range straddling the 1D sum minimum and fit a parabola to it. We do this in the other direction and then calculate where the two parabolas intersect. This method is fast because it doesn't call any external fitting functions and is just algebra.  
 % subsection subpixel_fiducial_positions (end)
 
+\subsection{Correcting for Fiducial Positions} % (fold)
+\label{sub:correcting_for_fiducial_positions}
+Making the chords of cropped solar data was one of the first steps towards finding a limb-fitted centroid and as a result, has no information on fiducial positions. This is potentially dangerous as the fiducial may lie on the edge of a solar limb that we just happen to be taking chord data of. To remedy this, we have applied two techniques. 
+
+First, instead of using a single chord of data across the cropped solar region, we take the average of several chords. This technique can only increase the quality of our data. In the single-width chord case, if there is any part of a fiducial in the chord, adding more adjacent chords has either the possibility of adding more fiducial pixels or more solar disk pixels. If we then take the mean of several chords, all with part of a fiducial, we end up nearly where we started in a single-width chord case. If however, adding more chords added more solar disk pixels than fiducial pixels, then taking the mean reduces the absolute strength of the fiducial pixels, resulting in a chord with a weaker fiducial. 
+
+The other method we use is to process the chord ignorantly, ignoring fiducial positions. When we end up calculating them, we go back and make sure the chords do not contain fiducials near the solar limbs. If they do, we create a new set of chords, fiducial free, and reprocess the limbs/limb fitting.
+% subsection correcting_for_fiducial_positions (end)
+
 % section finding_fiducial_positions (end)
+
+\clearpage
+
 
 \section{Fiducial Identification} % (fold)
 \label{sec:fiducial_identification}

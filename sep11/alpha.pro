@@ -82,6 +82,9 @@ toc
 bbb = para_fid(startimage,limbfittedcentroids)
 ; .07 to here
 toc
+newlimbfittedcentroids=centroidwholesuns(limbfittedcentroids,startimage,bbb)
+toc
+
 tmpimage = startimage
 
 if N_ELEMENTS(limbfittedcentroids) gt 1 then begin

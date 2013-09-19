@@ -1,4 +1,4 @@
-FUNCTION para_fid, inputimage, inputstruct
+FUNCTION para_fid, inputimage, inputstruct, fixfid
 ;+
 ;   :Description:
 ;       Fits 2 1D parabolas to the fiducial center and returns where they cross
@@ -9,6 +9,9 @@ FUNCTION para_fid, inputimage, inputstruct
 ;
 ;       inputstruct: in, required, type=structure
 ;           Structure containing all the solar information
+;
+;       fixfid : in, optional
+;           If set, marks the second run of centroidwholesuns and attempts to fix any chord slicing if the chord edge crosses a fiducial.
 ;
 ;   :Keywords:
 ;
@@ -30,13 +33,14 @@ for rr = 0,N_ELEMENTS(inputstruct)-1 do begin
     crop = FLOAT(inputimage[inputstruct[rr].limbxpos - !param.crop_box:inputstruct[rr].limbxpos + !param.crop_box,inputstruct[rr].limbypos - !param.crop_box:inputstruct[rr].limbypos + !param.crop_box])
 
     ; So that the brightest peak will be the average of the adjacent 4 pixels
+    ; -->
     a = [where(crop eq max(crop))]
 
     xa = a mod (size(crop,/dim))[0]
     xy = a / (size(crop,/dim))[0]
 
     crop[xa,xy]=mean([crop[xa,xy-1],crop[xa,xy+1],crop[xa-1,xy],crop[xa+1,xy]])
-
+    ; <--
 
     ; plots of x and y totals to identify rows/columns of fiducials
     yt = TOTAL(crop,1)
@@ -111,17 +115,11 @@ for rr = 0,N_ELEMENTS(inputstruct)-1 do begin
 
 
 
-
-
-
-
-
-
     ;=======================================================================================
     ;=======================================================================================
     ;=======================================================================================
 
-    stop
+
     
     for i = 0,N_ELEMENTS(xx)-1 do begin
         for j = 0,N_ELEMENTS(yy)-1 do begin

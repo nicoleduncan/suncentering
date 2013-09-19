@@ -1,4 +1,4 @@
-FUNCTION npixfit, inputstruct, inputimage
+FUNCTION npixfit, inputstruct, inputimage, fixfid
 ;+
 ;   :Description:
 ;       Linear fit to limb strips with an arbitrary number of limb pixels
@@ -10,12 +10,15 @@ FUNCTION npixfit, inputstruct, inputimage
 ;       inputimage: in, required, type=byte(ndims,2)
 ;           Starting input image
 ;
+;       fixfid : in, optional
+;           If set, marks the second run of centroidwholesuns and attempts to fix any chord slicing if the chord edge crosses a fiducial.
+;
 ;   :Keywords:
 ;       
 ;-
 
 ; Run the program to get our structures
-a = cyoalimbstrips(inputstruct,inputimage)
+a = cyoalimbstrips(inputstruct,inputimage,fixfid)
 
 xlen    = 0
 ylen    = 0

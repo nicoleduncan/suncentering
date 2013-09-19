@@ -1,4 +1,4 @@
-FUNCTION centroidwholesuns, inputstruct, inputimage
+FUNCTION centroidwholesuns, inputstruct, inputimage, fixfid
 ;+
 ;   :Description:
 ;       Finds the centers of a triple-sun image and loads all relevant information
@@ -11,6 +11,9 @@ FUNCTION centroidwholesuns, inputstruct, inputimage
 ;       inputimage : in, required, type=byte(ndims,2)
 ;           Image that we start out with
 ;
+;       fixfid : in, optional
+;           If set, marks the second run of centroidwholesuns and attempts to fix any chord slicing if the chord edge crosses a fiducial.
+;
 ;   :Keywords:
 ;-
 COMPILE_OPT idl2
@@ -21,7 +24,7 @@ wholesunstruct = inputstruct[where(inputstruct.partial ne 1)]
 ;If we wanted to use a 13 pixel limb fit instead of a 4 pixel limb fit
 ; centers = limbfit(wholesunstruct,inputimage)
 ; else we use
-centers = npixfit(wholesunstruct,inputimage)
+centers = npixfit(wholesunstruct,inputimage,fixfid)
 
 
 ; An artifact of before I got in over my head:

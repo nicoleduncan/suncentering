@@ -7,7 +7,7 @@ FUNCTION setbetterpeak, input, nsuns
 ;       input: in, required, type=byte(ndims,2)
 ;           Starting input image
 ;
-;       nsuns: in, required, type =float
+;       nsuns: in, required, type=float
 ;           Number of suns
 ;
 ;-

@@ -22,12 +22,14 @@ n_suns = N_ELEMENTS(idedsuns)
 ; Making as much of our structure in one place as possible, the one parameter we can't include here are the number of fiducials we find. Well, at leat in the current iteration. Future versions may have a preallocated szze of, say, 10 fiducials and we only fill up however many we actually need.
 
 ; These strips of data span the entire width/length of the cropped solar image.
-xstrips = REPLICATE({wholexstrips,rowindex:0, array:BYTARR(2* !param.crop_box + 1)}, !param.nstrips)
-ystrips = REPLICATE({wholeystrips,colindex:0, array:BYTARR(2* !param.crop_box + 1)}, !param.nstrips)
+xstrips = REPLICATE({wholexstrips,rowwhere:BYTARR(2), array:BYTARR(2* !param.crop_box + 1)}, !param.nstrips)
+ystrips = REPLICATE({wholeystrips,colwhere:BYTARR(2), array:BYTARR(2* !param.crop_box + 1)}, !param.nstrips)
 
 ; There is a pair of strips, the start points as well as the end points, for each strip above.
-limbxstrips = REPLICATE({limbxstrips, rowindex:0, begindex:0, endindex:0, startpoints:BYTARR( !param.ministrip_length), endpoints:BYTARR( !param.ministrip_length)}, !param.nstrips)
-limbystrips = REPLICATE({limbystrips, colindex:0, begindex:0, endindex:0, startpoints:BYTARR( !param.ministrip_length), endpoints:BYTARR( !param.ministrip_length)}, !param.nstrips)
+limbxstrips = REPLICATE({limbxstrips, rowwhere:BYTARR(2), begindex:0, endindex:0, startpoints:BYTARR( !param.ministrip_length), endpoints:BYTARR( !param.ministrip_length), $
+    startloc:BYTARR( !param.ministrip_length), endloc:BYTARR( !param.ministrip_length)}, !param.nstrips)
+limbystrips = REPLICATE({limbystrips, colwhere:BYTARR(2), begindex:0, endindex:0, startpoints:BYTARR( !param.ministrip_length), endpoints:BYTARR( !param.ministrip_length), $
+    startloc:BYTARR( !param.ministrip_length), endloc:BYTARR( !param.ministrip_length)}, !param.nstrips)
 
 
 ; Doesn't matter what we call it, but this is the more-or-less complete structure we fill
