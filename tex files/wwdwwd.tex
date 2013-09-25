@@ -335,7 +335,7 @@ Now that we have a limb-fitted centroid, we analyze the sun for fiducials. They 
     \end{subfloatrow}}{\caption{}}%
 \end{figure}
 
-Once we had a list of x and y positions of possible fiducial coordinates, we looked at each possibility and checked to see if it passed certain parameters. First, we checked to see if it was dark enough. If the fiducial coordinate was on the solar disk but not on a fiducial, it would be much brighter than what a fiducial could be, so it's ruled out. Second, we check to see if it's within a certain distance form the center of the sun. This is so that dark fiducials off the edge of the sun aren't counted. Once we narrowed down the possible locations for fiducials, we went and cropped a small box around the fiducial and looked at the 1D sums. If the fiducial candidate is indeed a fiducial, there will be a characteristic dip in brightness in both directions, as seen in \cref{fidcand_sums}. \Cref{fidcand_sums_falsepos} shows the 1D sum profiles of a fiducial candidate which is on a solar limb. 
+Once we had a list of x and y positions of possible fiducial coordinates, we looked at each possibility and checked to see if it passed certain parameters. First, we checked to see if it was dark enough. If the fiducial coordinate was on the solar disk but not on a fiducial, it would be much brighter than what a fiducial could be, so it's ruled out. Second, we check to see if it's within a certain distance form the center of the sun. This is so that dark fiducials off the edge of the sun aren't counted. Once we narrowed down the possible locations for fiducials, we went and cropped a small box around the fiducial and looked at the 1D sums. If the fiducial candidate is indeed a fiducial, there will be a characteristic dip in brightness in both directions, as seen in \cref{fidcand_sums}. \Cref{fidcand_sums_falsepos} shows the 1D sum profiles of a fiducial candidate which is on a solar limb.\\% Need this so the line "Before this method..." doesn't run up into this line
 
 \begin{figure}[!ht]
     \ffigbox[][\FBheight]{%
@@ -345,7 +345,7 @@ Once we had a list of x and y positions of possible fiducial coordinates, we loo
        \includegraphics[width=.5\textwidth]{../plots_tables_images/fidcand_sums.eps}%
        }%
        {%
-       \caption{The profiles of a real fiducial}%
+       \caption{The 1D sum profiles of a real fiducial}%
        \label{fidcand_sums}%
        }%
         \ffigbox[\Xhsize]%
@@ -422,7 +422,9 @@ Making the chords of cropped solar data was one of the first steps towards findi
 
 First, instead of using a single chord of data across the cropped solar region, we take the average of several chords. This technique can only increase the quality of our data. In the single-width chord case, if there is any part of a fiducial in the chord, adding more adjacent chords has either the possibility of adding more fiducial pixels or more solar disk pixels. If we then take the mean of several chords, all with part of a fiducial, we end up nearly where we started in a single-width chord case. If however, adding more chords added more solar disk pixels than fiducial pixels, then taking the mean reduces the absolute strength of the fiducial pixels, resulting in a chord with a weaker fiducial. 
 
-The other method we use is to process the chord ignorantly, ignoring fiducial positions. When we end up calculating them, we go back and make sure the chords do not contain fiducials near the solar limbs. If they do, we create a new set of chords, fiducial free, and reprocess the limbs/limb fitting.
+The other method we use is to incorporate the fiducial positions when making chord strips. Once we find the approximate center from mask centroiding, instead of creating chords and limb-fitting, we instead immediately shift gears into finding fiducials. Once we have a known set of positions, \emph{then} we use the fiducial coordinates to make sure our chords do not contain any fiducials. 
+
+The aforementioned method is much more organized than the previous method of processing the chord ignorantly and ignoring fiducial positions. What ends up happening is that once we end up calculating the fiducial positions, we have to go back and make sure the chords do not contain fiducials near the solar limbs. If they do, we create a new set of chords, fiducial free, then reprocess the limbs/limb fitting. We can eliminate a fair amount of redundancy by simply processing the fiducials first. 
 % subsection correcting_for_fiducial_positions (end)
 
 % section finding_fiducial_positions (end)

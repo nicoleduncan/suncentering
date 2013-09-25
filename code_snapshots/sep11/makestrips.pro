@@ -57,40 +57,40 @@ for i = 0, N_ELEMENTS(inputstruct)-1 do begin
     endelse
 endfor
 
-if n_elements(fixfid) ne 0 then begin
-    ; Check each row for fiducials
-    for i = 0, N_ELEMENTS(inputstruct)-1 do begin
-        for j = 0, !param.nstrips - 1 do begin
-            for k = 0,n_elements((*fixfid[0]).fidarr) - 1 do begin
-                    ; !param.fidarm is to make sure that no part of the fiducial is in the part we care about, not even the fiducial arm. 
-                if (((*fixfid[0]).fidarr).subx)[k] gt (inputstruct[i].limbxstrips[j].startloc)[0] - !param.fidarm and (((*fixfid[0]).fidarr).subx)[k] lt (inputstruct[i].limbxstrips[j].startloc)[0] + !param.ministrip_length - 1 + !param.fidarm and (((*fixfid[0]).fidarr).suby)[k] gt (inputstruct[i].limbxstrips[j].rowwhere)[0] - !param.fidarm and (((*fixfid[0]).fidarr).suby)[k] lt (inputstruct[i].limbxstrips[j].rowwhere)[1] + !param.fidarm then begin
+; if n_elements(fixfid) ne 0 then begin
+;     ; Check each row for fiducials
+;     for i = 0, N_ELEMENTS(inputstruct)-1 do begin
+;         for j = 0, !param.nstrips - 1 do begin
+;             for k = 0,n_elements((*fixfid[0]).fidarr) - 1 do begin
+;                     ; !param.fidarm is to make sure that no part of the fiducial is in the part we care about, not even the fiducial arm. 
+;                 if (((*fixfid[0]).fidarr).subx)[k] gt (inputstruct[i].limbxstrips[j].startloc)[0] - !param.fidarm and (((*fixfid[0]).fidarr).subx)[k] lt (inputstruct[i].limbxstrips[j].startloc)[0] + !param.ministrip_length - 1 + !param.fidarm and (((*fixfid[0]).fidarr).suby)[k] gt (inputstruct[i].limbxstrips[j].rowwhere)[0] - !param.fidarm and (((*fixfid[0]).fidarr).suby)[k] lt (inputstruct[i].limbxstrips[j].rowwhere)[1] + !param.fidarm then begin
 
-                    print,(((*fixfid[0]).fidarr).subx)[k]
-                    print,' is between'
-                    print, (inputstruct[i].limbxstrips[j].startloc)[0]
-                    print,'and'
-                    print, (inputstruct[i].limbxstrips[j].startloc)[0] + !param.ministrip_length - 1
-                    print,' in addition '
-                    print,(((*fixfid[0]).fidarr).suby)[k]
-                    print,' is between'
-                    print, (inputstruct[i].limbxstrips[j].rowwhere)[0]
-                    print,'and'
-                    print, (inputstruct[i].limbxstrips[j].rowwhere)[1]
+;                     print,(((*fixfid[0]).fidarr).subx)[k]
+;                     print,' is between'
+;                     print, (inputstruct[i].limbxstrips[j].startloc)[0]
+;                     print,'and'
+;                     print, (inputstruct[i].limbxstrips[j].startloc)[0] + !param.ministrip_length - 1
+;                     print,' in addition '
+;                     print,(((*fixfid[0]).fidarr).suby)[k]
+;                     print,' is between'
+;                     print, (inputstruct[i].limbxstrips[j].rowwhere)[0]
+;                     print,'and'
+;                     print, (inputstruct[i].limbxstrips[j].rowwhere)[1]
 
-                    ; make new chord -> check new chord
-                    ; or
-                    ; make new chord and include chord check
-                    ; or
-                    ; make new chord -> don't check since we know there aren't any nearby fiducials
+;                     ; make new chord -> check new chord
+;                     ; or
+;                     ; make new chord and include chord check
+;                     ; or
+;                     ; make new chord -> don't check since we know there aren't any nearby fiducials
 
-                endif
-            endfor
-            ; print, inputstruct[i].xstrips[j].rowwhere
-            ; print, inputstruct[i].limbxstrips[j].startpoints
-        endfor
-        ; stop
-    endfor
-endif
-stop
+;                 endif
+;             endfor
+;             ; print, inputstruct[i].xstrips[j].rowwhere
+;             ; print, inputstruct[i].limbxstrips[j].startpoints
+;         endfor
+;         ; stop
+;     endfor
+; endif
+; stop
 RETURN,inputstruct
 end

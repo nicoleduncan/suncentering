@@ -1,5 +1,5 @@
 # Fdb version 3
-["pdflatex"] 1379632106 "/Users/jerensuzuki/Documents/suncentering/tex files/wwdwwd.tex" "wwdwwd.pdf" "wwdwwd" 1379632109
+["pdflatex"] 1379634460 "/Users/jerensuzuki/Documents/suncentering/tex files/wwdwwd.tex" "wwdwwd.pdf" "wwdwwd" 1379634463
   "../plots_tables_images/best4-eps-converted-to.pdf" 1378329575 90370 b32b19ebf34f8dbe5c64daf40310bdaa ""
   "../plots_tables_images/best4.eps" 1378329321 1552810 46f3688f58c61b7ae9f44dd9f3dc3c9b ""
   "../plots_tables_images/best4_actual-eps-converted-to.pdf" 1378329575 70801 1da2ea243d2e688df2de1ef5f98f2862 ""
@@ -30,7 +30,7 @@
   "../plots_tables_images/sortedarray-eps-converted-to.pdf" 1371149987 66928 745fcf2756bc0e486a295efff6c9d6c8 ""
   "../plots_tables_images/sortedarray.eps" 1371149967 405862 f221904520f5f74ffa153c7475152c32 ""
   "../plots_tables_images/threshtesh_3.png" 1368468470 34873 899ff6ccd213b2d3580e86a54f497e99 ""
-  "/Users/jerensuzuki/Documents/suncentering/tex files/wwdwwd.tex" 1379632101 35003 e974521930c6c9485ea6ff63f842a9e5 ""
+  "/Users/jerensuzuki/Documents/suncentering/tex files/wwdwwd.tex" 1379634457 35680 3477eec59313121bd6dea5d8f7be34a3 ""
   "/usr/local/texlive/2013/../texmf-local/tex/latex/deluxetable/deluxetable.sty" 1366832326 11321 35b2c46627b671e19bd036ff4dbf9e85 ""
   "/usr/local/texlive/2013/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc" 1136849721 2971 def0b6c1f0b107b3b936def894055589 ""
   "/usr/local/texlive/2013/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc" 1136849721 2900 1537cc8184ad1792082cd229ecc269f4 ""
@@ -205,10 +205,10 @@
   "/usr/local/texlive/2013/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1379520590 1120677 224fab0a83d84f64a07457f451e6a1d5 ""
   "/usr/local/texlive/2013/texmf-var/web2c/pdftex/pdflatex.fmt" 1379520613 3827491 5f5e843e95a7a8f0cd07eec5dc1651d9 ""
   "/usr/local/texlive/2013/texmf.cnf" 1369923207 577 cbc827f6294276973a1952e86e8ad73a ""
-  "wwdwwd.aux" 1379632108 12403 69af8337c49d4a66e53510f3464ac3e1 ""
-  "wwdwwd.out" 1379632108 1086 9290a6c6fcdeb3679313f2c313920c8b ""
-  "wwdwwd.tex" 1379632101 35003 e974521930c6c9485ea6ff63f842a9e5 ""
-  "wwdwwd.toc" 1379632108 1377 6fe904479372cb4074f04f0687be97bf ""
+  "wwdwwd.aux" 1379634463 12417 26b8c0813e7561c8ba7769f477713bb6 ""
+  "wwdwwd.out" 1379634463 1086 9290a6c6fcdeb3679313f2c313920c8b ""
+  "wwdwwd.tex" 1379634457 35680 3477eec59313121bd6dea5d8f7be34a3 ""
+  "wwdwwd.toc" 1379634463 1377 6fe904479372cb4074f04f0687be97bf ""
   (generated)
   "wwdwwd.toc"
   "wwdwwd.out"
