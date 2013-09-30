@@ -101,7 +101,7 @@ for i = 0, N_ELEMENTS(inputstruct)-1 do begin
                     if (((*fixfid[0]).fidarr).suby)[k] gt ylimbinfo.startloc[0] - !param.fidarm and (((*fixfid[0]).fidarr).suby)[k] lt ylimbinfo.startloc[0] + !param.ministrip_length - 1 + !param.fidarm and (((*fixfid[0]).fidarr).subx)[k] gt rowpos[0] - !param.fidarm and (((*fixfid[0]).fidarr).subx)[k] lt rowpos[1] + !param.fidarm then ylimbinfo.isitbad=1
                 endfor
 
-                The problem here is that if the new chord has a fiducial, we will have to repeat the process again. Either I write this as a recursive function or 
+                ; The problem here is that if the new chord has a fiducial, we will have to repeat the process again. Either I write this as a recursive function or make locations smartly 
             endif
         endfor
     endelse

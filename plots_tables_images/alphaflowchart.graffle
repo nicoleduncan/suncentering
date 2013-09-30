@@ -7,7 +7,7 @@
 	<key>ApplicationVersion</key>
 	<array>
 		<string>com.omnigroup.OmniGrafflePro</string>
-		<string>139.17.0.185490</string>
+		<string>139.18.0.187838</string>
 	</array>
 	<key>AutoAdjust</key>
 	<true/>
@@ -37,6 +37,27 @@
 	<integer>0</integer>
 	<key>CanvasOrigin</key>
 	<string>{0, 0}</string>
+	<key>ColorProfile</key>
+	<dict>
+		<key>cmykDigest</key>
+		<data>
+		JTUvL7/uOf5kyUO2+wyMTg==
+		</data>
+		<key>cmykName</key>
+		<string>Generic CMYK Profile</string>
+		<key>grayDigest</key>
+		<data>
+		OLD1tzwOLrW+yk2N7vnN6Q==
+		</data>
+		<key>grayName</key>
+		<string>Generic Gray Profile</string>
+		<key>rgbDigest</key>
+		<data>
+		DSWLrTa2TOv7nmgmw+1QNw==
+		</data>
+		<key>rgbName</key>
+		<string>Generic RGB Profile</string>
+	</dict>
 	<key>ColumnAlign</key>
 	<integer>1</integer>
 	<key>ColumnSpacing</key>
@@ -190,7 +211,7 @@
 			<real>78</real>
 			<key>Points</key>
 			<array>
-				<string>{380.09415442283733, 226.89914702303278}</string>
+				<string>{377.95304261883223, 226.89914702303278}</string>
 				<string>{135.17553311949857, 367.16728120638629}</string>
 			</array>
 			<key>Style</key>
@@ -436,8 +457,8 @@
 			<integer>86</integer>
 			<key>Points</key>
 			<array>
-				<string>{380.09415754669692, 169.87473694034185}</string>
-				<string>{380.09415442283733, 197.24140210781607}</string>
+				<string>{377.95304574269181, 169.87473694034185}</string>
+				<string>{377.95304261883223, 197.24140210781607}</string>
 			</array>
 			<key>Style</key>
 			<dict>
@@ -469,8 +490,8 @@
 			<integer>85</integer>
 			<key>Points</key>
 			<array>
-				<string>{380.09413435007173, 73.702475667622181}</string>
-				<string>{380.09415754669692, 101.0691339129981}</string>
+				<string>{377.95302254606662, 73.702475667622181}</string>
+				<string>{377.95304574269181, 101.0691339129981}</string>
 			</array>
 			<key>Style</key>
 			<dict>
@@ -492,7 +513,7 @@
 		</dict>
 		<dict>
 			<key>Bounds</key>
-			<string>{{301.59415754669692, 101.06913391299811}, {157, 68.80560302734375}}</string>
+			<string>{{299.45304574269181, 101.06913391299811}, {157, 68.80560302734375}}</string>
 			<key>Class</key>
 			<string>ShapedGraphic</string>
 			<key>ID</key>
@@ -666,11 +687,11 @@ Returning Fiducial Positions}</string>
 			<key>OrthogonalBarPoint</key>
 			<string>{0, 0}</string>
 			<key>OrthogonalBarPosition</key>
-			<real>48.698413848876953</real>
+			<real>47.627861022949219</real>
 			<key>Points</key>
 			<array>
 				<string>{180.39730453553767, 255.17240600268445}</string>
-				<string>{301.59413435007167, 53.193832155230282}</string>
+				<string>{299.45302254606662, 53.193832155230282}</string>
 			</array>
 			<key>Style</key>
 			<dict>
@@ -907,7 +928,7 @@ Fitting with limb strips}</string>
 		</dict>
 		<dict>
 			<key>Bounds</key>
-			<string>{{299.45190436180218, 197.2414021078161}, {161.28450012207031, 29.657744915216728}}</string>
+			<string>{{297.31079255779707, 197.2414021078161}, {161.28450012207031, 29.657744915216728}}</string>
 			<key>Class</key>
 			<string>ShapedGraphic</string>
 			<key>ID</key>
@@ -936,7 +957,7 @@ Fitting with limb strips}</string>
 		</dict>
 		<dict>
 			<key>Bounds</key>
-			<string>{{301.59413435007173, 32.685188642838384}, {157, 41.017287024783805}}</string>
+			<string>{{299.45302254606662, 32.685188642838384}, {157, 41.017287024783805}}</string>
 			<key>Class</key>
 			<string>ShapedGraphic</string>
 			<key>ID</key>
@@ -965,7 +986,7 @@ Fitting with limb strips}</string>
 		</dict>
 		<dict>
 			<key>Bounds</key>
-			<string>{{268.20370689182562, 16.247841811004349}, {223.78089904785156, 248.09696960449219}}</string>
+			<string>{{266.06259508782051, 16.247841811004349}, {223.78089904785156, 248.09696960449219}}</string>
 			<key>Class</key>
 			<string>ShapedGraphic</string>
 			<key>ID</key>
@@ -1220,7 +1241,7 @@ Prepare parameters}</string>
 	<key>MasterSheets</key>
 	<array/>
 	<key>ModificationDate</key>
-	<string>2013-09-25 21:19:42 +0000</string>
+	<string>2013-09-30 17:02:09 +0000</string>
 	<key>Modifier</key>
 	<string>Jeren Suzuki</string>
 	<key>NotesVisible</key>
@@ -1310,7 +1331,7 @@ Prepare parameters}</string>
 		<key>SidebarWidth</key>
 		<integer>138</integer>
 		<key>VisibleRegion</key>
-		<string>{{-8.6206897005314769, 67.586204673957667}, {595.86204937040236, 664.8275643438285}}</string>
+		<string>{{-13.620689700531477, 1.034482724601393}, {605.51722146668192, 664.8275643438285}}</string>
 		<key>Zoom</key>
 		<real>1.4500000476837158</real>
 		<key>ZoomValues</key>
