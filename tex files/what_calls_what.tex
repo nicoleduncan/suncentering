@@ -1,0 +1,103 @@
+\RequirePackage[l2tabu, orthodox]{nag}
+
+\documentclass[10pt]{scrartcl}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath,amsfonts,amssymb}
+\usepackage{mathtools}
+\usepackage{cancel}
+\usepackage{color,soul}
+\usepackage[margin=2cm,letterpaper]{geometry}
+\usepackage{enumerate}
+\usepackage{graphicx}
+\usepackage[colorlinks=true,urlcolor=blue]{hyperref}
+\usepackage{floatrow}
+\usepackage{deluxetable}
+\usepackage{verbatim}
+\usepackage{fancyvrb}
+\usepackage{listings}
+\usepackage{calc}
+\usepackage{xfrac}
+\usepackage{cleveref}
+\usepackage[sharp]{easylist}
+\usepackage[font=small]{caption}
+\usepackage[font=scriptsize]{subcaption}
+\usepackage[activate={true,nocompatibility},final,tracking=true,kerning=true,spacing=true,factor=1100,stretch=10,shrink=10]{microtype}
+% \usepackage[tocindentauto]{tocstyle}
+\SetTracking{encoding={*}, shape=sc}{40}
+
+\microtypecontext{spacing=nonfrench}
+
+\floatsetup{ 
+  heightadjust=object,
+  valign=t
+}
+
+\definecolor{Light}{gray}{.90}
+\sethlcolor{Light}
+
+\lstset{%
+language=IDL,                       % choose the language of the code
+basicstyle=\footnotesize\sffamily,  % the size of the fonts that are used for the code
+numbers=left,                       % where to put the line-numbers
+numberstyle=\footnotesize,          % the size of the fonts that are used for the line-numbers
+stepnumber=1,                       % the step between two line-numbers. If it is 1 each line will be numbered
+numbersep=5pt,                      % how far the line-numbers are from the code
+showspaces=false,                   % show spaces adding particular underscores
+showstringspaces=false,             % underline spaces within strings
+showtabs=false,                     % show tabs within strings adding particular underscores
+frame=single,                       % adds a frame around the code
+backgroundcolor=\color{Light},
+columns=flexible,
+tabsize=2,                          % sets default tabsize to 2 spaces
+captionpos=b,                       % sets the caption-position to bottom
+breaklines=true,                    % sets automatic line breaking
+breakatwhitespace=false,            % sets if automatic breaks should only happen at whitespace
+escapeinside={\%*}{*)}              % if you want to add a comment within your code
+}
+
+\title{What Calls What}
+\author{Jeren Suzuki}
+\date{Last Edited \today}
+
+\begin{document}
+
+\pagenumbering{gobble}
+\maketitle
+\tableofcontents
+\addcontentsline{toc}{section}{Introduction}
+\clearpage
+\pagenumbering{arabic}
+
+\section*{Introduction}
+\label{sec:intro}
+Code-calling structure. Once written out, I realized that I have repeated a few steps. As of \today, the code works, but perhaps removing the second call to idfids and organizing cyoalimbstrips will make the code a bit faster.
+
+
+\section{Code Tree} % (fold)
+\label{sec:code_tree}
+
+The main program called is alpha, so I won't include that here. I will only be listing user defined functions because listing all the IDL functions would be silly.\\
+
+\begin{easylist}
+# \textbf{defparams} - Defines system parameters from an input parameter .txt file
+# \textbf{defsysvarthresh} - Defines solar thresholds
+## \textbf{idsuns} - Defines which pixels correspond to which solar regions, does not use threshold values
+## \textbf{setbetterpeak} - Finds peaks in 2nd derivative of sorted 2d image to get thresholds
+# \textbf{everysun} - Using thresholds, finds centers of every sun-shaped entity, regardless of if it is a partial or too close to the edge
+## \textbf{idsuns} - In this scenario, needed to figure out how many suns to center (since the only input is the starting image)
+# \textbf{picksun\_rot} - Makes sure the centers found aren't too close to the edges or the bottom two corners
+# \textbf{centroidwholesuns} - A secondary ``wrapping'' program that organizes three important functions in one area; more of an organizational program
+## \textbf{para\_fid} - Finds all fiducials for a sun and then uses a parabolic fit to get a better position
+## \textbf{npixfit} - Uses a linear fit to find where the fitted solar limb crosses a threshold. A chord is drawn in a row/column of sun data that is bounded by two limb-fitted crossing points of the threshold. The center is calculated from an average of chord midpoints.
+### \textbf{cyoalimbstrips} - Feeds clean limb structure information into npixfit. Technically we have already found limb data so we can probably take this part out.
+#### \textbf{makestrips} - Makes strips of solar data from a cropped image of a sun. The strips extend the entire length/width of the cropped image. There strips of solar data are centered around the masked center of the sun.
+##### \textbf{micro\_makelimbstrips} - Calculates limb positions based on threshold crossing points
+##### \textbf{copy\_limb\_struct} - copies limb structure information into a larger structure
+## \textbf{best4} - Takes the list of fiducials and narrows them down to the 4 closest to disk-center
+# \textbf{idfids} - Identifies the best 4 fiducials according to a catalog of distances between fiducials
+
+\end{easylist}
+% section code_tree (end)
+
+
+\end{document}
