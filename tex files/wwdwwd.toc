@@ -14,4 +14,5 @@
 \contentsline {subsection}{\numberline {7.1}Subpixel Fiducial Positions}{12}{subsection.7.1}
 \contentsline {subsection}{\numberline {7.2}Correcting for Fiducial Positions}{13}{subsection.7.2}
 \contentsline {section}{\numberline {8}Fiducial Identification}{14}{section.8}
-\contentsline {section}{\numberline {9}Miscellaneous}{14}{section.9}
+\contentsline {section}{\numberline {9}Avoiding Fiducials}{14}{section.9}
+\contentsline {section}{\numberline {10}Miscellaneous}{14}{section.10}

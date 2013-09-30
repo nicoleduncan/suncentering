@@ -1,5 +1,5 @@
 # Fdb version 3
-["pdflatex"] 1379634460 "/Users/jerensuzuki/Documents/suncentering/tex files/wwdwwd.tex" "wwdwwd.pdf" "wwdwwd" 1379634463
+["pdflatex"] 1380308825 "/Users/jerensuzuki/Documents/suncentering/tex files/wwdwwd.tex" "wwdwwd.pdf" "wwdwwd" 1380308828
   "../plots_tables_images/best4-eps-converted-to.pdf" 1378329575 90370 b32b19ebf34f8dbe5c64daf40310bdaa ""
   "../plots_tables_images/best4.eps" 1378329321 1552810 46f3688f58c61b7ae9f44dd9f3dc3c9b ""
   "../plots_tables_images/best4_actual-eps-converted-to.pdf" 1378329575 70801 1da2ea243d2e688df2de1ef5f98f2862 ""
@@ -30,7 +30,7 @@
   "../plots_tables_images/sortedarray-eps-converted-to.pdf" 1371149987 66928 745fcf2756bc0e486a295efff6c9d6c8 ""
   "../plots_tables_images/sortedarray.eps" 1371149967 405862 f221904520f5f74ffa153c7475152c32 ""
   "../plots_tables_images/threshtesh_3.png" 1368468470 34873 899ff6ccd213b2d3580e86a54f497e99 ""
-  "/Users/jerensuzuki/Documents/suncentering/tex files/wwdwwd.tex" 1379634457 35680 3477eec59313121bd6dea5d8f7be34a3 ""
+  "/Users/jerensuzuki/Documents/suncentering/tex files/wwdwwd.tex" 1380308819 36409 a9272a2bb661f660e69544adf8ab3ccd ""
   "/usr/local/texlive/2013/../texmf-local/tex/latex/deluxetable/deluxetable.sty" 1366832326 11321 35b2c46627b671e19bd036ff4dbf9e85 ""
   "/usr/local/texlive/2013/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc" 1136849721 2971 def0b6c1f0b107b3b936def894055589 ""
   "/usr/local/texlive/2013/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc" 1136849721 2900 1537cc8184ad1792082cd229ecc269f4 ""
@@ -202,13 +202,13 @@
   "/usr/local/texlive/2013/texmf-dist/tex/latex/tools/verbatim.sty" 1312409015 7125 6b8323deb5c5c3a19b248762654143eb ""
   "/usr/local/texlive/2013/texmf-dist/tex/latex/url/url.sty" 1264379145 21932 e3a9cf32ee9b853b42be14c2f25b873c ""
   "/usr/local/texlive/2013/texmf-dist/web2c/texmf.cnf" 1366045088 31707 0953c15448e216a6585e92ee639d2dc2 ""
-  "/usr/local/texlive/2013/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1379520590 1120677 224fab0a83d84f64a07457f451e6a1d5 ""
+  "/usr/local/texlive/2013/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1380307875 1120677 6867f638535cceafbbdffd9459a0c951 ""
   "/usr/local/texlive/2013/texmf-var/web2c/pdftex/pdflatex.fmt" 1379520613 3827491 5f5e843e95a7a8f0cd07eec5dc1651d9 ""
   "/usr/local/texlive/2013/texmf.cnf" 1369923207 577 cbc827f6294276973a1952e86e8ad73a ""
-  "wwdwwd.aux" 1379634463 12417 26b8c0813e7561c8ba7769f477713bb6 ""
-  "wwdwwd.out" 1379634463 1086 9290a6c6fcdeb3679313f2c313920c8b ""
-  "wwdwwd.tex" 1379634457 35680 3477eec59313121bd6dea5d8f7be34a3 ""
-  "wwdwwd.toc" 1379634463 1377 6fe904479372cb4074f04f0687be97bf ""
+  "wwdwwd.aux" 1380308828 12653 62eb36e82fdca17b344ff88b7c86b02e ""
+  "wwdwwd.out" 1380308828 1141 bc0f1500b91d286e6c287ead18ff05ef ""
+  "wwdwwd.tex" 1380308819 36409 a9272a2bb661f660e69544adf8ab3ccd ""
+  "wwdwwd.toc" 1380308828 1453 853fc019bb9d297c02e8b38bea961104 ""
   (generated)
   "wwdwwd.toc"
   "wwdwwd.out"

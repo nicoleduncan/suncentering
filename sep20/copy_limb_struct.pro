@@ -15,6 +15,7 @@ PRO copy_limb_struct, mainstruct, xlimbstruct, ylimbstruct
 ;
 ;-
 
+; The only purpose of this program is to do and quick and dirty structure copy. If I Was better organzied I would do this elsewhere in the calling function so we wouldn't have to do this
 mainstruct.limbxstrips.startindex   = xlimbstruct.startindex
 mainstruct.limbxstrips.endindex     = xlimbstruct.endindex
 mainstruct.limbxstrips.startpoints  = xlimbstruct.startpoints

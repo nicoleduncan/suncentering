@@ -465,6 +465,10 @@ Knowing we started from point ``A'', we can link that to fiducial F4 in our cata
 
 % section fiducial_identification (end)
 
+\section{Avoiding Fiducials} % (fold)
+\label{sec:avoiding_fiducials}
+The accurate method to find a solar center revolves around linear-fitting the limbs of solar chords. To ensure our method is robust, we recently added a check to make sure that no fiducials lie on the limb. This required a fair amount of restructuring considering that fiducial finding was typically done after the limb-fitted centers were found. The problem of fiducials on limbs was a long-standing issue that we were not able to properly analyze when taking chords of data. It is only \emph{after} we know where the fiducials are that we can accurately remove them from our chords (or in our case, make chords elsewhere).
+% section avoiding_fiducials (end)
 
 \section{Miscellaneous} % (fold)
 \label{sec:miscellaneous}
