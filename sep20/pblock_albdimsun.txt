@@ -1,5 +1,5 @@
 scan_width 10
-sundiam 70
+solradius 70
 nstrips 5
 ministrip_length 4
 crop_box 120
@@ -14,3 +14,6 @@ fid_smooth_candidates 15
 peakfind_buff 13000
 fidcand_smooth 10
 rough1dsum_thresh 1
+chord_thickness 5
+bordercheck_perc 10
+fidarm 7

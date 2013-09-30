@@ -89,11 +89,11 @@ for rr = 0,N_ELEMENTS(inputstruct)-1 do begin
     ; Or instead, we use where and zero out [0] and [-1] peaks
     xpeaks_destroy = WHERE(xsums le athresh)
     xsums[xpeaks_destroy[0]-10:xpeaks_destroy[0]+10]=0
-    xsums[xpeaks_destroy[-1]-10:xpeaks_destroy[-1]+10]=0
+    xsums[xpeaks_destroy[n_elements(xpeaks_destroy)-1]-10:xpeaks_destroy[n_elements(xpeaks_destroy)-1]+10]=0
 
     ypeaks_destroy = WHERE(ysums le athresh)
     ysums[ypeaks_destroy[0]-10:ypeaks_destroy[0]+10]=0
-    ysums[ypeaks_destroy[-1]-10:ypeaks_destroy[-1]+10]=0
+    ysums[ypeaks_destroy[n_elements(ypeaks_destroy)-1]-10:ypeaks_destroy[n_elements(ypeaks_destroy)-1]+10]=0
 
     yfids = WHERE(ysums le athresh)
     xfids = WHERE(xsums le athresh)
@@ -103,13 +103,13 @@ for rr = 0,N_ELEMENTS(inputstruct)-1 do begin
     aa= [0,aa,0]
     bb = aa - SHIFT(aa,1)
     cc = aa[WHERE(bb ne 1)]
-    xx = cc[1:-2]
+    xx = cc[1:n_elements(cc)-2]
 
     aa=yfids
     aa= [0,aa,0]
     bb = aa - SHIFT(aa,1)
     cc = aa[WHERE(bb ne 1)]
-    yy = cc[1:-2]
+    yy = cc[1:n_elements(cc)-2]
 
     ; Breaks if indices aren't exactly consecutive... need to work on that
 

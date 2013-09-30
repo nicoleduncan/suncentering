@@ -55,30 +55,30 @@ startimage=wholeimage
 ; startimage=w1_p3
 ; startimage=brightsun   ;no param list for this one
 startimage = dimsun
-startimage = tritest
+;startimage = tritest
 
 ; profiler
 ; profiler,/system
 
 ; takes ~.07 s to run albert's triple sun image
 
-tic
-defparams, 'pblock_albtritest.txt'
-; defparams, 'pblock_albdimsun.txt'
+;tic
+;defparams, 'pblock_albtritest.txt'
+ defparams, 'pblock_albdimsun.txt'
 ; defparams, 'pblock_orig_small.txt'
-toc
+;toc
 ; .0005 to here
 defsysvarthresh, startimage
-toc
+;toc
 ; .03 to here
 grannysmith = everysun(startimage)
-toc
+;toc
 ; .065 to here
 fuji = picksun_rot(startimage, grannysmith)
-toc
+;toc
 ; .065 to here
 centroidwholesuns,fuji,startimage,limbfittedcentroids,best4,bbb
-toc
+;toc
 ; .068 to here
 ; bbb = para_fid(startimage,limbfittedcentroids)
 ; .07 to here
@@ -114,7 +114,7 @@ atmp = startimage
 for i = 0,N_ELEMENTS(bbb)-1 do begin
     for j = 0,N_ELEMENTS((*(bbb[i])).fidarr)-1 do begin
         if ((*(bbb[i])).fidarr)[j].subx ne 0 or ((*(bbb[i])).fidarr)[j].suby ne 0 then begin
-        atmp[((*(bbb[i])).fidarr)[j].subx + limbfittedcentroids[i].limbxpos - !param.crop_box -1:((*(bbb[i])).fidarr)[j].subx + limbfittedcentroids[i].limbxpos - !param.crop_box+1,((*(bbb[i])).fidarr)[j].suby + limbfittedcentroids[i].limbypos - !param.crop_box-1:((*(bbb[i])).fidarr)[j].suby + limbfittedcentroids[i].limbypos - !param.crop_box+1]=!green
+        atmp[((*(bbb[i])).fidarr)[j].subx + limbfittedcentroids[i].limbxpos - !param.crop_box -1:((*(bbb[i])).fidarr)[j].subx + limbfittedcentroids[i].limbxpos - !param.crop_box+1,((*(bbb[i])).fidarr)[j].suby + limbfittedcentroids[i].limbypos - !param.crop_box-1:((*(bbb[i])).fidarr)[j].suby + limbfittedcentroids[i].limbypos - !param.crop_box+1]=100
         endif
     endfor
 endfor

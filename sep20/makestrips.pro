@@ -44,8 +44,8 @@ for i = 0, N_ELEMENTS(inputstruct)-1 do begin
         for j = 0, !param.nstrips - 1 do begin
 
             ; Kind of want to also make limb strips here, but feel like I should separate the functions
-            inputstruct[i].xstrips[j].array = MEAN(crop[*,( !param.crop_box)+(j - !param.nstrips/2) * !param.scan_width: !param.crop_box + (j - !param.nstrips/2) * !param.scan_width + !param.chord_thickness - 1],dim=2) 
-            inputstruct[i].ystrips[j].array = MEAN(crop[( !param.crop_box)+(j - !param.nstrips/2) * !param.scan_width: !param.crop_box + (j - !param.nstrips/2) * !param.scan_width + !param.chord_thickness - 1,*],dim=1)
+            inputstruct[i].xstrips[j].array = MEAN(crop[*,( !param.crop_box)+(j - !param.nstrips/2) * !param.scan_width: !param.crop_box + (j - !param.nstrips/2) * !param.scan_width + !param.chord_thickness - 1],dimension=2) 
+            inputstruct[i].ystrips[j].array = MEAN(crop[( !param.crop_box)+(j - !param.nstrips/2) * !param.scan_width: !param.crop_box + (j - !param.nstrips/2) * !param.scan_width + !param.chord_thickness - 1,*],dimension=1)
 
             ; For each long chord, look at where limb occurs and make note of position
             xlimbinfo = micro_makelimbstrips(inputstruct[i].xstrips[j].array,inputstruct[i].thresh)

@@ -13,7 +13,8 @@ FUNCTION best4, inputstruct, fidstruct
 ;       
 ;-
 
-distances= !null
+;distances= !null
+distances=0
 nsuns = n_elements(inputstruct)
 ; Since we're only interested in the best -4-, safe to hardcode the 4 elements of this structure
 fidarr = REPLICATE({x:0.,y:0.,subx:0.,suby:0.,id:''},4)
@@ -26,10 +27,12 @@ for i=0,nsuns-1 do begin
         a = howfar([((*(fidstruct[i])).fidarr)[j].subx +  inputstruct[i].limbxpos - !param.crop_box,((*(fidstruct[i])).fidarr)[j].suby +  inputstruct[i].limbypos - !param.crop_box],[inputstruct[i].limbxpos,inputstruct[i].limbypos])
         ; Populate array with distances
         distances=[distances,a]
+        if j eq 0 then distances=distances[1]
     endfor
     ; stop,distances[sort(distances)]
     ; Sort by closest distance, grab lowest 4
-    grabfrom = (((*(fidstruct[i])).fidarr)[sort(distances)])[0:3]
+    if nfid lt 4 then betterbe3 = nfid else betterbe3 = 3
+    grabfrom = (((*(fidstruct[i])).fidarr)[sort(distances)])[0:betterbe3]
     best4[i].reg = inputstruct[i].reg
     for k =0,3 do begin
         best4[i].fidarr[k].x = grabfrom[k].x
@@ -37,7 +40,8 @@ for i=0,nsuns-1 do begin
         best4[i].fidarr[k].subx = grabfrom[k].subx
         best4[i].fidarr[k].suby = grabfrom[k].suby
     endfor
-    distances= !null
+    ;distances= !null
+    distances=0
 endfor
 
 RETURN,best4
