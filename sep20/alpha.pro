@@ -14,6 +14,7 @@ PRO alpha
 COMPILE_OPT idl2
 ON_ERROR,1
 
+
 ; Our list of images to take centers of
 wholeimage  = MRDFITS('../fits_files/dottedimage.fits',/sil)
 w1_w2_p3    = MRDFITS('../fits_files/partial3rd.fits',/sil)

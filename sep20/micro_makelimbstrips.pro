@@ -25,9 +25,9 @@ above_thresh = WHERE(chord gt thresh)
 block.startpoints   = chord[above_thresh[0] - limbwidth:above_thresh[0] + limbwidth - 1]
 block.startindex    = FIX(above_thresh[0] - limbwidth)
 block.startloc      = above_thresh[0] - limbwidth
-block.endpoints     = chord[above_thresh[-1] - limbwidth+ 1:above_thresh[-1] + limbwidth]   
-block.endindex      = FIX(above_thresh[-1] - limbwidth)
-block.endloc        = above_thresh[-1] - limbwidth + 1
+block.endpoints     = chord[above_thresh[N_ELEMENTS(above_thresh)-1] - limbwidth+ 1:above_thresh[N_ELEMENTS(above_thresh)-1] + limbwidth]   
+block.endindex      = FIX(above_thresh[N_ELEMENTS(above_thresh)-1] - limbwidth)
+block.endloc        = above_thresh[N_ELEMENTS(above_thresh)-1] - limbwidth + 1
 
 RETURN,block
 end

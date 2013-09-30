@@ -62,15 +62,15 @@ for i = 0,n_suns-1 do begin
     if gig.xpos - !param.crop_box lt 0 or gig.ypos - !param.crop_box lt 0 or gig.xpos + !param.crop_box gt s[0] or gig.ypos + !param.crop_box gt s[1] then begin
 
         ; Setting up the positions of all pixels within this cropped box
-        xarr = findgen(2 * !param.crop_box + 1) + (gig.xpos - !param.crop_box)
-        yarr = findgen(2 * !param.crop_box + 1) + (gig.ypos - !param.crop_box)
+        xarr = FINDGEN(2 * !param.crop_box + 1) + (gig.xpos - !param.crop_box)
+        yarr = FINDGEN(2 * !param.crop_box + 1) + (gig.ypos - !param.crop_box)
 
         ; Eliminating positions that lie outside the image
-        xarr = xarr[where(xarr ge 0 and xarr le s[0])]
-        yarr = yarr[where(yarr ge 0 and yarr le s[1])]
+        xarr = xarr[WHERE(xarr ge 0 and xarr le s[0])]
+        yarr = yarr[WHERE(yarr ge 0 and yarr le s[1])]
 
         ; Converting from x,y positions into a single index - don't have to use a nested for-loop this way
-        loc = fan(xarr) + rebin(reform(floor(yarr)*s[0],1,n_elements(xarr)),n_elements(xarr),n_elements(xarr))
+        loc = fan(xarr) + REBIN(REFORM(FLOOR(yarr)*s[0],1,N_ELEMENTS(xarr)),N_ELEMENTS(xarr),N_ELEMENTS(xarr))
         temparr[loc[*]]=0
 
         idedsuns[WHERE(idedsuns eq MIN(idedsuns))] = 999

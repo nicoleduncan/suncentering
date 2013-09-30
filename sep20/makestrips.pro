@@ -61,7 +61,7 @@ for i = 0, N_ELEMENTS(inputstruct)-1 do begin
             inputstruct[i].limbystrips[j].colwhere = rowpos
 
             ; For each fiducial in our list, check to make sure NO part of the fiducial is in the pixels used for limb-fitting. That includes not only the fiducial center pixel, but the four arms that extend outward.
-            for k = 0,n_elements((*fixfid[0]).fidarr) - 1 do begin
+            for k = 0,N_ELEMENTS((*fixfid[0]).fidarr) - 1 do begin
                 if (((*fixfid[0]).fidarr).subx)[k] gt xlimbinfo.startloc[0] - !param.fidarm and (((*fixfid[0]).fidarr).subx)[k] lt xlimbinfo.startloc[0] + !param.ministrip_length - 1 + !param.fidarm and (((*fixfid[0]).fidarr).suby)[k] gt rowpos[0] - !param.fidarm and (((*fixfid[0]).fidarr).suby)[k] lt rowpos[1] + !param.fidarm then xlimbinfo.isitbad=1
                 if (((*fixfid[0]).fidarr).suby)[k] gt ylimbinfo.startloc[0] - !param.fidarm and (((*fixfid[0]).fidarr).suby)[k] lt ylimbinfo.startloc[0] + !param.ministrip_length - 1 + !param.fidarm and (((*fixfid[0]).fidarr).subx)[k] gt rowpos[0] - !param.fidarm and (((*fixfid[0]).fidarr).subx)[k] lt rowpos[1] + !param.fidarm then ylimbinfo.isitbad=1
             endfor
@@ -96,7 +96,7 @@ for i = 0, N_ELEMENTS(inputstruct)-1 do begin
                 inputstruct[i].limbxstrips[k].rowwhere = rowpos
                 inputstruct[i].limbystrips[k].colwhere = rowpos
 
-                for k = 0,n_elements((*fixfid[0]).fidarr) - 1 do begin
+                for k = 0,N_ELEMENTS((*fixfid[0]).fidarr) - 1 do begin
                     if (((*fixfid[0]).fidarr).subx)[k] gt xlimbinfo.startloc[0] - !param.fidarm and (((*fixfid[0]).fidarr).subx)[k] lt xlimbinfo.startloc[0] + !param.ministrip_length - 1 + !param.fidarm and (((*fixfid[0]).fidarr).suby)[k] gt rowpos[0] - !param.fidarm and (((*fixfid[0]).fidarr).suby)[k] lt rowpos[1] + !param.fidarm then xlimbinfo.isitbad=1
                     if (((*fixfid[0]).fidarr).suby)[k] gt ylimbinfo.startloc[0] - !param.fidarm and (((*fixfid[0]).fidarr).suby)[k] lt ylimbinfo.startloc[0] + !param.ministrip_length - 1 + !param.fidarm and (((*fixfid[0]).fidarr).subx)[k] gt rowpos[0] - !param.fidarm and (((*fixfid[0]).fidarr).subx)[k] lt rowpos[1] + !param.fidarm then ylimbinfo.isitbad=1
                 endfor

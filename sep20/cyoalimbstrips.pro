@@ -48,17 +48,17 @@ for jj = 0,N_ELEMENTS(inputstruct)-1 do begin
         ; oplot,limb,thick=6,psym=-4,color=100
         ; ps_end
         ; stop
-        a[jj].limbxstrips[i].endpoints      = (a[jj].xstrips[i].array)[row_where[-1] - limbwidth+ 1:row_where[-1] + limbwidth]   
-        a[jj].limbxstrips[i].endindex       = FIX(row_where[-1] - limbwidth)
+        a[jj].limbxstrips[i].endpoints      = (a[jj].xstrips[i].array)[row_where[N_ELEMENTS(row_where)-1] - limbwidth+ 1:row_where[N_ELEMENTS(row_where)-1] + limbwidth]   
+        a[jj].limbxstrips[i].endindex       = FIX(row_where[N_ELEMENTS(row_where)-1] - limbwidth)
         a[jj].limbystrips[i].startpoints    = (a[jj].ystrips[i].array)[col_where[0] - limbwidth:col_where[0] + limbwidth - 1]   
         a[jj].limbystrips[i].startindex       = FIX(col_where[0] - limbwidth)
-        a[jj].limbystrips[i].endpoints      = (a[jj].ystrips[i].array)[col_where[-1] - limbwidth + 1:col_where[-1] + limbwidth]   
-        a[jj].limbystrips[i].endindex       = FIX(col_where[-1] - limbwidth)
+        a[jj].limbystrips[i].endpoints      = (a[jj].ystrips[i].array)[col_where[N_ELEMENTS(col_where)-1] - limbwidth + 1:col_where[N_ELEMENTS(col_where)-1] + limbwidth]   
+        a[jj].limbystrips[i].endindex       = FIX(col_where[N_ELEMENTS(col_where)-1] - limbwidth)
         ; stop
         a[jj].limbxstrips[i].startloc       = row_where[0] - limbwidth
-        a[jj].limbxstrips[i].endloc         = row_where[-1] - limbwidth+ 1
+        a[jj].limbxstrips[i].endloc         = row_where[N_ELEMENTS(row_where)-1] - limbwidth+ 1
         a[jj].limbystrips[i].startloc       = col_where[0] - limbwidth
-        a[jj].limbystrips[i].endloc         = col_where[-1] - limbwidth + 1
+        a[jj].limbystrips[i].endloc         = col_where[N_ELEMENTS(col_where)-1] - limbwidth + 1
     endfor
 endfor
 
