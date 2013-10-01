@@ -1,0 +1,30 @@
+What is the most up to date documentation?
+
+Do not be fooled by the "Last Edited" field, I decided it would be a good idea to recompile all the tex files at some point so those dates all got rewritten
+
+The most up to date documentation is wwwdwwd.tex 
+
+sum_to_find_fids is up to date in terms of explaining how we use 1D sums to find fiducials and not any of the other options mentioned.
+
+slatfit is up to date only because there really hasn't been too much work on it
+
+flen won't be out of date because we'll need it later to make a fake fiducial plane
+
+ffind isn't out of date because I haven't really written code for it yet, more like a doc for a proof of concept
+
+Quick explanation of why these files are out of date:
+
+runthis: missing centroidwholesuns and how we use fiducial positions to smartly crop chords
+skimage: still using the original small, blurry image from Gordon (although it does bring up the appealing option of using sort() for thresholds)
+program_list: I don't use half those functions anymore
+multisuncentroid: Incomplete flow chart, also this documentation was designed thinking we will have less than 3 suns to work with
+jun25: using the 1D sum test to find fiducials on the original blurry image, maybe it's not out of date, but it's not quite up to date either
+howbadisbad: no longer use edge-detection filters for fiducials
+horizsum: no real work done after first week, guess it's both up to and out of date
+grainysun: obsolete flow chart, code is also slow
+gord_expl: parameter table has been updated, border checking has changed, final structure has also changed
+final_doc_draft: abandoned 60% the way through, focused on wwdwwd instead. obsolete parameter table, border checking, and flow chart
+fid_outline: basically all the steps leading up to 1D sums so it's really old
+dgafwhichsuns: brings up how we find multiple suns and their thresholds in case we have partials. also forces us to know our constraints so we don't mix up brightnesses of suns
+bunch_of_fid_edges: Uses edge-detection for fiducial finding
+albertnotes: Back when I was comparing how to find fidcials to albert's cross-correlation method
