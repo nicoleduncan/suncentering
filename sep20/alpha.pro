@@ -55,7 +55,7 @@ startimage=wholeimage
 ; startimage=w1_p3
 ; startimage=brightsun   ;no param list for this one
 startimage = dimsun
-;startimage = tritest
+startimage = tritest
 
 ; profiler
 ; profiler,/system
@@ -63,8 +63,8 @@ startimage = dimsun
 ; takes ~.07 s to run albert's triple sun image
 
 ;tic
-;defparams, 'pblock_albtritest.txt'
- defparams, 'pblock_albdimsun.txt'
+defparams, 'pblock_albtritest.txt'
+; defparams, 'pblock_albdimsun.txt'
 ; defparams, 'pblock_orig_small.txt'
 ;toc
 ; .0005 to here

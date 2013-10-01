@@ -1,0 +1,20 @@
+albtritest is more up to date than albdimsun, but both work.
+
+scan_width              The distance between chords
+solradius               approximate solar radius of sun, used to create a distance limit when checking for fiducials. If a fiducial is further from the center of the sun than solradius, then the fiducuial is considered bad
+nstrips                 The number of chords we draw per sun
+ministrip_length        The length of the limb chord, needs to be even so that there are an even number of pixels above and below the threshold
+crop_box                How large of an area around the solar center we want to crop for image analysis. Larger sizes are more forgiving but take a little longer to process. This length is actually half of the cropped image length. If this parameter is 100, then the cropped area will be 200x200
+elim_perc               The percentage of pixels to throw away. elim_perc=.1 means .1% of the total number of pixels
+n_smooth                The smoothing factor we use when taking the derivatives of the sorted array. Rather arbitrary.
+triangle_size           The fraction of the image HEIGHT to make the triangle size, in pixels
+onedsumthresh           The threshold to check against when looking at fiducial candidates (note, we have already used a 1D sum to find possible fiducial positions, this is separate from that)
+disk_brightness         A set solar brightness that if a fiducial candidate exceeds, then there must not be a fiducial there
+fid_crop_box            How large of a cropped box to use when looking at 1D sums of a fiducial. Follows the same characteristic as crop_box
+fid_smooth_candidates   How much to smooth the 1D sums of a solar image so that we can take the difference of a smoothed and unsmotohed 1D sum array to find possible fiducial positions
+peakfind_buff           When finding the 1D sums of the smoothed, derivatized sorted array, we have to zero-out a certain amount of space before and after the peak so that the next call to max() will not pick up anything from the previous max position
+fidcand_smooth          The amount of pixels to smooth by when looking at a fiducial candidate (with crop dimensions governed by fid_crop_box) so that we can take the difference of the smoothed and unsmoothed array to find out of the fiducial is really a fiducial
+rough1dsum_thresh       boolean value that if 1, will set the threshold leniently (less high) when looking at the difference of a smoothed and unsmoothed 1D sum array of the entire sun. 
+chord_thickness         How thick to make the chords so that we can take the mean of this many chords. Needs to be less than scan_width.
+bordercheck_perc        Fraction threshold when determining if a solar center is too close to the edge of our image (or to the two bad triangles at the bottom). This percentage scales to each dimension of the image, so if the image is 200x100, then the border threshold is between 20 and 180 for the length and 10 and 90 for the height.
+fidarm                  The pixel length of the "arm" of a fiducial. Used when checking for fiducial positions when deciding where to draw chords. Wanted to make sure that even if a fiducial center is outside of the limb-area, the fiducial arm isn't. The arm SHOULD be characterized by the length of the brightness dip when looking at 1D fiducial thresholds. 
